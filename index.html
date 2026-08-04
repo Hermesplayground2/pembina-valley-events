@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembina Valley Events</title>
+<style>
+  :root {
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --border: #e5e7eb;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --radius: 16px;
+    --shadow: rgba(15, 23, 42, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  header {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 32px 20px 40px;
+    text-align: center;
+  }
+  header h1 { font-size: 2rem; letter-spacing: -0.02em; }
+  header p { opacity: 0.8; margin-top: 6px; }
+  nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .nav-link {
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { background: #0f172a; color: white; border-color: #0f172a; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: 0 6px 18px var(--shadow);
+  }
+  .card h2 { font-size: 1.1rem; margin-bottom: 10px; }
+  .weather { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .weather .temp { font-size: 2.4rem; font-weight: 700; }
+  .weather .meta { color: var(--muted); font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #3730a3;
+    margin: 2px 4px 2px 0;
+  }
+  .event { border-left: 4px solid var(--accent); padding: 10px 12px; margin: 10px 0; border-radius: 0 12px 12px 0; background: #f8fafc; }
+  .event .title { font-weight: 600; }
+  .event .meta { color: var(--muted); font-size: 0.9rem; }
+  .activity { padding: 12px; border-radius: 12px; background: linear-gradient(180deg, #ffffff, #f8fafc); border: 1px solid var(--border); margin: 8px 0; }
+  .activity .name { font-weight: 700; }
+  .activity .desc { color: var(--muted); font-size: 0.92rem; }
+  .section { margin-top: 28px; }
+  .section-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+  footer { text-align: center; padding: 24px; color: var(--muted); font-size: 0.85rem; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: white; border: 1px solid var(--border); cursor: pointer; font-weight: 600; }
+  .pill.active { background: #0f172a; color: white; border-color: #0f172a; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .weather-icon { width: 52px; height: 52px; }
+  .muted { color: var(--muted); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .spacer { height: 10px; }
+  .page { display: none; }
+  .page.active { display: block; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .gallery-item { aspect-ratio: 1; background: linear-gradient(135deg, #e5e7eb, #f3f4f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; padding: 12px; }
+  .contact-form { display: grid; gap: 12px; }
+  .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; }
+  .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; }
+  .local-card { border: 1px dashed var(--border); }
+  .local-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pembina Valley Events</h1>
+  <p>Local events · Schedule · Community · Winkler, MB</p>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-link active" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="calendar">Activities</a>
+    <a href="#" class="nav-link" data-page="weather">Weather</a>
+    <a href="#" class="nav-link" data-page="local">Local Board</a>
+    <a href="#" class="nav-link" data-page="family">Family</a>
+    <a href="#" class="nav-link" data-page="contact">Contact</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="page active" id="page-home">
+    <section class="section">
+      <div class="grid grid-2">
+        <div class="card">
+          <h2>📍 Winkler Weather</h2>
+          <div class="weather">
+            <div>
+              <div class="temp" id="temp">--°</div>
+              <div class="meta" id="condition">Loading...</div>
+              <div class="meta" id="location">Winkler, MB</div>
+            </div>
+            <canvas class="weather-icon" id="weatherIcon" aria-label="weather icon"></canvas>
+          </div>
+          <div class="spacer"></div>
+          <div class="muted" id="updated">Updated: just now</div>
+        </div>
+
+        <div class="card">
+          <h2>🌱 Today’s Suggested Activities</h2>
+          <div id="activities">
+            <div class="activity"><div class="name">Evening walk</div><div class="desc">Good for clearing your head after study or work.</div></div>
+            <div class="activity"><div class="name">Indoor reading</div><div class="desc">Bible study, notes, or planning.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>📅 Upcoming Events</h2>
+        <div class="filters">
+          <button class="pill active" onclick="filterEvents('all', this)">All</button>
+          <button class="pill" onclick="filterEvents('community', this)">Community</button>
+          <button class="pill" onclick="filterEvents('outdoors', this)">Outdoors</button>
+          <button class="pill" onclick="filterEvents('family', this)">Family</button>
+        </div>
+        <div id="events">
+          <div class="event" data-category="community"><div class="title">Winkler Farmer’s Market</div><div class="meta">Tuesdays 4-6 PM · Central Station parking lot · <a href="https://www.facebook.com/WinklerFarmersMarket/" target="_blank">facebook.com</a></div></div>
+          <div class="event" data-category="community"><div class="title">Concerts in the Park</div><div class="meta">Wednesdays in July & Aug, 7:00 PM · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/concerts-in-the-park" target="_blank">visitwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Winkler Harvest Festival</div><div class="meta">Aug 7 - 9 · Winkler Fairgrounds · Free admission · <a href="https://www.visitwinkler.ca/harvest-festival" target="_blank">visitwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 11, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 25, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Tree Lighting Ceremony</div><div class="meta">Late Nov / Early Dec · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/tree-lighting-ceremony" target="_blank">visitwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Christmas Glow in the Country</div><div class="meta">December · Winkler Bible Camp · <a href="https://www.christmasglowinthecountry.com/" target="_blank">christmasglowinthecountry.com</a></div></div>
+          <div class="event" data-category="outdoors"><div class="title">Sunset walk</div><div class="meta">Daily 6:30 PM · River trail</div></div>
+          <div class="event" data-category="family"><div class="title">Family movie night</div><div class="meta">Fri 8:00 PM · Home</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-calendar">
+    <section class="section">
+      <div class="card">
+        <h2>📅 Community & Family Activities</h2>
+        <div class="filters">
+          <button class="pill active" onclick="filterEvents('all', this)">All</button>
+          <button class="pill" onclick="filterEvents('community', this)">Community</button>
+          <button class="pill" onclick="filterEvents('outdoors', this)">Outdoors</button>
+          <button class="pill" onclick="filterEvents('family', this)">Family</button>
+        </div>
+        <div id="events-calendar">
+          <div class="event" data-category="community"><div class="title">Winkler Farmer’s Market</div><div class="meta">Tuesdays 4-6 PM · Central Station parking lot · <a href="https://www.facebook.com/WinklerFarmersMarket/" target="_blank">facebook.com</a></div></div>
+          <div class="event" data-category="community"><div class="title">Concerts in the Park</div><div class="meta">Wednesdays in July & Aug, 7:00 PM · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/concerts-in-the-park" target="_blank">visitwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Winkler Harvest Festival</div><div class="meta">Aug 7 - 9 · Winkler Fairgrounds · Free admission · <a href="https://www.visitwinkler.ca/harvest-festival" target="_blank">visitwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 11, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 25, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Tree Lighting Ceremony</div><div class="meta">Late Nov / Early Dec · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/tree-lighting-ceremony" target="_blank">visitwinkler.ca</a></div></div>
+          <div class="event" data-category="community"><div class="title">Christmas Glow in the Country</div><div class="meta">December · Winkler Bible Camp · <a href="https://www.christmasglowinthecountry.com/" target="_blank">christmasglowinthecountry.com</a></div></div>
+          <div class="event" data-category="outdoors"><div class="title">Sunset walk</div><div class="meta">Daily 6:30 PM · River trail</div></div>
+          <div class="event" data-category="family"><div class="title">Family movie night</div><div class="meta">Fri 8:00 PM · Home</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-weather">
+    <section class="section">
+      <div class="grid grid-2">
+        <div class="card">
+          <h2>🌤 Live Weather</h2>
+          <div class="weather">
+            <div>
+              <div class="temp" id="temp2">--°</div>
+              <div class="meta" id="condition2">Loading...</div>
+              <div class="meta" id="location2">Winkler, MB</div>
+            </div>
+            <canvas class="weather-icon" id="weatherIcon2" aria-label="weather icon"></canvas>
+          </div>
+          <div class="spacer"></div>
+          <div class="muted" id="updated2">Updated: just now</div>
+        </div>
+        <div class="card">
+          <h2>🧭 Weather-Based Plan</h2>
+          <div id="weatherPlan">
+            <div class="activity"><div class="name">Indoor focus</div><div class="desc">Good day for study, planning, and computer work.</div></div>
+            <div class="activity"><div class="name">Errands</div><div class="desc">Flexible window for groceries or admin tasks.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-local">
+    <section class="section">
+      <div class="card">
+        <h2>🏪 Local Winkler Board</h2>
+        <p class="muted">Local spots, services, and community additions for the Winkler, MB area.</p>
+        <div class="spacer"></div>
+        <div class="grid grid-3">
+          <div class="card local-card">
+            <div class="tag">Grocery</div>
+            <h2 style="margin-top:6px;">Local Grocery</h2>
+            <p class="muted">Add your usual grocery or food-market spot.</p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Auto / Gas</div>
+            <h2 style="margin-top:6px;">Mechanic / Gas</h2>
+            <p class="muted">Add a trusted local mechanic or gas station.</p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Hardware</div>
+            <h2 style="margin-top:6px;">Hardware Store</h2>
+            <p class="muted">Add a hardware or home-improvement store.</p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Farm</div>
+            <h2 style="margin-top:6px;">Farm Supply</h2>
+            <p class="muted">Add a farm supply or agriculture service.</p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Recreation</div>
+            <h2 style="margin-top:6px;">Recreation / Camp</h2>
+            <p class="muted">Add a local recreation spot or camp.</p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Services</div>
+            <h2 style="margin-top:6px;">Other Service</h2>
+            <p class="muted">Add another local service or business.</p>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <p class="muted">Edit the HTML to replace these placeholders with real local additions and links.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-family">
+    <section class="section">
+      <div class="grid grid-3">
+        <div class="card">
+          <h2>👨‍👩‍👧‍👦 Family</h2>
+          <p class="muted">Home schedule, school, meals, and time together in Winkler.</p>
+        </div>
+        <div class="card">
+          <h2>⛪ Church & Ministry</h2>
+          <p class="muted">Sermon prep, Bible study batches, word cards, and audio.</p>
+        </div>
+        <div class="card">
+          <h2>🧰 Local Events</h2>
+          <p class="muted">Community happenings, local gatherings, and Pembina Valley events.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="card">
+        <h2>📸 Family Gallery</h2>
+        <div class="gallery">
+          <div class="gallery-item">Photo 1</div>
+          <div class="gallery-item">Photo 2</div>
+          <div class="gallery-item">Photo 3</div>
+          <div class="gallery-item">Photo 4</div>
+        </div>
+        <p class="muted" style="margin-top:10px;">Replace the gallery items with your own photos by editing the HTML.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-contact">
+    <section class="section">
+      <div class="card">
+        <h2>✉️ Contact</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Contact form is static. Connect it to a mail service if you want email delivery.');">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Your email" required>
+          <textarea rows="4" placeholder="Message" required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+        <p class="muted" style="margin-top:10px;">This form is a front-end template. To receive emails, connect it to a mail service or backend.</p>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<footer>
+  Made locally · Open the file to refresh · Edit HTML to add your own content · Winkler, MB
+</footer>
+
+<script>
+  function filterEvents(category, btn) {
+    document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.event').forEach(ev => {
+      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+      link.classList.add('active');
+      if (page === 'weather' || page === 'home') loadWeather();
+    });
+  });
+
+  async function loadWeather() {
+    try {
+      const pos = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10000 }));
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      const res = await fetch(url);
+      const data = await res.json();
+      const cw = data.current_weather;
+      const tempEls = document.querySelectorAll('#temp, #temp2');
+      const condEls = document.querySelectorAll('#condition, #condition2');
+      const locEls = document.querySelectorAll('#location, #location2');
+      const updEls = document.querySelectorAll('#updated, #updated2');
+      tempEls.forEach(el => el.textContent = Math.round(cw.temperature) + '°');
+      condEls.forEach(el => el.textContent = weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h');
+      locEls.forEach(el => el.textContent = 'Winkler, MB');
+      updEls.forEach(el => el.textContent = 'Updated: ' + new Date().toLocaleTimeString());
+      drawWeatherIcon('weatherIcon', cw.weathercode);
+      drawWeatherIcon('weatherIcon2', cw.weathercode);
+      updateActivities(cw.temperature, cw.windspeed);
+      updateWeatherPlan(cw.temperature, cw.weathercode);
+    } catch (e) {
+      document.getElementById('temp').textContent = '--°';
+      document.getElementById('condition').textContent = 'Weather unavailable';
+      document.getElementById('location').textContent = 'Winkler, MB';
+    }
+  }
+
+  function weatherLabel(code) {
+    if (code === 0) return 'Clear sky';
+    if (code <= 3) return 'Partly cloudy';
+    if (code <= 48) return 'Foggy';
+    if (code <= 67) return 'Rain';
+    if (code <= 77) return 'Snow';
+    if (code <= 82) return 'Rain showers';
+    if (code <= 86) return 'Snow showers';
+    if (code <= 99) return 'Thunderstorm';
+    return 'Weather';
+  }
+
+  function drawWeatherIcon(canvasId, code) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = 120;
+    canvas.height = 120;
+    ctx.clearRect(0, 0, 120, 120);
+    ctx.fillStyle = '#0f172a';
+    if (code === 0) {
+      ctx.beginPath(); ctx.arc(60, 55, 22, 0, Math.PI * 2); ctx.fill();
+      for (let i = 0; i < 8; i++) { ctx.save(); ctx.translate(60, 55); ctx.rotate(i * Math.PI / 4); ctx.fillRect(46, 28, 4, 14); ctx.restore(); }
+    } else if (code <= 3) {
+      ctx.beginPath(); ctx.arc(60, 55, 22, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#e5e7eb';
+      ctx.beginPath(); ctx.arc(80, 70, 18, 0, Math.PI * 2); ctx.fill();
+    } else if (code <= 67) {
+      ctx.fillStyle = '#9ca3af';
+      ctx.beginPath(); ctx.arc(35, 38, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(55, 28, 12, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(78, 40, 11, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#2563eb';
+      ctx.fillRect(28, 70, 60, 8); ctx.fillRect(38, 86, 40, 7); ctx.fillRect(48, 100, 24, 6);
+    } else {
+      ctx.fillStyle = '#e5e7eb';
+      ctx.fillRect(25, 70, 70, 9); ctx.fillRect(35, 88, 50, 8); ctx.fillRect(45, 105, 30, 6);
+    }
+  }
+
+  function updateActivities(temp, wind) {
+    const box = document.getElementById('activities');
+    if (!box) return;
+    const items = [];
+    if (temp >= 22 && wind < 25) items.push({ name: 'Outdoor sports', desc: 'Warm and calm — good for a walk, run, or family outing.' });
+    else if (temp >= 10 && wind < 30) items.push({ name: 'Park visit', desc: 'Mild weather — pack a light jacket and enjoy outside.' });
+    else items.push({ name: 'Indoor time', desc: 'Cool or windy — good for study, baking, or building.' });
+    if (temp >= 18) items.push({ name: 'Outdoor meal', desc: 'Eat outside if you can.' });
+    if (wind > 35) items.push({ name: 'Secure outdoor items', desc: 'Strong winds expected — move or tie down loose objects.' });
+    box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
+  }
+
+  function updateWeatherPlan(temp, code) {
+    const box = document.getElementById('weatherPlan');
+    if (!box) return;
+    const items = [];
+    if (code === 0 && temp >= 20) items.push({ name: 'Morning garden or walk', desc: 'Clear and warm — start outside while it’s fresh.' });
+    else if (code <= 3) items.push({ name: 'Flexible plan', desc: 'Clouds but usable — keep outdoor options open.' });
+    else if (code <= 67) items.push({ name: 'Indoor focus', desc: 'Rain likely — study, prep lessons, or organize files.' });
+    else items.push({ name: 'Indoor focus', desc: 'Keep warm and use the time for focused work.' });
+    if (temp >= 18 && code < 50) items.push({ name: 'Sunset break', desc: 'Temperature holds — step out for fresh air in the evening.' });
+    box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
+  }
+
+  loadWeather();
+</script>
+
+</body>
+</html>
