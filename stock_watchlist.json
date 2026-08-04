@@ -1,0 +1,13 @@
+{
+  "watchlist": [
+    {"symbol": "RUM", "name": "RUM Group", "entry_date": "2026-07-27", "entry_price": 5.83, "qty": 100, "note": "Aug 10 earnings"},
+    {"symbol": "SPCX", "name": "SpaceX", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "TSLA", "name": "Tesla", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "SLV", "name": "Silver Trust", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "NVDA", "name": "NVIDIA", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "ATH.TO", "name": "Athalia Energy", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "QQQ", "name": "Nasdaq-100 ETF", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "PAAS.TO", "name": "Pan American Silver", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"},
+    {"symbol": "USAR", "name": "USA Rare Earth", "entry_date": null, "entry_price": null, "qty": null, "note": "Add entry"}
+  ]
+}
