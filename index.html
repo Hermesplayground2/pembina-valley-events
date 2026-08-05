@@ -65,7 +65,23 @@
     border-radius: var(--radius);
     padding: 18px;
     box-shadow: 0 6px 18px var(--shadow);
+    position: relative;
+    overflow: hidden;
   }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+  }
+  .card-landscape-field::before { background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80'); }
+  .card-landscape-activity::before { background-image: url('https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80'); }
+  .card-landscape-calendar::before { background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80'); }
+  .card-landscape-weather::before { background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80'); }
+  .card > * { position: relative; }
   .card h2 { font-size: 1.1rem; margin-bottom: 10px; }
   .weather { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .weather .temp { font-size: 2.4rem; font-weight: 700; }
@@ -98,13 +114,24 @@
   .spacer { height: 10px; }
   .page { display: none; }
   .page.active { display: block; }
-  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-  .gallery-item { aspect-ratio: 1; background: linear-gradient(135deg, #e5e7eb, #f3f4f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; text-align: center; padding: 12px; }
   .contact-form { display: grid; gap: 12px; }
   .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; }
   .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; }
   .local-card { border: 1px dashed var(--border); }
   .local-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+  .day-columns { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 0 0 12px 12px; overflow: hidden; background: white; }
+  .day-column { background: rgba(255,255,255,0.92); border-right: 1px solid var(--border); padding: 10px; min-height: 140px; }
+  .day-column:last-child { border-right: none; }
+  .day-column h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--text); }
+  .day-column .day-event { border-left: 3px solid var(--accent2); padding: 6px 8px; margin: 6px 0; border-radius: 0 8px 8px 0; background: #f8fafc; font-size: 0.88rem; }
+  .day-column .day-event .time { color: var(--muted); font-size: 0.78rem; }
+
+  .cal-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px 12px 0 0; overflow: hidden; background: white; }
+  .cal-header .cal-day-header { padding: 10px; text-align: center; font-weight: 700; font-size: 0.85rem; background: #f8fafc; border-right: 1px solid var(--border); }
+  .cal-header .cal-day-header:last-child { border-right: none; }
+  .cal-header .cal-date { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+  .cal-now { color: #dc2626; }
 </style>
 </head>
 <body>
@@ -130,7 +157,7 @@
   <div class="page active" id="page-home">
     <section class="section">
       <div class="grid grid-2">
-        <div class="card">
+        <div class="card card-landscape-weather">
           <h2>📍 Winkler Weather</h2>
           <div class="weather">
             <div>
@@ -144,7 +171,7 @@
           <div class="muted" id="updated">Updated: just now</div>
         </div>
 
-        <div class="card">
+        <div class="card card-landscape-activity">
           <h2>🌱 Today’s Suggested Activities</h2>
           <div id="activities">
             <div class="activity"><div class="name">Evening walk</div><div class="desc">Good for clearing your head after study or work.</div></div>
@@ -155,25 +182,16 @@
     </section>
 
     <section class="section">
-      <div class="card">
-        <h2>📅 Upcoming Events</h2>
+      <div class="card card-landscape-calendar">
+        <h2>📅 Weekly Schedule</h2>
         <div class="filters">
-          <button class="pill active" onclick="filterEvents('all', this)">All</button>
-          <button class="pill" onclick="filterEvents('community', this)">Community</button>
-          <button class="pill" onclick="filterEvents('outdoors', this)">Outdoors</button>
-          <button class="pill" onclick="filterEvents('family', this)">Family</button>
+          <button class="pill active" onclick="filterDailyEvents('all', this)">All</button>
+          <button class="pill" onclick="filterDailyEvents('community', this)">Community</button>
+          <button class="pill" onclick="filterDailyEvents('outdoors', this)">Outdoors</button>
+          <button class="pill" onclick="filterDailyEvents('family', this)">Family</button>
         </div>
-        <div id="events">
-          <div class="event" data-category="community"><div class="title">Winkler Farmer’s Market</div><div class="meta">Tuesdays 4-6 PM · Central Station parking lot · <a href="https://www.facebook.com/WinklerFarmersMarket/" target="_blank">facebook.com</a></div></div>
-          <div class="event" data-category="community"><div class="title">Concerts in the Park</div><div class="meta">Wednesdays in July & Aug, 7:00 PM · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/concerts-in-the-park" target="_blank">visitwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Winkler Harvest Festival</div><div class="meta">Aug 7 - 9 · Winkler Fairgrounds · Free admission · <a href="https://www.visitwinkler.ca/harvest-festival" target="_blank">visitwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 11, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 25, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Tree Lighting Ceremony</div><div class="meta">Late Nov / Early Dec · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/tree-lighting-ceremony" target="_blank">visitwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Christmas Glow in the Country</div><div class="meta">December · Winkler Bible Camp · <a href="https://www.christmasglowinthecountry.com/" target="_blank">christmasglowinthecountry.com</a></div></div>
-          <div class="event" data-category="outdoors"><div class="title">Sunset walk</div><div class="meta">Daily 6:30 PM · River trail</div></div>
-          <div class="event" data-category="family"><div class="title">Family movie night</div><div class="meta">Fri 8:00 PM · Home</div></div>
-        </div>
+        <div class="cal-header" id="cal-header"></div>
+        <div class="day-columns" id="daily-events"></div>
       </div>
     </section>
   </div>
@@ -206,7 +224,7 @@
   <div class="page" id="page-weather">
     <section class="section">
       <div class="grid grid-2">
-        <div class="card">
+        <div class="card card-landscape-weather">
           <h2>🌤 Live Weather</h2>
           <div class="weather">
             <div>
@@ -291,18 +309,6 @@
         </div>
       </div>
     </section>
-    <section class="section">
-      <div class="card">
-        <h2>📸 Family Gallery</h2>
-        <div class="gallery">
-          <div class="gallery-item">Photo 1</div>
-          <div class="gallery-item">Photo 2</div>
-          <div class="gallery-item">Photo 3</div>
-          <div class="gallery-item">Photo 4</div>
-        </div>
-        <p class="muted" style="margin-top:10px;">Replace the gallery items with your own photos by editing the HTML.</p>
-      </div>
-    </section>
   </div>
 
   <div class="page" id="page-contact">
@@ -328,10 +334,71 @@
 
 <script>
   function filterEvents(category, btn) {
-    document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.event').forEach(ev => {
+    document.querySelectorAll('#events-calendar .pill').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('#events-calendar .event').forEach(ev => {
       ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
+    });
+  }
+
+  function filterDailyEvents(category, btn) {
+    const pills = document.querySelectorAll('#daily-events .pill');
+    pills.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('#daily-events .day-event').forEach(ev => {
+      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
+    });
+  }
+
+  function buildWeek() {
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const start = new Date(today);
+    start.setDate(today.getDate() - today.getDay());
+
+    const header = document.getElementById('cal-header');
+    const body = document.getElementById('daily-events');
+    if (!header || !body) return;
+    header.innerHTML = '';
+    body.innerHTML = '';
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      const isToday = d.getTime() === today.getTime();
+
+      const h = document.createElement('div');
+      h.className = 'cal-day-header';
+      h.innerHTML = `<div${isToday ? ' class="cal-now"' : ''}>${days[d.getDay()]}</div><div class="cal-date">${months[d.getMonth()]} ${d.getDate()}</div>`;
+      header.appendChild(h);
+
+      const col = document.createElement('div');
+      col.className = 'day-column';
+      col.dataset.day = isToday ? 'Today' : `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
+      body.appendChild(col);
+    }
+
+    const sample = [
+      { category: 'outdoors', title: 'Sunset walk', time: 'Daily 6:30 PM · River trail', dayOffset: 0 },
+      { category: 'family', title: 'Family movie night', time: 'Fri 8:00 PM · Home', dayOffset: 4 },
+      { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot', dayOffset: 1 },
+      { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', dayOffset: 2 },
+      { category: 'community', title: 'City Council Meeting', time: 'Aug 11, 6:30 PM · City Hall', dayOffset: 5 },
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7 - 9 · Winkler Fairgrounds', dayOffset: 2 },
+      { category: 'community', title: 'Tree Lighting Ceremony', time: 'Late Nov/Early Dec · Bethel Heritage Park', dayOffset: 6 },
+      { category: 'community', title: 'Christmas Glow in the Country', time: 'December · Winkler Bible Camp', dayOffset: 6 }
+    ];
+
+    const columns = body.querySelectorAll('.day-column');
+    sample.forEach(ev => {
+      if (ev.dayOffset < 0 || ev.dayOffset >= columns.length) return;
+      const el = document.createElement('div');
+      el.className = 'day-event';
+      el.dataset.category = ev.category;
+      el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
+      columns[ev.dayOffset].appendChild(el);
     });
   }
 
@@ -439,6 +506,7 @@
     box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
   }
 
+  buildWeek();
   loadWeather();
 </script>
 
