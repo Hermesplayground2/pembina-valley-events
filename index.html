@@ -117,8 +117,37 @@
   .contact-form { display: grid; gap: 12px; }
   .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; }
   .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; }
-  .local-card { border: 1px dashed var(--border); }
+  .local-card { border: 1px dashed var(--border); position: relative; overflow: hidden; }
   .local-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .local-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    opacity: 0.18;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+  }
+  .local-card .brand { height: 48px; margin: -18px -18px 10px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; font-weight: 900; letter-spacing: 0.04em; color: white; font-size: 0.85rem; }
+  .brand-superstore { background: #0057b8; }
+  .brand-coop { background: #0072ce; }
+  .brand-nofrills { background: #009640; }
+  .brand-sobeys { background: #0057a8; }
+  .brand-leevers { background: #b91c1c; }
+  .brand-petro { background: #d97706; }
+  .brand-canadiantire { background: #c8102e; }
+  .brand-homehardware { background: #b45309; }
+  .brand-camp { background: #0f766e; }
+  .brand-buttercup { background: #e11d48; }
+  .brand-charleys { background: #dc2626; }
+  .brand-sushismith { background: #111827; }
+  .brand-flavors { background: #16a34a; }
+  .brand-iceburg { background: #2563eb; }
+  .brand-chucks { background: #991b1b; }
+  .brand-ralphs { background: #92400e; }
+  .brand-toppers { background: #b45309; }
+  .brand-mulligans { background: #1f2937; }
 
   .day-columns { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 0 0 12px 12px; overflow: hidden; background: white; }
   .day-column { background: rgba(255,255,255,0.92); border-right: 1px solid var(--border); padding: 10px; min-height: 140px; }
@@ -132,6 +161,15 @@
   .cal-header .cal-day-header:last-child { border-right: none; }
   .cal-header .cal-date { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
   .cal-now { color: #dc2626; }
+
+  .month-wrap { margin-top: 18px; }
+  .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white; }
+  .month-header { padding: 8px; text-align: center; font-weight: 700; font-size: 0.78rem; background: #f8fafc; border-right: 1px solid var(--border); }
+  .month-header:last-child { border-right: none; }
+  .month-day { min-height: 34px; padding: 4px; border-right: 1px solid var(--border); border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--muted); }
+  .month-day:last-child { border-right: none; }
+  .month-day.empty { background: #fafafa; }
+  .month-day .chip { display: inline-block; padding: 2px 6px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: 0.65rem; font-weight: 700; margin: 1px 0; }
 </style>
 </head>
 <body>
@@ -146,7 +184,7 @@
     <a href="#" class="nav-link active" data-page="home">Home</a>
     <a href="#" class="nav-link" data-page="calendar">Activities</a>
     <a href="#" class="nav-link" data-page="weather">Weather</a>
-    <a href="#" class="nav-link" data-page="local">Local Board</a>
+    <a href="#" class="nav-link" data-page="local">Locals</a>
     <a href="#" class="nav-link" data-page="family">Family</a>
     <a href="#" class="nav-link" data-page="contact">Contact</a>
   </div>
@@ -192,6 +230,13 @@
         </div>
         <div class="cal-header" id="cal-header"></div>
         <div class="day-columns" id="daily-events"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>🗓 Monthly Schedule</h2>
+        <div class="month-wrap" id="month-wrap"></div>
       </div>
     </section>
   </div>
@@ -255,57 +300,57 @@
         <p class="muted">Winkler, MB spots, services, and food deals.</p>
         <div class="spacer"></div>
         <div class="grid grid-3">
-          <div class="card local-card">
+          <div class="card local-card brand-superstore">
             <div class="tag">Grocery</div>
             <h2 style="margin-top:6px;">Real Canadian Superstore</h2>
             <p class="muted">175 Cargill Rd · <a href="https://maps.google.com/?q=Real+Canadian+Superstore+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-coop">
             <div class="tag">Grocery</div>
             <h2 style="margin-top:6px;">Co-op</h2>
             <p class="muted">370 Main St · <a href="https://maps.google.com/?q=Co-op+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-nofrills">
             <div class="tag">Grocery</div>
             <h2 style="margin-top:6px;">No Frills</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=No+Frils+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-sobeys">
             <div class="tag">Grocery</div>
             <h2 style="margin-top:6px;">Sobeys</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Sobeys+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-leevers">
             <div class="tag">Grocery</div>
             <h2 style="margin-top:6px;">Leevers Foods</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Leevers+Foods+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-petro">
             <div class="tag">Gas / Fuel</div>
             <h2 style="margin-top:6px;">Co-op Gas Bar</h2>
             <p class="muted">370 Main St · <a href="https://maps.google.com/?q=Co-op+Gas+Bar+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-petro">
             <div class="tag">Gas / Fuel</div>
             <h2 style="margin-top:6px;">Petro Canada</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Petro+Canada+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-canadiantire">
             <div class="tag">Gas / Fuel</div>
             <h2 style="margin-top:6px;">Canadian Tire Gas+</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Canadian+Tire+Gas+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-coop">
             <div class="tag">Gas / Fuel</div>
             <h2 style="margin-top:6px;">Red River Co-Op</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Red+River+Co+Op+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-homehardware">
             <div class="tag">Hardware</div>
             <h2 style="margin-top:6px;">Home Hardware</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Home+Hardware+Winkler+MB" target="_blank">Map</a></p>
           </div>
-          <div class="card local-card">
+          <div class="card local-card brand-camp">
             <div class="tag">Recreation / Camp</div>
             <h2 style="margin-top:6px;">Winkler Bible Camp</h2>
             <p class="muted">Winkler · <a href="https://maps.google.com/?q=Winkler+Bible+Camp+MB" target="_blank">Map</a></p>
@@ -489,6 +534,58 @@
     }
   }
 
+  function buildMonth() {
+    const wrap = document.getElementById('month-wrap');
+    if (!wrap) return;
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const today = now.getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    const samples = [
+      { day: 7, title: 'Harvest Festival' },
+      { day: 11, title: 'City Council' },
+      { day: 25, title: 'City Council' }
+    ];
+
+    const grid = document.createElement('div');
+    grid.className = 'month-grid';
+
+    days.forEach(d => {
+      const h = document.createElement('div');
+      h.className = 'month-header';
+      h.textContent = d;
+      grid.appendChild(h);
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'month-day empty';
+      grid.appendChild(empty);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const cell = document.createElement('div');
+      cell.className = 'month-day';
+      const isToday = d === today;
+      cell.innerHTML = `<div style="font-weight:${isToday ? '700' : '400'}; color:${isToday ? '#dc2626' : 'inherit'}">${d}</div>`;
+      samples.filter(s => s.day === d).forEach(s => {
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        chip.textContent = s.title;
+        cell.appendChild(chip);
+      });
+      grid.appendChild(cell);
+    }
+
+    wrap.innerHTML = '';
+    wrap.appendChild(grid);
+  }
+
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -594,6 +691,7 @@
   }
 
   buildWeek();
+  buildMonth();
   loadWeather();
 </script>
 
