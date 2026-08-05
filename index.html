@@ -364,6 +364,24 @@
     header.innerHTML = '';
     body.innerHTML = '';
 
+    const eventsByDay = [[], [], [], [], [], [], []];
+
+    const samples = [
+      { category: 'outdoors', title: 'Sunset walk', time: 'Daily 6:30 PM · River trail', weekday: 0 },
+      { category: 'family', title: 'Family movie night', time: 'Fri 8:00 PM · Home', weekday: 5 },
+      { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot', weekday: 2 },
+      { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', weekday: 3 },
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7 - 9 · Winkler Fairgrounds', weekday: 5 },
+      { category: 'community', title: 'City Council Meeting', time: 'Aug 11, 6:30 PM · City Hall', weekday: 1 },
+      { category: 'community', title: 'Tree Lighting Ceremony', time: 'Late Nov/Early Dec · Bethel Heritage Park', weekday: 6 },
+      { category: 'community', title: 'Christmas Glow in the Country', time: 'December · Winkler Bible Camp', weekday: 6 }
+    ];
+
+    samples.forEach(ev => {
+      if (ev.weekday < 0 || ev.weekday >= 7) return;
+      eventsByDay[ev.weekday].push(ev);
+    });
+
     for (let i = 0; i < 7; i++) {
       const d = new Date(start);
       d.setDate(start.getDate() + i);
@@ -378,28 +396,15 @@
       col.className = 'day-column';
       col.dataset.day = isToday ? 'Today' : `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
       body.appendChild(col);
+
+      eventsByDay[i].forEach(ev => {
+        const el = document.createElement('div');
+        el.className = 'day-event';
+        el.dataset.category = ev.category;
+        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
+        col.appendChild(el);
+      });
     }
-
-    const sample = [
-      { category: 'outdoors', title: 'Sunset walk', time: 'Daily 6:30 PM · River trail', dayOffset: 0 },
-      { category: 'family', title: 'Family movie night', time: 'Fri 8:00 PM · Home', dayOffset: 4 },
-      { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot', dayOffset: 1 },
-      { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', dayOffset: 2 },
-      { category: 'community', title: 'City Council Meeting', time: 'Aug 11, 6:30 PM · City Hall', dayOffset: 5 },
-      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7 - 9 · Winkler Fairgrounds', dayOffset: 2 },
-      { category: 'community', title: 'Tree Lighting Ceremony', time: 'Late Nov/Early Dec · Bethel Heritage Park', dayOffset: 6 },
-      { category: 'community', title: 'Christmas Glow in the Country', time: 'December · Winkler Bible Camp', dayOffset: 6 }
-    ];
-
-    const columns = body.querySelectorAll('.day-column');
-    sample.forEach(ev => {
-      if (ev.dayOffset < 0 || ev.dayOffset >= columns.length) return;
-      const el = document.createElement('div');
-      el.className = 'day-event';
-      el.dataset.category = ev.category;
-      el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
-      columns[ev.dayOffset].appendChild(el);
-    });
   }
 
   document.querySelectorAll('.nav-link').forEach(link => {
