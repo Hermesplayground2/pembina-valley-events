@@ -1053,4 +1053,41 @@
   renderFeatured();
   renderFamilyEvents();
   loadWeather();
+}
+
+  function renderFamilyEvents() {
+    const schoolBox = document.getElementById('family-school-events');
+    const churchBox = document.getElementById('family-church-events');
+    const garageBox = document.getElementById('family-garage-events');
+
+    const schoolEvents = [
+      { title: 'Labour Day - No School', date: 'Aug 4 (Mon)', time: 'Prairie Dale School', category: 'family' },
+      { title: 'Admin Day - No Classes', date: 'Aug 5 (Tue)', time: 'Prairie Dale School', category: 'family' },
+      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School', category: 'family' },
+      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School', category: 'family' }
+    ];
+
+    const churchEvents = [
+      { title: 'Winkler EMMC Worship Service', date: 'Aug 2, 16, 23, 30', time: '10:30 AM · 600 Southview Drive', category: 'family' },
+      { title: 'Harvest Festival Service', date: 'Aug 9 (Sun)', time: '10:00 AM · Winkler Park', category: 'family' },
+      { title: 'Church Council Meeting', date: 'Aug 18 (Tue)', time: '7:00 PM · 600 Southview Drive', category: 'family' }
+    ];
+
+    const garageEvents = [
+      { title: 'Weekly Garage Sales', date: 'Aug 3-9', time: 'Multiple addresses · winkler.garagesalejunkie.ca', category: 'community' },
+      { title: 'City Wide Garage Sale', date: 'May 23, 2026', time: 'Multiple addresses · Watch for 2027 date', category: 'community' },
+      { title: 'Morden City Wide Garage Sale', date: 'Jun 6, 2026', time: 'Morden, MB · Multiple addresses', category: 'community' }
+    ];
+
+    const renderCard = (ev) => `
+      <div class="day-event" data-category="${ev.category}">
+        <div class="title">${ev.title}</div>
+        <div class="time">${ev.date} · ${ev.time}</div>
+      </div>
+    `;
+
+    if (schoolBox) schoolBox.innerHTML = schoolEvents.map(renderCard).join('');
+    if (churchBox) churchBox.innerHTML = churchEvents.map(renderCard).join('');
+    if (garageBox) garageBox.innerHTML = garageEvents.map(renderCard).join('');
+  }
 </script>
