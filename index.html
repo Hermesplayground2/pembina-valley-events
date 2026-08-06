@@ -27,13 +27,14 @@
     line-height: 1.55;
   }
   header {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
     color: white;
-    padding: 32px 20px 40px;
+    padding: 36px 20px 44px;
     text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
-  header h1 { font-size: 2rem; letter-spacing: -0.02em; }
-  header p { opacity: 0.8; margin-top: 6px; }
+  header h1 { font-size: 2.1rem; letter-spacing: -0.02em; }
+  header p { opacity: 0.85; margin-top: 8px; font-weight: 500; }
   nav {
     background: white;
     border-bottom: 1px solid var(--border);
@@ -82,9 +83,9 @@
   .card-landscape-calendar::before { background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80'); }
   .card-landscape-weather::before { background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80'); }
   .card > * { position: relative; }
-  .card h2 { font-size: 1.1rem; margin-bottom: 10px; }
+  .card h2 { font-size: 1.15rem; margin-bottom: 10px; letter-spacing: -0.01em; }
   .weather { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .weather .temp { font-size: 2.4rem; font-weight: 700; }
+  .weather .temp { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; }
   .weather .meta { color: var(--muted); font-size: 0.95rem; }
   .badge {
     display: inline-block;
@@ -99,37 +100,43 @@
   .event { border-left: 4px solid var(--accent); padding: 10px 12px; margin: 10px 0; border-radius: 0 12px 12px 0; background: #f8fafc; }
   .event .title { font-weight: 600; }
   .event .meta { color: var(--muted); font-size: 0.9rem; }
-  .activity { padding: 12px; border-radius: 12px; background: linear-gradient(180deg, #ffffff, #f8fafc); border: 1px solid var(--border); margin: 8px 0; }
+  .activity { padding: 14px; border-radius: 14px; background: linear-gradient(180deg, #ffffff, #f8fafc); border: 1px solid var(--border); margin: 8px 0; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .activity:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(15,23,42,0.08); }
   .activity .name { font-weight: 700; }
   .activity .desc { color: var(--muted); font-size: 0.92rem; }
-  .section { margin-top: 28px; }
-  .section-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
-  footer { text-align: center; padding: 24px; color: var(--muted); font-size: 0.85rem; }
-  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: white; border: 1px solid var(--border); cursor: pointer; font-weight: 600; }
+  .section { margin-top: 30px; }
+  .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+  footer { text-align: center; padding: 28px; color: var(--muted); font-size: 0.85rem; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: white; border: 1px solid var(--border); cursor: pointer; font-weight: 600; transition: all 0.2s; }
+  .pill:hover { border-color: #0f172a; }
   .pill.active { background: #0f172a; color: white; border-color: #0f172a; }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .weather-icon { width: 52px; height: 52px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .weather-icon { width: 56px; height: 56px; }
   .muted { color: var(--muted); }
   .row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .spacer { height: 10px; }
+  .spacer { height: 12px; }
   .page { display: none; }
-  .page.active { display: block; }
+  .page.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
   .contact-form { display: grid; gap: 12px; }
-  .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; }
-  .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; }
-  .local-card { border: 1px dashed var(--border); position: relative; overflow: hidden; }
+  .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; transition: border-color 0.2s; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #0f172a; }
+  .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+  .contact-form button:hover { opacity: 0.92; }
+  .local-card { border: 1px dashed var(--border); position: relative; overflow: hidden; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .local-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
   .local-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
   .local-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 48px;
-    opacity: 0.18;
+    height: 52px;
+    opacity: 0.14;
     background-size: cover;
     background-position: center;
     pointer-events: none;
   }
-  .local-card .brand { height: 48px; margin: -18px -18px 10px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: 0.04em; color: #0f172a; font-size: 0.9rem; }
+  .local-card .brand { height: 52px; margin: -18px -18px 12px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: 0.04em; color: #0f172a; font-size: 0.95rem; }
   .brand-superstore { background: #bfdbfe; }
   .brand-coop { background: #bae6fd; }
   .brand-nofrills { background: #bbf7d0; }
@@ -185,7 +192,7 @@
 
 <header>
   <h1>Pembina Valley Events</h1>
-  <p>Local events · Schedule · Community · Winkler, MB</p>
+  <p>Winkler · Morden · Altona · Local happenings this month</p>
 </header>
 
 <nav>
@@ -672,24 +679,26 @@
     for (let d = 1; d <= daysInMonth; d++) {
       if (dow(year, month, d) === 2) add(fmt(year, month, d), { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot' });
       if (dow(year, month, d) === 3 && (month === 6 || month === 7)) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park' });
-      if (month === 7 && d >= 7 && d <= 9) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds' });
-      if (month === 7 && (d === 11 || d === 25)) add(fmt(year, month, d), { category: 'community', title: 'City Council Meeting', time: '6:30 PM · City Hall' });
+      if (month === 7 && d >= 7 && d <= 9) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Aug 7-9' });
+      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall' });
+      if (month === 9 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St' });
+      if (month === 9 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall' });
       if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library' });
-      if (month === 7 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Jr. Summer Art Camp', time: 'Winkler Arts & Culture' });
-      if (month === 8 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain concert', time: '7:00 PM · Concert Hall' });
-      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler Chamber' });
-      if (month === 9 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'City of Winkler' });
-      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: 'Winkler Arts & Culture' });
-      if (month === 7 && d === 2) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
-      if (month === 7 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC' });
-      if (month === 7 && d === 16) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
-      if (month === 7 && d === 18) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive' });
-      if (month === 7 && d === 23) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
-      if (month === 7 && d === 30) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 7 && d === 5) add(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 2) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC' });
+      if (month === 8 && d === 16) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive' });
+      if (month === 8 && d === 23) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 30) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 7) add(fmt(year, month, d), { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 8) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca' });
       if (month === 8 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca' });
       if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca' });
-      if (month === 8 && d === 8) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca' });
-      if (month === 8 && d === 7) add(fmt(year, month, d), { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca' });
     }
 
     for (let d = 1; d <= daysInMonth; d++) {
@@ -750,12 +759,18 @@
       const date = new Date(year, month, d);
       const dow = date.getDay();
       const titles = [];
-      if (dow === 0 || dow === 3) titles.push('Sunset walk');
-      if (dow === 5) titles.push('Family movie night');
       if (dow === 2) titles.push("Winkler Farmer's Market");
-      if ((month === 6 || month === 7) && dow === 3) titles.push('Concerts in the Park');
-      if (d >= 7 && d <= 9 && month === 7) titles.push('Harvest Festival');
-      if (d === 11 || d === 25) titles.push('City Council Meeting');
+      if (month === 7 && dow === 3) titles.push('Concerts in the Park');
+      if (month === 7 && d >= 7 && d <= 9) titles.push('Winkler Harvest Festival');
+      if (month === 7 && d === 6) titles.push('Paper Chain Creations');
+      if (month === 7 && d === 5) titles.push('Summer Storytime');
+      if (month === 8 && d === 4) titles.push('Catie St. Germain');
+      if (month === 8 && d === 18) titles.push('Paint & Sip');
+      if (month === 9 && d === 18) titles.push('Chamber BBQ');
+      if (month === 9 && d === 7) titles.push('Municipal Forum');
+      if (month === 8 && d === 10) titles.push('Mosaic Workshop');
+      if (month === 8 && d === 10) titles.push('Jr. Art Camp');
+      if (month === 8 && d === 10) titles.push('Summer Art Camp');
       if (titles.length) add(d, titles.join(' / '));
     }
 
