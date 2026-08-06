@@ -244,7 +244,7 @@
   <div class="page" id="page-calendar">
     <section class="section">
       <div class="card card-landscape-calendar">
-        <h2>📅 Activities by Day</h2>
+        <h2>📅 Activities</h2>
         <div class="filters">
           <button class="pill active" onclick="filterDayActivities('all', this)">All</button>
           <button class="pill" onclick="filterDayActivities('community', this)">Community</button>
@@ -537,9 +537,11 @@
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const start = new Date(today);
-    start.setDate(today.getDate() - today.getDay());
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const today = new Date(year, month, now.getDate());
+    const start = new Date(year, month, 1);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     const body = document.getElementById('act-days');
     if (!body) return;
@@ -563,16 +565,15 @@
       eventsByDay[ev.weekday].push(ev);
     });
 
-    for (let i = 0; i < 7; i++) {
-      const d = new Date(start);
-      d.setDate(start.getDate() + i);
-      const isToday = d.getTime() === today.getTime();
-      const dayEvents = eventsByDay[i];
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const isToday = date.getTime() === today.getTime();
+      const dayEvents = eventsByDay[date.getDay()];
 
       const section = document.createElement('div');
       section.className = 'activity';
       section.style.marginBottom = '12px';
-      section.innerHTML = `<div class="name" style="font-size:1.05rem; color:${isToday ? '#dc2626' : 'inherit'}">${days[d.getDay()]} · ${months[d.getMonth()]} ${d.getDate()}</div>`;
+      section.innerHTML = `<div class="name" style="font-size:1.05rem; color:${isToday ? '#dc2626' : 'inherit'}">${days[date.getDay()]} · ${months[date.getMonth()]} ${d}</div>`;
 
       if (dayEvents.length) {
         const list = document.createElement('div');
