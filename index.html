@@ -802,7 +802,7 @@
     try {
       const lat = 49.1833;
       const lon = -97.9339;
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      const url = `http://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
       const res = await fetch(url);
       const data = await res.json();
       const cw = data.current_weather;
