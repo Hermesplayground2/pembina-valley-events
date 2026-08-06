@@ -800,9 +800,8 @@
 
   async function loadWeather() {
     try {
-      const pos = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10000 }));
-      const lat = pos.coords.latitude;
-      const lon = pos.coords.longitude;
+      const lat = 49.1833;
+      const lon = -97.9339;
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
       const res = await fetch(url);
       const data = await res.json();
