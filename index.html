@@ -174,6 +174,11 @@
   .month-day:last-child { border-right: none; }
   .month-day.empty { background: #fafafa; }
   .month-day .chip { display: inline-block; padding: 2px 6px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: 0.65rem; font-weight: 700; margin: 1px 0; }
+  .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 12px; }
+  .weekly-day { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 8px; text-align: center; }
+  .weekly-day .label { font-size: 0.75rem; color: var(--muted); }
+  .weekly-day .value { font-weight: 700; }
+  .weekly-day .detail { font-size: 0.72rem; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -211,6 +216,7 @@
           </div>
           <div class="spacer"></div>
           <div class="muted" id="updated">Updated: just now</div>
+          <div id="weekly-home" class="weekly-wrap"></div>
         </div>
 
         <div class="card card-landscape-activity">
@@ -275,6 +281,7 @@
           </div>
           <div class="spacer"></div>
           <div class="muted" id="updated2">Updated: just now</div>
+          <div id="weekly-page" class="weekly-wrap"></div>
         </div>
         <div class="card">
           <h2>🧭 Weather-Based Plan</h2>
@@ -802,7 +809,7 @@
     try {
       const lat = 49.1833;
       const lon = -97.9339;
-      const url = `http://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
       const res = await fetch(url);
       const data = await res.json();
       const cw = data.current_weather;
@@ -818,13 +825,21 @@
       drawWeatherIcon('weatherIcon2', cw.weathercode);
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
       updateWeatherPlan(cw.temperature, cw.weathercode);
+      if (data.daily) renderWeekly(data.daily);
     } catch (e) {
-      document.getElementById('temp').textContent = '--°';
-      document.getElementById('condition').textContent = 'Weather unavailable';
-      document.getElementById('location').textContent = 'Winkler, MB';
-      document.getElementById('temp2').textContent = '--°';
-      document.getElementById('condition2').textContent = 'Weather unavailable';
-      document.getElementById('location2').textContent = 'Winkler, MB';
+      console.warn('Weather load failed:', e);
+      const tempEl = document.getElementById('temp');
+      const condEl = document.getElementById('condition');
+      const locEl = document.getElementById('location');
+      const temp2El = document.getElementById('temp2');
+      const cond2El = document.getElementById('condition2');
+      const loc2El = document.getElementById('location2');
+      if (tempEl) tempEl.textContent = '--°';
+      if (condEl) condEl.textContent = 'Weather unavailable';
+      if (locEl) locEl.textContent = 'Winkler, MB';
+      if (temp2El) temp2El.textContent = '--°';
+      if (cond2El) cond2El.textContent = 'Weather unavailable';
+      if (loc2El) loc2El.textContent = 'Winkler, MB';
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
     }
@@ -900,6 +915,35 @@
     else items.push({ name: 'Indoor focus', desc: 'Keep warm and use the time for focused work.' });
     if (temp >= 18 && code < 50) items.push({ name: 'Sunset break', desc: 'Temperature holds — step out for fresh air in the evening.' });
     box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
+  }
+
+  function renderWeekly(daily) {
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const targets = [
+      document.getElementById('weekly-home'),
+      document.getElementById('weekly-page')
+    ].filter(Boolean);
+
+    if (!targets.length) return;
+    if (!daily || !daily.time || !daily.time.length) {
+      targets.forEach(el => el.innerHTML = '<div class="muted">Weekly forecast unavailable</div>');
+      return;
+    }
+
+    const count = Math.min(7, daily.time.length);
+    let html = '';
+    for (let i = 0; i < count; i++) {
+      const date = new Date(daily.time[i] + 'T00:00:00');
+      const label = days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
+      const maxT = daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[i]) : '--';
+      const minT = daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[i]) : '--';
+      const precip = daily.precipitation_sum ? daily.precipitation_sum[i].toFixed(1) : null;
+      const condition = weatherLabel(daily.weathercode[i]);
+      const precipText = precip === null ? '' : `${precip} mm`;
+      html += `<div class="weekly-day"><div class="label">${label}</div><div class="detail">${condition}</div><div class="value">${maxT}° / ${minT}°</div><div class="detail">${precipText}</div></div>`;
+    }
+    targets.forEach(el => el.innerHTML = html);
   }
 
   buildWeek();
