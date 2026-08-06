@@ -817,12 +817,17 @@
       updEls.forEach(el => el.textContent = 'Updated: ' + new Date().toLocaleTimeString());
       drawWeatherIcon('weatherIcon', cw.weathercode);
       drawWeatherIcon('weatherIcon2', cw.weathercode);
-      updateActivities(cw.temperature, cw.windspeed);
+      updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
       updateWeatherPlan(cw.temperature, cw.weathercode);
     } catch (e) {
       document.getElementById('temp').textContent = '--°';
       document.getElementById('condition').textContent = 'Weather unavailable';
       document.getElementById('location').textContent = 'Winkler, MB';
+      document.getElementById('temp2').textContent = '--°';
+      document.getElementById('condition2').textContent = 'Weather unavailable';
+      document.getElementById('location2').textContent = 'Winkler, MB';
+      updateActivities(15, 10, 3);
+      updateWeatherPlan(15, 3);
     }
   }
 
@@ -866,15 +871,23 @@
     }
   }
 
-  function updateActivities(temp, wind) {
+  function updateActivities(temp, wind, code) {
     const box = document.getElementById('activities');
     if (!box) return;
-    const items = [];
-    if (temp >= 22 && wind < 25) items.push({ name: 'Outdoor sports', desc: 'Warm and calm — good for a walk, run, or family outing.' });
-    else if (temp >= 10 && wind < 30) items.push({ name: 'Park visit', desc: 'Mild weather — pack a light jacket and enjoy outside.' });
-    else items.push({ name: 'Indoor time', desc: 'Cool or windy — good for study, baking, or building.' });
-    if (temp >= 18) items.push({ name: 'Outdoor meal', desc: 'Eat outside if you can.' });
-    if (wind > 35) items.push({ name: 'Secure outdoor items', desc: 'Strong winds expected — move or tie down loose objects.' });
+    const outdoor = [];
+    const indoor = [];
+    if (temp >= 22 && wind < 25) outdoor.push({ name: 'Outdoor sports', desc: 'Warm and calm — good for a walk, run, or family outing.' });
+    else if (temp >= 10 && wind < 30) outdoor.push({ name: 'Park visit', desc: 'Mild weather — pack a light jacket and enjoy outside.' });
+    else outdoor.push({ name: 'Quick walk', desc: 'Cool or breezy — short outdoor movement still works.' });
+
+    if (code >= 51 && code <= 99) indoor.push({ name: 'Indoor focus', desc: 'Rain or storm likely — study, prep lessons, or organize files.' });
+    else if (temp < 10 || wind > 35) indoor.push({ name: 'Indoor focus', desc: 'Cold or windy — good for study, baking, or building.' });
+    else indoor.push({ name: 'Backup indoor plan', desc: 'Keep a cozy indoor option ready if weather changes.' });
+
+    if (temp >= 18 && code < 50) outdoor.push({ name: 'Outdoor meal', desc: 'Temperature holds — eat outside if you can.' });
+    if (wind > 35) outdoor.push({ name: 'Secure outdoor items', desc: 'Strong winds expected — move or tie down loose objects.' });
+
+    const items = [outdoor[0], indoor[0]];
     box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
   }
 
