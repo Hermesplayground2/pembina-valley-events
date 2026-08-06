@@ -6,55 +6,70 @@
 <title>Pembina Valley Events — Winkler · Morden · Altona</title>
 <style>
   :root {
-    --bg: #f6f8fb;
+    --bg: #f1f5f9;
     --card: #ffffff;
-    --text: #1f2937;
-    --muted: #6b7280;
+    --text: #0f172a;
+    --muted: #64748b;
     --accent: #2563eb;
-    --accent2: #7c3aed;
-    --border: #e5e7eb;
+    --accent-2: #7c3aed;
+    --border: #e2e8f0;
     --success: #16a34a;
     --warning: #d97706;
-    --danger: #dc2626;
-    --radius: 16px;
-    --shadow: rgba(15, 23, 42, 0.08);
+    --danger: #ef4444;
+    --radius: 20px;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: radial-gradient(circle at top left, #eef2ff, #f1f5f9 40%, #e2e8f0 100%);
     color: var(--text);
-    line-height: 1.55;
+    line-height: 1.6;
+    min-height: 100vh;
   }
   header {
-    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
     color: white;
-    padding: 44px 20px 52px;
+    padding: 52px 20px 64px;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
   }
-  header h1 { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; }
-  header p { opacity: 0.9; margin-top: 10px; font-weight: 500; font-size: 1.05rem; }
+  header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 100%);
+    pointer-events: none;
+  }
+  header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.04em; }
+  header p { opacity: 0.92; margin-top: 12px; font-weight: 500; font-size: clamp(0.95rem, 1.6vw, 1.1rem); }
   nav {
-    background: white;
+    background: rgba(255,255,255,0.85);
     border-bottom: 1px solid var(--border);
     padding: 14px 18px;
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
   .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
   .nav-link {
-    padding: 9px 15px;
+    padding: 9px 14px;
     border-radius: 999px;
     text-decoration: none;
     color: var(--text);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.92rem;
     border: 1px solid transparent;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    background: white;
+    box-shadow: 0 1px 0 rgba(15,23,42,0.04);
   }
-  .nav-link:hover, .nav-link.active { background: #0f172a; color: white; border-color: #0f172a; }
+  .nav-link:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,23,42,0.08); border-color: var(--border); }
+  .nav-link.active { background: #0f172a; color: white; border-color: #0f172a; }
   .container { max-width: 1160px; margin: 0 auto; padding: 28px 18px; }
   .grid { display: grid; gap: 16px; }
   .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
@@ -65,169 +80,133 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 18px;
-    box-shadow: 0 6px 18px var(--shadow);
+    box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(15,23,42,0.1); }
   .card::before {
     content: "";
     position: absolute;
     inset: 0;
-    opacity: 0.12;
+    opacity: 0.10;
     background-size: cover;
     background-position: center;
     pointer-events: none;
   }
-  .card-landscape-field::before { background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80'); }
-  .card-landscape-activity::before { background-image: url('https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80'); }
-  .card-landscape-calendar::before { background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80'); }
-  .card-landscape-weather::before { background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80'); }
   .card > * { position: relative; }
-  .card h2 { font-size: 1.15rem; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .weather { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .weather .temp { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; }
-  .weather .meta { color: var(--muted); font-size: 0.95rem; }
-  .badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: #eef2ff;
-    color: #3730a3;
-    margin: 2px 4px 2px 0;
-  }
-  .event { border-left: 4px solid var(--accent); padding: 10px 12px; margin: 10px 0; border-radius: 0 12px 12px 0; background: #f8fafc; }
-  .event .title { font-weight: 600; }
-  .event .meta { color: var(--muted); font-size: 0.9rem; }
-  .activity { padding: 14px; border-radius: 14px; background: linear-gradient(180deg, #ffffff, #f8fafc); border: 1px solid var(--border); margin: 8px 0; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-  .activity:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(15,23,42,0.08); }
-  .activity .name { font-weight: 700; }
-  .activity .desc { color: var(--muted); font-size: 0.92rem; }
-  .section { margin-top: 30px; }
+  .card h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .card .muted { color: var(--muted); font-size: 0.92rem; }
+  .section { margin-bottom: 28px; }
   .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
   .section-subtitle { color: var(--muted); font-size: 0.95rem; margin-top: -10px; margin-bottom: 16px; }
-  footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px; }
-  footer strong { color: var(--text); }
-  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: white; border: 1px solid var(--border); cursor: pointer; font-weight: 600; transition: all 0.2s; }
-  .pill:hover { border-color: #0f172a; }
+  .spacer { height: 18px; }
+  .page { display: none; animation: fadeIn 0.35s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 12px; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+    background: white; border: 1px solid var(--border); color: var(--text); cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .pill:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,23,42,0.08); }
   .pill.active { background: #0f172a; color: white; border-color: #0f172a; }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .weather-icon { width: 56px; height: 56px; }
-  .muted { color: var(--muted); }
-  .row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .spacer { height: 12px; }
-  .page { display: none; }
-  .page.active { display: block; animation: fadeIn 0.2s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-  .contact-form { display: grid; gap: 12px; }
-  .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; transition: border-color 0.2s; }
-  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #0f172a; }
-  .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-  .contact-form button:hover { opacity: 0.92; }
-  .local-card { border: 1px dashed var(--border); position: relative; overflow: hidden; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-  .local-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
-  .local-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-  .local-card::before {
+  .event-row {
+    display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
+  }
+  .event-row:last-child { border-bottom: none; }
+  .event-row:hover { background: #f8fafc; }
+  .event-date {
+    min-width: 60px; text-align: center; padding: 12px 8px; border-radius: 16px; background: #eef2ff; color: #3730a3; font-weight: 900;
+    box-shadow: inset 0 0 0 1px rgba(55,48,163,0.12);
+  }
+  .event-date .month { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .event-date .day { font-size: 1.25rem; line-height: 1; margin-top: 3px; }
+  .event-title { font-weight: 800; font-size: 1rem; }
+  .event-meta { color: var(--muted); font-size: 0.88rem; margin-top: 5px; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .calendar-day {
+    background: white; border: 1px solid var(--border); border-radius: 16px; padding: 12px; min-height: 100px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .calendar-day:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15,23,42,0.08); }
+  .calendar-day .day-name { font-weight: 900; font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .calendar-day .day-number { font-weight: 900; font-size: 1.2rem; margin-top: 6px; }
+  .calendar-day.today .day-number { color: #2563eb; }
+  .calendar-day .day-chip {
+    margin-top: 10px; padding: 7px 9px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;
+    background: #fffbeb; color: #92400e; border-left: 4px solid #f59e0b;
+    box-shadow: 0 2px 8px rgba(245,158,11,0.12);
+  }
+  .weather-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+    color: white; border-radius: var(--radius); padding: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .weather-card::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 52px;
-    opacity: 0.14;
-    background-size: cover;
-    background-position: center;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.15));
     pointer-events: none;
   }
-  .local-card .brand { height: 52px; margin: -18px -18px 12px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: 0.04em; color: #0f172a; font-size: 0.95rem; }
-  .brand-superstore { background: #bfdbfe; }
-  .brand-coop { background: #bae6fd; }
-  .brand-nofrills { background: #bbf7d0; }
-  .brand-sobeys { background: #bfdbfe; }
-  .brand-leevers { background: #fecaca; }
-  .brand-petro { background: #fed7aa; }
-  .brand-canadiantire { background: #fecaca; }
-  .brand-homehardware { background: #fde68a; }
-  .brand-camp { background: #99f6e4; }
-  .brand-buttercup { background: #fbcfe8; }
-  .brand-charleys { background: #fecaca; }
-  .brand-sushismith { background: #e5e7eb; }
-  .brand-flavors { background: #bbf7d0; }
-  .brand-iceburg { background: #bfdbfe; }
-  .brand-chucks { background: #fecaca; }
-  .brand-ralphs { background: #fde68a; }
-  .brand-toppers { background: #fde68a; }
-  .brand-mulligans { background: #d1d5db; }
-  .brand-pizza { background: #fee2e2; }
-  .brand-fast { background: #fef9c3; }
-  .brand-event { background: #e0f2fe; }
-  .brand-fund { background: #dcfce7; }
-  .brand-live { background: #fef3c7; }
-  .brand-workshop { background: #d1fae5; }
-  .brand-family { background: #fce7f3; }
-
-  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-  .featured-card { border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: white; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-  .featured-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
-  .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-  .featured-card .title { font-weight: 800; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; }
-  .featured-card .meta { color: var(--muted); font-size: 0.88rem; }
-  .featured-card .date-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; background: #eef2ff; color: #3730a3; }
-  .featured-card .cat-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; background: #fef3c7; color: #92400e; }
+  .weather-card .temp { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.03em; }
+  .weather-card .meta { opacity: 0.92; margin-top: 6px; font-weight: 500; }
+  .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 16px; }
+  .weekly-day {
+    background: rgba(255,255,255,0.14); border-radius: 16px; padding: 12px; text-align: center; backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .weekly-day .dow { font-size: 0.7rem; text-transform: uppercase; opacity: 0.85; font-weight: 800; letter-spacing: 0.08em; }
+  .weekly-day .date { font-weight: 900; margin-top: 4px; }
+  .weekly-day .cond { font-size: 0.8rem; opacity: 0.95; margin-top: 5px; font-weight: 700; }
+  .weekly-day .lo-hi { font-size: 0.75rem; opacity: 0.85; margin-top: 4px; }
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .featured-card {
+    border: 1px solid var(--border); border-radius: 18px; padding: 16px; background: white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 0 rgba(15,23,42,0.04);
+  }
+  .featured-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(15,23,42,0.12); }
+  .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .featured-card .title { font-weight: 900; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .featured-card .meta { color: var(--muted); font-size: 0.9rem; }
+  .featured-card .date-badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; background: #eef2ff; color: #3730a3; }
+  .featured-card .cat-badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; background: #fef3c7; color: #92400e; }
   .featured-card .row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
   .featured-card .trust { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
-
-  .day-columns { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 0 0 12px 12px; overflow: hidden; background: white; }
-  .day-column { background: rgba(255,255,255,0.92); border-right: 1px solid var(--border); padding: 10px; min-height: 140px; }
-  .day-column:last-child { border-right: none; }
-  .day-column h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--text); }
-  .day-event { border-left: 3px solid var(--accent2); padding: 8px 10px; margin: 6px 0; border-radius: 0 10px 10px 0; background: #f8fafc; font-size: 0.88rem; transition: transform 0.12s ease; }
-  .day-event:hover { transform: translateX(2px); }
-  .day-event .title { font-weight: 600; }
-  .day-event .time { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
-  .day-event[data-category="community"] { border-left-color: #2563eb; }
-  .day-event[data-category="outdoors"] { border-left-color: #16a34a; }
-  .day-event[data-category="family"] { border-left-color: #7c3aed; }
-
-  .cal-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px 12px 0 0; overflow: hidden; background: white; }
-  .cal-header .cal-day-header { padding: 10px; text-align: center; font-weight: 700; font-size: 0.85rem; background: #f8fafc; border-right: 1px solid var(--border); }
-  .cal-header .cal-day-header:last-child { border-right: none; }
-  .cal-header .cal-date { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
-  .cal-now { color: #dc2626; }
-
-  .month-wrap { margin-top: 18px; }
-  .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white; }
-  .month-header { padding: 8px; text-align: center; font-weight: 700; font-size: 0.78rem; background: #f8fafc; border-right: 1px solid var(--border); }
-  .month-header:last-child { border-right: none; }
-  .month-day { min-height: 34px; padding: 4px; border-right: 1px solid var(--border); border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--muted); }
-  .month-day:last-child { border-right: none; }
-  .month-day.empty { background: #fafafa; }
-  .month-day .chip { display: inline-block; padding: 2px 6px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: 0.65rem; font-weight: 700; margin: 1px 0; }
-  .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 12px; }
-  .weekly-day { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 8px; text-align: center; }
-  .weekly-day .label { font-size: 0.75rem; color: var(--muted); }
-  .weekly-day .value { font-weight: 700; }
-  .weekly-day .detail { font-size: 0.72rem; color: var(--muted); }
-
   .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-  .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; background: #0f172a; color: white; text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
-  .cta-btn:hover { opacity: 0.92; }
-
+  .cta {
+    padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.9rem;
+    background: white; border: 1px solid var(--border); color: var(--text); text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,0.08); background: #0f172a; color: white; border-color: #0f172a; }
+  footer {
+    text-align: center; padding: 26px 18px; color: var(--muted); font-size: 0.92rem;
+    border-top: 1px solid var(--border); margin-top: 24px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+  }
   @media (max-width: 640px) {
     .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
-    .day-columns { grid-template-columns: 1fr; }
+    .calendar-grid { grid-template-columns: repeat(2, 1fr); }
     .featured-grid { grid-template-columns: 1fr; }
-    .cal-header { font-size: 0.72rem; }
-    .cal-header .cal-day-header { padding: 8px 4px; }
     header h1 { font-size: 1.7rem; }
-    header p { font-size: 0.95rem; }
     .nav-link { font-size: 0.85rem; padding: 8px 12px; }
-    .container { padding: 20px 14px; }
+    .weather-card .temp { font-size: 1.8rem; }
     .card { padding: 16px; }
-    .day-event { font-size: 0.82rem; }
-    .featured-card .title { font-size: 0.98rem; }
-    .filters { gap: 6px; }
-    .pill { padding: 7px 12px; font-size: 0.85rem; }
+  }
+  @media (max-width: 380px) {
+    .calendar-grid { grid-template-columns: 1fr; }
+    .weekly-wrap { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -246,6 +225,7 @@
     <a href="#" class="nav-link" data-page="weather">Weather</a>
     <a href="#" class="nav-link" data-page="local">Locals</a>
     <a href="#" class="nav-link" data-page="family">Family</a>
+    <a href="#page-dashboard" class="nav-link" data-page="dashboard">Dashboard</a>
     <a href="#" class="nav-link" data-page="contact">Contact</a>
   </div>
 </nav>
@@ -623,6 +603,32 @@
     </section>
   </div>
 
+  <div class="page" id="page-dashboard">
+    <section class="section">
+      <div class="grid grid-2">
+        <div class="card">
+          <h2>📊 Visitor Overview</h2>
+          <p class="muted">Last 14 days from GitHub Pages traffic data.</p>
+          <div class="spacer"></div>
+          <div id="dashboard-views"></div>
+        </div>
+        <div class="card">
+          <h2>🔗 Top Referrers</h2>
+          <p class="muted">Where visitors come from.</p>
+          <div class="spacer"></div>
+          <div id="dashboard-referrers"></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="card">
+        <h2>📈 Traffic Trend</h2>
+        <p class="muted">Daily views and unique visitors.</p>
+        <div class="spacer"></div>
+        <div id="dashboard-trend"></div>
+      </div>
+    </section>
+  </div>
+
   <div class="page" id="page-contact">
     <section class="section">
       <div class="card">
@@ -646,6 +652,46 @@
 </footer>
 
 <script>
+  function renderDashboard() {
+    const viewsBox = document.getElementById('dashboard-views');
+    const referrersBox = document.getElementById('dashboard-referrers');
+    const trendBox = document.getElementById('dashboard-trend');
+    if (!viewsBox && !referrersBox && !trendBox) return;
+
+    fetch('analytics.json')
+      .then(r => r.json())
+      .then(data => {
+        const views = data.views || [];
+        const referrers = data.referrers || [];
+        const totalViews = views.reduce((s, v) => s + (v.count || 0), 0);
+        const totalUniques = views.reduce((s, v) => s + (v.uniques || 0), 0);
+
+        if (viewsBox) {
+          viewsBox.innerHTML = '<div class="event-row"><div class="event-date"><div class="month">Views</div><div class="day">' + totalViews + '</div></div><div><div class="event-title">Total page views</div><div class="event-meta">Last 14 days</div></div></div><div class="event-row"><div class="event-date" style="background:#fef3c7;color:#92400e;"><div class="month">Visitors</div><div class="day">' + totalUniques + '</div></div><div><div class="event-title">Unique visitors</div><div class="event-meta">Last 14 days</div></div></div>';
+        }
+
+        if (referrersBox) {
+          referrersBox.innerHTML = referrers.length
+            ? referrers.map(r => '<div class="event-row"><div class="event-date" style="background:#eef2ff;color:#3730a3;"><div class="month">Ref</div><div class="day">' + r.count + '</div></div><div><div class="event-title">' + r.referrer + '</div><div class="event-meta">' + r.uniques + ' unique</div></div></div>').join('')
+            : '<p class="muted">No referrer data yet.</p>';
+        }
+
+        if (trendBox) {
+          trendBox.innerHTML = views.length
+            ? views.map(v => {
+                const date = new Date(v.timestamp).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+                return '<div class="event-row"><div class="event-date" style="background:#f1f5f9;color:#0f172a;"><div class="month">Day</div><div class="day">' + date + '</div></div><div><div class="event-title">' + v.count + ' views</div><div class="event-meta">' + v.uniques + ' unique</div></div></div>';
+              }).join('')
+            : '<p class="muted">No trend data yet.</p>';
+        }
+      })
+      .catch(() => {
+        if (viewsBox) viewsBox.innerHTML = '<p class="muted">Analytics unavailable.</p>';
+        if (referrersBox) referrersBox.innerHTML = '<p class="muted">Analytics unavailable.</p>';
+        if (trendBox) trendBox.innerHTML = '<p class="muted">Analytics unavailable.</p>';
+      });
+  }
+
   function buildWeek() {
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -1057,6 +1103,7 @@
     targets.forEach(el => el.innerHTML = html);
   }
 
+  renderDashboard();
   buildWeek();
   buildActivityWeek();
   buildMonth();
