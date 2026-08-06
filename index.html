@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pembina Valley Events</title>
+<title>Pembina Valley Events — Winkler · Morden · Altona</title>
 <style>
   :root {
     --bg: #f6f8fb;
@@ -695,6 +695,16 @@
       if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture' });
       if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture' });
       if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 7 && d >= 28 && d <= 30 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission' });
+      if (month === 7 && d >= 6 && d <= 9 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times' });
+      if (month === 8 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free' });
+      if (month === 8 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB' });
+      if (month === 8 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St' });
+      if (month === 8 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church' });
+      if (month === 8 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta' });
+      if (month === 8 && d === 12) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church' });
+      if (month === 8 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street' });
+      if (month === 8 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler' });
       if (month === 8 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC' });
       if (month === 8 && d === 16) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
       if (month === 8 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive' });
@@ -1055,28 +1065,61 @@
   loadWeather();
 }
 
+  function renderFeatured() {
+    const container = document.getElementById('featured-events');
+    if (!container) return;
+    const featured = [
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Winkler Fairgrounds', date: 'Aug 7' },
+      { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Winkler, MB', date: 'Aug' },
+      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18' },
+      { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28' },
+      { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29' },
+      { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19' },
+      { category: 'community', title: 'Altona Kidventure Wednesdays', time: 'Aug 12 · Altona EMM Church', date: 'Aug 12' }
+    ];
+
+    container.innerHTML = featured.map(ev => `
+      <div class="featured-card" data-category="${ev.category}">
+        <div class="row">
+          <div class="badge-row">
+            <span class="date-badge">${ev.date}</span>
+            <span class="cat-badge">${ev.category}</span>
+          </div>
+        </div>
+        <div class="title">${ev.title}</div>
+        <div class="meta">${ev.time}</div>
+      </div>
+    `).join('');
+  }
+
   function renderFamilyEvents() {
     const schoolBox = document.getElementById('family-school-events');
     const churchBox = document.getElementById('family-church-events');
     const garageBox = document.getElementById('family-garage-events');
 
     const schoolEvents = [
-      { title: 'Labour Day - No School', date: 'Aug 4 (Mon)', time: 'Prairie Dale School', category: 'family' },
-      { title: 'Admin Day - No Classes', date: 'Aug 5 (Tue)', time: 'Prairie Dale School', category: 'family' },
-      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School', category: 'family' },
-      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School', category: 'family' }
+      { title: 'Labour Day - No School', date: 'Aug 4 (Mon)', time: 'Prairie Dale School · Winkler', category: 'family' },
+      { title: 'Admin Day - No Classes', date: 'Aug 5 (Tue)', time: 'Prairie Dale School · Winkler', category: 'family' },
+      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School · Winkler', category: 'family' },
+      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School · Winkler', category: 'family' },
+      { title: 'Whimsical Wonders Art Camp', date: 'Aug 31-Sep 4', time: 'City of Morden · morden.ca', category: 'family' },
+      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · altona.ca', category: 'family' }
     ];
 
     const churchEvents = [
       { title: 'Winkler EMMC Worship Service', date: 'Aug 2, 16, 23, 30', time: '10:30 AM · 600 Southview Drive', category: 'family' },
       { title: 'Harvest Festival Service', date: 'Aug 9 (Sun)', time: '10:00 AM · Winkler Park', category: 'family' },
-      { title: 'Church Council Meeting', date: 'Aug 18 (Tue)', time: '7:00 PM · 600 Southview Drive', category: 'family' }
+      { title: 'Church Council Meeting', date: 'Aug 18 (Tue)', time: '7:00 PM · 600 Southview Drive', category: 'family' },
+      { title: 'Kidventure Wednesdays', date: 'Wednesdays', time: '1:00 PM · Altona EMM Church', category: 'family' },
+      { title: 'MCC Blanket Making', date: '1st/3rd Mondays', time: '9:30 AM · Morden Mennonite Church', category: 'family' }
     ];
 
     const garageEvents = [
       { title: 'Weekly Garage Sales', date: 'Aug 3-9', time: 'Multiple addresses · winkler.garagesalejunkie.ca', category: 'community' },
       { title: 'City Wide Garage Sale', date: 'May 23, 2026', time: 'Multiple addresses · Watch for 2027 date', category: 'community' },
-      { title: 'Morden City Wide Garage Sale', date: 'Jun 6, 2026', time: 'Morden, MB · Multiple addresses', category: 'community' }
+      { title: 'Morden City Wide Garage Sale', date: 'Jun 6, 2026', time: 'Morden, MB · Multiple addresses', category: 'community' },
+      { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser' },
+      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community' }
     ];
 
     const renderCard = (ev) => `
