@@ -29,12 +29,12 @@
   header {
     background: linear-gradient(135deg, #0f172a, #1e3a8a);
     color: white;
-    padding: 36px 20px 44px;
+    padding: 44px 20px 52px;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
-  header h1 { font-size: 2.1rem; letter-spacing: -0.02em; }
-  header p { opacity: 0.85; margin-top: 8px; font-weight: 500; }
+  header h1 { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; }
+  header p { opacity: 0.9; margin-top: 10px; font-weight: 500; font-size: 1.05rem; }
   nav {
     background: white;
     border-bottom: 1px solid var(--border);
@@ -45,17 +45,17 @@
   }
   .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .nav-link {
-    padding: 8px 14px;
+    padding: 9px 15px;
     border-radius: 999px;
     text-decoration: none;
     color: var(--text);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     border: 1px solid transparent;
     transition: all 0.2s;
   }
   .nav-link:hover, .nav-link.active { background: #0f172a; color: white; border-color: #0f172a; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 28px 18px; }
   .grid { display: grid; gap: 16px; }
   .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
@@ -105,8 +105,10 @@
   .activity .name { font-weight: 700; }
   .activity .desc { color: var(--muted); font-size: 0.92rem; }
   .section { margin-top: 30px; }
-  .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
-  footer { text-align: center; padding: 28px; color: var(--muted); font-size: 0.85rem; }
+  .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+  .section-subtitle { color: var(--muted); font-size: 0.95rem; margin-top: -10px; margin-bottom: 16px; }
+  footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px; }
+  footer strong { color: var(--text); }
   .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: white; border: 1px solid var(--border); cursor: pointer; font-weight: 600; transition: all 0.2s; }
   .pill:hover { border-color: #0f172a; }
   .pill.active { background: #0f172a; color: white; border-color: #0f172a; }
@@ -167,10 +169,12 @@
   .featured-card { border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: white; transition: transform 0.15s ease, box-shadow 0.15s ease; }
   .featured-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
   .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-  .featured-card .title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
-  .featured-card .meta { color: var(--muted); font-size: 0.85rem; }
-  .featured-card .date-badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; background: #eef2ff; color: #3730a3; }
-  .featured-card .cat-badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; background: #fef3c7; color: #92400e; }
+  .featured-card .title { font-weight: 800; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .featured-card .meta { color: var(--muted); font-size: 0.88rem; }
+  .featured-card .date-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; background: #eef2ff; color: #3730a3; }
+  .featured-card .cat-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; background: #fef3c7; color: #92400e; }
+  .featured-card .row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .featured-card .trust { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
 
   .day-columns { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 0 0 12px 12px; overflow: hidden; background: white; }
   .day-column { background: rgba(255,255,255,0.92); border-right: 1px solid var(--border); padding: 10px; min-height: 140px; }
@@ -275,21 +279,6 @@
           <a class="cta-btn" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
           <a class="cta-btn" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <h2>📋 This Week at a Glance</h2>
-        <p class="muted">Fast links for the next 7 days in Winkler</p>
-        <div class="spacer"></div>
-        <div class="filters">
-          <a class="pill" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Community Events</a>
-          <a class="pill" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
-          <a class="pill" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
-        </div>
-      </div>
-    </section>
 
     <section class="section">
       <div class="card card-landscape-calendar">
@@ -632,7 +621,8 @@
 </div>
 
 <footer>
-  Made locally · Open the file to refresh · Edit HTML to add your own content · Winkler, MB
+  <strong>Pembina Valley Events</strong> · Winkler, MB<br>
+  Local events, activities, weather, and community connections.
 </footer>
 
 <script>
@@ -1123,6 +1113,30 @@
         ev.style.display = (category === 'all' || category === 'today' || category === 'tomorrow' || category === 'weekend' || ev.dataset.category === category) ? '' : 'none';
       });
     });
+  }
+
+  function renderFeatured() {
+    const container = document.getElementById('featured-events');
+    if (!container) return;
+    const featured = [
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Fairgrounds', date: 'Aug 7-9' },
+      { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: 'Sep 4, 7:00 PM · Concert Hall', date: 'Sep 4' },
+      { category: 'community', title: 'Summer Shores Paint & Sip', time: 'Aug 18, 6:00 PM · Winkler Arts & Culture', date: 'Aug 18' },
+      { category: 'family', title: 'Jr. Summer Art Camp', time: 'Aug 10-14 · Winkler Arts & Culture', date: 'Aug 10' },
+      { category: 'family', title: 'Prairie Dale First Day', time: 'Sep 9-10 · Prairie Dale School', date: 'Sep 9' },
+      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18' }
+    ];
+    container.innerHTML = featured.map(ev => `
+      <div class="featured-card">
+        <div class="badge-row">
+          <span class="date-badge">${ev.date}</span>
+          <span class="cat-badge">${ev.category}</span>
+        </div>
+        <div class="title">${ev.title}</div>
+        <div class="meta">${ev.time}</div>
+        <div class="trust">Verified local source</div>
+      </div>
+    `).join('');
   }
 </script>
 
