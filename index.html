@@ -251,8 +251,7 @@
           <button class="pill" onclick="filterDayActivities('outdoors', this)">Outdoors</button>
           <button class="pill" onclick="filterDayActivities('family', this)">Family</button>
         </div>
-        <div class="cal-header" id="act-header"></div>
-        <div class="day-columns" id="act-days"></div>
+        <div id="act-days"></div>
       </div>
     </section>
   </div>
@@ -535,17 +534,15 @@
   }
 
   function buildActivityWeek() {
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const start = new Date(today);
     start.setDate(today.getDate() - today.getDay());
 
-    const header = document.getElementById('act-header');
     const body = document.getElementById('act-days');
-    if (!header || !body) return;
-    header.innerHTML = '';
+    if (!body) return;
     body.innerHTML = '';
 
     const eventsByDay = [[], [], [], [], [], [], []];
@@ -570,24 +567,39 @@
       const d = new Date(start);
       d.setDate(start.getDate() + i);
       const isToday = d.getTime() === today.getTime();
+      const dayEvents = eventsByDay[i];
 
-      const h = document.createElement('div');
-      h.className = 'cal-day-header';
-      h.innerHTML = `<div${isToday ? ' class="cal-now"' : ''}>${days[d.getDay()]}</div><div class="cal-date">${months[d.getMonth()]} ${d.getDate()}</div>`;
-      header.appendChild(h);
+      const section = document.createElement('div');
+      section.className = 'activity';
+      section.style.marginBottom = '12px';
+      section.innerHTML = `<div class="name" style="font-size:1.05rem; color:${isToday ? '#dc2626' : 'inherit'}">${days[d.getDay()]} · ${months[d.getMonth()]} ${d.getDate()}</div>`;
 
-      const col = document.createElement('div');
-      col.className = 'day-column';
-      col.dataset.day = isToday ? 'Today' : `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
-      body.appendChild(col);
+      if (dayEvents.length) {
+        const list = document.createElement('div');
+        list.style.marginTop = '6px';
+        list.style.display = 'flex';
+        list.style.flexDirection = 'column';
+        list.style.gap = '6px';
+        dayEvents.forEach(ev => {
+          const item = document.createElement('div');
+          item.className = 'day-event';
+          item.dataset.category = ev.category;
+          item.style.borderLeft = '3px solid #7c3aed';
+          item.style.padding = '8px 10px';
+          item.style.borderRadius = '0 10px 10px 0';
+          item.style.background = '#f8fafc';
+          item.innerHTML = `<div class="title" style="font-weight:600">${ev.title}</div><div class="time" style="color:#6b7280; font-size:0.85rem">${ev.time}</div>`;
+          list.appendChild(item);
+        });
+        section.appendChild(list);
+      } else {
+        const empty = document.createElement('div');
+        empty.className = 'desc';
+        empty.textContent = 'No events listed.';
+        section.appendChild(empty);
+      }
 
-      eventsByDay[i].forEach(ev => {
-        const el = document.createElement('div');
-        el.className = 'day-event';
-        el.dataset.category = ev.category;
-        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
-        col.appendChild(el);
-      });
+      body.appendChild(section);
     }
   }
 
