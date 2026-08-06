@@ -38,12 +38,12 @@
   nav {
     background: white;
     border-bottom: 1px solid var(--border);
-    padding: 12px 16px;
+    padding: 14px 18px;
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
   .nav-link {
     padding: 9px 15px;
     border-radius: 999px;
@@ -279,6 +279,8 @@
           <a class="cta-btn" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
           <a class="cta-btn" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
         </div>
+      </div>
+    </section>
 
     <section class="section">
       <div class="card card-landscape-calendar">
@@ -626,23 +628,6 @@
 </footer>
 
 <script>
-  function filterEvents(category, btn) {
-    document.querySelectorAll('#events-calendar .pill').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    document.querySelectorAll('#events-calendar .event').forEach(ev => {
-      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
-    });
-  }
-
-  function filterDailyEvents(category, btn) {
-    const pills = document.querySelectorAll('#daily-events .pill');
-    pills.forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    document.querySelectorAll('#daily-events .day-event').forEach(ev => {
-      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
-    });
-  }
-
   function buildWeek() {
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
