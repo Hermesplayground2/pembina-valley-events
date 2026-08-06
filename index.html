@@ -159,13 +159,30 @@
   .brand-fast { background: #fef9c3; }
   .brand-event { background: #e0f2fe; }
   .brand-fund { background: #dcfce7; }
+  .brand-live { background: #fef3c7; }
+  .brand-workshop { background: #d1fae5; }
+  .brand-family { background: #fce7f3; }
+
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .featured-card { border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: white; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .featured-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
+  .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .featured-card .title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+  .featured-card .meta { color: var(--muted); font-size: 0.85rem; }
+  .featured-card .date-badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; background: #eef2ff; color: #3730a3; }
+  .featured-card .cat-badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; background: #fef3c7; color: #92400e; }
 
   .day-columns { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 0 0 12px 12px; overflow: hidden; background: white; }
   .day-column { background: rgba(255,255,255,0.92); border-right: 1px solid var(--border); padding: 10px; min-height: 140px; }
   .day-column:last-child { border-right: none; }
   .day-column h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--text); }
-  .day-column .day-event { border-left: 3px solid var(--accent2); padding: 6px 8px; margin: 6px 0; border-radius: 0 8px 8px 0; background: #f8fafc; font-size: 0.88rem; }
-  .day-column .day-event .time { color: var(--muted); font-size: 0.78rem; }
+  .day-event { border-left: 3px solid var(--accent2); padding: 8px 10px; margin: 6px 0; border-radius: 0 10px 10px 0; background: #f8fafc; font-size: 0.88rem; transition: transform 0.12s ease; }
+  .day-event:hover { transform: translateX(2px); }
+  .day-event .title { font-weight: 600; }
+  .day-event .time { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+  .day-event[data-category="community"] { border-left-color: #2563eb; }
+  .day-event[data-category="outdoors"] { border-left-color: #16a34a; }
+  .day-event[data-category="family"] { border-left-color: #7c3aed; }
 
   .cal-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px 12px 0 0; overflow: hidden; background: white; }
   .cal-header .cal-day-header { padding: 10px; text-align: center; font-weight: 700; font-size: 0.85rem; background: #f8fafc; border-right: 1px solid var(--border); }
@@ -186,7 +203,18 @@
   .weekly-day .label { font-size: 0.75rem; color: var(--muted); }
   .weekly-day .value { font-weight: 700; }
   .weekly-day .detail { font-size: 0.72rem; color: var(--muted); }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; background: #0f172a; color: white; text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
+  .cta-btn:hover { opacity: 0.92; }
+
+  @media (max-width: 640px) {
+    .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
+    .day-columns { grid-template-columns: 1fr; }
+    .featured-grid { grid-template-columns: 1fr; }
+  }
 </style>
+
 </head>
 <body>
 
@@ -237,10 +265,40 @@
     </section>
 
     <section class="section">
+      <div class="card">
+        <h2>⭐ Featured Events</h2>
+        <p class="muted">Top local happenings this week</p>
+        <div class="spacer"></div>
+        <div id="featured-events" class="featured-grid"></div>
+        <div class="cta-row">
+          <a class="cta-btn" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Browse Community Events</a>
+          <a class="cta-btn" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
+          <a class="cta-btn" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>📋 This Week at a Glance</h2>
+        <p class="muted">Fast links for the next 7 days in Winkler</p>
+        <div class="spacer"></div>
+        <div class="filters">
+          <a class="pill" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Community Events</a>
+          <a class="pill" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
+          <a class="pill" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="card card-landscape-calendar">
         <h2>📅 Weekly Schedule</h2>
         <div class="filters">
           <button class="pill active" onclick="filterDailyEvents('all', this)">All</button>
+          <button class="pill" onclick="filterDailyEvents('today', this)">Today</button>
+          <button class="pill" onclick="filterDailyEvents('tomorrow', this)">Tomorrow</button>
+          <button class="pill" onclick="filterDailyEvents('weekend', this)">This Weekend</button>
           <button class="pill" onclick="filterDailyEvents('community', this)">Community</button>
           <button class="pill" onclick="filterDailyEvents('outdoors', this)">Outdoors</button>
           <button class="pill" onclick="filterDailyEvents('family', this)">Family</button>
@@ -272,6 +330,11 @@
           <a class="pill" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Community Events</a>
           <a class="pill" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
           <a class="pill" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+        <div class="spacer"></div>
+        <div class="cta-row">
+          <a class="cta-btn" href="https://pembinavalley.gwevents.ca/events/new" target="_blank">📝 Submit an Event</a>
+          <a class="cta-btn" href="https://www.pembinavalleyonline.com/features/daily-news" target="_blank">📧 Daily News Newsletter</a>
         </div>
         <div id="act-days"></div>
       </div>
@@ -994,7 +1057,73 @@
   buildWeek();
   buildActivityWeek();
   buildMonth();
+  renderFeatured();
   loadWeather();
+</script>
+
+<script>
+  function renderFeatured() {
+    const container = document.getElementById('featured-events');
+    if (!container) return;
+    const featured = [
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Fairgrounds', date: 'Aug 7-9' },
+      { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: 'Sep 4, 7:00 PM · Concert Hall', date: 'Sep 4' },
+      { category: 'community', title: 'Summer Shores Paint & Sip', time: 'Aug 18, 6:00 PM · Winkler Arts & Culture', date: 'Aug 18' },
+      { category: 'family', title: 'Jr. Summer Art Camp', time: 'Aug 10-14 · Winkler Arts & Culture', date: 'Aug 10' },
+      { category: 'family', title: 'Prairie Dale First Day', time: 'Sep 9-10 · Prairie Dale School', date: 'Sep 9' },
+      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18' }
+    ];
+    container.innerHTML = featured.map(ev => `
+      <div class="featured-card">
+        <div class="badge-row">
+          <span class="date-badge">${ev.date}</span>
+          <span class="cat-badge">${ev.category}</span>
+        </div>
+        <div class="title">${ev.title}</div>
+        <div class="meta">${ev.time}</div>
+      </div>
+    `).join('');
+  }
+
+  function filterDailyEvents(category, btn) {
+    const pills = document.querySelectorAll('#daily-events .pill');
+    pills.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const tomorrowStart = new Date(todayStart);
+    tomorrowStart.setDate(todayStart.getDate() + 1);
+    const weekendStart = new Date(todayStart);
+    weekendStart.setDate(todayStart.getDate() + (6 - todayStart.getDay()));
+
+    document.querySelectorAll('#daily-events .day-column').forEach(col => {
+      const dayLabel = (col.dataset.day || '').toLowerCase();
+      const dateMatch = dayLabel.match(/(\w+)\s+([a-z]+)\s+(\d+)/);
+      let show = true;
+      if (category === 'today' || category === 'tomorrow' || category === 'weekend') {
+        if (!dateMatch) show = false;
+        else {
+          const colDate = new Date(now.getFullYear(), now.getMonth(), +dateMatch[3]);
+          const colStart = new Date(colDate.getFullYear(), colDate.getMonth(), colDate.getDate());
+          if (category === 'today') show = colStart.getTime() === todayStart.getTime();
+          else if (category === 'tomorrow') show = colStart.getTime() === tomorrowStart.getTime();
+          else if (category === 'weekend') show = colStart >= weekendStart;
+        }
+      }
+
+      if (!show) {
+        col.style.display = 'none';
+        return;
+      }
+
+      col.style.display = '';
+      const events = col.querySelectorAll('.day-event');
+      events.forEach(ev => {
+        ev.style.display = (category === 'all' || category === 'today' || category === 'tomorrow' || category === 'weekend' || ev.dataset.category === category) ? '' : 'none';
+      });
+    });
+  }
 </script>
 
 </body>
