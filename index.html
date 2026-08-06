@@ -1033,11 +1033,15 @@
   });
 
   const initPage = () => {
-    const page = location.hash.replace('#page-', '') || 'home';
-    activatePage(page);
+    const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
+    if (page) activatePage(page);
   };
   window.addEventListener('hashchange', initPage);
-  initPage();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPage);
+  } else {
+    initPage();
+  }
 
   async function loadWeather() {
     try {
