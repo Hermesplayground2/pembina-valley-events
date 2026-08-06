@@ -243,25 +243,16 @@
 
   <div class="page" id="page-calendar">
     <section class="section">
-      <div class="card">
-        <h2>📅 Community & Family Activities</h2>
+      <div class="card card-landscape-calendar">
+        <h2>📅 Activities by Day</h2>
         <div class="filters">
-          <button class="pill active" onclick="filterEvents('all', this)">All</button>
-          <button class="pill" onclick="filterEvents('community', this)">Community</button>
-          <button class="pill" onclick="filterEvents('outdoors', this)">Outdoors</button>
-          <button class="pill" onclick="filterEvents('family', this)">Family</button>
+          <button class="pill active" onclick="filterDayActivities('all', this)">All</button>
+          <button class="pill" onclick="filterDayActivities('community', this)">Community</button>
+          <button class="pill" onclick="filterDayActivities('outdoors', this)">Outdoors</button>
+          <button class="pill" onclick="filterDayActivities('family', this)">Family</button>
         </div>
-        <div id="events-calendar">
-          <div class="event" data-category="community"><div class="title">Winkler Farmer’s Market</div><div class="meta">Tuesdays 4-6 PM · Central Station parking lot · <a href="https://www.facebook.com/WinklerFarmersMarket/" target="_blank">facebook.com</a></div></div>
-          <div class="event" data-category="community"><div class="title">Concerts in the Park</div><div class="meta">Wednesdays in July & Aug, 7:00 PM · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/concerts-in-the-park" target="_blank">visitwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Winkler Harvest Festival</div><div class="meta">Aug 7 - 9 · Winkler Fairgrounds · Free admission · <a href="https://www.visitwinkler.ca/harvest-festival" target="_blank">visitwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 11, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Winkler City Council Meeting</div><div class="meta">Aug 25, 6:30 PM · City Hall · <a href="https://www.cityofwinkler.ca/p/upcoming-events" target="_blank">cityofwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Tree Lighting Ceremony</div><div class="meta">Late Nov / Early Dec · Bethel Heritage Park · <a href="https://www.visitwinkler.ca/tree-lighting-ceremony" target="_blank">visitwinkler.ca</a></div></div>
-          <div class="event" data-category="community"><div class="title">Christmas Glow in the Country</div><div class="meta">December · Winkler Bible Camp · <a href="https://www.christmasglowinthecountry.com/" target="_blank">christmasglowinthecountry.com</a></div></div>
-          <div class="event" data-category="outdoors"><div class="title">Sunset walk</div><div class="meta">Daily 6:30 PM · River trail</div></div>
-          <div class="event" data-category="family"><div class="title">Family movie night</div><div class="meta">Fri 8:00 PM · Home</div></div>
-        </div>
+        <div class="cal-header" id="act-header"></div>
+        <div class="day-columns" id="act-days"></div>
       </div>
     </section>
   </div>
@@ -534,6 +525,72 @@
     }
   }
 
+  function filterDayActivities(category, btn) {
+    const pills = document.querySelectorAll('#act-days .pill');
+    pills.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('#act-days .day-event').forEach(ev => {
+      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
+    });
+  }
+
+  function buildActivityWeek() {
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const start = new Date(today);
+    start.setDate(today.getDate() - today.getDay());
+
+    const header = document.getElementById('act-header');
+    const body = document.getElementById('act-days');
+    if (!header || !body) return;
+    header.innerHTML = '';
+    body.innerHTML = '';
+
+    const eventsByDay = [[], [], [], [], [], [], []];
+
+    const samples = [
+      { category: 'outdoors', title: 'Sunset walk', time: 'Daily 6:30 PM · River trail', weekday: 0 },
+      { category: 'family', title: 'Family movie night', time: 'Fri 8:00 PM · Home', weekday: 5 },
+      { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot', weekday: 2 },
+      { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', weekday: 3 },
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7 - 9 · Winkler Fairgrounds', weekday: 5 },
+      { category: 'community', title: 'City Council Meeting', time: 'Aug 11, 6:30 PM · City Hall', weekday: 1 },
+      { category: 'community', title: 'Tree Lighting Ceremony', time: 'Late Nov/Early Dec · Bethel Heritage Park', weekday: 6 },
+      { category: 'community', title: 'Christmas Glow in the Country', time: 'December · Winkler Bible Camp', weekday: 6 }
+    ];
+
+    samples.forEach(ev => {
+      if (ev.weekday < 0 || ev.weekday >= 7) return;
+      eventsByDay[ev.weekday].push(ev);
+    });
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      const isToday = d.getTime() === today.getTime();
+
+      const h = document.createElement('div');
+      h.className = 'cal-day-header';
+      h.innerHTML = `<div${isToday ? ' class="cal-now"' : ''}>${days[d.getDay()]}</div><div class="cal-date">${months[d.getMonth()]} ${d.getDate()}</div>`;
+      header.appendChild(h);
+
+      const col = document.createElement('div');
+      col.className = 'day-column';
+      col.dataset.day = isToday ? 'Today' : `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
+      body.appendChild(col);
+
+      eventsByDay[i].forEach(ev => {
+        const el = document.createElement('div');
+        el.className = 'day-event';
+        el.dataset.category = ev.category;
+        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
+        col.appendChild(el);
+      });
+    }
+  }
+
   function buildMonth() {
     const wrap = document.getElementById('month-wrap');
     if (!wrap) return;
@@ -700,6 +757,7 @@
   }
 
   buildWeek();
+  buildActivityWeek();
   buildMonth();
   loadWeather();
 </script>
