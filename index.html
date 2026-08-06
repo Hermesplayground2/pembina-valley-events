@@ -647,43 +647,42 @@
     const year = now.getFullYear();
     const month = now.getMonth();
     const today = new Date(year, month, now.getDate());
-    const start = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     const body = document.getElementById('act-days');
     if (!body) return;
     body.innerHTML = '';
 
-    const eventsByDay = [[], [], [], [], [], [], []];
+    const eventsByDate = {};
+    const add = (dateStr, ev) => {
+      if (!eventsByDate[dateStr]) eventsByDate[dateStr] = [];
+      eventsByDate[dateStr].push(ev);
+    };
 
-    const samples = [
-      { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot', weekday: 2 },
-      { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', weekday: 3 },
-      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7 - 9 · Winkler Fairgrounds', weekday: 5 },
-      { category: 'community', title: 'City Council Meeting', time: 'Aug 11, 6:30 PM · City Hall', weekday: 1 },
-      { category: 'community', title: 'City Council Meeting', time: 'Aug 25, 6:30 PM · City Hall', weekday: 1 },
-      { category: 'community', title: 'Tree Lighting Ceremony', time: 'Late Nov/Early Dec · Bethel Heritage Park', weekday: 6 },
-      { category: 'community', title: 'Christmas Glow in the Country', time: 'December · Winkler Bible Camp', weekday: 6 },
-      { category: 'community', title: 'Paper Chain Creations', time: 'Aug 6, 10:30 AM & 1:30 PM · Winkler Library', weekday: 4 },
-      { category: 'community', title: 'Jr. Summer Art Camp', time: 'Aug 4-? · Winkler Arts & Culture', weekday: 2 },
-      { category: 'community', title: 'Catie St. Germain concert', time: 'Sep 4, 7:00 PM · Concert Hall', weekday: 5 },
-      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler Chamber', weekday: 5 },
-      { category: 'community', title: 'Municipal Forum', time: 'Oct 7 · City of Winkler', weekday: 3 },
-      { category: 'family', title: 'Prairie Dale School event', time: 'Check school calendar · Prairie Dale School · pds.gvsd.ca', weekday: 2 },
-      { category: 'family', title: 'Winkler EMMC Sunday service', time: '10:30 AM · Emmanuel Mennonite Church · winkleremmc.com', weekday: 0 },
-      { category: 'family', title: 'Mosaic Tray Workshop', time: 'Sep 10 · Winkler Arts & Culture', weekday: 4 },
-      { category: 'family', title: 'Grace Mennonite Church service', time: 'Check website for times · Grace Mennonite Church', weekday: 0 }
-    ];
+    const dow = (y, m, d) => new Date(y, m, d).getDay();
+    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    samples.forEach(ev => {
-      if (ev.weekday < 0 || ev.weekday >= 7) return;
-      eventsByDay[ev.weekday].push(ev);
-    });
+    for (let d = 1; d <= daysInMonth; d++) {
+      if (dow(year, month, d) === 2) add(fmt(year, month, d), { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot' });
+      if (dow(year, month, d) === 3 && (month === 6 || month === 7)) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park' });
+      if (month === 7 && d >= 7 && d <= 9) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds' });
+      if (month === 7 && (d === 11 || d === 25)) add(fmt(year, month, d), { category: 'community', title: 'City Council Meeting', time: '6:30 PM · City Hall' });
+      if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library' });
+      if (month === 7 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Jr. Summer Art Camp', time: 'Winkler Arts & Culture' });
+      if (month === 8 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain concert', time: '7:00 PM · Concert Hall' });
+      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler Chamber' });
+      if (month === 9 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'City of Winkler' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: 'Winkler Arts & Culture' });
+      if (d === Math.min(2, daysInMonth)) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale School event', time: 'Check school calendar · Prairie Dale School · pds.gvsd.ca' });
+      if (d === 1) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Sunday service', time: '10:30 AM · Emmanuel Mennonite Church' });
+      if (d === 8) add(fmt(year, month, d), { category: 'family', title: 'Grace Mennonite Church service', time: 'Check website for times · Grace Mennonite Church' });
+    }
 
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(year, month, d);
       const isToday = date.getTime() === today.getTime();
-      const dayEvents = eventsByDay[date.getDay()];
+      const dateStr = fmt(year, month, d);
+      const dayEvents = eventsByDate[dateStr] || [];
 
       const section = document.createElement('div');
       section.className = 'activity';
