@@ -1281,12 +1281,18 @@
       { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community' }
     ];
 
-    const renderCard = (ev) => `
+    const renderCard = (ev) => {
+      const gcalFam = addGoogleCalendarLink(ev.title, ev.time + ' · ' + ev.date, '');
+      const safeFamTitle = ev.title.replace(/'/g, '\\'');
+      const safeFamTime = (ev.time + ' · ' + ev.date).replace(/'/g, '\\'');
+      return `
       <div class="day-event" data-category="${ev.category}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
+        <div class="export-row"><button class="export-btn" onclick="downloadICS('${safeFamTitle}','${safeFamTime}','')">ICS</button><a class="export-btn" href="${gcalFam}" target="_blank">Google</a></div>
       </div>
     `;
+    };
 
     if (schoolBox) schoolBox.innerHTML = schoolEvents.map(renderCard).join('');
     if (churchBox) churchBox.innerHTML = churchEvents.map(renderCard).join('');
