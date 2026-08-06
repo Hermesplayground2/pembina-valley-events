@@ -836,10 +836,12 @@
       body.appendChild(col);
 
       eventsByDay[i].forEach(ev => {
-        const el = document.createElement('div');
-        el.className = 'day-event';
+        const el = document.createElement('a');
+        el.className = 'day-event bubble';
+        el.href = ev.link || '#';
+        el.target = '_blank';
         el.dataset.category = ev.category;
-        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
+        el.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span>`;
         col.appendChild(el);
       });
     }
@@ -1008,17 +1010,34 @@
     wrap.appendChild(grid);
   }
 
+  function activatePage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+    const el = document.getElementById('page-' + page);
+    if (el) el.classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.dataset.page === page) l.classList.add('active');
+    });
+    if (page === 'home') renderFeatured();
+    if (page === 'calendar') buildWeek();
+    if (page === 'activities') buildActivityWeek();
+    if (page === 'family') renderFamilyEvents();
+    if (page === 'weather') loadWeather();
+  }
+
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const page = link.dataset.page;
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-' + page).classList.add('active');
-      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-      link.classList.add('active');
-      if (page === 'weather' || page === 'home') loadWeather();
+      activatePage(link.dataset.page);
     });
   });
+
+  const initPage = () => {
+    const page = location.hash.replace('#page-', '') || 'home';
+    activatePage(page);
+  };
+  window.addEventListener('hashchange', initPage);
+  initPage();
 
   async function loadWeather() {
     try {
