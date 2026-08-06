@@ -119,6 +119,11 @@
   }
   .event-row:last-child { border-bottom: none; }
   .event-row:hover { background: #f8fafc; }
+
+  .export-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .export-btn { font-size:0.72rem; padding:4px 8px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; color:#374151; cursor:pointer; text-decoration:none; display:inline-block; }
+  .export-btn:hover { background:#f3f4f6; }
+
   .event-date {
     min-width: 60px; text-align: center; padding: 12px 8px; border-radius: 16px; background: #eef2ff; color: #3730a3; font-weight: 900;
     box-shadow: inset 0 0 0 1px rgba(55,48,163,0.12);
@@ -711,6 +716,44 @@
 </footer>
 
 <script>
+  function downloadICS(title, timeText, dateStr) {
+    const dt = dateStr || new Date().toISOString().split('T')[0];
+    const dtStart = dt.replace(/-/g, '') + 'T000000';
+    const dtEnd = dt.replace(/-/g, '') + 'T235900';
+    const cleanTitle = (title || '').replace(/[\n\r]/g, ' ').trim();
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Pembina Valley Events//EN',
+      'BEGIN:VEVENT',
+      'UID:' + cleanTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + dt + '@pembinaevents.ca',
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+      'DTSTART;VALUE=DATE:' + dt.replace(/-/g, ''),
+      'DTEND;VALUE=DATE:' + dt.replace(/-/g, ''),
+      'SUMMARY:' + cleanTitle,
+      'DESCRIPTION:' + (timeText || '').replace(/[\n\r]/g, ' '),
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'pembina-event-' + dt + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function addGoogleCalendarLink(title, timeText, dateStr) {
+    const dt = dateStr || new Date().toISOString().split('T')[0];
+    const cleanTitle = encodeURIComponent((title || '').replace(/[\n\r]/g, ' ').trim());
+    const details = encodeURIComponent((timeText || '').replace(/[\n\r]/g, ' ').trim());
+    const dates = dt.replace(/-/g, '') + '/' + dt.replace(/-/g, '');
+    return 'https://www.google.com/calendar/render?action=TEMPLATE&text=' + cleanTitle + '&dates=' + dates + '/' + dates + '&details=' + details + '&location=Pembina+Valley%2C+MB';
+  }
+
   function renderDashboard() {
     const viewsBox = document.getElementById('dashboard-views');
     const referrersBox = document.getElementById('dashboard-referrers');
@@ -840,7 +883,11 @@
         const el = document.createElement('div');
         el.className = 'day-event';
         el.dataset.category = ev.category;
-        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
+        const dateStr = d.toISOString().split('T')[0];
+        const gcalWeek = addGoogleCalendarLink(ev.title, ev.time, dateStr);
+        const safeTitle = ev.title.replace(/'/g, '\\'');
+        const safeTime = ev.time.replace(/'/g, '\\'');
+        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div><div class="export-row"><button class="export-btn" onclick="downloadICS('${safeTitle}','${safeTime}','${dateStr}')">ICS</button><a class="export-btn" href="${gcalWeek}" target="_blank">Google</a></div>`;
         col.appendChild(el);
       });
     }
@@ -911,6 +958,7 @@
       const section = document.createElement('div');
       section.className = 'activity';
       section.style.marginBottom = '12px';
+      section.dataset.date = dateStr;
       section.innerHTML = `<div class="name" style="font-size:1.05rem; color:${isToday ? '#dc2626' : 'inherit'}">${days[date.getDay()]} · ${months[date.getMonth()]} ${d}</div>`;
 
       if (dayEvents.length) {
@@ -927,7 +975,11 @@
           item.style.padding = '8px 10px';
           item.style.borderRadius = '0 10px 10px 0';
           item.style.background = '#f8fafc';
-          item.innerHTML = `<div class="title" style="font-weight:600">${ev.title}</div><div class="time" style="color:#6b7280; font-size:0.85rem">${ev.time}</div>`;
+          const actDate = section ? section.dataset.date || '' : '';
+          const gcalAct = addGoogleCalendarLink(ev.title, ev.time, actDate);
+          const safeTitle2 = ev.title.replace(/'/g, '\\'');
+          const safeTime2 = ev.time.replace(/'/g, '\\'');
+          item.innerHTML = `<div class="title" style="font-weight:600">${ev.title}</div><div class="time" style="color:#6b7280; font-size:0.85rem">${ev.time}</div><div class="export-row"><button class="export-btn" onclick="downloadICS('${safeTitle2}','${safeTime2}','${actDate}')">ICS</button><a class="export-btn" href="${gcalAct}" target="_blank">Google</a></div>`;
           list.appendChild(item);
         });
         section.appendChild(list);
@@ -1185,16 +1237,17 @@
     ];
 
     container.innerHTML = featured.map(ev => `
-      <div class="featured-card" data-category="${ev.category}">
-        <div class="row">
-          <div class="badge-row">
-            <span class="date-badge">${ev.date}</span>
-            <span class="cat-badge">${ev.category}</span>
-          </div>
+    <div class="featured-card" data-category="${ev.category}">
+      <div class="row">
+        <div class="badge-row">
+          <span class="date-badge">${ev.date}</span>
+          <span class="cat-badge">${ev.category}</span>
         </div>
-        <div class="title">${ev.title}</div>
-        <div class="meta">${ev.time}</div>
       </div>
+      <div class="title">${ev.title}</div>
+      <div class="meta">${ev.time}</div>
+      <div class="export-row"><a class="export-btn" href="${addGoogleCalendarLink(ev.title, ev.time, '')}" target="_blank">Google Calendar</a></div>
+    </div>
     `).join('');
   }
 
