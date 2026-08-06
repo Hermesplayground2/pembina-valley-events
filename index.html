@@ -543,14 +543,23 @@
     const today = now.getDate();
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-    const samples = [
-      { day: 7, title: 'Harvest Festival' },
-      { day: 11, title: 'City Council' },
-      { day: 25, title: 'City Council' }
-    ];
+    const samples = [];
+    const add = (day, title) => { if (day >= 1 && day <= daysInMonth) samples.push({ day, title }); };
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const dow = date.getDay();
+      const titles = [];
+      if (dow === 0 || dow === 3) titles.push('Sunset walk');
+      if (dow === 5) titles.push('Family movie night');
+      if (dow === 2) titles.push("Winkler Farmer's Market");
+      if ((month === 6 || month === 7) && dow === 3) titles.push('Concerts in the Park');
+      if (d >= 7 && d <= 9 && month === 7) titles.push('Harvest Festival');
+      if (d === 11 || d === 25) titles.push('City Council Meeting');
+      if (titles.length) add(d, titles.join(' / '));
+    }
 
     const grid = document.createElement('div');
     grid.className = 'month-grid';
