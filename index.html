@@ -75,6 +75,12 @@
   .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   .grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .locals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .local-card { display: block; padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: inherit; text-decoration: none; transition: transform .08s ease, background .15s ease; }
+  .local-card:hover { transform: translateY(-2px); background: rgba(255,255,255,0.07); }
+  .local-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
+  .local-desc { font-size: 0.82rem; opacity: 0.85; }
+  .featured-card .cat-badge { background: rgba(255,255,255,0.12); padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -294,6 +300,40 @@
           <a class="cta-btn" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Browse Community Events</a>
           <a class="cta-btn" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
           <a class="cta-btn" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>🤝 Local Sponsors & Partners</h2>
+        <p class="muted">Supporting the Pembina Valley community</p>
+        <div class="spacer"></div>
+        <div class="locals-grid">
+          <a class="local-card" href="https://www.visitwinkler.ca" target="_blank" rel="noopener">
+            <div class="local-name">City of Winkler</div>
+            <div class="local-desc">Official city calendar & recreation</div>
+          </a>
+          <a class="local-card" href="https://morden.ca/community-events" target="_blank" rel="noopener">
+            <div class="local-name">City of Morden</div>
+            <div class="local-desc">Community events & programs</div>
+          </a>
+          <a class="local-card" href="https://www.pembinavalleyonline.com" target="_blank" rel="noopener">
+            <div class="local-name">Pembina Valley Online</div>
+            <div class="local-desc">Local news & events hub</div>
+          </a>
+          <a class="local-card" href="https://winklerchamber.com" target="_blank" rel="noopener">
+            <div class="local-name">Winkler Chamber</div>
+            <div class="local-desc">Business directory & events</div>
+          </a>
+          <a class="local-card" href="https://pds.gvsd.ca" target="_blank" rel="noopener">
+            <div class="local-name">Prairie Dale School</div>
+            <div class="local-desc">School calendar & announcements</div>
+          </a>
+          <a class="local-card" href="https://www.winkler.ca" target="_blank" rel="noopener">
+            <div class="local-name">RM of Stanley</div>
+            <div class="local-desc">Municipal services & events</div>
+          </a>
         </div>
       </div>
     </section>
@@ -544,18 +584,22 @@
     <section class="section">
       <div class="card">
         <h2>✉️ Contact</h2>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Contact form is static. Connect it to a mail service if you want email delivery.');">
-          <input type="text" placeholder="Your name" required>
-          <input type="email" placeholder="Your email" required>
-          <textarea rows="4" placeholder="Message" required></textarea>
+        <form class="contact-form" action="mailto:Boomsecure@protonmail.com" method="post" enctype="text/plain">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea rows="4" name="message" placeholder="Message" required></textarea>
           <button type="submit">Send message</button>
         </form>
-        <p class="muted" style="margin-top:10px;">This form is a front-end template. To receive emails, connect it to a mail service or backend.</p>
+        <p class="muted" style="margin-top:10px;">Messages open your email app and are sent to Boomsecure@protonmail.com.</p>
       </div>
     </section>
   </div>
 
 </div>
+
+<div class="section" style="padding: 20px 0 10px;">
+      <p class="muted" style="font-size:0.8rem;opacity:0.75;">Some links are affiliate or partner links — pembinaevents.ca may earn a small commission if you book or order through them. You pay the same price.</p>
+    </div>
 
 <footer>
   <strong>Pembina Valley Events</strong> · Winkler, MB<br>
@@ -1126,10 +1170,10 @@ function filterDayActivities(category, btn) {
     const container = document.getElementById('featured-events');
     if (!container) return;
     const featured = [
-      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Winkler Fairgrounds', date: 'Aug 7', link: 'https://www.winklerharvestfestival.com/' },
+      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Winkler Fairgrounds', date: 'Aug 7', link: 'https://www.winklerharvestfestival.com/', promoted: true },
       { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Winkler, MB', date: 'Aug', link: 'https://pds.gvsd.ca/' },
       { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18', link: 'https://winklerchamber.com/events/' },
-      { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28', link: 'https://cornandapple.com/' },
+      { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28', link: 'https://cornandapple.com/', promoted: true },
       { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29', link: 'https://www.backfortymusicfestival.com/' },
       { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
       { category: 'community', title: 'Altona Kidventure Wednesdays', time: 'Aug 12 · Altona EMM Church', date: 'Aug 12', link: 'https://altonaemmc.com/' }
@@ -1141,6 +1185,7 @@ function filterDayActivities(category, btn) {
           <div class="badge-row">
             <span class="date-badge">${ev.date}</span>
             <span class="cat-badge">${ev.category}</span>
+            ${ev.promoted ? '<span class="cat-badge" style="background:#f59e0b;color:#fff">Promoted</span>' : ''}
           </div>
         </div>
         <div class="title">${ev.title}</div>
