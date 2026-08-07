@@ -646,6 +646,15 @@
     header.innerHTML = '';
     body.innerHTML = '';
 
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const title = document.createElement('div');
+    title.style.gridColumn = '1 / -1';
+    title.style.fontWeight = '900';
+    title.style.fontSize = '1.1rem';
+    title.style.marginBottom = '10px';
+    title.textContent = monthNames[month] + ' ' + year;
+    header.appendChild(title);
+
     const rangeStart = new Date(start);
     const rangeEnd = new Date(start);
     rangeEnd.setDate(start.getDate() + 6);
@@ -683,8 +692,6 @@
       if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture' });
       if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d >= 28 && d <= 30 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission', link: 'https://www.winklerharvestfestival.com/' });
-      if (month === 7 && d >= 6 && d <= 9 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times', link: 'https://www.winklerharvestfestival.com/' });
       if (month === 8 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
       if (month === 8 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB' });
       if (month === 8 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St' });
@@ -784,8 +791,6 @@
       if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 8 && d >= 3 && d <= 7) add(fmt(year, month, d), { category: 'family', title: 'PVBC Vacation Bible School', time: 'Ages 5-12 · Winkler MB', link: 'http://www.pembinavalleybaptistchurch.com/ministries/children-s-ministries/vbs/' });
       if (month === 8 && d === 2) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d >= 28 && d <= 30 && year === 2026) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission', link: 'https://www.winklerharvestfestival.com/' });
-      if (month === 7 && d >= 6 && d <= 9 && year === 2026) add(fmt(year, month, d), { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times', link: 'https://www.winklerharvestfestival.com/' });
       if (month === 8 && d >= 28 && d <= 30) add(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
       if (month === 8 && d === 29) add(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
       if (month === 8 && d === 24) add(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
