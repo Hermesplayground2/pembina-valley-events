@@ -681,11 +681,11 @@
       if (month === 9 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall' });
       if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture' });
       if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture' });
-      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture' });
-      if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
-      if (month === 7 && d >= 28 && d <= 30 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission' });
-      if (month === 7 && d >= 6 && d <= 9 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times' });
-      if (month === 8 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free' });
+      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
+      if (month === 7 && d >= 28 && d <= 30 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission', link: 'https://www.winklerharvestfestival.com/' });
+      if (month === 7 && d >= 6 && d <= 9 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times', link: 'https://www.winklerharvestfestival.com/' });
+      if (month === 8 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
       if (month === 8 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB' });
       if (month === 8 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St' });
       if (month === 8 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church' });
@@ -879,8 +879,6 @@
       if (month === 8 && d === 10) add(dateStr, { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 8 && d === 10) add(dateStr, { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 8 && d === 2) add(dateStr, { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d >= 28 && d <= 30 && year === 2026) add(dateStr, { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission', link: 'https://www.winklerharvestfestival.com/' });
-      if (month === 7 && d >= 6 && d <= 9 && year === 2026) add(dateStr, { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times', link: 'https://www.winklerharvestfestival.com/' });
       if (month === 8 && d >= 28 && d <= 30) add(dateStr, { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
       if (month === 8 && d === 29) add(dateStr, { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
       if (month === 8 && d === 24) add(dateStr, { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
@@ -903,32 +901,26 @@
     const grid = document.createElement('div');
     grid.className = 'month-grid';
 
-    days.forEach(d => {
-      const h = document.createElement('div');
-      h.className = 'month-header';
-      h.textContent = d;
-      grid.appendChild(h);
-    });
-
-    for (let i = 0; i < firstDay; i++) {
-      const empty = document.createElement('div');
-      empty.className = 'month-day empty';
-      grid.appendChild(empty);
-    }
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const title = document.createElement('div');
+    title.style.gridColumn = '1 / -1';
+    title.style.fontWeight = '900';
+    title.style.fontSize = '1.1rem';
+    title.style.marginBottom = '10px';
+    title.textContent = monthNames[month] + ' ' + year;
+    grid.appendChild(title);
 
     for (let d = 1; d <= daysInMonth; d++) {
       const dateStr = fmt(year, month, d);
       const dayEvents = eventsByDate[dateStr] || [];
       if (!dayEvents.length) continue;
 
-      const cell = document.createElement('div');
-      cell.className = 'month-day';
-      const isToday = d === today;
-      const dateDiv = document.createElement('div');
-      dateDiv.style.fontWeight = isToday ? '700' : '400';
-      dateDiv.style.color = isToday ? '#dc2626' : 'inherit';
-      dateDiv.textContent = d;
-      cell.appendChild(dateDiv);
+      const dateLabel = document.createElement('div');
+      dateLabel.style.gridColumn = '1 / -1';
+      dateLabel.style.fontWeight = '800';
+      dateLabel.style.marginTop = '12px';
+      dateLabel.textContent = monthNames[month] + ' ' + d;
+      grid.appendChild(dateLabel);
 
       dayEvents.forEach(ev => {
         const bubble = document.createElement('a');
@@ -938,10 +930,8 @@
         bubble.rel = 'noopener';
         bubble.dataset.category = ev.category;
         bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span>`;
-        cell.appendChild(bubble);
+        grid.appendChild(bubble);
       });
-
-      grid.appendChild(cell);
     }
 
     wrap.innerHTML = '';
