@@ -180,8 +180,8 @@
     background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.15));
     pointer-events: none;
   }
-  .weather-card .temp { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.03em; }
-  .weather-card .meta { opacity: 0.92; margin-top: 6px; font-weight: 500; }
+  .weather-card .temp { font-size: 3.2rem; font-weight: 900; letter-spacing: -0.04em; }
+  .weather-card .meta { opacity: 0.95; margin-top: 8px; font-weight: 700; font-size: 1.1rem; }
   .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 16px; }
   .weekly-day {
     background: rgba(255,255,255,0.14); border-radius: 16px; padding: 12px; text-align: center; backdrop-filter: blur(6px);
@@ -563,6 +563,33 @@
 </footer>
 
 <script>
+function downloadICS(title, time, date) {
+      const dt = date ? new Date(date + 'T12:00:00') : new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      const dtStr = dt.getFullYear() + pad(dt.getMonth()+1) + pad(dt.getDate()) + 'T120000Z';
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        'DTSTART;VALUE=DATE:' + dtStr,
+        'DTEND;VALUE=DATE:' + dtStr,
+        'SUMMARY:' + (title || 'Event'),
+        'DESCRIPTION:' + (time || ''),
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\n');
+      const blob = new Blob([ics], { type: 'text/calendar' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+
   function renderDashboard() {
     const viewsBox = document.getElementById('dashboard-views');
     const referrersBox = document.getElementById('dashboard-referrers');
@@ -694,7 +721,7 @@
         el.target = '_blank';
         el.rel = 'noopener';
         el.dataset.category = ev.category;
-        el.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span>`;
+        el.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="">ICS</button></div>`;
         body.appendChild(el);
       });
     }
@@ -1150,6 +1177,12 @@ function filterDayActivities(category, btn) {
     if (churchBox) churchBox.innerHTML = churchEvents.map(renderCard).join('');
     if (garageBox) garageBox.innerHTML = garageEvents.map(renderCard).join('');
   }
+  document.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-export="ics"]');
+    if (!btn) return;
+    ev.preventDefault();
+    downloadICS(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
+  });
 </script>
 </body>
 </html>
