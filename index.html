@@ -706,6 +706,8 @@
     }
 
     for (let i = 0; i < 7; i++) {
+      if (!eventsByDay[i].length) continue;
+
       const d = new Date(start);
       d.setDate(start.getDate() + i);
       const isToday = d.getTime() === today.getTime();
