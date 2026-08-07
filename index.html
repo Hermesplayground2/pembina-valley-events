@@ -814,29 +814,24 @@
       section.style.marginBottom = '12px';
       section.innerHTML = `<div class="name" style="font-size:1.05rem; color:${isToday ? '#dc2626' : 'inherit'}">${days[date.getDay()]} · ${months[date.getMonth()]} ${d}</div>`;
 
-      if (dayEvents.length) {
-        const list = document.createElement('div');
-        list.style.marginTop = '6px';
-        list.style.display = 'flex';
-        list.style.flexDirection = 'column';
-        list.style.gap = '6px';
-        dayEvents.forEach(ev => {
-          const item = document.createElement('a');
-          item.className = 'day-event bubble';
-          item.href = ev.link || '#';
-          item.target = '_blank';
-          item.rel = 'noopener';
-          item.dataset.category = ev.category;
-          item.innerHTML = `<span class="title" style="font-weight:600">${ev.title}</span><span class="time" style="color:#6b7280; font-size:0.85rem">${ev.time}</span>`;
-          list.appendChild(item);
-        });
-        section.appendChild(list);
-      } else {
-        const empty = document.createElement('div');
-        empty.className = 'desc';
-        empty.textContent = 'No events listed.';
-        section.appendChild(empty);
-      }
+      if (!dayEvents.length) continue;
+
+      const list = document.createElement('div');
+      list.style.marginTop = '6px';
+      list.style.display = 'flex';
+      list.style.flexDirection = 'column';
+      list.style.gap = '6px';
+      dayEvents.forEach(ev => {
+        const item = document.createElement('a');
+        item.className = 'day-event bubble';
+        item.href = ev.link || '#';
+        item.target = '_blank';
+        item.rel = 'noopener';
+        item.dataset.category = ev.category;
+        item.innerHTML = `<span class="title" style="font-weight:600">${ev.title}</span><span class="time" style="color:#6b7280; font-size:0.85rem">${ev.time}</span>`;
+        list.appendChild(item);
+      });
+      section.appendChild(list);
 
       body.appendChild(section);
     }
