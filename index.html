@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pembina Valley Events - Local events, activities, and community happenings in Winkler, Morden, Altona, Plum Coulee, and surrounding Manitoba areas. Weather, weekly schedule, monthly calendar, family activities, and local sponsors.">
+<meta name="keywords" content="Pembina Valley events, Winkler events, Morden events, Altona events, Manitoba community events, local activities, Winkler weather, Pembina Valley calendar">
+<meta property="og:title" content="Pembina Valley Events">
+<meta property="og:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pembina Valley Events">
+<meta name="twitter:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
+<link rel="canonical" href="https://pembinaevents.ca/">
 <title>Pembina Valley Events — Winkler · Morden · Altona</title>
 <style>
   :root {
@@ -821,9 +830,9 @@ function filterDayActivities(category, btn) {
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const now = new Date();
     const year = now.getFullYear();
-    const month = now.getMonth();
-    const today = new Date(year, month, now.getDate());
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const startMonth = now.getMonth();
+    const today = new Date(year, startMonth, now.getDate());
+    const monthsToShow = 2;
 
     const body = document.getElementById('act-days');
     if (!body) return;
@@ -833,7 +842,6 @@ function filterDayActivities(category, btn) {
     const add = (dateStr, ev) => {
       const parts = dateStr.split('-');
       const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      const today = new Date(year, month, now.getDate());
       if (evDate < today) return;
       if (!eventsByDate[dateStr]) eventsByDate[dateStr] = [];
       eventsByDate[dateStr].push(ev);
@@ -842,7 +850,11 @@ function filterDayActivities(category, btn) {
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    for (let d = 1; d <= daysInMonth; d++) {
+    for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
+      const month = startMonth + monthOffset;
+      const yearForMonth = year + Math.floor(month / 12);
+      const actualMonth = month % 12;
+      const daysInMonth = new Date(yearForMonth, actualMonth + 1, 0).getDate();
       if (dow(year, month, d) === 2) add(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
       if (month === 7 && dow(year, month, d) === 3) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
       if (month === 7 && d >= 7 && d <= 9) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds', link: 'https://www.winklerharvestfestival.com/' });
