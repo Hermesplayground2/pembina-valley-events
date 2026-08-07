@@ -66,11 +66,16 @@
   }
   .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
   .nav-link {
-    padding: 9px 14px;
+    padding: 10px 16px;
     border-radius: 999px;
     text-decoration: none;
     color: var(--text);
     font-weight: 700;
+    min-height: 44px;
+    line-height: 1.2;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
     font-size: 0.92rem;
     border: 1px solid transparent;
     transition: all 0.2s ease;
@@ -235,6 +240,25 @@
   }
   @media (max-width: 640px) {
     .grid-2 { grid-template-columns: 1fr; }
+    nav { padding: 10px 12px; }
+    .nav-inner { 
+      display: flex; 
+      flex-wrap: nowrap; 
+      overflow-x: auto; 
+      gap: 8px; 
+      justify-content: flex-start; 
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-link {
+      white-space: nowrap;
+      flex: 0 0 auto;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+    }
+    .page { padding-top: 12px; }
     .grid-3 { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
     .calendar-grid { grid-template-columns: repeat(2, 1fr); }
