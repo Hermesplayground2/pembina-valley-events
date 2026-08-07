@@ -390,14 +390,14 @@
         </div>
         <div class="grid grid-3">
           <a class="day-event bubble" href="https://www.realcanadiansuperstore.ca/" target="_blank" rel="noopener"><span class="title">Real Canadian Superstore</span><span class="time">175 Cargill Rd</span></a>
-          <a class="day-event bubble" href="https://www.walmart.ca/" target="_blank" rel="noopener"><span class="title">Co-op</span><span class="time">370 Main St</span></a>
+          <a class="day-event bubble" href="https://www.redriverco-op.crs/sites/redriver/" target="_blank" rel="noopener"><span class="title">Co-op</span><span class="time">370 Main St</span></a>
           <a class="day-event bubble" href="https://www.nofrills.ca/" target="_blank" rel="noopener"><span class="title">No Frills</span><span class="time">Winkler</span></a>
           <a class="day-event bubble" href="https://www.sobeys.com/" target="_blank" rel="noopener"><span class="title">Sobeys</span><span class="time">Winkler</span></a>
           <a class="day-event bubble" href="https://leeversfoods.ca/" target="_blank" rel="noopener"><span class="title">Leevers Foods</span><span class="time">Winkler</span></a>
           <a class="day-event bubble" href="https://www.co-opfuelefficient.com/" target="_blank" rel="noopener"><span class="title">Co-op Gas Bar</span><span class="time">370 Main St</span></a>
           <a class="day-event bubble" href="https://www.petro-canada.ca/" target="_blank" rel="noopener"><span class="title">Petro Canada</span><span class="time">Winkler</span></a>
           <a class="day-event bubble" href="https://www.canadiantire.ca/" target="_blank" rel="noopener"><span class="title">Canadian Tire Gas+</span><span class="time">Winkler</span></a>
-          <a class="day-event bubble" href="https://www.redriverco-op.crs/sites/redriver/" target="_blank" rel="noopener"><span class="title">Red River Co-Op</span><span class="time">Winkler</span></a>
+          <a class="day-event bubble" href="https://www.redriverco-op.com/" target="_blank" rel="noopener"><span class="title">Red River Co-Op</span><span class="time">Winkler</span></a>
           <a class="day-event bubble" href="https://www.homehardware.ca/" target="_blank" rel="noopener"><span class="title">Home Hardware</span><span class="time">Winkler</span></a>
           <a class="day-event bubble" href="https://winklerbiblecamp.ca/" target="_blank" rel="noopener"><span class="title">Winkler Bible Camp</span><span class="time">Winkler</span></a>
         </div>
@@ -753,10 +753,6 @@
 
     const eventsByDate = {};
     const add = (dateStr, ev) => {
-      const parts = dateStr.split('-');
-      const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      const today = new Date(year, month, now.getDate());
-      if (evDate < today) return;
       if (!eventsByDate[dateStr]) eventsByDate[dateStr] = [];
       eventsByDate[dateStr].push(ev);
     };
@@ -1120,8 +1116,6 @@
     const garageBox = document.getElementById('family-garage-events');
 
     const schoolEvents = [
-      { title: 'Labour Day - No School', date: 'Aug 4 (Mon)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
-      { title: 'Admin Day - No Classes', date: 'Aug 5 (Tue)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
       { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
       { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
       { title: 'Whimsical Wonders Art Camp', date: 'Aug 31-Sep 4', time: 'City of Morden · morden.ca', category: 'family', link: 'https://morden.ca/community-events' },
@@ -1129,16 +1123,13 @@
     ];
 
     const churchEvents = [
-      { title: 'Winkler EMMC Worship Service', date: 'Aug 2, 16, 23, 30', time: '10:30 AM · 600 Southview Drive', category: 'family', link: 'http://www.winkleremmc.com/events/' },
+      { title: 'Winkler EMMC Worship Service', date: 'Aug 30', time: '10:30 AM · 600 Southview Drive', category: 'family', link: 'http://www.winkleremmc.com/events/' },
       { title: 'Harvest Festival Service', date: 'Aug 9 (Sun)', time: '10:00 AM · Winkler Park', category: 'family', link: 'http://www.winkleremmc.com/events/' },
-      { title: 'Church Council Meeting', date: 'Aug 18 (Tue)', time: '7:00 PM · 600 Southview Drive', category: 'family', link: 'http://www.winkleremmc.com/events/' },
       { title: 'Kidventure Wednesdays', date: 'Wednesdays', time: '1:00 PM · Altona EMM Church', category: 'family', link: 'https://altonaemmc.com/' },
       { title: 'MCC Blanket Making', date: '1st/3rd Mondays', time: '9:30 AM · Morden Mennonite Church', category: 'family', link: 'https://morden.ca/community-events' }
     ];
 
     const garageEvents = [
-      { title: 'Weekly Garage Sales', date: 'Aug 3-9', time: 'Multiple addresses · winkler.garagesalejunkie.ca', category: 'community', link: 'https://winkler.garagesalejunkie.ca' },
-
       { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
       { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' }
     ];
