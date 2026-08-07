@@ -765,8 +765,8 @@
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
     for (let d = 1; d <= daysInMonth; d++) {
-      if (dow === 2) add(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
-      if (month === 7 && dow === 3) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
+      if (dow(year, month, d) === 2) add(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
+      if (month === 7 && dow(year, month, d) === 3) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
       if (month === 7 && d >= 7 && d <= 9) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds', link: 'https://www.winklerharvestfestival.com/' });
       if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
       if (month === 7 && d === 5) add(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
@@ -1138,8 +1138,7 @@
 
     const garageEvents = [
       { title: 'Weekly Garage Sales', date: 'Aug 3-9', time: 'Multiple addresses · winkler.garagesalejunkie.ca', category: 'community', link: 'https://winkler.garagesalejunkie.ca' },
-      { title: 'City Wide Garage Sale', date: 'May 23, 2026', time: 'Multiple addresses · Watch for 2027 date', category: 'community', link: 'https://www.winkler.ca/events' },
-      { title: 'Morden City Wide Garage Sale', date: 'Jun 6, 2026', time: 'Morden, MB · Multiple addresses', category: 'community', link: 'https://morden.ca/community-events' },
+
       { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
       { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' }
     ];
