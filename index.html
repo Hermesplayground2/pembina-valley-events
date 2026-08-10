@@ -390,6 +390,11 @@
   @media (max-width: 640px) {
     .contact-row { grid-template-columns: 1fr; }
   }
+  .contact-me { padding-top: 14px; border-top: 1px solid rgba(148,163,184,0.25); }
+  .contact-me h3 { font-size: 1rem; margin: 0 0 6px; color: #0f172a; }
+  .contact-me p { margin: 0 0 8px; color: #64748b; font-size: 0.95rem; }
+  .contact-me-btn { display: inline-block; padding: 10px 18px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: #fff; color: #0f172a; font-weight: 600; text-decoration: none; transition: background 0.2s ease; }
+  .contact-me-btn:hover { background: #f1f5f9; text-decoration: none; }
   @media (max-width: 380px) {
     .calendar-grid { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: 1fr; }
@@ -702,6 +707,12 @@
           <button type="submit" class="contact-submit">Submit Event</button>
         </form>
         <p class="muted contact-hint">Submitting opens your email app with a ready-to-post event message for the site owner.</p>
+        <div class="spacer"></div>
+        <div class="contact-me">
+          <h3>Contact Me</h3>
+          <p>Questions, ideas, or partnership inquiries?</p>
+          <a class="contact-me-btn" href="mailto:boomsecure@protonmail.com">boomsecure@protonmail.com</a>
+        </div>
       </div>
     </section>
   </div>
