@@ -12,7 +12,7 @@
 <meta name="twitter:title" content="Pembina Valley Events">
 <meta name="twitter:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
 <link rel="canonical" href="https://pembinaevents.ca/">
-<title>Pembina Valley Events · Pembina, MB</title>
+<title>Pembina Valley Events — Winkler · Morden · Altona</title>
 <style>
   :root {
     --bg: #f1f5f9;
@@ -21,86 +21,55 @@
     --muted: #64748b;
     --accent: #2563eb;
     --accent-2: #7c3aed;
-    --teal: #0d9488;
-    --gold: #b45309;
-    --wheat: #f59e0b;
-    --green: #15803d;
     --border: #e2e8f0;
     --success: #16a34a;
     --warning: #d97706;
     --danger: #ef4444;
     --radius: 20px;
     --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    --category-community: #2563eb;
-    --category-family: #059669;
-    --category-outdoors: #0891b2;
-    --category-faith: #7c3aed;
-    --category-promoted: #d97706;
-    --category-fundraiser: #dc2626;
-    --category-lake: #0d9488;
-    --category-wheat: #b45309;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: 
-      radial-gradient(ellipse at 20% 0%, rgba(13,148,136,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 100%, rgba(37,99,235,0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(180,83,9,0.08) 0%, transparent 60%),
-      linear-gradient(135deg, #1e3a8a 0%, #0f172a 25%, #2563eb 50%, #f1f5f9 75%, #f8fafc 100%);
+    background: radial-gradient(circle at top left, #eef2ff, #f1f5f9 40%, #e2e8f0 100%);
     color: var(--text);
-    line-height: 1.65;
+    line-height: 1.6;
     min-height: 100vh;
-    position: relative;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 10% 20%, rgba(13,148,136,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 90% 80%, rgba(37,99,235,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 100%, rgba(180,83,9,0.15) 0%, transparent 45%),
-      radial-gradient(ellipse at 0% 0%, rgba(251,191,36,0.12) 0%, transparent 40%),
-      radial-gradient(ellipse at 100% 0%, rgba(21,128,61,0.10) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(15,23,42,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: -1;
-    animation: colorShift 20s ease-in-out infinite;
-  }
-  @keyframes colorShift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(-2%, 1%) scale(1.02); }
-    50% { transform: translate(1%, -1%) scale(1.01); }
-    75% { transform: translate(-1%, -2%) scale(1.03); }
-  }
-  .font-serif { font-family: "Georgia", "Times New Roman", Times, serif; }
-  .font-script { font-family: "Brush Script Std", "Script", cursive; }
   header {
-    background: transparent;
-    color: var(--text);
-    padding: 28px 20px 32px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+    color: white;
+    padding: 52px 20px 64px;
     text-align: center;
     position: relative;
+    overflow: hidden;
   }
-  .logo-header { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 1160px; margin: 0 auto; }
-  .logo-img { width: 100%; max-width: 100%; height: auto; display: block; }
+  header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 100%);
+    pointer-events: none;
+  }
+  header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.04em; }
+  header p { opacity: 0.92; margin-top: 12px; font-weight: 500; font-size: clamp(0.95rem, 1.6vw, 1.1rem); }
   nav {
-    background: transparent;
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid var(--border);
     padding: 14px 18px;
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
   .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
   .nav-link {
     padding: 10px 16px;
     border-radius: 999px;
     text-decoration: none;
-    color: rgba(255,255,255,0.85);
+    color: var(--text);
     font-weight: 700;
     min-height: 44px;
     line-height: 1.2;
@@ -108,12 +77,13 @@
     user-select: none;
     touch-action: manipulation;
     font-size: 0.92rem;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    transition: transform 0.15s ease, background 0.15s ease;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    background: white;
+    box-shadow: 0 1px 0 rgba(15,23,42,0.04);
   }
-  .nav-link:hover { transform: translateY(-1px); background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.2); }
-  .nav-link.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 2px 10px rgba(37,99,235,0.35); }
+  .nav-link:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,23,42,0.08); border-color: var(--border); }
+  .nav-link.active { background: #0f172a; color: white; border-color: #0f172a; }
   .container { max-width: 1160px; margin: 0 auto; padding: 28px 18px; }
   .grid { display: grid; gap: 16px; }
   .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
@@ -135,8 +105,8 @@
   .local-desc { font-size: 0.82rem; opacity: 0.85; }
   .featured-card .cat-badge { background: rgba(255,255,255,0.12); padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
   .card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(241,245,249,0.95) 100%);
-    border: 1px solid transparent;
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 18px;
     box-shadow: var(--shadow);
@@ -144,33 +114,21 @@
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .card:hover { 
-    transform: translateY(-2px); 
-    box-shadow: 0 18px 40px rgba(15,23,42,0.1);
-    border-color: rgba(13,148,136,0.2);
-  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(15,23,42,0.1); }
   .card::before {
     content: "";
     position: absolute;
     inset: 0;
     opacity: 0.10;
-    background: 
-      radial-gradient(circle at 10% 20%, rgba(13,148,136,0.35) 0%, transparent 50%),
-      radial-gradient(circle at 90% 80%, rgba(37,99,235,0.35) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(180,83,9,0.2) 0%, transparent 60%);
+    background-size: cover;
+    background-position: center;
     pointer-events: none;
-    animation: cardColorShift 15s ease-in-out infinite;
-  }
-  @keyframes cardColorShift {
-    0%, 100% { opacity: 0.10; transform: translate(0, 0); }
-    50% { opacity: 0.14; transform: translate(1%, 1%); }
   }
   .card > * { position: relative; }
   .card h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; }
   .card .muted { color: var(--muted); font-size: 0.92rem; }
   .section { margin-bottom: 28px; }
-  .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; color: var(--text); }
-  .section-title::after { content: ""; display: block; width: 40px; height: 4px; border-radius: 999px; background: linear-gradient(90deg, #0f172a, #2563eb, #0d9488); margin-top: 10px; }
+  .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
   .section-subtitle { color: var(--muted); font-size: 0.95rem; margin-top: -10px; margin-bottom: 16px; }
   .spacer { height: 18px; }
   .page { display: none; animation: fadeIn 0.35s ease; }
@@ -179,18 +137,18 @@
   .pill {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 8px 12px; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
-    background: white; border: 1px solid transparent; color: var(--text); cursor: pointer;
+    background: white; border: 1px solid var(--border); color: var(--text); cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   }
   .pill:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,23,42,0.08); }
   .pill.active { background: #0f172a; color: white; border-color: #0f172a; }
   .event-row {
-    display: flex; align-items: flex-start; gap: 14px; padding: 16px 0;
+    display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border);
     transition: background 0.2s ease, padding-left 0.2s ease;
   }
   .event-row:last-child { border-bottom: none; }
   .event-row:hover { 
-    background: linear-gradient(90deg, rgba(37,99,235,0.05) 0%, rgba(13,148,136,0.04) 50%, rgba(180,83,9,0.03) 100%);
+    background: linear-gradient(90deg, rgba(37,99,235,0.03) 0%, transparent 100%);
     padding-left: 8px;
     border-radius: 8px;
   }
@@ -198,7 +156,7 @@
     border-radius: 999px;
     padding: 11px 16px;
     background: white;
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
     box-shadow: 0 2px 6px rgba(15,23,42,0.04);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     text-decoration: none;
@@ -211,8 +169,16 @@
     box-shadow: 0 10px 24px rgba(15,23,42,0.1);
     border-color: var(--accent);
   }
-  .day-event .title { font-weight: 800; font-size: 0.95rem; }
-  .day-event .time { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+  .day-event .title {
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .day-event .time {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 2px;
+  }
+  .event-row:hover { background: #f8fafc; }
   .event-date {
     min-width: 60px; text-align: center; padding: 12px 8px; border-radius: 16px; background: #eef2ff; color: #3730a3; font-weight: 900;
     box-shadow: inset 0 0 0 1px rgba(55,48,163,0.12);
@@ -223,34 +189,29 @@
   .event-meta { color: var(--muted); font-size: 0.88rem; margin-top: 5px; }
   .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
   .calendar-day {
-    background: white; border: 1px solid transparent; border-radius: 18px; padding: 14px; min-height: 110px;
+    background: white; border: 1px solid var(--border); border-radius: 18px; padding: 14px; min-height: 110px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     position: relative;
   }
   .calendar-day:hover { 
     transform: translateY(-3px); 
     box-shadow: 0 16px 35px rgba(15,23,42,0.1);
-    border-color: rgba(13,148,136,0.3);
+    border-color: rgba(37,99,235,0.2);
   }
   .calendar-day .day-name { font-weight: 900; font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
   .calendar-day .day-number { font-weight: 900; font-size: 1.2rem; margin-top: 6px; }
-  .calendar-day.today .day-number { color: var(--accent); }
+  .calendar-day.today .day-number { color: #2563eb; }
   .calendar-day .day-chip {
     margin-top: 10px; padding: 7px 9px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;
-    background: linear-gradient(135deg, var(--teal), var(--accent)); color: white;
-    box-shadow: 0 2px 8px rgba(13,148,136,0.15);
+    background: #fffbeb; color: #92400e; border-left: 4px solid #f59e0b;
+    box-shadow: 0 2px 8px rgba(245,158,11,0.12);
   }
   .weather-card {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #2563eb 70%, #0d9488 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
     color: white; border-radius: var(--radius); padding: 20px;
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
-    animation: weatherShift 25s ease-in-out infinite;
-  }
-  @keyframes weatherShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
   }
   .weather-card::after {
     content: "";
@@ -272,7 +233,7 @@
   .weekly-day .lo-hi { font-size: 0.75rem; opacity: 0.85; margin-top: 4px; }
   .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
   .featured-card {
-    border: 1px solid transparent; border-radius: 20px; padding: 18px; background: white;
+    border: 1px solid var(--border); border-radius: 20px; padding: 18px; background: white;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     box-shadow: 0 2px 8px rgba(15,23,42,0.06);
     position: relative;
@@ -283,20 +244,14 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #0f172a, #2563eb, #0d9488, #b45309);
-    background-size: 300% 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
     opacity: 0;
     transition: opacity 0.25s ease;
-    animation: borderShift 8s linear infinite;
-  }
-  @keyframes borderShift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
   }
   .featured-card:hover { 
     transform: translateY(-4px); 
     box-shadow: 0 20px 50px rgba(15,23,42,0.15);
-    border-color: rgba(13,148,136,0.35);
+    border-color: rgba(37,99,235,0.25);
   }
   .featured-card:hover::before { opacity: 1; }
   .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -309,13 +264,13 @@
   .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
   .cta {
     padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.9rem;
-    background: white; border: 1px solid transparent; color: var(--text); text-decoration: none;
+    background: white; border: 1px solid var(--border); color: var(--text); text-decoration: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   }
   .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,0.08); background: #0f172a; color: white; border-color: #0f172a; }
   footer {
     text-align: center; padding: 28px 18px; color: var(--muted); font-size: 0.92rem;
-    margin-top: 32px;
+    border-top: 1px solid var(--border); margin-top: 32px;
     background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(241,245,249,0.9) 100%);
     backdrop-filter: blur(12px);
   }
@@ -344,20 +299,83 @@
     .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
     .calendar-grid { grid-template-columns: repeat(2, 1fr); }
     .featured-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 1.7rem; }
+    .nav-link { font-size: 0.85rem; padding: 8px 12px; }
+    .weather-card .temp { font-size: 1.8rem; }
     .card { padding: 16px; }
   }
   @media (max-width: 380px) {
     .calendar-grid { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: 1fr; }
   }
+  /* Enhanced design system */
+  :root {
+    --category-community: #2563eb;
+    --category-family: #059669;
+    --category-outdoors: #0891b2;
+    --category-faith: #7c3aed;
+    --category-promoted: #d97706;
+    --category-fundraiser: #dc2626;
+  }
+  body {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+    line-height: 1.65;
+  }
+  header {
+    padding: 40px 20px 56px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #2563eb 100%);
+  }
+  header h1 {
+    font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+  }
+  header p {
+    opacity: 0.95;
+    margin-top: 12px;
+    font-weight: 500;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+  }
+  .card {
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    border-color: rgba(37,99,235,0.25);
+  }
+  .nav-link.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 2px 10px rgba(37,99,235,0.35);
+  }
+  .section { padding: 26px 18px; }
+  h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .muted { line-height: 1.65; }
+  .pill {
+    font-weight: 700;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(15,23,42,0.12);
+  }
+  @media (max-width: 640px) {
+    .card { padding: 18px; }
+    header { padding: 32px 18px 44px; }
+  }
 </style>
-
 
 </head>
 <body>
 
-<header class="logo-header">
-  <img src="logo.png" alt="Pembina Valley Events" class="logo-img">
+<header>
+  <h1>Pembina Valley Events</h1>
+  <p>Winkler · Morden · Altona · Local happenings this month</p>
 </header>
 
 <nav>
@@ -376,13 +394,13 @@
   <div class="page active" id="page-home">
     <section class="section">
       <div class="grid grid-2">
-        <div class="card card-landscape-weather" style="border: 3px solid var(--teal); box-shadow: 0 0 40px rgba(13,148,136,0.25);">
+        <div class="card card-landscape-weather" style="border: 3px solid #60a5fa; box-shadow: 0 0 40px rgba(59,130,246,0.35);">
           <h2>📍 Winkler Weather</h2>
           <div class="weather">
             <div>
               <div class="temp" id="temp">--°</div>
               <div class="meta" id="condition">Loading...</div>
-              <div class="meta" id="location">Pembina, MB</div>
+              <div class="meta" id="location">Winkler, MB</div>
             </div>
             <canvas class="weather-icon" id="weatherIcon" aria-label="weather icon"></canvas>
           </div>
@@ -431,15 +449,6 @@
         </div>
         <div class="cal-header" id="cal-header"></div>
         <div class="day-columns" id="daily-events"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card card-landscape-calendar">
-        <h2>📌 Today's Schedule</h2>
-        <p class="muted" id="today-date-label">Loading today's events...</p>
-        <div class="spacer"></div>
-        <div id="today-events"></div>
       </div>
     </section>
 
@@ -605,7 +614,7 @@
 </div>
 
 <footer>
-  <strong>Pembina Valley Events</strong> · Pembina, MB<br>
+  <strong>Pembina Valley Events</strong> · Winkler, MB<br>
   Local events, activities, weather, and community connections.
 </footer>
 
@@ -717,40 +726,40 @@ function downloadICS(title, time, date) {
       const dow = new Date(year, month, d).getDay();
       if (dow === 2) addIfInWeek(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
       if (month === 7 && dow === 3) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
-      if (month === 6 && d >= 7 && d <= 9) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds', link: 'https://www.winklerharvestfestival.com/' });
-      if (month === 6 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 6 && d === 5) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 7 && d === 4) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 8 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
-      if (month === 8 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 6 && d >= 14 && d <= 16) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Plum Coulee Plum Fest', time: '125th Anniversary · Plum Coulee MB', link: 'http://www.plumfest.com/' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
-      if (month === 7 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 12) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church', link: 'https://altonaemmc.com/' });
-      if (month === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
-      if (month === 7 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d === 16) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d === 23) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d === 30) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 8 && d >= 1 && d <= 7) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 7 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 7 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (currentMonth === 6 && d >= 7 && d <= 9) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds', link: 'https://www.winklerharvestfestival.com/' });
+      if (currentMonth === 6 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+      if (currentMonth === 6 && d === 5) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+      if (currentMonth === 7 && d === 4) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', link: 'https://www.visitwinkler.ca' });
+      if (currentMonth === 7 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (currentMonth === 8 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
+      if (currentMonth === 8 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
+      if (currentMonth === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (currentMonth === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (currentMonth === 6 && d >= 14 && d <= 16) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Plum Coulee Plum Fest', time: '125th Anniversary · Plum Coulee MB', link: 'http://www.plumfest.com/' });
+      if (currentMonth === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (currentMonth === 7 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
+      if (currentMonth === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
+      if (currentMonth === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
+      if (currentMonth === 7 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
+      if (currentMonth === 7 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
+      if (currentMonth === 7 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
+      if (currentMonth === 7 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
+      if (currentMonth === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
+      if (currentMonth === 7 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
+      if (currentMonth === 7 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
+      if (currentMonth === 7 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
+      if (currentMonth === 7 && d === 12) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church', link: 'https://altonaemmc.com/' });
+      if (currentMonth === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
+      if (currentMonth === 7 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
+      if (currentMonth === 7 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC', link: 'http://www.winkleremmc.com/events/' });
+      if (currentMonth === 7 && d === 16) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
+      if (currentMonth === 7 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
+      if (currentMonth === 7 && d === 23) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
+      if (currentMonth === 7 && d === 30) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
+      if (currentMonth === 7 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (currentMonth === 7 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (currentMonth === 7 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (currentMonth === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
     }
 
     for (let i = 0; i < 7; i++) {
@@ -897,80 +906,7 @@ function filterDayActivities(category, btn) {
     });
   }
 
-  
-  function buildToday() {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-    
-    const container = document.getElementById('today-events');
-    const label = document.getElementById('today-date-label');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    if (label) {
-      label.textContent = `${monthNames[month]} ${now.getDate()}, ${year}`;
-    }
-    
-    const events = [];
-    
-    const add = (title, time, category, link) => {
-      events.push({ title, time, category, link });
-    };
-    
-    // Recurring weekly events
-    const dow = new Date(year, month, now.getDate()).getDay();
-    if (dow === 2) add("Winkler Farmer's Market", "4:00 PM - 6:00 PM · Central Station parking lot", "community", "https://www.pembinavalleyonline.com/events");
-    if (month === 7 && dow === 3) add("Concerts in the Park", "7:00 PM · Bethel Heritage Park", "community", "https://www.visitwinkler.ca/concerts-in-the-park");
-    
-    // Specific date events for August 2025
-    if (month === 7 && now.getDate() === 4) add("Catie St. Germain and Brothers Keep", "7:00 PM · Concert Hall", "community", "https://www.visitwinkler.ca");
-    if (month === 7 && now.getDate() === 6) add("Morden Farmers Market", "4:00 PM · 8th Street", "community", "https://morden.ca/community-events");
-    if (month === 8 && now.getDate() >= 1 && now.getDate() <= 7) add("Labour Day - No School", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 7 && now.getDate() === 8) add("Prairie Dale No Classes Admin Day", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 7 && now.getDate() === 9) add("Prairie Dale First Day Grades K-9", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 7 && now.getDate() === 10) add("Prairie Dale First Day Grades 10-12", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 7 && now.getDate() === 12) add("Kidventure Wednesdays", "1:00 PM · Altona EMM Church", "community", "https://altonaemmc.com/");
-    if (month === 7 && now.getDate() === 17) add("MCC Blanket Making", "9:30 AM · Morden Mennonite Church", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 18) add("Summer Shores Paint & Sip", "6:00 PM · Winkler Arts & Culture", "community", "https://www.visitwinkler.ca");
-    if (month === 7 && now.getDate() === 19) add("The Big Canoe", "9:00 AM · Lake Minnewasta", "community", "https://morden.ca/access-event-centre");
-    if (month === 7 && now.getDate() === 23) add("Winkler EMMC Worship Service", "10:30 AM · 600 Southview Drive", "family", "http://www.winkleremmc.com/events/");
-    if (month === 7 && now.getDate() === 24) add("Morden Council Meeting", "7:00 PM · 500 Stephen St", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 25) add("Morden Farmers Market", "4:00 PM · 8th Street", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 26) add("Kidventure Wednesdays", "1:00 PM · Altona EMM Church", "community", "https://altonaemmc.com/");
-    if (month === 7 && now.getDate() === 29) add("Morden Back40 Music Festival", "Morden, MB", "community", "https://www.backfortymusicfestival.com/");
-    if (month === 7 && now.getDate() === 30) add("Winkler EMMC Worship Service", "10:30 AM · 600 Southview Drive", "family", "http://www.winkleremmc.com/events/");
-    if (month === 6 && now.getDate() >= 14 && now.getDate() <= 16) add("Plum Coulee Plum Fest", "125th Anniversary · Plum Coulee MB", "community", "http://www.plumfest.com/");
-    if (month === 7 && now.getDate() >= 7 && now.getDate() <= 9) add("Winkler Harvest Festival", "Fairgrounds", "community", "https://www.winklerharvestfestival.com/");
-    
-    // PVBC VBS Aug 12-14
-    if (month === 7 && now.getDate() >= 12 && now.getDate() <= 14) add("PVBC Vacation Bible School", "Times vary · Pembina Valley Baptist Church", "faith", "http://www.pembinavalleybaptistchurch.com/");
-    
-    // Sort by time
-    events.sort((a, b) => a.time.localeCompare(b.time));
-    
-    if (events.length === 0) {
-      container.innerHTML = '<p class="muted">No events scheduled for today.</p>';
-      return;
-    }
-    
-    events.forEach(ev => {
-      const el = document.createElement('a');
-      el.className = 'day-event bubble';
-      el.href = ev.link || '#';
-      el.target = '_blank';
-      el.rel = 'noopener';
-      el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">ICS</button></div>`;
-      container.appendChild(el);
-    });
-  }
-
-function buildMonth() {
+  function buildMonth() {
     const wrap = document.getElementById('month-wrap');
     if (!wrap) return;
     const now = new Date();
@@ -1079,7 +1015,6 @@ function buildMonth() {
     });
     if (page === 'home') renderFeatured();
     if (page === 'calendar') buildWeek();
-    buildToday();
     if (page === 'activities') buildActivityWeek();
     if (page === 'family') renderFamilyEvents();
     if (page === 'weather') loadWeather();
@@ -1117,7 +1052,7 @@ function buildMonth() {
       const updEls = document.querySelectorAll('#updated, #updated2');
       tempEls.forEach(el => el.textContent = Math.round(cw.temperature) + '°');
       condEls.forEach(el => el.textContent = weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h');
-      locEls.forEach(el => el.textContent = 'Pembina, MB');
+      locEls.forEach(el => el.textContent = 'Winkler, MB');
       updEls.forEach(el => el.textContent = 'Updated: ' + new Date().toLocaleTimeString());
       drawWeatherIcon('weatherIcon', cw.weathercode);
       drawWeatherIcon('weatherIcon2', cw.weathercode);
@@ -1134,10 +1069,10 @@ function buildMonth() {
       const loc2El = document.getElementById('location2');
       if (tempEl) tempEl.textContent = '--°';
       if (condEl) condEl.textContent = 'Weather unavailable';
-      if (locEl) locEl.textContent = 'Pembina, MB';
+      if (locEl) locEl.textContent = 'Winkler, MB';
       if (temp2El) temp2El.textContent = '--°';
       if (cond2El) cond2El.textContent = 'Weather unavailable';
-      if (loc2El) loc2El.textContent = 'Pembina, MB';
+      if (loc2El) loc2El.textContent = 'Winkler, MB';
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
     }
@@ -1257,7 +1192,7 @@ function buildMonth() {
     if (!container) return;
     const featured = [
       { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Winkler Fairgrounds', date: 'Aug 7', link: 'https://www.winklerharvestfestival.com/', promoted: true },
-      { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Pembina, MB', date: 'Aug', link: 'https://pds.gvsd.ca/' },
+      { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Winkler, MB', date: 'Aug', link: 'https://pds.gvsd.ca/' },
       { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18', link: 'https://winklerchamber.com/events/' },
       { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28', link: 'https://cornandapple.com/', promoted: true },
       { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29', link: 'https://www.backfortymusicfestival.com/' },

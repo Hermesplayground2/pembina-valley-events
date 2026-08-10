@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembina Valley Events</title>
+<style>
+  :root {
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --border: #e5e7eb;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --radius: 16px;
+    --shadow: rgba(15, 23, 42, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  header {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+    padding: 44px 20px 52px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  header h1 { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; }
+  header p { opacity: 0.9; margin-top: 10px; font-weight: 500; font-size: 1.05rem; }
+  nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .nav-link {
+    padding: 9px 15px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.92rem;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { background: #0f172a; color: white; border-color: #0f172a; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 28px 18px; }
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: 0 6px 18px var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+  }
+  .card-landscape-field::before { background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80'); }
+  .card-landscape-activity::before { background-image: url('https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80'); }
+  .card-landscape-calendar::before { background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80'); }
+  .card-landscape-weather::before { background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80'); }
+  .card > * { position: relative; }
+  .card h2 { font-size: 1.15rem; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .weather { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .weather .temp { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; }
+  .weather .meta { color: var(--muted); font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #3730a3;
+    margin: 2px 4px 2px 0;
+  }
+  .event { border-left: 4px solid var(--accent); padding: 10px 12px; margin: 10px 0; border-radius: 0 12px 12px 0; background: #f8fafc; }
+  .event .title { font-weight: 600; }
+  .event .meta { color: var(--muted); font-size: 0.9rem; }
+  .activity { padding: 14px; border-radius: 14px; background: linear-gradient(180deg, #ffffff, #f8fafc); border: 1px solid var(--border); margin: 8px 0; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .activity:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(15,23,42,0.08); }
+  .activity .name { font-weight: 700; }
+  .activity .desc { color: var(--muted); font-size: 0.92rem; }
+  .section { margin-top: 30px; }
+  .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+  .section-subtitle { color: var(--muted); font-size: 0.95rem; margin-top: -10px; margin-bottom: 16px; }
+  footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px; }
+  footer strong { color: var(--text); }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: white; border: 1px solid var(--border); cursor: pointer; font-weight: 600; transition: all 0.2s; }
+  .pill:hover { border-color: #0f172a; }
+  .pill.active { background: #0f172a; color: white; border-color: #0f172a; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .weather-icon { width: 56px; height: 56px; }
+  .muted { color: var(--muted); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .spacer { height: 12px; }
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .contact-form { display: grid; gap: 12px; }
+  .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; transition: border-color 0.2s; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #0f172a; }
+  .contact-form button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+  .contact-form button:hover { opacity: 0.92; }
+  .local-card { border: 1px dashed var(--border); position: relative; overflow: hidden; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .local-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
+  .local-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .local-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    opacity: 0.14;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+  }
+  .local-card .brand { height: 52px; margin: -18px -18px 12px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: 0.04em; color: #0f172a; font-size: 0.95rem; }
+  .brand-superstore { background: #bfdbfe; }
+  .brand-coop { background: #bae6fd; }
+  .brand-nofrills { background: #bbf7d0; }
+  .brand-sobeys { background: #bfdbfe; }
+  .brand-leevers { background: #fecaca; }
+  .brand-petro { background: #fed7aa; }
+  .brand-canadiantire { background: #fecaca; }
+  .brand-homehardware { background: #fde68a; }
+  .brand-camp { background: #99f6e4; }
+  .brand-buttercup { background: #fbcfe8; }
+  .brand-charleys { background: #fecaca; }
+  .brand-sushismith { background: #e5e7eb; }
+  .brand-flavors { background: #bbf7d0; }
+  .brand-iceburg { background: #bfdbfe; }
+  .brand-chucks { background: #fecaca; }
+  .brand-ralphs { background: #fde68a; }
+  .brand-toppers { background: #fde68a; }
+  .brand-mulligans { background: #d1d5db; }
+  .brand-pizza { background: #fee2e2; }
+  .brand-fast { background: #fef9c3; }
+  .brand-event { background: #e0f2fe; }
+  .brand-fund { background: #dcfce7; }
+  .brand-live { background: #fef3c7; }
+  .brand-workshop { background: #d1fae5; }
+  .brand-family { background: #fce7f3; }
+
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .featured-card { border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: white; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .featured-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,0.1); }
+  .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .featured-card .title { font-weight: 800; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .featured-card .meta { color: var(--muted); font-size: 0.88rem; }
+  .featured-card .date-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; background: #eef2ff; color: #3730a3; }
+  .featured-card .cat-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; background: #fef3c7; color: #92400e; }
+  .featured-card .row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .featured-card .trust { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
+
+  .day-columns { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 0 0 12px 12px; overflow: hidden; background: white; }
+  .day-column { background: rgba(255,255,255,0.92); border-right: 1px solid var(--border); padding: 10px; min-height: 140px; }
+  .day-column:last-child { border-right: none; }
+  .day-column h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--text); }
+  .day-event { border-left: 3px solid var(--accent2); padding: 8px 10px; margin: 6px 0; border-radius: 0 10px 10px 0; background: #f8fafc; font-size: 0.88rem; transition: transform 0.12s ease; }
+  .day-event:hover { transform: translateX(2px); }
+  .day-event .title { font-weight: 600; }
+  .day-event .time { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+  .day-event[data-category="community"] { border-left-color: #2563eb; }
+  .day-event[data-category="outdoors"] { border-left-color: #16a34a; }
+  .day-event[data-category="family"] { border-left-color: #7c3aed; }
+
+  .cal-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px 12px 0 0; overflow: hidden; background: white; }
+  .cal-header .cal-day-header { padding: 10px; text-align: center; font-weight: 700; font-size: 0.85rem; background: #f8fafc; border-right: 1px solid var(--border); }
+  .cal-header .cal-day-header:last-child { border-right: none; }
+  .cal-header .cal-date { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+  .cal-now { color: #dc2626; }
+
+  .month-wrap { margin-top: 18px; }
+  .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white; }
+  .month-header { padding: 8px; text-align: center; font-weight: 700; font-size: 0.78rem; background: #f8fafc; border-right: 1px solid var(--border); }
+  .month-header:last-child { border-right: none; }
+  .month-day { min-height: 34px; padding: 4px; border-right: 1px solid var(--border); border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--muted); }
+  .month-day:last-child { border-right: none; }
+  .month-day.empty { background: #fafafa; }
+  .month-day .chip { display: inline-block; padding: 2px 6px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: 0.65rem; font-weight: 700; margin: 1px 0; }
+  .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 12px; }
+  .weekly-day { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 8px; text-align: center; }
+  .weekly-day .label { font-size: 0.75rem; color: var(--muted); }
+  .weekly-day .value { font-weight: 700; }
+  .weekly-day .detail { font-size: 0.72rem; color: var(--muted); }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; background: #0f172a; color: white; text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
+  .cta-btn:hover { opacity: 0.92; }
+
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
+    .day-columns { grid-template-columns: 1fr; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .cal-header { font-size: 0.72rem; }
+    .cal-header .cal-day-header { padding: 8px 4px; }
+    header h1 { font-size: 1.7rem; }
+    header p { font-size: 0.95rem; }
+    .nav-link { font-size: 0.85rem; padding: 8px 12px; }
+    .container { padding: 20px 14px; }
+    .card { padding: 16px; }
+    .day-event { font-size: 0.82rem; }
+    .featured-card .title { font-size: 0.98rem; }
+    .filters { gap: 6px; }
+    .pill { padding: 7px 12px; font-size: 0.85rem; }
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>Pembina Valley Events</h1>
+  <p>Winkler · Morden · Altona · Local happenings this month</p>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-link active" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="calendar">Activities</a>
+    <a href="#" class="nav-link" data-page="weather">Weather</a>
+    <a href="#" class="nav-link" data-page="local">Locals</a>
+    <a href="#" class="nav-link" data-page="family">Family</a>
+    <a href="#" class="nav-link" data-page="contact">Contact</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="page active" id="page-home">
+    <section class="section">
+      <div class="grid grid-2">
+        <div class="card card-landscape-weather">
+          <h2>📍 Winkler Weather</h2>
+          <div class="weather">
+            <div>
+              <div class="temp" id="temp">--°</div>
+              <div class="meta" id="condition">Loading...</div>
+              <div class="meta" id="location">Winkler, MB</div>
+            </div>
+            <canvas class="weather-icon" id="weatherIcon" aria-label="weather icon"></canvas>
+          </div>
+          <div class="spacer"></div>
+          <div class="muted" id="updated">Updated: just now</div>
+          <div id="weekly-home" class="weekly-wrap"></div>
+        </div>
+
+        <div class="card card-landscape-activity">
+          <h2>🌱 Today’s Suggested Activities</h2>
+          <div id="activities">
+            <div class="activity"><div class="name">Evening walk</div><div class="desc">Good for clearing your head after study or work.</div></div>
+            <div class="activity"><div class="name">Indoor reading</div><div class="desc">Bible study, notes, or planning.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>⭐ Featured Events</h2>
+        <p class="muted">Top local happenings this week</p>
+        <div class="spacer"></div>
+        <div id="featured-events" class="featured-grid"></div>
+        <div class="cta-row">
+          <a class="cta-btn" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Browse Community Events</a>
+          <a class="cta-btn" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
+          <a class="cta-btn" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>📅 Weekly Schedule</h2>
+        <div class="filters">
+          <button class="pill active" onclick="filterDailyEvents('all', this)">All</button>
+          <button class="pill" onclick="filterDailyEvents('today', this)">Today</button>
+          <button class="pill" onclick="filterDailyEvents('tomorrow', this)">Tomorrow</button>
+          <button class="pill" onclick="filterDailyEvents('weekend', this)">This Weekend</button>
+          <button class="pill" onclick="filterDailyEvents('community', this)">Community</button>
+          <button class="pill" onclick="filterDailyEvents('outdoors', this)">Outdoors</button>
+          <button class="pill" onclick="filterDailyEvents('family', this)">Family</button>
+        </div>
+        <div class="cal-header" id="cal-header"></div>
+        <div class="day-columns" id="daily-events"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>🗓 Monthly Schedule</h2>
+        <div class="month-wrap" id="month-wrap"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-calendar">
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>📅 Activities</h2>
+        <div class="filters">
+          <button class="pill active" onclick="filterDayActivities('all', this)">All</button>
+          <button class="pill" onclick="filterDayActivities('community', this)">Community</button>
+          <button class="pill" onclick="filterDayActivities('outdoors', this)">Outdoors</button>
+          <button class="pill" onclick="filterDayActivities('family', this)">Family</button>
+        </div>
+        <div class="filters" style="margin-bottom:14px;">
+          <a class="pill" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Community Events</a>
+          <a class="pill" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
+          <a class="pill" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+        <div class="spacer"></div>
+        <div class="cta-row">
+          <a class="cta-btn" href="https://pembinavalley.gwevents.ca/events/new" target="_blank">📝 Submit an Event</a>
+          <a class="cta-btn" href="https://www.pembinavalleyonline.com/features/daily-news" target="_blank">📧 Daily News Newsletter</a>
+        </div>
+        <div id="act-days"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-weather">
+    <section class="section">
+      <div class="grid grid-2">
+        <div class="card card-landscape-weather">
+          <h2>🌤 Live Weather</h2>
+          <div class="weather">
+            <div>
+              <div class="temp" id="temp2">--°</div>
+              <div class="meta" id="condition2">Loading...</div>
+              <div class="meta" id="location2">Winkler, MB</div>
+            </div>
+            <canvas class="weather-icon" id="weatherIcon2" aria-label="weather icon"></canvas>
+          </div>
+          <div class="spacer"></div>
+          <div class="muted" id="updated2">Updated: just now</div>
+          <div id="weekly-page" class="weekly-wrap"></div>
+        </div>
+        <div class="card">
+          <h2>🧭 Weather-Based Plan</h2>
+          <div id="weatherPlan">
+            <div class="activity"><div class="name">Indoor focus</div><div class="desc">Good day for study, planning, and computer work.</div></div>
+            <div class="activity"><div class="name">Errands</div><div class="desc">Flexible window for groceries or admin tasks.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-local">
+    <section class="section">
+      <div class="card">
+        <h2>🏪 Locals</h2>
+        <p class="muted">Winkler, MB spots, services, and food deals.</p>
+        <div class="spacer"></div>
+        <div class="filters" style="margin-bottom:14px;">
+          <a class="pill" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Community Events</a>
+          <a class="pill" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
+          <a class="pill" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+        </div>
+        <div class="grid grid-3">
+          <div class="card local-card brand-superstore">
+            <div class="tag">Grocery</div>
+            <h2 style="margin-top:6px;">Real Canadian Superstore</h2>
+            <p class="muted">175 Cargill Rd · <a href="https://maps.google.com/?q=Real+Canadian+Superstore+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-coop">
+            <div class="tag">Grocery</div>
+            <h2 style="margin-top:6px;">Co-op</h2>
+            <p class="muted">370 Main St · <a href="https://maps.google.com/?q=Co-op+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-nofrills">
+            <div class="tag">Grocery</div>
+            <h2 style="margin-top:6px;">No Frills</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=No+Frils+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-sobeys">
+            <div class="tag">Grocery</div>
+            <h2 style="margin-top:6px;">Sobeys</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Sobeys+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-leevers">
+            <div class="tag">Grocery</div>
+            <h2 style="margin-top:6px;">Leevers Foods</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Leevers+Foods+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-petro">
+            <div class="tag">Gas / Fuel</div>
+            <h2 style="margin-top:6px;">Co-op Gas Bar</h2>
+            <p class="muted">370 Main St · <a href="https://maps.google.com/?q=Co-op+Gas+Bar+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-petro">
+            <div class="tag">Gas / Fuel</div>
+            <h2 style="margin-top:6px;">Petro Canada</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Petro+Canada+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-canadiantire">
+            <div class="tag">Gas / Fuel</div>
+            <h2 style="margin-top:6px;">Canadian Tire Gas+</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Canadian+Tire+Gas+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-coop">
+            <div class="tag">Gas / Fuel</div>
+            <h2 style="margin-top:6px;">Red River Co-Op</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Red+River+Co+Op+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-homehardware">
+            <div class="tag">Hardware</div>
+            <h2 style="margin-top:6px;">Home Hardware</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Home+Hardware+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-camp">
+            <div class="tag">Recreation / Camp</div>
+            <h2 style="margin-top:6px;">Winkler Bible Camp</h2>
+            <p class="muted">Winkler · <a href="https://maps.google.com/?q=Winkler+Bible+Camp+MB" target="_blank">Map</a></p>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <p class="muted">Edit the HTML to add more locals, addresses, phone numbers, or links.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>🍕 Fast Food & Pizza Specials</h2>
+        <p class="muted">Current deals and promos from local chains.</p>
+        <div class="spacer"></div>
+        <div class="grid grid-3">
+          <div class="card local-card brand-pizza">
+            <div class="tag">Pizza</div>
+            <h2 style="margin-top:6px;">Pizza 73</h2>
+            <p class="muted">2-for-1 medium pizza special · <a href="https://maps.google.com/?q=Pizza+73+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-pizza">
+            <div class="tag">Pizza</div>
+            <h2 style="margin-top:6px;">Domino's Pizza</h2>
+            <p class="muted">Mix & match deals · <a href="https://maps.google.com/?q=Domino%27s+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-pizza">
+            <div class="tag">Pizza</div>
+            <h2 style="margin-top:6px;">Papa John's</h2>
+            <p class="muted">Large pizza specials · <a href="https://maps.google.com/?q=Papa+John%27s+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-fast">
+            <div class="tag">Fast Food</div>
+            <h2 style="margin-top:6px;">McDonald's</h2>
+            <p class="muted">Value meal combos · <a href="https://maps.google.com/?q=McDonald%27s+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-fast">
+            <div class="tag">Fast Food</div>
+            <h2 style="margin-top:6px;">KFC</h2>
+            <p class="muted">Family bucket deals · <a href="https://maps.google.com/?q=KFC+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card brand-fast">
+            <div class="tag">Fast Food</div>
+            <h2 style="margin-top:6px;">A&W</h2>
+            <p class="muted">Mozzarella burger special · <a href="https://maps.google.com/?q=A%26W+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>🎉 Special Events</h2>
+        <p class="muted">Upcoming community events and seasonal happenings.</p>
+        <div class="spacer"></div>
+        <div class="grid grid-3">
+          <div class="card local-card brand-event">
+            <div class="tag">Festival</div>
+            <h2 style="margin-top:6px;">Winkler Harvest Festival</h2>
+            <p class="muted">Aug 7 - 9 · Fairgrounds · <a href="https://www.visitwinkler.ca/harvest-festival" target="_blank">Details</a></p>
+          </div>
+          <div class="card local-card brand-event">
+            <div class="tag">Music</div>
+            <h2 style="margin-top:6px;">Concerts in the Park</h2>
+            <p class="muted">Wednesdays in July & Aug · Bethel Park · <a href="https://www.visitwinkler.ca/concerts-in-the-park" target="_blank">Details</a></p>
+          </div>
+          <div class="card local-card brand-event">
+            <div class="tag">Holiday</div>
+            <h2 style="margin-top:6px;">Tree Lighting Ceremony</h2>
+            <p class="muted">Late Nov / Early Dec · Bethel Park · <a href="https://www.visitwinkler.ca/tree-lighting-ceremony" target="_blank">Details</a></p>
+          </div>
+          <div class="card local-card brand-event">
+            <div class="tag">Christmas</div>
+            <h2 style="margin-top:6px;">Christmas Glow in the Country</h2>
+            <p class="muted">December · Winkler Bible Camp · <a href="https://www.christmasglowinthecountry.com/" target="_blank">Details</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2>🤝 Fundraisers</h2>
+        <p class="muted">Local causes and charity drives looking for support.</p>
+        <div class="spacer"></div>
+        <div class="grid grid-3">
+          <div class="card local-card brand-fund">
+            <div class="tag">Charity</div>
+            <h2 style="margin-top:6px;">Winkler Food Bank Drive</h2>
+            <p class="muted">Drop-off donations at local grocery stores · <a href="https://www.winklerfoodbank.ca" target="_blank">Info</a></p>
+          </div>
+          <div class="card local-card brand-fund">
+            <div class="tag">Fundraiser</div>
+            <h2 style="margin-top:6px;">Winkler Bible Camp Fundraiser</h2>
+            <p class="muted">Support camp programs and scholarships · <a href="https://winklerbiblecamp.ca" target="_blank">Info</a></p>
+          </div>
+          <div class="card local-card brand-fund">
+            <div class="tag">Community</div>
+            <h2 style="margin-top:6px;">Local School Fundraiser</h2>
+            <p class="muted">Check with Prairie Dale and WCRC schools · <a href="https://www.winkler.ca" target="_blank">Info</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>🍽 Local Food Deals</h2>
+        <p class="muted">Popular Winkler restaurants and food spots worth checking out.</p>
+        <div class="spacer"></div>
+        <div class="grid grid-3">
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Buttercup Cafe</h2>
+            <p class="muted">Local favorite · <a href="https://maps.google.com/?q=Buttercup+Cafe+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Charley B's</h2>
+            <p class="muted">Classic grill & ice cream · <a href="https://maps.google.com/?q=Charley+B%27s+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">SUSHISMITH</h2>
+            <p class="muted">Sushi · <a href="https://maps.google.com/?q=SUSHISMITH+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Flavors of Mexico</h2>
+            <p class="muted">Mexican · <a href="https://maps.google.com/?q=Flavors+of+Mexico+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Iceburg Drive-in</h2>
+            <p class="muted">Drive-in classics · <a href="https://maps.google.com/?q=Iceburg+Drive+in+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Chuck's Roadhouse</h2>
+            <p class="muted">Steak & burgers · <a href="https://maps.google.com/?q=Chuck%27s+Roadhouse+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Ralph's German Restaurant</h2>
+            <p class="muted">German cuisine · <a href="https://maps.google.com/?q=Ralph%27s+German+Restaurant+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Toppers Family Restaurant</h2>
+            <p class="muted">Family dining · <a href="https://maps.google.com/?q=Toppers+Family+Restaurant+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+          <div class="card local-card">
+            <div class="tag">Restaurant</div>
+            <h2 style="margin-top:6px;">Mulligan's Restaurant & Lounge</h2>
+            <p class="muted">Pub fare · <a href="https://maps.google.com/?q=Mulligan%27s+Restaurant+Winkler+MB" target="_blank">Map</a></p>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <p class="muted">Add specials, hours, and links as you want.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-family">
+    <section class="section">
+      <div class="grid grid-3">
+        <div class="card">
+          <h2>👨‍👩‍👧‍👦 Family</h2>
+          <p class="muted">Home schedule, school, meals, and time together in Winkler.</p>
+          <div class="spacer"></div>
+          <div id="family-school-events"></div>
+        </div>
+        <div class="card">
+          <h2>⛪ Church & Ministry</h2>
+          <p class="muted">Local church events, services, and community gatherings.</p>
+          <div class="spacer"></div>
+          <div id="family-church-events"></div>
+        </div>
+        <div class="card">
+          <h2>🧰 Garage Sales & Community</h2>
+          <p class="muted">Local garage sales and family-friendly community events.</p>
+          <div class="spacer"></div>
+          <div id="family-garage-events"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-contact">
+    <section class="section">
+      <div class="card">
+        <h2>✉️ Contact</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Contact form is static. Connect it to a mail service if you want email delivery.');">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Your email" required>
+          <textarea rows="4" placeholder="Message" required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+        <p class="muted" style="margin-top:10px;">This form is a front-end template. To receive emails, connect it to a mail service or backend.</p>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Pembina Valley Events</strong> · Winkler, MB<br>
+  Local events, activities, weather, and community connections.
+</footer>
+
+<script>
+  function buildWeek() {
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const start = new Date(today);
+    start.setDate(today.getDate() - today.getDay());
+
+    const header = document.getElementById('cal-header');
+    const body = document.getElementById('daily-events');
+    if (!header || !body) return;
+    header.innerHTML = '';
+    body.innerHTML = '';
+
+    const rangeStart = new Date(start);
+    const rangeEnd = new Date(start);
+    rangeEnd.setDate(start.getDate() + 6);
+
+    const eventsByDay = [[], [], [], [], [], [], []];
+
+    const addIfInWeek = (dateStr, ev) => {
+      const parts = dateStr.split('-');
+      const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+      if (evDate >= rangeStart && evDate <= rangeEnd) {
+        const diff = Math.round((evDate - start) / 86400000);
+        if (diff >= 0 && diff < 7) eventsByDay[diff].push(ev);
+      }
+    };
+
+    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dow = new Date(year, month, d).getDay();
+      if (dow === 2) addIfInWeek(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot' });
+      if (month === 7 && dow === 3) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park' });
+      if (month === 7 && d >= 7 && d <= 9) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds' });
+      if (month === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library' });
+      if (month === 7 && d === 5) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library' });
+      if (month === 8 && d === 4) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall' });
+      if (month === 8 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture' });
+      if (month === 9 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St' });
+      if (month === 9 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall' });
+      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture' });
+      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC' });
+      if (month === 8 && d === 16) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive' });
+      if (month === 8 && d === 23) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 30) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca' });
+    }
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      const isToday = d.getTime() === today.getTime();
+
+      const h = document.createElement('div');
+      h.className = 'cal-day-header';
+      h.innerHTML = `<div${isToday ? ' class="cal-now"' : ''}>${days[d.getDay()]}</div><div class="cal-date">${months[d.getMonth()]} ${d.getDate()}</div>`;
+      header.appendChild(h);
+
+      const col = document.createElement('div');
+      col.className = 'day-column';
+      col.dataset.day = isToday ? 'Today' : `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
+      body.appendChild(col);
+
+      eventsByDay[i].forEach(ev => {
+        const el = document.createElement('div');
+        el.className = 'day-event';
+        el.dataset.category = ev.category;
+        el.innerHTML = `<div class="title">${ev.title}</div><div class="time">${ev.time}</div>`;
+        col.appendChild(el);
+      });
+    }
+  }
+
+  function filterDayActivities(category, btn) {
+    const pills = document.querySelectorAll('#act-days .pill');
+    pills.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('#act-days .day-event').forEach(ev => {
+      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
+    });
+  }
+
+  function buildActivityWeek() {
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const today = new Date(year, month, now.getDate());
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const body = document.getElementById('act-days');
+    if (!body) return;
+    body.innerHTML = '';
+
+    const eventsByDate = {};
+    const add = (dateStr, ev) => {
+      if (!eventsByDate[dateStr]) eventsByDate[dateStr] = [];
+      eventsByDate[dateStr].push(ev);
+    };
+
+    const dow = (y, m, d) => new Date(y, m, d).getDay();
+    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      if (dow(year, month, d) === 2) add(fmt(year, month, d), { category: 'community', title: 'Winkler Farmer’s Market', time: 'Tue 4-6 PM · Central Station parking lot' });
+      if (dow(year, month, d) === 3 && (month === 6 || month === 7)) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park' });
+      if (month === 7 && d >= 7 && d <= 9) add(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Aug 7-9' });
+      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall' });
+      if (month === 9 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St' });
+      if (month === 9 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall' });
+      if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library' });
+      if (month === 7 && d === 5) add(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 2) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC' });
+      if (month === 8 && d === 16) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive' });
+      if (month === 8 && d === 23) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 30) add(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture' });
+      if (month === 8 && d === 7) add(fmt(year, month, d), { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 8) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca' });
+      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca' });
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const isToday = date.getTime() === today.getTime();
+      const dateStr = fmt(year, month, d);
+      const dayEvents = eventsByDate[dateStr] || [];
+
+      const section = document.createElement('div');
+      section.className = 'activity';
+      section.style.marginBottom = '12px';
+      section.innerHTML = `<div class="name" style="font-size:1.05rem; color:${isToday ? '#dc2626' : 'inherit'}">${days[date.getDay()]} · ${months[date.getMonth()]} ${d}</div>`;
+
+      if (dayEvents.length) {
+        const list = document.createElement('div');
+        list.style.marginTop = '6px';
+        list.style.display = 'flex';
+        list.style.flexDirection = 'column';
+        list.style.gap = '6px';
+        dayEvents.forEach(ev => {
+          const item = document.createElement('div');
+          item.className = 'day-event';
+          item.dataset.category = ev.category;
+          item.style.borderLeft = '3px solid #7c3aed';
+          item.style.padding = '8px 10px';
+          item.style.borderRadius = '0 10px 10px 0';
+          item.style.background = '#f8fafc';
+          item.innerHTML = `<div class="title" style="font-weight:600">${ev.title}</div><div class="time" style="color:#6b7280; font-size:0.85rem">${ev.time}</div>`;
+          list.appendChild(item);
+        });
+        section.appendChild(list);
+      } else {
+        const empty = document.createElement('div');
+        empty.className = 'desc';
+        empty.textContent = 'No events listed.';
+        section.appendChild(empty);
+      }
+
+      body.appendChild(section);
+    }
+  }
+
+  function buildMonth() {
+    const wrap = document.getElementById('month-wrap');
+    if (!wrap) return;
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const today = now.getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    const samples = [];
+    const add = (day, title) => { if (day >= 1 && day <= daysInMonth) samples.push({ day, title }); };
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const dow = date.getDay();
+      const titles = [];
+      if (dow === 2) titles.push("Winkler Farmer's Market");
+      if (month === 7 && dow === 3) titles.push('Concerts in the Park');
+      if (month === 7 && d >= 7 && d <= 9) titles.push('Winkler Harvest Festival');
+      if (month === 7 && d === 6) titles.push('Paper Chain Creations');
+      if (month === 7 && d === 5) titles.push('Summer Storytime');
+      if (month === 8 && d === 4) titles.push('Catie St. Germain');
+      if (month === 8 && d === 18) titles.push('Paint & Sip');
+      if (month === 9 && d === 18) titles.push('Chamber BBQ');
+      if (month === 9 && d === 7) titles.push('Municipal Forum');
+      if (month === 8 && d === 10) titles.push('Mosaic Workshop');
+      if (month === 8 && d === 10) titles.push('Jr. Art Camp');
+      if (month === 8 && d === 10) titles.push('Summer Art Camp');
+      if (titles.length) add(d, titles.join(' / '));
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'month-grid';
+
+    days.forEach(d => {
+      const h = document.createElement('div');
+      h.className = 'month-header';
+      h.textContent = d;
+      grid.appendChild(h);
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'month-day empty';
+      grid.appendChild(empty);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const cell = document.createElement('div');
+      cell.className = 'month-day';
+      const isToday = d === today;
+      cell.innerHTML = `<div style="font-weight:${isToday ? '700' : '400'}; color:${isToday ? '#dc2626' : 'inherit'}">${d}</div>`;
+      samples.filter(s => s.day === d).forEach(s => {
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        chip.textContent = s.title;
+        cell.appendChild(chip);
+      });
+      grid.appendChild(cell);
+    }
+
+    wrap.innerHTML = '';
+    wrap.appendChild(grid);
+  }
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+      link.classList.add('active');
+      if (page === 'weather' || page === 'home') loadWeather();
+    });
+  });
+
+  async function loadWeather() {
+    try {
+      const lat = 49.1833;
+      const lon = -97.9339;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
+      const res = await fetch(url);
+      const data = await res.json();
+      const cw = data.current_weather;
+      const tempEls = document.querySelectorAll('#temp, #temp2');
+      const condEls = document.querySelectorAll('#condition, #condition2');
+      const locEls = document.querySelectorAll('#location, #location2');
+      const updEls = document.querySelectorAll('#updated, #updated2');
+      tempEls.forEach(el => el.textContent = Math.round(cw.temperature) + '°');
+      condEls.forEach(el => el.textContent = weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h');
+      locEls.forEach(el => el.textContent = 'Winkler, MB');
+      updEls.forEach(el => el.textContent = 'Updated: ' + new Date().toLocaleTimeString());
+      drawWeatherIcon('weatherIcon', cw.weathercode);
+      drawWeatherIcon('weatherIcon2', cw.weathercode);
+      updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+      updateWeatherPlan(cw.temperature, cw.weathercode);
+      if (data.daily) renderWeekly(data.daily);
+    } catch (e) {
+      console.warn('Weather load failed:', e);
+      const tempEl = document.getElementById('temp');
+      const condEl = document.getElementById('condition');
+      const locEl = document.getElementById('location');
+      const temp2El = document.getElementById('temp2');
+      const cond2El = document.getElementById('condition2');
+      const loc2El = document.getElementById('location2');
+      if (tempEl) tempEl.textContent = '--°';
+      if (condEl) condEl.textContent = 'Weather unavailable';
+      if (locEl) locEl.textContent = 'Winkler, MB';
+      if (temp2El) temp2El.textContent = '--°';
+      if (cond2El) cond2El.textContent = 'Weather unavailable';
+      if (loc2El) loc2El.textContent = 'Winkler, MB';
+      updateActivities(15, 10, 3);
+      updateWeatherPlan(15, 3);
+    }
+  }
+
+  function weatherLabel(code) {
+    if (code === 0) return 'Clear sky';
+    if (code <= 3) return 'Partly cloudy';
+    if (code <= 48) return 'Foggy';
+    if (code <= 67) return 'Rain';
+    if (code <= 77) return 'Snow';
+    if (code <= 82) return 'Rain showers';
+    if (code <= 86) return 'Snow showers';
+    if (code <= 99) return 'Thunderstorm';
+    return 'Weather';
+  }
+
+  function drawWeatherIcon(canvasId, code) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = 120;
+    canvas.height = 120;
+    ctx.clearRect(0, 0, 120, 120);
+    ctx.fillStyle = '#0f172a';
+    if (code === 0) {
+      ctx.beginPath(); ctx.arc(60, 55, 22, 0, Math.PI * 2); ctx.fill();
+      for (let i = 0; i < 8; i++) { ctx.save(); ctx.translate(60, 55); ctx.rotate(i * Math.PI / 4); ctx.fillRect(46, 28, 4, 14); ctx.restore(); }
+    } else if (code <= 3) {
+      ctx.beginPath(); ctx.arc(60, 55, 22, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#e5e7eb';
+      ctx.beginPath(); ctx.arc(80, 70, 18, 0, Math.PI * 2); ctx.fill();
+    } else if (code <= 67) {
+      ctx.fillStyle = '#9ca3af';
+      ctx.beginPath(); ctx.arc(35, 38, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(55, 28, 12, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(78, 40, 11, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#2563eb';
+      ctx.fillRect(28, 70, 60, 8); ctx.fillRect(38, 86, 40, 7); ctx.fillRect(48, 100, 24, 6);
+    } else {
+      ctx.fillStyle = '#e5e7eb';
+      ctx.fillRect(25, 70, 70, 9); ctx.fillRect(35, 88, 50, 8); ctx.fillRect(45, 105, 30, 6);
+    }
+  }
+
+  function updateActivities(temp, wind, code) {
+    const box = document.getElementById('activities');
+    if (!box) return;
+    const outdoor = [];
+    const indoor = [];
+    if (temp >= 22 && wind < 25) outdoor.push({ name: 'Outdoor sports', desc: 'Warm and calm — good for a walk, run, or family outing.' });
+    else if (temp >= 10 && wind < 30) outdoor.push({ name: 'Park visit', desc: 'Mild weather — pack a light jacket and enjoy outside.' });
+    else outdoor.push({ name: 'Quick walk', desc: 'Cool or breezy — short outdoor movement still works.' });
+
+    if (code >= 51 && code <= 99) indoor.push({ name: 'Indoor focus', desc: 'Rain or storm likely — study, prep lessons, or organize files.' });
+    else if (temp < 10 || wind > 35) indoor.push({ name: 'Indoor focus', desc: 'Cold or windy — good for study, baking, or building.' });
+    else indoor.push({ name: 'Backup indoor plan', desc: 'Keep a cozy indoor option ready if weather changes.' });
+
+    if (temp >= 18 && code < 50) outdoor.push({ name: 'Outdoor meal', desc: 'Temperature holds — eat outside if you can.' });
+    if (wind > 35) outdoor.push({ name: 'Secure outdoor items', desc: 'Strong winds expected — move or tie down loose objects.' });
+
+    const items = [outdoor[0], indoor[0]];
+    box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
+  }
+
+  function updateWeatherPlan(temp, code) {
+    const box = document.getElementById('weatherPlan');
+    if (!box) return;
+    const items = [];
+    if (code === 0 && temp >= 20) items.push({ name: 'Morning garden or walk', desc: 'Clear and warm — start outside while it’s fresh.' });
+    else if (code <= 3) items.push({ name: 'Flexible plan', desc: 'Clouds but usable — keep outdoor options open.' });
+    else if (code <= 67) items.push({ name: 'Indoor focus', desc: 'Rain likely — study, prep lessons, or organize files.' });
+    else items.push({ name: 'Indoor focus', desc: 'Keep warm and use the time for focused work.' });
+    if (temp >= 18 && code < 50) items.push({ name: 'Sunset break', desc: 'Temperature holds — step out for fresh air in the evening.' });
+    box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
+  }
+
+  function renderWeekly(daily) {
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const targets = [
+      document.getElementById('weekly-home'),
+      document.getElementById('weekly-page')
+    ].filter(Boolean);
+
+    if (!targets.length) return;
+    if (!daily || !daily.time || !daily.time.length) {
+      targets.forEach(el => el.innerHTML = '<div class="muted">Weekly forecast unavailable</div>');
+      return;
+    }
+
+    const count = Math.min(7, daily.time.length);
+    let html = '';
+    for (let i = 0; i < count; i++) {
+      const date = new Date(daily.time[i] + 'T00:00:00');
+      const label = days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
+      const maxT = daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[i]) : '--';
+      const minT = daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[i]) : '--';
+      const precip = daily.precipitation_sum ? daily.precipitation_sum[i].toFixed(1) : null;
+      const condition = weatherLabel(daily.weathercode[i]);
+      const precipText = precip === null ? '' : `${precip} mm`;
+      html += `<div class="weekly-day"><div class="label">${label}</div><div class="detail">${condition}</div><div class="value">${maxT}° / ${minT}°</div><div class="detail">${precipText}</div></div>`;
+    }
+    targets.forEach(el => el.innerHTML = html);
+  }
+
+  buildWeek();
+  buildActivityWeek();
+  buildMonth();
+  renderFeatured();
+  renderFamilyEvents();
+  loadWeather();
+}
+
+  function renderFamilyEvents() {
+    const schoolBox = document.getElementById('family-school-events');
+    const churchBox = document.getElementById('family-church-events');
+    const garageBox = document.getElementById('family-garage-events');
+
+    const schoolEvents = [
+      { title: 'Labour Day - No School', date: 'Aug 4 (Mon)', time: 'Prairie Dale School', category: 'family' },
+      { title: 'Admin Day - No Classes', date: 'Aug 5 (Tue)', time: 'Prairie Dale School', category: 'family' },
+      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School', category: 'family' },
+      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School', category: 'family' }
+    ];
+
+    const churchEvents = [
+      { title: 'Winkler EMMC Worship Service', date: 'Aug 2, 16, 23, 30', time: '10:30 AM · 600 Southview Drive', category: 'family' },
+      { title: 'Harvest Festival Service', date: 'Aug 9 (Sun)', time: '10:00 AM · Winkler Park', category: 'family' },
+      { title: 'Church Council Meeting', date: 'Aug 18 (Tue)', time: '7:00 PM · 600 Southview Drive', category: 'family' }
+    ];
+
+    const garageEvents = [
+      { title: 'Weekly Garage Sales', date: 'Aug 3-9', time: 'Multiple addresses · winkler.garagesalejunkie.ca', category: 'community' },
+      { title: 'City Wide Garage Sale', date: 'May 23, 2026', time: 'Multiple addresses · Watch for 2027 date', category: 'community' },
+      { title: 'Morden City Wide Garage Sale', date: 'Jun 6, 2026', time: 'Morden, MB · Multiple addresses', category: 'community' }
+    ];
+
+    const renderCard = (ev) => `
+      <div class="day-event" data-category="${ev.category}">
+        <div class="title">${ev.title}</div>
+        <div class="time">${ev.date} · ${ev.time}</div>
+      </div>
+    `;
+
+    if (schoolBox) schoolBox.innerHTML = schoolEvents.map(renderCard).join('');
+    if (churchBox) churchBox.innerHTML = churchEvents.map(renderCard).join('');
+    if (garageBox) garageBox.innerHTML = garageEvents.map(renderCard).join('');
+  }
+</script>
