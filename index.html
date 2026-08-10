@@ -353,6 +353,43 @@
     .featured-grid { grid-template-columns: 1fr; }
     .card { padding: 16px; }
   }
+  .contact-form { display: grid; gap: 12px; }
+  .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(148,163,184,0.7);
+    background: #fff;
+    font: inherit;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    border-color: #2563eb;
+  }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-submit {
+    justify-self: start;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(148,163,184,0.7);
+    background: #fff;
+    color: #0f172a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .contact-submit:hover { background: #f1f5f9; }
+  .contact-hint { margin-top: 8px; font-size: 0.9rem; color: #64748b; }
+  @media (max-width: 640px) {
+    .contact-row { grid-template-columns: 1fr; }
+  }
   @media (max-width: 380px) {
     .calendar-grid { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: 1fr; }
