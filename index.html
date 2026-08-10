@@ -762,7 +762,9 @@ function downloadICS(title, time, date) {
       const dateLabel = document.createElement('div');
       dateLabel.style.gridColumn = '1 / -1';
       dateLabel.style.fontWeight = '800';
-      dateLabel.style.marginTop = '12px';
+      dateLabel.style.marginTop = '18px';
+      dateLabel.style.paddingTop = '10px';
+      dateLabel.style.borderTop = '2px solid #0f172a';
       dateLabel.textContent = days[d.getDay()] + ' · ' + months[d.getMonth()] + ' ' + d.getDate();
       header.appendChild(dateLabel);
 
@@ -773,7 +775,7 @@ function downloadICS(title, time, date) {
         el.target = '_blank';
         el.rel = 'noopener';
         el.dataset.category = ev.category;
-        el.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="">ICS</button></div>`;
+        el.innerHTML = `<span class="title">${ev.title}</span> <span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="">ICS</button></div>`;
         body.appendChild(el);
       });
     }
