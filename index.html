@@ -775,6 +775,7 @@ function downloadICS(title, time, date) {
       dateLabel.textContent = days[d.getDay()] + ' · ' + months[d.getMonth()] + ' ' + d.getDate();
       header.appendChild(dateLabel);
 
+      dayEvents.sort((a, b) => a.time.localeCompare(b.time));
       dayEvents.forEach(ev => {
         const el = document.createElement('a');
         el.className = 'day-event bubble';
@@ -967,6 +968,7 @@ function filterDayActivities(category, btn) {
       return;
     }
     
+    events.sort((a, b) => a.time.localeCompare(b.time));
     events.forEach(ev => {
       const el = document.createElement('a');
       el.className = 'day-event bubble';
