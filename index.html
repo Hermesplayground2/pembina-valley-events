@@ -1339,6 +1339,33 @@ function buildMonth() {
     ev.preventDefault();
     downloadICS(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
   });
+
+  const eventForm = document.getElementById('event-form');
+  if (eventForm) {
+    eventForm.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const title = document.getElementById('evt-title').value.trim();
+      const date = document.getElementById('evt-date').value;
+      const time = document.getElementById('evt-time').value.trim();
+      const category = document.getElementById('evt-category').value;
+      const link = document.getElementById('evt-link').value.trim();
+      const desc = document.getElementById('evt-desc').value.trim();
+      if (!title || !date) {
+        alert('Please provide an event title and date.');
+        return;
+      }
+      const subject = encodeURIComponent('Event Submission: ' + title);
+      const body = encodeURIComponent(
+        'Event Title: ' + title + '\\n' +
+        'Date: ' + date + '\\n' +
+        'Time: ' + (time || 'TBD') + '\\n' +
+        'Category: ' + category + '\\n' +
+        'Link: ' + (link || 'N/A') + '\\n' +
+        'Description: ' + (desc || 'N/A') + '\\n\\nSubmitted from the Pembina Valley Events website.'
+      );
+      window.location.href = 'mailto:boomsecure@protonmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
 </script>
 </body>
 </html>
