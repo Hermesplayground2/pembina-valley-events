@@ -663,6 +663,124 @@
   .wi-snow { background:#e5e7eb; border-radius:8px; width:34px; height:18px; }
   .wi-snow::before { width:10px; height:10px; background:#e5e7eb; border-radius:50%; top:-7px; left:4px; }
   .wi-snow::after { width:7px; height:7px; background:#e5e7eb; border-radius:50%; top:-5px; right:4px; }
+
+  /* Weather dark card styles */
+  .weather-dark-card {
+    background: #0f172a;
+    border-radius: 28px;
+    padding: 22px;
+    color: #e2e8f0;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.35);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .weather-header {
+    margin-bottom: 18px;
+  }
+  .weather-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .pin-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .weather-location-text {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    letter-spacing: 0.02em;
+  }
+  .weather-temp {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    background: #e2e8f0;
+    display: inline-block;
+    border-radius: 14px;
+    padding: 4px 14px;
+    margin: 4px 0 6px;
+    line-height: 1.1;
+  }
+  .weather-desc {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    margin-bottom: 2px;
+  }
+  .weather-meta {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+  .weather-updated {
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-top: 6px;
+  }
+  .forecast-pills {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  @media (max-width: 720px) {
+    .forecast-pills {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .forecast-pills {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .forecast-pill {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 12px 6px 10px;
+    text-align: left;
+    color: #0f172a;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+  }
+  .forecast-pill:hover {
+    transform: translateY(-2px);
+  }
+  .forecast-pill .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    margin-bottom: 2px;
+  }
+  .forecast-pill .day {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.04em;
+  }
+  .forecast-pill .date {
+    font-size: 0.7rem;
+    color: #64748b;
+  }
+  .forecast-pill .temp {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .forecast-pill .condition {
+    font-size: 0.72rem;
+    color: #ef4444;
+    line-height: 1.2;
+    min-height: 2.2em;
+  }
+  .forecast-pill .precip {
+    font-size: 0.68rem;
+    color: #94a3b8;
+  }
 </style>
 
 
