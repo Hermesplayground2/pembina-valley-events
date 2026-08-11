@@ -228,7 +228,7 @@
   .event-date .day { font-size: 1.25rem; line-height: 1; margin-top: 3px; }
   .event-title { font-weight: 800; font-size: 1rem; }
   .event-meta { color: var(--muted); font-size: 0.88rem; margin-top: 5px; }
-  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .calendar-day {
     background: white; border: 1px solid transparent; border-radius: 18px; padding: 14px; min-height: 110px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -247,13 +247,50 @@
     background: linear-gradient(135deg, var(--teal), var(--accent)); color: white;
     box-shadow: 0 2px 8px rgba(13,148,136,0.15);
   }
-  .weather-card {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #2563eb 70%, #0d9488 100%);
-    color: white; border-radius: var(--radius); padding: 20px;
-    box-shadow: var(--shadow);
+  .weather-card-ref-dark {
+    background: #0b1020;
+    border-radius: 28px;
+    padding: 22px;
+    box-shadow: 0 30px 80px rgba(15,23,42,0.35);
     position: relative;
     overflow: hidden;
-    animation: weatherShift 25s ease-in-out infinite;
+  }
+  .weather-card-ref-dark .weather {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .weather-card-ref-dark .temp {
+    font-size: 4.2rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .weather-card-ref-dark .meta {
+    color: #475569;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 6px;
+  }
+  .weather-card-ref-dark .muted {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    margin-top: 4px;
+  }
+  .weather-card-ref-dark h2 {
+    color: #0f172a;
+    font-weight: 900;
+    margin: 0 0 14px;
+  }
+  .weather-icon-wrap {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    color: #0f172a;
   }
   @keyframes weatherShift {
     0%, 100% { background-position: 0% 50%; }
@@ -271,7 +308,7 @@
   .weather-card { color: #0f172a; }
   .weather-card h2 { color: #0f172a; }
   .weather-card .muted { color: #64748b; }
-  .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 16px; }
+  .weekly-wrap { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 16px; }
   .weekly-day {
     background: #ffffff;
     border: 1px solid rgba(15,23,42,0.06);
@@ -420,13 +457,6 @@
   }
 
   .weather-icon-wrap { width: 120px; height: 120px; position: relative; }
-  .animated-icon { width: 120px; height: 120px; position: relative; }
-  .animated-icon .sun {
-    width: 36px; height: 36px; background: #f59e0b; border-radius: 50%;
-    position: absolute; top: 20px; left: 20px;
-    box-shadow: 0 0 20px rgba(245,158,11,0.6);
-    animation: sunPulse 2s ease-in-out infinite;
-  }
   @keyframes sunPulse {
     0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(245,158,11,0.6); }
     50% { transform: scale(1.1); box-shadow: 0 0 30px rgba(245,158,11,0.9); }
@@ -492,22 +522,76 @@
 
   .weekly-forecast-row {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-top: 14px;
   }
   .forecast-card {
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(15,23,42,0.06);
-    border-radius: 18px;
-    padding: 14px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.5s ease;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 14px 14px 14px 18px;
+    text-align: left;
     position: relative;
     overflow: hidden;
+    color: #0f172a;
+    box-shadow: 0 1px 0 rgba(15,23,42,0.04);
     opacity: 0;
     animation: forecastFadeIn 0.6s ease forwards;
+  }
+  .forecast-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 3px;
+    border-radius: 3px;
+    background: #e5e7eb;
+  }
+  .forecast-card .forecast-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    margin: 0 auto 10px;
+    display: block;
+  }
+  .forecast-card .forecast-day {
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #0f172a;
+    text-align: center;
+  }
+  .forecast-card .forecast-date {
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: #0f172a;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .forecast-card .forecast-temp {
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #0f172a;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .forecast-card .forecast-condition {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 6px;
+    color: #2563eb;
+  }
+  .forecast-card .forecast-condition.rain { color: #dc2626; }
+  .forecast-card .forecast-precip {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 4px;
+    color: #0f172a;
   }
   .forecast-card:nth-child(1) { animation-delay: 0.05s; }
   .forecast-card:nth-child(2) { animation-delay: 0.1s; }
@@ -605,7 +689,7 @@
   <div class="page active" id="page-home">
     <section class="section">
       <div class="grid grid-2">
-        <div class="card card-landscape-weather weather-card-ref">
+        <div class="card card-landscape-weather weather-card-ref-dark">
           <h2>📍 Winkler Weather</h2>
           <div class="weather">
             <div>
@@ -613,7 +697,7 @@
               <div class="meta" id="condition">Loading...</div>
               <div class="meta" id="location">Pembina, MB</div>
             </div>
-            <div class="weather-icon-wrap" id="weatherIconWrap" aria-label="weather icon"></div>
+            <div class="weather-icon-wrap" id="weatherIconWrap" style="display:none;"></div>
           </div>
           <div class="spacer"></div>
           <div class="muted" id="updated">Updated: just now</div>
@@ -1556,13 +1640,14 @@ function buildMonth() {
       const condition = weatherLabel(daily.weathercode[i]);
       const precipText = precip === null ? '0.0' : precip;
       
+      const isRain = daily.weathercode[i] && daily.weathercode[i] <= 67;
       html += `<div class="forecast-card" data-weather-code="${daily.weathercode[i]}">
-        <div class="forecast-icon">${weatherIconHTML(daily.weathercode[i])}</div>
+        <div class="forecast-dot"></div>
         <div class="forecast-day">${dayName}</div>
         <div class="forecast-date">${monthName} ${dayNum}</div>
-        <div class="forecast-condition">${condition}</div>
-        <div class="forecast-temp">${maxT}° / ${minT}°</div>
-        <div class="forecast-precip">${precipText} mm</div>
+        <div class="forecast-temp">${maxT}°</div>
+        <div class="forecast-condition${isRain ? ' rain' : ''}">${condition}</div>
+        <div class="forecast-precip">${precipText}</div>
       </div>`;
     }
     html += '</div>';
