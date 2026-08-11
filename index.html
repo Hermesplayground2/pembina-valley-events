@@ -483,20 +483,33 @@
     margin-top: 14px;
   }
   .forecast-card {
-    background: rgba(255,255,255,0.92);
-    border: 1px solid rgba(15,23,42,0.08);
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(15,23,42,0.06);
     border-radius: 18px;
     padding: 14px 10px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.5s ease;
     position: relative;
     overflow: hidden;
+    opacity: 0;
+    animation: forecastFadeIn 0.6s ease forwards;
+  }
+  .forecast-card:nth-child(1) { animation-delay: 0.05s; }
+  .forecast-card:nth-child(2) { animation-delay: 0.1s; }
+  .forecast-card:nth-child(3) { animation-delay: 0.15s; }
+  .forecast-card:nth-child(4) { animation-delay: 0.2s; }
+  .forecast-card:nth-child(5) { animation-delay: 0.25s; }
+  .forecast-card:nth-child(6) { animation-delay: 0.3s; }
+  .forecast-card:nth-child(7) { animation-delay: 0.35s; }
+  @keyframes forecastFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .forecast-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 14px 30px rgba(15,23,42,0.12);
-    border-color: var(--accent);
+    border-color: rgba(13,148,136,0.35);
   }
   .forecast-card .forecast-day {
     font-size: 0.7rem;
@@ -1414,6 +1427,18 @@ function buildMonth() {
     return 'Weather';
   }
 
+  function weatherIconHTML(code) {
+    if (code === 0) {
+      return '<div class="wi wi-clear"></div>';
+    } else if (code <= 3) {
+      return '<div class="wi wi-partly-cloudy"></div>';
+    } else if (code <= 67) {
+      return '<div class="wi wi-rain"></div>';
+    } else {
+      return '<div class="wi wi-snow"></div>';
+    }
+  }
+
   function drawWeatherIcon(wrapId, code) {
     const wrap = document.getElementById(wrapId);
     if (!wrap) return;
@@ -1505,6 +1530,7 @@ function buildMonth() {
       const precipText = precip === null ? '0.0' : precip;
       
       html += `<div class="forecast-card" data-weather-code="${daily.weathercode[i]}">
+        <div class="forecast-icon">${weatherIconHTML(daily.weathercode[i])}</div>
         <div class="forecast-day">${dayName}</div>
         <div class="forecast-date">${monthName} ${dayNum}</div>
         <div class="forecast-condition">${condition}</div>
