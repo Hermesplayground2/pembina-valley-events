@@ -307,7 +307,9 @@
   }
   .featured-card:hover::before { opacity: 1; }
   .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-  .featured-card .title { font-weight: 900; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .featured-card .title { font-weight: 900; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; text-decoration: none; }
+  .featured-card .title a { text-decoration: none; color: inherit; }
+  .featured-card .title a:hover { text-decoration: underline; }
   .featured-card .meta { color: var(--muted); font-size: 0.9rem; }
   .featured-card .date-badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; background: #eef2ff; color: #3730a3; }
   .featured-card .cat-badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; background: #fef3c7; color: #92400e; }
