@@ -399,6 +399,141 @@
     .calendar-grid { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: 1fr; }
   }
+
+  .weather-icon-wrap { width: 120px; height: 120px; position: relative; }
+  .animated-icon { width: 120px; height: 120px; position: relative; }
+  .animated-icon .sun {
+    width: 36px; height: 36px; background: #f59e0b; border-radius: 50%;
+    position: absolute; top: 20px; left: 20px;
+    box-shadow: 0 0 20px rgba(245,158,11,0.6);
+    animation: sunPulse 2s ease-in-out infinite;
+  }
+  @keyframes sunPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(245,158,11,0.6); }
+    50% { transform: scale(1.1); box-shadow: 0 0 30px rgba(245,158,11,0.9); }
+  }
+  .animated-icon .sun-ray {
+    position: absolute; width: 3px; height: 14px; background: #f59e0b;
+    top: 12px; left: 36px; border-radius: 2px;
+    transform-origin: center 38px;
+  }
+  .animated-icon .sun-ray:nth-child(2) { transform: rotate(0deg); }
+  .animated-icon .sun-ray:nth-child(3) { transform: rotate(45deg); }
+  .animated-icon .sun-ray:nth-child(4) { transform: rotate(90deg); }
+  .animated-icon .sun-ray:nth-child(5) { transform: rotate(135deg); }
+  .animated-icon .sun-ray:nth-child(6) { transform: rotate(180deg); }
+  .animated-icon .sun-ray:nth-child(7) { transform: rotate(225deg); }
+  .animated-icon .sun-ray:nth-child(8) { transform: rotate(270deg); }
+  .animated-icon .sun-ray:nth-child(9) { transform: rotate(315deg); }
+  .animated-icon .cloud {
+    position: absolute; background: #e5e7eb; border-radius: 50px;
+    width: 60px; height: 28px; top: 50px; left: 30px;
+    animation: cloudDrift 4s ease-in-out infinite;
+  }
+  .animated-icon .cloud::before {
+    content: ""; position: absolute; background: #e5e7eb; border-radius: 50%;
+    width: 32px; height: 32px; top: -14px; left: 10px;
+  }
+  .animated-icon .cloud::after {
+    content: ""; position: absolute; background: #e5e7eb; border-radius: 50%;
+    width: 24px; height: 24px; top: -8px; left: 32px;
+  }
+  @keyframes cloudDrift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+  }
+  .animated-icon.rain .rain-drop {
+    position: absolute; width: 2px; height: 10px; background: #60a5fa;
+    border-radius: 0 0 2px 2px; top: 85px; animation: rainFall 1s linear infinite;
+  }
+  .animated-icon.rain .rain-drop:nth-child(3) { left: 25px; animation-delay: 0s; }
+  .animated-icon.rain .rain-drop:nth-child(4) { left: 45px; animation-delay: 0.3s; }
+  .animated-icon.rain .rain-drop:nth-child(5) { left: 65px; animation-delay: 0.6s; }
+  .animated-icon.rain .rain-drop:nth-child(6) { left: 85px; animation-delay: 0.9s; }
+  .animated-icon.rain .rain-drop:nth-child(7) { left: 105px; animation-delay: 1.2s; }
+  @keyframes rainFall {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(20px); opacity: 0; }
+  }
+  .animated-icon.snow .snowflake {
+    position: absolute; color: #e5e7eb; font-size: 14px; top: 80px;
+    animation: snowFall 2s linear infinite;
+  }
+  .animated-icon.snow .snowflake:nth-child(3) { left: 30px; animation-delay: 0s; }
+  .animated-icon.snow .snowflake:nth-child(4) { left: 55px; animation-delay: 0.7s; }
+  .animated-icon.snow .snowflake:nth-child(5) { left: 80px; animation-delay: 1.4s; }
+  @keyframes snowFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(25px) rotate(360deg); opacity: 0; }
+  }
+
+
+  .weekly-forecast-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .forecast-card {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 18px;
+    padding: 14px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .forecast-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(15,23,42,0.12);
+    border-color: var(--accent);
+  }
+  .forecast-card .forecast-day {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: #64748b;
+  }
+  .forecast-card .forecast-date {
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: #0f172a;
+    margin-top: 2px;
+  }
+  .forecast-card .forecast-condition {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-top: 8px;
+  }
+  .forecast-card .forecast-temp {
+    font-weight: 900;
+    font-size: 1.05rem;
+    color: #0f172a;
+    margin-top: 6px;
+  }
+  .forecast-card .forecast-precip {
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-top: 4px;
+  }
+  @media (max-width: 860px) {
+    .weekly-forecast-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 540px) {
+    .weekly-forecast-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
 </style>
 
 
@@ -433,7 +568,7 @@
               <div class="meta" id="condition">Loading...</div>
               <div class="meta" id="location">Pembina, MB</div>
             </div>
-            <canvas class="weather-icon" id="weatherIcon" aria-label="weather icon"></canvas>
+            <div class="weather-icon-wrap" id="weatherIconWrap" aria-label="weather icon"></div>
           </div>
           <div class="spacer"></div>
           <div class="muted" id="updated">Updated: just now</div>
@@ -1274,32 +1409,35 @@ function buildMonth() {
     return 'Weather';
   }
 
-  function drawWeatherIcon(canvasId, code) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    canvas.width = 120;
-    canvas.height = 120;
-    ctx.clearRect(0, 0, 120, 120);
-    ctx.fillStyle = '#0f172a';
+  function drawWeatherIcon(wrapId, code) {
+    const wrap = document.getElementById(wrapId);
+    if (!wrap) return;
+    
+    let html = '';
     if (code === 0) {
-      ctx.beginPath(); ctx.arc(60, 55, 22, 0, Math.PI * 2); ctx.fill();
-      for (let i = 0; i < 8; i++) { ctx.save(); ctx.translate(60, 55); ctx.rotate(i * Math.PI / 4); ctx.fillRect(46, 28, 4, 14); ctx.restore(); }
+      html = `<div class="animated-icon clear">
+        <div class="sun"></div>
+        <div class="sun-ray"></div><div class="sun-ray"></div><div class="sun-ray"></div><div class="sun-ray"></div>
+        <div class="sun-ray"></div><div class="sun-ray"></div><div class="sun-ray"></div><div class="sun-ray"></div>
+      </div>`;
     } else if (code <= 3) {
-      ctx.beginPath(); ctx.arc(60, 55, 22, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#e5e7eb';
-      ctx.beginPath(); ctx.arc(80, 70, 18, 0, Math.PI * 2); ctx.fill();
+      html = `<div class="animated-icon partly-cloudy">
+        <div class="sun"></div>
+        <div class="cloud"></div>
+      </div>`;
     } else if (code <= 67) {
-      ctx.fillStyle = '#9ca3af';
-      ctx.beginPath(); ctx.arc(35, 38, 10, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(55, 28, 12, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(78, 40, 11, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#2563eb';
-      ctx.fillRect(28, 70, 60, 8); ctx.fillRect(38, 86, 40, 7); ctx.fillRect(48, 100, 24, 6);
+      html = `<div class="animated-icon rain">
+        <div class="cloud"></div>
+        <div class="rain-drop"></div><div class="rain-drop"></div><div class="rain-drop"></div>
+        <div class="rain-drop"></div><div class="rain-drop"></div>
+      </div>`;
     } else {
-      ctx.fillStyle = '#e5e7eb';
-      ctx.fillRect(25, 70, 70, 9); ctx.fillRect(35, 88, 50, 8); ctx.fillRect(45, 105, 30, 6);
+      html = `<div class="animated-icon snow">
+        <div class="cloud"></div>
+        <div class="snowflake">*</div><div class="snowflake">*</div><div class="snowflake">*</div>
+      </div>`;
     }
+    wrap.innerHTML = html;
   }
 
   function updateActivities(temp, wind, code) {
@@ -1349,17 +1487,27 @@ function buildMonth() {
     }
 
     const count = Math.min(7, daily.time.length);
-    let html = '';
+    let html = '<div class="weekly-forecast-row">';
     for (let i = 0; i < count; i++) {
       const date = new Date(daily.time[i] + 'T00:00:00');
-      const label = days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
+      const dayName = days[date.getDay()];
+      const monthName = months[date.getMonth()];
+      const dayNum = date.getDate();
       const maxT = daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[i]) : '--';
       const minT = daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[i]) : '--';
       const precip = daily.precipitation_sum ? daily.precipitation_sum[i].toFixed(1) : null;
       const condition = weatherLabel(daily.weathercode[i]);
-      const precipText = precip === null ? '' : `${precip} mm`;
-      html += `<div class="weekly-day"><div class="label">${label}</div><div class="detail">${condition}</div><div class="value">${maxT}° / ${minT}°</div><div class="detail">${precipText}</div></div>`;
+      const precipText = precip === null ? '0.0' : precip;
+      
+      html += `<div class="forecast-card" data-weather-code="${daily.weathercode[i]}">
+        <div class="forecast-day">${dayName}</div>
+        <div class="forecast-date">${monthName} ${dayNum}</div>
+        <div class="forecast-condition">${condition}</div>
+        <div class="forecast-temp">${maxT}° / ${minT}°</div>
+        <div class="forecast-precip">${precipText} mm</div>
+      </div>`;
     }
+    html += '</div>';
     targets.forEach(el => el.innerHTML = html);
   }
 
