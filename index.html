@@ -266,17 +266,31 @@
     background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.15));
     pointer-events: none;
   }
-  .weather-card .temp { font-size: 4.8rem; font-weight: 900; letter-spacing: -0.06em; text-shadow: 0 4px 24px rgba(0,0,0,0.5); }
-  .weather-card .meta { opacity: 1; margin-top: 12px; font-weight: 900; font-size: 1.4rem; text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+  .weather-card .temp { font-size: 4.8rem; font-weight: 900; letter-spacing: -0.06em; color: #0f172a; text-shadow: none; }
+  .weather-card .meta { opacity: 1; margin-top: 12px; font-weight: 900; font-size: 1.4rem; color: #0f172a; text-shadow: none; }
+  .weather-card { color: #0f172a; }
+  .weather-card h2 { color: #0f172a; }
+  .weather-card .muted { color: #64748b; }
   .weekly-wrap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 16px; }
   .weekly-day {
-    background: rgba(255,255,255,0.14); border-radius: 16px; padding: 12px; text-align: center; backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.18);
+    background: #ffffff;
+    border: 1px solid rgba(15,23,42,0.06);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    color: #0f172a;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
   }
-  .weekly-day .dow { font-size: 0.7rem; text-transform: uppercase; opacity: 0.85; font-weight: 800; letter-spacing: 0.08em; }
-  .weekly-day .date { font-weight: 900; margin-top: 4px; }
-  .weekly-day .cond { font-size: 0.8rem; opacity: 0.95; margin-top: 5px; font-weight: 700; }
-  .weekly-day .lo-hi { font-size: 0.75rem; opacity: 0.85; margin-top: 4px; }
+  .weekly-day .dow { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: 800; letter-spacing: 0.08em; }
+  .weekly-day .date { font-weight: 900; margin-top: 4px; color: #0f172a; }
+  .weekly-day .cond { font-size: 0.8rem; margin-top: 5px; font-weight: 700; color: #2563eb; }
+  .weekly-day .lo-hi { font-size: 0.75rem; margin-top: 4px; color: #0f172a; }
+  .weather-card-ref { background: #ffffff; color: #0f172a; }
+  .weather-card-ref h2 { color: #0f172a; }
+  .weather-card-ref .temp { color: #0f172a; text-shadow: none; }
+  .weather-card-ref .meta { color: #0f172a; text-shadow: none; }
+  .weather-card-ref .muted { color: #64748b; }
+  .weather-icon-wrap { color: #0f172a; }
   .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
   .featured-card {
     border: 1px solid transparent; border-radius: 20px; padding: 18px; background: white;
@@ -552,6 +566,19 @@
     }
   }
 
+  .forecast-icon { display:flex; justify-content:center; margin-bottom:6px; }
+  .wi { width:38px; height:38px; position:relative; display:inline-block; }
+  .wi::before, .wi::after { content:""; position:absolute; border-radius:50%; }
+  .wi-clear { background:#f59e0b; border-radius:50%; box-shadow:0 0 12px rgba(245,158,11,0.5); animation:sunPulse 2s ease-in-out infinite; }
+  .wi-clear::before { width:8px; height:8px; background:#fbbf24; top:-6px; left:6px; box-shadow:0 0 6px rgba(251,191,36,0.7); }
+  .wi-partly-cloudy { background:linear-gradient(135deg,#f59e0b 40%,#e5e7eb 40%); border-radius:50%; animation:sunPulse 2.2s ease-in-out infinite; }
+  .wi-partly-cloudy::before { width:20px; height:10px; background:#e5e7eb; border-radius:10px; bottom:-2px; right:-4px; }
+  .wi-rain { background:#e5e7eb; border-radius:8px; width:34px; height:18px; }
+  .wi-rain::before { width:10px; height:10px; background:#e5e7eb; border-radius:50%; top:-7px; left:4px; }
+  .wi-rain::after { width:7px; height:7px; background:#e5e7eb; border-radius:50%; top:-5px; right:4px; }
+  .wi-snow { background:#e5e7eb; border-radius:8px; width:34px; height:18px; }
+  .wi-snow::before { width:10px; height:10px; background:#e5e7eb; border-radius:50%; top:-7px; left:4px; }
+  .wi-snow::after { width:7px; height:7px; background:#e5e7eb; border-radius:50%; top:-5px; right:4px; }
 </style>
 
 
@@ -578,7 +605,7 @@
   <div class="page active" id="page-home">
     <section class="section">
       <div class="grid grid-2">
-        <div class="card card-landscape-weather" style="border: 3px solid var(--teal); box-shadow: 0 0 40px rgba(13,148,136,0.25);">
+        <div class="card card-landscape-weather weather-card-ref">
           <h2>📍 Winkler Weather</h2>
           <div class="weather">
             <div>
