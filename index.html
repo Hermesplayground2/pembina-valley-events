@@ -844,24 +844,13 @@
   <div class="page active" id="page-home">
     <section class="section">
       <div class="grid grid-2">
-        <div id="hero3d" style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0f172a,#1e293b);min-height:260px;">
-          <canvas id="hero3dCanvas" style="display:block;width:100%;height:260px;"></canvas>
-        </div>
-        <div class="card card-landscape-weather">
-          <h2>📍 Winkler Weather</h2>
-          <div class="weather">
-            <div>
-              <div class="temp" id="temp">--°</div>
-              <div class="meta" id="condition">Loading...</div>
-              <div class="meta" id="location">Pembina, MB</div>
-            </div>
-            <div class="weather-icon-wrap" id="weatherIconWrap" style="width:160px;height:160px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <div class="weather-scene" id="weatherScene" style="width:160px;height:160px;position:relative;overflow:hidden;background:linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);"></div>
-            </div>
+        <div id="hero3d" style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0f172a,#1e293b);min-height:320px;">
+          <canvas id="hero3dCanvas" style="display:block;width:100%;height:320px;"></canvas>
+          <div id="heroWeatherOverlay" style="position:absolute;left:16px;bottom:16px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.6);pointer-events:none;">
+            <div id="heroTemp" style="font-size:3rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">--°</div>
+            <div id="heroCondition" style="font-size:1.05rem;font-weight:700;margin-top:6px;">Loading...</div>
+            <div id="heroLocation" style="font-size:0.85rem;opacity:0.9;margin-top:2px;">Pembina, MB</div>
           </div>
-          <div class="spacer"></div>
-          <div class="muted" id="updated">Updated: just now</div>
-          <div id="weekly-home" class="weekly-wrap"></div>
         </div>
 
         <div class="card card-landscape-activity">
@@ -1669,9 +1658,9 @@ function buildMonth() {
       const res = await fetch(url);
       const data = await res.json();
       const cw = data.current_weather;
-      const tempEls = document.querySelectorAll('#temp, #temp2');
-      const condEls = document.querySelectorAll('#condition, #condition2');
-      const locEls = document.querySelectorAll('#location, #location2');
+      const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
+      const condEls = document.querySelectorAll('#condition, #condition2, #heroCondition');
+      const locEls = document.querySelectorAll('#location, #location2, #heroLocation');
       const updEls = document.querySelectorAll('#updated, #updated2');
       tempEls.forEach(el => el.textContent = Math.round(cw.temperature) + '°');
       condEls.forEach(el => el.textContent = weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h');
@@ -1690,12 +1679,18 @@ function buildMonth() {
       const temp2El = document.getElementById('temp2');
       const cond2El = document.getElementById('condition2');
       const loc2El = document.getElementById('location2');
+      const heroTemp = document.getElementById('heroTemp');
+      const heroCond = document.getElementById('heroCondition');
+      const heroLoc = document.getElementById('heroLocation');
       if (tempEl) tempEl.textContent = '--°';
       if (condEl) condEl.textContent = 'Weather unavailable';
       if (locEl) locEl.textContent = 'Pembina, MB';
       if (temp2El) temp2El.textContent = '--°';
       if (cond2El) cond2El.textContent = 'Weather unavailable';
       if (loc2El) loc2El.textContent = 'Pembina, MB';
+      if (heroTemp) heroTemp.textContent = '--°';
+      if (heroCond) heroCond.textContent = 'Weather unavailable';
+      if (heroLoc) heroLoc.textContent = 'Pembina, MB';
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
     }
