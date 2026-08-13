@@ -1577,19 +1577,26 @@ function buildMonth() {
   }
 
   function activatePage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-    const el = document.getElementById('page-' + page);
-    if (el) el.classList.add('active');
-    document.querySelectorAll('.nav-link').forEach(l => {
-      if (l.dataset.page === page) l.classList.add('active');
-    });
-    if (page === 'home') renderFeatured();
-    if (page === 'calendar') buildUpcoming();
-    buildToday();
-    if (page === 'activities') buildActivityWeek();
-    if (page === 'family') renderFamilyEvents();
-    if (page === 'weather') loadWeather();
+    try {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+      const el = document.getElementById('page-' + page);
+      if (el) el.classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(l => {
+        if (l.dataset.page === page) l.classList.add('active');
+      });
+      if (page === 'home') { try { renderFeatured(); } catch (e) { console.error(e); } }
+      if (page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
+      try { buildToday(); } catch (e) { console.error(e); }
+      if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
+      if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
+      if (page === 'weather') { try { loadWeather(); } catch (e) { console.error(e); } }
+    } catch (e) {
+      console.error('activatePage error', e);
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const home = document.getElementById('page-home');
+      if (home) home.classList.add('active');
+    }
   }
 
   document.querySelectorAll('.nav-link').forEach(link => {
@@ -1600,8 +1607,14 @@ function buildMonth() {
   });
 
   const initPage = () => {
-    const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
-    if (page) activatePage(page);
+    try {
+      const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
+      activatePage(page);
+    } catch (e) {
+      console.error('initPage error', e);
+      const el = document.getElementById('page-home');
+      if (el) el.classList.add('active');
+    }
   };
   window.addEventListener('hashchange', initPage);
   if (document.readyState === 'loading') {
