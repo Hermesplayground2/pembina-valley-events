@@ -192,8 +192,6 @@
   .day-event {
     border-radius: 999px;
     padding: 11px 16px;
-    background: #f59e0b;
-    color: #0f172a;
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 2px 6px rgba(15,23,42,0.25);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -206,8 +204,12 @@
     box-shadow: 0 10px 24px rgba(15,23,42,0.1);
     border-color: var(--accent);
   }
-  .day-event .title { font-weight: 800; font-size: 0.95rem; display: block; margin-bottom: 4px; text-align: left; color: #ffffff; }
-  .day-event .time { color: var(--muted); font-size: 0.82rem; margin-top: 0; display: block; }
+  .day-event[data-category="community"] { background: #f59e0b; color: #0f172a; }
+  .day-event[data-category="family"] { background: #3b82f6; color: #ffffff; }
+  .day-event[data-category="sports"] { background: #10b981; color: #0f172a; }
+  .day-event[data-category="outdoors"] { background: #14b8a6; color: #0f172a; }
+  .day-event .title { font-weight: 800; font-size: 0.95rem; display: block; margin-bottom: 4px; text-align: left; color: inherit; }
+  .day-event .time { color: rgba(15,23,42,0.7); font-size: 0.82rem; margin-top: 0; display: block; }
   .day-event .export-row { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
   .export-btn {
     padding: 4px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700;
@@ -225,23 +227,27 @@
   .event-meta { color: var(--muted); font-size: 0.88rem; margin-top: 5px; }
   .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .calendar-day {
-    background: #f59e0b; border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 14px; min-height: 110px;
+    background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; min-height: 110px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     position: relative;
   }
   .calendar-day:hover { 
     transform: translateY(-3px); 
-    box-shadow: 0 16px 35px rgba(15,23,42,0.35);
-    border-color: rgba(245,158,11,0.45);
+    box-shadow: 0 16px 35px rgba(15,23,42,0.45);
+    border-color: rgba(255,255,255,0.18);
   }
-  .calendar-day .day-name { font-weight: 900; font-size: 0.72rem; color: rgba(15,23,42,0.65); text-transform: uppercase; letter-spacing: 0.1em; }
-  .calendar-day .day-number { font-weight: 900; font-size: 1.2rem; margin-top: 6px; color: #0f172a; }
-  .calendar-day.today .day-number { color: #0f172a; }
+  .calendar-day .day-name { font-weight: 900; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; }
+  .calendar-day .day-number { font-weight: 900; font-size: 1.2rem; margin-top: 6px; color: #f1f5f9; }
+  .calendar-day.today .day-number { color: #fbbf24; }
   .calendar-day .day-chip {
     margin-top: 10px; padding: 7px 9px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;
     background: #0f172a; color: #f59e0b;
     box-shadow: 0 2px 8px rgba(15,23,42,0.25);
   }
+  .calendar-day .day-chip[data-category="community"] { background: #f59e0b; color: #0f172a; }
+  .calendar-day .day-chip[data-category="family"] { background: #3b82f6; color: #ffffff; }
+  .calendar-day .day-chip[data-category="sports"] { background: #10b981; color: #0f172a; }
+  .calendar-day .day-chip[data-category="outdoors"] { background: #14b8a6; color: #0f172a; }
   .weather-card-ref-dark {
     background: #0b1020;
     border-radius: 28px;
