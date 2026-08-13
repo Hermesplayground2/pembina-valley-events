@@ -1671,6 +1671,7 @@ function buildMonth() {
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
+      if (window.applyWeatherToScene) window.applyWeatherToScene(cw.weathercode, cw.temperature);
     } catch (e) {
       console.warn('Weather load failed:', e);
       const tempEl = document.getElementById('temp');
@@ -2163,6 +2164,38 @@ function buildMonth() {
         ctx.restore();
       }
 
+      let weatherMode = 'clear';
+      let particles = [];
+      function applyWeatherToScene(code, temp) {
+        if (code <= 3) weatherMode = 'clear';
+        else if (code <= 48) weatherMode = 'cloudy';
+        else if (code <= 77) weatherMode = 'snow';
+        else if (code <= 82) weatherMode = 'rain';
+        else if (code <= 99) weatherMode = 'rain';
+        else weatherMode = 'clear';
+        if (weatherMode === 'rain' || weatherMode === 'snow') {
+          particles = Array.from({ length: weatherMode === 'rain' ? 90 : 70 }, () => ({
+            x: Math.random() * 1200,
+            y: Math.random() * 400,
+            speed: weatherMode === 'rain' ? 6 + Math.random() * 8 : 0.6 + Math.random() * 1.2,
+            size: weatherMode === 'rain' ? 1.2 + Math.random() * 1.6 : 1.6 + Math.random() * 2.4,
+            wind: -0.5 + Math.random() * 0.8
+          }));
+        } else {
+          particles = [];
+        }
+      }
+      function drawParticles(ctx, w, h, time) {
+        particles.forEach(p => {
+          ctx.save();
+          ctx.globalAlpha = 0.55;
+          ctx.fillStyle = weatherMode === 'rain' ? '#a5f3fc' : '#e2e8f0';
+          ctx.beginPath();
+          ctx.arc(((p.x + time * p.wind) % (w + 40)) - 20, (p.y + time * p.speed) % h, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
       function draw() {
         time += 1;
         drawSky(ctx, w, h, time);
@@ -2201,6 +2234,7 @@ function buildMonth() {
         ctx.closePath();
         ctx.fill();
         ctx.restore();
+        drawParticles(ctx, w, h, time);
         requestAnimationFrame(draw);
       }
       draw();
