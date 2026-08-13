@@ -400,25 +400,25 @@
     background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.15));
     pointer-events: none;
   }
-  .weather-card .temp { font-size: 4.8rem; font-weight: 900; letter-spacing: -0.06em; color: #0f172a; text-shadow: none; }
-  .weather-card .meta { opacity: 1; margin-top: 12px; font-weight: 900; font-size: 1.4rem; color: #0f172a; text-shadow: none; }
-  .weather-card { color: #0f172a; }
-  .weather-card h2 { color: #0f172a; }
-  .weather-card .muted { color: #64748b; }
+  .weather-card .temp { font-size: 4.8rem; font-weight: 900; letter-spacing: -0.06em; color: #f59e0b; }
+  .weather-card .meta { opacity: 1; margin-top: 12px; font-weight: 900; font-size: 1.4rem; color: #e2e8f0; }
+  .weather-card { color: #e2e8f0; background: #0b1220; border: 1px solid rgba(255,255,255,0.08); }
+  .weather-card h2 { color: #f1f5f9; }
+  .weather-card .muted { color: #94a3b8; }
   .weekly-wrap { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 16px; }
   .weekly-day {
-    background: #ffffff;
-    border: 1px solid rgba(15,23,42,0.06);
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 16px;
     padding: 12px;
     text-align: center;
-    color: #0f172a;
-    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+    color: #e2e8f0;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.35);
   }
-  .weekly-day .dow { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: 800; letter-spacing: 0.08em; }
-  .weekly-day .date { font-weight: 900; margin-top: 4px; color: #0f172a; }
-  .weekly-day .cond { font-size: 0.8rem; margin-top: 5px; font-weight: 700; color: #2563eb; }
-  .weekly-day .lo-hi { font-size: 0.75rem; margin-top: 4px; color: #0f172a; }
+  .weekly-day .dow { font-size: 0.7rem; text-transform: uppercase; color: #94a3b8; font-weight: 800; letter-spacing: 0.08em; }
+  .weekly-day .date { font-weight: 900; margin-top: 4px; color: #f1f5f9; }
+  .weekly-day .cond { font-size: 0.8rem; margin-top: 5px; font-weight: 700; color: #fbbf24; }
+  .weekly-day .lo-hi { font-size: 0.75rem; margin-top: 4px; color: #cbd5e1; }
   .weather-card-ref { background: #ffffff; color: #0f172a; }
   .weather-card-ref h2 { color: #0f172a; }
   .weather-card-ref .temp { color: #0f172a; text-shadow: none; }
@@ -560,16 +560,17 @@
     margin-top: 14px;
   }
   .forecast-card {
-    background: #ffffff;
+    background: #1e293b;
     border-radius: 24px;
     padding: 14px 14px 14px 18px;
     text-align: left;
     position: relative;
     overflow: hidden;
-    color: #0f172a;
-    box-shadow: 0 1px 0 rgba(15,23,42,0.04);
+    color: #e2e8f0;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
     opacity: 0;
     animation: forecastFadeIn 0.6s ease forwards;
+    border: 1px solid rgba(255,255,255,0.08);
   }
   .forecast-card::before {
     content: "";
@@ -579,13 +580,13 @@
     bottom: 14px;
     width: 3px;
     border-radius: 3px;
-    background: #e5e7eb;
+    background: #f59e0b;
   }
   .forecast-card .forecast-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #cbd5e1;
+    background: #f59e0b;
     margin: 0 auto 10px;
     display: block;
   }
@@ -594,13 +595,13 @@
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #0f172a;
+    color: #94a3b8;
     text-align: center;
   }
   .forecast-card .forecast-date {
     font-weight: 900;
     font-size: 0.95rem;
-    color: #0f172a;
+    color: #f1f5f9;
     text-align: center;
     margin-top: 2px;
   }
