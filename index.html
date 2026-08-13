@@ -904,21 +904,9 @@
     <section class="section">
       <div class="card card-landscape-calendar">
         <h2>📅 Activities</h2>
-        <div class="filters">
-          <button class="pill active" onclick="filterDayActivities('all', this)">All</button>
-          <button class="pill" onclick="filterDayActivities('community', this)">Community</button>
-          <button class="pill" onclick="filterDayActivities('outdoors', this)">Outdoors</button>
-          <button class="pill" onclick="filterDayActivities('family', this)">Family</button>
-        </div>
-        <div class="filters" style="margin-bottom:14px;">
-          <a class="pill" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Community Events</a>
-          <a class="pill" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
-          <a class="pill" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
-        </div>
         <div class="spacer"></div>
         <div class="cta-row">
           <a class="cta-btn" href="https://pembinavalley.gwevents.ca/events/new" target="_blank">📝 Submit an Event</a>
-
         </div>
         <div id="act-days"></div>
       </div>
@@ -1312,14 +1300,7 @@ function downloadICS(title, time, date) {
       body.innerHTML = '<div class="muted" style="padding:10px;">No upcoming events in the next 7 days.</div>';
     }
   }
-function filterDayActivities(category, btn) {
-    const pills = document.querySelectorAll('#act-days .pill');
-    pills.forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    document.querySelectorAll('#act-days .day-event').forEach(ev => {
-      ev.style.display = (category === 'all' || ev.dataset.category === category) ? '' : 'none';
-    });
-  }
+
 
   function buildActivityWeek() {
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -1402,6 +1383,8 @@ function filterDayActivities(category, btn) {
         header.textContent = monthNames[currentMonth] + ' ' + currentYear;
         body.appendChild(header);
       }
+
+      if (!eventsByDate[dateStr] || !eventsByDate[dateStr].length) continue;
 
       const section = document.createElement('div');
       section.className = 'day-section';
