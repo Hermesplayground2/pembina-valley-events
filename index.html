@@ -170,7 +170,8 @@
   .spacer { height: 18px; }
   .page { display: none; animation: fadeIn 0.35s ease; }
   .page.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes forecastFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes ctaPulse { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
   .pill {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 8px 12px; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
@@ -477,12 +478,13 @@
   .featured-card .row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
   .featured-card .trust { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
   .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-  .cta {
+  .cta-btn {
     padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.9rem;
     background: white; border: 1px solid transparent; color: var(--text); text-decoration: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   }
-  .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,0.08); background: #0f172a; color: white; border-color: #0f172a; }
+  .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,0.08); background: #0f172a; color: white; border-color: #0f172a; }
+  .cta-btn.animated { animation: ctaPulse 2.4s ease-in-out infinite; }
   footer {
     text-align: center; padding: 28px 18px; color: #ffffff; font-size: 0.92rem;
     margin-top: 32px;
@@ -907,10 +909,10 @@
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📅 Activities</h2>
         <div class="spacer"></div>
-        <div class="cta-row">
-          <a class="cta-btn" href="https://pembinavalley.gwevents.ca/events/new" target="_blank">📝 Submit an Event</a>
-        </div>
         <div id="act-days"></div>
+        <div class="cta-row" style="margin-top:12px;">
+          <a class="cta-btn animated" href="https://pembinavalley.gwevents.ca/events/new" target="_blank">📝 Submit an Event</a>
+        </div>
       </div>
     </section>
   </div>
