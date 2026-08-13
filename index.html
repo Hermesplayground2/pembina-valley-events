@@ -876,7 +876,7 @@
 
     <section class="section">
       <div class="card card-landscape-calendar">
-        <h2>📅 Weekly Schedule</h2>
+        <h2>📅 Upcoming Events</h2>
         <div class="cal-header" id="cal-header"></div>
         <div class="day-columns" id="daily-events"></div>
       </div>
@@ -1226,11 +1226,11 @@ function downloadICS(title, time, date) {
       });
   }
 
-  function buildWeek() {
+  function buildUpcoming() {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const start = new Date(today);
-    start.setDate(today.getDate() - today.getDay());
+    start.setDate(today.getDate() + 1);
 
     const header = document.getElementById('cal-header');
     const body = document.getElementById('daily-events');
@@ -1248,11 +1248,11 @@ function downloadICS(title, time, date) {
     rangeEnd.setDate(start.getDate() + 6);
     const eventsByDay = [[], [], [], [], [], [], []];
 
-    const addIfInWeek = (dateStr, ev) => {
+    const addIfUpcoming = (dateStr, ev) => {
       const parts = dateStr.split('-');
       const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      if (evDate < today) return;
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      if (evDate <= todayStart) return;
       if (evDate >= rangeStart && evDate <= rangeEnd) {
         const diff = Math.round((evDate - start) / 86400000);
         if (diff >= 0 && diff < 7) eventsByDay[diff].push(ev);
@@ -1264,43 +1264,43 @@ function downloadICS(title, time, date) {
 
     for (let d = 1; d <= daysInMonth; d++) {
       const dow = new Date(year, month, d).getDay();
-      if (dow === 2) addIfInWeek(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
-      if (month === 7 && dow === 3) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
+      if (dow === 2) addIfUpcoming(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
+      if (month === 7 && dow === 3) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
 
-      if (month === 6 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 6 && d === 5) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 7 && d === 4) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 11) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Finger Painting Workshop', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229002' });
-      if (month === 7 && d === 13) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Makerspace Open House', time: '6:00 PM – 8:00 PM · 30 Stephen St, Morden', link: 'https://morden.ca/events/morden-makerspace-open-house' });
-      if (month === 7 && d === 13) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
-      if (month === 7 && d === 13) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
-      if (month === 7 && d >= 13 && d <= 17) addIfInWeek(fmt(year, month, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
-      if (month === 7 && d === 15) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Plum Fest Outdoor Market', time: '12:00 PM · Main Avenue, Plum Coulee', link: 'https://pembinavalley.gwevents.ca' });
-      if (month === 7 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 8 && d === 18) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
-      if (month === 8 && d === 7) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 6 && d >= 14 && d <= 16) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Plum Coulee Plum Fest', time: '125th Anniversary · Plum Coulee MB', link: 'http://www.plumfest.com/' });
-      if (month === 7 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
-      if (month === 7 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 12) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church', link: 'https://altonaemmc.com/' });
-      if (month === 7 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
-      if (month === 7 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 8 && d === 9) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 8 && d === 10) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (month === 6 && d === 6) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+      if (month === 6 && d === 5) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+      if (month === 7 && d === 4) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', link: 'https://www.visitwinkler.ca' });
+      if (month === 7 && d === 11) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Finger Painting Workshop', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229002' });
+      if (month === 7 && d === 13) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Makerspace Open House', time: '6:00 PM – 8:00 PM · 30 Stephen St, Morden', link: 'https://morden.ca/events/morden-makerspace-open-house' });
+      if (month === 7 && d === 13) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
+      if (month === 7 && d === 13) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
+      if (month === 7 && d >= 13 && d <= 17) addIfUpcoming(fmt(year, month, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
+      if (month === 7 && d === 15) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Plum Fest Outdoor Market', time: '12:00 PM · Main Avenue, Plum Coulee', link: 'https://pembinavalley.gwevents.ca' });
+      if (month === 7 && d === 18) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (month === 8 && d === 18) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
+      if (month === 8 && d === 7) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
+      if (month === 7 && d === 10) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (month === 7 && d === 10) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (month === 6 && d >= 14 && d <= 16) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Plum Coulee Plum Fest', time: '125th Anniversary · Plum Coulee MB', link: 'http://www.plumfest.com/' });
+      if (month === 7 && d === 10) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+      if (month === 7 && d >= 28 && d <= 30) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
+      if (month === 7 && d >= 28 && d <= 30) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
+      if (month === 7 && d === 29) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
+      if (month === 7 && d === 24) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 17) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 19) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
+      if (month === 7 && d === 6) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 24) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 17) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 19) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
+      if (month === 7 && d === 12) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church', link: 'https://altonaemmc.com/' });
+      if (month === 7 && d === 6) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 8) addIfUpcoming(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
+      if (month === 7 && d === 9) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC', link: 'http://www.winkleremmc.com/events/' });
+      if (month === 7 && d >= 28 && d <= 30) addIfUpcoming(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
+      if (month === 7 && d === 8) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (month === 8 && d === 9) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
+      if (month === 8 && d === 10) addIfUpcoming(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
     }
 
     for (let i = 0; i < 7; i++) {
@@ -1621,7 +1621,7 @@ function buildMonth() {
       if (l.dataset.page === page) l.classList.add('active');
     });
     if (page === 'home') renderFeatured();
-    if (page === 'calendar') buildWeek();
+    if (page === 'calendar') buildUpcoming();
     buildToday();
     if (page === 'activities') buildActivityWeek();
     if (page === 'family') renderFamilyEvents();
@@ -1896,7 +1896,7 @@ function buildMonth() {
   }
 
   renderDashboard();
-  buildWeek();
+  buildUpcoming();
   buildActivityWeek();
   buildMonth();
   renderFeatured();
