@@ -1244,17 +1244,17 @@ function downloadICS(title, time, date) {
     const month = now.getMonth();
     const rangeStart = new Date(start);
     const rangeEnd = new Date(start);
-    rangeEnd.setDate(start.getDate() + 6);
+    rangeEnd.setDate(start.getDate() + 7);
     const eventsByDay = [[], [], [], [], [], [], []];
 
     const addIfUpcoming = (dateStr, ev) => {
       const parts = dateStr.split('-');
       const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
       const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      if (evDate < todayStart) return;
+      if (evDate <= todayStart) return;
       if (evDate > rangeEnd) return;
       const diff = Math.round((evDate - start) / 86400000);
-      if (diff >= 0 && diff < 7) eventsByDay[diff].push(ev);
+      if (diff > 0 && diff < 8) eventsByDay[diff - 1].push(ev);
     };
 
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
