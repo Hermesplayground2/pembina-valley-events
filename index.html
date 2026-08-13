@@ -1948,10 +1948,10 @@ function buildMonth() {
     const renderCard = (ev) => {
       const link = ev.link || '#';
       return `
-      <a class="day-event bubble" href="${link}" target="_blank" rel="noopener">
+      <a class="day-event" href="${link}" target="_blank" rel="noopener" data-category="${ev.category || 'family'}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
-        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
+        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
       </a>
     `;
     };
