@@ -876,7 +876,7 @@
 
     <section class="section">
       <div class="card card-landscape-calendar">
-        <h2>📅 Upcoming Events</h2>
+        <h2>📅 Weekly Schedule</h2>
         <div class="cal-header" id="cal-header"></div>
         <div class="day-columns" id="daily-events"></div>
       </div>
@@ -1230,7 +1230,6 @@ function downloadICS(title, time, date) {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const start = new Date(today);
-    start.setDate(today.getDate() + 1);
 
     const header = document.getElementById('cal-header');
     const body = document.getElementById('daily-events');
@@ -1252,11 +1251,10 @@ function downloadICS(title, time, date) {
       const parts = dateStr.split('-');
       const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
       const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      if (evDate <= todayStart) return;
-      if (evDate >= rangeStart && evDate <= rangeEnd) {
-        const diff = Math.round((evDate - start) / 86400000);
-        if (diff >= 0 && diff < 7) eventsByDay[diff].push(ev);
-      }
+      if (evDate < todayStart) return;
+      if (evDate > rangeEnd) return;
+      const diff = Math.round((evDate - start) / 86400000);
+      if (diff >= 0 && diff < 7) eventsByDay[diff].push(ev);
     };
 
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
