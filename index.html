@@ -1386,7 +1386,7 @@ function downloadICS(title, time, date) {
         body.appendChild(header);
       }
 
-      if (!eventsByDate[dateStr] || !eventsByDate[dateStr].length) continue;
+      if (!eventsByDate[dateStr] || !eventsByDate[dateStr].length) return;
 
       const section = document.createElement('div');
       section.className = 'day-section';
