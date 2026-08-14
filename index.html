@@ -1213,7 +1213,9 @@ function addToCalendar(title, time, date) {
   const url = URL.createObjectURL(blob);
   
   if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    window.open(url, '_blank');
+    const webcalUrl = 'webcal://' + location.host + '/weather-media/' + (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+    window.location.href = webcalUrl;
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   } else {
     const a = document.createElement('a');
     a.href = url;
@@ -1221,9 +1223,8 @@ function addToCalendar(title, time, date) {
     document.body.appendChild(a);
     a.click();
     a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-  
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function combineDateTime(dateStr, timeStr) {
