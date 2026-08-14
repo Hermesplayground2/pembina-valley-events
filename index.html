@@ -1213,8 +1213,15 @@ function addToCalendar(title, time, date) {
   const url = URL.createObjectURL(blob);
   
   if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    const webcalUrl = 'webcal://' + location.host + '/weather-media/' + (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
-    window.location.href = webcalUrl;
+    const newWin = window.open(url, '_blank');
+    if (!newWin) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   } else {
     const a = document.createElement('a');
