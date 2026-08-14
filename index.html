@@ -849,6 +849,7 @@
     <section class="section">
       <div class="grid grid-2">
         <div id="hero3d" style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0f172a,#1e293b);min-height:320px;">
+          <video id="heroWeatherVideo" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;"></video>
           <canvas id="hero3dCanvas" style="display:block;width:100%;height:320px;"></canvas>
           <div id="heroWeatherOverlay" style="position:absolute;left:16px;bottom:16px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.6);pointer-events:none;">
             <div id="heroTemp" style="font-size:3rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">--°</div>
@@ -1711,6 +1712,7 @@ function buildMonth() {
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
       if (window.applyWeatherToScene) window.applyWeatherToScene(cw.weathercode, cw.temperature);
+      setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
       console.warn('Weather load failed:', e);
       const tempEl = document.getElementById('temp');
@@ -1746,6 +1748,25 @@ function buildMonth() {
     if (code <= 86) return 'Snow showers';
     if (code <= 99) return 'Thunderstorm';
     return 'Weather';
+  }
+
+  function setWeatherVideo(code, temp) {
+    const video = document.getElementById('heroWeatherVideo');
+    if (!video) return;
+    const hour = new Date().getHours();
+    const isPrecip = code >= 51 && code <= 99;
+    const isClear = code <= 3;
+    let src = 'weather-media/day.mp4';
+    if (isPrecip) {
+      src = 'weather-media/rain.mp4';
+    } else if (isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4';
+    } else if (!isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4';
+    }
+    if (video.src && video.src.endsWith(src)) return;
+    video.src = src;
+    video.play().catch(() => {});
   }
 
   function weatherIconHTML(code) {
