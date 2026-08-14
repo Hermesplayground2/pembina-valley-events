@@ -931,7 +931,7 @@
             <div>
               <div class="event-title"><a href="https://www.manitobajrbaseball.ca/team/11987/0/33287/302564" target="_blank">Pembina Valley Orioles — Manitoba Junior Baseball League</a></div>
               <div class="event-meta">Active through summer 2026 · regular-season and showcase games ongoing</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Pembina Valley Orioles — Manitoba Junior Baseball League" data-time="Active through summer 2026" data-date="2026-08-12">📅 Copy Event</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Pembina Valley Orioles — Manitoba Junior Baseball League" data-time="Active through summer 2026" data-date="2026-08-12">📅 Add to Calendar</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -939,7 +939,7 @@
             <div>
               <div class="event-title"><a href="https://www.pvu15hawks.com/" target="_blank">Pembina Valley Hawks U15 — Fall tryouts/evaluations</a></div>
               <div class="event-meta">Winkler evaluations confirmed for September 2026</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="PV Hawks U15 Fall tryouts/evaluations" data-time="September 2026" data-date="2026-09-01">📅 Copy Event</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="PV Hawks U15 Fall tryouts/evaluations" data-time="September 2026" data-date="2026-09-01">📅 Add to Calendar</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -947,7 +947,7 @@
             <div>
               <div class="event-title"><a href="https://winklerminorhockey.ca/content/tournaments" target="_blank">Winkler Minor Hockey — 2026-2027 season</a></div>
               <div class="event-meta">Registration opened early August 2026 · tournament listings available</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Winkler Minor Hockey 2026-2027 season" data-time="Registration opened early August 2026" data-date="2026-08-12">📅 Copy Event</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Winkler Minor Hockey 2026-2027 season" data-time="Registration opened early August 2026" data-date="2026-08-12">📅 Add to Calendar</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -955,7 +955,7 @@
             <div>
               <div class="event-title"><a href="https://altonabaseball.ca/content/2026-tournaments" target="_blank">Altona Minor Baseball & Minor Hockey — 2026 tournaments</a></div>
               <div class="event-meta">Tournament hosts confirmed for 2026 · exact dates/details TBC</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Altona Minor Baseball & Minor Hockey tournaments" data-time="2026 tournament dates TBC" data-date="2026-08-12">📅 Copy Event</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Altona Minor Baseball & Minor Hockey tournaments" data-time="2026 tournament dates TBC" data-date="2026-08-12">📅 Add to Calendar</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -1160,30 +1160,73 @@
 </footer>
 
 <script>
-function copyEventDetails(title, time, date) {
-  const lines = [];
-  lines.push(title || 'Event');
-  if (date) lines.push('Date: ' + date);
-  if (time) lines.push('Time: ' + time);
-  const text = lines.join('\n');
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).catch(() => {
-      fallbackCopy(text);
-    });
-  } else {
-    fallbackCopy(text);
+function addToCalendar(title, time, date) {
+  let startDate = date ? new Date(date + 'T12:00:00') : new Date();
+  let endDate = new Date(startDate);
+  let location = '';
+  let description = (time || '').trim();
+
+  if (description) {
+    const rangeMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
+    if (rangeMatch) {
+      startDate = combineDateTime(date, rangeMatch[1]);
+      endDate = combineDateTime(date, rangeMatch[2]);
+    } else {
+      const singleMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
+      if (singleMatch) {
+        startDate = combineDateTime(date, singleMatch[1]);
+        endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
+      }
+    }
+
+    const locMatch = description.match(/·\s*([^·]+?)\s*(?:·|$)/);
+    if (locMatch) {
+      location = locMatch[1].trim();
+    }
   }
+
+  const pad = (n) => String(n).padStart(2, '0');
+  const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+
+  const escape = (val) => (val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Pembina Valley Events//EN',
+    'METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    'DTSTART:' + fmt(startDate),
+    'DTEND:' + fmt(endDate),
+    'SUMMARY:' + escape(title || 'Event'),
+    'DESCRIPTION:' + escape(description || ''),
+    location ? 'LOCATION:' + escape(location) : '',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].filter(Boolean).join('\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 }
 
-function fallbackCopy(text) {
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand('copy'); } catch (e) {}
-  ta.remove();
+function combineDateTime(dateStr, timeStr) {
+  const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
+  const match = String(timeStr).match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
+  if (!match) return d;
+  let hours = parseInt(match[1], 10);
+  const minutes = parseInt(match[2], 10);
+  const meridiem = match[3] ? match[3].toUpperCase() : null;
+  if (meridiem === 'PM' && hours < 12) hours += 12;
+  if (meridiem === 'AM' && hours === 12) hours = 0;
+  d.setHours(hours, minutes, 0, 0);
+  return d;
 }
 
 
@@ -1306,7 +1349,7 @@ function fallbackCopy(text) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = '<span class="title">' + ev.title + '</span><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Copy Event</button></div>';
+      el.innerHTML = '<span class="title">' + ev.title + '</span><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Add to Calendar</button></div>';
       body.appendChild(el);
     });
 
@@ -1491,7 +1534,7 @@ function fallbackCopy(text) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Copy Event</button></div>`;
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div>`;
       container.appendChild(el);
     });
   }
@@ -1581,7 +1624,7 @@ function buildMonth() {
         bubble.target = '_blank';
         bubble.rel = 'noopener';
         bubble.dataset.category = ev.category;
-        bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${dateStr}">📅 Copy Event</button></div>`;
+        bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div>`;
         grid.appendChild(bubble);
       });
     }
@@ -1953,7 +1996,7 @@ function buildMonth() {
       <a class="day-event" href="${link}" target="_blank" rel="noopener" data-category="${ev.category || 'family'}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
-        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Copy Event</button></div>
+        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
       </a>
     `;
     };
@@ -1966,7 +2009,7 @@ function buildMonth() {
     const btn = ev.target.closest('[data-export="ics"]');
     if (!btn) return;
     ev.preventDefault();
-    copyEventDetails(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
+    addToCalendar(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
   });
 
   const eventForm = document.getElementById('event-form');
