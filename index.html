@@ -931,7 +931,7 @@
             <div>
               <div class="event-title"><a href="https://www.manitobajrbaseball.ca/team/11987/0/33287/302564" target="_blank">Pembina Valley Orioles — Manitoba Junior Baseball League</a></div>
               <div class="event-meta">Active through summer 2026 · regular-season and showcase games ongoing</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Pembina Valley Orioles — Manitoba Junior Baseball League" data-time="Active through summer 2026" data-date="2026-08-12">📅 Add to Calendar</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Pembina Valley Orioles — Manitoba Junior Baseball League" data-time="Active through summer 2026" data-date="2026-08-12">📅 Copy Event</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -939,7 +939,7 @@
             <div>
               <div class="event-title"><a href="https://www.pvu15hawks.com/" target="_blank">Pembina Valley Hawks U15 — Fall tryouts/evaluations</a></div>
               <div class="event-meta">Winkler evaluations confirmed for September 2026</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="PV Hawks U15 Fall tryouts/evaluations" data-time="September 2026" data-date="2026-09-01">📅 Add to Calendar</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="PV Hawks U15 Fall tryouts/evaluations" data-time="September 2026" data-date="2026-09-01">📅 Copy Event</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -947,7 +947,7 @@
             <div>
               <div class="event-title"><a href="https://winklerminorhockey.ca/content/tournaments" target="_blank">Winkler Minor Hockey — 2026-2027 season</a></div>
               <div class="event-meta">Registration opened early August 2026 · tournament listings available</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Winkler Minor Hockey 2026-2027 season" data-time="Registration opened early August 2026" data-date="2026-08-12">📅 Add to Calendar</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Winkler Minor Hockey 2026-2027 season" data-time="Registration opened early August 2026" data-date="2026-08-12">📅 Copy Event</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -955,7 +955,7 @@
             <div>
               <div class="event-title"><a href="https://altonabaseball.ca/content/2026-tournaments" target="_blank">Altona Minor Baseball & Minor Hockey — 2026 tournaments</a></div>
               <div class="event-meta">Tournament hosts confirmed for 2026 · exact dates/details TBC</div>
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Altona Minor Baseball & Minor Hockey tournaments" data-time="2026 tournament dates TBC" data-date="2026-08-12">📅 Add to Calendar</button></div>
+              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Altona Minor Baseball & Minor Hockey tournaments" data-time="2026 tournament dates TBC" data-date="2026-08-12">📅 Copy Event</button></div>
             </div>
           </div>
           <div class="event-row">
@@ -1306,7 +1306,7 @@ function fallbackCopy(text) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = '<span class="title">' + ev.title + '</span><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Add to Calendar</button></div>';
+      el.innerHTML = '<span class="title">' + ev.title + '</span><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Copy Event</button></div>';
       body.appendChild(el);
     });
 
@@ -1491,7 +1491,7 @@ function fallbackCopy(text) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div>`;
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Copy Event</button></div>`;
       container.appendChild(el);
     });
   }
@@ -1581,7 +1581,7 @@ function buildMonth() {
         bubble.target = '_blank';
         bubble.rel = 'noopener';
         bubble.dataset.category = ev.category;
-        bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div>`;
+        bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${dateStr}">📅 Copy Event</button></div>`;
         grid.appendChild(bubble);
       });
     }
@@ -1953,7 +1953,7 @@ function buildMonth() {
       <a class="day-event" href="${link}" target="_blank" rel="noopener" data-category="${ev.category || 'family'}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
-        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
+        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Copy Event</button></div>
       </a>
     `;
     };
