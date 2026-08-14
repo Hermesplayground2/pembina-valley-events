@@ -1207,13 +1207,19 @@ function addToCalendar(title, time, date) {
 
   const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
+  
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    window.open(url, '_blank');
+  } else {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+  
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function combineDateTime(dateStr, timeStr) {
