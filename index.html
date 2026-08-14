@@ -1161,30 +1161,70 @@
 
 <script>
 function downloadICS(title, time, date) {
-      const dt = date ? new Date(date + 'T12:00:00') : new Date();
-      const pad = (n) => String(n).padStart(2, '0');
-      const dtStr = dt.getFullYear() + pad(dt.getMonth()+1) + pad(dt.getDate()) + 'T120000Z';
-      const ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'BEGIN:VEVENT',
-        'DTSTART;VALUE=DATE:' + dtStr,
-        'DTEND;VALUE=DATE:' + dtStr,
-        'SUMMARY:' + (title || 'Event'),
-        'DESCRIPTION:' + (time || ''),
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\n');
-      const blob = new Blob([ics], { type: 'text/calendar' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+  let startDate = date ? new Date(date + 'T12:00:00') : new Date();
+  let endDate = new Date(startDate);
+  let location = '';
+  let description = (time || '').trim();
+
+  if (description) {
+    const rangeMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
+    if (rangeMatch) {
+      startDate = combineDateTime(date, rangeMatch[1]);
+      endDate = combineDateTime(date, rangeMatch[2]);
+    } else {
+      const singleMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
+      if (singleMatch) {
+        startDate = combineDateTime(date, singleMatch[1]);
+        endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
+      }
     }
+
+    const locMatch = description.match(/·\s*([^·]+?)\s*(?:·|$)/);
+    if (locMatch) {
+      location = locMatch[1].trim();
+    }
+  }
+
+  const pad = (n) => String(n).padStart(2, '0');
+  const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Pembina Valley Events//EN',
+    'BEGIN:VEVENT',
+    'DTSTART:' + fmt(startDate),
+    'DTEND:' + fmt(endDate),
+    'SUMMARY:' + (title || 'Event'),
+    'DESCRIPTION:' + (description || ''),
+    location ? 'LOCATION:' + location : '',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].filter(Boolean).join('\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function combineDateTime(dateStr, timeStr) {
+  const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
+  const match = String(timeStr).match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
+  if (!match) return d;
+  let hours = parseInt(match[1], 10);
+  const minutes = parseInt(match[2], 10);
+  const meridiem = match[3] ? match[3].toUpperCase() : null;
+  if (meridiem === 'PM' && hours < 12) hours += 12;
+  if (meridiem === 'AM' && hours === 12) hours = 0;
+  d.setHours(hours, minutes, 0, 0);
+  return d;
+}
 
 
   function renderDashboard() {
