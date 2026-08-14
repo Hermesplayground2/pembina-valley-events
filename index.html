@@ -1187,6 +1187,7 @@ function addToCalendar(title, time, date) {
 
   const pad = (n) => String(n).padStart(2, '0');
   const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+  const stamp = fmt(new Date());
 
   const escape = (val) => (val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 
@@ -1194,8 +1195,10 @@ function addToCalendar(title, time, date) {
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//Pembina Valley Events//EN',
-    'METHOD:PUBLISH',
+    'METHOD:REQUEST',
     'BEGIN:VEVENT',
+    'UID:pembina-' + Date.now() + '@pembinaevents.ca',
+    'DTSTAMP:' + stamp,
     'DTSTART:' + fmt(startDate),
     'DTEND:' + fmt(endDate),
     'SUMMARY:' + escape(title || 'Event'),
