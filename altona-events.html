@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pembinaevents.ca/altona-events">
+  <title>Altona Events · Pembina Valley Events</title>
+  <meta name="description" content="Events in Altona, Manitoba — community activities, family fun, sports, and local happenings in the Pembina Valley.">
+  <meta property="og:title" content="Altona Events · Pembina Valley Events">
+  <meta property="og:description" content="Find events and things to do in Altona, Manitoba.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Altona Events · Pembina Valley Events">
+  <meta name="twitter:description" content="Find events and things to do in Altona, Manitoba.">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111b2d;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #f59e0b;
+      --border: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+    header {
+      background: #0f172a;
+      color: var(--accent);
+      padding: 28px 20px 32px;
+      text-align: center;
+    }
+    .logo-header { max-width: 1160px; margin: 0 auto; }
+    nav {
+      background: #0f172a;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .nav-link {
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #1e3a8a;
+      font-weight: 700;
+      background: #f59e0b;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-link:hover { background: #fbbf24; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 28px 18px; }
+    h1 { font-size: 24px; margin-bottom: 12px; }
+    .lead { color: var(--muted); margin-bottom: 24px; }
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .event-card h3 { font-size: 16px; margin-bottom: 6px; }
+    .event-card p { color: var(--muted); font-size: 14px; }
+    footer { text-align: center; padding: 24px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
+    a { color: #8ab4f8; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-header">
+      <h1>Altona Events</h1>
+      <p style="color:#94a3b8; margin-top:8px;">Local happenings in Altona, Manitoba</p>
+    </div>
+  </header>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/winkler-events">Winkler</a>
+      <a class="nav-link" href="/morden-events">Morden</a>
+      <a class="nav-link" href="/altona-events">Altona</a>
+    </div>
+  </nav>
+  <main class="container">
+    <h1>Events in Altona</h1>
+    <p class="lead">Community events, family activities, sports, and local gatherings in and around Altona, MB.</p>
+    <div class="event-grid">
+      <article class="event-card">
+        <h3>Altona Founder’s Day</h3>
+        <p>Date: July 2026 · Location: Altona, MB</p>
+        <p>Parade, pancake breakfast, and community celebration in Altona.</p>
+      </article>
+      <article class="event-card">
+        <h3>Altona Art Show</h3>
+        <p>Date: September 2026 · Location: Altona, MB</p>
+        <p>Local artists, live demonstrations, and family art activities.</p>
+      </article>
+      <article class="event-card">
+        <h3>Pembina Valley Fall Fair</h3>
+        <p>Date: October 2026 · Location: Altona, MB</p>
+        <p>Fall harvest fair with livestock, crafts, and community vendors.</p>
+      </article>
+    </div>
+  </main>
+  <footer>
+    <a href="/">← Back to Pembina Valley Events</a>
+  </footer>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Altona Events",
+    "url": "https://pembinaevents.ca/altona-events",
+    "itemListElement": [
+      {
+        "@type": "Event",
+        "name": "Altona Founder’s Day",
+        "location": { "@type": "Place", "name": "Altona, MB" },
+        "areaServed": { "@type": "Place", "name": "Altona, Manitoba, Canada" }
+      },
+      {
+        "@type": "Event",
+        "name": "Altona Art Show",
+        "location": { "@type": "Place", "name": "Altona, MB" },
+        "areaServed": { "@type": "Place", "name": "Altona, Manitoba, Canada" }
+      },
+      {
+        "@type": "Event",
+        "name": "Pembina Valley Fall Fair",
+        "location": { "@type": "Place", "name": "Altona, MB" },
+        "areaServed": { "@type": "Place", "name": "Altona, Manitoba, Canada" }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
