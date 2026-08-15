@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /mockup-
+Sitemap: https://pembinaevents.ca/sitemap.xml
