@@ -20,6 +20,130 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Pembina Valley Featured Events",
+  "url": "https://pembinaevents.ca/",
+  "itemListElement": [
+    {
+      "@type": "Event",
+      "name": "Morden Corn & Apple Festival",
+      "startDate": "2026-08-28",
+      "endDate": "2026-08-30",
+      "location": {
+        "@type": "Place",
+        "name": "Downtown Morden, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Manitoba's largest street festival with live entertainment, corn roast, apple treats, and family fun."
+    },
+    {
+      "@type": "Event",
+      "name": "Morden Back40 Music Festival",
+      "startDate": "2026-08-29",
+      "location": {
+        "@type": "Place",
+        "name": "Downtown Morden, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Annual music festival in downtown Morden running since 1989."
+    },
+    {
+      "@type": "Event",
+      "name": "Manitoba Sunflower Festival",
+      "startDate": "2026-07-01",
+      "location": {
+        "@type": "Place",
+        "name": "Altona, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Annual summer festival in Altona celebrating the sunflower harvest since 1964."
+    },
+    {
+      "@type": "Event",
+      "name": "Plum Fest",
+      "startDate": "2026-08-15",
+      "location": {
+        "@type": "Place",
+        "name": "Plum Coulee, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Summer festival in Plum Coulee with local food, music, and community activities."
+    },
+    {
+      "@type": "Event",
+      "name": "Pembina Threshermen's Reunion",
+      "startDate": "2026-09-01",
+      "location": {
+        "@type": "Place",
+        "name": "Morden/Winkler, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Heritage machinery and pioneer skills event in the Pembina Valley."
+    },
+    {
+      "@type": "Event",
+      "name": "Winkler Minor Hockey 2026-2027 Season",
+      "startDate": "2026-08-12",
+      "location": {
+        "@type": "Place",
+        "name": "Winkler, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Registration and tournament listings for the Winkler Minor Hockey season."
+    },
+    {
+      "@type": "Event",
+      "name": "Pembina Valley Orioles — Manitoba Junior Baseball League",
+      "startDate": "2026-05-01",
+      "endDate": "2026-09-30",
+      "location": {
+        "@type": "Place",
+        "name": "Pembina Valley, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Regular-season and showcase baseball games across the 2026 summer season."
+    },
+    {
+      "@type": "Event",
+      "name": "PV Hawks U15 Fall Tryouts/Evaluations",
+      "startDate": "2026-09-01",
+      "location": {
+        "@type": "Place",
+        "name": "Winkler, MB"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pembina Valley, Manitoba, Canada"
+      },
+      "description": "Fall tryouts and evaluations for the Pembina Valley Hawks U15 team."
+    }
+  ]
+}
+</script>
 <meta property="og:title" content="Pembina Valley Events">
 <meta property="og:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
 <meta property="og:type" content="website">
@@ -905,9 +1029,10 @@
         <div class="spacer"></div>
         <div id="featured-events" class="featured-grid"></div>
         <div class="cta-row">
-          <a class="cta-btn" href="https://www.pembinavalleyonline.com/events" target="_blank">📰 Browse Community Events</a>
-          <a class="cta-btn" href="https://allevents.in/winkler" target="_blank">🎟 More Local Events</a>
-          <a class="cta-btn" href="https://winklerchamber.com/events/" target="_blank">🏙 Chamber Events</a>
+          <a class="cta-btn" href="#page-activities">📅 View Full Activities Calendar</a>
+          <a class="cta-btn" href="/winkler-events">📍 Winkler Events</a>
+          <a class="cta-btn" href="/morden-events">📍 Morden Events</a>
+          <a class="cta-btn" href="/altona-events">📍 Altona Events</a>
         </div>
       </div>
     </section>
@@ -1380,6 +1505,9 @@ function combineDateTime(dateStr, timeStr) {
       el.rel = 'noopener';
       el.dataset.category = ev.category;
       el.innerHTML = '<span class="title">' + ev.title + '</span><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Add to Calendar</button></div>';
+      const internal = document.createElement('span');
+      internal.innerHTML = ' · <a href="#page-activities" style="color:#8ab4f8;font-size:0.8rem;">View calendar</a>';
+      el.querySelector('.time').appendChild(internal);
       body.appendChild(el);
     });
 
@@ -1490,6 +1618,9 @@ function combineDateTime(dateStr, timeStr) {
         item.rel = 'noopener';
         item.dataset.category = ev.category;
         item.innerHTML = '<span class="title" style="font-weight:600">' + ev.title + '</span><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>';
+        const internal = document.createElement('span');
+        internal.innerHTML = ' · <a href="#page-activities" style="color:#8ab4f8;font-size:0.8rem;">View calendar</a>';
+        item.querySelector('.time').appendChild(internal);
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -1565,6 +1696,9 @@ function combineDateTime(dateStr, timeStr) {
       el.rel = 'noopener';
       el.dataset.category = ev.category;
       el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div>`;
+      const internal = document.createElement('span');
+      internal.innerHTML = ' · <a href="#page-activities" style="color:#8ab4f8;font-size:0.8rem;">View calendar</a>';
+      el.querySelector('.time').appendChild(internal);
       container.appendChild(el);
     });
   }
