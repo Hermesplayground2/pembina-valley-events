@@ -1048,9 +1048,9 @@
         <h2 style="color:#f59e0b;">📅 Activities</h2>
         <div class="spacer"></div>
         <div id="act-days"></div>
-        <div class="cta-row" style="margin-top:12px;">
-          <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&amp;body=Please%20send%20your%20event%20details%20(title,%20date,%20time,%20location,%20link)%20and%20we%E2%80%99ll%20consider%20adding%20it%20to%20the%20calendar." target="_self">📝 Submit an Event</a>
-        </div>
+      </div>
+      <div class="cta-row" style="margin-top:14px;">
+        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title,%20date,%20time,%20location,%20link)%20and%20we%E2%80%99ll%20consider%20adding%20it%20to%20the%20calendar." target="_self">📝 Submit an Event</a>
       </div>
     </section>
   </div>
@@ -1498,16 +1498,10 @@ function combineDateTime(dateStr, timeStr) {
     items.forEach(({ dateStr, ev }) => {
       const evDate = new Date(dateStr + 'T12:00:00');
       const label = days[evDate.getDay()] + ' · ' + months[evDate.getMonth()] + ' ' + evDate.getDate();
-      const el = document.createElement('a');
+      const el = document.createElement('div');
       el.className = 'day-event bubble';
-      el.href = ev.link || '#';
-      el.target = '_blank';
-      el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = '<span class="title">' + ev.title + '</span><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Add to Calendar</button></div>';
-      const internal = document.createElement('span');
-      internal.innerHTML = ' · <a href="#page-activities" style="color:#8ab4f8;font-size:0.8rem;">View calendar</a>';
-      el.querySelector('.time').appendChild(internal);
+      el.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Add to Calendar</button></div><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">View calendar</a></span>';
       body.appendChild(el);
     });
 
@@ -1611,16 +1605,10 @@ function combineDateTime(dateStr, timeStr) {
       const list = document.createElement('div');
       list.className = 'event-list';
       eventsByDate[dateStr].forEach(ev => {
-        const item = document.createElement('a');
+        const item = document.createElement('div');
         item.className = 'day-event bubble';
-        item.href = ev.link || '#';
-        item.target = '_blank';
-        item.rel = 'noopener';
         item.dataset.category = ev.category;
-        item.innerHTML = '<span class="title" style="font-weight:600">' + ev.title + '</span><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>';
-        const internal = document.createElement('span');
-        internal.innerHTML = ' · <a href="#page-activities" style="color:#8ab4f8;font-size:0.8rem;">View calendar</a>';
-        item.querySelector('.time').appendChild(internal);
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">View calendar</a></span>';
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -1695,10 +1683,7 @@ function combineDateTime(dateStr, timeStr) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div>`;
-      const internal = document.createElement('span');
-      internal.innerHTML = ' · <a href="#page-activities" style="color:#8ab4f8;font-size:0.8rem;">View calendar</a>';
-      el.querySelector('.time').appendChild(internal);
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">View calendar</a></span>`;
       container.appendChild(el);
     });
   }
