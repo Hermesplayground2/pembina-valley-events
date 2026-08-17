@@ -350,6 +350,30 @@
   .day-event[data-category="outdoors"] { border-left: 4px solid #14b8a6; }
   .day-event .title { font-weight: 900; font-size: 1rem; display: block; margin-bottom: 4px; text-align: left; color: inherit; }
   .day-event .time { color: inherit; opacity: 0.85; font-size: 0.82rem; margin-top: 0; display: block; }
+  .activity {
+    border-radius: 999px;
+    padding: 11px 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 23, 42, 0.55);
+    color: #e2e8f0;
+    box-shadow: 0 2px 6px rgba(15,23,42,0.25);
+  }
+  .activity.highlighted {
+    border-color: rgba(245, 158, 11, 0.55);
+    background: rgba(245, 158, 11, 0.12);
+    color: #fef3c7;
+  }
+  .activity .name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: inherit;
+  }
+  .activity .desc {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.3;
+  }
   .day-event .export-row { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
   .export-btn {
     padding: 4px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700;
@@ -2001,8 +2025,10 @@ function buildMonth() {
   function updateActivities(temp, wind, code) {
     const box = document.getElementById('activities');
     if (!box) return;
+
     const outdoor = [];
     const indoor = [];
+
     if (temp >= 22 && wind < 25) outdoor.push({ name: 'Outdoor sports', desc: 'Warm and calm — good for a walk, run, or family outing.' });
     else if (temp >= 10 && wind < 30) outdoor.push({ name: 'Park visit', desc: 'Mild weather — pack a light jacket and enjoy outside.' });
     else outdoor.push({ name: 'Quick walk', desc: 'Cool or breezy — short outdoor movement still works.' });
@@ -2014,8 +2040,22 @@ function buildMonth() {
     if (temp >= 18 && code < 50) outdoor.push({ name: 'Outdoor meal', desc: 'Temperature holds — eat outside if you can.' });
     if (wind > 35) outdoor.push({ name: 'Secure outdoor items', desc: 'Strong winds expected — move or tie down loose objects.' });
 
-    const items = [outdoor[0], indoor[0]];
-    box.innerHTML = items.map(i => `<div class="activity"><div class="name">${i.name}</div><div class="desc">${i.desc}</div></div>`).join('');
+    const isGoodWeather = code < 51 && temp >= 10 && wind <= 35;
+    const primary = isGoodWeather ? outdoor[0] : indoor[0];
+    const secondary = isGoodWeather ? indoor[0] : outdoor[0];
+
+    box.innerHTML = `
+      <div class="activity highlighted">
+        <div class="name">${primary.name}</div>
+        <div class="desc">${primary.desc}</div>
+      </div>
+      ${secondary ? `
+      <div class="activity">
+        <div class="name">${secondary.name}</div>
+        <div class="desc">${secondary.desc}</div>
+      </div>
+      ` : ''}
+    `;
   }
 
   function updateWeatherPlan(temp, code) {
