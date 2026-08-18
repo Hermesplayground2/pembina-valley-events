@@ -1257,30 +1257,14 @@
 
   <div class="page" id="page-dashboard">
     <section class="section">
-      <div class="grid grid-2">
-        <div class="card">
-          <h2>📊 Visitor Overview</h2>
-          <p class="muted">Last 14 days from GitHub Pages traffic data.</p>
-          <div class="spacer"></div>
-          <div id="dashboard-views"></div>
-        </div>
-        <div class="card">
-          <h2>🔗 Top Referrers</h2>
-          <p class="muted">Where visitors come from.</p>
-          <div class="spacer"></div>
-          <div id="dashboard-referrers"></div>
-        </div>
-      </div>
-      <div class="spacer"></div>
       <div class="card">
-        <h2>📈 Traffic Trend</h2>
-        <p class="muted">Daily views and unique visitors.</p>
+        <h2>📊 Live Visitor Stats</h2>
+        <p class="muted">Real traffic data comes from your analytics provider.</p>
         <div class="spacer"></div>
-        <div id="dashboard-trend"></div>
-      </div>
-    </section>
-        <div class="spacer"></div>
-        <p class="muted" style="font-size:0.8rem;opacity:0.75;">Some links are affiliate or partner links — pembinaevents.ca may earn a small commission if you book or order through them. You pay the same price.</p>
+        <div id="dashboard-live">
+          <p class="muted">Current status: <strong>Cloudflare Web Analytics</strong> is installed.</p>
+          <p class="muted">Check your Cloudflare dashboard for live visitor counts, page views, and traffic sources. Numbers should start appearing within 24–48 hours.</p>
+        </div>
       </div>
     </section>
   </div>
@@ -1419,43 +1403,9 @@ function combineDateTime(dateStr, timeStr) {
 
 
   function renderDashboard() {
-    const viewsBox = document.getElementById('dashboard-views');
-    const referrersBox = document.getElementById('dashboard-referrers');
-    const trendBox = document.getElementById('dashboard-trend');
-    if (!viewsBox && !referrersBox && !trendBox) return;
-
-    fetch('analytics.json')
-      .then(r => r.json())
-      .then(data => {
-        const views = data.views || [];
-        const referrers = data.referrers || [];
-        const totalViews = views.reduce((s, v) => s + (v.count || 0), 0);
-        const totalUniques = views.reduce((s, v) => s + (v.uniques || 0), 0);
-
-        if (viewsBox) {
-          viewsBox.innerHTML = '<div class="event-row"><div class="event-date"><div class="month">Views</div><div class="day">' + totalViews + '</div></div><div><div class="event-title">Total page views</div><div class="event-meta">Last 14 days</div></div></div><div class="event-row"><div class="event-date" style="background:#fef3c7;color:#92400e;"><div class="month">Visitors</div><div class="day">' + totalUniques + '</div></div><div><div class="event-title">Unique visitors</div><div class="event-meta">Last 14 days</div></div></div>';
-        }
-
-        if (referrersBox) {
-          referrersBox.innerHTML = referrers.length
-            ? referrers.map(r => '<div class="event-row"><div class="event-date" style="background:#eef2ff;color:#3730a3;"><div class="month">Ref</div><div class="day">' + r.count + '</div></div><div><div class="event-title">' + r.referrer + '</div><div class="event-meta">' + r.uniques + ' unique</div></div></div>').join('')
-            : '<p class="muted">No referrer data yet.</p>';
-        }
-
-        if (trendBox) {
-          trendBox.innerHTML = views.length
-            ? views.map(v => {
-                const date = new Date(v.timestamp).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-                return '<div class="event-row"><div class="event-date" style="background:#f1f5f9;color:#0f172a;"><div class="month">Day</div><div class="day">' + date + '</div></div><div><div class="event-title">' + v.count + ' views</div><div class="event-meta">' + v.uniques + ' unique</div></div></div>';
-              }).join('')
-            : '<p class="muted">No trend data yet.</p>';
-        }
-      })
-      .catch(() => {
-        if (viewsBox) viewsBox.innerHTML = '<p class="muted">Analytics unavailable.</p>';
-        if (referrersBox) referrersBox.innerHTML = '<p class="muted">Analytics unavailable.</p>';
-        if (trendBox) trendBox.innerHTML = '<p class="muted">Analytics unavailable.</p>';
-      });
+    const box = document.getElementById('dashboard-live');
+    if (!box) return;
+    box.innerHTML = '<p class="muted">Real traffic data comes from your analytics provider.</p><p class="muted">Check your Cloudflare dashboard for live visitor counts, page views, and traffic sources. Numbers should start appearing within 24–48 hours.</p>';
   }
 
   function buildUpcoming() {
