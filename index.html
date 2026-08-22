@@ -352,7 +352,7 @@
   }
   .day-event {
     border-radius: 999px;
-    padding: 11px 16px;
+    padding: 11px 18px 11px 18px;
     border: 1px solid rgba(255,255,255,0.12);
     background: rgba(15, 23, 42, 0.85);
     box-shadow: 0 2px 6px rgba(15,23,42,0.25);
@@ -1472,40 +1472,57 @@ function combineDateTime(dateStr, timeStr) {
       if (month === 7 && d === 15) add(fmt(year, month, d), { category: 'community', title: 'Plum Fest Outdoor Market', time: '12:00 PM · Main Avenue, Plum Coulee', link: 'https://pembinavalley.gwevents.ca' });
       if (month === 7 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
-      if (month === 8 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
+      if (month === 7 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
       if (month === 7 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 7 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 6 && d >= 14 && d <= 16) add(fmt(year, month, d), { category: 'community', title: 'Plum Coulee Plum Fest', time: '125th Anniversary · Plum Coulee MB', link: 'http://www.plumfest.com/' });
       if (month === 7 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
       if (month === 7 && d >= 28 && d <= 30) add(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d >= 28 && d <= 30) add(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
       if (month === 7 && d === 29) add(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
       if (month === 7 && d === 24) add(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) add(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) add(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
+      if (month === 7 && d === 17) add(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:00 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 19) add(fmt(year, month, d), { category: 'family', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
       if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 24) add(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) add(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) add(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 12) add(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church', link: 'https://altonaemmc.com/' });
-      if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
+      if (month === 7 && d === 12) add(fmt(year, month, d), { category: 'family', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church', link: 'https://altonaemmc.com/' });
       if (month === 7 && d === 8) add(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
       if (month === 7 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Harvest Festival Service', time: '10:00 AM · Winkler Park · Winkler EMMC', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d >= 28 && d <= 30) add(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d === 8) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
       if (month === 8 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
       if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
     }
 
     items.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.ev.time.localeCompare(b.ev.time));
+
+    let currentMonth = -1;
+    let currentYear = -1;
     items.forEach(({ dateStr, ev }) => {
       const evDate = new Date(dateStr + 'T12:00:00');
-      const label = days[evDate.getDay()] + ' · ' + months[evDate.getMonth()] + ' ' + evDate.getDate();
-      const el = document.createElement('div');
-      el.className = 'day-event bubble';
-      el.dataset.category = ev.category;
-      el.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + label + ' · ' + ev.time + '</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="' + ev.title.replace(/"/g, '&quot;') + '" data-time="' + ev.time.replace(/"/g, '&quot;') + '" data-date="' + dateStr + '">📅 Add to Calendar</button></div><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">View calendar</a></span>';
-      body.appendChild(el);
+      const monthKey = evDate.getFullYear() + '-' + evDate.getMonth();
+
+      if (monthKey !== currentMonth + '-' + currentYear) {
+        currentMonth = evDate.getMonth();
+        currentYear = evDate.getFullYear();
+        const header = document.createElement('div');
+        header.className = 'month-header';
+        header.textContent = monthNames[currentMonth] + ' ' + currentYear;
+        body.appendChild(header);
+      }
+
+      const section = document.createElement('div');
+      section.className = 'day-section';
+      const dateLabel = document.createElement('div');
+      dateLabel.className = 'date-label';
+      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[currentMonth].slice(0,3) + ' ' + evDate.getDate();
+      section.appendChild(dateLabel);
+
+      const list = document.createElement('div');
+      list.className = 'event-list';
+      const item = document.createElement('div');
+      item.className = 'day-event bubble';
+      item.dataset.category = ev.category;
+      item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span>';
+      list.appendChild(item);
+      section.appendChild(list);
+      body.appendChild(section);
     });
 
     if (!items.length) {
