@@ -1492,26 +1492,14 @@ function combineDateTime(dateStr, timeStr) {
 
     items.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.ev.time.localeCompare(b.ev.time));
 
-    let currentMonth = -1;
-    let currentYear = -1;
     items.forEach(({ dateStr, ev }) => {
       const evDate = new Date(dateStr + 'T12:00:00');
-      const monthKey = evDate.getFullYear() + '-' + evDate.getMonth();
-
-      if (monthKey !== currentMonth + '-' + currentYear) {
-        currentMonth = evDate.getMonth();
-        currentYear = evDate.getFullYear();
-        const header = document.createElement('div');
-        header.className = 'month-header';
-        header.textContent = monthNames[currentMonth] + ' ' + currentYear;
-        body.appendChild(header);
-      }
 
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
       dateLabel.className = 'date-label';
-      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[currentMonth].slice(0,3) + ' ' + evDate.getDate();
+      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate();
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
@@ -1600,18 +1588,8 @@ function combineDateTime(dateStr, timeStr) {
       return;
     }
 
-    let currentMonth = -1;
-    let currentYear = -1;
     sortedDates.forEach(dateStr => {
       const evDate = new Date(dateStr + 'T12:00:00');
-      if (evDate.getMonth() !== currentMonth || evDate.getFullYear() !== currentYear) {
-        currentMonth = evDate.getMonth();
-        currentYear = evDate.getFullYear();
-        const header = document.createElement('div');
-        header.className = 'month-header';
-        header.textContent = monthNames[currentMonth] + ' ' + currentYear;
-        body.appendChild(header);
-      }
 
       if (!eventsByDate[dateStr] || !eventsByDate[dateStr].length) return;
 
@@ -1619,7 +1597,7 @@ function combineDateTime(dateStr, timeStr) {
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
       dateLabel.className = 'date-label';
-      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[currentMonth].slice(0,3) + ' ' + evDate.getDate();
+      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate();
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
