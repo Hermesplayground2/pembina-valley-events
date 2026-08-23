@@ -1172,6 +1172,25 @@
   </div>
 
   <div class="page" id="page-fundraiser">
+    <style>
+      #page-fundraiser { position: relative; overflow: hidden; }
+      #page-fundraiser .float-bg {
+        position: absolute;
+        font-size: 3.5rem;
+        opacity: 0.18;
+        pointer-events: none;
+        user-select: none;
+        animation: floatUp 14s linear infinite;
+        z-index: 0;
+      }
+      #page-fundraiser .card { position: relative; z-index: 1; }
+      @keyframes floatUp {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.18; }
+        90% { opacity: 0.18; }
+        100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+      }
+    </style>
     <section class="section">
       <div class="card">
         <h2 style="color:#dc2626;">🎪 Fundraisers & Community Support</h2>
@@ -1180,6 +1199,12 @@
         <div class="event-row"><div class="event-date" style="background:#0f172a;color:#dc2626;border:1px solid rgba(220,38,38,0.35);box-shadow:none;"><div class="month">AUG</div><div class="day">8</div></div><div><div class="event-title"><a href="https://winklerchamber.com/events/" target="_blank">Morden Community BBQ Fundraiser</a></div><div class="event-muted">11:30 AM · Faith Mission, Winkler</div></div></div>
       </div>
     </section>
+    <div class="float-bg" style="left:8%;  bottom:-120px; animation-delay:0s;">🥧</div>
+    <div class="float-bg" style="left:22%; bottom:-120px; animation-delay:3s;">🌭</div>
+    <div class="float-bg" style="left:40%; bottom:-120px; animation-delay:6s;">🥧</div>
+    <div class="float-bg" style="left:58%; bottom:-120px; animation-delay:9s;">🌭</div>
+    <div class="float-bg" style="left:76%; bottom:-120px; animation-delay:2s;">🥧</div>
+    <div class="float-bg" style="left:90%; bottom:-120px; animation-delay:7s;">🌭</div>
   </div>
 
   <div class="page" id="page-sources">
