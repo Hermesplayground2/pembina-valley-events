@@ -1,71 +1,43 @@
-import pathlib
+from pathlib import Path
+import re
+text = Path('main.js').read_text(encoding='utf-8', errors='ignore')
 
-p = pathlib.Path(r'C:\Users\vikto\Documents\Wilson\website\index.html')
-text = p.read_text(encoding='utf-8')
+shared = '''  const EVENTS = [
+    { date: '2026-08-04', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', category: 'community', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-06', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-07', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', category: 'community', link: 'https://www.winkler.ca/events' },
+    { date: '2026-08-08', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-08-10', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-10', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-10', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-11', title: 'Finger Painting Workshop', time: '10:30 AM & 1:30 PM · Winkler Library', category: 'family', link: 'https://pembinavalleyonline.com/events/229002' },
+    { date: '2026-08-13', title: 'Morden Makerspace Open House', time: '6:00 PM – 8:00 PM · 30 Stephen St, Morden', category: 'community', link: 'https://morden.ca/events/morden-makerspace-open-house' },
+    { date: '2026-08-13', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', category: 'community', link: 'https://pembinavalleyonline.com/events' },
+    { date: '2026-08-13', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', category: 'family', link: 'https://pembinavalleyonline.com/events/229004' },
+    { date: '2026-08-13', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', category: 'sports', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' },
+    { date: '2026-08-17', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-18', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', category: 'community', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-19', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', category: 'family', link: 'https://morden.ca/access-event-centre' },
+    { date: '2026-08-24', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', category: 'family', link: 'https://pembinavalleyonline.com/events' },
+    { date: '2026-08-27', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', category: 'family', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-08-29', title: 'Morden Back40 Music Festival', time: 'Morden, MB', category: 'community', link: 'https://www.backfortymusicfestival.com/' },
+    { date: '2026-08-30', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', category: 'community', link: 'https://cornandapple.com/' },
+    { date: '2026-09-01', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-07', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-09', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
+  ];
+  const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
+'''
 
-# Add missing renderFeatured function before renderFamilyEvents
-old = '  function renderFamilyEvents() {'
-new = '''  function renderFeatured() {
-    const container = document.getElementById('featured-events');
-    if (!container) return;
-    const featured = [
-      { category: 'community', title: 'Winkler Harvest Festival', time: 'Aug 7-9 · Winkler Fairgrounds', date: 'Aug 7' },
-      { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Winkler, MB', date: 'Aug' },
-      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18' },
-      { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28' },
-      { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29' },
-      { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19' },
-      { category: 'community', title: 'Altona Kidventure Wednesdays', time: 'Aug 12 · Altona EMM Church', date: 'Aug 12' }
-    ];
+text = text.replace('  function buildUpcoming() {', shared + '  function buildUpcoming() {')
 
-    container.innerHTML = featured.map(ev => `
-      <div class="featured-card" data-category="${ev.category}">
-        <div class="row">
-          <div class="badge-row">
-            <span class="date-badge">${ev.date}</span>
-            <span class="cat-badge">${ev.category}</span>
-          </div>
-        </div>
-        <div class="title">${ev.title}</div>
-        <div class="meta">${ev.time}</div>
-      </div>
-    `).join('');
-  }
-
-  function renderFamilyEvents() {'''
-if old in text and 'function renderFeatured()' not in text:
-    text = text.replace(old, new, 1)
-    print('Added renderFeatured()')
-else:
-    print('renderFeatured already exists or anchor not found')
-
-# Add Morden/Altona events to buildWeek
-old_week = "      if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });"
-new_week = """      if (month === 8 && d === 2) addIfInWeek(fmt(year, month, d), { category: 'family', title: 'Winkler EMMC Worship Service', time: '10:30 AM · 600 Southview Drive' });
-      if (month === 7 && d >= 28 && d <= 30 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Winkler Harvest Festival', time: 'Fairgrounds · Free admission' });
-      if (month === 7 && d >= 6 && d <= 9 && year === 2026) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Harvest Festival Events', time: 'Winkler · Various times' });
-      if (month === 8 && d >= 28 && d <= 30) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free' });
-      if (month === 8 && d === 29) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB' });
-      if (month === 8 && d === 24) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St' });
-      if (month === 8 && d === 17) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church' });
-      if (month === 8 && d === 19) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta' });
-      if (month === 8 && d === 12) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Kidventure Wednesdays', time: '1:00 PM · Altona EMM Church' });
-      if (month === 8 && d === 6) addIfInWeek(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street' });
-      if (month === 8 && d === 8) addIfInWeek(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler' });"""
-if old_week in text:
-    text = text.replace(old_week, new_week, 1)
-    print('Added Morden/Altona to buildWeek')
-else:
-    print('Week anchor not found')
-
-# Update site title to reflect regional coverage
-old_title = 'Pembina Valley Events - Family Fix Deploy'
-new_title = 'Pembina Valley Events — Winkler · Morden · Altona'
-if old_title in text:
-    text = text.replace(old_title, new_title, 1)
-    print('Updated site title')
-else:
-    print('Title not found')
-
-p.write_text(text, encoding='utf-8')
-print('Done')
+Path('main.js').write_text(text, encoding='utf-8')
+print('inserted shared EVENTS array')

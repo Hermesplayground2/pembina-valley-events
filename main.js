@@ -92,98 +92,89 @@ function combineDateTime(dateStr, timeStr) {
     box.innerHTML = '<p class="muted">Real traffic data comes from your analytics provider.</p><p class="muted">Check your Cloudflare dashboard for live visitor counts, page views, and traffic sources. Numbers should start appearing within 24–48 hours.</p>';
   }
 
+  const EVENTS = [
+    { date: '2026-08-04', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', category: 'community', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-06', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-07', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', category: 'community', link: 'https://www.winkler.ca/events' },
+    { date: '2026-08-08', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-08-10', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-10', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-10', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-11', title: 'Finger Painting Workshop', time: '10:30 AM & 1:30 PM · Winkler Library', category: 'family', link: 'https://pembinavalleyonline.com/events/229002' },
+    { date: '2026-08-13', title: 'Morden Makerspace Open House', time: '6:00 PM – 8:00 PM · 30 Stephen St, Morden', category: 'community', link: 'https://morden.ca/events/morden-makerspace-open-house' },
+    { date: '2026-08-13', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', category: 'community', link: 'https://pembinavalleyonline.com/events' },
+    { date: '2026-08-13', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', category: 'family', link: 'https://pembinavalleyonline.com/events/229004' },
+    { date: '2026-08-13', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', category: 'sports', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' },
+    { date: '2026-08-17', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-18', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', category: 'community', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-19', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', category: 'family', link: 'https://morden.ca/access-event-centre' },
+    { date: '2026-08-24', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', category: 'family', link: 'https://pembinavalleyonline.com/events' },
+    { date: '2026-08-27', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', category: 'family', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-08-29', title: 'Morden Back40 Music Festival', time: 'Morden, MB', category: 'community', link: 'https://www.backfortymusicfestival.com/' },
+    { date: '2026-08-30', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', category: 'community', link: 'https://cornandapple.com/' },
+    { date: '2026-09-01', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-07', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-09', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
+  ];
+  const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
   function buildUpcoming() {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const start = new Date(today);
-    const rangeEnd = new Date(start);
-    rangeEnd.setDate(start.getDate() + 7);
-
     const body = document.getElementById('daily-events');
     if (!body) return;
     body.innerHTML = '';
 
-    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const rangeEnd = new Date(today);
+    rangeEnd.setDate(rangeEnd.getDate() + 7);
 
-    const items = [];
-    const add = (dateStr, ev) => {
-      const parts = dateStr.split('-');
-      const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      if (evDate <= today) return;
-      if (evDate > rangeEnd) return;
-      items.push({ dateStr, ev });
-    };
+    const upcoming = EVENTS.filter(ev => {
+      const d = new Date(ev.date + 'T12:00:00');
+      return d >= today && d <= rangeEnd;
+    }).sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
 
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dow = new Date(year, month, d).getDay();
-      if (dow === 2) add(fmt(year, month, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
-      if (month === 7 && dow === 3) add(fmt(year, month, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
+    const grouped = {};
+    upcoming.forEach(ev => {
+      if (!grouped[ev.date]) grouped[ev.date] = [];
+      grouped[ev.date].push(ev);
+    });
 
-      if (month === 6 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 6 && d === 5) add(fmt(year, month, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 7 && d === 4) add(fmt(year, month, d), { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 11) add(fmt(year, month, d), { category: 'family', title: 'Finger Painting Workshop', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229002' });
-      if (month === 7 && d === 13) add(fmt(year, month, d), { category: 'community', title: 'Morden Makerspace Open House', time: '6:00 PM – 8:00 PM · 30 Stephen St, Morden', link: 'https://morden.ca/events/morden-makerspace-open-house' });
-      if (month === 7 && d === 13) add(fmt(year, month, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
-      if (month === 7 && d === 13) add(fmt(year, month, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
-      if (month === 7 && d >= 13 && d <= 17) add(fmt(year, month, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
-      if (month === 7 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 8 && d === 18) add(fmt(year, month, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
-      if (month === 7 && d === 7) add(fmt(year, month, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
-      if (month === 7 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d >= 28 && d <= 30) add(fmt(year, month, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d === 29) add(fmt(year, month, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
-      if (month === 7 && d === 24) add(fmt(year, month, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) add(fmt(year, month, d), { category: 'community', title: 'MCC Blanket Making', time: '9:00 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) add(fmt(year, month, d), { category: 'family', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 27) add(fmt(year, month, d), { category: 'family', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', link: 'https://pembinavalleyonline.com/events' });
-      if (month === 7 && d === 27) add(fmt(year, month, d), { category: 'community', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 27) add(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 27) add(fmt(year, month, d), { category: 'family', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', link: 'https://winklerchamber.com/events/' });
-      if (month === 7 && d === 6) add(fmt(year, month, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 8) add(fmt(year, month, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
-      if (month === 8 && d === 9) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 8 && d === 10) add(fmt(year, month, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-    }
-
-    items.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.ev.time.localeCompare(b.ev.time));
-
-    items.forEach(({ dateStr, ev }) => {
-      const evDate = new Date(dateStr + 'T12:00:00');
-
+    Object.keys(grouped).sort().forEach(dateStr => {
+      const d = new Date(dateStr + 'T12:00:00');
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
       dateLabel.className = 'date-label';
-      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate();
+      dateLabel.textContent = days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate();
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
       list.className = 'event-list';
-      const item = document.createElement('div');
-      item.className = 'day-event bubble';
-      item.dataset.category = ev.category;
-      const copyText = (ev.title + '\\n' + ev.time).trim();
-      item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
-      list.appendChild(item);
+      grouped[dateStr].forEach(ev => {
+        const item = document.createElement('div');
+        item.className = 'day-event bubble';
+        item.dataset.category = ev.category;
+        const copyText = (ev.title + '\n' + ev.time).trim();
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
+        list.appendChild(item);
+      });
       section.appendChild(list);
       body.appendChild(section);
     });
 
-    if (!items.length) {
+    if (!upcoming.length) {
       body.innerHTML = '<div class="muted" style="padding:10px;">No upcoming events in the next 7 days.</div>';
     }
   }
-
-
   function buildActivityWeek() {
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -282,172 +273,37 @@ function combineDateTime(dateStr, timeStr) {
 
   
   function buildToday() {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-    
     const container = document.getElementById('today-events');
     const label = document.getElementById('today-date-label');
     if (!container) return;
-    
+
     container.innerHTML = '';
-    
+
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     if (label) {
-      label.textContent = `${monthNames[month]} ${now.getDate()}, ${year}`;
+      label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
     }
-    
-    const events = [];
-    
-    const add = (title, time, category, link) => {
-      events.push({ title, time, category, link });
-    };
-    
-    // Recurring weekly events
-    const dow = new Date(year, month, now.getDate()).getDay();
-    if (dow === 2) add("Winkler Farmer's Market", "4:00 PM - 6:00 PM · Central Station parking lot", "community", "https://www.pembinavalleyonline.com/events");
-    if (month === 7 && dow === 3) add("Concerts in the Park", "7:00 PM · Bethel Heritage Park", "community", "https://www.visitwinkler.ca/concerts-in-the-park");
-    
-    // Specific date events
-    if (month === 7 && now.getDate() === 4) add("Catie St. Germain and Brothers Keep", "7:00 PM · Concert Hall", "community", "https://www.visitwinkler.ca");
-    if (month === 7 && now.getDate() === 6) add("Morden Farmers Market", "4:00 PM · 8th Street", "community", "https://morden.ca/community-events");
-    if (month === 8 && now.getDate() >= 1 && now.getDate() <= 7) add("Labour Day - No School", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 7 && now.getDate() === 8) add("Prairie Dale No Classes Admin Day", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 8 && now.getDate() === 9) add("Prairie Dale First Day Grades K-9", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 8 && now.getDate() === 10) add("Prairie Dale First Day Grades 10-12", "Prairie Dale School", "family", "https://pds.gvsd.ca/");
-    if (month === 7 && now.getDate() === 17) add("MCC Blanket Making", "9:30 AM · Morden Mennonite Church", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 18) add("Summer Shores Paint & Sip", "6:00 PM · Winkler Arts & Culture", "community", "https://www.visitwinkler.ca");
-    if (month === 7 && now.getDate() === 19) add("The Big Canoe", "9:00 AM · Lake Minnewasta", "community", "https://morden.ca/access-event-centre");
-    if (month === 7 && now.getDate() === 24) add("Morden Council Meeting", "7:00 PM · 500 Stephen St", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 25) add("Morden Farmers Market", "4:00 PM · 8th Street", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 27) add("Rise & Shine FREE Morning Camp VBS", "9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden", "family", "https://pembinavalleyonline.com/events");
-    if (month === 7 && now.getDate() === 27) add("Pickleball", "1:00 PM · Morden Activity Centre, 306 N. Railway St.", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 27) add("Morden Farmers Market", "4:00 PM · 8th Street", "community", "https://morden.ca/community-events");
-    if (month === 7 && now.getDate() === 27) add("Annual BBQ — Winkler Senior Centre", "5:00 PM · 650 Southview Drive", "family", "https://winklerchamber.com/events/");
-    if (month === 7 && now.getDate() === 29) add("Morden Back40 Music Festival", "Morden, MB", "community", "https://www.backfortymusicfestival.com/");
 
-    
+    const todays = EVENTS.filter(ev => ev.date === todayStr);
 
-    // Sort by time
-    events.sort((a, b) => a.time.localeCompare(b.time));
-    
-    if (events.length === 0) {
+    if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>';
       return;
     }
-    
-    events.sort((a, b) => a.time.localeCompare(b.time));
-    events.forEach(ev => {
+
+    todays.forEach(ev => {
       const el = document.createElement('a');
       el.className = 'day-event bubble';
       el.href = ev.link || '#';
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">View calendar</a></span>`;
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">View calendar</a></span>`;
       container.appendChild(el);
     });
   }
-
-function buildMonth() {
-    const wrap = document.getElementById('month-wrap');
-    if (!wrap) return;
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const today = now.getDate();
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-
-    const eventsByDate = {};
-    const add = (dateStr, ev) => {
-      const parts = dateStr.split('-');
-      const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      const todayDate = new Date(year, month, today);
-      if (evDate < todayDate) return;
-      if (!eventsByDate[dateStr]) eventsByDate[dateStr] = [];
-      eventsByDate[dateStr].push(ev);
-    };
-
-    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-
-    for (let d = 1; d <= daysInMonth; d++) {
-      const date = new Date(year, month, d);
-      const dow = date.getDay();
-      const dateStr = fmt(year, month, d);
-      if (dow === 2) add(dateStr, { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.pembinavalleyonline.com/events' });
-      if (month === 7 && dow === 3) add(dateStr, { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
-      if (month === 6 && d === 6) add(dateStr, { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 6 && d === 5) add(dateStr, { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-      if (month === 7 && d === 4) add(dateStr, { category: 'community', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 18) add(dateStr, { category: 'community', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 8 && d === 18) add(dateStr, { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
-      if (month === 8 && d === 7) add(dateStr, { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
-      if (month === 7 && d === 10) add(dateStr, { category: 'family', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 10) add(dateStr, { category: 'family', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d === 10) add(dateStr, { category: 'family', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-      if (month === 7 && d >= 28 && d <= 30) add(dateStr, { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-      if (month === 7 && d === 29) add(dateStr, { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
-      if (month === 7 && d === 24) add(dateStr, { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 17) add(dateStr, { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 19) add(dateStr, { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
-      if (month === 7 && d === 27) add(dateStr, { category: 'family', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', link: 'https://pembinavalleyonline.com/events' });
-      if (month === 7 && d === 27) add(dateStr, { category: 'community', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 27) add(dateStr, { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 27) add(dateStr, { category: 'family', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', link: 'https://winklerchamber.com/events/' });
-      if (month === 7 && d === 6) add(dateStr, { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
-      if (month === 7 && d === 8) add(dateStr, { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
-      if (month === 7 && d === 18) add(dateStr, { category: 'family', title: 'Winkler EMMC Church Council Mtg', time: '7:00 PM · 600 Southview Drive', link: 'http://www.winkleremmc.com/events/' });
-      if (month === 7 && d === 7) add(dateStr, { category: 'family', title: 'Labour Day - No School', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 7 && d === 8) add(dateStr, { category: 'family', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 8 && d === 9) add(dateStr, { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-      if (month === 8 && d === 10) add(dateStr, { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
-    }
-
-    const grid = document.createElement('div');
-    grid.className = 'month-grid';
-
-    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const title = document.createElement('div');
-    title.style.gridColumn = '1 / -1';
-    title.style.fontWeight = '900';
-    title.style.fontSize = '1.1rem';
-    title.style.marginBottom = '10px';
-    title.textContent = monthNames[month] + ' ' + year;
-    grid.appendChild(title);
-
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dateStr = fmt(year, month, d);
-      const dayEvents = eventsByDate[dateStr] || [];
-      if (!dayEvents.length) continue;
-
-      const dateLabel = document.createElement('div');
-      dateLabel.style.gridColumn = '1 / -1';
-      dateLabel.style.fontWeight = '800';
-      dateLabel.style.marginTop = '12px';
-      dateLabel.textContent = monthNames[month] + ' ' + d;
-      grid.appendChild(dateLabel);
-
-      dayEvents.forEach(ev => {
-        const bubble = document.createElement('a');
-        bubble.className = 'day-event bubble';
-        bubble.href = ev.link || '#';
-        bubble.target = '_blank';
-        bubble.rel = 'noopener';
-        bubble.dataset.category = ev.category;
-        const copyText = (ev.title + '\\n' + ev.time).trim();
-        bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div><button class="copy-btn" data-copy="${copyText.replace(/\"/g, '&quot;')}">Copy</button>`;
-        grid.appendChild(bubble);
-      });
-    }
-
-    wrap.innerHTML = '';
-    wrap.appendChild(grid);
-  }
-
   function activatePage(page) {
     try {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
