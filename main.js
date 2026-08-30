@@ -171,8 +171,7 @@ function combineDateTime(dateStr, timeStr) {
       const item = document.createElement('div');
       item.className = 'day-event bubble';
       item.dataset.category = ev.category;
-      const copyText = (ev.title + '
-' + ev.time).trim();
+      const copyText = (ev.title + '\\n' + ev.time).trim();
       item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
       list.appendChild(item);
       section.appendChild(list);
@@ -439,8 +438,7 @@ function buildMonth() {
         bubble.target = '_blank';
         bubble.rel = 'noopener';
         bubble.dataset.category = ev.category;
-        const copyText = (ev.title + '
-' + ev.time).trim();
+        const copyText = (ev.title + '\\n' + ev.time).trim();
         bubble.innerHTML = `<span class="title">${ev.title}</span><span class="time">${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/\"/g, '&quot;')}" data-time="${ev.time.replace(/\"/g, '&quot;')}" data-date="${dateStr}">📅 Add to Calendar</button></div><button class="copy-btn" data-copy="${copyText.replace(/\"/g, '&quot;')}">Copy</button>`;
         grid.appendChild(bubble);
       });
