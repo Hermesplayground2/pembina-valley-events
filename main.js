@@ -263,7 +263,7 @@ function combineDateTime(dateStr, timeStr) {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">Add to calendar</a></span>';
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>';
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -300,7 +300,7 @@ function combineDateTime(dateStr, timeStr) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div><span style="font-size:0.8rem;color:#8ab4f8;"> · <a href="#page-activities" style="color:#8ab4f8;">Add to calendar</a></span>`;
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>`;
       container.appendChild(el);
     });
   }
@@ -728,11 +728,16 @@ ${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     if (!copyBtn) return;
     ev.preventDefault();
     const text = copyBtn.dataset.copy || '';
-    if (!navigator.clipboard || !navigator.clipboard.writeText) {
-      alert(text);
-      return;
-    }
-    navigator.clipboard.writeText(text).then(() => {
+    if (!text) return;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+      document.body.removeChild(ta);
       const original = copyBtn.textContent;
       copyBtn.textContent = 'Copied';
       copyBtn.disabled = true;
@@ -740,9 +745,20 @@ ${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
         copyBtn.textContent = original;
         copyBtn.disabled = false;
       }, 1200);
-    }).catch(() => {
-      alert(text);
-    });
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        copyBtn.disabled = true;
+        setTimeout(() => {
+          copyBtn.textContent = original;
+          copyBtn.disabled = false;
+        }, 1200);
+      }).catch(fallback);
+    } else {
+      fallback();
+    }
   });
 
   const eventForm = document.getElementById('event-form');
