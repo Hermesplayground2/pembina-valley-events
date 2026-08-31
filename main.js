@@ -43,6 +43,8 @@ function addToCalendar(title, time, date) {
     'SUMMARY:' + escape(title || 'Event'),
     'DESCRIPTION:' + escape(description || ''),
     location ? 'LOCATION:' + escape(location) : '',
+    'STATUS:CONFIRMED',
+    'TRANSP:OPAQUE',
     'END:VEVENT',
     'END:VCALENDAR'
   ].filter(Boolean).join('\n');
