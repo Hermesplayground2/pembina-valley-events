@@ -353,11 +353,30 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   async function loadWeather() {
+    const setFallback = () => {
+      const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
+      const condEls = document.querySelectorAll('#condition, #condition2, #heroCondition');
+      const locEls = document.querySelectorAll('#location, #location2, #heroLocation');
+      const updEls = document.querySelectorAll('#updated, #updated2');
+      tempEls.forEach(el => el.textContent = '--°');
+      condEls.forEach(el => el.textContent = 'Weather unavailable');
+      locEls.forEach(el => el.textContent = 'Pembina, MB');
+      updEls.forEach(el => el.textContent = '');
+      updateActivities(15, 10, 3);
+      updateWeatherPlan(15, 3);
+      setWeatherVideo(3, 15);
+      const heroCond = document.getElementById('heroCondition');
+      if (heroCond) heroCond.textContent = 'Weather unavailable';
+    };
+
     try {
       const lat = 49.1833;
       const lon = -97.9339;
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
-      const res = await fetch(url);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
       const data = await res.json();
       const cw = data.current_weather;
       const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
@@ -374,26 +393,7 @@ function combineDateTime(dateStr, timeStr) {
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
       console.warn('Weather load failed:', e);
-      const tempEl = document.getElementById('temp');
-      const condEl = document.getElementById('condition');
-      const locEl = document.getElementById('location');
-      const temp2El = document.getElementById('temp2');
-      const cond2El = document.getElementById('condition2');
-      const loc2El = document.getElementById('location2');
-      const heroTemp = document.getElementById('heroTemp');
-      const heroCond = document.getElementById('heroCondition');
-      const heroLoc = document.getElementById('heroLocation');
-      if (tempEl) tempEl.textContent = '--°';
-      if (condEl) condEl.textContent = 'Weather unavailable';
-      if (locEl) locEl.textContent = 'Pembina, MB';
-      if (temp2El) temp2El.textContent = '--°';
-      if (cond2El) cond2El.textContent = 'Weather unavailable';
-      if (loc2El) loc2El.textContent = 'Pembina, MB';
-      if (heroTemp) heroTemp.textContent = '--°';
-      if (heroCond) heroCond.textContent = 'Weather unavailable';
-      if (heroLoc) heroLoc.textContent = 'Pembina, MB';
-      updateActivities(15, 10, 3);
-      updateWeatherPlan(15, 3);
+      setFallback();
     }
   }
 
