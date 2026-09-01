@@ -329,12 +329,26 @@ function combineDateTime(dateStr, timeStr) {
     }
   }
 
+  setTimeout(() => {
+    const heroCond = document.getElementById('heroCondition');
+    if (heroCond && heroCond.textContent === 'Loading...') {
+      heroCond.textContent = 'JS running...';
+    }
+  }, 2000);
+
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       activatePage(link.dataset.page);
     });
   });
+
+  const retryWeather = () => {
+    const btn = document.getElementById('weatherRetryBtn');
+    if (btn) btn.style.display = 'none';
+    loadWeather().catch(() => {});
+  };
+  document.getElementById('weatherRetryBtn')?.addEventListener('click', retryWeather);
 
   const initPage = () => {
     try {
@@ -348,7 +362,19 @@ function combineDateTime(dateStr, timeStr) {
   };
   window.addEventListener('hashchange', initPage);
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPage);
+    document.addEventListener('DOMContentLoaded', () => {
+    const scene = document.getElementById('weatherScene');
+    const video = document.getElementById('heroWeatherVideo');
+    if (scene && video) {
+      const img = document.createElement('img');
+      img.id = 'heroWeatherImage';
+      img.alt = 'Weather';
+      img.src = 'weather-media/day_frame.jpg';
+      img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+      scene.insertBefore(img, video);
+    }
+    initPage();
+  });
   } else {
     initPage();
   }
@@ -372,6 +398,8 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   async function loadWeather() {
+    const scene = document.getElementById('weatherScene');
+    if (!scene) return;
     const heroCond = document.getElementById('heroCondition');
     const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
     const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
@@ -389,24 +417,8 @@ function combineDateTime(dateStr, timeStr) {
       apply('--°', 'Weather unavailable', 'Pembina, MB', '');
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
-      setWeatherVideo(3, 15);
+      setWeatherVideo(code || 3, 15);
       if (heroCond) heroCond.textContent = 'Weather unavailable';
-      const imgSrc = pickWeatherImage(code || 3, 15);
-      const heroImg = document.getElementById('heroWeatherImage');
-      if (!heroImg) {
-        const img = document.createElement('img');
-        img.id = 'heroWeatherImage';
-        img.alt = 'Weather';
-        img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-        const scene = document.getElementById('weatherScene');
-        const video = document.getElementById('heroWeatherVideo');
-        if (scene && video) scene.insertBefore(img, video);
-      }
-      const targetImg = document.getElementById('heroWeatherImage');
-      if (targetImg) {
-        targetImg.src = imgSrc;
-        targetImg.style.opacity = '1';
-      }
     };
 
     // Guaranteed fallback after 5 seconds regardless of network state
@@ -432,6 +444,8 @@ function combineDateTime(dateStr, timeStr) {
       clearTimeout(fallbackTimer);
       console.warn('Weather fallback triggered:', e);
       fallback(3);
+      const retryBtn = document.getElementById('weatherRetryBtn');
+      if (retryBtn) retryBtn.style.display = 'inline-block';
     }
   }
 
@@ -448,44 +462,23 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   function setWeatherVideo(code, temp) {
-    const video = document.getElementById('heroWeatherVideo');
-    if (!video) return;
+    const particle = document.getElementById('weatherParticle');
+    if (!particle) return;
     const hour = new Date().getHours();
+    const isNight = hour < 6 || hour >= 20;
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
-    let src = 'weather-media/day.mp4';
     if (isPrecip) {
-      src = 'weather-media/rain.mp4';
-    } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4';
-    } else if (!isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4';
+      particle.style.background = 'linear-gradient(180deg, #0f172a, #1e293b), repeating-linear-gradient(180deg, transparent, transparent 10px, rgba(148,163,184,0.08) 12px)';
+    } else if (isClear && isNight) {
+      particle.style.background = 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15), transparent 50%), linear-gradient(180deg, #020617, #0f172a)';
+    } else if (!isClear && isNight) {
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1), transparent 60%), linear-gradient(180deg, #0f172a, #1e293b)';
+    } else if (isClear) {
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 60%), linear-gradient(180deg, #1e293b, #0f172a)';
+    } else {
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 60%), linear-gradient(180deg, #1e293b, #334155)';
     }
-    const currentSrc = video.src ? video.src.split('/').pop() : '';
-    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
-    video.style.transition = 'opacity 0.6s ease';
-    video.style.opacity = '0';
-    setTimeout(() => {
-      video.src = src;
-      video.load();
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          video.style.opacity = '1';
-        }).catch(() => {
-          video.style.opacity = '0';
-          const overlay = document.getElementById('heroWeatherOverlay');
-          if (overlay) overlay.style.opacity = '1';
-        });
-      }
-      video.addEventListener('error', () => {
-        video.style.opacity = '0';
-        const overlay = document.getElementById('heroWeatherOverlay');
-        if (overlay) overlay.style.opacity = '1';
-        const heroImg = document.getElementById('heroWeatherImage');
-        if (heroImg) heroImg.style.opacity = '1';
-      }, { once: true });
-    }, 600);
   }
 
   function weatherIconHTML(code) {
