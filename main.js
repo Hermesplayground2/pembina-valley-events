@@ -354,6 +354,8 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   async function loadWeather() {
+    let settled = false;
+    const markSettled = () => { settled = true; };
     const setFallback = () => {
       const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
       const condEls = document.querySelectorAll('#condition, #condition2, #heroCondition');
@@ -375,9 +377,10 @@ function combineDateTime(dateStr, timeStr) {
       const lon = -97.9339;
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      const timeoutId = setTimeout(() => { controller.abort(); markSettled(); setFallback(); }, 10000);
       const res = await fetch(url, { signal: controller.signal });
       clearTimeout(timeoutId);
+      if (settled) return;
       const data = await res.json();
       const cw = data.current_weather;
       const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
@@ -393,8 +396,7 @@ function combineDateTime(dateStr, timeStr) {
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
-      console.warn('Weather load failed:', e);
-      setFallback();
+      if (!settled) { markSettled(); setFallback(); }
     }
   }
 
