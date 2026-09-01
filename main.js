@@ -413,6 +413,7 @@ function combineDateTime(dateStr, timeStr) {
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
       setWeatherVideo(code || 3, 15);
+      const heroCond = document.getElementById('heroCondition');
       if (heroCond) heroCond.textContent = 'Weather unavailable';
     };
 
@@ -474,6 +475,7 @@ function combineDateTime(dateStr, timeStr) {
     } else {
       particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 60%), linear-gradient(180deg, #1e293b, #334155)';
     }
+    particle.style.animation = 'weatherSceneShift 14s ease-in-out infinite';
   }
 
   function weatherIconHTML(code) {
