@@ -424,13 +424,28 @@ function combineDateTime(dateStr, timeStr) {
     } else if (!isClear && (hour < 6 || hour >= 20)) {
       src = 'weather-media/night.mp4';
     }
-    if (video.src && video.src.endsWith(src)) return;
+    const currentSrc = video.src ? video.src.split('/').pop() : '';
+    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
     video.style.transition = 'opacity 0.6s ease';
     video.style.opacity = '0';
     setTimeout(() => {
       video.src = src;
-      video.play().catch(() => {});
-      video.style.opacity = '1';
+      video.load();
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          video.style.opacity = '1';
+        }).catch(() => {
+          video.style.opacity = '0';
+          const overlay = document.getElementById('heroWeatherOverlay');
+          if (overlay) overlay.style.opacity = '1';
+        });
+      }
+      video.addEventListener('error', () => {
+        video.style.opacity = '0';
+        const overlay = document.getElementById('heroWeatherOverlay');
+        if (overlay) overlay.style.opacity = '1';
+      }, { once: true });
     }, 600);
   }
 
