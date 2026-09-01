@@ -402,6 +402,12 @@ const initPage = () => { diag('initPage');
     return WEATHER_IMAGES.cloudy;
   }
 
+  function fallbackWeather() {
+    const heroCond = document.getElementById('heroCondition');
+    if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
+    const scene = document.getElementById('heroWeatherScene');
+    if (scene) scene.style.background = 'linear-gradient(180deg,#0f172a,#1e293b)';
+  }
   async function loadWeather() { diag("loadWeather");
     const scene = document.getElementById('heroWeatherScene');
     if (!scene) return;
@@ -700,7 +706,7 @@ const initPage = () => { diag('initPage');
   buildMonth();
   renderFeatured();
   renderFamilyEvents();
-  loadWeather();
+  try { loadWeather(); } catch (e) { console.error('startup weather failed', e); fallbackWeather(); }
 
   function renderFeatured() {
     const container = document.getElementById('featured-events');
