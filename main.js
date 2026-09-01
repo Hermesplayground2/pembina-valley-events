@@ -345,10 +345,11 @@ function combineDateTime(dateStr, timeStr) {
   };
   document.getElementById('weatherRetryBtn')?.addEventListener('click', retryWeather);
 
-  const initPage = () => {
+  function diag(msg){const b=document.getElementById('diag-banner');if(b){b.style.display='block';b.textContent=msg;}}
+const initPage = () => { diag('initPage');
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
-      activatePage(page);
+      activatePage(page); diag("activated:"+page);
     } catch (e) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
@@ -365,7 +366,7 @@ function combineDateTime(dateStr, timeStr) {
     if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
   });
   window.addEventListener('hashchange', initPage);
-  if (document.readyState === 'loading') {
+  diag("DOM ready"); if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
     const scene = document.getElementById('heroWeatherScene');
     const video = document.getElementById('weatherParticle');
@@ -401,7 +402,7 @@ function combineDateTime(dateStr, timeStr) {
     return WEATHER_IMAGES.cloudy;
   }
 
-  async function loadWeather() {
+  async function loadWeather() { diag("loadWeather");
     const scene = document.getElementById('heroWeatherScene');
     if (!scene) return;
     const heroCond = document.getElementById('heroCondition');
@@ -443,7 +444,7 @@ function combineDateTime(dateStr, timeStr) {
       apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
       updateWeatherPlan(cw.temperature, cw.weathercode);
-      if (data.daily) renderWeekly(data.daily);
+      if (data.daily) { diag('weather done'); renderWeekly(data.daily); }
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
       clearTimeout(fallbackTimer);
