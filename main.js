@@ -372,63 +372,66 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   async function loadWeather() {
-    let settled = false;
-    const markSettled = () => { settled = true; };
-    const setFallback = (code) => {
-      const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
-      const condEls = document.querySelectorAll('#condition, #condition2, #heroCondition');
-      const locEls = document.querySelectorAll('#location, #location2, #heroLocation');
-      const updEls = document.querySelectorAll('#updated, #updated2');
-      tempEls.forEach(el => el.textContent = '--°');
-      condEls.forEach(el => el.textContent = 'Weather unavailable');
-      locEls.forEach(el => el.textContent = 'Pembina, MB');
-      updEls.forEach(el => el.textContent = '');
+    const heroCond = document.getElementById('heroCondition');
+    const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
+    const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
+    const locEls = () => document.querySelectorAll('#location, #location2, #heroLocation');
+    const updEls = () => document.querySelectorAll('#updated, #updated2');
+
+    const apply = (temp, cond, loc, upd) => {
+      tempEls().forEach(el => el.textContent = temp);
+      condEls().forEach(el => el.textContent = cond);
+      locEls().forEach(el => el.textContent = loc);
+      updEls().forEach(el => el.textContent = upd);
+    };
+
+    const fallback = (code) => {
+      apply('--°', 'Weather unavailable', 'Pembina, MB', '');
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
       setWeatherVideo(3, 15);
-      const heroCond = document.getElementById('heroCondition');
       if (heroCond) heroCond.textContent = 'Weather unavailable';
       const imgSrc = pickWeatherImage(code || 3, 15);
-      const existing = document.getElementById('heroWeatherImage');
-      if (!existing) {
+      const heroImg = document.getElementById('heroWeatherImage');
+      if (!heroImg) {
         const img = document.createElement('img');
         img.id = 'heroWeatherImage';
         img.alt = 'Weather';
         img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-        document.getElementById('weatherScene')?.insertBefore(img, document.getElementById('heroWeatherVideo'));
+        const scene = document.getElementById('weatherScene');
+        const video = document.getElementById('heroWeatherVideo');
+        if (scene && video) scene.insertBefore(img, video);
       }
-      const heroImg = document.getElementById('heroWeatherImage');
-      if (heroImg) {
-        heroImg.src = imgSrc;
-        heroImg.style.opacity = '1';
+      const targetImg = document.getElementById('heroWeatherImage');
+      if (targetImg) {
+        targetImg.src = imgSrc;
+        targetImg.style.opacity = '1';
       }
     };
+
+    // Guaranteed fallback after 5 seconds regardless of network state
+    const fallbackTimer = setTimeout(() => fallback(3), 5000);
 
     try {
       const lat = 49.1833;
       const lon = -97.9339;
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => { controller.abort(); markSettled(); setFallback(); }, 10000);
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
       const res = await fetch(url, { signal: controller.signal });
       clearTimeout(timeoutId);
-      if (settled) return;
+      clearTimeout(fallbackTimer);
       const data = await res.json();
       const cw = data.current_weather;
-      const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
-      const condEls = document.querySelectorAll('#condition, #condition2, #heroCondition');
-      const locEls = document.querySelectorAll('#location, #location2, #heroLocation');
-      const updEls = document.querySelectorAll('#updated, #updated2');
-      tempEls.forEach(el => el.textContent = Math.round(cw.temperature) + '°');
-      condEls.forEach(el => el.textContent = weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h');
-      locEls.forEach(el => el.textContent = 'Pembina, MB');
-      updEls.forEach(el => el.textContent = 'Updated: ' + new Date().toLocaleTimeString());
+      apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
-      if (!settled) { markSettled(); setFallback(); }
+      clearTimeout(fallbackTimer);
+      console.warn('Weather fallback triggered:', e);
+      fallback(3);
     }
   }
 
