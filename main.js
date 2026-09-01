@@ -405,8 +405,11 @@ const initPage = () => { diag('initPage');
   function fallbackWeather() {
     const heroCond = document.getElementById('heroCondition');
     if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
-    const scene = document.getElementById('heroWeatherScene');
-    if (scene) scene.style.background = 'linear-gradient(180deg,#0f172a,#1e293b)';
+    const particle = document.getElementById('weatherParticle');
+    if (particle) {
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%)';
+      particle.style.animation = 'weatherSceneShift 14s ease-in-out infinite';
+    }
   }
   async function loadWeather() { diag("loadWeather");
     const scene = document.getElementById('heroWeatherScene');
