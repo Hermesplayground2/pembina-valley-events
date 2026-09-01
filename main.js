@@ -353,10 +353,28 @@ function combineDateTime(dateStr, timeStr) {
     initPage();
   }
 
+  const WEATHER_IMAGES = {
+    clear: 'weather-media/day_frame.jpg',
+    cloudy: 'weather-media/day_frame.jpg',
+    rain: 'weather-media/rain_frame.jpg',
+    night: 'weather-media/night_frame.jpg',
+    fallback: 'weather-media/day_frame.jpg'
+  };
+
+  function pickWeatherImage(code, temp) {
+    const hour = new Date().getHours();
+    const isNight = hour < 6 || hour >= 20;
+    const isPrecip = code >= 51 && code <= 99;
+    if (isPrecip) return WEATHER_IMAGES.rain;
+    if (isNight) return WEATHER_IMAGES.night;
+    if (code <= 3) return WEATHER_IMAGES.clear;
+    return WEATHER_IMAGES.cloudy;
+  }
+
   async function loadWeather() {
     let settled = false;
     const markSettled = () => { settled = true; };
-    const setFallback = () => {
+    const setFallback = (code) => {
       const tempEls = document.querySelectorAll('#temp, #temp2, #heroTemp');
       const condEls = document.querySelectorAll('#condition, #condition2, #heroCondition');
       const locEls = document.querySelectorAll('#location, #location2, #heroLocation');
@@ -370,6 +388,20 @@ function combineDateTime(dateStr, timeStr) {
       setWeatherVideo(3, 15);
       const heroCond = document.getElementById('heroCondition');
       if (heroCond) heroCond.textContent = 'Weather unavailable';
+      const imgSrc = pickWeatherImage(code || 3, 15);
+      const existing = document.getElementById('heroWeatherImage');
+      if (!existing) {
+        const img = document.createElement('img');
+        img.id = 'heroWeatherImage';
+        img.alt = 'Weather';
+        img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+        document.getElementById('weatherScene')?.insertBefore(img, document.getElementById('heroWeatherVideo'));
+      }
+      const heroImg = document.getElementById('heroWeatherImage');
+      if (heroImg) {
+        heroImg.src = imgSrc;
+        heroImg.style.opacity = '1';
+      }
     };
 
     try {
@@ -447,6 +479,8 @@ function combineDateTime(dateStr, timeStr) {
         video.style.opacity = '0';
         const overlay = document.getElementById('heroWeatherOverlay');
         if (overlay) overlay.style.opacity = '1';
+        const heroImg = document.getElementById('heroWeatherImage');
+        if (heroImg) heroImg.style.opacity = '1';
       }, { once: true });
     }, 600);
   }
