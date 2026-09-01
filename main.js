@@ -329,12 +329,7 @@ function combineDateTime(dateStr, timeStr) {
     }
   }
 
-  setTimeout(() => {
-    const heroCond = document.getElementById('heroCondition');
-    if (heroCond && heroCond.textContent === 'Loading...') {
-      heroCond.textContent = 'JS running...';
-    }
-  }, 2000);
+
 
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
