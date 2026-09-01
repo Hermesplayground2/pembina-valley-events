@@ -353,8 +353,17 @@ function combineDateTime(dateStr, timeStr) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
       if (el) el.classList.add('active');
+      const heroCond = document.getElementById('heroCondition');
+      if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
     }
   };
+
+  // Catch any uncaught errors
+  window.addEventListener('error', (e) => {
+    console.error('Uncaught error:', e.error);
+    const heroCond = document.getElementById('heroCondition');
+    if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
+  });
   window.addEventListener('hashchange', initPage);
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -465,15 +474,15 @@ function combineDateTime(dateStr, timeStr) {
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
     if (isPrecip) {
-      particle.style.background = 'linear-gradient(180deg, #0f172a, #1e293b), repeating-linear-gradient(180deg, transparent, transparent 10px, rgba(148,163,184,0.08) 12px)';
+      particle.style.background = 'linear-gradient(180deg, #0f172a, #1e293b), repeating-linear-gradient(180deg, transparent, transparent 10px, rgba(148,163,184,0.18) 14px)';
     } else if (isClear && isNight) {
-      particle.style.background = 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15), transparent 50%), linear-gradient(180deg, #020617, #0f172a)';
+      particle.style.background = 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.35), transparent 50%), linear-gradient(180deg, #020617, #0f172a)';
     } else if (!isClear && isNight) {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1), transparent 60%), linear-gradient(180deg, #0f172a, #1e293b)';
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 60%), linear-gradient(180deg, #0f172a, #1e293b)';
     } else if (isClear) {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 60%), linear-gradient(180deg, #1e293b, #0f172a)';
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(245,158,11,0.45) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(148,163,184,0.45) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%)';
     } else {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 60%), linear-gradient(180deg, #1e293b, #334155)';
+      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%)';
     }
     particle.style.animation = 'weatherSceneShift 14s ease-in-out infinite';
   }
