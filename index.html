@@ -454,28 +454,19 @@
   }
   .weather-scene {
     position: absolute;
-    inset: -8px;
-    border-radius: 28px;
-    z-index: 0;
+    inset: 0;
+    border-radius: 24px;
+    overflow: hidden;
     background:
-      radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.9) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.9) 0%, transparent 55%),
-      linear-gradient(160deg, #0b1020 0%, #1e3a5f 45%, #1e293b 100%);
-    animation: weatherSceneShift 8s ease-in-out infinite;
-    will-change: transform;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-  .weather-icon-wrap {
-    position: relative;
-    z-index: 1;
-    isolation: isolate;
+      radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%),
+      linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);
+    animation: weatherSceneShift 14s ease-in-out infinite;
   }
   @keyframes weatherSceneShift {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(-6%, 3%) scale(1.12); }
-    50% { transform: translate(6%, -3%) scale(1.1); }
-    75% { transform: translate(-3%, -2%) scale(1.06); }
+    33% { transform: translate(-2%, 1%) scale(1.04); }
+    66% { transform: translate(2%, -1%) scale(1.02); }
   }
   .weather-icon-wrap .animated-icon {
     position: relative;
@@ -999,8 +990,7 @@
 
 <header class="logo-header">
   <img src="logo.png" alt="Pembina Valley Events" class="logo-img">
-<div id="diag-banner" style="position:fixed;top:0;left:0;right:0;background:#000;color:#0f0;padding:6px;font:12px monospace;z-index:9999;display:none;"></div>
-    </header>
+</header>
 
 <nav>
   <div class="nav-inner">
@@ -1021,10 +1011,8 @@
 
   <div class="page active" id="page-home">
     <section class="section">
-      <div id="hero3d" style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0f172a,#1e293b);min-height:340px;">
-        <div id="heroWeatherScene" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;background:linear-gradient(180deg,#0f172a,#1e293b);">
-          <div id="weatherParticle" class="weather-scene" style="position:absolute;inset:0;transition:background 0.8s ease;"></div>
-        </div>
+      <div id="hero3d" style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0f172a,#1e293b);min-height:320px;">
+        <video id="heroWeatherVideo" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;z-index:0;transition:opacity 0.6s ease;"></video>
         <div id="heroWeatherOverlay" style="position:absolute;left:16px;bottom:16px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.6);pointer-events:none;z-index:2;">
           <div id="heroTemp" style="font-size:3rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">--°</div>
           <div id="heroCondition" style="font-size:1.05rem;font-weight:700;margin-top:6px;">Loading...</div>
