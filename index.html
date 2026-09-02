@@ -462,8 +462,15 @@
       radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.9) 0%, transparent 55%),
       linear-gradient(160deg, #0b1020 0%, #1e3a5f 45%, #1e293b 100%);
     animation: weatherSceneShift 8s ease-in-out infinite;
+    will-change: transform;
+    transform: translateZ(0);
+    overflow: visible;
   }
-  .weather-icon-wrap { position: relative; z-index: 1; }
+  .weather-icon-wrap {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+  }
   @keyframes weatherSceneShift {
     0%, 100% { transform: translate(0, 0) scale(1); }
     25% { transform: translate(-6%, 3%) scale(1.12); }
