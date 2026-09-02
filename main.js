@@ -483,7 +483,17 @@ function combineDateTime(dateStr, timeStr) {
         const overlay = document.getElementById('heroWeatherOverlay');
         if (overlay) overlay.style.opacity = '1';
         const heroImg = document.getElementById('heroWeatherImage');
-        if (heroImg) heroImg.style.opacity = '1';
+        if (heroImg) {
+          heroImg.style.opacity = '1';
+        } else {
+          const img = document.createElement('img');
+          img.id = 'heroWeatherImage';
+          img.alt = 'Weather';
+          img.src = 'weather-media/day_frame.jpg';
+          img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+          const scene = document.getElementById('weatherScene');
+          if (scene) scene.insertBefore(img, video);
+        }
       }, { once: true });
     }, 600);
   }
