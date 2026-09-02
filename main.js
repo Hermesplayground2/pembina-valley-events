@@ -345,7 +345,6 @@ function combineDateTime(dateStr, timeStr) {
   };
   document.getElementById('weatherRetryBtn')?.addEventListener('click', retryWeather);
 
-  function diag(msg){const b=document.getElementById('diag-banner');if(b){b.style.display='block';b.textContent=msg;}}
 const initPage = () => { diag('initPage');
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
