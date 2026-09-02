@@ -336,10 +336,18 @@ function combineDateTime(dateStr, timeStr) {
     });
   });
 
+  const diag = (label) => {
+    const el = document.getElementById('diag-banner');
+    if (!el) return;
+    el.style.display = 'block';
+    el.textContent = label;
+  };
+
   const initPage = () => {
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
       activatePage(page);
+      diag('activated:' + page);
     } catch (e) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
@@ -372,6 +380,7 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   async function loadWeather() {
+    diag("loadWeather");
     const heroCond = document.getElementById('heroCondition');
     const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
     const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
@@ -428,6 +437,7 @@ function combineDateTime(dateStr, timeStr) {
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
+      diag("weather done");
     } catch (e) {
       clearTimeout(fallbackTimer);
       console.warn('Weather fallback triggered:', e);
