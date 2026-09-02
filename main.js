@@ -329,8 +329,6 @@ function combineDateTime(dateStr, timeStr) {
     }
   }
 
-
-
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -338,48 +336,19 @@ function combineDateTime(dateStr, timeStr) {
     });
   });
 
-  const retryWeather = () => {
-    const btn = document.getElementById('weatherRetryBtn');
-    if (btn) btn.style.display = 'none';
-    loadWeather().catch(() => {});
-  };
-  document.getElementById('weatherRetryBtn')?.addEventListener('click', retryWeather);
-
-function diag(msg){const b=document.getElementById("diag-banner");if(b){b.style.display="block";b.textContent=msg;}}
-const initPage = () => { diag("initPage");
+  const initPage = () => {
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
-      activatePage(page); diag("activated:"+page);
+      activatePage(page);
     } catch (e) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
       if (el) el.classList.add('active');
-      const heroCond = document.getElementById('heroCondition');
-      if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
     }
   };
-
-  // Catch any uncaught errors
-  window.addEventListener('error', (e) => {
-    console.error('Uncaught error:', e.error);
-    const heroCond = document.getElementById('heroCondition');
-    if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
-  });
   window.addEventListener('hashchange', initPage);
-  diag("DOM ready"); if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-    const scene = document.getElementById('heroWeatherScene');
-    const video = document.getElementById('weatherParticle');
-    if (scene && video) {
-      const img = document.createElement('img');
-      img.id = 'heroWeatherImage';
-      img.alt = 'Weather';
-      img.src = 'weather-media/day_frame.jpg';
-      img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-      scene.insertBefore(img, video);
-    }
-    initPage();
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPage);
   } else {
     initPage();
   }
@@ -402,18 +371,7 @@ const initPage = () => { diag("initPage");
     return WEATHER_IMAGES.cloudy;
   }
 
-  function fallbackWeather() {
-    const heroCond = document.getElementById('heroCondition');
-    if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
-    const particle = document.getElementById('weatherParticle');
-    if (particle) {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%)';
-      particle.style.animation = 'weatherSceneShift 14s ease-in-out infinite';
-    }
-  }
-  async function loadWeather() { diag("loadWeather");
-    const scene = document.getElementById('heroWeatherScene');
-    if (!scene) return;
+  async function loadWeather() {
     const heroCond = document.getElementById('heroCondition');
     const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
     const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
@@ -431,9 +389,24 @@ const initPage = () => { diag("initPage");
       apply('--°', 'Weather unavailable', 'Pembina, MB', '');
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
-      setWeatherVideo(code || 3, 15);
-      const heroCond = document.getElementById('heroCondition');
+      setWeatherVideo(3, 15);
       if (heroCond) heroCond.textContent = 'Weather unavailable';
+      const imgSrc = pickWeatherImage(code || 3, 15);
+      const heroImg = document.getElementById('heroWeatherImage');
+      if (!heroImg) {
+        const img = document.createElement('img');
+        img.id = 'heroWeatherImage';
+        img.alt = 'Weather';
+        img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+        const scene = document.getElementById('weatherScene');
+        const video = document.getElementById('heroWeatherVideo');
+        if (scene && video) scene.insertBefore(img, video);
+      }
+      const targetImg = document.getElementById('heroWeatherImage');
+      if (targetImg) {
+        targetImg.src = imgSrc;
+        targetImg.style.opacity = '1';
+      }
     };
 
     // Guaranteed fallback after 5 seconds regardless of network state
@@ -453,14 +426,12 @@ const initPage = () => { diag("initPage");
       apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
       updateWeatherPlan(cw.temperature, cw.weathercode);
-      if (data.daily) { diag('weather done'); renderWeekly(data.daily); }
+      if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
       clearTimeout(fallbackTimer);
       console.warn('Weather fallback triggered:', e);
       fallback(3);
-      const retryBtn = document.getElementById('weatherRetryBtn');
-      if (retryBtn) retryBtn.style.display = 'inline-block';
     }
   }
 
@@ -477,24 +448,44 @@ const initPage = () => { diag("initPage");
   }
 
   function setWeatherVideo(code, temp) {
-    const particle = document.getElementById('weatherParticle');
-    if (!particle) return;
+    const video = document.getElementById('heroWeatherVideo');
+    if (!video) return;
     const hour = new Date().getHours();
-    const isNight = hour < 6 || hour >= 20;
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
+    let src = 'weather-media/day.mp4';
     if (isPrecip) {
-      particle.style.background = 'linear-gradient(180deg, #0f172a, #1e293b), repeating-linear-gradient(180deg, transparent, transparent 10px, rgba(148,163,184,0.18) 14px)';
-    } else if (isClear && isNight) {
-      particle.style.background = 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.35), transparent 50%), linear-gradient(180deg, #020617, #0f172a)';
-    } else if (!isClear && isNight) {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 60%), linear-gradient(180deg, #0f172a, #1e293b)';
-    } else if (isClear) {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(245,158,11,0.45) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(148,163,184,0.45) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%)';
-    } else {
-      particle.style.background = 'radial-gradient(circle at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%)';
+      src = 'weather-media/rain.mp4';
+    } else if (isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4';
+    } else if (!isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4';
     }
-    particle.style.animation = 'weatherSceneShift 14s ease-in-out infinite';
+    const currentSrc = video.src ? video.src.split('/').pop() : '';
+    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
+    video.style.transition = 'opacity 0.6s ease';
+    video.style.opacity = '0';
+    setTimeout(() => {
+      video.src = src;
+      video.load();
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          video.style.opacity = '1';
+        }).catch(() => {
+          video.style.opacity = '0';
+          const overlay = document.getElementById('heroWeatherOverlay');
+          if (overlay) overlay.style.opacity = '1';
+        });
+      }
+      video.addEventListener('error', () => {
+        video.style.opacity = '0';
+        const overlay = document.getElementById('heroWeatherOverlay');
+        if (overlay) overlay.style.opacity = '1';
+        const heroImg = document.getElementById('heroWeatherImage');
+        if (heroImg) heroImg.style.opacity = '1';
+      }, { once: true });
+    }, 600);
   }
 
   function weatherIconHTML(code) {
@@ -512,7 +503,7 @@ const initPage = () => { diag("initPage");
   function drawWeatherIcon(wrapId, code) {
     const wrap = document.getElementById(wrapId);
     if (!wrap) return;
-    const scene = document.getElementById('heroWeatherScene');
+    const scene = document.getElementById('weatherScene');
     if (!scene) return;
     scene.setAttribute('style', 'position:relative;width:100%;height:100%;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);animation:weatherSceneShift 14s ease-in-out infinite;perspective:800px;');
     const icon = document.createElement('div');
@@ -709,7 +700,7 @@ const initPage = () => { diag("initPage");
   buildMonth();
   renderFeatured();
   renderFamilyEvents();
-  try { loadWeather(); } catch (e) { console.error('startup weather failed', e); fallbackWeather(); }
+  loadWeather();
 
   function renderFeatured() {
     const container = document.getElementById('featured-events');
