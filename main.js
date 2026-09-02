@@ -355,6 +355,13 @@ function combineDateTime(dateStr, timeStr) {
     }
   };
   window.addEventListener('hashchange', initPage);
+
+  window.addEventListener('error', (e) => {
+    console.error('Uncaught error:', e.error);
+    const el = document.getElementById('diag-banner');
+    if (el) { el.style.display = 'block'; el.textContent = 'error:' + (e.error && e.error.message ? e.error.message : 'unknown'); }
+  });
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initPage);
   } else {
@@ -720,7 +727,8 @@ function combineDateTime(dateStr, timeStr) {
   buildMonth();
   renderFeatured();
   renderFamilyEvents();
-  loadWeather();
+  diag("before-loadWeather");
+  try { loadWeather(); } catch (e) { diag("loadWeather-error:" + (e && e.message ? e.message : "unknown")); }
 
   function renderFeatured() {
     const container = document.getElementById('featured-events');
