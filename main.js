@@ -728,7 +728,17 @@ function combineDateTime(dateStr, timeStr) {
   renderFeatured();
   renderFamilyEvents();
   diag("before-loadWeather");
-  try { loadWeather(); } catch (e) { diag("loadWeather-error:" + (e && e.message ? e.message : "unknown")); }
+  try {
+    const started = loadWeather();
+    if (started && typeof started.then === 'function') {
+      started.then(() => diag("loadWeather-resolved")).catch((err) => diag("loadWeather-rejected:" + (err && err.message ? err.message : "unknown")));
+      setTimeout(() => diag("loadWeather-hang"), 10000);
+    } else {
+      diag("loadWeather-no-promise");
+    }
+  } catch (e) {
+    diag("loadWeather-error:" + (e && e.message ? e.message : "unknown"));
+  }
 
   function renderFeatured() {
     const container = document.getElementById('featured-events');
