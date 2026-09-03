@@ -199,6 +199,18 @@ function combineDateTime(dateStr, timeStr) {
       eventsByDate[dateStr].push(ev);
     };
 
+    // Merge events from EVENTS array so one-off events appear on Activities page
+    EVENTS.forEach(ev => {
+      if (ev.date >= fmt(year, startMonth, 1)) {
+        const parts = ev.date.split('-');
+        const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+        if (evDate >= today) {
+          if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
+          eventsByDate[ev.date].push(ev);
+        }
+      }
+    });
+
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
@@ -746,6 +758,8 @@ if (document.readyState === 'loading') {
       { category: 'outdoors', title: 'Outdoor Summer Adventure', time: 'Pembina, MB', date: 'Summer', link: 'https://www.pembina.ca/p/annual-events' },
       { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29', link: 'https://www.backfortymusicfestival.com/' },
       { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
+      { category: 'family', title: 'Shadow Valley Illuminated', time: 'Sept 5-6 · Gates 5:30 PM · Shadow Valley Raceway, Morden', date: 'Sep 5', link: 'https://www.concertsonrequest.ca/', promoted: true },
+      { category: 'family', title: 'Fun With Family Day 2026', time: 'Josh Wilson, Jason Gray, Danielle Savard · Portage la Prairie', date: 'Sep 5', link: 'https://www.concertsonrequest.ca/' },
     ];
 
     container.innerHTML = featured.map(ev => `
