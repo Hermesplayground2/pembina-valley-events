@@ -199,6 +199,9 @@ function combineDateTime(dateStr, timeStr) {
       eventsByDate[dateStr].push(ev);
     };
 
+    const dow = (y, m, d) => new Date(y, m, d).getDay();
+    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
     // Merge events from EVENTS array so one-off events appear on Activities page
     EVENTS.forEach(ev => {
       if (ev.date >= fmt(year, startMonth, 1)) {
@@ -210,9 +213,6 @@ function combineDateTime(dateStr, timeStr) {
         }
       }
     });
-
-    const dow = (y, m, d) => new Date(y, m, d).getDay();
-    const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
     for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
       const month = startMonth + monthOffset;
