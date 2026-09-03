@@ -740,12 +740,18 @@ function combineDateTime(dateStr, timeStr) {
     });
   }
 
-  renderDashboard();
-  buildUpcoming();
-  buildActivityWeek();
-  buildMonth();
-  renderFeatured();
-  renderFamilyEvents();
+  diag("before-dashboard");
+  try { renderDashboard(); } catch (e) { diag("dashboard-error:" + (e && e.message ? e.message : "unknown")); }
+  diag("before-upcoming");
+  try { buildUpcoming(); } catch (e) { diag("upcoming-error:" + (e && e.message ? e.message : "unknown")); }
+  diag("before-activityWeek");
+  try { buildActivityWeek(); } catch (e) { diag("activityWeek-error:" + (e && e.message ? e.message : "unknown")); }
+  diag("before-month");
+  try { buildMonth(); } catch (e) { diag("month-error:" + (e && e.message ? e.message : "unknown")); }
+  diag("before-featured");
+  try { renderFeatured(); } catch (e) { diag("featured-error:" + (e && e.message ? e.message : "unknown")); }
+  diag("before-familyEvents");
+  try { renderFamilyEvents(); } catch (e) { diag("familyEvents-error:" + (e && e.message ? e.message : "unknown")); }
   diag("before-loadWeather");
   try {
     const started = loadWeather();
