@@ -87,7 +87,6 @@ function combineDateTime(dateStr, timeStr) {
   return d;
 }
 
-
   function renderDashboard() {
     const box = document.getElementById('dashboard-live');
     if (!box) return;
@@ -336,18 +335,10 @@ function combineDateTime(dateStr, timeStr) {
     });
   });
 
-  const diag = (label) => {
-    const el = document.getElementById('diag-banner');
-    if (!el) return;
-    el.style.display = 'block';
-    el.textContent = label;
-  };
-
   const initPage = () => {
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
       activatePage(page);
-      diag('activated:' + page);
     } catch (e) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
@@ -356,13 +347,7 @@ function combineDateTime(dateStr, timeStr) {
   };
   window.addEventListener('hashchange', initPage);
 
-  window.addEventListener('error', (e) => {
-    console.error('Uncaught error:', e.error);
-    const el = document.getElementById('diag-banner');
-    if (el) { el.style.display = 'block'; el.textContent = 'error:' + (e.error && e.error.message ? e.error.message : 'unknown'); }
-  });
-
-  if (document.readyState === 'loading') {
+if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initPage);
   } else {
     initPage();
@@ -387,7 +372,6 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   async function loadWeather() {
-    diag("loadWeather");
     const heroCond = document.getElementById('heroCondition');
     const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
     const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
@@ -444,7 +428,6 @@ function combineDateTime(dateStr, timeStr) {
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
-      diag("weather done");
     } catch (e) {
       clearTimeout(fallbackTimer);
       console.warn('Weather fallback triggered:', e);
@@ -740,29 +723,12 @@ function combineDateTime(dateStr, timeStr) {
     });
   }
 
-  diag("before-dashboard");
-  try { renderDashboard(); } catch (e) { diag("dashboard-error:" + (e && e.message ? e.message : "unknown")); }
-  diag("before-upcoming");
-  try { buildUpcoming(); } catch (e) { diag("upcoming-error:" + (e && e.message ? e.message : "unknown")); }
-  diag("before-activityWeek");
-  try { buildActivityWeek(); } catch (e) { diag("activityWeek-error:" + (e && e.message ? e.message : "unknown")); }
-  diag("before-month");
-  try { buildMonth(); } catch (e) { diag("month-error:" + (e && e.message ? e.message : "unknown")); }
-  diag("before-featured");
-  try { renderFeatured(); } catch (e) { diag("featured-error:" + (e && e.message ? e.message : "unknown")); }
-  diag("before-familyEvents");
-  try { renderFamilyEvents(); } catch (e) { diag("familyEvents-error:" + (e && e.message ? e.message : "unknown")); }
-  diag("before-loadWeather");
   try {
     const started = loadWeather();
     if (started && typeof started.then === 'function') {
-      started.then(() => diag("loadWeather-resolved")).catch((err) => diag("loadWeather-rejected:" + (err && err.message ? err.message : "unknown")));
-      setTimeout(() => diag("loadWeather-hang"), 10000);
     } else {
-      diag("loadWeather-no-promise");
     }
   } catch (e) {
-    diag("loadWeather-error:" + (e && e.message ? e.message : "unknown"));
   }
 
   function renderFeatured() {
