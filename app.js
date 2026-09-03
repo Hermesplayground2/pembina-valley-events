@@ -303,7 +303,9 @@ function combineDateTime(dateStr, timeStr) {
     const todays = EVENTS.filter(ev => ev.date === todayStr);
 
     if (!todays.length) {
-      container.innerHTML = '<p class="muted">No events scheduled for today.</p>';
+      container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
+        '<div class="spacer"></div>' +
+        '<p class="muted">📅 Coming up: Shadow Valley Illuminated, Sept 5-6 in Morden</p>';
       return;
     }
 
@@ -384,6 +386,10 @@ if (document.readyState === 'loading') {
     return WEATHER_IMAGES.cloudy;
   }
 
+  let weatherCache = null;
+  let weatherCacheTime = 0;
+  const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
   async function loadWeather() {
     const heroCond = document.getElementById('heroCondition');
     const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
@@ -426,6 +432,18 @@ if (document.readyState === 'loading') {
     const fallbackTimer = setTimeout(() => fallback(3), 5000);
 
     try {
+      // Use cached weather data if available and fresh
+      if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
+        console.log('Using cached weather data');
+        const cw = weatherCache.current_weather;
+        apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date(weatherCacheTime).toLocaleTimeString());
+        updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+        updateWeatherPlan(cw.temperature, cw.weathercode);
+        if (weatherCache.daily) renderWeekly(weatherCache.daily);
+        setWeatherVideo(cw.weathercode, cw.temperature);
+        return;
+      }
+
       const lat = 49.1833;
       const lon = -97.9339;
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
@@ -435,6 +453,10 @@ if (document.readyState === 'loading') {
       clearTimeout(timeoutId);
       clearTimeout(fallbackTimer);
       const data = await res.json();
+      
+      // Cache successful response
+      weatherCache = data;
+      weatherCacheTime = Date.now();
       const cw = data.current_weather;
       apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
@@ -660,7 +682,7 @@ if (document.readyState === 'loading') {
   function renderWeekly(daily) {
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const targets = [document.getElementById('weekly-home')].filter(Boolean);
+    const targets = [document.getElementById('daily-events'), document.getElementById('weekly-home')].filter(Boolean);
     if (!targets.length) return;
     if (!daily || !daily.time || !daily.time.length) {
       targets.forEach(el => el.innerHTML = '<div class="muted">Weekly forecast unavailable</div>');
@@ -796,7 +818,10 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
 
     const garageEvents = [
       { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
-      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' }
+      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' },
+      { title: 'Shadow Valley Illuminated', date: 'Sept 5-6', time: 'Gates 5:30 PM · Shadow Valley Raceway, Morden', category: 'fundraiser', link: 'https://www.concertsonrequest.ca/' },
+      { title: 'Pie Auction Fundraiser', date: 'Sept 12', time: '6:00 PM · Altona Community Hall', category: 'fundraiser', link: '#' },
+      { title: 'Garage Sale for Charity', date: 'Sept 19', time: '9:00 AM · Winkler', category: 'fundraiser', link: '#' }
     ];
 
     const renderCard = (ev) => {
