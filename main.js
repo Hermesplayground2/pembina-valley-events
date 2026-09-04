@@ -513,26 +513,7 @@ if (document.readyState === 'loading') {
           if (overlay) overlay.style.opacity = '1';
         });
       }
-      let fallbackTimer = setTimeout(() => {
-        const img = document.getElementById('heroWeatherImage');
-        if (!img) {
-          const fallbackImg = document.createElement('img');
-          fallbackImg.id = 'heroWeatherImage';
-          fallbackImg.alt = 'Weather';
-          fallbackImg.src = 'weather-media/day_frame.jpg';
-          fallbackImg.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-          const scene = document.getElementById('weatherScene');
-          if (scene) scene.insertBefore(fallbackImg, video);
-        } else {
-          img.style.opacity = '1';
-        }
-        video.style.opacity = '0';
-        const overlay = document.getElementById('heroWeatherOverlay');
-        if (overlay) overlay.style.opacity = '1';
-      }, 2000);
-
       video.addEventListener('error', () => {
-        clearTimeout(fallbackTimer);
         const img = document.getElementById('heroWeatherImage');
         if (!img) {
           const fallbackImg = document.createElement('img');
