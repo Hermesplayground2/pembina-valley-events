@@ -321,7 +321,7 @@ function combineDateTime(dateStr, timeStr) {
       document.querySelectorAll('.nav-link').forEach(l => {
         if (l.dataset.page === page) l.classList.add('active');
       });
-      if (page === 'home') { try { renderFeatured(); } catch (e) { console.error(e); } }
+      if (page === 'home') { try { renderFeatured(); buildUpcoming(); } catch (e) { console.error(e); } }
       if (page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
@@ -655,7 +655,7 @@ if (document.readyState === 'loading') {
   function renderWeekly(daily) {
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const targets = [document.getElementById('daily-events'), document.getElementById('weekly-home')].filter(Boolean);
+    const targets = [document.getElementById('weather-forecast')].filter(Boolean);
     if (!targets.length) return;
     if (!daily || !daily.time || !daily.time.length) {
       targets.forEach(el => el.innerHTML = '<div class="muted">Weekly forecast unavailable</div>');
