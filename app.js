@@ -297,7 +297,7 @@ function combineDateTime(dateStr, timeStr) {
 
     if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
-        '<div class="spacer"></div>' +
+        '<div class="spacer"></div>';
       return;
     }
 
