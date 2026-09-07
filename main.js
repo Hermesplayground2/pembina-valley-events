@@ -114,8 +114,6 @@ function combineDateTime(dateStr, timeStr) {
     { date: '2026-08-27', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-27', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-27', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', category: 'family', link: 'https://winklerchamber.com/events/' },
-    { date: '2026-09-05', title: 'Fun With Family Day 2026', time: 'Josh Wilson, Jason Gray, Danielle Savard · Portage la Prairie', category: 'family', link: 'https://www.concertsonrequest.ca/' },
-    { date: '2026-09-05', title: 'Shadow Valley Illuminated', time: 'Sept 5-6 · Gates 5:30 PM · Shadow Valley Raceway, Morden', category: 'family', link: 'https://www.concertsonrequest.ca/' },
     { date: '2026-09-07', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-09', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
@@ -300,7 +298,6 @@ function combineDateTime(dateStr, timeStr) {
     if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
         '<div class="spacer"></div>' +
-        '<p class="muted">📅 Coming up: Shadow Valley Illuminated, Sept 5-6 in Morden</p>';
       return;
     }
 
@@ -753,8 +750,6 @@ if (document.readyState === 'loading') {
       { category: 'outdoors', title: 'Raptor Festival', time: 'Spring · La Riviere, MB', date: 'Spring', link: 'https://www.pembina.ca/p/annual-events' },
       { category: 'outdoors', title: 'Outdoor Summer Adventure', time: 'Pembina, MB', date: 'Summer', link: 'https://www.pembina.ca/p/annual-events' },
       { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
-      { category: 'family', title: 'Shadow Valley Illuminated', time: 'Sept 5-6 · Gates 5:30 PM · Shadow Valley Raceway, Morden', date: 'Sep 5', link: 'https://www.concertsonrequest.ca/', promoted: true },
-      { category: 'family', title: 'Fun With Family Day 2026', time: 'Josh Wilson, Jason Gray, Danielle Savard · Portage la Prairie', date: 'Sep 5', link: 'https://www.concertsonrequest.ca/' },
     ];
 
     container.innerHTML = featured.map(ev => `
@@ -792,7 +787,6 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     const garageEvents = [
       { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
       { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' },
-      { title: 'Shadow Valley Illuminated', date: 'Sept 5-6', time: 'Gates 5:30 PM · Shadow Valley Raceway, Morden', category: 'fundraiser', link: 'https://www.concertsonrequest.ca/' },
       { title: 'Pie Auction Fundraiser', date: 'Sept 12', time: '6:00 PM · Altona Community Hall', category: 'fundraiser', link: '#' },
       { title: 'Garage Sale for Charity', date: 'Sept 19', time: '9:00 AM · Winkler', category: 'fundraiser', link: '#' }
     ];
