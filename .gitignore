@@ -1,0 +1,5 @@
+.gitignore_extra
+videos/
+video_frames/
+jarvis-ui/
+wilson-jarvis-api/
