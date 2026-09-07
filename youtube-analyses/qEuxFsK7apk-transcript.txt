@@ -1,0 +1,735 @@
+I have tested hundreds of Hermes agent
+skills and most of them are complete
+garbage. And if you want to unlock
+Hermes full capabilities, you have to
+use the correct skills. And in this
+video, I'm going to show you the top 13
+that you need to use so you can stop
+wasting your time, save money, and get
+light years ahead of everybody else. And
+if you [music] haven't already, grab
+that beautiful coffee and let's dive
+straight in. So the goal is a fully
+staffed Hermes agent. And I'm going to
+time stamp everything down below and
+give you the links for all these skills
+so you can very easily grab them. So
+skill one is the bouncer. Now imagine
+this party room being your Hermes agent.
+What the bouncer does is make sure that
+any skill that ever wants to come into
+your Hermes agent a has to be
+non-malicious. In other words, it works.
+But not only that, it will actually go
+ahead and search for other skills online
+to see if there are any other better
+alternatives. which means that you
+basically always get the best skills
+possible. What does it look like in
+practice? Again, I'll put all this down
+below in the link, but it's going to
+scan for prompt injections. It will
+research the market first. It will
+interview you to understand what you
+want the skill to do. And basically on
+that point, it will either autoallow,
+ask first, or deny and quarantine. Now,
+Hermes does a great job of doing this
+already, but these additional benefits
+and systems means that you only get the
+best quality skills that are available.
+And this takes us on to skill number
+two. Now, if your AI doesn't understand
+what you want, Hermes agent is never
+going to be able to give you the output
+that you actually need. Grill me will
+actually ask you questions to clarify
+what it is that you want automatically
+when you basically ask it to. And then
+essentially, it means it's going to
+actually perform the thing that you want
+it to. This comes from Matt PCO Skills.
+Again, all this will be down below for
+you. And what's really cool about this
+is essentially it just means that you're
+going to get way better output. So, for
+example, I could come to my Aentic OS or
+Telegram and I just ask it to grill me
+on something. For example, hey, I'm
+thinking about starting a brand new
+business. Could you just grill me on it
+to make sure it's a good idea? That's
+all you do. You go ahead and then at
+that point, it will come back and start
+asking questions. And by the way, to
+install the skills, all you ever do is
+bring the skill over and just say, "Hey,
+go ahead and install the skill." And
+then just drop the link to the repo or
+just copy and paste it. And the best way
+to think about Hermes is like a 500 IQ
+intern. It's super intelligent, but only
+if it knows what it's doing. And by
+asking questions, look, who's the exact
+customer? What's the painful recurring
+problem? My recommended answer is a
+narabara, etc., etc., and it's going
+down and using that skill. Skill three
+is about continuity. When you go from
+one agent to another, not only may you
+have to repeat yourself, but it could
+get things completely wrong, which is
+why we want to do a proper handover. And
+to do that, you can say, "I'd like you
+to go ahead and summarize all the things
+today and just write for me a handover
+document that I can take over now into
+claude code and pass on to another
+agent." Literally give it that prompt
+and Hermy's agent will go grab the skill
+and write you a fully detailed handover
+document. And if you're wondering, I
+haven't actually moved into a hotel
+room. I'm Montenegro right now. I'm
+doing an AI event. It has been a crazy
+week. Lots of cool stuff to update you
+with, but rest assured, there has been
+beautiful coffee and great weather,
+which by the way is dangerous because
+you have to make sure that you got the
+sunscreen on lockdown. Now, the handover
+document will go through states,
+decisions, next steps, suggested skills,
+and also secrets. Now, most people
+actually ask chat GPT or Hermes agent a
+question, and they just get one
+paragraph answers back. But this skill
+lets you actually turn Hermes agent into
+professor, meaning that you unlock new
+insights, and it becomes way more
+effective. So imagine if instead of him
+his agent just giving you these
+insights, it could actually teach you in
+a meaningful way. Well, this is what
+slash teach from Matt Poclls do. It's
+very cool. Basically, you understand the
+mission. So why are we learning this? It
+grounds every lesson in your actual
+goal. Uh one type thing at a time and
+then what actually stuck in the records
+once it's completely done. So to do
+that, we come over to Hermes and he can
+say, "Hey, I want you to go ahead and
+use my teach me skill to teach me the
+best way to grow an Instagram account."
+And just like that, it's access the
+skill. It says before lesson one, we
+need the mission. The skill teaches
+towards an outcome, not vanity
+followers. My recommendation, make
+Instagram your discovery agent. And then
+it'll start interviewing. So what do you
+want? Maybe we want audience and growth.
+Cool. It's great. And it just adds a
+like a way more structured way to engage
+with Hermes agent or Claude if you're
+using it for that so you can get better
+outcomes. Now the fifth skill is a meta
+skill and it will improve every other
+skill that you use and that is the
+ability to create great skills. So
+imagine, for example, if we could turn
+Hermes agent into the world's best skill
+writer. Well, we can do that with one
+specific prompt. And essentially, it's
+just a rule book that Hermes will bring
+in whenever it's creating new skills.
+For example, I could say, "Hey, I want
+you to go ahead and create a skill based
+on our conversation on AI models
+earlier. Please use your skill creator
+skill to do that." Now, important to
+bear in mind that sometimes you don't
+actually have to say use the skill
+creator. the agent should find that out,
+but they are probabilistic, which means
+that sometimes they just kind of decide
+not to do the thing that you ask them to
+do. And what that basically means is
+that if you're very specific on it, be
+directive. Just tell it to use the scum.
+But Hermes generally is good at doing
+that. Now, what it does, it uses a
+reusable AI model launch evidence hype
+video decision agent handoff scum, which
+is cool. So, it's checking whether
+expand your existing model launch skill
+or create a duplicate. So perm will
+actually go ahead and prune so you don't
+get loads of skill bloat. Now the way
+that this actually works is really cool.
+Matt's done an awesome job with this.
+Basically has inscult
+order. Then the rules on demand. So what
+are the rules? Then any linked files so
+loaded when they're needed. And then
+finally the description tax prune every
+word rides every turn. Also you don't
+want the skills be too verbose just to
+make it more token efficient. Now, the
+sixth skill is all about the ability to
+run your Homies agent 24/7. Now, I have
+one running at home on my Mac desktop,
+but not everybody has that. And if you
+close your laptop down, you can't use
+its most powerful features is the fact
+that it's running 24/7 for you on a VPS.
+So, skill six is about the ability to
+set this up on a virtual private server.
+Whether you want to run Hermes agent
+operating system or Hermes agent itself,
+we can do that on a private machine
+virtually. Whether your laptop is closed
+down or you're underground, wherever you
+are, you want to be able to use Hermes
+agent. And funnily enough, this setup is
+actually quite straightforward. I'm the
+Montenegro now, hence the background. I
+actually met the hosting team and we're
+talking about Hermes and I was like, you
+guys should definitely sponsor some
+content cuz I get this question all the
+time. So, thanks to Hostinger for
+sponsoring this part of the video. And
+whether you're setting up an Aentic
+Hermes operating system or Hermes agent
+itself, I found the easiest way of doing
+this is with hosting it. So, I'm going
+to put a link for this down below. Oh,
+and all you can do is come down and
+choose plan. And if you have it running
+on your own computer, awesome. But if
+you don't have the ability to do that,
+you may want to look at something so you
+can run it 24/7 when you're out grabbing
+those beautiful coffees. And if you've
+already got this set up, feel free to
+click on the next section down below.
+I've timestamped everything for you. But
+a lot of people find this really
+helpful, especially if you're looking at
+an OS or you just don't have the ability
+to do it. So KVM2 is more than enough
+for Hermes agent. So that's the one that
+I usually go with. Just go ahead and
+choose plan. Then once you land on this
+page here, you're going to pick the
+period. So you can do monthly, annually
+or bannually. The longer the period, the
+better the offer. And if you go for
+annual or bannual and you can actually
+use the code Jack Roberts and that will
+apply an additional 10% off the entire
+order on annual and buy your plans. So
+thank you for hosting it for sharing
+that with the people. Now what's really
+important here is that this will
+automatically install Hermes agent on
+the auto deploy when you actually set
+this up. Now we don't need these Nexus
+credits, so I'm just going to untick
+those there. and we're going to be using
+OpenAI instead. Then we want to pick the
+server location. So you want to pick the
+one typically speaking with the best
+latency. So I'm going to go ahead and
+pick Germany for this one. Then as you
+can see, you get a deal if you're doing
+24 months. I've already got mine, so I'm
+set for that. Then come down and click
+on continue. Then once you've done that,
+you'll actually get signed in and it
+will start to set up your entire VPS,
+which is awesome. Cool. Then when you're
+on this dashboard, all you're going to
+do is come down here and you're going to
+see in your to-dos, you're going to come
+down and click on setup. And then on the
+right hand side, come over and click on
+setup here. Cool. And then we're going
+to land on this page. You're going to
+click on Germany once again if that one
+is the correct one for you. Then on this
+section, all you're going to do is come
+down and type in Hermes like so. And
+then you got Hermes agent, Hermes Web
+UI, and Hermes workspace. But we're
+going to go ahead and click on Hermes
+agent real quick, like so. Come down and
+then click on select. So to make this
+process pretty straightforward, pretty
+easy. And then you're going to have an
+admin username and an admin password. Go
+ahead and copy this admin password. And
+once you've done that, come down and
+click on deploy. Then once that's
+happened, hosting will set up the VPF
+for you. So if you're doing it on a VPS,
+this is the panel from which you manage
+it. As we can see, we have Hermes agent
+up and running. And we have this as
+well, meaning that we can access it
+securely from other locations. And then
+to get this set up, it is unbelievably
+easy. All you're going to do is click on
+the terminal, which is just fancy word
+for place where we can talk to the
+computer. So just like I have the
+computer that you're working on right
+now, the terminal is basically the
+you're talking to the computer where
+Hermes agent is hosted. Then once that
+terminal loads up, don't be intimidated
+by a terminal. It's just the way that
+you talk to your computer. And here
+we're interfacing with the computer on
+this virtual private server. It is like
+talking to a chatbot, but you need to be
+sort of specific with your commands. I
+put down below as well a full Hermes
+connection guide. You can literally
+follow this entire thing step by step.
+So all we're going to do is come back
+here and copy the last four letters of
+this. Then come over to your setup
+guide. And the first thing we're doing
+is copying this command right here. And
+then we're going over to terminal. And
+you're going to pop that in. and instead
+of xxx just enter in your four digits.
+So for me that's MVP1 and click on
+enter. Then all we're going to do is go
+ahead and access the Hermes container.
+So we are going to copy this second
+section right here. Come straight back
+over and then enter that bad boy in like
+so. And then click enter. Finally let's
+go ahead and do the Hermes setup. So
+just copy this, swing straight back over
+here. Enter that in. And then bada bing
+boom we should get the full Hermes
+setup. So we can do the quick setup that
+works on with Hermes agent or you can do
+the full setup. come down here for
+example, then I hit uh spacebar. That
+will then select it and you can go down
+and effectively configure everything and
+then you'll have your Hermes agent
+running. I highly recommend if you
+haven't already, by the way, you want to
+go ahead and connect it to Open AI
+because you can use your chat GPT
+subscription. So come down here. I might
+press uh open on that and then open AI
+codeex will just let me basically
+connect my chat GPT subscription and
+then you just follow the instructions
+set up. You can connect it to Telegram
+super easily and then you'll have your
+entire Hermes agent running on your
+phone and you can use it whenever you
+want to fully host it and you can come
+back and control it in your actual
+panel. Imagine a doctor inside Hermes
+that could actually look at everything
+that exists within it to make sure it
+was as efficient as humanly possible.
+Now whether you're using for example
+Hermes agent here in the dashboard or
+maybe you're using claw code it doesn't
+really matter. What was really
+interesting is the Anthropic itself,
+right, the engineers deleted over 80% of
+CL code system prompts with zero loss in
+coding performance. So what I did with
+this is looked what Claude did and I was
+like, well, let's just do this in Hemy's
+agent. So it's got six examinations, but
+it does uh no controversial examinations
+I might add. Always on memory. So
+looking at soul.md profile, standing
+memory, everything being loaded every
+turn. The skill description tag. So
+every school descriptor rides every
+turn. Flags for 300 plus characters.
+Stale schools we don't need tool schema
+footprint confident blow disclosure
+check. And this has got everything it
+needs. It will do one of five things.
+Cut it. Basically quarantine it never
+hard delete. Merge, move, defer, or
+trim. And by the way, if if all of this
+is sounding like I'm speaking Spanish,
+I'm going to put a link down below for
+the full Hermes agent masterass. It
+covers everything from foundations,
+setup, powering Hermes down to creating
+websites, all the power features that
+I've never included online before. It's
+really, really powerful. And you also
+alongside that get full access to the
+Hermesogentic operating system that has
+everything really crisp onboarding and
+will make a lot of sense for you as
+well. So the idea with the contact
+doctor, again, all the skills are down
+below for you, is that you can literally
+go over to Hermes. So then just ask your
+HES agent to run this skill on
+everything it's got and it'll come back
+consult you and show you some very
+interesting findings and each of the
+skills I'm going to show you is more
+powerful than the one before it. Now
+when you come to asking questions to
+anything Hermes or Claude it's only as
+good as the actual results you get which
+is why level eight and skill 8 is pretty
+incredible. So the last 30 days goes
+through X YouTube Reddit and finds what
+people have actually said. It looks at
+the up votes and gives you the actual
+best research on what's happened in
+those last 30 days. Example, we've got
+Reddit ups, X likes, YouTube
+transcripts, hacker news, poly market
+odds, GitHub commits. It searches
+essentially all these different
+platforms to give you something awesome.
+Well, best explained by an example. But
+one of the limitations of Telegram is
+the fact you can do one chat at a time,
+which is why I really like this agentic
+OS because I can have one chat here and
+say, "Hey, explain to me the um last 30
+days skill." for example, send that bad
+boy off. It will do its work. Then if I
+want to, I can just open up a brand new
+chat and have a completely different
+conversation. I can come down here on
+the left hand side and pretty much chat
+to all my previous things. I can jump
+onto cloud code and I'll just do all of
+this together. And I also get to see the
+tokens I'm using, what it's syncing on,
+and exactly what it's doing. So if you
+don't have an OS, I highly recommend
+that you build one. And there we go,
+guys. Look at this. We got the last 30
+days in Hermes agent skills. It tells
+you for 30 days what changed. So
+grounded citations skill became skills
+become became more context efficient.
+Where is my coffee when I need it?
+Right. Skill lifestyle got zap skill
+discoveries becoming more behavioral
+what people are actually watching all
+these different videos. Um and then it
+will go ahead and rank them based on
+where it gets them. YouTube hacker news
+blah blah blah all this sort of stuff.
+So literally just give it one prompt run
+away. Two little call outs though. So
+this blocked Reddit and general web. Two
+ways around that. One is you can give it
+a Reddit credential, but if you sign in
+and give it your cookie, it will use
+that cookie to get the information. You
+just have to configure that in the
+skill. And the other thing here with the
+general web is I use firecrawl for my
+stuff, but of course you can just do
+general searches if you'd like to do
+that to expand out the entire search.
+Skill 9 is pretty incredible. And what
+this does is essentially learns anything
+that you wanted to. Let me give you a
+great example of this. Let's say, for
+example, we go into YouTube and let's
+say I find a channel. And by the way,
+podcasts out guys. Oh my gosh, what's
+going on with the podcast? I go on to
+Veritassium and let's say, you know, I
+like Veritassium. It's a cool video, but
+maybe I want to get a I know I love
+Veritassium, but maybe I want to get a
+TLDDR. Well, I could come here and say,
+"Hey, summarize this video into five
+crisp bullets and tell me the first and
+last sentence." So, I can get
+information from YouTube if I want to
+pretty easily. But what if it's got
+information that I want to go ahead and
+talk to or learn about later? Well, what
+I can do here actually is literally grab
+the URL, head over to Hermes agent. So I
+can come over to Hermes agent do/arn
+enter that in there and basically Hermes
+agent will go and learn that
+information. Now this is a skill so
+freaking cool. They actually built it
+into Hermes agent. It is amazing. This
+also works by the way after you've done
+or built a skill. So say for example
+we're working on a connection with a
+business or some kind of other thing.
+You can just say to homies, hey we've
+just built a thumbnail or we just built
+an image. Learn this skill and
+everything that it just did will turn
+into a skill. Which is incredible. And
+obviously I like to save certain
+informations into my agentic operating
+system memory that runs on my computer
+or runs your VPS if you're hosting it on
+on your VPS. So you can talk to it and
+ask questions whenever you like. Level
+10 is the art director. Now this is the
+difficult but incredible ability to
+build things that actually look
+beautiful. Now he's got lots of stuff
+with the golden ratio. Now the thing is
+that people really over complicate
+design but when you use the right skill
+you get better designs with less. And
+what I've done here is use power design
+uh which is something that I built. And
+essentially what I did is I looked at
+universal design principles. For
+example, if you go to apple.com, one of
+the things that you'll notice is the
+golden ratio, which is subheadings and
+headings or a ratio of 1.1 1.61 to the
+other. And that's just one example of a
+principle that you know design
+principles that run through all the best
+design systems that we have. So, for
+example, Power Design brings down for 20
+universal designs for AI superpowers
+that kind of makes beautiful simplistic
+designs, which is cool stuff like ratios
+and um the number of like text densities
+and image density. And then 21st.dev is
+this beautiful repository and library of
+just gorgeous interactive elements and
+components that we can grab and build
+and things. idea being that we want some
+degree of creative license. But there's
+cool stuff like scroll animations and um
+expansion and really cool stuff that we
+can just give to Hermes agent to unlock
+in slot and things, you know, clients,
+compassions, darks, features, futters,
+you name it. It can grab these cool
+things from this. So, this skill merges
+them both together, keeping it light and
+making the designs look incredible. And
+by the way, to use this skill, you need
+to authorize the 21st.dev CLI. Just
+fancy words for saying command line
+interface or just way that it connects
+to it. It'll just ask you to sign in. So
+just sign in with your email or GitHub
+and then you'll be ready to rock and
+roll. And beautiful. So now we have a
+website. Cool. Nice little vibe going on
+in the background. Scroll down. Some
+nice animations that come down. A little
+interactivity. And bear in mind, you can
+build like really good fullyfledged
+websites. This is just an example of
+like a good design principles that you
+can build on. Obviously, if we went back
+and forth with it, we could make it look
+amazing, but you get the idea. Now,
+skill 11 honestly is the most valuable
+skill that I've used, and it's the
+morning brief. And the idea is that my
+homies agent actually goes ahead and
+checks on a daily basis all the meetings
+I've got in my calendar, all my emails
+in my inbox and says, "Jack, hey, this
+thing is happening today. This is stuff
+that you need to do." To connect this
+though, you do need to give him his
+access to things like a Gmail, your
+Outlook. Personally, for this, I use a
+service called Zapia. I actually, funny
+story, built my first tech startup using
+Zapia. So, I had a little bit of
+sentimental connection, but it's really
+cool for a lot of reasons. mainly
+because if you do join Zappia and grab
+some Zappy stuff, you can connect to
+things that you can't connect to
+directly sometimes. For example, school
+API is a really good example of this. Uh
+as you can see, school if you're in a
+community, it's very very handy. Some
+stuff you can connect to directly, but
+it will be helpful in terms of saving
+time. For instance, if you come down for
+Outlook, you can actually specifically
+say the things that you do and don't
+want to give access to. And essentially
+what you do with Hermes agent here is
+you come back over. So, we grab access
+to the apps. Hermes writes a brief and
+then it's delivered to your phone or you
+can even chat with it wherever you want
+to. And effectively, you say, "Hey, I
+want you to send me a morning brief
+every morning. Look at my calendar. Look
+at my emails and look at our
+conversations from the last 7 days or
+the last month. And based on that, I
+want you to tell me what to focus on
+today. What's one thing that I could do
+to improve?" And you can even ask Hermes
+to spin up a sub agent to work in the
+background whilst you're literally
+sleeping. So, you get this beautiful
+morning brief at 7:00 a.m. Maybe we're
+up at 6:00. Maybe we're up at 5:00. I
+don't know when we're up, but whenever
+we're up, we get that beautiful morning
+brief. I genuinely think it's one of the
+most helpful things that you can do when
+using Hermes Agent. Now, skill 12 is the
+ability to actually create any images or
+video. I call this the studio. So, this
+could be anything from editing your
+thumbnails to, you know, creating
+videos. You literally name it. Now, to
+do this, I personally like using
+Higsfield just because the UI is
+gorgeous and it just seems to work
+better for me when I use this. Now, for
+example, this website here, the pull
+press is something I built using this.
+All this video generation was absolutely
+gorgeous. I'll put a link on screen if
+you want to learn exactly how to build
+this. I built an entire skill. I'll give
+it completely for free. You can check it
+out. But the cool thing we can do with
+Hickfield and I'll put a link for this
+down below. But we can connect Hermes
+agent to Hicksfield using the CLI. All
+you literally do is click on Hermes here
+and you can copy this like so. Then head
+over to your Hermes agent and just
+basically drop this in like so. And what
+it'll do is essentially open up a new
+window. You click that and then you're
+fully connected. I'm already connected,
+so I'm ready to rock and roll. And what
+I can do here is literally give it any
+image. So let's give it this image of
+GLO announcing that we're available on
+Windows. And let's just say, hey, I want
+you to use the Higsfield CLI and Nano
+Banana to change the text. Instead of
+saying now available on Windows or Mac,
+make it say something like uh I don't
+know, Jack loves beautiful coffee.
+Change nothing else. All right. Send
+that off. And literally what this can do
+now inside your homies agent is use that
+CLI to make amendments to any images and
+generate things for you. Let's come back
+and so Jack loves beautiful coffee.
+Never have true words been spoken. I
+just think it's so cool that you just
+access these models so easily in Hermes
+agent. And then if you actually come
+back over to Higsfield you can see if
+you go over to like images for example
+everything that you just did. Then that
+takes us on to skill 13 which is the
+Ministry of Experts which is so handy.
+Now what's really cool about this? Now
+imagine it like this. Instead of
+speaking to one guy that's intelligent,
+well, one person can only understand so
+much, what this skill lets us do is take
+the most intelligent model that exists
+and then what we effectively do is bring
+in other experts that this model talks
+to so that your answer and the quality
+of your answers goes up because you may
+forget things, you may have biases. But
+when we bring in three different models,
+let let me show you what I mean with
+this because when we do bring in three
+different models, it changes the
+dynamics a bit. So I'm in my gent here
+and I built this because I think it's
+really freaking helpful to look at it
+this way. But if I go over to Ministry
+of Experts and you can do this directly
+in Hermes. You don't have to do it here.
+I just really like using it here. Now
+what's really cool with this is I can
+pick the leading model. So let's say I
+want to check out Claude Fable. I click
+on that. I can see that it's number one
+on the arena. I can check out its stats.
+And what I can do is literally come
+over, grab this, and drop it in. Now the
+way this works is you ask it a question.
+And Claude Fable 5 here will actually,
+let's say we ask it something like,
+"Hey, um, what should I do in my
+business to double my net profit?" Well,
+Claude Fable 5 will grill you based on
+the skills that we used earlier. And
+then it will ask Deepseek V4 the same
+question. It will ask GLM 5.2 and GPT
+5.5. And then we can also configure how
+many tokens we want them to use. So you
+can see uh here for example we may have
+something like sweet spot references
+station and sharp or we can go uh full
+sort of like um if you think about like
+the odyssey level of information if you
+want to then fable 5 looks at those
+three questions those three responses
+and then gives you an answer based on
+that and it's so so cool and to activate
+it all you need to do is come down and
+do forward slash and just type MOA and
+it just runs it through your mixture of
+agents model present and just say hey I
+want to know how to double my net profit
+please tell me how and the Cool thing
+about this is it's also token saving
+because it brings over the cash in a
+really cool way. All fans would speak of
+just saying that they've really put a
+lot of attention to this so that it's
+actually token efficient when you're
+using these three models and you're not
+wasting credits. And so for example, I
+come back and look at this. It's come
+back with the different levers ranked by
+leverage and again it's flagged exactly
+which models to use and why. Now we know
+the 13 skills in Hermes agent. The next
+thing we need to do is learn one of the
+most profitable skills that we can have,
+and that is the ability to build
+beautiful and gorgeous websites. Whether
+you want it for your own business or
+someone else's, we're going to do it
+together in this video right

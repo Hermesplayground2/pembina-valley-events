@@ -87,6 +87,7 @@ function combineDateTime(dateStr, timeStr) {
   return d;
 }
 
+
   function renderDashboard() {
     const box = document.getElementById('dashboard-live');
     if (!box) return;
@@ -97,6 +98,7 @@ function combineDateTime(dateStr, timeStr) {
     { date: '2026-08-04', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', category: 'community', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-06', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-07', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', category: 'community', link: 'https://www.winkler.ca/events' },
+    { date: '2026-08-08', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-08-10', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-10', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-10', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
@@ -114,8 +116,9 @@ function combineDateTime(dateStr, timeStr) {
     { date: '2026-08-27', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-27', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-27', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', category: 'family', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-08-29', title: 'Morden Back40 Music Festival', time: 'Morden, MB', category: 'community', link: 'https://www.backfortymusicfestival.com/' },
+    { date: '2026-08-30', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', category: 'community', link: 'https://cornandapple.com/' },
     { date: '2026-09-05', title: 'Fun With Family Day 2026', time: 'Josh Wilson, Jason Gray, Danielle Savard · Portage la Prairie', category: 'family', link: 'https://www.concertsonrequest.ca/' },
-    { date: '2026-09-05', title: 'Shadow Valley Illuminated', time: 'Sept 5-6 · Gates 5:30 PM · Shadow Valley Raceway, Morden', category: 'family', link: 'https://www.concertsonrequest.ca/' },
     { date: '2026-09-07', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-09', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
@@ -199,18 +202,6 @@ function combineDateTime(dateStr, timeStr) {
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    // Merge events from EVENTS array so one-off events appear on Activities page
-    EVENTS.forEach(ev => {
-      if (ev.date >= fmt(year, startMonth, 1)) {
-        const parts = ev.date.split('-');
-        const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-        if (evDate >= today) {
-          if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
-          eventsByDate[ev.date].push(ev);
-        }
-      }
-    });
-
     for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
       const month = startMonth + monthOffset;
       const yearForMonth = year + Math.floor(month / 12);
@@ -231,6 +222,8 @@ function combineDateTime(dateStr, timeStr) {
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
         if (actualMonth === 7 && d >= 13 && d <= 17) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
+        if (actualMonth === 7 && d >= 28 && d <= 30) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
+        if (actualMonth === 7 && d === 29) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
         if (actualMonth === 7 && d === 24) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 17) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
@@ -298,9 +291,7 @@ function combineDateTime(dateStr, timeStr) {
     const todays = EVENTS.filter(ev => ev.date === todayStr);
 
     if (!todays.length) {
-      container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
-        '<div class="spacer"></div>' +
-        '<p class="muted">📅 Coming up: Shadow Valley Illuminated, Sept 5-6 in Morden</p>';
+      container.innerHTML = '<p class="muted">No events scheduled for today.</p>';
       return;
     }
 
@@ -329,7 +320,6 @@ function combineDateTime(dateStr, timeStr) {
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
-      if (page === 'weather') { try { loadWeather(); } catch (e) { console.error(e); } }
     } catch (e) {
       console.error('activatePage error', e);
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -338,6 +328,8 @@ function combineDateTime(dateStr, timeStr) {
     }
   }
 
+
+
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -345,187 +337,50 @@ function combineDateTime(dateStr, timeStr) {
     });
   });
 
-  const initPage = () => {
+  const retryWeather = () => {
+    if (btn) btn.style.display = 'none';
+  };
+
+function diag(msg){const b=document.getElementById("diag-banner");if(b){b.style.display="block";b.textContent=msg;}}
+const initPage = () => { diag("initPage");
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
-      activatePage(page);
+      activatePage(page); diag("activated:"+page);
     } catch (e) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
       if (el) el.classList.add('active');
+      if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
     }
   };
-  window.addEventListener('hashchange', initPage);
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPage);
+  // Catch any uncaught errors
+  window.addEventListener('error', (e) => {
+    console.error('Uncaught error:', e.error);
+    if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
+  });
+  window.addEventListener('hashchange', initPage);
+  diag("DOM ready"); if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+    if (scene && video) {
+      const img = document.createElement('img');
+      img.id = 'heroWeatherImage';
+      img.alt = 'Weather';
+      img.src = 'weather-media/day_frame.jpg';
+      img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+      scene.insertBefore(img, video);
+    }
+    initPage();
+  });
   } else {
     initPage();
   }
 
-  const WEATHER_IMAGES = {
-    clear: 'weather-media/day_frame.jpg',
-    cloudy: 'weather-media/day_frame.jpg',
-    rain: 'weather-media/rain_frame.jpg',
-    night: 'weather-media/night_frame.jpg',
-    fallback: 'weather-media/day_frame.jpg'
-  };
 
-  function pickWeatherImage(code, temp) {
-    const hour = new Date().getHours();
-    const isNight = hour < 6 || hour >= 20;
-    const isPrecip = code >= 51 && code <= 99;
-    if (isPrecip) return WEATHER_IMAGES.rain;
-    if (isNight) return WEATHER_IMAGES.night;
-    if (code <= 3) return WEATHER_IMAGES.clear;
-    return WEATHER_IMAGES.cloudy;
+  }
   }
 
-  let weatherCache = null;
-  let weatherCacheTime = 0;
-  const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
-  async function loadWeather() {
-    const heroCond = document.getElementById('heroCondition');
-    const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
-    const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
-    const locEls = () => document.querySelectorAll('#location, #location2, #heroLocation');
-    const updEls = () => document.querySelectorAll('#updated, #updated2');
-
-    const apply = (temp, cond, loc, upd) => {
-      tempEls().forEach(el => el.textContent = temp);
-      condEls().forEach(el => el.textContent = cond);
-      locEls().forEach(el => el.textContent = loc);
-      updEls().forEach(el => el.textContent = upd);
-    };
-
-    const fallback = (code) => {
-      apply('--°', 'Weather unavailable', 'Pembina, MB', '');
-      updateActivities(15, 10, 3);
-      updateWeatherPlan(15, 3);
-      setWeatherVideo(3, 15);
-      if (heroCond) heroCond.textContent = 'Weather unavailable';
-      const imgSrc = pickWeatherImage(code || 3, 15);
-      const heroImg = document.getElementById('heroWeatherImage');
-      if (!heroImg) {
-        const img = document.createElement('img');
-        img.id = 'heroWeatherImage';
-        img.alt = 'Weather';
-        img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-        const scene = document.getElementById('weatherScene');
-        const video = document.getElementById('heroWeatherVideo');
-        if (scene && video) scene.insertBefore(img, video);
-      }
-      const targetImg = document.getElementById('heroWeatherImage');
-      if (targetImg) {
-        targetImg.src = imgSrc;
-        targetImg.style.opacity = '1';
-      }
-    };
-
-    // Guaranteed fallback after 5 seconds regardless of network state
-    const fallbackTimer = setTimeout(() => fallback(3), 5000);
-
-    try {
-      // Use cached weather data if available and fresh
-      if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
-        console.log('Using cached weather data');
-        const cw = weatherCache.current_weather;
-        apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date(weatherCacheTime).toLocaleTimeString());
-        updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
-        updateWeatherPlan(cw.temperature, cw.weathercode);
-        if (weatherCache.daily) renderWeekly(weatherCache.daily);
-        setWeatherVideo(cw.weathercode, cw.temperature);
-        return;
-      }
-
-      const lat = 49.1833;
-      const lon = -97.9339;
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
-      const res = await fetch(url, { signal: controller.signal });
-      clearTimeout(timeoutId);
-      clearTimeout(fallbackTimer);
-      const data = await res.json();
-      
-      // Cache successful response
-      weatherCache = data;
-      weatherCacheTime = Date.now();
-      const cw = data.current_weather;
-      apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
-      updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
-      updateWeatherPlan(cw.temperature, cw.weathercode);
-      if (data.daily) renderWeekly(data.daily);
-      setWeatherVideo(cw.weathercode, cw.temperature);
-    } catch (e) {
-      clearTimeout(fallbackTimer);
-      console.warn('Weather fallback triggered:', e);
-      fallback(3);
-    }
-  }
-
-  function weatherLabel(code) {
-    if (code === 0) return 'Clear sky';
-    if (code <= 3) return 'Partly cloudy';
-    if (code <= 48) return 'Foggy';
-    if (code <= 67) return 'Rain';
-    if (code <= 77) return 'Snow';
-    if (code <= 82) return 'Rain showers';
-    if (code <= 86) return 'Snow showers';
-    if (code <= 99) return 'Thunderstorm';
-    return 'Weather';
-  }
-
-  function setWeatherVideo(code, temp) {
-    const video = document.getElementById('heroWeatherVideo');
-    if (!video) return;
-    const hour = new Date().getHours();
-    const isPrecip = code >= 51 && code <= 99;
-    const isClear = code <= 3;
-    let src = 'weather-media/day.mp4?v=1788408739';
-    if (isPrecip) {
-      src = 'weather-media/rain.mp4?v=1788408739';
-    } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1788408739';
-    } else if (!isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1788408739';
-    }
-    const currentSrc = video.src ? video.src.split('/').pop() : '';
-    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
-    video.style.transition = 'opacity 0.6s ease';
-    video.style.opacity = '0';
-    setTimeout(() => {
-      video.src = src;
-      video.load();
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          video.style.opacity = '1';
-        }).catch(() => {
-          video.style.opacity = '0';
-          const overlay = document.getElementById('heroWeatherOverlay');
-          if (overlay) overlay.style.opacity = '1';
-        });
-      }
-      video.addEventListener('error', () => {
-        const img = document.getElementById('heroWeatherImage');
-        if (!img) {
-          const fallbackImg = document.createElement('img');
-          fallbackImg.id = 'heroWeatherImage';
-          fallbackImg.alt = 'Weather';
-          fallbackImg.src = 'weather-media/day_frame.jpg';
-          fallbackImg.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-          const scene = document.getElementById('weatherScene');
-          if (scene) scene.insertBefore(fallbackImg, video);
-        } else {
-          img.style.opacity = '1';
-        }
-        video.style.opacity = '0';
-        const overlay = document.getElementById('heroWeatherOverlay');
-        if (overlay) overlay.style.opacity = '1';
-      }, { once: true });
-    }, 600);
   }
 
   function weatherIconHTML(code) {
@@ -543,9 +398,7 @@ if (document.readyState === 'loading') {
   function drawWeatherIcon(wrapId, code) {
     const wrap = document.getElementById(wrapId);
     if (!wrap) return;
-    const scene = document.getElementById('weatherScene');
     if (!scene) return;
-    scene.setAttribute('style', 'position:relative;width:100%;height:100%;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);animation:weatherSceneShift 14s ease-in-out infinite;perspective:800px;');
     const icon = document.createElement('div');
     icon.setAttribute('style', 'position:relative;width:100%;height:100%;transform-style:preserve-3d;');
     if (code === 0) {
@@ -658,7 +511,7 @@ if (document.readyState === 'loading') {
   function renderWeekly(daily) {
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const targets = [document.getElementById('daily-events'), document.getElementById('weekly-home')].filter(Boolean);
+    const targets = [document.getElementById('weekly-home')].filter(Boolean);
     if (!targets.length) return;
     if (!daily || !daily.time || !daily.time.length) {
       targets.forEach(el => el.innerHTML = '<div class="muted">Weekly forecast unavailable</div>');
@@ -734,27 +587,27 @@ if (document.readyState === 'loading') {
     });
   }
 
-  try {
-    const started = loadWeather();
-    if (started && typeof started.then === 'function') {
-    } else {
-    }
-  } catch (e) {
-  }
+  renderDashboard();
+  buildUpcoming();
+  buildActivityWeek();
+  buildMonth();
+  renderFeatured();
+  renderFamilyEvents();
 
   function renderFeatured() {
     const container = document.getElementById('featured-events');
     if (!container) return;
     const featured = [
 
+      { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Pembina, MB', date: 'Aug', link: 'https://pds.gvsd.ca/' },
       { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18', link: 'https://winklerchamber.com/events/' },
+      { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28', link: 'https://cornandapple.com/', promoted: true },
       { category: 'community', title: 'Honey Garlic & Maple Syrup Festival', time: 'Second weekend Sep · Manitou, MB', date: 'Sep', link: 'https://hgmsfestival.com/' },
       { category: 'community', title: 'Manitou Ag Fair', time: 'Manitou, MB', date: 'TBD', link: 'https://www.pembina.ca/p/annual-events' },
       { category: 'outdoors', title: 'Raptor Festival', time: 'Spring · La Riviere, MB', date: 'Spring', link: 'https://www.pembina.ca/p/annual-events' },
       { category: 'outdoors', title: 'Outdoor Summer Adventure', time: 'Pembina, MB', date: 'Summer', link: 'https://www.pembina.ca/p/annual-events' },
+      { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29', link: 'https://www.backfortymusicfestival.com/' },
       { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
-      { category: 'family', title: 'Shadow Valley Illuminated', time: 'Sept 5-6 · Gates 5:30 PM · Shadow Valley Raceway, Morden', date: 'Sep 5', link: 'https://www.concertsonrequest.ca/', promoted: true },
-      { category: 'family', title: 'Fun With Family Day 2026', time: 'Josh Wilson, Jason Gray, Danielle Savard · Portage la Prairie', date: 'Sep 5', link: 'https://www.concertsonrequest.ca/' },
     ];
 
     container.innerHTML = featured.map(ev => `
@@ -791,10 +644,7 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
 
     const garageEvents = [
       { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
-      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' },
-      { title: 'Shadow Valley Illuminated', date: 'Sept 5-6', time: 'Gates 5:30 PM · Shadow Valley Raceway, Morden', category: 'fundraiser', link: 'https://www.concertsonrequest.ca/' },
-      { title: 'Pie Auction Fundraiser', date: 'Sept 12', time: '6:00 PM · Altona Community Hall', category: 'fundraiser', link: '#' },
-      { title: 'Garage Sale for Charity', date: 'Sept 19', time: '9:00 AM · Winkler', category: 'fundraiser', link: '#' }
+      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' }
     ];
 
     const renderCard = (ev) => {

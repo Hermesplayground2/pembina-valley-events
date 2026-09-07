@@ -1,0 +1,3455 @@
+Hey, Larry. Jarvis here. What do you
+need?
+>> Good morning, Jarvis. Can you please
+turn on my office lights?
+>> Morning, Larry. Office lights are on.
+>> Can you please run my morning briefing?
+>> In your inbox, nine unread since
+yesterday. Mostly video editor
+applicants in the Echis AI partnership
+reply. Worth a look. In Berlin, mostly
+clear, 17° up to 24. And on your
+calendar, four things today. Starting
+with scripting the finance dashboard
+video at 9.
+>> Awesome. So, I'd like to have some focus
+time today. Can you block 2 hours on my
+calendar?
+>> Done. Focus time is blocked 9:45 to
+11:45 today ahead of your 12:00 landing
+page work. I also had to cancel the
+earlier attempt [music] at tomorrow 9:30
+since I asked for that slot first by
+mistake. Nothing's left over there.
+>> Thanks so much, Javvis. So, this is a
+demo for a YouTube tutorial that I'm
+recording. Can you tell the listeners a
+bit about what our dashboard is, the
+functions that we have, and the other
+agents that you are working with?
+>> No trouble though. It's Jarvis, not
+Evan. For the tutorial, this is Larry's
+Jarvis command system [music] built on
+Hermes agent. I'm the boss agent. Larry
+talks to me and I route work to a small
+crew rather than doing everything
+myself. Dev handles code, building
+tools, fixing bugs, shipping features
+inside a sandboxed projects setup.
+Research does live web digging, market
+checks, competitor research, real
+sourced facts, nothing invented.
+assistant runs Larry's actual day, reads
+his email and calendar, drafts things,
+but never sends or deletes without his
+sign off. My job is to work out who owns
+a request, hand it off, check what comes
+back is actually right, then report to
+Larry in plain terms, not just relay
+whatever the specialist says. If two
+specialists are needed, I sequence that
+myself so he isn't managing the handoff.
+On top of the crew, I'm also wired into
+his house through Home Assistant,
+lights, [music] that kind of thing, and
+into his inbox and calendar directly for
+quick reads and bookings like the
+briefing and the focus block we just
+did. The dashboard he's building
+alongside this iron agent interface is
+the visual front end for watching this
+crew work separate from the
+terminal/telegram
+interface you're seeing me answer in
+right now. Anything you want me to go
+deeper on for the recording the routing
+logic a live delegation example the
+guard rails around sending/publishing.
+>> I think you did a pretty good job
+Javvis. So I'm going to take it from
+here. Thanks so much, Javvis, and I'll
+talk to you later.
+>> Sounds good, Larry. Have a good
+recording. I'll be here.
+>> Hey guys, Larry here. That was a live
+demo of what we're building today. We're
+building a Javas Iron Man teammed Hemis
+control dashboard made up of a setup of
+four agents. But before we get into the
+tutorial, let me walk you through the
+dashboard. So you see that we have down
+here four agents. So I have Javus who is
+the main agent. I have dev who is a
+developer. I have research who is a
+researcher. And I have my personal
+assistant called assistant. And whenever
+we want to talk to any of the agents,
+we're going to assign keyboard
+shortcuts. So for instance, if I want to
+talk to dev, I can just press two.
+>> Hey Larry, dev here. What are we
+building?
+>> And I can start talking to dev. I'm just
+going to stop it so that dev doesn't
+respond. And the same thing applies to
+all the agents. If I want to talk to
+research, I can just press three.
+>> Hey Larry, research here. What should I
+look into?
+>> And the research agents would be
+engaged. On the homepage of the
+dashboard, we have on the left side here
+the agent statistics where you can see
+the distribution of workload across the
+agents. So currently you can see that
+Javis and Dev are those doing the most
+job because I was building the dashboard
+and Javis was basically orchestrating
+and all the test that we did with Javis
+today. At the bottom here we have the
+system port. Now because we're going to
+be running a voice transcription locally
+on the server, it's quite important that
+we monitor what the system health is. So
+down here you can see how much CPU
+you're using, how much RAM you're using,
+and the total workload on the server. On
+the right side as well, you can see a
+summary of the active missions that the
+agents currently have. Now over here you
+can see the actual token usage. So you
+can see how my tokens have been spent so
+far by the agent. If you want to build
+everything that you're seeing here
+today, you would be able to build this
+with all the prompts in the templates
+that can be provided to you for a token
+of support. But what you have to realize
+is that it's going to cost you some AI
+tokens because you're going to have to
+send about 26 prompts to your developer
+agent to Javis to build. I do have an
+auto installer that would be able to
+install everything for you in a matter
+of minutes. And this is probably the
+best considering how much tokens it
+might cost you to build on that. So, if
+you want to get the auto installer, hey,
+you can be a member of my community. It
+cost $10 a month and you can have the
+auto installer, including all the auto
+installers and all the tutorials that
+are currently on my platform. Now, let's
+go to the agents tab. On the agents tab,
+we basically see more detailed into the
+agent statistics. Here, for instance,
+for Javas, we can see that he currently
+has about 41% of the agent workload.
+He's currently sent about 1.7 million
+tokens because, like I said, I did most
+of the build with Javas. And also down
+here, you can see an agent activity log.
+You can also see the recent activity of
+the agents, what exactly they did and
+the time stamp that they performed this.
+And you can also switch between all the
+agents to check what the other
+activities of the other agents are. When
+you come to the com stop, you can
+basically talk to all the agents without
+you having to jump into Telegram and
+stuff like that. My idea here was that
+whenever you're sitting on the
+dashboard, you should be able to
+orchestrate everything without you
+having to jump between Telegram or
+whatever messaging platform that you
+have. You can do everything right here
+from the dashboard. We would also have a
+schedule tab. Now the idea of the
+schedule tab is that whenever you have
+any chrome job or any automation that
+runs daily. For instance here I have a
+morning verse where Javvis sends me
+every morning a Bible verse for me to
+read and this runs every day at 8:00
+a.m. Now whenever the agent creates any
+automations which is called a chrome job
+these are going to be autopop populated
+here on the dashboard. And the best part
+is that you can trigger this yourself by
+just clicking run now and this is going
+to run the chrome job. You can also come
+here you can pause a chrome job if you
+want to put it on hold and you can also
+directly delete a chrome job and this
+would also be deleted from the hemis
+back end. Now we would also be building
+the library tab. The idea of the library
+tab is whenever the agents are writing
+any long form documents it's a research
+b it's a marketing strategy or any long
+form documents it would directly come
+into the library tab. We're going to
+give all the agents dedicated spaces
+where they going to store their long
+form documents. Now, this is the best
+way to deal with the agents because it's
+not advised to let agents send long form
+text into a chat window, for instance, a
+telegram chat because this is going to
+bloat the context window. And remember,
+the bigger the context window, the more
+AI tokens that we bend. And that is why
+we're going to have this dedicated
+library tab where whenever an agent
+writes any document, they write as a
+markdown file and the dashboard is going
+to serve that markdown file in a nice
+structure like you see here. One of the
+most powerful things on this dashboard
+is the research agent. Its job is to
+find things out. But there is a gap. Ask
+it what happened this week and it will
+answer confidently based on training
+data that stopped months ago. Every AI
+crew has this and most people never
+notice it. The obvious answer is to send
+it out to the live web instead of its
+own memory and that is where things
+break. Research hits captures, it gets
+blocked and it needs proxies. It pulls
+back raw HTML and has to guess which
+part was the answer. Then the layout
+changes and it stops working and it
+won't tell us any of that. It hits the
+wall and it answers from its memory
+instead. same confidence voice. To fix
+this, we're going to use SE API. It's
+over 100 different search APIs behind
+one key. Google, YouTube, Maps, Scholar,
+Amazon, etc. So instead of fighting
+Google research, just ask SE API. Real
+time data comes back clean and
+structured. SE API handled the captures,
+the proxies, and the layout changes
+before that answer even reached us.
+Nothing for us to maintain. And that's
+the difference between an agent that
+remembers a fact and one that can check
+it. And it all happens fast. You can get
+started with 250 free credits, more than
+enough to build this. Click the link in
+the description section or scan the QR
+code on the screen. And thank you SE API
+for sponsoring this video. Later in this
+video, we will wire it straight into
+research so it can stop guessing and
+start checking. Now what I also created,
+because it's a big dashboard, it's a doc
+stuff where you can read and understand
+how the template works, how the
+dashboard works and stuff like that. The
+best part about this dashboard is the
+control tab. We are going to have a
+control center where you can basically
+change the AI models that agents are
+using. So in the case that you have
+different AI models in your head
+configuration, you can for instance in
+my setup, Javus is currently on
+entropic, dev is on OpenAI Codex,
+research is on Codex, assistant on
+Codex. So you can assign different
+models to different agents and this
+would really help you in terms of
+flexibility. For instance, you want dev
+to be on a stronger coding model or you
+want maybe research to be on a better
+research model. This would all be
+possible with the dashboard. Now the
+cool thing about the dashboard is that
+we're going to have three scenarios on
+how the voice features should work. One
+is going to be completely free where
+everything would be running locally on
+your server and the other two would be
+where you need a paid plug-in. Now for
+the first scenario we're going to use an
+application that is called Kokoro.
+Kokoro is going to be a free application
+that we can install on our server and
+Kokoro is going to work like this. Now
+whenever you talk to the agents your
+browser for instance Google Chrome has
+an inbuilt plugin that is able to render
+your voice into a text. So your browser
+or Google Chrome would receive your
+voice and transcribe it into a text and
+then send it to the agent. And then when
+the agent is responding, the agent is
+also going to respond in the text. But
+the text from the agent be processed by
+the local application that we're going
+to install called Kokoro. And the voice
+that Kokoro transcribes is what the
+agent is going to speak back. And this
+is one of the best ways to do it because
+you do not have to pay anything.
+Everything will be run locally on your
+server. And with that, the local
+approach becomes the most secured
+because nothing is sent to any server.
+We're also going to have a second model
+where you're going to talk through
+Google Chrome. But then the response
+from the agent is going to be processed
+by 11 laps. And here because we're using
+11 laps, you would have to get a paid
+subscription with 11 laps to be able to
+use this feature. And also this is not
+going to be a secured way because a
+conversation would basically be
+processed at 11 laps. The advantage with
+11 laps from my test on is that the
+latency is typically faster. But I'm
+going to come back to the latency aspect
+shortly. We're also going to have a
+third scenario. And in the test
+scenario, both the receiving and the
+response would be processed by 11 laps.
+So when you talk through your browser,
+the information or the message is going
+to be sent directly to 11 Labs. 11 Labs
+is going to process that information and
+then send it to your agent. Then your
+agent is going to respond and then 11
+Labs is going to take that response and
+process it again. Now this is very
+complex but if you want to use 11 Labs
+both for the sending of the message and
+receiving of the message, this scenario
+would also be available to you. Now on
+the latency issue, the advantage with 11
+laps of course is that you have a pool
+of voices that you can choose from. And
+I think the voice rendering of the
+agents is better. For instance, if the
+ter are missing and stuff like that,
+probably 11 laps wouldn't read those
+things. But what takes most of the time
+is not really the transcription of the
+text to voice or voice to text. What
+takes most of the time is her agent
+himself processing the request. So from
+my testing, switching between the
+localoro and the scenario three where
+everything is run by 11 laps, the
+difference in latency or the difference
+in response wasn't that much. What took
+most of the time wasn't the
+transcription like I said, but was
+rather the agent actually doing that
+job. But I'm making all these options
+available to you if you want to use
+them. What you can also do with such a
+Javis mission control dashboard is to be
+able to install an application like home
+assistant and with that Javvis would be
+able to control devices on your home
+network and that is why for instance
+Javvis was able to turn on my office
+lights and stuff like that. One
+important aspect of the dashboard you
+can see that the dashboard is really
+graphics heavy because I really want you
+to have the Javvis sort of moment. Now
+this means that it could be that if your
+GPU resources is not very heavy the
+browser would be taking a lot of
+resources from your hardware. You can
+see that the skyline is moving. We have
+the stabs that are moving. We have Javis
+pausing in and out and stuff like that.
+And this could take a toll on your
+hardware if your CPU and your GPU is not
+very strong. And because of that, I
+added this feature here where you can
+turn off all the motions. So for
+instance, you can also decide to turn
+off some specific ones. Maybe you can
+turn off the skyline drift or you can
+also decide to turn off all the motions
+so that your browser renders this very
+easily. And this is what we're going to
+be building, guys. And like I said, you
+can get a bundle to be able to build
+this along with me if you want to learn
+how to build this. But like I said, this
+would cost you some AI tokens because
+it's about 20 prompts that you're going
+to send to your agent. But I do have an
+auto installer that would run everything
+for you in a matter of minutes. During
+the setup, you just have to have a fresh
+Hemis installed, configure your EM
+model, and the auto installer would
+basically take care of the rest. What we
+would also have in the setup which I
+forgot to mention is that we're going to
+have dedicated channels in Telegram
+where you can talk to all the agents. So
+you can see here you can talk to Javis
+directly, dev directly, research
+directly, and the auto installer for
+instance will do all this for you
+automatically. All you're going to have
+to do is to create the telegram group,
+send one message from the group to the
+auto installer and the auto installer
+will create all the channels for you.
+And if you want to get auto installer,
+you can just join my membership and you
+would have this available to you as
+well. You would have access to all the
+prompts and all the templates on every
+tutorial on my dashboard. Now, I know
+this could a few people off, but
+building these tutorials cost money. All
+the AI tokens that I use in building
+this, I test the tutorials over 20 times
+and stuff like that, and that is why
+sometimes I'm not able to give some of
+these things for free. for the value
+that you would get buying these prompts
+in the auto installer. You would
+definitely understand that the price is
+quite fair. And with that, now let's get
+into the tutorial and start with the
+build of Javis. Now, the first thing
+that we're going to have to do with this
+setup is to install the AI
+infrastructure that we're going to build
+this on. And for this tutorial, I'm
+going to be using Hermes agent. If you
+already know how to install Hemis Agent,
+you can basically skip this part of the
+tutorial. But if you're new to Hemis
+Agent or want a refresher on how the
+installer works, I'm going to walk you
+through the entire process as well. Now,
+why do we use Hemisent? Because her
+agent allows you to be able to deploy
+multiple agents on your PC or on your
+server. An advantage here is that you
+are not confined to use a particular AI
+model. They basically give you access to
+all the frontier AI models and providers
+that are out there. Be it from OpenAI,
+Bit from Antropic, Bit from X Grock, all
+the popular models that are out there.
+And I'm also going to walk you through
+the process on how you can add your AI
+models and stuff like that. The reason
+why I personally like working with her
+agent is that like I said, it allows you
+to be able to deploy multiple agents on
+any server that you want. And
+additionally, the agents do perform
+better at least in terms of memory
+retention than other platforms that are
+out there. The reason being that
+whenever you work with the agents, they
+create a skill of something they have
+done before and record all these things
+so that the next time that they have to
+do it, they know exactly how they did
+it. Now, to install Hemis, there's
+several options that are out there for
+you. If you do have a dedicated PC, you
+can run this on and follow the tutorial
+as I'm proceeding here. I've seen people
+buying mini max and stuff like that to
+run this on, this is absolutely possible
+as well. But if you do not have a
+dedicated PC or you do not have the
+initial investment to buy a mini Mac and
+stuff like that, you can go with what is
+called a virtual private server. Virtual
+private server is just a server that you
+rent somewhere with a defined hardware
+specifications that is going to be
+online 24/7. So you do not need to worry
+about internet connectivity. You do not
+need to worry about mental the hardware
+and stuff like that. Now because this is
+a server that you're going to rent, this
+is going to incur a monthly cost. And
+personally, I'm using Contabo for my
+virtual privacy server because from my
+experience so far, they have the best
+value in terms of how much you pay to
+the hardware specifications that you go
+with. So for this example, I'm going to
+be going with a contabar approach and
+I'm also going to walk you through how
+you can get one of these servers. If you
+want to go for this approach now, for
+what we're going to set up with Javis,
+this option here, cloud VPS4, is going
+to be way way more sufficient for what
+we're going to build. You're going to
+get four CPU cores, 8 GB of RAM, and 100
+GB of SSD, which is way more sufficient
+for what we want to build. If for
+whatever reason you think you need a
+power usage, then the higher options
+here which have specifications would go
+as well. But like I said, for most users
+that are out there, this option is more
+than sufficient. So just come here and
+click on get started. I'm also going to
+put a referral link in the description
+section. I'm going to be happy if you
+use my referral link because it does
+give me credits to be able to come with
+more tutorials like this for you. Now
+once you are here, Contabo gives you the
+option if you want to get an upgrade,
+but I'm going to say I'm going to stick
+to what we chose. Just click on get
+started. And then here we're going to
+continue with the configuration of the
+server that we want to rent. Here you
+get a summary of the hardware
+specifications of the separate that you
+want to go with. And then here, very
+important, you're going to get the terms
+of the contract that you want to go for.
+If you're not very sure if this BPS
+approach is going to be the best option
+for you, I would recommend that you go
+with a 1 month option because then you
+have the flexibility to cancel every
+month. If you go for the 12 month
+option, it means that you're logged in
+for 12 months and the same for 24
+months. If you do go for the higher
+subscriptions, then it gets a bit
+cheaper. But hey, if you're not very
+sure how long you want to use this for,
+I would say just go for the 1 month
+option, which is going to cost you about
+6.6. $6 a month. For the region, you can
+leave this as European Union because
+Contabo is in Germany. European Union is
+going to be free. If you choose another
+location probably closest to you, this
+is going to incare an additional cost.
+But we want to build probably latency is
+not going to be that much of an issue.
+So, this is going to be more than
+sufficient. For the storage, you can
+stick to the default 100 GB SSD, which
+is going to be free anyway. And very
+important for the operating system. Most
+of the time, they take Ubuntu as a
+default as ticked here in my option. So,
+you can leave this as YUbuntu. And then
+down here, data protection. You can
+choose to have snapshots of your server
+every time. Now what this means is that
+every day Contabo is going to take a
+snapshot of your VPS server so that
+should anything happen, you can always
+roll back to a particular day or a
+particular restore image that was
+created. It happened to me personally
+that I built a mission control dashboard
+and my agent messed up something and I
+didn't even realize it. But luckily the
+daily or the daily backups that were
+taken helped me to be able to restore
+pick a particular day where the snapshot
+was taken and I had everything working
+like it was before. But hey, your option
+is yours. You can also ask your AI agent
+to build its own automatic backup so
+that you do not have to incur this
+monthly $2 price. For additional
+features and add-ons, you can leave
+everything as a default. And then down
+here, you're going to have to put in a
+password that you're going to use to
+connect to the VPS server. Now, very
+important, Contabo is not going to send
+you the password that you're going to
+put in here. So, make sure that this is
+a password that you would remember and
+at the same time make sure it's a very
+secure password because someone gets
+that password, they can basically log
+into your VPS server. So, if you do not
+have a password, you can just generate a
+password and save it for the next point.
+Click on next. Here I'm just going to go
+with add auto backup. Fill in your P
+information. Make the payment and I'm
+going to walk you through the next
+steps. Now after you make the payment
+and purchase the APS from Contabo within
+a few minutes, sometimes hours depend on
+your location. You're going to get an
+email that looks like this. So mine is
+in German but the layout is going to be
+the same irrespective of where you are.
+In this email, there are two things that
+we would need. The first thing that you
+would need is the IP address of your VPS
+server. And the second thing that you're
+going to need is the name of your VPS
+server. With all the VPSs that I've set
+up with Conabo, the username is always
+root, but the IP address is of course
+going to be unique to your server
+because every VPS server has its unique
+IP address. Anyway, the IP address and
+the username and the password that you
+put in when you were setting up this VPS
+server, you will be able to connect to
+the VPS server and I'm going to walk you
+through that process as well. Now, to
+connect to the VPS server, there are
+several applications that are out there
+that you can use. The good news is that
+whether you're using a Windows operating
+system or a Mac operating system, both
+do come with inbuilt applications that
+you can use to connect to the VPS
+server. So for instance, if you're using
+a Windows operating system, just search
+for an application that is called
+Windows PowerShell. And this is how the
+Windows PowerShell application looks
+like. If you're using a Mac operating
+system, the application that you are
+going to be using is called terminal.
+And the commands that I'm going to use
+to connect to the VPS server in
+PowerShell is going to be the same as
+what you're going to be using in a Mac
+operating system using the terminal
+application. Now to connect to the VPS
+server by just put in the command space
+and then root. Remember root was the
+username that we got from Contabo which
+is always going to be the same at least
+in most of the cases what I've seen with
+Contabo and put in at and then you're
+going to put in the IP address of your
+VPS server. As a tip you can copy the IP
+address of the VPS server come into
+PowerShell and just right click.
+Whenever you right click in PowerShell
+it paste whatever you have in the
+clipboard and after that just press
+enter. If this is the first time that
+you're connecting to the VPS server
+you're going to be prompted if you want
+to add the fingerprint of this VPS just
+type in yes and press enter. And then
+next you're going to put in the password
+of your VPS server. And again here as
+well if you have a very complex password
+just type it somewhere copy it. Come
+into PowerShell right click it and paste
+in the password. You will not see the
+password but this has been pasted. And
+after that just press enter. And you can
+see that I'm connected to the contable
+VPS server. So I'm just going to type in
+clear to clear the screen here. And then
+we can basically continue with the
+setup. Now in connecting to the VPS
+server if you realize we use the account
+or the username root and root is
+typically the highest authority when it
+comes to the privileges and the power
+that an account has. Now it's typically
+not advised to install an application
+like her on the root account because
+then it means that he basically can get
+the power to change the configurations
+on your VPS server. So the best way to
+approach this is to create a second
+account and give the account sudo
+privileges and then with that we're
+going to install her agent on that
+account. Here also very important if
+you're going to be using cloud code for
+instance to build the mission control
+dashboard cloud would not connect if the
+VPS server is running on the root
+account. Cloud code would only connect
+when you are using another account apart
+from the root and that is why we're
+going to create another account. To add
+a user account just put in a command add
+user space and then put in the name of
+the account. In my case I'm going to
+call this account Larry and then press
+enter. And then you're going to be told
+to put in a password for this account
+that you want to create. I'm going to
+put in a password and after that just
+press enter. And then you're going to
+type in the password again to repeat the
+password and then press enter. And then
+we're going to be asked some user
+information. But you can skip all of
+these. We do not need this room number.
+We do not need full name. We do not need
+workphone. All of them you can just
+press enter to skip. And then you're
+going to be prompted if the information
+is correct. Press Y for yes. And then
+press enter. And then now a new user has
+been created for us. Now what we're
+going to do is we're going to give this
+new user account Larry that we created
+pseudo privileges to allow us to be able
+to install her and the other
+applications that we would need. And for
+that just put in the command. Let me
+clear the screen to make it a bit
+cleaner. And for that, we're going to
+put in this command here. All you're
+going to have to do with this command is
+to just replace a section where I have
+Larry with your account and you should
+be good to go. Press enter. And then now
+the Larry account has pseudo privileges.
+So let's switch to the Larry account to
+install herent. And for that just use
+the command su space minus and then
+Larry. And then you see that the syntax
+change from root which was the previous
+account that we were to an account that
+is called Larry. And this is the account
+that we're going to use to set up her
+message. Whenever you want to connect to
+the VPS server, you can connect to the
+VPS server by using the same way that we
+did it. SSH roots your IP address or you
+can also do this directly using the new
+account that we created. For instance,
+in my case, Larry. And then all you're
+going to have to do is to put in the
+password of the Larry account or your
+account that you created. And then you
+can see that I'm also connected to the
+Contabo VPS server. Now, you can use
+root account to install Hemis, don't get
+me wrong, but it's basically not the
+best security tip. And that is why I
+want to teach you guys the right way to
+do it. And that is why we are creating
+this Larry account. And like I said, if
+you want to use claw desktop for
+instance to install the mission control,
+cloud desktop would not connect to the
+server if it is a root account. If you
+guys know how this works, please let me
+know. I'm very happy to learn this as
+well. But for instance, if you're going
+to be installing cloud code on the VPS
+server through the CLI, then this would
+work as well on the root account. But
+hey, the best security tip is to just
+create a new account and then install
+this there. That is going to be the best
+way to approach this. So now that we
+have gotten into the VPS server, we have
+created an account that we want to use.
+We can basically start with the Hermes
+agent installation. And to install
+Hermes agent, just come to the Hermes
+agent official website. I'm also going
+to provide you a link to this in the
+description section. Now once you are
+here, very important, make sure that
+Windows is not selected. But in our
+case, we are going to be installing this
+on a Linux operating system. And then
+they give you this oneline command that
+you can use to install Hemis. I'm going
+to click here to copy the command. Then
+we're going to come into PowerShell and
+then just right click to paste in the
+oneline installer. The best part about
+this oneline installer is that it's
+going to install all the prerequisites
+that you need to install her message
+agent and then the installation is going
+to begin and I'm going to walk you
+through all those steps as well. So I'm
+going to wait for the dependencies to be
+installed and then once this is there we
+can basically continue with the setup.
+Now at this stage her is asking me if I
+would like to install rep grip for
+faster file session here. So here I
+recommend that you just put in yes to
+install this and then press enter and
+I'm going to put in the password again
+and then the installation should
+continue. And now the installation of
+the dependencies are done. So we can
+start with the onboarding here. Just go
+with a quick setup approach with this
+already selected here. Press enter. And
+then we're going to have to bind this
+particular setup to our account with
+news research. If you do not have an
+account with news research, just click
+on the URL that is created here. You can
+press control your keyboard and click on
+this URL and this should open this
+directly in your browser. Now news
+research is free. So you do not have to
+pay for this account creation. They do
+offer some paid plans where you can get
+some AI models as part of your paid
+subscription, but you can also choose a
+free plan because in my case, I'm going
+to be coming with my own AI model. Once
+you create an account and click on the
+URL provided in the Hemis setup, it's
+going to bring you to a page like this
+here. All you're going to have to do is
+just click on connect. Then this will
+connect your Hermes account to that
+particular server. And after that, when
+you come back to PowerShell, they're
+going to list a few AI models that are
+part of their subscription. But like I
+said, in my case, I'm going to go with
+my own AI model. So, I'm just going to
+scroll to the last section here. And I'm
+just going to go with free just to skip
+that part. And then after that, I'm
+going to bring in my own AI model like I
+said. And then here, if you have a new
+subscription, it does come with some
+things like firewall for web search,
+file AI for image generation, video
+generation, and stuff like that. You can
+leave this as a default. And then just
+press enter. And then here for the
+terminal back end, you're going to keep
+that option that is selected for you
+local. Just press spacebar on the
+keyboard. And then here, very important,
+we're going to set up the messaging
+platform. Now all the communications
+that we're going to be doing with the AI
+agent is going to be through telegram or
+through a messaging platform. So here
+recommended just press just make sure
+that this is selected and then press
+spacebar on your keyboard to select
+this. Now here message is going to list
+all the messaging platform that it
+currently supports. But what I see most
+people using is Discord, Slack, Telegram
+and in our example for instance I'm
+going to be going with. So just press
+down on your keyboard to make sure that
+Telegram is green. And very important
+don't press enter. If you press enter
+it's going to skip this part. You need
+to press spacebar to stick the telegram
+option. And after that just press enter.
+And then here you can set up telegram
+board using the automated process or you
+can also go with the manual process. I'm
+going to go with the process by just
+pressing two here and then pressing
+enter. And then we're going to have to
+go into telegram and generate a bot
+token. Now in telegram look for a bot
+that is called botfather. You can see
+that botfather has.8 million monthly
+users. So you are sure you have the
+right bot and also the username of the
+bot is exactly botfather. There are some
+other bots that are out there trying to
+mimic this. So, just make sure that you
+have the right bot so that you're not
+scammed. Now, in the chat with
+botfather, just use the command
+forward/nebot.
+Now, this would allow us to create a new
+bot that we're going to use for our
+setup. Then, we're going to put in the
+name that we want to give to our bot.
+So, I'm going to call in my case
+computer mechanic javas tutorial. It's a
+pretty long name. I hope they accept it.
+I'm going to press enter. And then
+you're going to have to give the bot as
+now here use you can use the same name
+that you give to the bot and with the
+word bot. And after that, just press
+enter. And then they tell me that the
+username is invalid. So I'm going to
+have to truncate this. Let me go with M.
+I hope this is free. KM Javas tutorial.
+And that worked. So the bot has been
+created. And then here you can see that
+B give us a bot token that we can use
+for our HE setup. So just click here to
+copy the B token. Come into PowerShell.
+Right click to put in the B token and
+then press enter. And then here is going
+to allow you to restrict the people that
+can talk to your bot. Now, this is
+highly recommended because if someone
+has the username of your bot and you do
+not restrict who can talk to the bot,
+then it means that anyone with us can
+basically talk to your bot and that is
+why we're going to do that bot to
+account binding. And for Hermes to do
+that, Hermes is going to need the ID of
+your Telegram account. And for that as
+well, there is a bot that is called user
+info bot. And the bot as well has over
+and the bot as well has close to 500,000
+monthly users. So, you are pretty sure
+that you have the right bot. And the
+username of the bot is also called user
+infobot. Now once you are here you can
+send the bot any message like hi and the
+bot is going to send you a response
+giving you the ID of your of your
+telegram account. Just click on the ID.
+Come back into powershell and paste in
+your user ID and press enter. And then
+her is going to ask you if you want to
+use this as your home channel. Just
+press Y for yes. What this basically
+means is that whenever the Hermes
+gateway is restarting, this is always
+going to send a message into that bot
+messaging that hey the gateway is
+restarting the gateway is back online
+and stuff like that. Now here is asking
+us if we want to install the gateway for
+instance a telegram gateway as a system
+service just type y and press enter. Now
+this is very important because it means
+that whenever your server reboots for
+whatever reason an update or anything
+like that all the gateways are going to
+start up automatically again for you
+without you having to manually turn this
+on. And then here for the how the
+gateway should run. I'm going to go with
+the user service. And then I'm going to
+press Y to start the service. And I'm
+going to type Y again to install the
+gateway as a backend service. And then
+the Hemis installation is complete. Very
+important to allow you to be able to use
+simple commands like Hemis, which will
+trigger the Hemis application without
+you having to go into the folder that
+Hemis is installed. You're going to have
+to reload your shell of your Lock
+Server. And for that, just copy the
+command that they've given to you here.
+And then paste this command here, just
+like they give to you here, and press
+enter. And this is just going to reload
+the shell for you. Now, I'm going to
+clear the screen. If you remember, I
+selected a free model because I have my
+own AI model that I want to use in this
+Hemis setup. So in the next stage, I'm
+going to walk you through how you can
+add an AI model to Hermes agent. Now to
+to respect to the AI model that you can
+use with Hermes agent, you can use any
+model that you're comfortable with. In
+most of my setups, I'm using typically
+exclusively models from OpenAI. The
+reason being that if you do have a charg
+subscription, they allow you to be able
+to use the codeex models on Hemis agents
+for free without you having to pay
+anything extra. And honestly, the token
+usage that you get going with OpenAI is
+way higher than most of the models that
+I've seen out there. Especially
+considering how smart models from OpenAI
+also are. But hey, like I said, you can
+go with any of the options that you
+want. And of course, if you go with a
+$100 option, you would get more usage
+than going with a $20 option. But hey,
+if you just want to test it out, go with
+a $20 plan. Whenever you feel that you
+need more usage, you can always upgrade
+to the higher model. There is also open
+router which also allows you to be able
+to use basically all the models that are
+currently out there. All the popular
+models that are out there. You can find
+this on router. The advantage is that
+you're going to generate just one API
+key and that API key you can use for all
+the models that router currently offers.
+Now the difference here with open router
+is that it's pay as you go. So the more
+you use the model, the more you pay and
+all the models have different prices as
+well. And that is why I typically prefer
+to go with the AI model because OpenAI
+doesn't do pay as you go. You just pay
+once per month and you can basically use
+till your usage is gone. And then when
+your usage is gone, you basically have
+to wait till this resets and you should
+be good to go. But hey, it's absolutely
+up to you whatever model you're going to
+use. Just try to go with a bit of a
+smarter model because that it makes your
+work a bit easier. Now to configure the
+AI model on Hemis, just come into the
+terminal, the same place that we
+installed her agent and put in the
+command Hemis model and press enter. Now
+this is going to open all the list of
+the models that currently configured and
+here because I'm going to be using a
+yaya I'm just going to come to option
+here. If you do want to go with the open
+router option you can select here if you
+do have a Twitter X pay subscription or
+a monthly payments for your Twitter or
+your X account you can also use the
+Grock model on her messaging for free. I
+also learned the Grock models are very
+good. So if you do have a chat GPT
+subscription or a Twitter account, you
+can basically use these AI models
+without you having to pay extra for
+those. Here I'm going to select open AI
+and then here there are two options. I
+would recommend that you go with a codex
+model because that is what would allow
+you to be able to use your subscription
+or your charg subscription on her
+message. If you go with the API model
+then it means that it's going to be pay
+as you go which we do not want. So here
+with this selected just press the space
+bar and then you're going to get a URL
+with which you're going to bind your
+chat GPT or your AI subscription account
+to this particular her messaging setup.
+here just press control on your keyboard
+and then click on the URL that is
+provided here and then logging into your
+click continue and then we're going to
+be prompted to put in a nine character
+code to bind our account to the herm
+setup and for that her already provided
+this for us so you can just highlight to
+copy this and here very important if you
+want to copy if you highlight a copy and
+it doesn't work don't press Ctrl C if
+you press Ctrl C like they say here it's
+going to cancel the whole thing what you
+should do instead is to press control
+shift C and this would basically copy
+this into the clipboard and then we're
+going to come back to the openi binding
+we're going to paste in the code that we
+copied and then just click continue and
+then we're basically done with a binder
+and after that when you come back to
+Hermes you see that it gives you all the
+models that are currently there with AI.
+Now OpenAI just released the GPT 5.6
+which are very good models but if you
+the twin plan the 5.5 would basically do
+the job because the higher models always
+take more token usage than the lower
+models and that is why you can basically
+go with the 5.5. I'm still using 5.5 to
+be honest with you because it still
+works absolutely. you do not have to
+always chase the latest models. But
+because I do have the $100 plan, I do
+have a bit more higher usage. So, I'm
+going to go with a 5.6 so for this
+particular tutorial. And then after
+that, you can see that the default model
+has been set to GPT 5.6 via OpenAI. Let
+me clear the screen because I don't like
+it when it gets messy because I confuse
+you guys. We have installed her agent.
+We have made a AI model configuration.
+But before we even go to Telegram and
+start talking to our board, let's make
+sure that things are working correctly.
+And for that, just put in a command
+Hemis and press enter. And this is going
+to open what is called the Hemis
+terminal user interface. And this is how
+the TUI of Hemis looks like. You can see
+the AI model that we selected. And then
+how long this has been running for. Now
+here we're just going to send any
+message like hi. And hopefully if the
+agent responds then it means that the
+Hemis installation was successfully
+done. The AI model configuration that we
+did was also successful. And then here
+the agent responded hi how can I help
+you? So that means that our hemis
+installation was correctly done. The AI
+model config was correctly done. Now you
+can continue talking to your agent in
+this screen but nobody likes that one
+because it would always require you to
+log into your VPS to run terminal before
+you talk to the agent which is basically
+a nightmare and that is why we did the
+hemis setup. But a tip is that whenever
+you are talking to the agent on telegram
+and the agent is basically not
+responding or something screws up. You
+can always come back here and you have
+this messaging back end as a backup.
+Most of the time when you talk to the
+agent here he or she is able to fix
+whatever problems are there with the
+telegram bot so that you can continue
+chatting with the bot. And that is why
+I'm walking you through this step as
+well. So here to leave the screen just
+type in forward slash and then just
+press exit to leave this part of it. Now
+we can go back into telegram come back
+to botfather and then click the URL that
+buffer provided to you here. That is
+going to be the first time that we're
+going to talk to the AI agent that we
+created. I'm going to click on the here
+and then here just click on start. The
+agent is not going to respond because
+the agent doesn't understand what that
+means. But just to test this out I'm
+going to send the agent an image like
+yo. And if you see a typing indication
+here then it means that the agent is
+responding. So the agent responded,
+"Hey, what's up?" So that means that the
+Telegram configuration also worked. But
+what we're going to do in this setup is
+that we're going to set up a Telegram
+group because we're going to have
+different agents. We're going to have a
+researcher agent. We're going to have a
+personal assistant agent. We're going to
+have a developer agent. And then we're
+going to have different channels for
+every agent. So that when we want to
+talk to a developer, we go directly to
+that topic. We want to talk to a
+personal assistant, we go directly to
+there. And that is basically the best
+way that you can do this with this
+multi- aent infrastructure. So what
+we're going to do is we're going to
+create a group. But before we do that,
+we're going to have to add this spot
+here as an admission in that group. So,
+we're going to need the username. So,
+click on the name here and then click
+here to copy the username. And after
+that, click on the menu that you have
+here in Telegram. Select new group. And
+here, I'm going to give this group a
+name. I'm going to call this in my case
+computer mechanic Javas. And then click
+next. Put in the user that we copied for
+the bot. Select this username to select
+the bot and then click on create. And
+then now the group has been created for
+us. What we're going to do now is to
+click on the name of the group here and
+then come into manage. Now in manage
+we're going to enable topics. This is
+what is going to allow us to have
+different channels for all the agents.
+Click here under topics which is new.
+You can see that by default it's off.
+Click on this and just click on enable
+topics and click save. And then down
+here very important we're going to have
+to add the board that we created as add
+administrator. To do that click on
+administrators. Click on add
+administrator and then select the bot
+that we created. And then here just
+review the permissions that you given to
+the bot. If you are fine with that just
+click on save and then close then save
+again. And the bot is now an
+administrator. And immediately we enable
+topics. You see that now we have general
+and stuff like that. So what we're going
+to do is we're going to rename going to
+click on the job. I'm just going to come
+here and click on edit topic. And I'm
+going to call this tab Javis because
+that is the tab where we're going to be
+talking to Javvis. Later we're going to
+ask Javvis to create all the other
+channels for the other agents. Now let's
+make sure that Javus is right here in
+this chat. I'm going to send hi. And if
+we see the B typing, then that means
+that that is a good sign that Javus is
+also in this chat. as an admin and he
+can do the configuration. Now, all the
+prompts that I'm going to be using in
+this setup, you can basically get all
+these prompts for a token of support.
+Now, coming up with these tutorials,
+building all these prompts are also
+costy with the AI models I use. And that
+is why sometimes for all the tutorials,
+I'm not able to provide these for you
+for free. For a token of support, you
+would be able to get all the prompts,
+the template, and stuff like that to
+build this. However, what I want to
+caution you is that it can cost you some
+AI tokens to build this entire thing
+that we're going to build because we're
+going to send over 20 prompts to the
+agents to build the setup, which would
+cost you some AI tokens. So, what I
+typically do is that I also do an auto
+installer that can install everything
+for you in a matter of minutes. The
+advantage with the auto installer is
+that with this build, we're going to use
+maybe 6 hours to build the whole thing,
+but the auto installer would be able to
+do this for you in less than 5 minutes
+with you just put in a few information
+and the auto installer would run the
+entire back end for you. The auto
+installer would be available to members
+of my community. So, if you want to
+become a member, I'm very happy to have
+you there. Being a member, you pay $10 a
+month and you basically get access to
+all the tutorials, all the prompts, all
+the templates that are basically on my
+platform. And for the value that you get
+being a member, $10 a month, I think
+it's a pretty fair price. So, the prices
+will go up. But hey, there's an
+opportunity to join the member group. We
+also do have a private Telegram group
+where you can come there whenever you
+have questions and stuff like that. You
+can always come there and ask your
+questions and I'm always there to
+support. If you want to be part of the
+membership, just come to my website
+here, click on membership access and
+then basically click on become a member.
+Currently, we have 80 people in the
+group and people are asking questions
+that they have and I'm always answering
+them because I'm there and there also
+people there that are also helping with
+stuff like that. If you do have any
+particular thing that you want to build
+or any idea for a content that you want
+me to create, you can also come there,
+put it there and I'm basically picking
+up most of the concepts for my tutorials
+on what I should build next from those
+groups. So, I'll be very happy to have
+you on board. If you do not want to
+become a member, you can also buy the
+bundle and then basically get access to
+all the prompts and the template that
+I'm going to be using in this tutorial.
+Now, once you install Hemis, the first
+thing that I always recommend that you
+do is to give the agent its name. Tell
+the agent your name and tell the agent
+how he or she can help you or what you
+want to build. And for that, I always
+have an introductory prompt like this.
+And in that prompt, I'm telling Javis
+that, hey, your name is Javis. And I'm
+telling Javis that he is going to be my
+chief of staff for my personal crew and
+the agent I will talk to most of the
+time. And I'm telling Javis that I am
+the owner and I have the highest
+authority. And then here I'm also
+telling Jabis what my name would be,
+what I do in one sentence, my time zone,
+my working hours, what I want this setup
+to basically help me with and a few
+information about what we could build.
+So I'm going to copy this prompt here.
+I'm going to come here. I'm going to
+paste this into the chat. And I'm going
+to change the aspects here. For the
+name, I'm going to put in my name,
+Larry. And I'm going to fill the other
+aspects. So I filled in those sections.
+I did remove some parts because then it
+gets the tutorial a bit lengthy. And
+once you are done, just send this to
+Javis to prep Javvis for what exactly
+he's going to do. Now I do not recommend
+that you start talking to the agent
+randomly without basically coming to
+letting the agent know how they can do
+and that is why my first message to the
+agent is always hi or whatever to test
+to see if the agent is there in the
+group and the second message that I give
+to them immediately is exactly what
+we're going to build. The advantage
+being that if you go with this approach,
+the agent has a clean memory and then it
+basically builds on it. But immediately
+you start talking to the agent before
+you even come to this part and the agent
+already has some stuff in the memory and
+that is not really a clean build. So
+Javis responded that he's Javis and I am
+Larry and our top priority is building
+the Javis mission control dashboard
+which is going to be voice driven and
+containing a crew of four agents. What
+you can also see here is that you get a
+message like memory. So that means that
+Javis has committed this to memory. Now
+in the next prompt what I would
+recommend to you which is absolutely up
+to you and optional is to let the agent
+or Javvis interview you. So this message
+that we gave to Javvis was basically an
+introductory prompt. But there are
+definitely a few things that the agents
+can expand on to understand what you're
+building. And for that you can give
+Javus this interview prompt. And Javvis
+is going to ask you a few questions
+building on the information that you
+gave to him earlier. For my testing,
+Javvis is going to ask about 10 to 15
+minutes of questions. So I would skip
+that in this tutorial, but it's highly
+recommended. Now the next point that you
+can also give to Javis optional for you
+as well is to let Javvis always give you
+a plan before he executes anything. So
+that means that whenever Javvis is going
+to do anything before he does it he's
+going to send you Larry that hey Larry
+this is what I want to do there's a plan
+and then once you approve it then he
+executes it. Now this is extremely
+helpful but for this tutorial I'm also
+going to skip that because then he gets
+it to leny. Javis is always going to ask
+me give me the plan for me to say
+approve and it gets basically lenty but
+I would recommend that you use this step
+as well. Where I'm going to jump to
+immediately is to start building the
+crew. Now here I'm going to tell Jabis
+that hey we're going to have a crew of
+four agents and I'm telling him that
+he's already one of the four and I'm
+telling Jabis that for each of the crew
+we're going to have dev who is going to
+be our developer research who is going
+to be our researcher and assistant who
+is going to be our assistant and then
+we're also going to have a description
+so that Javis understands what the role
+of these agents are going to be. So here
+I'm just basically giving Javis a
+briefing. I'm not telling Javis at this
+point to create the profiles but
+whenever I'm going to do complex stuffs
+I always like to brief the agents on
+what is coming. so that they can
+basically prepare on the build and for
+that I'm going to give Javvis this
+prompt and then Javvis responded
+understood default profile is going to
+be Javvis and a lot of you asked there's
+always going to be one default agent in
+Hemis and what I always typically like
+to do is to give that default profile to
+the top boss and in our case this is
+going to be Jabus and below Jabus we're
+going to have the other agent so
+basically Javis just repeated exactly
+what the plan is going to be for us to
+confirm that he understood exactly what
+we said and this is the prompt that
+we're going to give to Javis to create
+the agents I'm going to send this to
+Javis and I'm going to explain what the
+prompts are going to do. Now in this
+prompt I'm basically telling Javis that
+hey create these specialists or agents
+as persistent Hemis profile. The reason
+why I use the word persistent is that
+Hermes also has the possibility to
+create agents on the go. If there's a
+particular task that you want to do, you
+can tell Hemis to just create a
+temporary agent to do that task and
+after that the agents will basically be
+dead. Right? So these agents are
+basically agents that come do the work
+and then go. But what we want to do in
+this setup is that we want to have
+persistent agents that are going to be
+there all the time with the defined
+roles. And that is why I use the word
+persistent hemis profiles. And then what
+I'm doing here is that I'm giving Javis
+what every agent is going to be, what
+their name is and what their role is.
+Now for instance, what developer? I'm
+telling Javis that hey your name is
+developer. You are the engineer who is
+going to be our developer here. He would
+build and maintain a mission control
+dashboard it server and every tool that
+the crew uses. And then basically all
+this information that I'm provided is
+going to be put into the agents file
+that is called sod so that the agent
+always remember what it does and also
+remember what basically we're building
+and this applies to the same for all the
+other agents. I'm giving Javis all the
+prompts that he would need to put into
+the solder of these agents. So I'm going
+to wait for Javvis to be done with that
+and then we can continue with the next
+step. Then Javis responded that the crew
+completion is completed. So he created
+dev with his own path his own. So we
+have research and then he basically
+asked all the agents who are you? So for
+instance dev replied I'm dev the
+engineer of Larry's crew and the same
+applies to every agent. Now just to make
+sure that Javvis is not hallucinating.
+I'm pretty sure that he did the job
+correctly because I can see it here. We
+can also come into the Hemis back end.
+Come back into the terminal application.
+I'm just going to clear the screen and
+then you can just put in the command he
+profile list. I'm not sure if it's
+profiles or profile but let me just try
+profile first. Perfect. And then here
+you can see that Javis indeed created
+the agents. So we have the default agent
+here. It's not going to be called
+Javvis, but that's fine. That is Javis
+here. And then we have the three other
+agents that are created. And you can see
+that all the agents are also on the same
+AI model. And then what you also see
+here is that currently we have only
+Javis that is running. This is
+absolutely normal. Telegram would not
+allow us to use one bot token to
+activate all the gateways of the agents.
+But we're going to have a trick how we
+going to fix this soon. So in the next
+prompt, I'm going to tell Javis to
+create dedicated memory and workspaces
+for these agents. and very important the
+team awareness. Now to explain why I do
+this, imagine if all these four agents
+are using the same memory. It could be
+good because they all digging from the
+same pool, but it could also be messy
+because all the agents are doing
+different things. Javis would be writing
+things about how he's orchestrating the
+agents. Dev would also be writing things
+in the memory about how he's building
+the dashboard which research agents
+would never need or which our personal
+assistant agents would never need. And
+that is why I like to create dedicated
+memories for all the agents. And very
+important I also like to give them
+agents their role boundaries so that
+research knows that his job is not to do
+development and then dev also knows that
+hey my job is not to be a personal
+assistant and also very important I also
+give the team what is called the team
+awareness. So that means that whenever
+you give for instance researcher a task
+he would to build a dashboard researcher
+might tell you hey that is not my job
+probably you should talk to deb now this
+is very important especially in a case
+where you have an agent that is taking
+care of finances your money and stuff
+like that you don't want to want another
+agent that is not trained to do that job
+or to come into the finances and break
+stuff and that is why I typically give
+the agents this prompt as well all right
+so Javvis responded that he's done all
+the agents have their dedicated memory
+and also they understand their roles and
+for instance the boundary testing was
+done so Javvis was asked a question and
+he says hey that's dev's department I'll
+route it to dev and for instance dev was
+asked to do a research and then dev says
+hey that's research department so the
+role boundaries are also working very
+correctly now in the next stage we're
+going to create all the channels for the
+other agents and we're going to bind
+every agent to their dedicated channel
+and for that you can create these
+channels yourself for instance click on
+the three dots and then create a topic
+and you can create the channels and this
+is what I did in the previous video but
+I realized that he would be able to
+create these channels himself and then
+he would have any way during the process
+the channel ids of all these channels
+and then be able to bind the agents to
+that channel. So basically what we want
+to do is that we want to have only
+JavaScript listening to this channel.
+We're going to have a channel for dev
+where only dev would listen in those
+channels and the same for all the other
+agents. Now I'm going to explain shortly
+what the challenge is and how we're
+going to fix this. The issue being that
+we want to create different channels for
+all the other agents. For instance, in
+this example, I had a channel in
+Telegram called command for the main bot
+who is who was the orchestrator. And
+then we had other channels for the other
+agents like scout, reach and de. The
+challenge is that Telegram doesn't allow
+us to be able to send messages directly
+from for instance from scout channel
+that would go directly to scout through
+the same bot token. Telegram would allow
+us to do this. So what one could do in
+principle would be to create one bot
+token for every agent. So that means
+that that the first agent has its own
+bots. Scout has its own bots. Scribe has
+its own bots and this is a very complex
+setup. How other users I've seen work on
+this is that they basically use
+orchestrator or the main default agent
+as the router. So every message that
+would come from all these channels would
+first go to orchestrator and
+orchestrator would forward this to the
+right agent. This works but I think
+there's a better way we can work on this
+and that's what we're going to do with
+this plug-in that we're going to build.
+So we're going to build a plugin and
+this is how the plug-in is going to work
+with all the telegram channels that
+we're going to create gives every
+channel its unique ID. So we're going to
+create a router plugin that is going to
+look at a message that is coming from a
+particular channel in telegram. It would
+go to the same B token but then the
+router would determine okay this message
+that is coming is it coming from thread
+one and the router understands that all
+messages that are coming from here are
+for orchestrator. So the router would
+automatically push the message to
+orchestrator and the same thing when a
+message is coming from for instance
+scribe in that the router would detect
+okay scribes channel has an ID4 so that
+means that message that is coming is
+forcribe and then the router would route
+that message to scribe and when the
+agents are responding that is a bit
+easier because the agents know exactly
+the channel ID from which the message
+came from and they can respond directly
+and push their message directly to that
+telegram ID group without having to go
+through the router plugin. So the role
+of the router plug-in is basically to
+route the messages that are coming from
+a particular agent allowing us to use
+the same bot token without this having
+to channel everything through
+orchestrator. You can go with another
+approach where you create one bots token
+for every agent. But I find this a bit
+too complex and also you're going to
+have five gateways running at the same
+time which is not required. And because
+this is a big build I like to brief
+Javis on what is coming. So here I'm
+basically giving Javis an overview of
+what we're going to do with the plug-in
+that we're going to build, how we're
+going to bind the channel to the agents
+and stuff like that. I'm going to copy
+this prompt here. I'm going to send this
+to Javvis. And then in the process, I'm
+telling Javis that he should create the
+other channels that we need. So Javvis
+is going to create all the three
+channels that we need for us. He's going
+to create a developer channel. He's
+going to create a research channel. He's
+also going to create the assistant
+channel. So currently you can see that
+top here we are seeing only Javvis. But
+if this works, we should see all the
+three channels that are here as well.
+There is one more thing that I should
+have checked because for Javvis to be
+able to create the channels he should
+have access to manage topics. So to
+check that let me click back the group
+that we have here. Let me come to manage
+administrators. Let me click on Javvis
+here and then let me see if he can
+manage topics. Yes. So you can see here
+that manage topics is enabled for Javas.
+So Javis should in principle be able to
+create these other topics that we need.
+Then here you can also see that Javis
+checked himself that he is an
+administrator and he can manage topics
+because this has been set to true. So
+you can see that Javis created a new
+group called dev for developer and he
+also registered what a channel ID of
+that topic is. So I'm going to wait for
+Javis to create the two other groups and
+then we can continue with the build. All
+right. And Javvis is done with that as
+well. So on the top section here you see
+that we have one channel for assistant.
+We have one channel for research and we
+have one channel for developer. And then
+very important Javis also made sure that
+he registered the group ID. So this is
+the group ID of what we have here. And
+he also registered what the channel ID.
+So this channel is Javis which is one
+def channel is 38 reset is 41 and 45 and
+these are the thread ids that we're
+going to use to bind the agents to this
+channel. Now in the next stage we're
+going to send Javis this prompt here and
+for that we send in Javis this prompt
+here that we are about to route each
+topic in this group to a specialist
+agents profile and for that to work each
+specialist must not connect to telegram
+itself because that is what the router
+plugin is going to do and we would want
+only Javis to be the one holding the
+telegram connection. I'm going to copy
+this prompt here and I'm going to send
+this prompt to Javis to brief him to
+work on that and I'm going to tell him
+that conf I'm telling Javis to also
+confirm that each pro I'm telling Javis
+to confirm that all the profiles of the
+agents exist and none of the agents in
+their soul.mdr configuration have access
+to the bottokin because if that's the
+case then what we going to do with the
+router plugin it's not going to work so
+Javis responded that I would audit all
+the three profiles first and then remove
+only platform connection set and he will
+leave other things like models tools
+memory identity and profile untouched.
+Jabis responded on that. So he did an
+audit that all the agents have their
+profile. They have their soul.md and the
+connection block is and the platforms
+they connected to. He blocked telegram
+because we want only Javis to be the one
+who has the telegram but token. Now in
+the next prompt we're going to work on
+the build of this router plugin itself.
+And for that as well I'm going to copy
+this prompt for Javis to work on that.
+And in the process once we have the
+build done we're going to have to
+restart the gateway which I suspect that
+Javis will not do. So maybe Javus will
+tell us to do the Hemis gateway restart
+for him. So what you can also see that
+Javvis is doing which I really like
+about Hermes is that whenever the agent
+is in doubt he always looks on the
+internet look through the Hermes agent
+docs read what he's searching for learn
+how he should do what he wants to do and
+this is quite helpful because then the
+agent always knows exactly how to tackle
+the challenge that we have given to him
+and then here you can see that he
+adapted a JSON configuration with a chat
+ID which is this particular chat that we
+have and then he bound every agent to
+the 38 channel which is dev here
+research is bound to his channel an
+assistant is bound to her channel as
+well. And then here Javvis tried to
+restart the Hermes gateway but from most
+of my testing I realized that Javis
+wasn't able to restart the gateway
+himself. So here you can see that Javis
+says the restart command is blocked from
+inside the gateway process exactly as
+anticipated. So most likely Javis is
+going to ask us to do the restart for
+him and just like I said Javus is saying
+that hey restart the gateway for me. So
+what I'm going to do is I'm going to
+copy the command here that Javis has
+told us to do to restart the gateway for
+him. I'm going to come back into
+PowerShell. Let me clear the screen and
+then put in the Hemis gateway restart
+command and then press enter and then
+the Hemis gateway is going to be
+restarted. And then you see that we get
+a telegram notification down here that
+gateway is restarted. And by the way,
+this is why we enabled that we want to
+use the Hemis agent chat as the home
+channel because then whenever the
+gateway is restarting, whenever the
+gateway is online, we are going to get
+these notifications. So now you see that
+we also get a message that the gateway
+is online. So so what Javis said is that
+when we are done with the gateway
+restart, we just tell him done. So, I'm
+just going to type in done. And then
+Javvis is going to continue with the
+build. For my testing, Javis made me
+restart gateway twice. So, it's possible
+that he would ask me to do it again, but
+maybe with this particular setup, he
+wouldn't need me to do it again. Javvis
+is asking me something to allow. So, I'm
+just going to click on always allow.
+Just like I said from my testing, Javus
+is asking me that he needs a second
+gateway restart. I'm going to copy this.
+I'm going to come back into PM. I'm
+going to come back in partial. I'm going
+to paste this in. I'm going to press
+enter. And the gateway restarted. The
+gateway is back online. So I'm going to
+come back into the telegram chat. Javis
+told me that when I'm done I should just
+type done. So I'm just going to respond
+done and then Javis can continue with
+what he's doing. So Javis responded that
+he's done routing infrastructure is
+enabled and healthy. All profiles are
+served. And then what we're going to do
+now and he says what he hasn't tested
+yet is if the live topic routing works.
+And that is what we're going to do. Wish
+me luck guys. This is the part that
+always gets me nervous. Now to test this
+we're going to copy this prompts here.
+We're going to go into all the channels
+and we're going to ask who are you and
+which profile are you running as in one
+short line. I'm going to start with
+assistant. If Javvis responds, oh
+perfect. So you can see that I got a
+respond I'm assist communications and
+calendar specialist. So that means that
+assistant is bound to this particular
+channel. Let me go into Javvis. Let me
+send the same thing. Let me go into
+research. Let me send the same thing.
+And the same thing for also dev. So if
+all the agents respond exactly what
+their name is and what they do, then we
+are pretty confident that we have the
+right agents behind the channels. Dev
+responded, I'm dev Larry's engineer. So
+that worked. Research also responded,
+I'm research. Larry's research
+assistant. That worked. And Jabis also
+responded, I'm Jabis. And this is pretty
+cool, guys, because that means that
+whenever you want to do something about
+research, you can come to research and
+you can put this directly in this
+channel and only the research stunts
+would talk here. And the same thing for
+all the other agents. Now in the next
+stage we're going to create the agent
+login database and the project folder.
+Now remember we're going to build a
+dashboard where we're going to see all
+the things that the agents are doing. So
+we're going to build sort of a light SQL
+server where the agents would log
+whenever they perform a task they would
+log what their name is the task that
+they perform the AI model that they used
+and the time stamp when they did a
+particular task. Now, this is going to
+help us to be able to always know if an
+agent did a task or if an agent failed
+doing a task. And if they were not
+successful, they're also just going to
+tell us failed or completed. Now, for
+that, I'm going to give Javus this
+prompt here to set up the project folder
+and also to build the agent log
+database. Going to come to Javus and you
+can send this to Javas. And by the way,
+you could also send this to developer to
+build that. But I'm going to start with
+developer only when I'm starting to
+build a mission control dashboard. So,
+Javus is done. He created a project
+folder for the JavaScript control
+dashboard. He also created the agents
+login database that we asked of him and
+he also made all the agents do a smoke
+test to prove that they have access to
+the dashboard. Now we have created this
+database but most of the agents do not
+know that we have this database
+existing. Now here what we're telling
+all the agents which would be in their
+long-term memory is that after they
+complete any task being it's a task be
+it's a build a research a report or
+whatever they do before they respond to
+us they should log it in the database so
+that we can track exactly what they did
+we are telling them to log in their name
+the status of the task that they did if
+it was completed if it failed or if it's
+running and also the AI model that they
+use for the task a description of the
+task with a maximum 140 characters so
+that we can read this on the dashboard.
+If they make it too long, the dashboard
+will become a bit messy and that is why
+I truncated this to 140 characters. And
+also we are telling them to log every
+substant response. So Javis is going to
+store this in his long-term memory and
+apply it as well to all the agents that
+we have here. And Javus is done with
+that as well. So he says that the rule
+has been saved and distributed to all
+the agents. And all the agents also did
+a smoke test. So we see that Javvis
+logged
+something as completed the AI model he
+used and the time st that he performed
+that task and the same also applies to
+all the other agents. All right. So now
+we done with the fundamentals and we're
+going to move on to start building the
+mission control dashboard. With every
+tutorial I try to bring in something
+new. So what I'm going to be doing here
+is I'm going to be building the
+dashboard using cloud code. But hey if
+you do not have cloud code you can still
+continue the process using your
+developer agent on her. And that is why
+we built the dev agent. With all my
+tutorials, I always use the developer
+agents here to build the ent. And I
+tested this dev can build this for you
+as well. So building up your Hemis
+setup, creating all the agents, the
+agents login database, the telegram
+configuration and stuff like that.
+Building the auto installer, configuring
+the voice and stuff like that. For my
+testing, it took me about 6 hours to get
+everything done. But I do have an auto
+installer that is going to do everything
+for you in a matter of minutes. And hey,
+if you want to get this, you can be part
+of my membership group and you would get
+access to the auto installer as well. An
+advantage with the auto installer is
+that you do not use your AI tokens to
+build the dashboard. Everything would be
+built for you. All you just need to do
+is to provide a few information for the
+auto installer to build this for you and
+then it will be done in a matter of
+minutes. So hey, if you want to get the
+auto installer, you can be part of the
+community. It currently cost $10 a
+month. They would give you access to
+everything that is on my platform. So
+from a price to value ratio, I think
+this is quite fair. So I'm going to
+continue the build with a cloth code.
+But like I said, if you do not have
+cloud code, you can basically use a
+developer agent to build it and and he
+would be able to build this as well. I
+just want to bring something new in
+every tutorial that I do. And that is
+why this time around I'm going to go
+with a cloud code route. So I believe
+you know how to install cloud code. So
+I'm going to skip that part of the
+installation here. Now once cloud is
+installed, you're going to come to this
+section here and then click on code. Now
+in code, what we're going to do is we're
+going to add our VPS server to cloud
+code so that cloud code can connect to
+the VPS server and and build the setup
+for us. And to connect cloud code to the
+VPS, we're going to come down here under
+local. Click on local and then click on
+add SSH host. And then here just give
+the server any name. And this is the
+name that is going to pop up on the left
+side of cloth code here. So I'm just
+going to call this in my case computer
+mechanic Jarvis. And then here put in
+the username IP address of your server.
+Remember it can't be root. It has to be
+the new user that you created. So in my
+case, this is Larry at that is my IP
+address. And then here you can generate
+an SSH key pair that would allow code to
+connect to the server without a
+password. But I'm going to skip that in
+this tutorial and click on add SSH
+connection. And cloud code is going to
+ask you to put in the password of your
+VPS server. So I'm going to put in the
+password here and then press connect.
+And then what you can see here is that
+cloud code is downloading the cloud code
+and installing it onto the server. Come
+here, click on select folder and then
+just select the was created. So you can
+see that cloud code is already able to
+read some of the folders on our server.
+We have the Javis mission control
+folder. We asked Javis to create for us.
+I'm going to click on select folder.
+Then we're going to trust the work. Then
+let's just do a test. Check. Check. And
+if cloud code responds, then it means
+that cloud code has access to the
+server. And here cloud code is currently
+on fable 5, which is going to take a lot
+of my tokens. So I'm going to reduce
+this to opus 5, which is going to be
+more than sufficient for what we want to
+build. One more thing that we're going
+to do, I'm going to give cloud code more
+power so I don't have to click a
+thousand times to accept everything that
+cla code is going to do. Now this is
+something that you have to decide on if
+you want to do it. So I'm going to come
+to this left section here. I'm going to
+click on my name. I'm going to come to
+settings and then under clot code scroll
+down and then under local sessions you
+see allow bypass permission mode. So I'm
+going to enable this and with that I
+don't have to click accept every time
+cloud code tries to do something. So I'm
+going to close this here and then when
+you come down here under accept edits
+click on it and choose or I'm going to
+use that mode but you can decide
+yourself. You can choose manual you can
+choose to accept edits. You can choose
+to go to plan mode where clot code plans
+everything before he executes. But in my
+case, I'm going to go to bypass
+permissions and I'm going to say bypass
+permissions. And basically we set. So
+all I did right now is to move cloud
+code to the left and have the prompts
+that we're going to use on the right.
+Now cloud code is a fresh install. Cloud
+code has no idea what we are doing. Code
+has no idea how he can build it or how
+it or he or she can help us with what we
+want to build. So I always have sort of
+a debriefing prompt which I'm going to
+give to clot code. I'm going to copy
+this. I'm going to send it to clot code.
+I'm going to explain the prompt that I'm
+giving to clot code. So I'm telling
+cloud code, hey you're running on a
+server that is running my HIS agent
+setup. My crew is raised and working.
+Everything here is engineering and
+you're going to do it. But before
+touching anything, I want him to
+understand what this machine is made of.
+So I want him to explore this machine
+properly, report back who he is going to
+be, who he's not going to be, and report
+back everything that we have on our
+existing setup. And also I'm telling the
+claude code to look into specific areas.
+So here Hemis he would understand all
+the Hemis configurations that we
+currently have and also there he would
+also understand the four agent setup
+that we have the telegram routing
+plug-in that we have enabled the folder
+structure that we have for the mission
+control dashboard the agent login
+database and all the other things
+basically to brief cloud code to be able
+to understand what we're building and
+very very important I also told clot
+code that hey if he is new to you please
+read the docs of hemis here I provided
+the parts for the hemis doc to clot code
+so that he can do a deep research and
+understand exactly what we're building.
+And then here you can see all the things
+that Cloud Code is doing. He inspected a
+Hemis database. He fetched the docs from
+Hemis and basically trying to understand
+what we have on our current server. And
+Claude code is done with exploration. So
+he says that this server is running on a
+Ubuntu server with six CPU cores and my
+hardware specifications. And then yes,
+he found the four agents. He found that
+we have Javas, dev, research and
+assistant and also all the things that
+we told him to do. And he says my job is
+I'm going to build a tool. I'm going to
+write the dashboard the infrastructure
+around it in the folder that has been
+created. Standing rules are saved and
+waiting for us when we want to do the
+next step. Now the next step is we're
+going to basically give this prompt to
+cloud code to start building the back
+end. And for that I'm telling cloud code
+that hey before we start to build
+anything find out what this machine
+already has from about the crew. So I'm
+giving Claude code an orientation on the
+things that he should check in the hemis
+configuration because these are going to
+be the basis on which we're going to be
+building on and some of them he already
+scouted in his earlier step. So we do
+not need to provide this to him again.
+And hey if you are not going to be
+building this with cloud code you can
+basically skip this prompt 8g here and
+you would start directly with your dev
+agent from prompt 9 and that would work
+as well. Then just a few tips with clot
+code. Whilst cloud code is working, I
+just thought I could maybe give a few
+ideas to you guys. What you can always
+do like I did here, you can change the
+model that you want to use. So basically
+the higher the model, the more expensive
+it gets. Fable is a very good model but
+also quite expensive, right? And what
+you can also do here is you can always
+choose the effort with which the agents
+work. So if you think the tax that
+you're giving to the agent is very very
+complex, then you can increase the
+effort so that the agent puts more
+energy into doing that work. But with
+most of the things that I'm doing right
+now, the effort at high is going to be
+more than sufficient. Maybe midway if we
+get to more complicated stuffs I can
+switch the effort so that you guys can
+see how that would be as well. I mean
+you wouldn't see it but it would just
+sometimes take a bit longer because the
+agent works longer to make sure that the
+work is done and cloud code is done with
+that survey. He indexed all the things
+that we told him to index. So basically
+we can now move to the next part. Now
+I'm going to tell clot code to build the
+read layer. So what cloud code is going
+to do is he's going to build a python
+server on which the J dashboard is going
+to run on and he's going to build a few
+endpoints so that we can pull data
+directly from all these sources that he
+found from his research so that he can
+connect all these information that he
+found in his research to the dashboard
+that we're going to build. Then for that
+I'm going to give cloud code this prompt
+here. All right. So cloud code is done
+with that as well and he also provided
+us a command that we can use to connect
+to the back end to see the dashboard
+once we start building. So, I'm going to
+copy this command here. And then what
+we're going to do is we're going to come
+back into PowerShell and then we're just
+going to paste in the command that CL
+code give to us and then press enter.
+And then we're going to put in the
+password of the VPS server. And that is
+why I like SSA tunneling sometimes
+because if someone doesn't have the
+password to your server, they basically
+can connect to see the dashboard. But
+later we are even going to be installing
+TK skill which would allow you to
+connect to the VPS server or to see the
+dashboard without you having to type the
+password every time. Now when you put in
+your password, it's going to bring you
+to this here which is blinking. When you
+see that, don't worry. It means that the
+connection has been activated. So when
+you come into your browser and you open
+localhost colon, it would bring you to a
+page like this. But don't worry, it's
+going to tell you that the page is not
+found because we haven't put anything
+there. So what we're going to do now is
+we're going to tell cloud code to
+basically create a web upload point for
+us. I'm going to copy this point. I'm
+going to give it to clot code and then
+I'm going to explain what the prompt is
+going to do for you. So to facilitate
+the build of the dashboard, I already
+created a template that we're going to
+use to build it so that you do not have
+to spend any time working on the
+templates and stuff like that.
+everything has been cooked for you. So
+we're just going to tell code to create
+an upload point and that is a prompt
+that we give to him so that we can
+upload this template for clock to be
+able to work on the dashboard. So code
+after that is going to save this
+template on the local host of our SA
+tunnel and we can start connecting all
+these hard coded stuff that you see in
+the template to real data and cloud code
+says he's done with the creation of the
+upload point and he also provided us the
+URL for that. I'm just going to click on
+this URL and choose open in a default
+browser. I'm going to click on done and
+this is going to open on the right side
+here for us. And here it's saying that
+it's expecting a file that is called
+Javis dashboard template. And the file
+that I'm going to upload here is also
+called exactly that. When you download
+the file, make sure that the file that
+you're going to be uploading has exactly
+that name. So I'm going to drag the HTML
+template into this section here. And
+then you can see that it says that this
+has been saved to the project folder. So
+I'm going to come back to the prompt and
+I'm going to tell dev that hey I have
+uploaded a template which is called
+Javis dashboard template.html HTML into
+that folder. And these are the
+instructions that I'm giving to cloud
+code. I'm telling him to copy this into
+the index.html file, which is basically
+saying the homepage or the main HTML
+file that is going to be saved from the
+dashboard. And very important, if you do
+want to change anything in the template,
+then you do not need to add this. I'm
+adding the section here that the
+template is going to be the design
+source of truth. So whenever cloud code
+is doing something, I always want him to
+check this against the template to make
+sure that he hasn't changed the design.
+And also I'm telling him as a durable
+rule that hey just like I said whenever
+you touch any aspect of the dashboard
+that that includes appearance make sure
+that before you are reporting is done
+you look at the templates and look at
+the changes that you made to make sure
+that you haven't changed anything and a
+few orientations that I'm giving to
+claude code on how the whole dashboard
+is going to work. So I'm going to put
+this prompt here and I'm going to send
+this CL code and Claude is done with it
+as well. So he says that the template
+has been installed. So let's go to the
+dashboard and see what he did. He also
+give us the URL that we can have a look
+at this. But I already opened this here.
+So I'm just going to come here and I'm
+going to reload the page. Then hopefully
+we should now see the dashboard.
+Perfect. So it looks like everything
+worked. Cloud code has been able to add
+the templates to the server and this is
+working pulled directly from our server.
+Now what I'm going to do in the tutorial
+is that the dashboard contains a lot of
+motions, right? Because I want it to
+look more aentic. But because I'm
+recording my screen, I would turn off
+the motions just to make it a bit easier
+for my GPU because I'm recording my
+screen. And also, if you do have the
+dashboard eating up a lot of your GPU
+and stuff like that, you can come to the
+control section here. You can choose to
+turn off some of the motions or you can
+also choose to turn it all off. For this
+tutorial, I'm going to click on turn all
+off so that I can just have more GPU to
+do the recording. So, you can see that
+now all the motions are off except the
+one that we see here. Now, what I'm
+going to do next, I'm going to explain
+the prompts that I'm going to give next
+to Clot Code. I'm going to give him
+about three prompts one after the other
+so that the ser gets a bit faster. But
+I'm going to explain all these prompts
+to you before I do this. Now the first
+prompt that I'm going to give to Claude
+code is to sort of create a backup
+protocol. It would be quite painful if
+Claude makes a mistake when building the
+dashboard and we lose everything that we
+have done so far. So I'm telling Claude
+that he before you make any change to
+the dashboard make sure that you make a
+backup and the backups are going to be
+stored in a dedicated space here. And
+also I'm telling him to add badge to the
+dashboard so that whenever he makes any
+new change the version number keeps
+getting up versioned. What you can also
+do is to set up a GitHub repository and
+then ask CL code to be pushing the
+backups there as well. If you would be
+interested in how this works just let me
+know. I'll do that as well in the next
+tutorial. And after that I'm going to
+tell Claude code to basically work on
+the homepage. Now here currently you can
+see that all the metrics that you see
+here are hardcoded that have been pulled
+from the templates. So, I'm going to
+give Claude some prompts to pull in real
+metrics here and also pull in real
+metrics into the agents tab and also
+pull in some real metrics into the
+communication tab. And for that, I'm
+going to give Claude these prompts here.
+This one for the home view, this one for
+the agents tab, and this one for the com
+tab. So, just to make a tutorial a bit
+faster, I'm going to give these prompts
+to Claude one after the other. And after
+that, we're going to see what Claude
+did. If there was anything that didn't
+work out, I'm going to stop and I'm
+going to speak so that you guys
+understand this. But if everything works
+in smoothly, then we can just jump into
+where he's done with the wiring of the
+agent tab, the communications tab, and
+the homepage. So Claude is done with a
+build of that as well. Let's have a look
+at what has been worked on so far. So
+this is what we had in the original
+template, you can see that we had all
+these metrics being hardcoded. And then
+when I look at what Claude has done so
+far, when I reload the dashboard, you
+see that it now pulls in the real
+metrics. So for instance in the
+templates when you look into the active
+missions the templates contained
+hardcoded stuff like research dev some
+things that they did but now you can see
+that if you've been following the build
+the most recent stuffs are these ones
+here. So we have now the real
+[clears throat] metric that is being
+pulled from some testing that CL code
+did himself and also down here you can
+see in the template that my CPU and
+everything was basically hardcoded but
+now we have those full metrics being
+pulled in the system pause. The same
+thing applies to the distribution the
+agent statistics and stuff like that. So
+when I go to the agents tab now you can
+see that we also have a real
+distribution of what has been done so
+far with JavaS having about 24% of the
+total task that we've had so far
+research having 20 25 and assistant
+having 10%. And when you come down here
+and you see the agent heat map this also
+basically updated and being pulled from
+our agent login database including all
+the live feed that we have here. When we
+come to the coms tab let's test to see
+if this is also working. So you can see
+that basically the last conversations
+that we had with Javis in telegram is
+also here. So with dev everything is
+here with research everything is here
+with assistant everything is here. These
+are all the things that we tested in
+telegram. So now let's test to see if
+the communication channel is working.
+I'm going to say hey Javvis how are you
+doing? And if Javvis responds then it
+means that we would be able to talk to
+Javvis or all the agents directly from
+the dashboard and Javus responded doing
+well online organized ready and how are
+you? Now let me test to see if all the
+agents also respond and research also
+responded and assistant responded dev
+responded. So basically we are able to
+talk to all the agents directly from our
+dashboard. Now the next thing that we're
+going to populate is the schedule tab
+and the library tab. Let me explain what
+these are going to do. So basically what
+I wanted to do or my goal with the
+schedule tab is that you can see all the
+chrome jobs that are running on your
+server app. For instance, if I tell you
+that hey every morning send me my daily
+briefing that contains the weather
+forecast for the day, the things that I
+have to do in my calendar and stuff like
+that. Maybe send this every day at 9:00
+a.m. This is what is called a chrome
+job. is a tax that runs on automation
+within a predefined time window. The
+idea here is that I will be able to see
+all the Chrome jobs that I've assigned
+to all the agents and I can manually
+trigger them, I can delete them, I can
+pause them and stuff like that all from
+the schedule tab. And what we also going
+to work on is the library tab. The idea
+of the library tab is that whenever the
+agents are doing any long form documents
+or research, for instance, if I ask the
+research agent to do any research for me
+and it's a very long document, I don't
+want them to give me this in a telegram
+chat. Because remember, if they dump all
+those information to the telegram chat,
+chat gets cluttered and the context
+window of that chat session gets very
+big. And the bigger the context window,
+the more expensive it gets in terms of
+AI tokens because whenever you send any
+message to the agent, they always read
+everything that is in that context
+window before they respond. And that is
+why it's typically not advisable to let
+agents push long form documents into a
+chat. And that is going to be the role
+of the library tab that we're going to
+build. And for that I'm going to give
+Claude these two prompts. So first I'm
+going to tell him to wear the schedule
+tab which will pull information from the
+chrome jobs that we have. And also he's
+going to after that work on the library
+tab so that we can see all the long form
+documents that the agent writes. And
+after he's done with that I'm going to
+give him this prompt here where he's
+going to create a rule to all the
+agents. So we're going to grab this
+library tab but we want the agents to
+understand that whenever I tell you to
+do any long form research I don't want
+you to paste that research into the chat
+rather I have created a dedicated space
+for you where I want you to save the
+file to save the research as a markdown
+file in your dedicated folder so when we
+come into the library tab we would be
+able to see all the long form documents
+that the agents have written and for
+this to work we need to save this into
+the long-term memory of all the agents
+as a durable operation rule and that is
+what these prompts are going going to
+do. So Claude is done with that as well.
+Let's go to the dashboard. Let me reload
+the dashboard. And now when I come to
+the library tab, you see that there is
+some smoke test that was done. We can
+see that we already have something that
+was smoke test with the research agent.
+Basically a simple document for us to
+see that the research concept is
+working. Now when we come to the
+schedule tab where we supposed to see
+our chrome jobs, currently we do not
+have any chrome jobs that is scheduled.
+So, what I'm going to do is I'm going to
+send Javvis basically something to
+create a chrome job and then hopefully
+we would be able to see this in the
+schedule tab. So, I'm giving Javvis this
+chrome job here. Basically, I'm telling
+him, hey, every morning at 8:00 a.m.,
+send me my daily Bible message. I'm
+basically telling him what the Bible
+message should contain and stuff like
+that. And this would be something that
+would run every day at 8:00 a.m. And we
+should be able to see this in the
+schedule tab if this was correctly
+configured. So, I'm going to send this
+to Javvis to basically build this up.
+And Javus responded that he's done. This
+has been scheduled successfully. Now
+when we come back to the schedule tab,
+we now see that we have this chrome job
+showing here. But this looks a bit too
+busy. So I'm going to tell Claude code
+to clean this up. I'm going to take a
+screenshot here. And this is a prompt
+I'm giving to Claude. The schedule tab
+works perfectly. But the chrome job cuts
+are too large and heavy. So basically he
+should clean this up so that it looks
+more premium and more compact. And
+Claude is done with it as well. Let me
+reload the schedule tab. And now this
+looks way prettier than what we had
+before. Now in the next stage we're
+going to give research agent a tool to
+be able to do realtime research without
+relying on its own training data and for
+that we're going to be using SE API. I'm
+going to walk you through how we can do
+that as well. So come to the SE API page
+and just click on register. If you
+already have an account you can just log
+into your account. Now after the sign up
+you see that we have currently 250 a
+month on the free plan. So I can just
+subscribe to this that I verified my
+email, verified my phone number and then
+we can just click on subscribe and it
+brings you directly into the dashboard.
+In this section here, you see that we
+have your private API key. Now we're
+going to click here to copy this API key
+and that is what we're going to use to
+continue with the build. But before
+that, we're going to have to add this
+API key to the terminal back end of our
+Hemis setup. And for that, I'm just
+going to copy this prompt here. Then I'm
+going to open PowerShell. I'm going to
+SSH into the server again from the
+backend terminal. And then I'm going to
+put in the command to add the API key.
+After that, just press enter and it's
+going to bring us this prompt where we
+can just enter or paste in our SE API
+key. I'm going to right click to paste
+in the key. And after that, just press
+enter. And then the key has been saved.
+Now, what we're going to have to do is
+to come back to Claude. There was
+something weird with my session that
+when I logged in back into Claude, all
+the chat that I had with Claude
+basically was lost. So, I had to recap
+with Claude so that he can basically
+continue the conversation of what we're
+building. And I'm going to tell Claude
+this. Hey, I want to give research a
+real web search tool. And when I'm
+telling dev that I'm using SE API, I'm
+telling him that I have saved the key in
+this location. So he should read it from
+there and do the integration. And I'm
+telling him to also build one search
+command so that whenever research is
+performing a research, he can basically
+use the safe API integration that we
+have instead of it relying on its own
+research. And I'm telling hey give this
+key access to research only. In case you
+want the other agents like Javas or any
+other agent to have access to this tool,
+they can also extend the command that we
+have here. And after that I'm telling
+him to run a smoke test where he asks
+research to perform a reset topic using
+the SE API integration so that we can be
+sure that this tool is working. So I'm
+going to copy this prompt and I'm going
+to send this to Claude code and Claude
+is done with that integration as well.
+He also did a smoke test where research
+performed a research on chat GPT work
+the automation layer just moved into
+mainstream. So let's reload the
+dashboard then hopefully when I come
+into the library tab. Perfect. So you
+can see that we have this research here
+chat GPT work the automation layer that
+just moved into the mainstream and you
+can see that this is quite a detailed
+research report and down here you can
+also see credible sources that he used
+for this research. So now we have the
+research agents being able to pull
+realtime research data in performing his
+research. So now we're going to move to
+a very very important part of the
+mission control dashboard which is the
+voice mode. I'm going to take my time
+and explain this part here so that you
+guys can understand how this works, the
+background behind this and also to help
+you to make the best decision on which
+of the modes you want to use. Now, this
+how the whole concept works. Generally,
+you're going to speak and then your
+voice is going to be transcribed into a
+text and then that text is going to be
+sent to the AI agent for instance Javus
+and Javis is also going to respond in a
+text and then the response from Javas
+would be converted into a voice and that
+is what you're going to hear. Now, I did
+a bit of research and I want to come up
+with the best options for you guys here.
+So, I'm going to build the mission
+control dashboard with three modes. One
+mode is going to be completely local.
+You do not have to pay for anything and
+it's also the most secured and private
+way. The second and third modes would
+require a subscription. But let me
+explain all these three modes and how
+they work. The first mode is like I said
+the local mode. We're not going to use
+any paid plug-in for this. We're going
+to use a local setup that is called
+Kokoro. So this is a free platform that
+you can use install locally on your
+server and it will take care of all the
+voice related stuffs. How is this going
+to work in the local mode? You're going
+to use a browser to listen to you. So
+for instance, a browser like Google
+Chrome has an inbuilt feature that you
+can basically speak and this will be
+transcribed into a text. So you use
+Chrome or whatever browser that has this
+voice activation to listen to the voice
+and then this will be translated into a
+text using your browser and then this
+text will then be pushed to the AI agent
+for instance Javis and after that Javis
+is going to respond but Javis doesn't
+respond in voice. Javis is going to
+respond in a text and this test will
+then be converted into a voice using the
+local application that we're going to
+install called Kokuro and Kokuro is
+going to take care of converting that
+text into a voice which you are going to
+hear. This approach is going to be
+completely free and it's going to stay
+private because nothing leaves your
+server. Everything is handled within
+your server. And then I'll give you
+another mode and that is going to be the
+mode two. And in mode two, the browser
+is going to listen to you. The browser
+is going to convert this into a text and
+Javis is going to respond. But
+converting Javis's respond would be done
+using a paid application or a paid
+subscription like 11 Labs. And to be
+clear, 11 Labs is not the sponsor of
+this video. And with 11 Labs, the text
+would commented into a voice that you're
+going to hear. You're going to have a
+third approach what I'm also going to
+give to you. And this would work with
+any browser. The browser is not going to
+listen. The browser is not going to do
+the transcription. The browser is going
+to record the clip and the clip will
+then be pushed over to 11 laps and then
+11 laps is going to turn this into a
+text and then the text will then be
+pushed to Javis or the AI agent and the
+AI agent is going to respond in a text.
+The text from the AI agent will then be
+converted into a voice also again using
+11 laps and that is the voice that
+you're going to hear. Now these three
+models I'm going to make available to
+you. You can decide on whatever you want
+to go for. Whether you want to go for
+the local approach, whether you want to
+go for the better voice or whether you
+want to go for the mode 3 where
+everything is handled by 11 laps. The
+advantage with 11 laps is basically that
+they are a pool of voices that you can
+use and you can even train your own
+voice probably if you want to use it.
+But from a speed perspective, from my
+testing, what takes the most time is not
+the last part. What takes the most time
+is helmets itself. when you talk to the
+AI agents, the message gets put from for
+instance telegram to the AI agent and
+the AI agent is going to take some time
+to process this before the AI agent is
+going to respond and this is what takes
+time. So that's why I personally do not
+see any huge advantage of going with 11
+laps because what takes the most time is
+not the transcription of the text into a
+voice or text to voice. What takes the
+most time is the agent itself doing the
+work. But hey, the option is yours. But
+of course, like I said with Le Moaps,
+you have a pool of voices that you can
+use and you can choose whatever mode
+that you want to use. And like I
+explained the mode one where you will
+use the Google Chrome browser and go
+application everything is local
+everything stays on your server and
+private nothing goes out. If you want to
+go for mode two the browser would still
+hear you but then the information would
+be sent to 11 laps which will be
+processed. So it means that it's not so
+secured like the mode one and the mode
+three is the part where everything is
+handled by 11 laps. Like I said we're
+going to be building all these three
+modes. You can test this out yourself
+with Kokoro. And if you find that you
+really want to go for a play a paid
+plug-in, then you can go for the Lebanon
+Labs approach as well. And I hope I was
+able to explain these three modes for
+you guys to understand exactly how this
+is going to work. Now to begin with,
+there's one more tab that we had to also
+work on, which is the control view. And
+this is basically this tab here where
+we're going to control stuffs like which
+of the modes that we want to use,
+whether we want to use the completely
+local approach or whether we want to use
+the voice approach or whether we want to
+go with a completely 11 laps in and out
+approach. But I think before I even come
+here maybe let me let clo install Kokoro
+and then with that clot code will also
+understand how this all works with the
+11 laps approach and for that I'm going
+to copy this prompt here and I'm going
+to send this to CL code and I'm telling
+CLO basically to install Kokoro how he
+should install it download the voices
+that we're going to need where to put
+the information from and stuff like that
+and also he's going to install this as a
+system service so that whenever your
+server reboots or anything then the
+service would automatically be started.
+All right. So, Claude Code says he's
+more or less done. There is one part
+that he could not do, which is this part
+here because he needs pseudo privileges.
+So, let's do that for cloud code. Let's
+copy this command here. Let me come back
+into PowerShell. Open a new window. I'm
+going to log into the VPS server. Then,
+I'm going to paste in the command that
+cloud code wants us to run for him.
+Going to put in the password again.
+Then, this is going to be installed. The
+installation is done. So, I'm going to
+come back to Cloud Code. I'm going to
+tell him and run the command. And all
+the packages are installed. Now, whilst
+Cloud Code is working on that, let's go
+to 11laps and let me show you how you
+can get an API key if you want to use
+the 11laps approach as well. And for
+that, just come to 11labs.io. Just
+create an account with them and pick
+whatever subscription that you want to
+go for. I think there might be a free
+subscription, but I do not know if the
+free subscription comes with an API
+mode. And then down here, click on
+developers. And then on the developers
+page, come to the top section here where
+they have API keys. And then under the
+API keys, just click on create key. And
+then we're going to give this key a
+name. I'm going to call this a JavaS
+tutorial. And then we're going to have
+to give the key a few permissions. So
+here I'm going to enable text to speech,
+speech to speech, speech to text. And
+also for voices, I'm going to give this
+a read access for voice generation. Very
+important. I'm also going to give this
+access. And then we should be good to
+go. So I'm going to create the key by
+clicking create key. And the key has
+been created for us. So we're going to
+have to add this key to the back end of
+our server. Now to add a key, I would
+prefer not to give the key to cloud code
+in the chat. And this what I would also
+not recommend you to do because this is
+one of the horrible ways to use an AI
+agent because then if your chat gets
+compromised or your API keys get
+compromised. So what we're going to do
+is we're going to copy this prompt here
+and then we're going to come back into
+PowerShell. Let me clear the screen
+here. Just paste in the command that I'm
+going to give to you in the prompt. And
+this command is going to prompt for your
+API key. I'm going to come back to 11
+Labs. I'm going to copy the key to
+clipboard. I'm going to come back into
+partial and I'm going to paste in the
+key and just press enter. Then the key
+has been saved. So I'm going to come
+back into the tutorial and I'm going to
+tell CL code that hey now we have this
+local model which is Kokuro which we can
+use for our setup and also we want to
+have a second option that we can also
+use with 11 laps and then here I'm
+telling him where the 11 laps keys are
+stored. So I'm going to copy this prompt
+and I'm going to give this to clot code
+as well. Okay so clot code responded
+that both engines pass. So 11 laps works
+and the local cooro also works. Now
+before we do that let me let clock code
+work on this control tab where we can
+switch between the three modes that we
+want to use. And for that I'm going to
+go up here and I had a prompt for that
+as well and that is this one here. So
+I'm going to tell CLC code to basically
+work on the control tab. The idea would
+also be that we would also be able to
+for instance if you have different AI
+models in your setup you would also be
+able to pick whichever model that you
+want to use. So let me copy this prompt
+here. Let me give to Claude code to work
+on that. Right. And Claude code said
+he's done with that as well. So let me
+reload the dashboard. Let me come to the
+control tab. And then we can basically
+see all the agents that we have here.
+You can choose which AI model you want
+them to work with and stuff like that.
+But weirdly enough, it says that
+research is work is running on deepseek,
+but I'm going to leave this for now. We
+can fix this later because ideally all
+the agents should be running on OpenAI
+Codex. Now on the control tab, you can
+see that we have these sections here
+which are currently grayed out because
+we haven't put any functions to that and
+that is what we're going to work on
+next. So I'm going to give Claude these
+prompts one after the other. I'm going
+to explain the prompts so that you don't
+have to sit and watch me do all that.
+The first prompt is what I said the
+voice layer prompt and that is going to
+allow us to be able to switch between
+these three scenarios that I explained
+earlier on. I'm going to give that
+prompt to Claude and after that I'm
+going to generate some greetings. Now
+the concept that I had is that whenever
+you come to the dashboard and you click
+that you want to talk to an agent the
+agent is going to say hey Larry maybe
+dev here how may I help you or hey Larry
+Javvis here how may I help you and then
+once they speak then the tunnel for
+conversation is activated and for that
+to work a smart way would be to generate
+these voices that the agent always says
+so that we do not have to pay for this
+voice generation every time we're going
+to just pre-generate those voices so
+that whenever we click play those voices
+are going to be played from what we have
+already pre-generated and That is what
+this prompt here is going to do. And
+after that, we're going to have another
+prompt which is going to be the main
+action. So what we want to do is that
+when we click on the globe here, it has
+to activate the agent and then we can
+talk to the agent. And that is what this
+push to talk on the globe prompt is
+going to do. Now I have a fourth prompt
+here which is the conversation panel.
+The idea is that whenever I click to
+talk to the agent, maybe let me go into
+mine and then it makes it a bit easier
+for you guys to understand this a bit
+better. So this is my dashboard. You can
+see that on the right side here we
+typically have the crew activity, token
+usage and stuff like that. What I want
+to do is that whenever I click to talk
+to an agent, I want the section here to
+flip, right? So that we can basically
+see all the things that we have saying
+being shown here on the screen. Whenever
+I want to talk to any agent and I click
+on them, you can see that they say,
+"Hey, Larry def here." But right now, I
+do not have any speaker wire. That's why
+you guys are not hearing this. So let me
+click on cancel. But what you can see is
+that whenever I'm talking to the agent
+and I start talking, check on the right
+side here. You can see that everything
+that I'm saying is popping up is
+populating on the right side here. And
+that is what that is the kind of effect
+that I want this to build. Then that is
+what these prompts that I'm going to
+serve to clot code is going to do. I can
+just click on cancel. I can click on
+stop so that this doesn't get sent to
+the agent to a kind of the the bridge
+that I'm explaining here. So these are
+what the prompts that are here are going
+to do. I'm going to send these prompts
+to claude code so that this doesn't get
+too long. And after that we're going to
+move on to the next steps. All right. So
+cloud is done with processing all the
+prompts. Now let's reload the dashboard
+and see if everything is working
+correctly. I'm going to come to the
+control tab. And then now you see that
+we have all the three scenarios that we
+discussed enabled. So when I click on
+one of the scenarios, I expect to hear a
+voice that
+>> scenario one active.
+>> I hope you guys heard it. I have enabled
+a computer sounds. I hope you guys heard
+it. So I heard a voice scenario one
+active. Let me check for scenario two.
+>> Scenario two active.
+>> So correct. Let me check for scenario
+three.
+>> Scenario three active.
+>> All right. So that means that basically
+the voice activated.
+>> Scenario one active.
+>> It's working. Now let me do a demo and
+try to talk to Jabus on the homepage and
+see if Javus is going to respond. So I'm
+going to come back to the homepage and
+I'm going to click on the globe here and
+I'm going to allow this because like I
+said for scenario one and two Google
+Chrome is going to do the listening and
+then this will be transcribed to our
+agent. So I'm going to allow this. Hey
+Javvis, how you doing today? So Javvis
+is thinking. You can see the message
+that I sent to him also came here
+immediately. Let's wait for a response.
+So I see the text that Jav has
+responded. Let's see if we're going to
+see a playback of the audio as well.
+>> Doing well Larry. Focused, organized,
+and ready to help. How are you doing
+today?
+>> So we see that Javvis is responding. Let
+me check in with the other agent to make
+sure that the other agents are also
+working as well. Now when I click on any
+agents for instance research I expect
+the agents to greet me first with hey
+like a welcome message is like hey Larry
+how you doing and stuff like that. So
+let's click on for instance dev and
+let's see how this is going to work. Hey
+dev how you doing? I'm just checking on
+you to make sure that everything is
+working correctly and you see that the
+agent is thinking and that's why I said
+that most of the waiting is not really
+with the transcription of the voice.
+It's her sending the message to the
+agent and the agent actually doing that
+work to basically respond to whatever
+conversation that you're having with the
+agent. So I see a text message here. So
+that means that Javvis will talk.
+>> Hey Larry, I'm doing well. Your message
+came through clearly and I'm responding
+normally.
+>> So we're done with that. So I'm just
+going to click on stop. And it means
+that basically now we can talk to all
+the agents and have a voice conversation
+with them. But like I said, most of the
+waiting when you're using this voice
+mode is not really with the
+transcription of the voice or the text
+to voice or voice to text. Most of the
+waiting has to do with the message being
+sent to the herent and the herent
+basically taking that time to respond.
+So if I go to comm's channel for
+instance and I start typing with any of
+the agents let's say for instance
+research even if I send research hey how
+are you doing even with a text research
+is going to take some time before he
+responds and that is why the limitation
+with the voice control is not really
+with the transcription the voice but
+it's just the her agent needing time to
+basically respond. I hope that in future
+the response from the agents would be
+faster and then the conversation would
+feel more or less a bit more smooth and
+a bit more faster. So basically we're
+done with the voice integration. We can
+talk to all the agents by voice and they
+can do whatever that we want them to do
+for us. Be it the research or anything
+that we want them to do, they would be
+able to do that. In the next step, what
+I want to do is to have some keyboard
+shortcuts. Like for instance, when I
+press one on my keyboard, I want it to
+trigger for instance Javas immediately
+without me having to come here.
+>> When I'm on the dashboard and I press
+two, this will trigger dep immediately.
+When I press three, it triggers research
+immediately. And the same for assistant
+whose keyboard shortcuts would be for.
+And this makes it a bit smoother to talk
+to the agents without you having to work
+with your mouse too much. And for that
+I'm going to give Claude code this
+prompt here to work on that aspect with
+the keyboard shortcuts as well. So
+initially I thought of using some
+shortcuts like control command space and
+stuff like that. But most of these
+shortcuts keys are blocked by the
+browsers themselves because they are
+already assigned to some other task. And
+that is why here I had to choose
+something like 1 2 3 4. But here's where
+you are free to choose any keyboard
+shortcut that you would like to have.
+All right. So Claude is done with that
+as well. Let me reload the dashboard and
+then let's test to see if the keyboard
+shortcut works. Now when you come down
+here, you see that we have one, two,
+three, four. And I added those so that
+you can always remember which key you
+can use to talk to any of the agents. So
+assuming I want to talk to research, let
+me just press three on my keyboard.
+>> Hey Larry, research here. What do you
+want to know?
+>> And you see that this triggers the
+research assistant or the research agent
+and we can start talking to research
+immediately. It's going to transcribe
+what I'm saying because it thinks I want
+to talk to the agent, but I'm just
+testing. So I'm just going to click on
+stop. so that the message doesn't get
+sent to reset to do anything on that.
+Now in the next stage I added these
+cards down here and this is absolutely
+optional. What you can also do is to
+give for instance personal assistant
+access to your emails and again this is
+absolutely optional this up to you
+access to stuffs like your email your
+calendar and then maybe every morning
+you can just come to dashboard and tell
+Javis that hey Javvis how is my day
+going today or can you prep me for my
+day today and then based on all these
+connectors that you have added to the
+dashboard Javis or the personal
+assistant would be able to fetch your
+email your calendar and brief you on
+what your day is for that particular day
+and for that we're going to use a
+platform that is called composio now to
+be clear composio is not a sponsor of
+this video. I'm just using them as an
+example of some tools that you can
+connect to your hemisent for your
+hemiseng to get access to other
+applications that are out there. Now you
+can see for instance in my case I've
+already connected Gmail. So once you
+come to dashboard.composo.dev step. You
+can just click on any application that
+you want to add and then once you click
+on it you can basically sign the
+connections and sign that you want to
+connect that application to compose and
+once your Javvis or your His agent has
+access they basically have access to all
+the things that you have connected
+directly in composio and for that we're
+going to give Claude this prompt. Let me
+send a prompt to Claude and I'm going to
+explain what that prompt is going to do.
+So we're basically telling Claude that
+hey set up Compose so Javis can read my
+emails and my Google calendar. I want it
+to be read only because I do not want
+the agents to write any emails on my
+behalf. It's absolutely free. If you
+want the agents to have read write
+access, then you can also basically
+change this in the prompt. And I'm
+telling Claude to basically install the
+coma for Linux and also run the Composio
+login so that we can connect our
+Composio account to this Hemis
+installation. And basically a few things
+that I want him to also work on. For
+instance, the tool kits that I want to
+use in my setup. I want to give Composio
+I want to give the agents access to my
+Gmail and also access to my Google
+calendar. and basically some other
+orientation on how cloud code should
+build this connection for us. Right? So
+cloud code tried to install composio but
+because cloud code doesn't have
+permissions to install applications cla
+is basically telling me hey can you
+install this for me? So this is the CLI
+or the oneline curl command that is
+going to install composio on your server
+and that is basically the same command
+that you also see here. So, we're going
+to copy the command and then we're going
+to go into PowerShell and I'm going to
+log back into the VPS server. And once
+we logged into the I'm going to paste in
+this prompt here and press enter. And
+then I'm going to get an error that I
+need to install unzip. And I remember
+that Claude also gave me this
+application to install as well. So, I'm
+going to copy this Unzip application.
+I'm going to install that as well. And
+after that, we can install Compose. So,
+Unzip is now installed. So, I can
+install now the Compose application. I'm
+going to clear the screen here. And as a
+tip, whenever you press app on the
+keyboard in PowerShell, it basically
+recalls the commands that you've already
+used. So this is a command that we're
+going to need to install Composio. I'm
+going to run this application. And then
+we get a notification that Composio is
+ready. So I'm going to come back into
+Claude and I'm going to tell Claude
+done. Compose is installed. And Claude
+is telling us some of that things that
+we would have to also install for this.
+And Claude is telling us we have to
+login into our Composio account. So I'm
+going to copy this prompt here. I'm
+going to come in here. Let me clear the
+screen. and let me paste in this prompt
+here that Claude gave to us. Going to
+run this and this is going to give us a
+URL with which we can login to bind our
+account to Composio. I'm going to press
+control on the keyboard and I'm going to
+click on this URL. I'm going to come
+into the browser and because I'm already
+logged into Composio, I can just click
+on authorize and then the authorization
+is completed. So I can come back into
+cloud code. I can tell claude that hey
+I'm done with the composio authorization
+to my account. I can say can you do a
+smoke test to see if the connection
+works. All right. So clot code is done.
+He also did a smoke test and confirmed
+that both connections to my calendar and
+my Gmail is working. Now what we going
+to do is we want to give only two agents
+at least in my setup. I want two agents
+access to my email. I only want Javas
+and assistants to be the two agents that
+would have access to my email. And for
+that I'm going to give Claude this
+prompt here to implement this. All
+right, so Claude is done. Let's read the
+dashboard and see a live demo if the
+agents have access to my email. And for
+that I'm going to use the personal
+assistant agent. I'm going to press the
+keyboard shortcut four.
+>> Hey Larry, assistant here. What's on
+today?
+>> Do I have any emails from today that I
+haven't responded to? So basically,
+oops, I lost the message. So I lost the
+message. But basically what is happening
+is that the agent responds that I have
+unread emails, but the agent is not able
+to read my emails because we didn't
+provide the access. And the scandal also
+realizes that the agent seems to have
+the same voice. So when you click on
+them, the voice that you hear,
+but when they responding, they seem to
+all respond with the same voice. And
+that is why assistance with the female
+also responds with a male voice. So I'm
+going to give Claude code a prompt to
+fix these two things. And for that I'm
+giving Claude code this prompt here. I'm
+saying during the testing I identify two
+issues that needs to be fixed. So
+basically I'm telling clude code that
+the pre-recorded agent voices. So the
+voices that we hear when we clean these
+are unique
+agent responds with a different voice.
+But however when we are talking to them
+they all respond with the same voice
+that even the assistant who is a female
+agent also responds with a male voice.
+And secondly, with the fact that when I
+tell assistant to check my emails, she's
+able to see the number of unread emails,
+but she's not able to find the content
+or the time stamp to that email. So, I'm
+going to copy this prompt here and I'm
+going to send it to Claude to fix that
+as well. And Claude is done with that as
+well. So, let's do a retest. So, let me
+do a retest. Let me reload the dashboard
+and let me come back to assistance by
+pressing four. Do I have any emails from
+today that I haven't responded to? So,
+the agent is still thinking. Like I
+said, that is what takes the most time
+with Hermes with a Hemis agent
+processing all the things that it has to
+do before the agent responds. So, I'm
+going to stop it just for privacy
+reasons that I don't want the agent to
+spit out all my emails. So, basically,
+you see that aspect is working.
+Assistant is able to fetch our emails.
+Assistant also will also be able to
+connect to our calendar and stuff like
+that. If you want, you can also give the
+agents more power to be able to do more
+things for you. Basically, just connect
+those tools to your He setup and then
+connect your agents to this and then
+after that, they would be able to do all
+these things for you. The final part of
+the tutorial is the tail skill setup. So
+currently if you remember whenever we
+want to connect to the dashboard we use
+something that is called SSH tunneling.
+So we have to put in a command like SSH
+minus N minus L the port our username
+and our username and our IP address. Put
+in enter and then put in our password
+before we can access the dashboard on
+our browser. Now this one way that you
+can access the dashboard. But this is
+not a route that I typically recommend
+because then it means that whenever you
+want to connect to the dashboard, you
+need a terminal and it's quite a tedious
+way to access the dashboard.
+Additionally, with this setup, you
+wouldn't be able to access the dashboard
+on another device and also through using
+SSA tunnel whenever you want to access a
+dashboard for instance on your mobile
+phone, it wouldn't work because you need
+to go through PowerShell or through the
+terminal. And to enable the function
+that we can access a dashboard on any PC
+or even on your mobile phone just by
+getting a dedicated URL. We're going to
+install Tailskll on that server. Tails
+skill would set up sort of a virtual
+private network on any PC that is
+currently installed and bound to your
+account. And with that, you're going to
+get a dedicated URL that you can use to
+access the dashboard every time without
+you having to go through the hassle of
+putting your password and stuff like
+that. And Tails skill is also quite
+secured. If someone doesn't have access
+to your tail skill account or if your
+tail skill account is not bound to the
+tail skill application on the PC, the
+person would not be able to access your
+tail skill account. Meaning the person
+would also not be able to access the
+dashboard. To do this, we're going to
+first have to create a tail skill
+account and install Tailskill on your
+PC. And for that, it's pretty
+straightforward. Just come to
+tailskill.com, click on get started to
+create a free account. And you do not
+need to pay for this. Tailskill does
+have some paid subscription, but for you
+to just bind your mission control
+dashboard to Tailskill, you can use
+their free plan. and that's what I'm
+using as well. Now, once you create
+account, the next thing that we're going
+to have to do is to download the TK
+skill application because like I said,
+Tailskll is going to set up sort of a
+virtual private network on your PC. And
+that is why you need to have the
+Tailskll application running on your PC.
+And for that, just come here and click
+on download. And then based on whatever
+Brit that you're using, you can download
+the application that fits your Brit. But
+in my case, I'm using Windows. I'm just
+going to click on download and download
+this application for my computer. And
+once you download the application, you
+can just launch the installer. Now, the
+installation is pretty straightforward.
+just accept the conditions and click on
+install and I'm going to click yes that
+I want this application to be installed
+and then the tail skill application is
+successfully installed. When I close on
+this and I come down here in my taskbar
+you see that I have the tail skill
+running here. If this is the first time
+that you install tails skill you're just
+going to have to come up here you would
+see a sign in and just sign in and bind
+your tail skill account to this
+particular PC. Now once you're done with
+that we're going to come back to our
+setup and we're going to give cloud code
+a prompt to basically connect to this
+particular server that we have built. So
+I'm going to copy this prompt here and
+I'm going to give it to cloud code to
+work on that for us. What I suspect
+might happen is that cloud code might
+not have the power to be able to install
+the TSQL application for us. So cloud
+code might give us a prompt to install
+this from the terminal back end and
+cloud code is telling us to run this
+command. So I'm just going to click here
+to copy the command. I'm going to come
+back to PowerShell. I'm going to log
+into the VPS server and I'm going to put
+in the command to install TKL on the
+server. I'm going to put in the
+password. Oops. Let me try this again.
+And then now the tskll application has
+been installed and during installation
+tails skill is going to be automatically
+started and we just have to click on
+this URL to bind our tails skill account
+to this particular server. Press control
+and click on this URL which is going to
+open the browser here. Just log into
+your account that is running tail scale
+and after that just click on connect and
+once you connect your tail skill account
+is going to be bound to the server and
+then now you see that we have a
+notification success. So I'm going to go
+back to clot code. I'm going to tell
+clot code that tail scale is installed
+and bound to my account. So cloud code
+says that tail skill is up and running
+and the mission control dashboard has
+been bound to this particular URL. But
+there's one more thing that we have to
+do. Let me copy this command here. Let
+me go back into PowerShell. Let me clear
+the screen to make it a bit cleaner. And
+let me paste in this command here as
+well. And then we get the URL with which
+the mission control dashboard is bound.
+To give you a live demo of how this is
+going to work, let me come back to the
+dashboard. Remember we were accessing
+the dashboard using the URL localhost
+8899. And when I open this, you see that
+the dashboard doesn't load. But because
+now I have tek skill activated on my PC.
+If I just come here and I click on the
+URL that cla could give to us and I put
+this in my browser, it should open the
+mission control dashboard for us without
+us having to go through all the
+complexity of the SSA tunnel. And this
+looks marvelous. It's working exactly as
+we expect it to be. One more important
+tip with Tailskill. If you do have any
+VPN running on your PC, you have to stop
+that VPN before Tailskill can work
+because like I said, Tailskill sets its
+own VPN or virtual private server. That
+is why you can have two VPNs running at
+the same time. So for tail skill to
+work, you're going to first have to stop
+any VPN that is running on your PC. And
+after that, Tail Skill would be able to
+work. And this brings us to the end of
+the tutorial. I've been talking for a
+long time, so I'm already a bit
+exhausted as well. If you did face any
+difficulty in the process of the build,
+hey, you can put this in the comment
+section, and I respond to almost every
+comment that comes on my YouTube
+channel. And with that, I say thanks for
+watching this video and see you in the
+next one. Bye.
