@@ -297,7 +297,7 @@ function combineDateTime(dateStr, timeStr) {
 
     if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
-        '<div class="spacer"></div>' +
+        '<div class="spacer"></div>';
       return;
     }
 
@@ -744,6 +744,7 @@ if (document.readyState === 'loading') {
     if (!container) return;
     const featured = [
 
+      { category: 'community', title: 'Winkler Ribfest 2026', time: 'Sept 11-13 · Winkler, MB · Food trucks 11AM-9PM, Beer garden 5PM-midnight', date: 'Sept 11', link: 'https://pembinavalleyonline.com/articles/winkler-ribfest-ready-to-smoke-your-tastebuds' },
       { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18', link: 'https://winklerchamber.com/events/' },
       { category: 'community', title: 'Honey Garlic & Maple Syrup Festival', time: 'Second weekend Sep · Manitou, MB', date: 'Sep', link: 'https://hgmsfestival.com/' },
       { category: 'community', title: 'Manitou Ag Fair', time: 'Manitou, MB', date: 'TBD', link: 'https://www.pembina.ca/p/annual-events' },
