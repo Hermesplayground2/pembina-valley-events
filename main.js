@@ -99,8 +99,13 @@ function combineDateTime(dateStr, timeStr) {
 { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
 { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
 { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
-{ date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
+{ date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+{ date: '2026-09-11', title: 'Manitoba Fibre Festival', time: 'All day · Various locations', category: 'community', link: 'https://pembinavalleyonline.com/events/231513' },
+{ date: '2026-09-12', title: 'Head for the Hills – 2026', time: '8:00 AM – 1:30 PM · Cripple Creek Music Festival Grounds', category: 'fundraiser', link: 'https://pembinavalleyonline.com/events/232266' },
+{ date: '2026-09-13', title: 'Morden SuperWalk 2026', time: '10:00 AM – 12:30 PM · Morden Park', category: 'community', link: 'https://pembinavalleyonline.com/events/228475' },
+{ date: '2026-09-20', title: 'Pembina Valley Pride 2026', time: 'Evening · Pembina Valley', category: 'community', link: 'https://www.travelmanitoba.com/events/pembina-valley-pride-2026/' }
 ]
+
 ;
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
   function buildUpcoming() {
