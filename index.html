@@ -114,6 +114,33 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
+
+/* Copy event button */
+.copy-event-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+.copy-event-btn:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.copy-event-btn:active {
+    transform: translateY(1px);
+}
+
 <style>
   :root {
     --bg: #0b1220;
@@ -1028,6 +1055,7 @@
 .copy-event-tooltip.visible {
     opacity: 1;
 }
+
 </style>
 
 
@@ -1559,6 +1587,48 @@ document.addEventListener('DOMContentLoaded', function() {
             copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
             
             // Insert after the export-row div within the event row
+            const exportRow = row.querySelector('.export-row');
+            if (exportRow) {
+                exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
+            }
+        }
+    });
+});
+
+
+
+// Copy event details to clipboard — extracts from export button data attributes
+function copyEventDetails(title, time, date, location) {
+    const text = `${title}
+${time || ''} ${location || ''}`.trim();
+    navigator.clipboard.writeText(text).then(() => {
+        // Show feedback
+        const btn = event.currentTarget;
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+    }).catch(() => {
+        alert('Failed to copy - please try again');
+    }
+);
+}
+
+// Find all event rows and inject copy buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const exportBtns = document.querySelectorAll('.export-btn');
+    exportBtns.forEach(btn => {
+        const row = btn.closest('.event-row');
+        if (row && !row.querySelector('.copy-event-btn')) {
+            const title = btn.getAttribute('data-title') || '';
+            const time = btn.getAttribute('data-time') || '';
+            const date = btn.getAttribute('data-date') || '';
+            
+            const copyBtn = document.createElement('div');
+            copyBtn.className = 'copy-event-btn';
+            copyBtn.innerText = '📋';
+            copyBtn.title = 'Copy event details';
+            copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
+            
             const exportRow = row.querySelector('.export-row');
             if (exportRow) {
                 exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
