@@ -1182,7 +1182,7 @@
             <div>
               <div class="event-title"><a href="https://www.manitobajrbaseball.ca/team/11987/0/33287/302564" target="_blank">Pembina Valley Orioles — Manitoba Junior Baseball League</a></div>
              
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Pembina Valley Orioles — Manitoba Junior Baseball League" data-time="Active through summer 2026" data-date="2026-08-12">📅 Add to Calendar</button></div>
+              
             </div>
           </div>
           <div class="event-row">
@@ -1190,7 +1190,7 @@
             <div>
               <div class="event-title"><a href="https://www.pvu15hawks.com/" target="_blank">Pembina Valley Hawks U15 — Fall tryouts/evaluations</a></div>
              
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="PV Hawks U15 Fall tryouts/evaluations" data-time="September 2026" data-date="2026-09-01">📅 Add to Calendar</button></div>
+              
             </div>
           </div>
           <div class="event-row">
@@ -1198,7 +1198,7 @@
             <div>
               <div class="event-title"><a href="https://winklerminorhockey.ca/content/tournaments" target="_blank">Winkler Minor Hockey — 2026-2027 season</a></div>
              
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Winkler Minor Hockey 2026-2027 season" data-time="Registration opened early August 2026" data-date="2026-08-12">📅 Add to Calendar</button></div>
+              
             </div>
           </div>
           <div class="event-row">
@@ -1206,7 +1206,7 @@
             <div>
               <div class="event-title"><a href="https://altonabaseball.ca/content/2026-tournaments" target="_blank">Altona Minor Baseball & Minor Hockey — 2026 tournaments</a></div>
              
-              <div class="export-row"><button class="export-btn" data-export="ics" data-title="Altona Minor Baseball & Minor Hockey tournaments" data-time="2026 tournament dates TBC" data-date="2026-08-12">📅 Add to Calendar</button></div>
+              
             </div>
           </div>
           <div class="event-row">
@@ -1564,8 +1564,7 @@ function copyEventDetails(title, time, date, location) {
 // Find all event rows and inject copy buttons
 document.addEventListener('DOMContentLoaded', function() {
     // Find all event rows that have export buttons (they have the data we need)
-    const exportBtns = document.querySelectorAll('.export-btn');
-    
+        
     exportBtns.forEach(btn => {
         const row = btn.closest('.event-row');
         if (row && !row.querySelector('.copy-event-btn')) {
@@ -1580,9 +1579,7 @@ document.addEventListener('DOMContentLoaded', function() {
             copyBtn.title = 'Copy event details';
             copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
             
-            // Insert after the export-row div within the event row
-            const exportRow = row.querySelector('.export-row');
-            if (exportRow) {
+                                    if (exportRow) {
                 exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
             }
         }
@@ -1607,8 +1604,7 @@ ${time || ''} ${location || ''}`.trim();
 
 // Find all event rows and inject copy buttons
 document.addEventListener('DOMContentLoaded', function() {
-    const exportBtns = document.querySelectorAll('.export-btn');
-    exportBtns.forEach(btn => {
+        exportBtns.forEach(btn => {
         const row = btn.closest('.event-row');
         if (row && !row.querySelector('.copy-event-btn')) {
             const title = btn.getAttribute('data-title') || '';
@@ -1621,8 +1617,7 @@ document.addEventListener('DOMContentLoaded', function() {
             copyBtn.title = 'Copy event details';
             copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
             
-            const exportRow = row.querySelector('.export-row');
-            if (exportRow) {
+                        if (exportRow) {
                 exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
             }
         }
