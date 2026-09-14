@@ -1055,6 +1055,11 @@
     opacity: 1;
 }
 
+
+/* JARVIS Mark 53 glow effect */
+.jarvis-glow {
+    box-shadow: 0 0 20px rgba(6,182,212,0.4), 0 0 40px rgba(139,92,246,0.3);
+}
 </style>
 
 </head>
@@ -1541,8 +1546,6 @@
 <script src="app.js?v=1789338258"></script><!-- cache-bust: 1788810139 -->
 
 // Copy event details to clipboard
-function copyEventDetails(title, time, date, location) {
-    const today = new Date();
     const todayStr = \`\${today.getFullYear()}-\${String(today.getMonth()+1).padStart(2,'0')}-\${today.getDate().padStart(2,'0')}\`;
     const clickDate = date || todayStr;
     
@@ -1587,7 +1590,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Copy event details to clipboard — extracts from export button data attributes
-function copyEventDetails(title, time, date, location) {
     const text = `${title}
 ${time || ''} ${location || ''}`.trim();
     navigator.clipboard.writeText(text).then(() => {
@@ -1624,10 +1626,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+<script>
+function copyEventDetails(title, time, date, location) {
+    const today = new Date();
+    const todayStr = \`\${today.getFullYear()}-\${String(today.getMonth()+1).padStart(2,'0')}-\${today.getDate().padStart(2,'0')}\`;
+    const clickDate = date || todayStr;
+    
+    const text = \`\${title}\`
+\${time ? \`\${time}\` : ''}
+\${location ? \` \${location}\` : ''}\`;
+
+    navigator.clipboard.writeText(text.trim()).then(() => {
+        // Show feedback
+        const btn = event.currentTarget;
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+    }).catch(() => {
+        alert('Failed to copy - please try again');
+    });
+</script>
+
 </body>
 </html>
 
-  .jarvis-glow { 
-    box-shadow: 0 0 20px rgba(6,182,212,0.4), 
-                0 0 40px rgba(139,92,246,0.3); 
-  }
+  
