@@ -981,6 +981,53 @@
     font-size: 0.68rem;
     color: #7dd3fc;
   }
+
+
+/* Copy event button */
+.copy-event-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+.copy-event-btn:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.copy-event-btn:active {
+    transform: translateY(1px);
+}
+
+.copy-event-tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15,23,42,0.9);
+    color: #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 5;
+}
+.copy-event-tooltip.visible {
+    opacity: 1;
+}
 </style>
 
 
@@ -1469,6 +1516,57 @@
 
 
 <script src="app.js?v=1789338258"></script><!-- cache-bust: 1788810139 -->
+
+
+// Copy event details to clipboard
+function copyEventDetails(title, time, date, location) {
+    const today = new Date();
+    const todayStr = \`\${today.getFullYear()}-\${String(today.getMonth()+1).padStart(2,'0')}-\${today.getDate().padStart(2,'0')}\`;
+    const clickDate = date || todayStr;
+    
+    const text = \`\${title}\`
+\${time ? \`\${time}\` : ''}
+\${location ? \` \${location}\` : ''}\`;
+
+    navigator.clipboard.writeText(text.trim()).then(() => {
+        // Show feedback
+        const btn = event.currentTarget;
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+    }).catch(() => {
+        alert('Failed to copy - please try again');
+    });
+}
+
+// Find all event rows and inject copy buttons
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all event rows that have export buttons (they have the data we need)
+    const exportBtns = document.querySelectorAll('.export-btn');
+    
+    exportBtns.forEach(btn => {
+        const row = btn.closest('.event-row');
+        if (row && !row.querySelector('.copy-event-btn')) {
+            // Get data from the associated export button
+            const title = btn.getAttribute('data-title') || '';
+            const time = btn.getAttribute('data-time') || '';
+            const date = btn.getAttribute('data-date') || '';
+            
+            const copyBtn = document.createElement('div');
+            copyBtn.className = 'copy-event-btn' ;
+            copyBtn.innerText = '📋';
+            copyBtn.title = 'Copy event details';
+            copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
+            
+            // Insert after the export-row div within the event row
+            const exportRow = row.querySelector('.export-row');
+            if (exportRow) {
+                exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
+            }
+        }
+    });
+});
+
 </body>
 </html>
 
