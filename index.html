@@ -1542,5 +1542,45 @@
   <strong>Pembina Valley Events</strong> · Pembina, MB<br>
   Local events, activities, weather, and community connections.
 </footer>
+
+<script>
+// Copy event details to clipboard
+function copyEventDetails(title, time, date, location) {
+    const text = `${title}
+${time || ''} ${location || ''}`.trim();
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.currentTarget;
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+    }).catch(() => {
+        alert('Failed to copy - please try again');
+    });
+}
+
+// Find all event rows and inject copy buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const exportBtns = document.querySelectorAll('.export-btn');
+    exportBtns.forEach(btn => {
+        const row = btn.closest('.event-row');
+        if (row && !row.querySelector('.copy-event-btn')) {
+            const title = btn.getAttribute('data-title') || '';
+            const time = btn.getAttribute('data-time') || '';
+            const date = btn.getAttribute('data-date') || '';
+            
+            const copyBtn = document.createElement('div');
+            copyBtn.className = 'copy-event-btn';
+            copyBtn.innerText = '📋';
+            copyBtn.title = 'Copy event details';
+            copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
+            
+            const exportRow = row.querySelector('.export-row');
+            if (exportRow) {
+                exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
+            }
+        }
+    });
+});
+</script>
 </body>
 </html>
