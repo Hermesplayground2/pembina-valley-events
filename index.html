@@ -3,108 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <!-- Cloudflare Web Analytics -->
-  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c5873b166cb742988730c31440942734"}'></script>
+  
   <!-- End Cloudflare Web Analytics -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Pembina Valley Events — local events, activities, and community happenings in Winkler, Morden, Altona, Plum Coulee, and surrounding Manitoba. Find things to do, local sports, family activities, community schedules, and hope.">
 <meta name="keywords" content="Pembina Valley events, Winkler events, Morden events, Altona events, Manitoba community events, local activities, Winkler weather, Pembina Valley calendar, things to do Manitoba">
 <link rel="canonical" href="https://pembinaevents.ca/">
 <title>Pembina Valley Events · Pembina, MB</title><!-- deploy:1788432295 -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Pembina Valley Events",
-  "description": "Local events, activities, and community happenings in the Pembina Valley region of Manitoba.",
-  "url": "https://pembinaevents.ca/",
-  "areaServed": {
-    "@type": "Place",
-    "name": "Pembina Valley, Manitoba, Canada"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Pembina Valley Featured Events",
-  "url": "https://pembinaevents.ca/",
-  "itemListElement": [
-    {
-      "@type": "Event",
-      "name": "Winkler Ribfest 2026",
-      "startDate": "2026-09-11",
-      "endDate": "2026-09-13",
-      "location": {
-        "@type": "Place",
-        "name": "Winkler, MB"
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Pembina Valley, Manitoba, Canada"
-      },
-      "description": "3-day outdoor BBQ festival. Food trucks 11AM-9PM Fri/Sat, 11AM-6PM Sun. Beer garden 5PM-midnight Fri/Sat. Competition & trophies Sunday."
-    },
-    {
-      "@type": "Event",
-      "name": "Pembina Threshermen's Reunion",
-      "startDate": "2026-09-01",
-      "location": {
-        "@type": "Place",
-        "name": "Morden/Winkler, MB"
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Pembina Valley, Manitoba, Canada"
-      },
-      "description": "Heritage machinery and pioneer skills event in the Pembina Valley."
-    },
-    {
-      "@type": "Event",
-      "name": "Winkler Minor Hockey 2026-2027 Season",
-      "startDate": "2026-08-12",
-      "location": {
-        "@type": "Place",
-        "name": "Winkler, MB"
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Pembina Valley, Manitoba, Canada"
-      },
-      "description": "Registration and tournament listings for the Winkler Minor Hockey season."
-    },
-    {
-      "@type": "Event",
-      "name": "Pembina Valley Orioles — Manitoba Junior Baseball League",
-      "startDate": "2026-05-01",
-      "endDate": "2026-09-30",
-      "location": {
-        "@type": "Place",
-        "name": "Pembina Valley, MB"
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Pembina Valley, Manitoba, Canada"
-      },
-      "description": "Regular-season and showcase baseball games across the 2026 summer season."
-    },
-    {
-      "@type": "Event",
-      "name": "PV Hawks U15 Fall Tryouts/Evaluations",
-      "startDate": "2026-09-01",
-      "location": {
-        "@type": "Place",
-        "name": "Winkler, MB"
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Pembina Valley, Manitoba, Canada"
-      },
-      "description": "Fall tryouts and evaluations for the Pembina Valley Hawks U15 team."
-    }
-  ]
-}
-</script>
+
+
 <meta property="og:title" content="Pembina Valley Events">
 <meta property="og:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
 <meta property="og:type" content="website">
@@ -1543,44 +1450,24 @@
   Local events, activities, weather, and community connections.
 </footer>
 
+
+
+
+
+
 <script>
 // Copy event details to clipboard
 function copyEventDetails(title, time, date, location) {
-    const text = `${title}
-${time || ''} ${location || ''}`.trim();
+    const text = `${title}\n${time || ""} ${location || ""}`.trim();
     navigator.clipboard.writeText(text).then(() => {
         const btn = event.currentTarget;
         const originalText = btn.innerText;
-        btn.innerText = 'Copied!';
+        btn.innerText = "Copied!";
         setTimeout(() => { btn.innerText = originalText; }, 2000);
     }).catch(() => {
-        alert('Failed to copy - please try again');
+        alert("Failed to copy - please try again");
     });
-}
-
-// Find all event rows and inject copy buttons
-document.addEventListener('DOMContentLoaded', function() {
-    const exportBtns = document.querySelectorAll('.export-btn');
-    exportBtns.forEach(btn => {
-        const row = btn.closest('.event-row');
-        if (row && !row.querySelector('.copy-event-btn')) {
-            const title = btn.getAttribute('data-title') || '';
-            const time = btn.getAttribute('data-time') || '';
-            const date = btn.getAttribute('data-date') || '';
-            
-            const copyBtn = document.createElement('div');
-            copyBtn.className = 'copy-event-btn';
-            copyBtn.innerText = '📋';
-            copyBtn.title = 'Copy event details';
-            copyBtn.onclick = function(e) { copyEventDetails(title, time, date); };
-            
-            const exportRow = row.querySelector('.export-row');
-            if (exportRow) {
-                exportRow.parentNode.insertBefore(copyBtn, exportRow.nextSibling);
-            }
-        }
-    });
-});
 </script>
+
 </body>
 </html>
