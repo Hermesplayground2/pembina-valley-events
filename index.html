@@ -49,13 +49,12 @@
     --category-fundraiser: #dc2626;
     --category-lake: #0d9488;
     --category-wheat: #f59e0b;
-  }
     --jarvis-accent: #06b6d4;
     --jarvis-accent-2: #8b5cf6;
     --jarvis-bg-core: #0891b2;
     --jarvis-panel: #0f172a;
     --jarvis-text-subtle: #94a3b8;
-}
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
@@ -81,18 +80,17 @@
     z-index: -1;
     animation: colorShift 20s ease-in-out infinite;
   }
-  @keyframes colorShift 
-  @keyframes jarvisPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; transform: scale(1.02); }
-  }
-  .jarvis-pulse { animation: jarvisPulse 3s ease-in-out infinite; }
-{
+  @keyframes colorShift {
     0%, 100% { transform: translate(0, 0) scale(1); }
     25% { transform: translate(-2%, 1%) scale(1.02); }
     50% { transform: translate(1%, -1%) scale(1.01); }
     75% { transform: translate(-1%, -2%) scale(1.03); }
   }
+  @keyframes jarvisPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; transform: scale(1.02); }
+  }
+  .jarvis-pulse { animation: jarvisPulse 3s ease-in-out infinite; }
   .font-serif { font-family: "Georgia", "Times New Roman", Times, serif; }
   .font-script { font-family: "Brush Script Std", "Script", cursive; }
   header {
@@ -940,46 +938,7 @@
 }
 
 
-.copy-event-btn {
-    position: absolute;
-    right: 8px;
-    top: 8px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px;
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #e5e7eb;
-    cursor: pointer;
-    z-index: 10;
-}
-.copy-event-btn:hover {
-    background: rgba(255,255,255,0.14);
-    transform: translateY(-1px);
-}
-
-
 /* Copy event button */
-.copy-event-btn {
-    position: absolute;
-    right: 8px;
-    top: 8px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px;
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #e5e7eb;
-    cursor: pointer;
-    z-index: 10;
-}
-.copy-event-btn:hover {
-    background: rgba(255,255,255,0.14);
-    transform: translateY(-1px);
-}
-</style>
 
 </head>
 <body><!-- cache-bust: 2026-08-30-02 -->
@@ -1478,7 +1437,7 @@ function copyEventDetails(title, time, date, location) {
     btn.innerText = "Copied!";
     setTimeout(() => { btn.innerText = original; }, 2000);
   }).catch(() => alert("Failed to copy — please try again"));
-</script>
+  </script>
 
 
 <script src="/app.js?v=3"></script>
