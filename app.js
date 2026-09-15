@@ -816,43 +816,7 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     `).join('');
   }
 
-  // Helper function to check if event is upcoming
-  function isUpcomingEvent(ev) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const s = String(ev.date || "").trim();
-  
-    // Handle month + day format: "Sep 9", "Sept 12"
-    const monthNames = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,sept:8,sep:8,oct:9,nov:10,dec:11};
-    const monthMatch = s.match(/^([A-Za-z]+)\s+(\d{1,2})/);
-    if (monthMatch) {
-      const monthIndex = monthNames[monthMatch[1].toLowerCase()];
-      if (monthIndex !== undefined) {
-        const eventDate = new Date(2026, monthIndex, parseInt(monthMatch[2], 10));
-        return eventDate >= today;
-      }
-    }
-  
-    // Handle range: "Aug 31-Sep 4"
-    const rangeMatch = s.match(/([A-Za-z]+)\s+(\d{1,2})\s*[-–to]+\s*([A-Za-z]+)\s*(\d{1,2})/i);
-    if (rangeMatch) {
-      const endMonth = monthNames[rangeMatch[3].toLowerCase()];
-      if (endMonth !== undefined) {
-        const endDate = new Date(2026, endMonth, parseInt(rangeMatch[4], 10));
-        endDate.setHours(23, 59, 59, 999);
-        return endDate >= today;
-      }
-    }
-  
-    // Season-based events - keep them
-    if (/summer/i.test(s) || /fall/i.test(s) || /winter/i.test(s) || /spring/i.test(s)) {
-      return true;
-    }
-  
-    return true; // Keep if cannot parse
-  }
-
-    function renderFamilyEvents() {
+  function renderFamilyEvents() {
     const schoolBox = document.getElementById('family-school-events');
     const churchBox = document.getElementById('family-church-events');
     const garageBox = document.getElementById('family-garage-events');
@@ -887,21 +851,15 @@ ${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     `;
     };
 
-        // Filter out past events
-        const liveSchool = schoolEvents.filter(isUpcomingEvent);
-        const liveChurch = churchEvents.filter(isUpcomingEvent);
-        const liveGarage = garageEvents.filter(isUpcomingEvent);
+    // Filter out past events
+        const liveSchool = schoolEvents.filter(e => isUpcoming(e));
+        const liveChurch = churchEvents.filter(e => isUpcoming(e));
+        const liveGarage = garageEvents.filter(e => isUpcoming(e));
 
-        if (schoolBox) {
-          schoolBox.innerHTML = liveSchool.length ? liveSchool.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
-        }
-        if (churchBox) {
-          churchBox.innerHTML = liveChurch.length ? liveChurch.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
-        }
-        if (garageBox) {
-          garageBox.innerHTML = liveGarage.length ? liveGarage.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
-        }
-      }
+        if (schoolBox) schoolBox.innerHTML = liveSchool.length ? liveSchool.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
+        if (churchBox) churchBox.innerHTML = liveChurch.length ? liveChurch.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
+        if (garageBox) garageBox.innerHTML = liveGarage.length ? liveGarage.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
+  }
   document.addEventListener('click', (ev) => {
     const btn = ev.target.closest('[data-export="ics"]');
     if (!btn) return;
