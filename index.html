@@ -1448,18 +1448,17 @@
 
 
 
+
 <script>
-// Copy event details to clipboard
 function copyEventDetails(title, time, date, location) {
-    const text = `${title}\n${time || ""} ${location || ""}`.trim();
-    navigator.clipboard.writeText(text).then(() => {
-        const btn = event.currentTarget;
-        const originalText = btn.innerText;
-        btn.innerText = "Copied!";
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
-    }).catch(() => {
-        alert("Failed to copy - please try again");
-    });
+  const text = [title, time, location].filter(Boolean).join("
+");
+  const btn = event.currentTarget;
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.innerText;
+    btn.innerText = "Copied!";
+    setTimeout(() => { btn.innerText = original; }, 2000);
+  }).catch(() => alert("Failed to copy — please try again"));
 </script>
 
 </body>
