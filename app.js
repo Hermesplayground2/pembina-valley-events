@@ -360,7 +360,7 @@ if (document.readyState === 'loading') {
 
   let weatherCache = null;
   let weatherCacheTime = 0;
-  const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+  const WEATHER_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
 
   async function loadWeather() {
     const heroCond = document.getElementById('heroCondition');
