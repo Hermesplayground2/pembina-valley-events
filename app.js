@@ -454,6 +454,59 @@ if (document.readyState === 'loading') {
     return 'Weather';
   }
 
+// Parse event end date from various formats
+function parseEventEnd(dateStr, year) {
+  const y = year || new Date().getFullYear();
+  const s = String(dateStr || "").trim();
+  if (!s) return null;
+
+  const months = {
+    jan: 0, january: 0, feb: 1, february: 1, mar: 2, march: 2,
+    apr: 3, april: 3, may: 4, jun: 5, june: 5, jul: 6, july: 6,
+    aug: 7, august: 7, sep: 8, sept: 8, september: 8,
+    oct: 9, october: 9, nov: 10, november: 10, dec: 11, decimal: 11
+  };
+
+  // Keep season-long items until that season ends
+  if (/summer/i.test(s)) return new Date(y, 8, 21); // Sep 21
+  if (/fall|autumn/i.test(s)) return new Date(y, 11, 20);
+  if (/winter/i.test(s)) return new Date(y + 1, 2, 19);
+  if (/spring/i.test(s)) return new Date(y, 5, 20);
+  if (/^tbd$/i.test(s)) return null;
+
+  // Range: "Aug 31-Sep 4" or "Aug 31 – Sep 4"
+  const range = s.match(
+    /([A-Za-z]+)\s+(\d{1,2})(?:.*)?\s*[-–to]+\s*([A-Za-z]+)?\s*(\d{1,2})/i
+  );
+  if (range) {
+    const endMonthName = (range[3] || range[1]).toLowerCase();
+    const endMonth = months[endMonthName];
+    if (endMonth != null) return new Date(y, endMonth, parseInt(range[4], 10));
+  }
+
+  // Single: "Sep 9 (Wed)", "Sept 19", "2026-09-09"
+  const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) return new Date(+iso[1], +iso[2] - 1, +iso[3]);
+
+  const one = s.match(/([A-Za-z]+)\s+(\d{1,2})/);
+  if (one && months[one[1].toLowerCase()] != null) {
+    return new Date(y, months[one[1].toLowerCase()], parseInt(one[2], 10));
+  }
+  return null;
+}
+
+function isUpcoming(ev) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const end = parseEventEnd(ev.endDate || ev.date);
+  if (!end) return true; // TBD / unparsed — keep
+  end.setHours(23, 59, 59, 999);
+  return end >= today;
+}
+
+
+
+
   function setWeatherVideo(code, temp) {
     const video = document.getElementById('heroWeatherVideo');
     if (!video) return;
@@ -515,6 +568,20 @@ if (document.readyState === 'loading') {
     } else {
       return '<div class="wi wi-snow"></div>';
     }
+
+
+function fill(box, list) {
+  if (!box) return;
+  const live = list.filter(isUpcoming);
+  box.innerHTML = live.length
+    ? live.map(renderCard).join("")
+    : '<p class="muted">No upcoming events in this section.</p>';
+}
+
+fill(schoolBox, schoolEvents);
+fill(churchBox, churchEvents);
+fill(garageBox, garageEvents);
+
   }
 
   function drawWeatherIcon(wrapId, code) {
