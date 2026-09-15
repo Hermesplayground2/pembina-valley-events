@@ -578,11 +578,7 @@ function fill(box, list) {
     : '<p class="muted">No upcoming events in this section.</p>';
 }
 
-fill(schoolBox, schoolEvents);
-fill(churchBox, churchEvents);
-fill(garageBox, garageEvents);
-
-  }
+}
 
   function drawWeatherIcon(wrapId, code) {
     const wrap = document.getElementById(wrapId);
