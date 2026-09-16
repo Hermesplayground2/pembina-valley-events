@@ -516,13 +516,13 @@ function isUpcoming(ev) {
     const hour = new Date().getHours();
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
-    let src = 'weather-media/day.mp4?v=1788408739';
+    let src = 'weather-media/day.mp4?v=1789534833';
     if (isPrecip) {
-      src = 'weather-media/rain.mp4?v=1788408739';
+      src = 'weather-media/rain.mp4?v=1789534833';
     } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1788408739';
+      src = 'weather-media/night.mp4?v=1789534833';
     } else if (!isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1788408739';
+      src = 'weather-media/night.mp4?v=1789534833';
     }
     const currentSrc = video.src ? video.src.split('/').pop() : '';
     if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
