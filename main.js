@@ -94,6 +94,9 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   const EVENTS = [
+{ date: '2026-09-15', title: 'The Pantry Watermelon and Roll Kuchen Fundraiser', time: '4:00 PM · Central Station parking lot, Winkler', category: 'fundraiser', link: 'https://www.pembinavalleyonline.com/events/233384' },
+{ date: '2026-09-15', title: 'LiverFest', time: '5:00 PM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/231278' },
+{ date: '2026-09-16', title: 'WeMB Summer Listening Tour', time: '8:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/232379' },
 { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
 { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
 { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },

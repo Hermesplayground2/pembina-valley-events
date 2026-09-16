@@ -818,9 +818,8 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     const garageBox = document.getElementById('family-garage-events');
 
     const schoolEvents = [
-      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
-      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
-      { title: 'Whimsical Wonders Art Camp', date: 'Aug 31-Sep 4', time: 'City of Morden · morden.ca', category: 'family', link: 'https://morden.ca/community-events' },
+      { title: 'After School Art Club | Ages 5-8', date: 'Sep 15', time: 'Sep 15 – Oct 20 · Winkler Arts & Culture', category: 'family', link: 'https://www.pembinavalleyonline.com/events/231215' },
+      { title: 'Story Time at the Winkler Library', date: 'Sep 16', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' },
       { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · altona.ca', category: 'family', link: 'https://altona.ca/upcoming-events' }
     ];
 
@@ -828,10 +827,10 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     ];
 
     const garageEvents = [
-      { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
-      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' },
-      { title: 'Pie Auction Fundraiser', date: 'Sept 12', time: '6:00 PM · Altona Community Hall', category: 'fundraiser', link: '#' },
-      { title: 'Garage Sale for Charity', date: 'Sept 19', time: '9:00 AM · Winkler', category: 'fundraiser', link: '#' }
+      { title: 'Miami Community Centre Bingo', date: 'Sep 15', time: 'Tuesdays 7:30 PM · Miami Community Centre', category: 'community', link: 'https://www.pembinavalleyonline.com/events/228230' },
+      { title: 'Fitness', date: 'Sep 16', time: 'Wednesdays 9:00 AM · Morden Activity Centre', category: 'sports', link: 'https://www.pembinavalleyonline.com/events/232138' },
+      { title: 'Morning Coffee Time', date: 'Sep 16', time: 'Wednesdays 9:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/233639' },
+      { title: 'Southern MB Choral Society Fall Term', date: 'Sep 15', time: 'Tuesdays 6:30 PM · Winkler', category: 'music', link: 'https://www.pembinavalleyonline.com/events/230998' }
     ];
 
     const renderCard = (ev) => {
