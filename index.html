@@ -1424,8 +1424,7 @@
 
 <script>
 function copyEventDetails(title, time, date, location) {
-  const text = [title, time, location].filter(Boolean).join("
-");
+  const text = [title, time, location].filter(Boolean).join("\n");
   const btn = event.currentTarget;
   navigator.clipboard.writeText(text).then(() => {
     const original = btn.innerText;
