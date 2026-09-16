@@ -408,7 +408,24 @@ if (document.readyState === 'loading') {
     const fallbackTimer = setTimeout(() => fallback(3), 5000);
 
     try {
-      // Use cached weather data if available and fresh
+      // Use cached weather data if available and fresh (memory or localStorage)
+      if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
+        console.log('Using cached weather data');
+      } else {
+        // Memory cache empty or stale — try localStorage
+        try {
+          const saved = localStorage.getItem('pve_weather_v1');
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && parsed.ts && (Date.now() - parsed.ts) < 60 * 60 * 1000) {
+              weatherCache = parsed.data;
+              weatherCacheTime = parsed.ts;
+              console.log('Using localStorage weather data');
+            }
+          }
+        } catch (e) { /* ignore */ }
+      }
+
       if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
         console.log('Using cached weather data');
         const cw = weatherCache.current_weather;
@@ -426,13 +443,17 @@ if (document.readyState === 'loading') {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 8000);
       const res = await fetch(url, { signal: controller.signal });
+      if (!res.ok) throw new Error('weather ' + res.status);
       clearTimeout(timeoutId);
       clearTimeout(fallbackTimer);
       const data = await res.json();
       
-      // Cache successful response
+      // Cache successful response (memory + localStorage)
       weatherCache = data;
       weatherCacheTime = Date.now();
+      try {
+        localStorage.setItem("pve_weather_v1", JSON.stringify({ ts: weatherCacheTime, data }));
+      } catch (e) { /* ignore storage errors */ }
       const cw = data.current_weather;
       apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
@@ -517,13 +538,13 @@ function isUpcoming(ev) {
     const hour = new Date().getHours();
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
-let src = 'weather-media/day.mp4?v=1789534833';
+let src = 'weather-media/day.mp4?v=1789599600';
     if (isPrecip) {
-      src = 'weather-media/rain.mp4?v=1789534833';
+      src = 'weather-media/rain.mp4?v=1789599600';
     } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1789534833';
+      src = 'weather-media/night.mp4?v=1789599600';
     } else if (!isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1789534833';
+      src = 'weather-media/night.mp4?v=1789599600';
     }
     const currentSrc = video.src ? video.src.split('/').pop() : '';
     if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
