@@ -94,12 +94,15 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   const EVENTS = [
-  { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
-  { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
-  { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
-  { date: '2026-09-13', title: 'Morden SuperWalk 2026', time: '10:00 AM – 12:30 PM · Morden Park', category: 'community', link: 'https://pembinavalleyonline.com/events/228475' },
-  { date: '2026-09-20', title: 'Pembina Valley Pride 2026', time: 'Evening · Pembina Valley', category: 'community', link: 'https://www.travelmanitoba.com/events/pembina-valley-pride-2026/' },
-];
+    { date: '2026-09-15', title: 'The Pantry Watermelon and Roll Kuchen Fundraiser', time: '4:00 PM · Central Station parking lot, Winkler', category: 'fundraiser', link: 'https://www.pembinavalleyonline.com/events/233384' },
+    { date: '2026-09-15', title: 'LiverFest', time: '5:00 PM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/231278' },
+    { date: '2026-09-16', title: 'WeMB Summer Listening Tour', time: '8:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/232379' },
+    { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-09-13', title: 'Morden SuperWalk 2026', time: '10:00 AM – 12:30 PM · Morden Park', category: 'community', link: 'https://pembinavalleyonline.com/events/228475' },
+    { date: '2026-09-20', title: 'Pembina Valley Pride 2026', time: 'Evening · Pembina Valley', category: 'community', link: 'https://www.travelmanitoba.com/events/pembina-valley-pride-2026/' }
+  ];
 ;
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
   function buildUpcoming() {
