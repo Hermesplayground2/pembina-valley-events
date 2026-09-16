@@ -94,14 +94,15 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   const EVENTS = [
-    { date: '2026-09-15', title: 'The Pantry Watermelon and Roll Kuchen Fundraiser', time: '4:00 PM · Central Station parking lot, Winkler', category: 'fundraiser', link: 'https://www.pembinavalleyonline.com/events/233384' },
-    { date: '2026-09-15', title: 'LiverFest', time: '5:00 PM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/231278' },
     { date: '2026-09-16', title: 'WeMB Summer Listening Tour', time: '8:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/232379' },
+    { date: '2026-09-17', title: 'Winkler Farmers Market', time: '3:00 PM · Winkler Park', category: 'community', link: 'https://www.pembinavalleyonline.com/events' },
     { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-09-19', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', category: 'community', link: 'https://morden.ca/access-event-centre' },
+    { date: '2026-09-20', title: 'Pembina Valley Pride 2026', time: 'Evening · Pembina Valley', category: 'community', link: 'https://www.travelmanitoba.com/events/pembina-valley-pride-2026/' },
+    { date: '2026-09-21', title: 'Miami Community Centre Bingo', time: 'Tuesdays 7:30 PM · Miami Community Centre', category: 'community', link: 'https://www.pembinavalleyonline.com/events/228230' },
+    { date: '2026-09-22', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' },
     { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
-    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
-    { date: '2026-09-13', title: 'Morden SuperWalk 2026', time: '10:00 AM – 12:30 PM · Morden Park', category: 'community', link: 'https://pembinavalleyonline.com/events/228475' },
-    { date: '2026-09-20', title: 'Pembina Valley Pride 2026', time: 'Evening · Pembina Valley', category: 'community', link: 'https://www.travelmanitoba.com/events/pembina-valley-pride-2026/' }
+    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
   ];
 ;
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
@@ -516,13 +517,13 @@ function isUpcoming(ev) {
     const hour = new Date().getHours();
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
-    let src = 'weather-media/day.mp4?v=1789534423';
+let src = 'weather-media/day.mp4?v=1789534833';
     if (isPrecip) {
-      src = 'weather-media/rain.mp4?v=1789534423';
+      src = 'weather-media/rain.mp4?v=1789534833';
     } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1789534423';
+      src = 'weather-media/night.mp4?v=1789534833';
     } else if (!isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1789534423';
+      src = 'weather-media/night.mp4?v=1789534833';
     }
     const currentSrc = video.src ? video.src.split('/').pop() : '';
     if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
