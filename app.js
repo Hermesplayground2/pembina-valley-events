@@ -233,18 +233,10 @@ function eventToICS(ev) {
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    // Merge events from MERGED_EVENTS (in-code + auto-fetched) so one-off events appear on Activities page
-    MERGED_EVENTS.forEach(ev => {
-      if (ev.date >= fmt(year, startMonth, 1)) {
-        const parts = ev.date.split('-');
-        const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-        if (evDate >= today) {
-          if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
-          eventsByDate[ev.date].push(ev);
-        }
-      }
-    });
-
+    // Build the activity grid from hardcoded seed events only.
+    // One-off fetched events already appear on the Home/upcoming page
+    // via buildUpcoming; re-merging MERGED_EVENTS here caused duplicates
+    // when a fetched event shared a date with a seed event.
     for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
       const month = startMonth + monthOffset;
       const yearForMonth = year + Math.floor(month / 12);
@@ -1040,15 +1032,11 @@ function fill(box, list) {
     if (!copyBtn) return;
     ev.preventDefault();
     const raw = copyBtn.dataset.ics || '';
-    let text;
-    if (raw) {
-      try { text = decodeURIComponent(raw); } catch (e) { text = raw; }
-    } else {
+    if (!raw) {
       const text2 = copyBtn.dataset.copy || '';
       if (!text2) return;
+      let text;
       try { text = decodeURIComponent(text2); } catch (e) { text = text2; }
-    }
-    const fallback = () => {
       const ta = document.createElement('textarea');
       ta.value = text;
       ta.style.position = 'fixed';
@@ -1060,24 +1048,50 @@ function fill(box, list) {
       const original = copyBtn.textContent;
       copyBtn.textContent = 'Copied';
       copyBtn.disabled = true;
-      setTimeout(() => {
-        copyBtn.textContent = original;
-        copyBtn.disabled = false;
-      }, 1200);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(() => {
-        const original = copyBtn.textContent;
-        copyBtn.textContent = 'Copied';
-        copyBtn.disabled = true;
-        setTimeout(() => {
-          copyBtn.textContent = original;
-          copyBtn.disabled = false;
-        }, 1200);
-      }).catch(fallback);
-    } else {
-      fallback();
+      setTimeout(() => { copyBtn.textContent = original; copyBtn.disabled = false; }, 1200);
+      return;
     }
+    // Plain-text clipboard copy — no .ics file download. Calendar apps on
+    // mobile don't reliably parse pasted ICS text into the right fields, so
+    // feed the user a clean single-line summary they can paste where it fits.
+    let ics;
+    try { ics = decodeURIComponent(raw); } catch (e) { ics = raw; }
+    if (!ics) return;
+    const dtStartMatch = ics.match(/DTSTART:(\d{8}T\d{6})/);
+    const dtEndMatch = ics.match(/DTEND:(\d{8}T\d{6})/);
+    const summaryMatch = ics.match(/SUMMARY:([^\r\n]+)/);
+    const locationMatch = ics.match(/LOCATION:([^\r\n]+)/);
+    const title = summaryMatch ? summaryMatch[1].replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\').trim() : 'Event';
+    const location = locationMatch ? locationMatch[1].replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\').trim() : '';
+    const dtStart = dtStartMatch ? dtStartMatch[1] : '';
+    const dtEnd = dtEndMatch ? dtEndMatch[1] : '';
+    function _icsDtToText(dt) {
+      if (!dt || dt.length < 15) return '';
+      const y = dt.slice(0, 4), m = dt.slice(4, 6), d = dt.slice(6, 8);
+      const h = parseInt(dt.slice(9, 11), 10), min = dt.slice(11, 13);
+      const date = new Date(y, m - 1, d, h, min);
+      if (isNaN(date.getTime())) return dt;
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      let h12 = h % 12; if (h12 === 0) h12 = 12;
+      return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ', ' + h12 + ':' + min.padStart(2,'0') + ' ' + ampm;
+    }
+    const startText = _icsDtToText(dtStart);
+    const timeText = startText;
+    const text = location ? title + ' | ' + timeText + ' | ' + location : title + ' | ' + timeText;
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+    document.body.removeChild(ta);
+    const original = copyBtn.textContent;
+    copyBtn.textContent = 'Copied';
+    copyBtn.disabled = true;
+    setTimeout(() => { copyBtn.textContent = original; copyBtn.disabled = false; }, 1200);
+    return;
   });
 
   const eventForm = document.getElementById('event-form');
