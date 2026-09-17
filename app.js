@@ -73,7 +73,21 @@ function eventToICS(ev) {
       // Dedup: in-code EVENTS win on id collision (manual curation takes priority)
       const fetchedIds = new Set(fetched.map(ev => ev.id));
       const manualOnly = EVENTS.filter(ev => !fetchedIds.has(ev.id));
-      MERGED_EVENTS = [...fetched, ...manualOnly];
+      // Title+date dedup: drop a fetched event when the same title already
+      // exists on that date in the in-code EVENTS (e.g. "The Big Canoe",
+      // "Chamber Member Appreciation BBQ"). Also catches prefix variants
+      // like "Winkler Chamber Member Appreciation BBQ" matching
+      // "Chamber Member Appreciation BBQ". In-code curated entry wins.
+      const inCodeByDate = {};
+      EVENTS.forEach(ev => {
+        if (!inCodeByDate[ev.date]) inCodeByDate[ev.date] = [];
+        inCodeByDate[ev.date].push(ev.title);
+      });
+      const deduped = fetched.filter(ev => {
+        const existing = inCodeByDate[ev.date] || [];
+        return !existing.some(t => ev.title === t || ev.title.includes(t) || t.includes(ev.title));
+      });
+      MERGED_EVENTS = [...deduped, ...manualOnly];
     } catch (e) {
       // fetch failed — keep MERGED_EVENTS = EVENTS (in-code only)
       console.warn('loadEventsJson failed, using in-code EVENTS only:', e);
