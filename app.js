@@ -204,7 +204,7 @@ function eventToICS(ev) {
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
         const ics = eventToICS(ev);
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;') + '">Copy</button>' : '');
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + encodeURIComponent(ics) + '">Copy</button>' : '');
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -310,12 +310,12 @@ function eventToICS(ev) {
         if (actualMonth === 9 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Pickleball Open Play', time: '1:00 PM · Morden Activity Centre', link: 'https://morden.ca/community-events' });
         if (actualMonth === 9 && d === 9) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
         if (actualMonth === 9 && d === 12) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 14) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Remembrance Day Craft Workshop', time: '2:00 PM · Morden Public Library', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 10 && d === 11) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Remembrance Day Craft Workshop', time: '2:00 PM · Morden Public Library', link: 'https://www.visitwinkler.ca' });
         if (actualMonth === 9 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'music', title: 'Southern MB Choral Society Fall Term', time: 'Tuesdays 6:30 PM · Winkler', link: 'https://www.pembinavalleyonline.com/events/230998' });
         if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', link: 'https://www.pembinavalleyonline.com/events/233447' });
         if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Fitness', time: 'Wednesdays 9:00 AM · Morden Activity Centre', link: 'https://www.pembinavalleyonline.com/events/232138' });
         if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morning Coffee Time', time: 'Wednesdays 9:00 AM · Winkler', link: 'https://www.pembinavalleyonline.com/events/233639' });
-        if (actualMonth === 9 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Remembrance Day Service', time: '11:00 AM · Morden Cenotaph', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 10 && d === 11) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Remembrance Day Service', time: '11:00 AM · Morden Cenotaph', link: 'https://www.visitwinkler.ca' });
         if (actualMonth === 9 && d === 20) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Art Auction & Gallery Night', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.pembina.ca/p/annual-events' });
         if (actualMonth === 9 && d === 21) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
         if (actualMonth === 9 && d === 22) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Community Carolling Warm-Up', time: '7:00 PM · Morden Concert Hall', link: 'https://www.visitwinkler.ca' });
@@ -355,7 +355,7 @@ function eventToICS(ev) {
         // the calendar key so eventToICS has something to work with.
         const evWithDate = ev.date ? ev : { ...ev, date: dateStr };
         const ics = eventToICS(evWithDate);
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + ics.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '">Copy</button>' : '');
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + encodeURIComponent(ics) + '">Copy</button>' : '');
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -394,7 +394,7 @@ function eventToICS(ev) {
       el.rel = 'noopener';
       el.dataset.category = ev.category;
       const ics = eventToICS(ev);
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span>` + (ics ? `<button class="copy-btn" data-ics="${ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;')}">Copy</button>` : '');
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span>` + (ics ? `<button class="copy-btn" data-ics="${encodeURIComponent(ics)}">Copy</button>` : '');
       container.appendChild(el);
     });
   }
@@ -988,7 +988,7 @@ function fill(box, list) {
         </div>
         <div class="title">${ev.title}</div>
         <div class="meta">${ev.time}</div>
-        ${ics ? `<button class="copy-btn" data-ics="${ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;')}">Copy</button>` : `<button class="copy-btn" data-copy="${`${ev.title}\n${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>`}
+        ${ics ? `<button class="copy-btn" data-ics="${encodeURIComponent(ics)}">Copy</button>` : `<button class="copy-btn" data-copy="${`${ev.title}\n${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>`}
       </a>
     `;
     }).join('');
@@ -1022,7 +1022,7 @@ function fill(box, list) {
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
       </a>
-      ${ics ? `<button class="copy-btn" data-ics="${ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;')}">Copy</button>` : ''}
+      ${ics ? `<button class="copy-btn" data-ics="${encodeURIComponent(ics)}">Copy</button>` : ''}
     `;
     };
 
