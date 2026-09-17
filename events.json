@@ -1,0 +1,95 @@
+{
+  "last_updated": "2026-09-17T04:21:00.319792+00:00",
+  "generated_by": "fetch_events.py",
+  "source": "pembinavalleyonline.com/events",
+  "filter": {
+    "drop_terms": [
+      "pride",
+      "bingo",
+      "farmers market",
+      "council meeting"
+    ]
+  },
+  "events": [
+    {
+      "id": "/events/233447",
+      "title": "Story Time at the Winkler Library",
+      "time": "10:00 AM · Winkler Library, 160 Main St, Winkler, MB",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/233447",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/233652",
+      "title": "Explore the Bible",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/233652",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/232301",
+      "title": "Lego Club at the Winkler Library",
+      "time": "2:30 PM · Winkler Library, 160 Main St, Winkler, MB",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/232301",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/233665",
+      "title": "Craft Cafe/Fellowship",
+      "time": "7:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/233665",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/229757",
+      "title": "Newcomer Welcome Evening",
+      "time": "7:00 PM · Winkler Arts and Culture Centre, 547 Park St,, Winkler, Manitoba",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/229757",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/232379",
+      "title": "WeMB Summer Listening Tour",
+      "time": "8:00 AM · Buhler Active Living Centre, 101-650 South Railway Ave, Winkler, Manitoba",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/232379",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/233639",
+      "title": "Morning Coffee Time",
+      "time": "9:00 AM · Altona Mall, Altona, MB",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/233639",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/232138",
+      "title": "Fitness",
+      "time": "9:00 AM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "date": "2026-09-16",
+      "link": "https://www.pembinavalleyonline.com/events/232138",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/231126",
+      "title": "Pembina Valley Men's Prayer Breakfast",
+      "time": "7:00 AM · Triangle Oasis Restaurant (Back room), 880 Triple E Boulevard (PTH14 & 1st Street), Winkler, MB",
+      "date": "2026-09-17",
+      "link": "https://www.pembinavalleyonline.com/events/231126",
+      "source": "pembinavalleyonline.com"
+    },
+    {
+      "id": "/events/230890",
+      "title": "Confidence with Tech - Andrea Hiebert",
+      "time": "9:00 AM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
+      "date": "2026-09-17",
+      "link": "https://www.pembinavalleyonline.com/events/230890",
+      "source": "pembinavalleyonline.com"
+    }
+  ]
+}
