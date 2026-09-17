@@ -1,79 +1,4 @@
 
-function addToCalendar(title, time, date) {
-  let startDate = date ? new Date(date + 'T12:00:00') : new Date();
-  let endDate = new Date(startDate);
-  let location = '';
-  let description = (time || '').trim();
-
-  if (description) {
-    const rangeMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
-    if (rangeMatch) {
-      startDate = combineDateTime(date, rangeMatch[1]);
-      endDate = combineDateTime(date, rangeMatch[2]);
-    } else {
-      const singleMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
-      if (singleMatch) {
-        startDate = combineDateTime(date, singleMatch[1]);
-        endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
-      }
-    }
-
-    const locMatch = description.match(/·\s*([^·]+?)\s*(?:·|$)/);
-    if (locMatch) {
-      location = locMatch[1].trim();
-    }
-  }
-
-  const pad = (n) => String(n).padStart(2, '0');
-  const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
-  const stamp = fmt(new Date());
-
-  const escape = (val) => (val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
-
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Pembina Valley Events//EN',
-    'METHOD:REQUEST',
-    'BEGIN:VEVENT',
-    'UID:pembina-' + Date.now() + '@pembinaevents.ca',
-    'DTSTAMP:' + stamp,
-    'DTSTART:' + fmt(startDate),
-    'DTEND:' + fmt(endDate),
-    'SUMMARY:' + escape(title || 'Event'),
-    'DESCRIPTION:' + escape(description || ''),
-    location ? 'LOCATION:' + escape(location) : '',
-    'STATUS:CONFIRMED',
-    'TRANSP:OPAQUE',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].filter(Boolean).join('\n');
-
-  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    const newWin = window.open(url, '_blank');
-    if (!newWin) {
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  } else {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-}
-
 function combineDateTime(dateStr, timeStr) {
   const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
   const match = String(timeStr).match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
@@ -1020,13 +945,6 @@ function fill(box, list) {
         if (churchBox) churchBox.innerHTML = liveChurch.length ? liveChurch.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
         if (garageBox) garageBox.innerHTML = liveGarage.length ? liveGarage.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
   }
-  document.addEventListener('click', (ev) => {
-    const btn = ev.target.closest('[data-export="ics"]');
-    if (!btn) return;
-    ev.preventDefault();
-    addToCalendar(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
-  });
-
   document.addEventListener('click', (ev) => {
     const copyBtn = ev.target.closest('.copy-btn');
     if (!copyBtn) return;
