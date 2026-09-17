@@ -95,14 +95,9 @@ function combineDateTime(dateStr, timeStr) {
 
   const EVENTS = [
     { date: '2026-09-16', title: 'WeMB Summer Listening Tour', time: '8:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/232379' },
-    { date: '2026-09-17', title: 'Winkler Farmers Market', time: '3:00 PM · Winkler Park', category: 'community', link: 'https://www.pembinavalleyonline.com/events' },
     { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
     { date: '2026-09-19', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', category: 'community', link: 'https://morden.ca/access-event-centre' },
-    { date: '2026-09-20', title: 'Pembina Valley Pride 2026', time: 'Evening · Pembina Valley', category: 'community', link: 'https://www.travelmanitoba.com/events/pembina-valley-pride-2026/' },
-    { date: '2026-09-21', title: 'Miami Community Centre Bingo', time: 'Tuesdays 7:30 PM · Miami Community Centre', category: 'community', link: 'https://www.pembinavalleyonline.com/events/228230' },
-    { date: '2026-09-22', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' },
-    { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
-    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
+    { date: '2026-09-22', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' }
   ];
 ;
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
@@ -199,7 +194,6 @@ function combineDateTime(dateStr, timeStr) {
       const actualMonth = month % 12;
       const daysInMonth = new Date(yearForMonth, actualMonth + 1, 0).getDate();
       for (let d = 1; d <= daysInMonth; d++) {
-        if (dow(yearForMonth, actualMonth, d) === 2) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.visitwinkler.ca/events' });
         if (actualMonth === 6 && dow(yearForMonth, actualMonth, d) === 3) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
         if (actualMonth === 6 && d >= 5 && d <= 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
         if (actualMonth === 6 && d === 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
@@ -213,14 +207,11 @@ function combineDateTime(dateStr, timeStr) {
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
         if (actualMonth === 7 && d >= 13 && d <= 17) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
-        if (actualMonth === 7 && d === 24) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 17) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
         if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', link: 'https://pembinavalleyonline.com/events' });
         if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', link: 'https://morden.ca/community-events' });
-        if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', link: 'https://winklerchamber.com/events/' });
-        if (actualMonth === 7 && d === 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
         if (actualMonth === 8 && d === 9) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
         if (actualMonth === 8 && d === 10) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
@@ -852,7 +843,6 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     ];
 
     const garageEvents = [
-      { title: 'Miami Community Centre Bingo', date: 'Sep 15', time: 'Tuesdays 7:30 PM · Miami Community Centre', category: 'community', link: 'https://www.pembinavalleyonline.com/events/228230' },
       { title: 'Fitness', date: 'Sep 16', time: 'Wednesdays 9:00 AM · Morden Activity Centre', category: 'sports', link: 'https://www.pembinavalleyonline.com/events/232138' },
       { title: 'Morning Coffee Time', date: 'Sep 16', time: 'Wednesdays 9:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/233639' },
       { title: 'Southern MB Choral Society Fall Term', date: 'Sep 15', time: 'Tuesdays 6:30 PM · Winkler', category: 'music', link: 'https://www.pembinavalleyonline.com/events/230998' }
