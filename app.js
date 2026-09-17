@@ -236,6 +236,26 @@ function eventToICS(ev) {
       }
     }
 
+    // Merge in fetched one-off events (from events.json) so the Activities
+    // calendar shows real community events, not just the hardcoded season
+    // seeds. Dedup by title so a fetched event never lands on a date where
+    // the same-named seed event already exists.
+    if (MERGED_EVENTS && MERGED_EVENTS.length) {
+      const seen = new Set();
+      MERGED_EVENTS.forEach(ev => {
+        if (!ev.date || !ev.title) return;
+        const key = ev.date + '||' + ev.title;
+        if (seen.has(key)) return;
+        seen.add(key);
+        // Skip anything already added as a seed on that date.
+        if (eventsByDate[ev.date]) {
+          const already = eventsByDate[ev.date].some(e => e.title === ev.title);
+          if (already) return;
+        }
+        add(ev.date, ev);
+      });
+    }
+
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const sortedDates = Object.keys(eventsByDate).sort();
     if (!sortedDates.length) {
