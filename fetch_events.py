@@ -281,7 +281,7 @@ def write_json(data: dict[str, Any]) -> bool:
         fd, tmp_path = tempfile.mkstemp(
             suffix=".tmp", prefix="events", dir=REPO_DIR
         )
-        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as fh:
             json.dump(data, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
         os.replace(tmp_path, EVENTS_JSON)
@@ -311,7 +311,7 @@ def file_changed_since_commit(path: Path) -> bool:
 def git_commit_push(path: Path, message: str) -> bool:
     try:
         subprocess.run(
-            ["git", "add", str(path)],
+            ["git", "add", "--renormalize", str(path)],
             cwd=REPO_DIR, check=True, capture_output=True,
         )
         subprocess.run(
