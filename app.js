@@ -97,29 +97,21 @@ function eventToICS(ev) {
   const startDate = combineDateTime(ev.date || '', ev.time || '');
   if (isNaN(startDate.getTime())) return null;
   const endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
-  const stamp = fmt2(new Date());
-  const description = String(ev.time || '').trim();
-  const locMatch = description.match(/·\s*(.+)$/);
+  const locMatch = String(ev.time || '').match(/·\s*(.+)$/);
   const location = locMatch ? locMatch[1].trim() : '';
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Pembina Valley Events//EN',
-    'METHOD:PUBLISH',
     'BEGIN:VEVENT',
     'UID:pve-' + Date.now() + '@pembinaevents.ca',
-    'DTSTAMP:' + stamp,
     'DTSTART:' + fmt2(startDate),
     'DTEND:' + fmt2(endDate),
     'SUMMARY:' + escape2(ev.title),
-    'DESCRIPTION:' + escape2(description || ev.title),
     location ? 'LOCATION:' + escape2(location) : '',
-    'STATUS:CONFIRMED',
-    'TRANSP:OPAQUE',
     'END:VEVENT',
     'END:VCALENDAR'
   ].filter(Boolean);
-  return lines.join('\n');
+  return lines.join('\\n');
 }
 
   function renderDashboard() {
