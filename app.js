@@ -283,7 +283,7 @@ function combineDateTime(dateStr, timeStr) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>`;
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span>`;
       container.appendChild(el);
     });
   }
@@ -854,9 +854,6 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       <a class="day-event" href="${link}" target="_blank" rel="noopener" data-category="${ev.category || 'family'}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
-        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
-        <button class="copy-btn" data-copy="${`${ev.title}
-${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       </a>
     `;
     };

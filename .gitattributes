@@ -1,0 +1,19 @@
+# Enforce LF line endings for all text files served to the browser.
+# Prevents CRLF from landing on GitHub Pages and breaking JS parsing.
+*.js text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.sh text eol=lf
+*.bat text eol=lf
+*.ps1 text eol=lf
+*.xml text eol=lf
+*.svg text eol=lf
+*.csv text eol=lf
+*.ics text eol=lf
