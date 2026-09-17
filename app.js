@@ -99,7 +99,36 @@ function combineDateTime(dateStr, timeStr) {
     { date: '2026-09-19', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', category: 'community', link: 'https://morden.ca/access-event-centre' },
     { date: '2026-09-22', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' }
   ];
-;
+  // Merge in-code EVENTS with auto-fetched events.json at runtime.
+  // If the fetch fails (offline, 404, bad JSON), fall back to in-code EVENTS only.
+  let MERGED_EVENTS = EVENTS;
+  async function loadEventsJson() {
+    try {
+      const resp = await fetch('/events.json');
+      if (!resp.ok) return;
+      const data = await resp.json();
+      if (!data || !Array.isArray(data.events)) return;
+      const fetched = data.events.map(ev => ({
+        id: ev.id || '/events/' + Math.random().toString(36).slice(2),
+        date: ev.date || '',
+        title: ev.title || '',
+        time: ev.time || '',
+        link: ev.link || '#',
+        category: ev.category || 'community',
+        source: ev.source || 'pembinavalleyonline.com',
+      }));
+      // Dedup: in-code EVENTS win on id collision (manual curation takes priority)
+      const fetchedIds = new Set(fetched.map(ev => ev.id));
+      const manualOnly = EVENTS.filter(ev => !fetchedIds.has(ev.id));
+      MERGED_EVENTS = [...fetched, ...manualOnly];
+    } catch (e) {
+      // fetch failed — keep MERGED_EVENTS = EVENTS (in-code only)
+      console.warn('loadEventsJson failed, using in-code EVENTS only:', e);
+    }
+  }
+  // Kick off the fetch once at load; consumers use MERGED_EVENTS and
+  // re-run after the async fetch completes if they fired early.
+  loadEventsJson();
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
   function buildUpcoming() {
     const body = document.getElementById('daily-events');
@@ -113,7 +142,7 @@ function combineDateTime(dateStr, timeStr) {
     const rangeEnd = new Date(today);
     rangeEnd.setDate(rangeEnd.getDate() + 7);
 
-    const upcoming = EVENTS.filter(ev => {
+    const upcoming = MERGED_EVENTS.filter(ev => {
       const d = new Date(ev.date + 'T12:00:00');
       return d >= today && d <= rangeEnd;
     }).sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
@@ -176,8 +205,8 @@ function combineDateTime(dateStr, timeStr) {
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    // Merge events from EVENTS array so one-off events appear on Activities page
-    EVENTS.forEach(ev => {
+    // Merge events from MERGED_EVENTS (in-code + auto-fetched) so one-off events appear on Activities page
+    MERGED_EVENTS.forEach(ev => {
       if (ev.date >= fmt(year, startMonth, 1)) {
         const parts = ev.date.split('-');
         const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
@@ -268,7 +297,7 @@ function combineDateTime(dateStr, timeStr) {
       label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
     }
 
-    const todays = EVENTS.filter(ev => ev.date === todayStr);
+    const todays = MERGED_EVENTS.filter(ev => ev.date === todayStr);
 
     if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
@@ -287,7 +316,23 @@ function combineDateTime(dateStr, timeStr) {
       container.appendChild(el);
     });
   }
-  function activatePage(page) {
+function waitForEvents(callback) {
+    if (MERGED_EVENTS.length > EVENTS.length || typeof loadEventsJson !== 'function') {
+      callback();
+      return;
+    }
+    // loadEventsJson is in-flight; wait until MERGED_EVENTS grows or 2s passes
+    const deadline = Date.now() + 2000;
+    const check = setInterval(() => {
+      if (MERGED_EVENTS.length > EVENTS.length || Date.now() > deadline) {
+        clearInterval(check);
+        callback();
+      }
+    }, 50);
+  }
+
+function activatePage(page) {
+    waitForEvents(() => {
     try {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
@@ -308,6 +353,7 @@ function combineDateTime(dateStr, timeStr) {
       const home = document.getElementById('page-home');
       if (home) home.classList.add('active');
     }
+  });
   }
 
   document.querySelectorAll('.nav-link').forEach(link => {
