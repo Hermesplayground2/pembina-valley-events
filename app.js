@@ -87,6 +87,41 @@ function combineDateTime(dateStr, timeStr) {
   return d;
 }
 
+const pad2 = (n) => String(n).padStart(2, '0');
+const fmt2 = (d) => d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate()) + 'T' + pad2(d.getHours()) + pad2(d.getMinutes()) + '00';
+function escape2(val) {
+  return String(val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+}
+function eventToICS(ev) {
+  if (!ev || !ev.title) return null;
+  const startDate = combineDateTime(ev.date || '', ev.time || '');
+  if (isNaN(startDate.getTime())) return null;
+  const endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
+  const stamp = fmt2(new Date());
+  const description = String(ev.time || '').trim();
+  const locMatch = description.match(/·\s*(.+)$/);
+  const location = locMatch ? locMatch[1].trim() : '';
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Pembina Valley Events//EN',
+    'METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    'UID:pve-' + Date.now() + '@pembinaevents.ca',
+    'DTSTAMP:' + stamp,
+    'DTSTART:' + fmt2(startDate),
+    'DTEND:' + fmt2(endDate),
+    'SUMMARY:' + escape2(ev.title),
+    'DESCRIPTION:' + escape2(description || ev.title),
+    location ? 'LOCATION:' + escape2(location) : '',
+    'STATUS:CONFIRMED',
+    'TRANSP:OPAQUE',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].filter(Boolean);
+  return lines.join('\n');
+}
+
   function renderDashboard() {
     const box = document.getElementById('dashboard-live');
     if (!box) return;
@@ -168,8 +203,8 @@ function combineDateTime(dateStr, timeStr) {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
-        const copyText = (ev.title + '\n' + ev.time).trim();
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
+        const ics = eventToICS(ev);
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;') + '">Copy</button>' : '');
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -246,6 +281,48 @@ function combineDateTime(dateStr, timeStr) {
         if (actualMonth === 8 && d === 10) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
         if (actualMonth === 8 && d === 18) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
         if (actualMonth === 8 && d === 7) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
+        if (actualMonth === 8 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', link: 'https://www.pembinavalleyonline.com/events/233447' });
+        if (actualMonth === 8 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Fitness', time: 'Wednesdays 9:00 AM · Morden Activity Centre', link: 'https://www.pembinavalleyonline.com/events/232138' });
+        if (actualMonth === 8 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morning Coffee Time', time: 'Wednesdays 9:00 AM · Winkler', link: 'https://www.pembinavalleyonline.com/events/233639' });
+        if (actualMonth === 8 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'music', title: 'Southern MB Choral Society Fall Term', time: 'Tuesdays 6:30 PM · Winkler', link: 'https://www.pembinavalleyonline.com/events/230998' });
+        if (actualMonth === 8 && d === 1) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Pembina Valley Art Walk', time: '6:00 PM – 9:00 PM · Morden Main Street', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 3) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Family Nature Walk', time: '10:00 AM · Pembina River Valley', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 4) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 5) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Pickleball Open Play', time: '1:00 PM · Morden Activity Centre', link: 'https://morden.ca/community-events' });
+        if (actualMonth === 8 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+        if (actualMonth === 8 && d === 10) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 11) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Fall Crafts for Kids', time: '1:00 PM · Morden Public Library', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 12) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Community Softball Tournament', time: '9:00 AM · Morden Ball Diamonds', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Halloween Prep Craft Day', time: '2:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 17) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 18) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Pumpkin Patch Open', time: '9:00 AM · Pembina Valley Farm', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Fall Family Fun Run', time: '10:00 AM · Morden Park', link: 'https://morden.ca/community-events' });
+        if (actualMonth === 8 && d === 22) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 24) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Kids Halloween Craft Workshop', time: '3:00 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+        if (actualMonth === 8 && d === 25) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Fall Supper at the Community Centre', time: '5:00 PM · Morden Community Centre', link: 'https://morden.ca/community-events' });
+        if (actualMonth === 8 && d === 26) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Trunk or Treat', time: '5:00 PM · Morden Walmart Parking Lot', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 29) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 8 && d === 31) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Halloween Night', time: '6:00 PM – 9:00 PM · Downtown Winkler', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 1) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'November Art Walk', time: '6:00 PM – 9:00 PM · Morden Main Street', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 2) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Family Nature Walk', time: '10:00 AM · Pembina River Valley', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 5) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 7) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Community Smokeout', time: '6:00 PM · Winkler Alliance Church', link: 'https://www.winklerchamber.com/events/' });
+        if (actualMonth === 9 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Pickleball Open Play', time: '1:00 PM · Morden Activity Centre', link: 'https://morden.ca/community-events' });
+        if (actualMonth === 9 && d === 9) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+        if (actualMonth === 9 && d === 12) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 14) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Remembrance Day Craft Workshop', time: '2:00 PM · Morden Public Library', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'music', title: 'Southern MB Choral Society Fall Term', time: 'Tuesdays 6:30 PM · Winkler', link: 'https://www.pembinavalleyonline.com/events/230998' });
+        if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', link: 'https://www.pembinavalleyonline.com/events/233447' });
+        if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Fitness', time: 'Wednesdays 9:00 AM · Morden Activity Centre', link: 'https://www.pembinavalleyonline.com/events/232138' });
+        if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morning Coffee Time', time: 'Wednesdays 9:00 AM · Winkler', link: 'https://www.pembinavalleyonline.com/events/233639' });
+        if (actualMonth === 9 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Remembrance Day Service', time: '11:00 AM · Morden Cenotaph', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 20) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Art Auction & Gallery Night', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.pembina.ca/p/annual-events' });
+        if (actualMonth === 9 && d === 21) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 22) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Community Carolling Warm-Up', time: '7:00 PM · Morden Concert Hall', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 23) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Kids Craft Saturday', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
+        if (actualMonth === 9 && d === 26) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
+        if (actualMonth === 9 && d === 28) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Thanksgiving Pie Bake-Off', time: '1:00 PM · Morden Community Centre', link: 'https://morden.ca/community-events' });
+        if (actualMonth === 9 && d === 29) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Turkey Toss Charity Event', time: '10:00 AM · Morden Sportsplex', link: 'https://www.visitwinkler.ca' });
       }
     }
 
@@ -274,7 +351,11 @@ function combineDateTime(dateStr, timeStr) {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>';
+        // Hardcoded activity events don't carry a `date` field — take it from
+        // the calendar key so eventToICS has something to work with.
+        const evWithDate = ev.date ? ev : { ...ev, date: dateStr };
+        const ics = eventToICS(evWithDate);
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + ics.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '">Copy</button>' : '');
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -312,7 +393,8 @@ function combineDateTime(dateStr, timeStr) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span>`;
+      const ics = eventToICS(ev);
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span>` + (ics ? `<button class="copy-btn" data-ics="${ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;')}">Copy</button>` : '');
       container.appendChild(el);
     });
   }
@@ -402,6 +484,8 @@ if (document.readyState === 'loading') {
   let weatherCache = null;
   let weatherCacheTime = 0;
   const WEATHER_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+  let weatherFallbackTimer = null;
+  let weatherErrorHandler = null;
 
   async function loadWeather() {
     const heroCond = document.getElementById('heroCondition');
@@ -441,8 +525,15 @@ if (document.readyState === 'loading') {
       }
     };
 
-    // Guaranteed fallback after 5 seconds regardless of network state
-    const fallbackTimer = setTimeout(() => fallback(3), 5000);
+    // Guaranteed fallback after 5 seconds regardless of network state.
+    // Clear any previous timer first so re-entrant / periodic calls don't
+    // stack multiple fallbacks that would all fire and write "unavailable".
+    if (weatherFallbackTimer) clearTimeout(weatherFallbackTimer);
+    const fallbackTimer = setTimeout(() => {
+      weatherFallbackTimer = null;
+      fallback(3);
+    }, 5000);
+    weatherFallbackTimer = fallbackTimer;
 
     try {
       // Use cached weather data if available and fresh (memory or localStorage)
@@ -498,9 +589,19 @@ if (document.readyState === 'loading') {
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
-      clearTimeout(fallbackTimer);
-      console.warn('Weather fallback triggered:', e);
-      fallback(3);
+      if (weatherFallbackTimer) { clearTimeout(weatherFallbackTimer); weatherFallbackTimer = null; }
+      console.warn('Weather fetch failed, using cached/fallback data:', e);
+      // If we already have a cached result, use it instead of hard-failing to "unavailable"
+      if (weatherCache && (Date.now() - weatherCacheTime) < 60 * 60 * 1000) {
+        const cw = weatherCache.current_weather;
+        apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date(weatherCacheTime).toLocaleTimeString());
+        updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+        updateWeatherPlan(cw.temperature, cw.weathercode);
+        if (weatherCache.daily) renderWeekly(weatherCache.daily);
+        setWeatherVideo(cw.weathercode, cw.temperature);
+      } else {
+        fallback(3);
+      }
     }
   }
 
@@ -575,16 +676,41 @@ function isUpcoming(ev) {
     const hour = new Date().getHours();
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
-let src = 'weather-media/day.mp4?v=1789599600';
-    if (isPrecip) {
-      src = 'weather-media/rain.mp4?v=1789599600';
-    } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1789599600';
-    } else if (!isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1789599600';
+    const src = isPrecip
+      ? 'weather-media/rain.mp4?v=1789599600'
+      : (isClear && (hour < 6 || hour >= 20)
+          ? 'weather-media/night.mp4?v=1789599600'
+          : 'weather-media/day.mp4?v=1789599600');
+    const want = src.split('/').pop();
+    const current = video.src ? video.src.split('/').pop() : '';
+    if (current === want) return;
+
+    // Tear down any previously-armed error listener so re-entrant calls don't
+    // stack handlers that each independently hide the video + show overlay.
+    if (weatherErrorHandler) {
+      video.removeEventListener('error', weatherErrorHandler);
     }
-    const currentSrc = video.src ? video.src.split('/').pop() : '';
-    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
+    const onVideoError = () => {
+      video.style.opacity = '0';
+      // If we already have real weather text, the video is just decoration —
+      // show a soft overlay note rather than the hard "Weather unavailable" state.
+      const heroCond = document.getElementById('heroCondition');
+      const overlay = document.getElementById('heroWeatherOverlay');
+      if (overlay) {
+        overlay.style.opacity = (heroCond && heroCond.textContent && heroCond.textContent !== '--°' && heroCond.textContent !== 'Weather unavailable')
+          ? '0.5'
+          : '1';
+        if (heroCond && heroCond.textContent && heroCond.textContent !== '--°' && heroCond.textContent !== 'Weather unavailable') {
+          overlay.textContent = 'Video unavailable — weather data still shown';
+        }
+      }
+      // Try once more with the fallback day video on the next cycle; do not
+      // leave the element in a permanently-faulted state.
+      try { video.src = 'weather-media/day.mp4?v=1789599600'; } catch (e) { /* ignore */ }
+    };
+    weatherErrorHandler = onVideoError;
+    video.addEventListener('error', onVideoError, { once: true });
+
     video.style.transition = 'opacity 0.6s ease';
     video.style.opacity = '0';
     setTimeout(() => {
@@ -592,31 +718,23 @@ let src = 'weather-media/day.mp4?v=1789599600';
       video.load();
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.then(() => {
-          video.style.opacity = '1';
-        }).catch(() => {
-          video.style.opacity = '0';
-          const overlay = document.getElementById('heroWeatherOverlay');
-          if (overlay) overlay.style.opacity = '1';
-        });
+        playPromise.then(() => { video.style.opacity = '1'; })
+          .catch(() => {
+            // Autoplay blocked (mobile / post-interaction). The error handler
+            // above will run and degrade gracefully; don't hard-fail here.
+            video.style.opacity = '0.35';
+            const overlay = document.getElementById('heroWeatherOverlay');
+            if (overlay && overlay.style.opacity !== '1') {
+              overlay.style.opacity = '0.5';
+              const heroCond = document.getElementById('heroCondition');
+              if (heroCond && heroCond.textContent && heroCond.textContent !== '--°' && heroCond.textContent !== 'Weather unavailable') {
+                overlay.textContent = 'Video paused — weather data still shown';
+              }
+            }
+          });
       }
-      video.addEventListener('error', () => {
-        const img = document.getElementById('heroWeatherImage');
-        if (!img) {
-          const fallbackImg = document.createElement('img');
-          fallbackImg.id = 'heroWeatherImage';
-          fallbackImg.alt = 'Weather';
-          fallbackImg.src = 'weather-media/day_frame.jpg';
-          fallbackImg.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-          const scene = document.getElementById('weatherScene');
-          if (scene) scene.insertBefore(fallbackImg, video);
-        } else {
-          img.style.opacity = '1';
-        }
-        video.style.opacity = '0';
-        const overlay = document.getElementById('heroWeatherOverlay');
-        if (overlay) overlay.style.opacity = '1';
-      }, { once: true });
+      // Remove the one-shot error listener once we've either played or will
+      // rely on the next call to re-arm. Keep it armed until success or next call.
     }, 600);
   }
 
@@ -857,7 +975,9 @@ function fill(box, list) {
       { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
     ];
 
-    container.innerHTML = featured.map(ev => `
+    container.innerHTML = featured.map(ev => {
+      const ics = eventToICS(ev);
+      return `
       <a class="featured-card bubble" href="${ev.link || '#'}" target="_blank" rel="noopener" data-category="${ev.category}">
         <div class="row">
           <div class="badge-row">
@@ -868,10 +988,10 @@ function fill(box, list) {
         </div>
         <div class="title">${ev.title}</div>
         <div class="meta">${ev.time}</div>
-        <button class="copy-btn" data-copy="${`${ev.title}
-${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
+        ${ics ? `<button class="copy-btn" data-ics="${ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;')}">Copy</button>` : `<button class="copy-btn" data-copy="${`${ev.title}\n${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>`}
       </a>
-    `).join('');
+    `;
+    }).join('');
   }
 
   function renderFamilyEvents() {
@@ -894,13 +1014,15 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       { title: 'Southern MB Choral Society Fall Term', date: 'Sep 15', time: 'Tuesdays 6:30 PM · Winkler', category: 'music', link: 'https://www.pembinavalleyonline.com/events/230998' }
     ];
 
-    const renderCard = (ev) => {
+    const renderCard = (ev, dateStr) => {
       const link = ev.link || '#';
+      const ics = eventToICS({ ...ev, date: dateStr || ev.date });
       return `
       <a class="day-event" href="${link}" target="_blank" rel="noopener" data-category="${ev.category || 'family'}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
       </a>
+      ${ics ? `<button class="copy-btn" data-ics="${ics.replace(/"/g, '&quot;').replace(/&/g, '&amp;')}">Copy</button>` : ''}
     `;
     };
 
@@ -924,8 +1046,15 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     const copyBtn = ev.target.closest('.copy-btn');
     if (!copyBtn) return;
     ev.preventDefault();
-    const text = copyBtn.dataset.copy || '';
-    if (!text) return;
+    const raw = copyBtn.dataset.ics || '';
+    let text;
+    if (raw) {
+      try { text = decodeURIComponent(raw); } catch (e) { text = raw; }
+    } else {
+      const text2 = copyBtn.dataset.copy || '';
+      if (!text2) return;
+      try { text = decodeURIComponent(text2); } catch (e) { text = text2; }
+    }
     const fallback = () => {
       const ta = document.createElement('textarea');
       ta.value = text;
