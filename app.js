@@ -107,11 +107,12 @@ function eventToICS(ev) {
     'DTSTART:' + fmt2(startDate),
     'DTEND:' + fmt2(endDate),
     'SUMMARY:' + escape2(ev.title),
+    ev.description ? 'DESCRIPTION:' + escape2(ev.description) : '',
     location ? 'LOCATION:' + escape2(location) : '',
     'END:VEVENT',
     'END:VCALENDAR'
   ].filter(Boolean);
-  return lines.join('\\n');
+  return lines.join('\n');
 }
 
   function renderDashboard() {

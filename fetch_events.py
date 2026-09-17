@@ -116,6 +116,33 @@ LOCATION_RE = re.compile(
     r'<div[^>]*id="location"[^>]*>\s*<p>(.*?)</p>', re.S
 )
 
+# Description: real event text lives in the article-body <p> tags.
+ARTICLE_BODY_RE = re.compile(r'<div class="article-body">(.*?)</div>\s*<div class="', re.S)
+DESC_P_RE = re.compile(r'<p>(.*?)</p>', re.S)
+
+def _extract_description(html: str) -> str:
+    """Pull the human-readable description from an event page's article-body."""
+    m = ARTICLE_BODY_RE.search(html)
+    if not m:
+        return ""
+    body = m.group(1)
+    parts: list[str] = []
+    for pm in DESC_P_RE.finditer(body):
+        raw = pm.group(1)
+        # Skip ad injection <p> blocks.
+        if "gpt-ad" in raw.lower():
+            continue
+        clean = _clean_text(raw)
+        if not clean:
+            continue
+        # Skip location-only paragraphs (the map <p> repeats the address).
+        if clean.lower() in ("location",):
+            continue
+        if "<iframe" in raw and "map" in raw.lower():
+            continue
+        parts.append(clean)
+    return " ".join(parts)
+
 
 def _strip_tags(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text).strip()
@@ -201,6 +228,13 @@ def parse_single_page(html: str, max_age_days: int = 14) -> list[dict[str, Any]]
 
             time_display = f"{time_str} · {location}" if location else time_str
 
+            # Fetch the event page once to pull the real description text.
+            try:
+                page_html = fetch_page(f"https://www.pembinavalleyonline.com{event_id}")
+                description = _extract_description(page_html)
+            except Exception:
+                description = ""
+
             events.append({
                 "id": event_id,
                 "title": title,
@@ -208,6 +242,7 @@ def parse_single_page(html: str, max_age_days: int = 14) -> list[dict[str, Any]]
                 "date": day_date.isoformat(),
                 "link": f"https://www.pembinavalleyonline.com{event_id}",
                 "source": "pembinavalleyonline.com",
+                "description": description,
             })
 
     events.sort(key=lambda e: (e["date"], e["time"]))
