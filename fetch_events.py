@@ -279,13 +279,28 @@ def fetch_events(max_days: int = 14, max_pages: int = 30) -> list[dict[str, Any]
             if e["id"] in seen_ids:
                 continue
             seen_ids.add(e["id"])
-            # Title+date dedup: skip when the same title (case-insensitive)
-            # already appears on the same date (source-site duplicates like
-            # two "KINDNESS HORSE CAMP" pages for the same event).
-            key = (e["title"].strip().lower(), e["date"])
-            if key in seen_title_date:
+            # Title+date dedup: skip when the same event already appears on
+            # the same date under a slightly different title. Catches source-site
+            # duplicates like "KINDNESS HORSE CAMP" + "KINDNESS HORSE CAMP"
+            # (identical), "Walk With Jesus" + "Walk with Jesus - Steinbach 2026"
+            # (one is a sub-page variant of the other), and prefix/suffix variants.
+            title_l = e["title"].strip().lower()
+            key_exact = (title_l, e["date"])
+            if key_exact in seen_title_date:
                 continue
-            seen_title_date.add(key)
+            # Also catch when an existing seen title is a prefix/suffix of this
+            # title on the same date (variant pages for the same event).
+            dup = False
+            for (seen_title, seen_date) in seen_title_date:
+                if seen_date != e["date"]:
+                    continue
+                if (title_l.startswith(seen_title) or seen_title.startswith(title_l)
+                        or title_l in seen_title or seen_title in title_l):
+                    dup = True
+                    break
+            if dup:
+                continue
+            seen_title_date.add(key_exact)
             all_events.append(e)
             new_count += 1
 
