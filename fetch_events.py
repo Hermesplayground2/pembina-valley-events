@@ -126,6 +126,9 @@ def _extract_description(html: str) -> str:
     if not m:
         return ""
     body = m.group(1)
+    # Drop the event-info block (Location heading + address + map embed) so the
+    # address paragraph does not leak into the description text.
+    body = re.sub(r'<div class="event-info">[\s\S]*?</div>\s*</div>', '', body, flags=re.S)
     parts: list[str] = []
     for pm in DESC_P_RE.finditer(body):
         raw = pm.group(1)
@@ -137,8 +140,6 @@ def _extract_description(html: str) -> str:
             continue
         # Skip location-only paragraphs (the map <p> repeats the address).
         if clean.lower() in ("location",):
-            continue
-        if "<iframe" in raw and "map" in raw.lower():
             continue
         parts.append(clean)
     return " ".join(parts)
@@ -258,6 +259,7 @@ def fetch_events(max_days: int = 14, max_pages: int = 30) -> list[dict[str, Any]
     today = datetime.date.today()
     window_end = today + datetime.timedelta(days=max_days)
     seen_ids: set[str] = set()
+    seen_title_date: set[tuple[str, str]] = set()
     pages_fetched = 0
 
     for page in range(1, max_pages + 1):
@@ -277,6 +279,13 @@ def fetch_events(max_days: int = 14, max_pages: int = 30) -> list[dict[str, Any]
             if e["id"] in seen_ids:
                 continue
             seen_ids.add(e["id"])
+            # Title+date dedup: skip when the same title (case-insensitive)
+            # already appears on the same date (source-site duplicates like
+            # two "KINDNESS HORSE CAMP" pages for the same event).
+            key = (e["title"].strip().lower(), e["date"])
+            if key in seen_title_date:
+                continue
+            seen_title_date.add(key)
             all_events.append(e)
             new_count += 1
 
