@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-18T04:11:58.678725+00:00",
+  "last_updated": "2026-09-18T04:15:24.527848+00:00",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -820,15 +820,6 @@
       "link": "https://www.pembinavalleyonline.com/events/232162",
       "source": "pembinavalleyonline.com",
       "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/233628",
-      "title": "Ladies Games Night",
-      "time": "7:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/233628",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for games night. There are a variety to choose from. Bring a friend. Drinks and snacks are free."
     },
     {
       "id": "/events/233417",
