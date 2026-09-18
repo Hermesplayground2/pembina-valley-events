@@ -59,32 +59,11 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+    background: var(--bg);
     color: #e2e8f0;
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 10% 20%, rgba(13,148,136,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 90% 80%, rgba(37,99,235,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 100%, rgba(180,83,9,0.15) 0%, transparent 45%),
-      radial-gradient(ellipse at 0% 0%, rgba(251,191,36,0.12) 0%, transparent 40%),
-      radial-gradient(ellipse at 100% 0%, rgba(21,128,61,0.10) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(15,23,42,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: -1;
-    animation: colorShift 20s ease-in-out infinite;
-  }
-  @keyframes colorShift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(-2%, 1%) scale(1.02); }
-    50% { transform: translate(1%, -1%) scale(1.01); }
-    75% { transform: translate(-1%, -2%) scale(1.03); }
   }
   @keyframes jarvisPulse {
     0%, 100% { opacity: 1; }
@@ -250,7 +229,7 @@
   .day-event[data-category="family"] { border-left: 4px solid #3b82f6; }
   .day-event[data-category="sports"] { border-left: 4px solid #10b981; }
   .day-event[data-category="outdoors"] { border-left: 4px solid #14b8a6; }
-  .day-event .title { font-weight: 900; font-size: 1rem; display: block; margin-bottom: 4px; text-align: left; color: inherit; }
+  .day-event .title { font-weight: 900; font-size: 1rem; display: block; margin: 0 auto 4px; text-align: center; color: inherit; max-width: 90%; }
   .day-event .time { color: inherit; opacity: 0.85; font-size: 0.82rem; margin-top: 0; display: block; }
   .activity {
     border-radius: 999px;
@@ -268,8 +247,11 @@
   .activity .name {
     font-weight: 800;
     font-size: 0.95rem;
-    margin-bottom: 4px;
+    margin: 0 auto 4px;
     color: inherit;
+    text-align: center;
+    display: block;
+    max-width: 90%;
   }
   .activity .desc {
     font-size: 0.85rem;
@@ -289,7 +271,8 @@
   }
   .event-date .month { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
   .event-date .day { font-size: 1.25rem; line-height: 1; margin-top: 3px; }
-  .event-title { font-weight: 800; font-size: 1rem; text-align: left; color: #ffffff; }
+  .event-title { font-weight: 800; font-size: 1rem; text-align: center; color: #ffffff; margin: 0 auto; max-width: 90%; }
+  .event-title a { text-align: center; display: block; }
   .event-meta { color: var(--muted); font-size: 0.88rem; margin-top: 5px; }
   .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .calendar-day {
@@ -495,12 +478,12 @@
   .weekly-day .date { font-weight: 900; margin-top: 4px; color: #f1f5f9; }
   .weekly-day .cond { font-size: 0.8rem; margin-top: 5px; font-weight: 700; color: #fbbf24; }
   .weekly-day .lo-hi { font-size: 0.75rem; margin-top: 4px; color: #cbd5e1; }
-  .weather-card-ref { background: #ffffff; color: #0f172a; }
-  .weather-card-ref h2 { color: #0f172a; }
-  .weather-card-ref .temp { color: #0f172a; text-shadow: none; }
-  .weather-card-ref .meta { color: #0f172a; text-shadow: none; }
-  .weather-card-ref .muted { color: #64748b; }
-  .weather-icon-wrap { color: #0f172a; }
+  .weather-card-ref { background: #0f172a; color: #e2e8f0; border: 1px solid rgba(255,255,255,0.08); }
+  .weather-card-ref h2 { color: #f1f5f9; }
+  .weather-card-ref .temp { color: #f59e0b; text-shadow: none; }
+  .weather-card-ref .meta { color: #e2e8f0; text-shadow: none; }
+  .weather-card-ref .muted { color: #94a3b8; }
+  .weather-icon-wrap { color: #e2e8f0; }
   .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
   .featured-card {
     border: 1px solid rgba(255,255,255,0.12);
@@ -538,7 +521,16 @@
   }
   .featured-card:hover::before { opacity: 1; }
   .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-  .featured-card .title { font-weight: 900; font-size: 1.05rem; margin-bottom: 6px; letter-spacing: -0.01em; text-decoration: none; }
+  .featured-card .title {
+    font-weight: 900;
+    font-size: 1.05rem;
+    margin: 0 auto 6px;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    max-width: 90%;
+  }
   .featured-card .title a { text-decoration: none; color: inherit; }
   .featured-card .title a:hover { text-decoration: underline; }
   .featured-card .meta { color: var(--muted); font-size: 0.9rem; }
@@ -919,9 +911,9 @@
 
 
 .copy-event-btn {
-    position: absolute;
-    right: 8px;
-    top: 8px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 999px;
@@ -941,7 +933,7 @@
 </head>
 <body><!-- cache-bust: 2026-09-17-06 -->
 
-<header class="logo-header">
+<header class="logo-header header">
   <img src="logo.png" alt="Pembina Valley Events" class="logo-img">
 </header>
 
