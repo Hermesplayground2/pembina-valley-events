@@ -1,4 +1,79 @@
 
+function addToCalendar(title, time, date) {
+  let startDate = date ? new Date(date + 'T12:00:00') : new Date();
+  let endDate = new Date(startDate);
+  let location = '';
+  let description = (time || '').trim();
+
+  if (description) {
+    const rangeMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
+    if (rangeMatch) {
+      startDate = combineDateTime(date, rangeMatch[1]);
+      endDate = combineDateTime(date, rangeMatch[2]);
+    } else {
+      const singleMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
+      if (singleMatch) {
+        startDate = combineDateTime(date, singleMatch[1]);
+        endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
+      }
+    }
+
+    const locMatch = description.match(/·\s*([^·]+?)\s*(?:·|$)/);
+    if (locMatch) {
+      location = locMatch[1].trim();
+    }
+  }
+
+  const pad = (n) => String(n).padStart(2, '0');
+  const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+  const stamp = fmt(new Date());
+
+  const escape = (val) => (val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Pembina Valley Events//EN',
+    'METHOD:REQUEST',
+    'BEGIN:VEVENT',
+    'UID:pembina-' + Date.now() + '@pembinaevents.ca',
+    'DTSTAMP:' + stamp,
+    'DTSTART:' + fmt(startDate),
+    'DTEND:' + fmt(endDate),
+    'SUMMARY:' + escape(title || 'Event'),
+    'DESCRIPTION:' + escape(description || ''),
+    location ? 'LOCATION:' + escape(location) : '',
+    'STATUS:CONFIRMED',
+    'TRANSP:OPAQUE',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].filter(Boolean).join('\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    const newWin = window.open(url, '_blank');
+    if (!newWin) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } else {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+}
+
 function combineDateTime(dateStr, timeStr) {
   const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
   const match = String(timeStr).match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
@@ -12,34 +87,6 @@ function combineDateTime(dateStr, timeStr) {
   return d;
 }
 
-const pad2 = (n) => String(n).padStart(2, '0');
-const fmt2 = (d) => d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate()) + 'T' + pad2(d.getHours()) + pad2(d.getMinutes()) + '00';
-function escape2(val) {
-  return String(val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
-}
-function eventToICS(ev) {
-  if (!ev || !ev.title) return null;
-  const startDate = combineDateTime(ev.date || '', ev.time || '');
-  if (isNaN(startDate.getTime())) return null;
-  const endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
-  const locMatch = String(ev.time || '').match(/·\s*(.+)$/);
-  const location = locMatch ? locMatch[1].trim() : '';
-  const lines = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'BEGIN:VEVENT',
-    'UID:pve-' + Date.now() + '@pembinaevents.ca',
-    'DTSTART:' + fmt2(startDate),
-    'DTEND:' + fmt2(endDate),
-    'SUMMARY:' + escape2(ev.title),
-    ev.description ? 'DESCRIPTION:' + escape2(ev.description) : '',
-    location ? 'LOCATION:' + escape2(location) : '',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].filter(Boolean);
-  return lines.join('\n');
-}
-
   function renderDashboard() {
     const box = document.getElementById('dashboard-live');
     if (!box) return;
@@ -47,56 +94,46 @@ function eventToICS(ev) {
   }
 
   const EVENTS = [
-    { date: '2026-09-16', title: 'WeMB Summer Listening Tour', time: '8:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/232379' },
+    { date: '2026-08-04', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', category: 'community', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-06', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-07', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', category: 'community', link: 'https://www.winkler.ca/events' },
+    { date: '2026-08-10', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-10', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-10', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-11', title: 'Finger Painting Workshop', time: '10:30 AM & 1:30 PM · Winkler Library', category: 'family', link: 'https://pembinavalleyonline.com/events/229002' },
+    { date: '2026-08-13', title: 'Morden Makerspace Open House', time: '6:00 PM – 8:00 PM · 30 Stephen St, Morden', category: 'community', link: 'https://morden.ca/events/morden-makerspace-open-house' },
+    { date: '2026-08-13', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', category: 'community', link: 'https://pembinavalleyonline.com/events' },
+    { date: '2026-08-13', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', category: 'family', link: 'https://pembinavalleyonline.com/events/229004' },
+    { date: '2026-08-13', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', category: 'sports', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' },
+    { date: '2026-08-17', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-18', title: 'Summer Shores Paint & Sip', time: '6:00 PM · Winkler Arts & Culture', category: 'community', link: 'https://www.visitwinkler.ca' },
+    { date: '2026-08-19', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', category: 'family', link: 'https://morden.ca/access-event-centre' },
+    { date: '2026-08-24', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', category: 'family', link: 'https://pembinavalleyonline.com/events' },
+    { date: '2026-08-27', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-08-27', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', category: 'family', link: 'https://winklerchamber.com/events/' },
+    { date: '2026-09-07', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-09', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
+    { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-18', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', category: 'community', link: 'https://winklerchamber.com/events/' },
-    { date: '2026-09-19', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', category: 'community', link: 'https://morden.ca/access-event-centre' },
-    { date: '2026-09-22', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' }
+    { date: '2026-09-25', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
+    { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
   ];
-  // Merge in-code EVENTS with auto-fetched events.json at runtime.
-  // If the fetch fails (offline, 404, bad JSON), fall back to in-code EVENTS only.
-  let MERGED_EVENTS = EVENTS;
-  async function loadEventsJson() {
-    try {
-      const resp = await fetch('/events.json');
-      if (!resp.ok) return;
-      const data = await resp.json();
-      if (!data || !Array.isArray(data.events)) return;
-      const fetched = data.events.map(ev => ({
-        id: ev.id || '/events/' + Math.random().toString(36).slice(2),
-        date: ev.date || '',
-        title: ev.title || '',
-        time: ev.time || '',
-        link: ev.link || '#',
-        category: ev.category || 'community',
-        source: ev.source || 'pembinavalleyonline.com',
-      }));
-      // Dedup: in-code EVENTS win on id collision (manual curation takes priority)
-      const fetchedIds = new Set(fetched.map(ev => ev.id));
-      const manualOnly = EVENTS.filter(ev => !fetchedIds.has(ev.id));
-      // Title+date dedup: drop a fetched event when the same title already
-      // exists on that date in the in-code EVENTS (e.g. "The Big Canoe",
-      // "Chamber Member Appreciation BBQ"). Also catches prefix variants
-      // like "Winkler Chamber Member Appreciation BBQ" matching
-      // "Chamber Member Appreciation BBQ". In-code curated entry wins.
-      const inCodeByDate = {};
-      EVENTS.forEach(ev => {
-        if (!inCodeByDate[ev.date]) inCodeByDate[ev.date] = [];
-        inCodeByDate[ev.date].push(ev.title);
-      });
-      const deduped = fetched.filter(ev => {
-        const existing = inCodeByDate[ev.date] || [];
-        return !existing.some(t => ev.title === t || ev.title.includes(t) || t.includes(ev.title));
-      });
-      MERGED_EVENTS = [...deduped, ...manualOnly];
-    } catch (e) {
-      // fetch failed — keep MERGED_EVENTS = EVENTS (in-code only)
-      console.warn('loadEventsJson failed, using in-code EVENTS only:', e);
-    }
-  }
-  // Kick off the fetch once at load; consumers use MERGED_EVENTS and
-  // re-run after the async fetch completes if they fired early.
-  loadEventsJson();
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
+
+  const timeToSort = (timeStr) => {
+    const t = String(timeStr).trim();
+    const hourMatch = t.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+    if (!hourMatch) return 9999;
+    let hour = parseInt(hourMatch[1], 10);
+    const minute = hourMatch[2] ? parseInt(hourMatch[2], 10) : 0;
+    const meridiem = hourMatch[3] ? hourMatch[3].toUpperCase() : null;
+    if (meridiem === 'PM' && hour < 12) hour += 12;
+    if (meridiem === 'AM' && hour === 12) hour = 0;
+    return hour * 100 + minute;
+  };
   function buildUpcoming() {
     const body = document.getElementById('daily-events');
     if (!body) return;
@@ -106,13 +143,14 @@ function eventToICS(ev) {
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const today = new Date();
     today.setHours(0,0,0,0);
+    const todayStr = today.toISOString().slice(0,10);
     const rangeEnd = new Date(today);
-    rangeEnd.setDate(rangeEnd.getDate() + 7);
+    rangeEnd.setDate(rangeEnd.getDate() + 6);
 
-    const upcoming = MERGED_EVENTS.filter(ev => {
+    const upcoming = EVENTS.filter(ev => {
       const d = new Date(ev.date + 'T12:00:00');
-      return d >= today && d <= rangeEnd;
-    }).sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+      return d > today && d <= rangeEnd;
+    }).sort((a, b) => a.date.localeCompare(b.date) || timeToSort(a.time) - timeToSort(b.time));
 
     const grouped = {};
     upcoming.forEach(ev => {
@@ -125,18 +163,25 @@ function eventToICS(ev) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate();
+      dateLabel.className = 'day-header';
+      dateLabel.dataset.expanded = 'false';
+      dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + ' <span class="event-count">' + grouped[dateStr].length + '</span>';
+      dateLabel.addEventListener('click', () => {
+        const expanded = dateLabel.dataset.expanded === 'true';
+        dateLabel.dataset.expanded = String(!expanded);
+        dateLabel.classList.toggle('expanded', !expanded);
+        list.classList.toggle('hidden-events', expanded);
+      });
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
-      list.className = 'event-list';
-      grouped[dateStr].forEach(ev => {
+      list.className = 'event-list hidden-events';
+      grouped[dateStr].sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).forEach(ev => {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
-        const ics = eventToICS(ev);
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + encodeURIComponent(ics) + '">Copy</button>' : '');
+        const copyText = (ev.title + '\n' + ev.time).trim();
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -144,7 +189,7 @@ function eventToICS(ev) {
     });
 
     if (!upcoming.length) {
-      body.innerHTML = '<div class="muted" style="padding:10px;">No upcoming events in the next 7 days.</div>';
+      body.innerHTML = '<div class="muted" style="padding:10px;">No events in the next 6 days.</div>';
     }
   }
   function buildActivityWeek() {
@@ -172,16 +217,25 @@ function eventToICS(ev) {
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    // Build the activity grid from hardcoded seed events only.
-    // One-off fetched events already appear on the Home/upcoming page
-    // via buildUpcoming; re-merging MERGED_EVENTS here caused duplicates
-    // when a fetched event shared a date with a seed event.
+    // Merge events from EVENTS array so one-off events appear on Activities page
+    EVENTS.forEach(ev => {
+      if (ev.date >= fmt(year, startMonth, 1)) {
+        const parts = ev.date.split('-');
+        const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+        if (evDate >= today) {
+          if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
+          eventsByDate[ev.date].push(ev);
+        }
+      }
+    });
+
     for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
       const month = startMonth + monthOffset;
       const yearForMonth = year + Math.floor(month / 12);
       const actualMonth = month % 12;
       const daysInMonth = new Date(yearForMonth, actualMonth + 1, 0).getDate();
       for (let d = 1; d <= daysInMonth; d++) {
+        if (dow(yearForMonth, actualMonth, d) === 2) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: "Winkler Farmer's Market", time: 'Tue 4-6 PM · Central Station parking lot', link: 'https://www.visitwinkler.ca/events' });
         if (actualMonth === 6 && dow(yearForMonth, actualMonth, d) === 3) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Concerts in the Park', time: 'Wed 7:00 PM · Bethel Heritage Park', link: 'https://www.visitwinkler.ca/concerts-in-the-park' });
         if (actualMonth === 6 && d >= 5 && d <= 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Summer Storytime', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
         if (actualMonth === 6 && d === 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Paper Chain Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
@@ -195,79 +249,20 @@ function eventToICS(ev) {
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
         if (actualMonth === 7 && d >= 13 && d <= 17) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
+        if (actualMonth === 7 && d === 24) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 17) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
         if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Rise & Shine FREE Morning Camp VBS', time: '9:30 AM · Thiessen Residence, 45 Falcon Drive, Morden', link: 'https://pembinavalleyonline.com/events' });
         if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', link: 'https://morden.ca/community-events' });
+        if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 27) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', link: 'https://winklerchamber.com/events/' });
+        if (actualMonth === 7 && d === 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'fundraiser', title: 'Fundraising BBQ', time: '11:30 AM · Faith Mission, Winkler', link: 'https://winklerchamber.com/events/' });
         if (actualMonth === 8 && d === 9) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
         if (actualMonth === 8 && d === 10) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School · pds.gvsd.ca', link: 'https://pds.gvsd.ca/' });
         if (actualMonth === 8 && d === 18) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Winkler City Hall · 185 Main St', link: 'https://winklerchamber.com/events/' });
         if (actualMonth === 8 && d === 7) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', link: 'https://www.winkler.ca/events' });
-        if (actualMonth === 8 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', link: 'https://www.pembinavalleyonline.com/events/233447' });
-        if (actualMonth === 8 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Fitness', time: 'Wednesdays 9:00 AM · Morden Activity Centre', link: 'https://www.pembinavalleyonline.com/events/232138' });
-        if (actualMonth === 8 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morning Coffee Time', time: 'Wednesdays 9:00 AM · Winkler', link: 'https://www.pembinavalleyonline.com/events/233639' });
-        if (actualMonth === 8 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'music', title: 'Southern MB Choral Society Fall Term', time: 'Tuesdays 6:30 PM · Winkler', link: 'https://www.pembinavalleyonline.com/events/230998' });
-        if (actualMonth === 8 && d === 1) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Pembina Valley Art Walk', time: '6:00 PM – 9:00 PM · Morden Main Street', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 3) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Family Nature Walk', time: '10:00 AM · Pembina River Valley', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 4) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 5) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Pickleball Open Play', time: '1:00 PM · Morden Activity Centre', link: 'https://morden.ca/community-events' });
-        if (actualMonth === 8 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-        if (actualMonth === 8 && d === 10) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 11) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Fall Crafts for Kids', time: '1:00 PM · Morden Public Library', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 12) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Community Softball Tournament', time: '9:00 AM · Morden Ball Diamonds', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Halloween Prep Craft Day', time: '2:00 PM · Winkler Arts & Culture', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 17) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 18) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Pumpkin Patch Open', time: '9:00 AM · Pembina Valley Farm', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Fall Family Fun Run', time: '10:00 AM · Morden Park', link: 'https://morden.ca/community-events' });
-        if (actualMonth === 8 && d === 22) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 24) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Kids Halloween Craft Workshop', time: '3:00 PM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-        if (actualMonth === 8 && d === 25) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Fall Supper at the Community Centre', time: '5:00 PM · Morden Community Centre', link: 'https://morden.ca/community-events' });
-        if (actualMonth === 8 && d === 26) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Trunk or Treat', time: '5:00 PM · Morden Walmart Parking Lot', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 8 && d === 29) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 31) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Halloween Night', time: '6:00 PM – 9:00 PM · Downtown Winkler', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 1) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'November Art Walk', time: '6:00 PM – 9:00 PM · Morden Main Street', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 2) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Family Nature Walk', time: '10:00 AM · Pembina River Valley', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 5) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 7) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Community Smokeout', time: '6:00 PM · Winkler Alliance Church', link: 'https://www.winklerchamber.com/events/' });
-        if (actualMonth === 9 && d === 8) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Pickleball Open Play', time: '1:00 PM · Morden Activity Centre', link: 'https://morden.ca/community-events' });
-        if (actualMonth === 9 && d === 9) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-        if (actualMonth === 9 && d === 12) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 10 && d === 11) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Remembrance Day Craft Workshop', time: '2:00 PM · Morden Public Library', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 15) add(fmt(yearForMonth, actualMonth, d), { category: 'music', title: 'Southern MB Choral Society Fall Term', time: 'Tuesdays 6:30 PM · Winkler', link: 'https://www.pembinavalleyonline.com/events/230998' });
-        if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Story Time at the Winkler Library', time: 'Wednesdays 10:00 AM · Winkler Library', link: 'https://www.pembinavalleyonline.com/events/233447' });
-        if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Fitness', time: 'Wednesdays 9:00 AM · Morden Activity Centre', link: 'https://www.pembinavalleyonline.com/events/232138' });
-        if (actualMonth === 9 && d === 16) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morning Coffee Time', time: 'Wednesdays 9:00 AM · Winkler', link: 'https://www.pembinavalleyonline.com/events/233639' });
-        if (actualMonth === 10 && d === 11) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Remembrance Day Service', time: '11:00 AM · Morden Cenotaph', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 20) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Art Auction & Gallery Night', time: '7:00 PM · Winkler Arts & Culture', link: 'https://www.pembina.ca/p/annual-events' });
-        if (actualMonth === 9 && d === 21) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 22) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Community Carolling Warm-Up', time: '7:00 PM · Morden Concert Hall', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 23) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Kids Craft Saturday', time: '10:00 AM · Winkler Library', link: 'https://www.winklerlibrary.ca' });
-        if (actualMonth === 9 && d === 26) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Farmers Market', time: '8:00 AM – 1:00 PM · Morden Town Square', link: 'https://www.visitwinkler.ca' });
-        if (actualMonth === 9 && d === 28) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Thanksgiving Pie Bake-Off', time: '1:00 PM · Morden Community Centre', link: 'https://morden.ca/community-events' });
-        if (actualMonth === 9 && d === 29) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Turkey Toss Charity Event', time: '10:00 AM · Morden Sportsplex', link: 'https://www.visitwinkler.ca' });
       }
-    }
-
-    // Merge in fetched one-off events (from events.json) so the Activities
-    // calendar shows real community events, not just the hardcoded season
-    // seeds. Dedup by title so a fetched event never lands on a date where
-    // the same-named seed event already exists.
-    if (MERGED_EVENTS && MERGED_EVENTS.length) {
-      const seen = new Set();
-      MERGED_EVENTS.forEach(ev => {
-        if (!ev.date || !ev.title) return;
-        const key = ev.date + '||' + ev.title;
-        if (seen.has(key)) return;
-        seen.add(key);
-        // Skip anything already added as a seed on that date.
-        if (eventsByDate[ev.date]) {
-          const already = eventsByDate[ev.date].some(e => e.title === ev.title);
-          if (already) return;
-        }
-        add(ev.date, ev);
-      });
     }
 
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -295,11 +290,7 @@ function eventToICS(ev) {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
-        // Hardcoded activity events don't carry a `date` field — take it from
-        // the calendar key so eventToICS has something to work with.
-        const evWithDate = ev.date ? ev : { ...ev, date: dateStr };
-        const ics = eventToICS(evWithDate);
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>' + (ics ? '<button class="copy-btn" data-ics="' + encodeURIComponent(ics) + '">Copy</button>' : '');
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>';
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -322,7 +313,7 @@ function eventToICS(ev) {
       label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
     }
 
-    const todays = MERGED_EVENTS.filter(ev => ev.date === todayStr);
+    const todays = EVENTS.filter(ev => ev.date === todayStr);
 
     if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
@@ -337,28 +328,11 @@ function eventToICS(ev) {
       el.target = '_blank';
       el.rel = 'noopener';
       el.dataset.category = ev.category;
-      const ics = eventToICS(ev);
-      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span>` + (ics ? `<button class="copy-btn" data-ics="${encodeURIComponent(ics)}">Copy</button>` : '');
+      el.innerHTML = `<span class="title">${ev.title}</span><span class="time">· ${ev.time}</span><div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>`;
       container.appendChild(el);
     });
   }
-function waitForEvents(callback) {
-    if (MERGED_EVENTS.length > EVENTS.length || typeof loadEventsJson !== 'function') {
-      callback();
-      return;
-    }
-    // loadEventsJson is in-flight; wait until MERGED_EVENTS grows or 2s passes
-    const deadline = Date.now() + 2000;
-    const check = setInterval(() => {
-      if (MERGED_EVENTS.length > EVENTS.length || Date.now() > deadline) {
-        clearInterval(check);
-        callback();
-      }
-    }, 50);
-  }
-
-function activatePage(page) {
-    waitForEvents(() => {
+  function activatePage(page) {
     try {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
@@ -379,7 +353,6 @@ function activatePage(page) {
       const home = document.getElementById('page-home');
       if (home) home.classList.add('active');
     }
-  });
   }
 
   document.querySelectorAll('.nav-link').forEach(link => {
@@ -427,9 +400,7 @@ if (document.readyState === 'loading') {
 
   let weatherCache = null;
   let weatherCacheTime = 0;
-  const WEATHER_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
-  let weatherFallbackTimer = null;
-  let weatherErrorHandler = null;
+  const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
   async function loadWeather() {
     const heroCond = document.getElementById('heroCondition');
@@ -469,35 +440,11 @@ if (document.readyState === 'loading') {
       }
     };
 
-    // Guaranteed fallback after 5 seconds regardless of network state.
-    // Clear any previous timer first so re-entrant / periodic calls don't
-    // stack multiple fallbacks that would all fire and write "unavailable".
-    if (weatherFallbackTimer) clearTimeout(weatherFallbackTimer);
-    const fallbackTimer = setTimeout(() => {
-      weatherFallbackTimer = null;
-      fallback(3);
-    }, 5000);
-    weatherFallbackTimer = fallbackTimer;
+    // Guaranteed fallback after 5 seconds regardless of network state
+    const fallbackTimer = setTimeout(() => fallback(3), 5000);
 
     try {
-      // Use cached weather data if available and fresh (memory or localStorage)
-      if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
-        console.log('Using cached weather data');
-      } else {
-        // Memory cache empty or stale — try localStorage
-        try {
-          const saved = localStorage.getItem('pve_weather_v1');
-          if (saved) {
-            const parsed = JSON.parse(saved);
-            if (parsed && parsed.ts && (Date.now() - parsed.ts) < 60 * 60 * 1000) {
-              weatherCache = parsed.data;
-              weatherCacheTime = parsed.ts;
-              console.log('Using localStorage weather data');
-            }
-          }
-        } catch (e) { /* ignore */ }
-      }
-
+      // Use cached weather data if available and fresh
       if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
         console.log('Using cached weather data');
         const cw = weatherCache.current_weather;
@@ -515,17 +462,13 @@ if (document.readyState === 'loading') {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 8000);
       const res = await fetch(url, { signal: controller.signal });
-      if (!res.ok) throw new Error('weather ' + res.status);
       clearTimeout(timeoutId);
       clearTimeout(fallbackTimer);
       const data = await res.json();
       
-      // Cache successful response (memory + localStorage)
+      // Cache successful response
       weatherCache = data;
       weatherCacheTime = Date.now();
-      try {
-        localStorage.setItem("pve_weather_v1", JSON.stringify({ ts: weatherCacheTime, data }));
-      } catch (e) { /* ignore storage errors */ }
       const cw = data.current_weather;
       apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
       updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
@@ -533,19 +476,9 @@ if (document.readyState === 'loading') {
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
     } catch (e) {
-      if (weatherFallbackTimer) { clearTimeout(weatherFallbackTimer); weatherFallbackTimer = null; }
-      console.warn('Weather fetch failed, using cached/fallback data:', e);
-      // If we already have a cached result, use it instead of hard-failing to "unavailable"
-      if (weatherCache && (Date.now() - weatherCacheTime) < 60 * 60 * 1000) {
-        const cw = weatherCache.current_weather;
-        apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date(weatherCacheTime).toLocaleTimeString());
-        updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
-        updateWeatherPlan(cw.temperature, cw.weathercode);
-        if (weatherCache.daily) renderWeekly(weatherCache.daily);
-        setWeatherVideo(cw.weathercode, cw.temperature);
-      } else {
-        fallback(3);
-      }
+      clearTimeout(fallbackTimer);
+      console.warn('Weather fallback triggered:', e);
+      fallback(3);
     }
   }
 
@@ -561,100 +494,22 @@ if (document.readyState === 'loading') {
     return 'Weather';
   }
 
-// Parse event end date from various formats
-function parseEventEnd(dateStr, year) {
-  const y = year || new Date().getFullYear();
-  const s = String(dateStr || "").trim();
-  if (!s) return null;
-
-  const months = {
-    jan: 0, january: 0, feb: 1, february: 1, mar: 2, march: 2,
-    apr: 3, april: 3, may: 4, jun: 5, june: 5, jul: 6, july: 6,
-    aug: 7, august: 7, sep: 8, sept: 8, september: 8,
-    oct: 9, october: 9, nov: 10, november: 10, dec: 11, decimal: 11
-  };
-
-  // Keep season-long items until that season ends
-  if (/summer/i.test(s)) return new Date(y, 8, 21); // Sep 21
-  if (/fall|autumn/i.test(s)) return new Date(y, 11, 20);
-  if (/winter/i.test(s)) return new Date(y + 1, 2, 19);
-  if (/spring/i.test(s)) return new Date(y, 5, 20);
-  if (/^tbd$/i.test(s)) return null;
-
-  // Range: "Aug 31-Sep 4" or "Aug 31 – Sep 4"
-  const range = s.match(
-    /([A-Za-z]+)\s+(\d{1,2})(?:.*)?\s*[-–to]+\s*([A-Za-z]+)?\s*(\d{1,2})/i
-  );
-  if (range) {
-    const endMonthName = (range[3] || range[1]).toLowerCase();
-    const endMonth = months[endMonthName];
-    if (endMonth != null) return new Date(y, endMonth, parseInt(range[4], 10));
-  }
-
-  // Single: "Sep 9 (Wed)", "Sept 19", "2026-09-09"
-  const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (iso) return new Date(+iso[1], +iso[2] - 1, +iso[3]);
-
-  const one = s.match(/([A-Za-z]+)\s+(\d{1,2})/);
-  if (one && months[one[1].toLowerCase()] != null) {
-    return new Date(y, months[one[1].toLowerCase()], parseInt(one[2], 10));
-  }
-  return null;
-}
-
-function isUpcoming(ev) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const end = parseEventEnd(ev.endDate || ev.date);
-  if (!end) return true; // TBD / unparsed — keep
-  end.setHours(23, 59, 59, 999);
-  return end >= today;
-}
-
-
-
-
   function setWeatherVideo(code, temp) {
     const video = document.getElementById('heroWeatherVideo');
     if (!video) return;
     const hour = new Date().getHours();
     const isPrecip = code >= 51 && code <= 99;
     const isClear = code <= 3;
-    const src = isPrecip
-      ? 'weather-media/rain.mp4?v=1789599600'
-      : (isClear && (hour < 6 || hour >= 20)
-          ? 'weather-media/night.mp4?v=1789599600'
-          : 'weather-media/day.mp4?v=1789599600');
-    const want = src.split('/').pop();
-    const current = video.src ? video.src.split('/').pop() : '';
-    if (current === want) return;
-
-    // Tear down any previously-armed error listener so re-entrant calls don't
-    // stack handlers that each independently hide the video + show overlay.
-    if (weatherErrorHandler) {
-      video.removeEventListener('error', weatherErrorHandler);
+    let src = 'weather-media/day.mp4?v=1788408739';
+    if (isPrecip) {
+      src = 'weather-media/rain.mp4?v=1788408739';
+    } else if (isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4?v=1788408739';
+    } else if (!isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4?v=1788408739';
     }
-    const onVideoError = () => {
-      video.style.opacity = '0';
-      // If we already have real weather text, the video is just decoration —
-      // show a soft overlay note rather than the hard "Weather unavailable" state.
-      const heroCond = document.getElementById('heroCondition');
-      const overlay = document.getElementById('heroWeatherOverlay');
-      if (overlay) {
-        overlay.style.opacity = (heroCond && heroCond.textContent && heroCond.textContent !== '--°' && heroCond.textContent !== 'Weather unavailable')
-          ? '0.5'
-          : '1';
-        if (heroCond && heroCond.textContent && heroCond.textContent !== '--°' && heroCond.textContent !== 'Weather unavailable') {
-          overlay.textContent = 'Video unavailable — weather data still shown';
-        }
-      }
-      // Try once more with the fallback day video on the next cycle; do not
-      // leave the element in a permanently-faulted state.
-      try { video.src = 'weather-media/day.mp4?v=1789599600'; } catch (e) { /* ignore */ }
-    };
-    weatherErrorHandler = onVideoError;
-    video.addEventListener('error', onVideoError, { once: true });
-
+    const currentSrc = video.src ? video.src.split('/').pop() : '';
+    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
     video.style.transition = 'opacity 0.6s ease';
     video.style.opacity = '0';
     setTimeout(() => {
@@ -662,23 +517,31 @@ function isUpcoming(ev) {
       video.load();
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.then(() => { video.style.opacity = '1'; })
-          .catch(() => {
-            // Autoplay blocked (mobile / post-interaction). The error handler
-            // above will run and degrade gracefully; don't hard-fail here.
-            video.style.opacity = '0.35';
-            const overlay = document.getElementById('heroWeatherOverlay');
-            if (overlay && overlay.style.opacity !== '1') {
-              overlay.style.opacity = '0.5';
-              const heroCond = document.getElementById('heroCondition');
-              if (heroCond && heroCond.textContent && heroCond.textContent !== '--°' && heroCond.textContent !== 'Weather unavailable') {
-                overlay.textContent = 'Video paused — weather data still shown';
-              }
-            }
-          });
+        playPromise.then(() => {
+          video.style.opacity = '1';
+        }).catch(() => {
+          video.style.opacity = '0';
+          const overlay = document.getElementById('heroWeatherOverlay');
+          if (overlay) overlay.style.opacity = '1';
+        });
       }
-      // Remove the one-shot error listener once we've either played or will
-      // rely on the next call to re-arm. Keep it armed until success or next call.
+      video.addEventListener('error', () => {
+        const img = document.getElementById('heroWeatherImage');
+        if (!img) {
+          const fallbackImg = document.createElement('img');
+          fallbackImg.id = 'heroWeatherImage';
+          fallbackImg.alt = 'Weather';
+          fallbackImg.src = 'weather-media/day_frame.jpg';
+          fallbackImg.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+          const scene = document.getElementById('weatherScene');
+          if (scene) scene.insertBefore(fallbackImg, video);
+        } else {
+          img.style.opacity = '1';
+        }
+        video.style.opacity = '0';
+        const overlay = document.getElementById('heroWeatherOverlay');
+        if (overlay) overlay.style.opacity = '1';
+      }, { once: true });
     }, 600);
   }
 
@@ -692,17 +555,7 @@ function isUpcoming(ev) {
     } else {
       return '<div class="wi wi-snow"></div>';
     }
-
-
-function fill(box, list) {
-  if (!box) return;
-  const live = list.filter(isUpcoming);
-  box.innerHTML = live.length
-    ? live.map(renderCard).join("")
-    : '<p class="muted">No upcoming events in this section.</p>';
-}
-
-}
+  }
 
   function drawWeatherIcon(wrapId, code) {
     const wrap = document.getElementById(wrapId);
@@ -919,9 +772,7 @@ function fill(box, list) {
       { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
     ];
 
-    container.innerHTML = featured.map(ev => {
-      const ics = eventToICS(ev);
-      return `
+    container.innerHTML = featured.map(ev => `
       <a class="featured-card bubble" href="${ev.link || '#'}" target="_blank" rel="noopener" data-category="${ev.category}">
         <div class="row">
           <div class="badge-row">
@@ -932,10 +783,10 @@ function fill(box, list) {
         </div>
         <div class="title">${ev.title}</div>
         <div class="meta">${ev.time}</div>
-        ${ics ? `<button class="copy-btn" data-ics="${encodeURIComponent(ics)}">Copy</button>` : `<button class="copy-btn" data-copy="${`${ev.title}\n${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>`}
+        <button class="copy-btn" data-copy="${`${ev.title}
+${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       </a>
-    `;
-    }).join('');
+    `).join('');
   }
 
   function renderFamilyEvents() {
@@ -944,8 +795,9 @@ function fill(box, list) {
     const garageBox = document.getElementById('family-garage-events');
 
     const schoolEvents = [
-      { title: 'After School Art Club | Ages 5-8', date: 'Sep 15', time: 'Sep 15 – Oct 20 · Winkler Arts & Culture', category: 'family', link: 'https://www.pembinavalleyonline.com/events/231215' },
-      { title: 'Story Time at the Winkler Library', date: 'Sep 16', time: 'Wednesdays 10:00 AM · Winkler Library', category: 'family', link: 'https://www.pembinavalleyonline.com/events/233447' },
+      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
+      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
+      { title: 'Whimsical Wonders Art Camp', date: 'Aug 31-Sep 4', time: 'City of Morden · morden.ca', category: 'family', link: 'https://morden.ca/community-events' },
       { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · altona.ca', category: 'family', link: 'https://altona.ca/upcoming-events' }
     ];
 
@@ -953,42 +805,43 @@ function fill(box, list) {
     ];
 
     const garageEvents = [
-      { title: 'Fitness', date: 'Sep 16', time: 'Wednesdays 9:00 AM · Morden Activity Centre', category: 'sports', link: 'https://www.pembinavalleyonline.com/events/232138' },
-      { title: 'Morning Coffee Time', date: 'Sep 16', time: 'Wednesdays 9:00 AM · Winkler', category: 'community', link: 'https://www.pembinavalleyonline.com/events/233639' },
-      { title: 'Southern MB Choral Society Fall Term', date: 'Sep 15', time: 'Tuesdays 6:30 PM · Winkler', category: 'music', link: 'https://www.pembinavalleyonline.com/events/230998' }
+      { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
+      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' },
+      { title: 'Pie Auction Fundraiser', date: 'Sept 12', time: '6:00 PM · Altona Community Hall', category: 'fundraiser', link: '#' },
+      { title: 'Garage Sale for Charity', date: 'Sept 19', time: '9:00 AM · Winkler', category: 'fundraiser', link: '#' }
     ];
 
-    const renderCard = (ev, dateStr) => {
+    const renderCard = (ev) => {
       const link = ev.link || '#';
-      const ics = eventToICS({ ...ev, date: dateStr || ev.date });
       return `
       <a class="day-event" href="${link}" target="_blank" rel="noopener" data-category="${ev.category || 'family'}">
         <div class="title">${ev.title}</div>
         <div class="time">${ev.date} · ${ev.time}</div>
+        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${ev.title.replace(/"/g, '&quot;')}" data-time="${ev.time.replace(/"/g, '&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
+        <button class="copy-btn" data-copy="${`${ev.title}
+${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       </a>
-      ${ics ? `<button class="copy-btn" data-ics="${encodeURIComponent(ics)}">Copy</button>` : ''}
     `;
     };
 
-    // Filter out past events
-        const liveSchool = schoolEvents.filter(e => isUpcoming(e));
-        const liveChurch = churchEvents.filter(e => isUpcoming(e));
-        const liveGarage = garageEvents.filter(e => isUpcoming(e));
-
-        if (schoolBox) schoolBox.innerHTML = liveSchool.length ? liveSchool.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
-        if (churchBox) churchBox.innerHTML = liveChurch.length ? liveChurch.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
-        if (garageBox) garageBox.innerHTML = liveGarage.length ? liveGarage.map(renderCard).join('') : '<p class="muted">No upcoming events in this section.</p>';
+    if (schoolBox) schoolBox.innerHTML = schoolEvents.map(renderCard).join('');
+    if (churchBox) churchBox.innerHTML = churchEvents.map(renderCard).join('');
+    if (garageBox) garageBox.innerHTML = garageEvents.map(renderCard).join('');
   }
+  document.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-export="ics"]');
+    if (!btn) return;
+    ev.preventDefault();
+    addToCalendar(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
+  });
+
   document.addEventListener('click', (ev) => {
     const copyBtn = ev.target.closest('.copy-btn');
     if (!copyBtn) return;
     ev.preventDefault();
-    const raw = copyBtn.dataset.ics || '';
-    if (!raw) {
-      const text2 = copyBtn.dataset.copy || '';
-      if (!text2) return;
-      let text;
-      try { text = decodeURIComponent(text2); } catch (e) { text = text2; }
+    const text = copyBtn.dataset.copy || '';
+    if (!text) return;
+    const fallback = () => {
       const ta = document.createElement('textarea');
       ta.value = text;
       ta.style.position = 'fixed';
@@ -1000,50 +853,24 @@ function fill(box, list) {
       const original = copyBtn.textContent;
       copyBtn.textContent = 'Copied';
       copyBtn.disabled = true;
-      setTimeout(() => { copyBtn.textContent = original; copyBtn.disabled = false; }, 1200);
-      return;
+      setTimeout(() => {
+        copyBtn.textContent = original;
+        copyBtn.disabled = false;
+      }, 1200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        copyBtn.disabled = true;
+        setTimeout(() => {
+          copyBtn.textContent = original;
+          copyBtn.disabled = false;
+        }, 1200);
+      }).catch(fallback);
+    } else {
+      fallback();
     }
-    // Plain-text clipboard copy — no .ics file download. Calendar apps on
-    // mobile don't reliably parse pasted ICS text into the right fields, so
-    // feed the user a clean single-line summary they can paste where it fits.
-    let ics;
-    try { ics = decodeURIComponent(raw); } catch (e) { ics = raw; }
-    if (!ics) return;
-    const dtStartMatch = ics.match(/DTSTART:(\d{8}T\d{6})/);
-    const dtEndMatch = ics.match(/DTEND:(\d{8}T\d{6})/);
-    const summaryMatch = ics.match(/SUMMARY:([^\r\n]+)/);
-    const locationMatch = ics.match(/LOCATION:([^\r\n]+)/);
-    const title = summaryMatch ? summaryMatch[1].replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\').trim() : 'Event';
-    const location = locationMatch ? locationMatch[1].replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\').trim() : '';
-    const dtStart = dtStartMatch ? dtStartMatch[1] : '';
-    const dtEnd = dtEndMatch ? dtEndMatch[1] : '';
-    function _icsDtToText(dt) {
-      if (!dt || dt.length < 15) return '';
-      const y = dt.slice(0, 4), m = dt.slice(4, 6), d = dt.slice(6, 8);
-      const h = parseInt(dt.slice(9, 11), 10), min = dt.slice(11, 13);
-      const date = new Date(y, m - 1, d, h, min);
-      if (isNaN(date.getTime())) return dt;
-      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      let h12 = h % 12; if (h12 === 0) h12 = 12;
-      return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ', ' + h12 + ':' + min.padStart(2,'0') + ' ' + ampm;
-    }
-    const startText = _icsDtToText(dtStart);
-    const timeText = startText;
-    const text = location ? title + ' | ' + timeText + ' | ' + location : title + ' | ' + timeText;
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); } catch (e) { /* ignore */ }
-    document.body.removeChild(ta);
-    const original = copyBtn.textContent;
-    copyBtn.textContent = 'Copied';
-    copyBtn.disabled = true;
-    setTimeout(() => { copyBtn.textContent = original; copyBtn.disabled = false; }, 1200);
-    return;
   });
 
   const eventForm = document.getElementById('event-form');
