@@ -320,6 +320,36 @@
   .day-header.expanded .day-toggle::before {
     content: '▼';
   }
+
+/* Town filter buttons */
+.town-btn {
+  transition: all 0.2s ease;
+}
+.town-btn:hover {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: #f59e0b !important;
+  color: #f59e0b !important;
+}
+.town-btn.active {
+  background: #f59e0b !important;
+  color: #0b1220 !important;
+  border-color: #f59e0b !important;
+  font-weight: 700;
+}
+/* Search input focus */
+#event-search:focus {
+  border-color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.1) !important;
+}
+/* Last updated styling */
+#last-updated {
+  color: #64748b;
+}
+/* Empty state improvements */
+.day-event.bubble:empty::after {
+  content: 'No events';
+}
+
   .day-header .day-name {
     font-weight: 700;
     font-size: 0.95rem;
@@ -1060,7 +1090,7 @@
     <section class="section">
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📌 Today's Schedule</h2>
-        <p class="muted" id="today-date-label">Loading today's events...</p>
+        <p class="muted" id="today-date-label">Loading today's events...</p><p class="muted" id="last-updated" style="font-size:0.75rem;"></p>
         <div class="spacer"></div>
         <div id="today-events"></div>
       </div>
@@ -1069,7 +1099,7 @@
     <section class="section">
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📅 This Week's Events</h2>
-        <div id="daily-events"></div>
+        <input type="text" id="event-search" placeholder="Search events..." autocomplete="off" style="padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.85rem;outline:none;margin-bottom:10px;width:100%;max-width:300px;"><div style="margin-bottom:8px;"><button class="town-btn" data-town="all" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">All</button><button class="town-btn" data-town="Winkler" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Winkler</button><button class="town-btn" data-town="Morden" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Morden</button><button class="town-btn" data-town="Altona" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;">Altona</button></div><div id="daily-events"></div>
       </div>
     </section>
 
@@ -1483,7 +1513,8 @@
 
 <footer>
   <strong>Pembina Valley Events</strong> · Pembina, MB<br>
-  Local events, activities, weather, and community connections.
+  Local events, activities, weather, and community connections.<br>
+  <span style="font-size:0.75rem;opacity:0.6;">Updated daily from pembinavalleyonline.com · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Submit an event</a> · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Questions</a></span>
 </footer>
 
 

@@ -149,9 +149,23 @@ function combineDateTime(dateStr, timeStr) {
     const rangeEnd = new Date(today);
     rangeEnd.setDate(rangeEnd.getDate() + 6);
 
+    const selectedTown = window._selectedTown || 'all';
+    const searchQuery = window._searchQuery || '';
     const upcoming = EVENTS.filter(ev => {
       const d = new Date(ev.date + 'T12:00:00');
-      return d > today && d <= rangeEnd;
+      if (d <= today || d > rangeEnd) return false;
+      // Town filter
+      if (selectedTown !== 'all') {
+        const loc = (ev.time || '').toLowerCase();
+        if (!loc.includes(selectedTown.toLowerCase())) return false;
+      }
+      // Search filter
+      if (searchQuery) {
+        const title = (ev.title || '').toLowerCase();
+        const loc = (ev.time || '').toLowerCase();
+        if (!title.includes(searchQuery) && !loc.includes(searchQuery)) return false;
+      }
+      return true;
     }).sort((a, b) => a.date.localeCompare(b.date) || timeToSort(a.time) - timeToSort(b.time));
 
     const grouped = {};
@@ -315,7 +329,8 @@ function combineDateTime(dateStr, timeStr) {
       label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
     }
 
-    const todays = EVENTS.filter(ev => ev.date === todayStr);
+    const searchQuery = window._searchQuery || '';
+    const todays = EVENTS.filter(ev => ev.date === todayStr && (!searchQuery || (ev.title || '').toLowerCase().includes(searchQuery) || (ev.time || '').toLowerCase().includes(searchQuery)));
 
     if (!todays.length) {
       container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
@@ -364,7 +379,47 @@ function combineDateTime(dateStr, timeStr) {
     });
   });
 
-  const initPage = () => {
+  
+  function renderSearchBar() {
+    // Add search input if not already present
+    const nav = document.querySelector('.nav-inner');
+    if (!nav || document.getElementById('event-search')) return;
+    const searchHtml = '<input type="text" id="event-search" placeholder="Search events..." autocomplete="off" style="padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.85rem;outline:none;max-width:220px;">';
+    nav.insertAdjacentHTML('beforeend', searchHtml);
+    const searchInput = document.getElementById('event-search');
+    searchInput.addEventListener('input', (e) => {
+      window._searchQuery = e.target.value.toLowerCase();
+      buildUpcoming();
+      buildToday();
+    });
+  }
+
+  // Town filter button delegation
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('town-btn')) {
+      const town = e.target.dataset.town;
+      window._selectedTown = town;
+      // Update active state
+      document.querySelectorAll('.town-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.town === town);
+      });
+      buildUpcoming();
+    }
+  });
+
+  // Search bar wiring
+  function initSearch() {
+    const searchInput = document.getElementById('event-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        window._searchQuery = e.target.value.toLowerCase().trim();
+        buildUpcoming();
+        buildToday();
+      });
+    }
+  }
+const initPage = () => {
+    initSearch();
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
       activatePage(page);
@@ -390,7 +445,15 @@ function combineDateTime(dateStr, timeStr) {
         link: e.link || '#'
       }));
       console.log('Loaded ' + EVENTS.length + ' events from events.json');
-    } catch (err) {
+
+  function updateLastUpdated() {
+    const el = document.getElementById('last-updated');
+    if (!el) return;
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2,'0');
+    const mm = String(now.getMinutes()).padStart(2,'0');
+    el.textContent = 'Last updated ' + hh + ':' + mm;
+  }    } catch (err) {
       console.warn('events.json load failed, using fallback:', err);
     }
   }
@@ -786,15 +849,18 @@ if (document.readyState === 'loading') {
   function renderFeatured() {
     const container = document.getElementById('featured-events');
     if (!container) return;
-    const featured = [
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    // Only show upcoming events from events.json, not "TBD", "Spring", etc.
+    const featured = EVENTS.filter(ev => {
+      const d = new Date(ev.date + 'T12:00:00');
+      return d >= now && ev.date && ev.date.match(/^\d{4}-\d{2}-\d{2}$/);
+    }).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 6);
 
-      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18', link: 'https://winklerchamber.com/events/' },
-      { category: 'community', title: 'Honey Garlic & Maple Syrup Festival', time: 'Second weekend Sep · Manitou, MB', date: 'Sep', link: 'https://hgmsfestival.com/' },
-      { category: 'community', title: 'Manitou Ag Fair', time: 'Manitou, MB', date: 'TBD', link: 'https://www.pembina.ca/p/annual-events' },
-      { category: 'outdoors', title: 'Raptor Festival', time: 'Spring · La Riviere, MB', date: 'Spring', link: 'https://www.pembina.ca/p/annual-events' },
-      { category: 'outdoors', title: 'Outdoor Summer Adventure', time: 'Pembina, MB', date: 'Summer', link: 'https://www.pembina.ca/p/annual-events' },
-      { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
-    ];
+    if (!featured.length) {
+      container.innerHTML = '<div class="muted" style="padding:14px;">No featured events coming up — check back soon!</div>';
+      return;
+    }
 
     container.innerHTML = featured.map(ev => `
       <a class="featured-card bubble" href="${ev.link || '#'}" target="_blank" rel="noopener" data-category="${ev.category}">
@@ -802,13 +868,11 @@ if (document.readyState === 'loading') {
           <div class="badge-row">
             <span class="date-badge">${ev.date}</span>
             <span class="cat-badge">${ev.category}</span>
-            ${ev.promoted ? '<span class="cat-badge" style="background:#f59e0b;color:#fff">Promoted</span>' : ''}
           </div>
         </div>
         <div class="title">${ev.title}</div>
         <div class="meta">${ev.time}</div>
-        <button class="copy-btn" data-copy="${`${ev.title}
-${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
+        <button class="copy-btn" data-copy="${`${ev.title}\n${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       </a>
     `).join('');
   }
