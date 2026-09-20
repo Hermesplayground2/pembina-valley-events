@@ -9,7 +9,7 @@
 <meta name="description" content="Pembina Valley Events — local events, activities, and community happenings in Winkler, Morden, Altona, Plum Coulee, and surrounding Manitoba. Find things to do, local sports, family activities, community schedules, and hope.">
 <meta name="keywords" content="Pembina Valley events, Winkler events, Morden events, Altona events, Manitoba community events, local activities, Winkler weather, Pembina Valley calendar, things to do Manitoba">
 <link rel="canonical" href="https://pembinaevents.ca/">
-<title>Pembina Valley Events · Pembina, MB</title><!-- deploy:1789535002 -->
+<title>Pembina Valley Events · Pembina, MB</title><!-- deploy:1789599600 -->
 
 
 <meta property="og:title" content="Pembina Valley Events">
@@ -192,7 +192,7 @@
     border-radius: 20px;
     background: rgba(15, 23, 42, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 10px 24px rgba(15,23,42,0.25);
   }
   .sports-list .event-row:hover {
     background: rgba(15, 23, 42, 0.7);
@@ -298,10 +298,7 @@
     user-select: none;
     transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .day-header:hover {
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(245,158,11,0.3);
-  }
+  .day-header:hover { background: rgba(255,255,255,0.09); border-color: rgba(245,158,11,0.3); }
   .day-header .day-toggle {
     display: inline-block;
     width: 24px;
@@ -311,44 +308,19 @@
     flex-shrink: 0;
     transition: transform 0.2s ease;
   }
-  .day-header .day-toggle::before {
-    content: '▶';
-    display: inline-block;
-    width: 20px;
-    text-align: center;
-  }
-  .day-header.expanded .day-toggle::before {
-    content: '▼';
-  }
+  .day-header .day-toggle::before { content: '▶'; display: inline-block; width: 20px; text-align: center; }
+  .day-header.expanded .day-toggle::before { content: '▼'; }
 
 /* Town filter buttons */
-.town-btn {
-  transition: all 0.2s ease;
-}
-.town-btn:hover {
-  background: rgba(245, 158, 11, 0.15) !important;
-  border-color: #f59e0b !important;
-  color: #f59e0b !important;
-}
-.town-btn.active {
-  background: #f59e0b !important;
-  color: #0b1220 !important;
-  border-color: #f59e0b !important;
-  font-weight: 700;
-}
+.town-btn { transition: all 0.2s ease; }
+.town-btn:hover { background: rgba(245, 158, 11, 0.15) !important; border-color: #f59e0b !important; color: #f59e0b !important; }
+.town-btn.active { background: #f59e0b !important; color: #0b1220 !important; border-color: #f59e0b !important; font-weight: 700; }
 /* Search input focus */
-#event-search:focus {
-  border-color: #f59e0b !important;
-  background: rgba(245, 158, 11, 0.1) !important;
-}
+#event-search:focus { border-color: #f59e0b !important; background: rgba(245, 158, 11, 0.1) !important; }
 /* Last updated styling */
-#last-updated {
-  color: #64748b;
-}
+#last-updated { color: #64748b; }
 /* Empty state improvements */
-.day-event.bubble:empty::after {
-  content: 'No events';
-}
+.no-events { color: var(--muted); font-size: 0.9rem; padding: 16px; text-align: center; }
 
   .day-header .day-name {
     font-weight: 700;
@@ -366,18 +338,8 @@
     margin-left: 10px;
     flex-shrink: 0;
   }
-  .day-section {
-    margin-bottom: 14px;
-  }
-  .event-list.hidden-events {
-    display: none;
-  }
-  .no-events {
-    color: var(--muted);
-    font-size: 0.9rem;
-    padding: 10px;
-    text-align: center;
-  }
+  .day-section { margin-bottom: 14px; }
+  .event-list.hidden-events { display: none; }
   .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .calendar-day {
     background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; min-height: 110px;
@@ -432,11 +394,7 @@
     font-size: 0.82rem;
     margin-top: 4px;
   }
-  .weather-card-ref-dark h2 {
-    color: #f1f5f9;
-    font-weight: 900;
-    margin: 0 0 14px;
-  }
+  .weather-card-ref-dark h2 { color: #f1f5f9; font-weight: 900; margin: 0 0 14px; }
   .weather-icon-wrap {
     width: 160px;
     height: 160px;
@@ -457,11 +415,7 @@
       linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);
     animation: weatherSceneShift 14s ease-in-out infinite;
   }
-  @keyframes weatherSceneShift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-2%, 1%) scale(1.04); }
-    66% { transform: translate(2%, -1%) scale(1.02); }
-  }
+  @keyframes weatherSceneShift { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-2%, 1%) scale(1.04); } 66% { transform: translate(2%, -1%) scale(1.02); } }
   .weather-icon-wrap .animated-icon {
     position: relative;
     z-index: 2;
@@ -500,26 +454,15 @@
     box-shadow: 0 18px 30px rgba(15,23,42,0.45);
     animation: cloudDrift 5.5s ease-in-out infinite;
   }
-  .animated-icon .cloud::before {
+  .animated-icon .cloud::before, .animated-icon .cloud::after {
     content: "";
     position: absolute;
-    width: 36px;
-    height: 36px;
     background: rgba(226,232,240,0.95);
     border-radius: 50%;
     top: -18px;
-    left: 14px;
   }
-  .animated-icon .cloud::after {
-    content: "";
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    background: rgba(226,232,240,0.92);
-    border-radius: 50%;
-    top: -12px;
-    left: 38px;
-  }
+  .animated-icon .cloud::before { width: 36px; height: 36px; left: 14px; }
+  .animated-icon .cloud::after { width: 26px; height: 26px; left: 38px; }
   .animated-icon .rain-drop {
     position: absolute;
     width: 3px;
@@ -534,28 +477,11 @@
     font-size: 14px;
     animation: snowFall 2.8s linear infinite;
   }
-  @keyframes sunPulse {
-    0%, 100% { transform: scale(1); opacity: 0.95; }
-    50% { transform: scale(1.08); opacity: 1; }
-  }
-  @keyframes cloudDrift {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-12px); }
-  }
-  @keyframes rainFall {
-    0% { transform: translateY(-20px) translateX(0); opacity: 0; }
-    30% { opacity: 0.9; }
-    100% { transform: translateY(44px) translateX(6px); opacity: 0; }
-  }
-  @keyframes snowFall {
-    0% { transform: translateY(-18px) translateX(0) rotate(0deg); opacity: 0; }
-    30% { opacity: 0.9; }
-    100% { transform: translateY(40px) translateX(10px) rotate(180deg); opacity: 0; }
-  }
-  @keyframes weatherSceneShift {
-    0%, 100% { filter: hue-rotate(0deg) brightness(1); }
-    50% { filter: hue-rotate(8deg) brightness(1.05); }
-  }
+  @keyframes sunPulse { 0%, 100% { transform: scale(1); opacity: 0.95; } 50% { transform: scale(1.08); opacity: 1; } }
+  @keyframes cloudDrift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-12px); } }
+  @keyframes rainFall { 0% { transform: translateY(-20px) translateX(0) opacity: 0; } 30% { opacity: 0.9; } 100% { transform: translateY(44px) translateX(6px) opacity: 0; } }
+  @keyframes snowFall { 0% { transform: translateY(-18px) translateX(0) rotate(0deg) opacity: 0; } 30% { opacity: 0.9; } 100% { transform: translateY(40px) translateX(10px) rotate(180deg) opacity: 0; } }
+  @keyframes weatherSceneShift { 0%, 100% { filter: hue-rotate(0deg) brightness(1); } 50% { filter: hue-rotate(8deg) brightness(1.05); } }
   .weather-card::after {
     content: "";
     position: absolute;
@@ -614,27 +540,11 @@
     transition: opacity 0.25s ease;
     animation: borderShift 8s linear infinite;
   }
-  @keyframes borderShift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
-  }
-  .featured-card:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 20px 50px rgba(15,23,42,0.15);
-    border-color: rgba(13,148,136,0.35);
-  }
+  @keyframes borderShift { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+  .featured-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(15,23,42,0.15); border-color: rgba(13,148,136,0.35); }
   .featured-card:hover::before { opacity: 1; }
   .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-  .featured-card .title {
-    font-weight: 900;
-    font-size: 1.05rem;
-    margin: 0 auto 6px;
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    max-width: 90%;
-  }
+  .featured-card .title { font-weight: 900; font-size: 1.05rem; margin: 0 auto 6px; letter-spacing: -0.01em; text-decoration: none; text-align: center; display: block; max-width: 90%; }
   .featured-card .title a { text-decoration: none; color: inherit; }
   .featured-card .title a:hover { text-decoration: underline; }
   .featured-card .meta { color: var(--muted); font-size: 0.9rem; }
@@ -643,11 +553,7 @@
   .featured-card .row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
   .featured-card .trust { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
   .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-  .cta-btn {
-    padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.9rem;
-    background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255,255,255,0.12); color: #e2e8f0; text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-  }
+  .cta-btn { padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.9rem; background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255,255,255,0.12); color: #e2e8f0; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; }
   .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,0.25); background: rgba(255,255,255,0.08); color: white; border-color: rgba(255,255,255,0.25); }
   .cta-btn.animated { animation: ctaPulse 2.4s ease-in-out infinite; }
   footer {
@@ -657,25 +563,10 @@
     border-top: 1px solid rgba(255,255,255,0.08);
   }
   @media (max-width: 640px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    nav { padding: 10px 12px; }
-    .nav-inner { 
-      display: flex; 
-      flex-wrap: nowrap; 
-      overflow-x: auto; 
-      gap: 8px; 
-      justify-content: flex-start; 
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 4px;
-    }
+    .grid-2 { grid-template-columns: 1fr; } nav { padding: 10px 12px; }
+    .nav-inner { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; justify-content: flex-start; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
     .nav-inner::-webkit-scrollbar { display: none; }
-    .nav-link {
-      white-space: nowrap;
-      flex: 0 0 auto;
-      padding: 10px 14px;
-      font-size: 0.85rem;
-    }
+    .nav-link { white-space: nowrap; flex: 0 0 auto; padding: 10px 14px; font-size: 0.85rem; }
     .page { padding-top: 12px; }
     .grid-3 { grid-template-columns: 1fr; }
     .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
@@ -685,125 +576,34 @@
   }
   .contact-form { display: grid; gap: 12px; }
   .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: 1px solid rgba(148,163,184,0.7);
-    background: rgba(15, 23, 42, 0.7);
-    font: inherit;
-    color: #e2e8f0;
-    outline: none;
-    transition: border-color 0.2s ease;
+  .contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%; padding: 10px 12px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: rgba(15, 23, 42, 0.7); font: inherit; color: #e2e8f0; outline: none; transition: border-color 0.2s ease;
   }
-  .contact-form input:focus,
-  .contact-form select:focus,
-  .contact-form textarea:focus {
-    border-color: #2563eb;
-  }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: #2563eb; }
   .contact-form textarea { resize: vertical; min-height: 100px; }
-  .contact-submit {
-    justify-self: start;
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: 1px solid rgba(148,163,184,0.7);
-    background: rgba(15, 23, 42, 0.7);
-    color: #e2e8f0;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
+  .contact-submit { justify-self: start; padding: 10px 20px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: rgba(15, 23, 42, 0.7); color: #e2e8f0; font-weight: 600; cursor: pointer; transition: background 0.2s ease; }
   .contact-submit:hover { background: rgba(30, 41, 59, 0.9); }
   .contact-hint { margin-top: 8px; font-size: 0.9rem; color: #64748b; }
-  @media (max-width: 640px) {
-    .contact-row { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 640px) { .contact-row { grid-template-columns: 1fr; } }
   .contact-me { padding-top: 14px; border-top: 1px solid rgba(148,163,184,0.25); }
   .contact-me h3 { font-size: 1rem; margin: 0 0 6px; color: #f1f5f9; }
   .contact-me p { margin: 0 0 8px; color: #94a3b8; font-size: 0.95rem; }
   .contact-me-btn { display: inline-block; padding: 10px 18px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: rgba(15, 23, 42, 0.7); color: #e2e8f0; font-weight: 600; text-decoration: none; transition: background 0.2s ease; }
   .contact-me-btn:hover { background: rgba(30, 41, 59, 0.9); text-decoration: none; }
-  @media (max-width: 380px) {
-    .calendar-grid { grid-template-columns: 1fr; }
-    .weekly-wrap { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 380px) { .calendar-grid { grid-template-columns: 1fr; } .weekly-wrap { grid-template-columns: 1fr; } }
 
-  .weekly-forecast-row {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    margin-top: 14px;
-  }
+  .weekly-forecast-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 14px; }
   .forecast-card {
-    background: #1e293b;
-    border-radius: 24px;
-    padding: 14px 14px 14px 18px;
-    text-align: left;
-    position: relative;
-    overflow: hidden;
-    color: #e2e8f0;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-    opacity: 0;
-    animation: forecastFadeIn 0.6s ease forwards;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #1e293b; border-radius: 24px; padding: 14px 14px 14px 18px; text-align: left; position: relative; overflow: hidden; color: #e2e8f0; box-shadow: 0 1px 0 rgba(255,255,255,0.06); opacity: 0; animation: forecastFadeIn 0.6s ease forwards; border: 1px solid rgba(255,255,255,0.08);
   }
-  .forecast-card::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 14px;
-    bottom: 14px;
-    width: 3px;
-    border-radius: 3px;
-    background: #f59e0b;
-  }
-  .forecast-card .forecast-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #f59e0b;
-    margin: 0 auto 10px;
-    display: block;
-  }
-  .forecast-card .forecast-day {
-    font-size: 0.75rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #94a3b8;
-    text-align: center;
-  }
-  .forecast-card .forecast-date {
-    font-weight: 900;
-    font-size: 0.95rem;
-    color: #f1f5f9;
-    text-align: center;
-    margin-top: 2px;
-  }
-  .forecast-card .forecast-temp {
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: #f59e0b;
-    text-align: center;
-    margin-top: 8px;
-  }
-  .forecast-card .forecast-condition {
-    font-size: 0.82rem;
-    font-weight: 800;
-    text-align: center;
-    margin-top: 6px;
-    color: #f59e0b;
-  }
+  .forecast-card::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: #f59e0b; }
+  .forecast-card .forecast-dot { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; margin: 0 auto 10px; display: block; }
+  .forecast-card .forecast-day { font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; text-align: center; }
+  .forecast-card .forecast-date { font-weight: 900; font-size: 0.95rem; color: #f1f5f9; text-align: center; margin-top: 2px; }
+  .forecast-card .forecast-temp { font-weight: 900; font-size: 1.4rem; color: #f59e0b; text-align: center; margin-top: 8px; }
+  .forecast-card .forecast-condition { font-size: 0.82rem; font-weight: 800; text-align: center; margin-top: 6px; color: #f59e0b; }
   .forecast-card .forecast-condition.rain { color: #dc2626; }
-  .forecast-card .forecast-precip {
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 4px;
-    color: #cbd5e1;
-  }
+  .forecast-card .forecast-precip { font-size: 0.82rem; font-weight: 700; text-align: center; margin-top: 4px; color: #cbd5e1; }
   .forecast-card:nth-child(1) { animation-delay: 0.05s; }
   .forecast-card:nth-child(2) { animation-delay: 0.1s; }
   .forecast-card:nth-child(3) { animation-delay: 0.15s; }
@@ -811,60 +611,15 @@
   .forecast-card:nth-child(5) { animation-delay: 0.25s; }
   .forecast-card:nth-child(6) { animation-delay: 0.3s; }
   .forecast-card:nth-child(7) { animation-delay: 0.35s; }
-  @keyframes forecastFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .forecast-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 30px rgba(15,23,42,0.12);
-    border-color: rgba(13,148,136,0.35);
-  }
-  .forecast-card .forecast-day {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 800;
-    color: #64748b;
-  }
-  .forecast-card .forecast-date {
-    font-weight: 900;
-    font-size: 0.95rem;
-    color: #f59e0b;
-    margin-top: 2px;
-  }
-  .forecast-card .forecast-condition {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #f59e0b;
-    margin-top: 8px;
-  }
-  .forecast-card .forecast-temp {
-    font-weight: 900;
-    font-size: 1.05rem;
-    color: #f59e0b;
-    margin-top: 6px;
-  }
-  .forecast-card .forecast-precip {
-    font-size: 0.78rem;
-    color: #64748b;
-    margin-top: 4px;
-  }
-  @media (max-width: 860px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .day-columns { grid-template-columns: 1fr; }
-    .featured-grid { grid-template-columns: 1fr; }
-    .section-title { font-size: 1.2rem; }
-    .card h2 { font-size: 1.05rem; }
-    .weather-card .temp { font-size: 3.6rem; }
-    .weather-card .meta { font-size: 1.15rem; }
-    .forecast-card-inline { min-width: 140px; }
-  }
-  @media (max-width: 540px) {
-    .weekly-forecast-row {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
+  @keyframes forecastFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .forecast-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15,23,42,0.12); border-color: rgba(13,148,136,0.35); }
+  .forecast-card .forecast-day { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800; color: #64748b; }
+  .forecast-card .forecast-date { font-weight: 900; font-size: 0.95rem; color: #f59e0b; margin-top: 2px; }
+  .forecast-card .forecast-condition { font-size: 0.82rem; font-weight: 700; color: #f59e0b; margin-top: 8px; }
+  .forecast-card .forecast-temp { font-weight: 900; font-size: 1.05rem; color: #f59e0b; margin-top: 6px; }
+  .forecast-card .forecast-precip { font-size: 0.78rem; color: #64748b; margin-top: 4px; }
+  @media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } .day-columns { grid-template-columns: 1fr; } .featured-grid { grid-template-columns: 1fr; } .section-title { font-size: 1.2rem; } .card h2 { font-size: 1.05rem; } .weather-card .temp { font-size: 3.6rem; } .weather-card .meta { font-size: 1.15rem; } .forecast-card-inline { min-width: 140px; } }
+  @media (max-width: 540px) { .weekly-forecast-row { grid-template-columns: repeat(3, 1fr); } }
 
   .forecast-icon { display:flex; justify-content:center; margin-bottom:6px; }
   .wi { width:38px; height:38px; position:relative; display:inline-block; }
@@ -881,161 +636,41 @@
   .wi-snow::after { width:7px; height:7px; background:#e5e7eb; border-radius:50%; top:-5px; right:4px; }
 
   /* Weather dark card styles */
-  .weather-dark-card {
-    background: #0f172a;
-    border-radius: 28px;
-    padding: 22px;
-    color: #e2e8f0;
-    box-shadow: 0 20px 50px rgba(15,23,42,0.35);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .weather-header {
-    margin-bottom: 18px;
-  }
-  .weather-location {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .pin-icon {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-  }
-  .weather-location-text {
-    font-size: 0.8rem;
-    color: #94a3b8;
-    letter-spacing: 0.02em;
-  }
-  .weather-temp {
-    font-size: 3.2rem;
-    font-weight: 800;
-    color: #f59e0b;
-    background: rgba(255,255,255,0.06);
-    display: inline-block;
-    border-radius: 14px;
-    padding: 4px 14px;
-    margin: 4px 0 6px;
-    line-height: 1.1;
-  }
-  .weather-desc {
-    font-size: 0.92rem;
-    color: #cbd5e1;
-    margin-bottom: 2px;
-  }
-  .weather-meta {
-    font-size: 0.82rem;
-    color: #94a3b8;
-    margin-top: 2px;
-  }
-  .weather-updated {
-    font-size: 0.72rem;
-    color: #64748b;
-    margin-top: 6px;
-  }
-  .forecast-pills {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    scroll-snap-type: x mandatory;
-  }
-  .forecast-pill {
-    min-width: 96px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 20px;
-    padding: 14px 10px 12px;
-    text-align: left;
-    color: #e2e8f0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
-    transition: transform 0.2s ease;
-    scroll-snap-align: start;
-  }
-  .forecast-pill:hover {
-    transform: translateY(-2px);
-  }
-  .forecast-pill .day {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #cbd5e1;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .forecast-pill .hi-lo {
-    font-size: 0.72rem;
-    color: #94a3b8;
-  }
-  .forecast-pill .bar-wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .forecast-pill .bar {
-    height: 6px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #22d3ee, #f59e0b);
-    opacity: 0.9;
-  }
-  .forecast-pill .precip {
-    font-size: 0.68rem;
-    color: #7dd3fc;
-  }
+  .weather-dark-card { background: #0f172a; border-radius: 28px; padding: 22px; color: #e2e8f0; box-shadow: 0 20px 50px rgba(15,23,42,0.35); border: 1px solid rgba(255,255,255,0.06); }
+  .weather-header { margin-bottom: 18px; }
+  .weather-location { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .pin-icon { width: 16px; height: 16px; flex-shrink: 0; }
+  .weather-location-text { font-size: 0.8rem; color: #94a3b8; letter-spacing: 0.02em; }
+  .weather-temp { font-size: 3.2rem; font-weight: 800; color: #f59e0b; background: rgba(255,255,255,0.06); display: inline-block; border-radius: 14px; padding: 4px 14px; margin: 4px 0 6px; line-height: 1.1; }
+  .weather-desc { font-size: 0.92rem; color: #cbd5e1; margin-bottom: 2px; }
+  .weather-meta { font-size: 0.82rem; color: #94a3b8; margin-top: 2px; }
+  .weather-updated { font-size: 0.72rem; color: #64748b; margin-top: 6px; }
+  .forecast-pills { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+  .forecast-pill { min-width: 96px; background: rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 10px 12px; text-align: left; color: #e2e8f0; display: flex; flex-direction: column; gap: 6px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); transition: transform 0.2s ease; scroll-snap-align: start; }
+  .forecast-pill:hover { transform: translateY(-2px); }
+  .forecast-pill .day { font-size: 0.75rem; font-weight: 800; color: #cbd5e1; letter-spacing: 0.08em; text-transform: uppercase; }
+  .forecast-pill .hi-lo { font-size: 0.72rem; color: #94a3b8; }
+  .forecast-pill .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .forecast-pill .bar { height: 6px; border-radius: 999px; background: linear-gradient(90deg, #22d3ee, #f59e0b); opacity: 0.9; }
+  .forecast-pill .precip { font-size: 0.68rem; color: #7dd3fc; }
 
-
-
-.copy-event-tooltip {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(15,23,42,0.9);
-    color: #e2e8f0;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.15s ease;
-    z-index: 5;
-}
-.copy-event-tooltip.visible {
-    opacity: 1;
-}
-
+  .copy-event-tooltip { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: rgba(15,23,42,0.9); color: #e2e8f0; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 5; }
+  .copy-event-tooltip.visible { opacity: 1; }
 
 /* JARVIS Mark 53 glow effect */
-.jarvis-glow {
-    box-shadow: 0 0 20px rgba(6,182,212,0.4), 0 0 40px rgba(139,92,246,0.3);
-}
+.jarvis-glow { box-shadow: 0 0 20px rgba(6,182,212,0.4), 0 0 40px rgba(139,92,246,0.3); }
 
 
-.copy-event-btn {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px;
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #e5e7eb;
-    cursor: pointer;
-    z-index: 10;
-}
-.copy-event-btn:hover {
-    background: rgba(255,255,255,0.14);
-    transform: translateY(-1px);
-}
+.copy-event-btn { position: absolute; right: 10px; top: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 4px 8px; font-size: 0.7rem; font-weight: 600; color: #e5e7eb; cursor: pointer; z-index: 10; }
+.copy-event-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+
+/* Thank you message for event submission */
+#submit-thanks { display: none; }
+#submit-thanks.show { display: block; }
 </style>
 <link rel="icon" href="/logo.png" type="image/png">
 </head>
-<body><!-- cache-bust: 2026-09-17-06 -->
+<body><!-- cache-bust: 2026-09-20-01 -->
 
 <header class="logo-header header">
   <img src="logo.png" alt="Pembina Valley Events" class="logo-img">
@@ -1079,7 +714,7 @@
 
     <section class="section">
       <div class="card card-landscape-activity">
-        <h2 style="color:#f59e0b;">🌱 Today’s Suggested Activities</h2>
+        <h2 style="color:#f59e0b;">🌱 Today's Suggested Activities</h2>
         <div id="activities">
           <div class="activity"><div class="name">Evening walk</div><div class="desc">Good for clearing your head after study or work.</div></div>
           <div class="activity"><div class="name">Indoor reading</div><div class="desc">Bible study, notes, or planning.</div></div>
@@ -1099,7 +734,14 @@
     <section class="section">
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📅 This Week's Events</h2>
-        <input type="text" id="event-search" placeholder="Search events..." autocomplete="off" style="padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.85rem;outline:none;margin-bottom:10px;width:100%;max-width:300px;"><div style="margin-bottom:8px;"><button class="town-btn" data-town="all" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">All</button><button class="town-btn" data-town="Winkler" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Winkler</button><button class="town-btn" data-town="Morden" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Morden</button><button class="town-btn" data-town="Altona" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;">Altona</button></div><div id="daily-events"></div>
+        <input type="text" id="event-search" placeholder="Search events..." autocomplete="off" style="padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.85rem;outline:none;margin-bottom:10px;width:100%;max-width:300px;">
+        <div style="margin-bottom:8px;">
+          <button class="town-btn active" data-town="all" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">All</button>
+          <button class="town-btn" data-town="Winkler" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Winkler</button>
+          <button class="town-btn" data-town="Morden" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Morden</button>
+          <button class="town-btn" data-town="Altona" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;">Altona</button>
+        </div>
+        <div id="daily-events"></div>
       </div>
     </section>
 
@@ -1137,7 +779,7 @@
         <div id="act-days"></div>
       </div>
       <div class="cta-row" style="margin-top:14px;">
-        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title,%20date,%20time,%20location,%20link).%20Note:%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20all-ages%20events." target="_self">📝 Submit an Event</a>
+        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title%2C%20date%2C%20time%2C%20location%2C%20link).%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20eventsthat%20are%20suitable%20for%20all%20ages." target="_self">📝 Submit an Event</a>
       </div>
     </section>
   </div>
@@ -1210,7 +852,7 @@
 
         <div class="spacer"></div>
         <div class="cta-row">
-          <a class="cta-btn" href="mailto:boomsecure@protonmail.com?subject=Sports%20Program%20Submission&body=Please%20send%20your%20kids%27%20sports%20program%20details%20(sport,%20age%20group,%20when,%20season,%20free%20or%20cost,%20registration%20link,%20town).%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20for%20kids%27%20activities.">📝 Submit a Kids Sports Program</a>
+          <a class="cta-btn" href="mailto:boomsecure@protonmail.com?subject=Sports%20Program%20Submission&body=Please%20send%20your%20kids%27%20sports%20program%20details%20(sport%2C%20age%20group%2C%20when%2C%20season%2C%20free%20or%20cost%2C%20registration%20link%2C%20town).%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20for%20kids%27%20activities.">📝 Submit a Kids Sports Program</a>
         </div>
       </div>
     </section>
@@ -1223,19 +865,19 @@
           <h2 style="color:#f59e0b;">👨‍👩‍👧‍👦 Family</h2>
           <p class="muted">Home schedule, school, meals, and time together in Winkler.</p>
           <div class="spacer"></div>
-          <div id="family-school-events"></div>
+          <div id="family-school-events" class="no-events">Loading school events...</div>
         </div>
         <div class="card">
           <h2 style="color:#f59e0b;">⛪ Church & Ministry</h2>
           <p class="muted">Local church events, services, and community gatherings.</p>
           <div class="spacer"></div>
-          <div id="family-church-events"></div>
+          <div id="family-church-events" class="no-events">Loading church events...</div>
         </div>
         <div class="card">
           <h2 style="color:#f59e0b;">🧰 Garage Sales & Community</h2>
           <p class="muted">Local garage sales and family-friendly community events.</p>
           <div class="spacer"></div>
-          <div id="family-garage-events"></div>
+          <div id="family-garage-events" class="no-events">Loading community events...</div>
         </div>
       </div>
     </section>
@@ -1244,22 +886,9 @@
   <div class="page" id="page-fundraiser">
     <style>
       #page-fundraiser { position: relative; overflow: hidden; }
-      #page-fundraiser .float-bg {
-        position: absolute;
-        font-size: 3.5rem;
-        opacity: 0;
-        pointer-events: none;
-        user-select: none;
-        animation: floatUp 14s linear infinite;
-        z-index: 0;
-      }
+      #page-fundraiser .float-bg { position: absolute; font-size: 3.5rem; opacity: 0; pointer-events: none; user-select: none; animation: floatUp 14s linear infinite; z-index: 0; }
       #page-fundraiser .card { position: relative; z-index: 1; }
-      @keyframes floatUp {
-        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.18; }
-        90% { opacity: 0.18; }
-        100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
-      }
+      @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.18; } 90% { opacity: 0.18; } 100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; } }
     </style>
     <section class="section">
       <div class="card">
@@ -1281,15 +910,11 @@
       #page-sources .event-title a:hover {
         text-decoration: underline;
       }
-      #page-sources .event-meta,
-      #page-sources .event-muted {
+      #page-sources .event-meta, #page-sources .event-muted {
         color: #e2e8f0;
       }
       #page-sources .event-date {
-        background:#0f172a;
-        color:#f59e0b;
-        border:1px solid rgba(245,158,11,0.35);
-        box-shadow:none;
+        background:#0f172a; color:#f59e0b; border:1px solid rgba(245,158,11,0.35); box-shadow:none;
       }
     
   .copy-btn {
@@ -1412,7 +1037,7 @@
         </blockquote>
 
         <blockquote style="border-left:4px solid #22c55e; padding:0.75rem 1rem; background:rgba(34,197,94,0.08); font-style:italic; color:#4ade80;">
-          <p>"Peace I leave with you; my peace I give to you. Not as the world gives do I give to you. Let not your hearts be troubled, neither let them be afraid." — John 14:27</p>
+          <p>"Peace I leave with you; my peace I give to you. Not as the world gives do I give you. Let not your hearts be troubled, neither let them be afraid." — John 14:27</p>
         </blockquote>
 
         <p>Christ is the hope of the world. And He can become <strong>your</strong> hope — right now, in this moment, no matter what you have lost or what you fear. He offers forgiveness, peace, and a love that nothing can break. He does not wait for the trumpet to offer peace. He stands at the door and knocks.</p>
@@ -1498,6 +1123,11 @@
           <textarea id="evt-desc" rows="3" placeholder="Short description, location, organizer, or notes"></textarea>
           <button type="submit" class="contact-submit">Submit Event</button>
         </form>
+        <div id="submit-thanks" style="display:none; padding:16px; margin-top:12px; background:rgba(16,23,42,0.3); border-radius:12px; border-left:4px solid #10b981;">
+          <strong style="color:#10b981;">✓ Event submitted!</strong><br>
+          Your event has been sent to the site owner. It will be reviewed and published if it meets the family-friendly criteria.<br>
+          Thank you for contributing to Pembina Valley Events!
+        </div>
         <p class="muted contact-hint">Submitting opens your email app with a ready-to-post event message for the site owner.</p>
         <div class="spacer"></div>
         <div class="contact-me">
@@ -1514,28 +1144,22 @@
 <footer>
   <strong>Pembina Valley Events</strong> · Pembina, MB<br>
   Local events, activities, weather, and community connections.<br>
-  <span style="font-size:0.75rem;opacity:0.6;">Updated daily from pembinavalleyonline.com · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Submit an event</a> · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Questions</a></span>
+  <span id="last-updated" style="font-size:0.75rem;opacity:0.6;"></span><br>
+  <span style="font-size:0.75rem;opacity:0.6;">Sources: pembinavalleyonline.com, morden.ca, winkler.ca, altona.ca · <a href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20%28title%2C%20date%2C%20time%2C%20location%2C%20link%29.%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20events%20that%20are%20suitable%20for%20all%20ages.%20Thank%20you!" style="color:#3b82f6;">Submit an event</a> · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Questions</a></span>
 </footer>
 
 
-
-
-
-
-
 <script>
-function copyEventDetails(title, time, date, location) {
-  const text = [title, time, location].filter(Boolean).join("\n");
-  const btn = event.currentTarget;
-  navigator.clipboard.writeText(text).then(() => {
-    const original = btn.innerText;
-    btn.innerText = "Copied!";
-    setTimeout(() => { btn.innerText = original; }, 2000);
-  }).catch(() => alert("Failed to copy — please try again"));
-}
+// Event form thank-you message
+document.getElementById('event-form')?.addEventListener('submit', function(e) {
+  const thanks = document.getElementById('submit-thanks');
+  if (thanks) {
+    this.style.display = 'none';
+    thanks.style.display = 'block';
+  }
+});
 </script>
 
-
-<script src="/app.js?v=19"></script>
+<script src="/main.js?v=1789599600"></script>
 </body>
 </html>
