@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-20",
+  "last_updated": "2026-09-20T21:58:14.663257+00:00",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,6 +11,15 @@
     ]
   },
   "events": [
+    {
+      "id": "/events/233096",
+      "title": "King Korn Maze",
+      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
+      "date": "2026-09-20",
+      "link": "https://www.pembinavalleyonline.com/events/233096",
+      "source": "pembinavalleyonline.com",
+      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Hours: Saturday 11:00am-8:00pm Sunday: 11:00am-6:00pm Holiday Hours 12:00pm (noon) - 6:00pm"
+    },
     {
       "id": "/events/226151",
       "title": "Roseisle Pentecostal Assembly - Sunday Praise & Fellowship",
@@ -174,6 +183,15 @@
       "description": "Come out to the Winkler Senior Centre and give line dancing a try! Free lessons will be offered during Culture Days, with two chances to join in: September 22 at 1pm and September 24 at 7pm. No experience is needed. Come on your own or bring a friend and learn some steps together. This event is free and open to the community."
     },
     {
+      "id": "/events/231078",
+      "title": "Linedancing Classes at Winkler Senior Centre",
+      "time": "1:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
+      "date": "2026-09-22",
+      "link": "https://www.pembinavalleyonline.com/events/231078",
+      "source": "pembinavalleyonline.com",
+      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 22nd at 1:00pm &amp; Thursday Sept. 24th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
+    },
+    {
       "id": "/events/231228",
       "title": "After School Art Club | Ages 5-8",
       "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
@@ -235,15 +253,6 @@
       "link": "https://www.pembinavalleyonline.com/events/233653",
       "source": "pembinavalleyonline.com",
       "description": "Ladies, join us as well explore the Bible together and see how it relates to our lives. Drinks and snacks are free."
-    },
-    {
-      "id": "/events/231078",
-      "title": "Linedancing Classes at Winkler Senior Centre",
-      "time": "1:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/231078",
-      "source": "pembinavalleyonline.com",
-      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 23rd at 1:00pm &amp; Thursday Sept. 25th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
     },
     {
       "id": "/events/233781",
@@ -354,6 +363,15 @@
       "description": "Come out to the Winkler Senior Centre and give line dancing a try! Free lessons will be offered during Culture Days, with two chances to join in: September 22 at 1pm and September 24 at 7pm. No experience is needed. Come on your own or bring a friend and learn some steps together. This event is free and open to the community."
     },
     {
+      "id": "/events/231083",
+      "title": "Linedancing Classes at Winkler Senior Centre",
+      "time": "7:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
+      "date": "2026-09-24",
+      "link": "https://www.pembinavalleyonline.com/events/231083",
+      "source": "pembinavalleyonline.com",
+      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 22nd at 1:00pm &amp; Thursday Sept. 24th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
+    },
+    {
       "id": "/events/229753",
       "title": "Blanket Exercise - Truth and Reconciliation",
       "time": "7:30 PM · Emmanuel Baptist Church, Morris, MB",
@@ -397,15 +415,6 @@
       "link": "https://www.pembinavalleyonline.com/events/233719",
       "source": "pembinavalleyonline.com",
       "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
-    },
-    {
-      "id": "/events/232150",
-      "title": "Cribbage Tournament",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/232150",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
     },
     {
       "id": "/events/231385",
@@ -460,15 +469,6 @@
       "link": "https://www.pembinavalleyonline.com/events/233776",
       "source": "pembinavalleyonline.com",
       "description": "The concert event of the Fall, featuring a stellar lineup of local musicians including B.K. and the Bad Habits, Linda Hiebert, Madel Morin, The Razberry Jam, Link and the Moustaches, Bill Dowling, Stueck Dueck and Jenessa Kehler and The M&#39;Ladies! This night of music is in support and appreciation of local musician James Johnston. Get your tickets at winklerconcerthall.ca!"
-    },
-    {
-      "id": "/events/231083",
-      "title": "Linedancing Classes at Winkler Senior Centre",
-      "time": "7:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/231083",
-      "source": "pembinavalleyonline.com",
-      "description": "Linedancing Seasons starts at Winkler Senior Centre Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members starting Tuesdays, Sept. 29th at 1:00pm Thursdays, Oct. 1st at 7:00pm Everyone welcome!"
     },
     {
       "id": "/events/231329",
@@ -588,6 +588,15 @@
       "description": "Members $4.00 Non-Members $7.00"
     },
     {
+      "id": "/events/233628",
+      "title": "Ladies Games Night",
+      "time": "7:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-09-28",
+      "link": "https://www.pembinavalleyonline.com/events/233628",
+      "source": "pembinavalleyonline.com",
+      "description": "Join us for games night. There are a variety to choose from. Bring a friend. Drinks and snacks are free."
+    },
+    {
       "id": "/events/233417",
       "title": "Salsa + Latin Dance Classes with Pembina Valley Latin Dance",
       "time": "7:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
@@ -630,7 +639,7 @@
       "date": "2026-09-29",
       "link": "https://www.pembinavalleyonline.com/events/231082",
       "source": "pembinavalleyonline.com",
-      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 23rd at 1:00pm &amp; Thursday Sept. 25th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
+      "description": "Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
     },
     {
       "id": "/events/231229",
@@ -756,7 +765,7 @@
       "date": "2026-10-01",
       "link": "https://www.pembinavalleyonline.com/events/231084",
       "source": "pembinavalleyonline.com",
-      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 23rd at 1:00pm &amp; Thursday Sept. 25th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
+      "description": "Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
     },
     {
       "id": "/events/230891",
@@ -766,6 +775,141 @@
       "link": "https://www.pembinavalleyonline.com/events/230891",
       "source": "pembinavalleyonline.com",
       "description": "Do you find yourself wishing you could use your phones/iPads/tablets/computers more confidently? We are excited to offer you Confidence with Tech sessions with Andrea Hiebert at the Centre! These are informal sessions designed to increase your knowledge, ability, and confidence using your devices (such as smartphones, iPads/tablets, and personal computers/laptops)."
+    },
+    {
+      "id": "/events/233376",
+      "title": "Pregnancy Care Centre Drive Thru Lunch!",
+      "time": "11:30 AM · Threshermens Museum - Hwy 14, RM of Stanley",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/233376",
+      "source": "pembinavalleyonline.com",
+      "description": "Join the Pregnancy Care Centre for a tasty meal on October 2, 2026! Lunch - 11:30-1 - MUST PREORDER The meal is by donation, tax receipts issued for anything above cost. Register by phone or email: 204-325-7900 registerforthisevent@gmail.com Every dollar will go to supporting women and families as they face the unexpected. Thanks for your love and support of this important mission! Threshermens Museum - Hwy 14, RM of Stanley Threshermens Museum - Hwy 14, RM of Stanley"
+    },
+    {
+      "id": "/events/233720",
+      "title": "Coffee Fellowship and Crafts",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/233720",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
+    },
+    {
+      "id": "/events/232151",
+      "title": "Cribbage Tournament",
+      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/232151",
+      "source": "pembinavalleyonline.com",
+      "description": "Members $4.00 Non-Members $7.00"
+    },
+    {
+      "id": "/events/233378",
+      "title": "Pregnancy Care Drive Thru DINNER",
+      "time": "4:30 PM · Pembina Threshermens Museum, RM of Stanley",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/233378",
+      "source": "pembinavalleyonline.com",
+      "description": "Join the Pregnancy Care Centre for a tasty meal on October 2, 2026! Dinner - 4:30-6:30 - Preordering strongly recommended The meal is by donation, tax receipts issued for anything above cost. Register by phone or email: 204-325-7900 registerforthisevent@gmail.com Every dollar will go to supporting women and families as they face the unexpected. Thanks for your love and support of this important mission! Pembina Threshermens Museum, RM of Stanley Pembina Threshermens Museum, RM of Stanley"
+    },
+    {
+      "id": "/events/234571",
+      "title": "Zion Mennonite Church Fall Supper",
+      "time": "4:30 PM · Zion Mennonite Church Schanzenfeld, 208 Hespeler Ave E. Schanzenfeld, Winkler, Manitoba",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/234571",
+      "source": "pembinavalleyonline.com",
+      "description": "Fall supper Zion Mennonite Church Schanzenfeld Date: October 2, 2026 Time: 4:30 to 7 pm Supper: Roast Beef, Chicken, stuffing, mashed potatoes, and vegetables. Dessert: Carrot cake cupcakes Supper is by Donation. Take out available."
+    },
+    {
+      "id": "/events/231206",
+      "title": "Men's Prayer Breakfast (Morden)",
+      "time": "6:57 AM · Rock's Bar & Grill, 780 Thornhill Street, Morden, MB",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/231206",
+      "source": "pembinavalleyonline.com",
+      "description": "Christian men from around Morden meet each Friday morning for Prayer, Bible Devotions and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. This is a great way to meet and network with other Christian men. If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Dwight to confirm upcoming meetings."
+    },
+    {
+      "id": "/events/234073",
+      "title": "Art Class - Acrylic & Watercolor Painting",
+      "time": "9:30 AM · Morden Activity Centre, 306 North Railway Street, Morden, Manitoba",
+      "date": "2026-10-02",
+      "link": "https://www.pembinavalleyonline.com/events/234073",
+      "source": "pembinavalleyonline.com",
+      "description": "Ready to get creative? Join us at the Morden Activity Centre for Acrylic and Watercolor Painting classes. Friday mornings from 9:30am-11am, beginning October 2nd, 2026, with the last class for the season December 11th, 2026. Painting materials will be supplied by the Centre. Small fee of $4 per class to cover the cost of the Materials. Registration is Required To register: Call 204-822-5663, Ext. 3 or email mordensfs@gmail.com"
+    },
+    {
+      "id": "/events/202776",
+      "title": "Ride for Refuge",
+      "time": "10:00 AM · Morden Park, 253 15 St, Morden, Manitoba",
+      "date": "2026-10-03",
+      "link": "https://www.pembinavalleyonline.com/events/202776",
+      "source": "pembinavalleyonline.com",
+      "description": "more information to come!"
+    },
+    {
+      "id": "/events/233091",
+      "title": "King Korn Maze",
+      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
+      "date": "2026-10-03",
+      "link": "https://www.pembinavalleyonline.com/events/233091",
+      "source": "pembinavalleyonline.com",
+      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Come for the maze, stay for the memories. We can’t wait to see you this fall at King Korn Maze! Hours: Saturday 11am-8pm Sunday 11am-6pm Holiday Hours 12:00pm (noon) - 6:00pm"
+    },
+    {
+      "id": "/events/232384",
+      "title": "The Content Castle",
+      "time": "2:00 PM · Bella's Castle, 572 Stephen St, Morden, Manitoba",
+      "date": "2026-10-03",
+      "link": "https://www.pembinavalleyonline.com/events/232384",
+      "source": "pembinavalleyonline.com",
+      "description": "Are you photographer, videographer or content creator? This event is for You! Limited spots, registration required. For more info please go to Bella&#39;s Castle website 🏰"
+    },
+    {
+      "id": "/events/230894",
+      "title": "Ancla de Amor - Taco 'Bout a Fundraiser (Drive thru fundraiser)",
+      "time": "4:00 PM · Westside Commuity Church, 831 Thornhill St, Morden, MB",
+      "date": "2026-10-03",
+      "link": "https://www.pembinavalleyonline.com/events/230894",
+      "source": "pembinavalleyonline.com",
+      "description": "Come pick up an authentic mexian meal and support the build of a new children&#39;s home at Ancla de Amor Orphanage in Mexico. We are serving Pulled Pork Street Tacos, Charro Beans, Chips and Churros by donation. Preorders available by texting 204-823-2094."
+    },
+    {
+      "id": "/events/232888",
+      "title": "Rosenfeld Fall Supper 2026 by donation",
+      "time": "4:30 PM · Rosenfeld Fall Supper, 262 Main Street, Rosenfeld, Manitoba, Canada",
+      "date": "2026-10-03",
+      "link": "https://www.pembinavalleyonline.com/events/232888",
+      "source": "pembinavalleyonline.com",
+      "description": "See Poster for additional details. Event on October 3, 2026 from 4:30 to 6:30 pm. Turkey Ham Potatoes Gravy Stuffing Cranberry Sauce Buns Coleslaw Mixed Veggies Pie"
+    },
+    {
+      "id": "/events/233098",
+      "title": "King Korn Maze",
+      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
+      "date": "2026-10-04",
+      "link": "https://www.pembinavalleyonline.com/events/233098",
+      "source": "pembinavalleyonline.com",
+      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Hours: Saturday 11:00am-8:00pm Sunday: 11:00am-6:00pm Holiday Hours 12:00pm (noon) - 6:00pm"
+    },
+    {
+      "id": "/events/233570",
+      "title": "Movie Magic: Greatest Film Themes for Violin & Piano",
+      "time": "2:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
+      "date": "2026-10-04",
+      "link": "https://www.pembinavalleyonline.com/events/233570",
+      "source": "pembinavalleyonline.com",
+      "description": "Experience the music behind some of cinema&#39;s greatest moments — live at the Manitou Opera House! The magic of the movies is coming to the Manitou Opera House! Join Winnipeg-based violinist Amir Bissen and pianist Fan-En Chiang for an intimate live concert featuring some of the most unforgettable music from the world of film. From the suspense of Jaws and the adventure of Jurassic Park to the romance of The Godfather, the excitement of James Bond and Star Wars, and the magic of Harry Potter, Movie Magic brings beloved film themes to life in specially curated arrangements for violin and piano. Rather than simply recreating the original orchestral scores, Bissen and Chiang bring their own expressive interpretations to these familiar melodies. Their intimate arrangements offer audiences a fresh and captivating way to experience music that has become woven into popular culture. Whether you&#39;re a longtime classical music enthusiast, a devoted movie fan, or simply looking for an entertaining afternoon of live music, Movie Magic promises an experience for audiences of all ages. Sunday, October 4, 2026 2:00 PM Doors open at 1:00 PM Manitou Opera House — Manitou, Manitoba What You&#39;ll Hear Travel through some of Hollywood&#39;s most memorable musical moments, featuring themes from iconic films and franchises including: Jaws Jurassic Park The Godfather James Bond Star Wars Harry Potter …and more! Hear these familiar themes in a completely new way as they&#39;re transformed for violin and piano and performed live in the intimate setting of the historic Manitou Opera House. Meet the Performers Amir Bissen — Violin Winnipeg-based violinist Amir Bissen brings extensive international performing experience to the stage. Bissen began his musical career at an early age, studying at the Purcell School of Music and Royal College of Music in England. His performing career has taken him throughout Europe and includes a Royal Festival Hall debut with the Philharmonia Orchestra. He has also pursued advanced studies with renowned violin pedagogue Zakhar Bron, bringing a wealth of musical experience and artistry to his performances. Fan-En Chiang — Piano Fan-En Chiang is an award-winning Taiwanese-Canadian pianist and composer based in Winnipeg. His performances have included appearances with the Winnipeg Symphony Orchestra, and his musical interests extend beyond the classical repertoire to include film music and video-game soundtracks. Together, Bissen and Chiang are developing themed recital programs that bring familiar and much-loved music to audiences while showcasing the artistry, energy and intimacy of live classical performance. Experience Movie Music Like Never Before You&#39;ve heard these melodies in movie theatres. Now hear them live, up close and reimagined for violin and piano. Come relive the suspense, adventure, romance and magic of some of cinema&#39;s greatest stories through the music that helped make them unforgettable. Movie Magic: Greatest Film Themes for Violin &amp; Piano is an afternoon for movie lovers, music lovers and anyone who enjoys a great live performance."
+    },
+    {
+      "id": "/events/232807",
+      "title": "PVBC Pies and Fries",
+      "time": "2:00 PM · Pembina Valley Bible Camp, Darlingford, MB",
+      "date": "2026-10-04",
+      "link": "https://www.pembinavalleyonline.com/events/232807",
+      "source": "pembinavalleyonline.com",
+      "description": "Pembina Valley Bible Camp October 4, 2026 2-6pm"
     }
   ]
 }
