@@ -93,7 +93,7 @@ function combineDateTime(dateStr, timeStr) {
     box.innerHTML = '<p class="muted">Real traffic data comes from your analytics provider.</p><p class="muted">Check your Cloudflare dashboard for live visitor counts, page views, and traffic sources. Numbers should start appearing within 24–48 hours.</p>';
   }
 
-  const EVENTS = [
+  let EVENTS = [
     { date: '2026-08-04', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', category: 'community', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-06', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-07', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', category: 'community', link: 'https://www.winkler.ca/events' },
@@ -143,7 +143,9 @@ function combineDateTime(dateStr, timeStr) {
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const today = new Date();
     today.setHours(0,0,0,0);
-    const todayStr = today.toISOString().slice(0,10);
+    const todayStr = today.getFullYear() + '-' +
+      String(today.getMonth() + 1).padStart(2, '0') + '-' +
+      String(today.getDate()).padStart(2, '0');
     const rangeEnd = new Date(today);
     rangeEnd.setDate(rangeEnd.getDate() + 6);
 
@@ -372,12 +374,34 @@ function combineDateTime(dateStr, timeStr) {
       if (el) el.classList.add('active');
     }
   };
+
+  async function loadEvents() {
+    try {
+      const res = await fetch('/events.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('events.json HTTP ' + res.status);
+      const data = await res.json();
+      const raw = data.events || data;
+      if (!Array.isArray(raw)) throw new Error('events.json not an array');
+      EVENTS = raw.map(e => ({
+        date: e.date,
+        title: e.title,
+        time: e.time || '',
+        category: e.category || 'community',
+        link: e.link || '#'
+      }));
+      console.log('Loaded ' + EVENTS.length + ' events from events.json');
+    } catch (err) {
+      console.warn('events.json load failed, using fallback:', err);
+    }
+  }
   window.addEventListener('hashchange', initPage);
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPage);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadEvents().then(initPage).catch(err => { console.error('events load failed, using fallback', err); initPage(); });
+    });
   } else {
-    initPage();
+    loadEvents().then(initPage).catch(err => { console.error('events load failed, using fallback', err); initPage(); });
   }
 
   const WEATHER_IMAGES = {
