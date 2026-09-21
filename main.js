@@ -397,7 +397,12 @@ function setWeatherVideo(code, temp) {
   const video = document.getElementById('heroWeatherVideo');
   if (!video) return;
   const { video: src } = pickWeatherSrc(code, temp);
-  if (video.src && video.src.includes(src.split('/').pop())) return;
+  if (video.src && video.src.includes(src.split('/').pop())) {
+    if (video.readyState >= 2 && video.paused) {
+      video.play().catch(() => {});
+    }
+    return;
+  }
   video.style.transition = 'opacity 0.6s ease';
   video.style.opacity = '0';
   setTimeout(() => {
@@ -405,6 +410,20 @@ function setWeatherVideo(code, temp) {
     video.load();
     video.play().then(() => { video.style.opacity = '1'; })
       .catch(() => { video.style.opacity = '0'; });
+  }, 600);
+}
+
+function forceWeatherVideo(code, temp) {
+  const video = document.getElementById('heroWeatherVideo');
+  if (!video) return;
+  const { video: src } = pickWeatherSrc(code, temp);
+  video.style.transition = 'opacity 0.6s ease';
+  video.style.opacity = '0';
+  setTimeout(() => {
+    video.src = src;
+    video.load();
+    video.play().then(() => { video.style.opacity = '1'; })
+      .catch(() => { video.style.opacity = '0.5'; });
   }, 600);
 }
 
@@ -424,10 +443,10 @@ async function loadWeather() {
   const fallback = () => {
     apply('--°', 'Weather unavailable', 'Updated: --');
     if (heroCond) heroCond.textContent = 'Weather unavailable';
-    setWeatherVideo(3, 15);
+    forceWeatherVideo(3, 15);
   };
 
-  const fallbackTimer = setTimeout(fallback, 5000);
+  const fallbackTimer = setTimeout(fallback, 10000);
 
   try {
     const cached = localStorage.getItem(CONFIG.localCacheKey + '_weather');
