@@ -231,8 +231,8 @@ function buildActivityWeek() {
     section.className = 'day-section';
 
     const dateLabel = document.createElement('div');
-    dateLabel.className = 'date-header day-header';
-    dateLabel.innerHTML = `<span>${days[evDate.getDay()]}, ${monthNames[evDate.getMonth()].slice(0,3)} ${evDate.getDate()}</span><span class=\"day-toggle\">▶</span>`;
+        dateLabel.className = 'date-header day-header expanded';
+        dateLabel.innerHTML = `<span>${days[evDate.getDay()]}, ${monthNames[evDate.getMonth()].slice(0,3)} ${evDate.getDate()}</span><span class="day-toggle"></span>`;
     dateLabel.dataset.expanded = 'true';
     section.appendChild(dateLabel);
 
