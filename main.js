@@ -166,20 +166,27 @@ function buildToday() {
   });
 }
 
-// Daily events builder
+// Daily events builder with town filter
 function buildDailyEvents() {
   const body = document.getElementById('daily-events');
   if (!body) return;
   
-  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','F','Saturday'];
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const today = new Date();
   today.setHours(0,0,0,0);
   const rangeEnd = new Date(today);
   rangeEnd.setDate(rangeEnd.getDate() + 7);
   
-  // Filter for upcoming week only (no search or town filter)
-  const filtered = APP_STATE.events;
+  // Town filter (no search)
+  const activeBtn = document.querySelector('.town-btn.active');
+  const filter = activeBtn ? activeBtn.dataset.town : 'all';
+  
+  // Apply town filter
+  let filtered = [...APP_STATE.events];
+  if (filter !== 'all') {
+    filtered = filtered.filter(e => (e.location || '').toLowerCase().includes(filter.toLowerCase()));
+  }
   
   const upcoming = filtered.filter(ev => {
     const d = new Date(ev.date + 'T12:00:00');
