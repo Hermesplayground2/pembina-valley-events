@@ -81,8 +81,9 @@ function createEventCard(event, container, options = {}) {
 }
 
 function createFeaturedCard(event) {
+  const copyText = `${event.title}\n${event.time}`;
   return `
-    <a class="featured-card bubble" href="${event.link || '#'}" target="_blank" rel="noopener" data-category="${event.category}">
+    <div class="featured-card bubble" data-category="${event.category || 'community'}">
       <div class="row">
         <div class="badge-row">
           <span class="date-badge">${event.date || event.day || 'TBD'}</span>
@@ -90,10 +91,14 @@ function createFeaturedCard(event) {
           ${event.promoted ? '<span class="cat-badge" style="background:#f59e0b;color:#fff">Featured</span>' : ''}
         </div>
       </div>
-      <div class="title">${event.title}</div>
-      <div class="meta">${event.time}</div>
-      <button class="copy-btn" data-copy="${`${event.title}\n${event.time}`.replace(/"/g, '&quot;')}">Copy</button>
-    </a>
+      <a href="${event.link || '#'}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;display:block;">
+        <div class="title">${event.title}</div>
+        <div class="meta">${event.time}</div>
+      </a>
+      <div class="export-row" style="margin-top:8px;">
+        <button class="copy-btn" data-copy="${copyText.replace(/"/g, '&quot;')}">Copy</button>
+      </div>
+    </div>
   `;
 }
 
@@ -148,16 +153,15 @@ function buildToday() {
   }
   
   todays.forEach(ev => {
-    const el = document.createElement('a');
+    const el = document.createElement('div');
     el.className = 'day-event bubble';
-    el.href = ev.link || '#';
-    el.target = '_blank';
-    el.rel = 'noopener';
-    el.dataset.category = ev.category;
+    el.dataset.category = ev.category || 'community';
     const copyText = `${ev.title}\n${ev.time}`;
     el.innerHTML = `
-      <span class="title">${ev.title}</span>
-      <span class="time">· ${ev.time}</span>
+      <a class="event-link" href="${ev.link || '#'}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">
+        <span class="title" style="font-weight:600">${ev.title}</span>
+      </a>
+      <span class="time" style="color:#6b7280; font-size:0.85rem">· ${ev.time}</span>
       <div class="export-row">
         <button class="copy-btn" data-copy="${copyText.replace(/"/g, '&quot;')}">Copy</button>
       </div>
@@ -260,6 +264,11 @@ function buildDailyEvents() {
   const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const today = new Date();
   today.setHours(0,0,0,0);
+  
+  // Weekly schedule starts from tomorrow so today's events are not duplicated
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  
   const rangeEnd = new Date(today);
   rangeEnd.setDate(rangeEnd.getDate() + 7);
   
@@ -278,11 +287,11 @@ function buildDailyEvents() {
   
   const upcoming = filtered.filter(ev => {
     const d = new Date(ev.date + 'T12:00:00');
-    return d >= today && d <= rangeEnd;
+    return d >= tomorrow && d <= rangeEnd;
   });
   
   if (!upcoming.length) {
-    body.innerHTML = '<div class="muted" style="padding:16px;text-align:center;">No upcoming events found.</div>';
+    body.innerHTML = '<div class="muted" style="padding:16px;text-align:center;">No upcoming events found for the rest of this week.</div>';
     return;
   }
   
@@ -300,8 +309,9 @@ function buildDailyEvents() {
     section.className = 'day-section';
     
     const dateLabel = document.createElement('div');
-    dateLabel.className = 'date-label';
-    dateLabel.textContent = `${days[d.getDay()]}, ${monthNames[d.getMonth()].slice(0,3)} ${d.getDate()}`;
+    dateLabel.className = 'date-header day-header expanded';
+    dateLabel.innerHTML = `<span>${days[d.getDay()]}, ${monthNames[d.getMonth()].slice(0,3)} ${d.getDate()}</span><span class="day-toggle"></span>`;
+    dateLabel.dataset.expanded = 'true';
     section.appendChild(dateLabel);
     
     const list = document.createElement('div');
@@ -321,11 +331,29 @@ function buildFeatured() {
   const container = document.getElementById('featured-events');
   if (!container) return;
   
-  // Use featured from events.json or fall back to hardcoded
-  const featured = (APP_STATE.config && APP_STATE.config.featured) || [
-    { title: 'Pembina Valley Ribfest', date: 'Sep 11-13', time: 'Winkler', category: 'community', link: 'https://pembinavalleyonline.com/', featured: true },
-    { title: 'Morden POP CULTURE EXPO', date: 'Sep 19-20', time: 'Access Event Centre, Morden', category: 'community', link: 'https://pembinavalleyonline.com/events/227194' }
-  ];
+  const now = new Date();
+  const todayStr = now.toISOString().split('T')[0];
+  
+  let featured = (APP_STATE.config && APP_STATE.config.featured) || [];
+  
+  // Filter out any past featured events
+  featured = featured.filter(ev => {
+    if (!ev.date) return true;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(ev.date)) return ev.date >= todayStr;
+    return true;
+  });
+  
+  // If no configured featured events or all are past, pick top upcoming events
+  if (!featured.length && APP_STATE.events && APP_STATE.events.length) {
+    const upcoming = APP_STATE.events.filter(ev => (ev.date || '') >= todayStr);
+    const promoted = upcoming.filter(ev => ev.promoted || ev.featured);
+    featured = promoted.length ? promoted.slice(0, 3) : upcoming.slice(0, 3);
+  }
+  
+  if (!featured.length) {
+    container.innerHTML = '<p class="muted">No featured events at this time.</p>';
+    return;
+  }
   
   container.innerHTML = featured.map(ev => createFeaturedCard(ev)).join('');
 }
@@ -602,6 +630,54 @@ async function init() {
   }
 }
 
+// Family events renderer
+function renderFamilyEvents() {
+  const schoolBox = document.getElementById('family-school-events');
+  const churchBox = document.getElementById('family-church-events');
+  const garageBox = document.getElementById('family-garage-events');
+  if (!schoolBox && !churchBox && !garageBox) return;
+
+  const now = new Date();
+  const todayStr = now.toISOString().split('T')[0];
+  const all = (APP_STATE.events || []).filter(ev => (ev.date || '') >= todayStr);
+
+  const schoolEvents = all.filter(ev => {
+    const cat = (ev.category || '').toLowerCase();
+    const cats = (ev.categories || []).map(c => c.toLowerCase());
+    const title = (ev.title || '').toLowerCase();
+    return cat === 'family' || cat === 'education' || cats.includes('family') || cats.includes('education') || title.includes('school') || title.includes('kids') || title.includes('youth') || title.includes('skating');
+  });
+
+  const churchEvents = all.filter(ev => {
+    const cat = (ev.category || '').toLowerCase();
+    const cats = (ev.categories || []).map(c => c.toLowerCase());
+    const title = (ev.title || '').toLowerCase();
+    return cat === 'faith' || cat === 'church' || cat === 'spiritual' || cats.includes('faith') || cats.includes('church') || title.includes('church') || title.includes('bible') || title.includes('worship') || title.includes('supper') || title.includes('camp');
+  });
+
+  const garageEvents = all.filter(ev => {
+    const cat = (ev.category || '').toLowerCase();
+    const title = (ev.title || '').toLowerCase();
+    return cat === 'fundraiser' || cat === 'market' || title.includes('garage') || title.includes('sale') || title.includes('market') || title.includes('fundraiser');
+  });
+
+  const renderList = (box, events, emptyText) => {
+    if (!box) return;
+    if (!events.length) {
+      box.innerHTML = `<p class="muted" style="font-size:0.85rem;padding:8px 0;">${emptyText}</p>`;
+      return;
+    }
+    box.innerHTML = '';
+    events.slice(0, 6).forEach(ev => {
+      createEventCard(ev, box);
+    });
+  };
+
+  renderList(schoolBox, schoolEvents, 'No upcoming school or youth events scheduled.');
+  renderList(churchBox, churchEvents, 'No upcoming church gatherings scheduled.');
+  renderList(garageBox, garageEvents, 'No upcoming community sales or fundraisers.');
+}
+
 // Copy button handler (handles all copy buttons across pages)
 document.addEventListener('click', (ev) => {
   // Day toggle (minimize/expand) for day sections
@@ -619,25 +695,43 @@ document.addEventListener('click', (ev) => {
   const copyBtn = ev.target.closest('.copy-btn');
   if (copyBtn) {
     ev.preventDefault();
+    ev.stopPropagation();
     const text = copyBtn.dataset.copy || '';
     if (!text) return;
     
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); } catch (e) {}
-    document.body.removeChild(ta);
-    
-    const original = copyBtn.textContent;
-    copyBtn.textContent = 'Copied';
-    copyBtn.disabled = true;
-    setTimeout(() => {
-      copyBtn.textContent = original;
-      copyBtn.disabled = false;
-    }, 1200);
+    const doFeedback = () => {
+      const original = copyBtn.textContent;
+      copyBtn.textContent = 'Copied';
+      copyBtn.disabled = true;
+      setTimeout(() => {
+        copyBtn.textContent = original;
+        copyBtn.disabled = false;
+      }, 1200);
+    };
+
+    const fallbackCopy = (str) => {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = str;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch (e) {}
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(doFeedback).catch(() => {
+        fallbackCopy(text);
+        doFeedback();
+      });
+    } else {
+      fallbackCopy(text);
+      doFeedback();
+    }
   }
 });
 
@@ -651,9 +745,11 @@ function activatePage(page) {
     document.querySelectorAll('.nav-link').forEach(l => {
       if (l.dataset.page === page) l.classList.add('active');
     });
-    if (page === 'home') { try { buildFeatured(); } catch (e) {} }
-    try { buildToday(); } catch (e) {}
+    if (page === 'home') { 
+      try { buildFeatured(); buildToday(); buildDailyEvents(); } catch (e) {} 
+    }
     if (page === 'activities' || page === 'calendar') { try { buildActivityWeek(); } catch (e) {} }
+    if (page === 'family') { try { renderFamilyEvents(); } catch (e) {} }
     if (page === 'weather') { loadWeather(); }
   } catch (e) {
     console.error('activatePage error', e);

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-20T21:58:14.663257+00:00",
+  "last_updated": "2026-09-21",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,69 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/233096",
-      "title": "King Korn Maze",
-      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/233096",
-      "source": "pembinavalleyonline.com",
-      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Hours: Saturday 11:00am-8:00pm Sunday: 11:00am-6:00pm Holiday Hours 12:00pm (noon) - 6:00pm"
-    },
-    {
-      "id": "/events/226151",
-      "title": "Roseisle Pentecostal Assembly - Sunday Praise & Fellowship",
-      "time": "11:00 AM · Roseisle Pentecostal Assembly, 75 Main Ave, Roseisle, MB",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/226151",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us every Sunday morning at 11:00 AM for a time of worship, biblical teaching, and warm fellowship at Roseisle Pentecostal Assembly. Whether you&#39;re a longtime believer, exploring faith, or just passing through the area this summer, there&#39;s a place for you at the table. Come as you are. Everyone is welcome. Contact: Sr. Pastor Barry | 204-259-8821 | contact@rpamb.ca www.rpamb.ca"
-    },
-    {
-      "id": "/events/227194",
-      "title": "Morden’s POP CULTURE EXPO",
-      "time": "12:00 PM · Access Event Centre, 111-D Gilmour St, Morden, Manitoba",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/227194",
-      "source": "pembinavalleyonline.com",
-      "description": "Hey Everyone! We’re Back! Manitoba’s Hottest &amp; Fastest-Growing Collectibles Show Returns THIS FALL to Morden’s Access Event Centre •••••••••••••• FREE ENTRY ••••••••••••••• More Announcements Coming Soon! ••••••••••••••••••••••••••••••••••••••••••••••••• ••••• FAMILY FRIENDLY &amp; FREE ENTRY ••••• MORDEN’S POP CULTURE EXPO 🗓️ Saturday SEPTEMBER 19th • 10am-5pm 🗓️ Sunday SEPTEMBER 20th • 12pm-5pm 📍 Access Event Centre Morden MB (111-D Gilmour St) 🔸45+ Vendors &amp; Attractions 🔸Super Smash Bros &amp; Mario Kart 8 Tournaments on Nintendo Switch hosted by Tiffany Krahn 🔸 Artistry Ink FLASH Tattoos w/ Jess 🔸The Mando Mercs Star Wars Costume Club (SUNDAY ONLY) 🔸The IceCycle Frozen Treats &amp; Popcorn 🔸Swirl &amp; Twirl Cotton Candy Co. 🔸Pop Culture ART CONTEST ♦️TCG / POKEMON CARDS ♦️COSPLAY ♦️COMIC BOOKS ♦️NEW &amp; RETRO TOYS ♦️ARTISAN HAND-MADE ITEMS ♦️3D PRINTED ITEMS ♦️VIDEO GAMES ♦️FUNKO POPS ♦️TRADING CARDS ♦️DIE-CAST ♦️VINYL RECORDS ♦️CUSTOM CLOTHING ♦️ARTWORK ♦️DOLLS, PLUSH &amp; ACTION FIGURES ♦️ANIME ♦️VINTAGE CLOTHING Sponsored by: @wv_cards_collectibles (254 Main St Winkler) Presented By: @80skidcollectables (339 Stephen St Morden)"
-    },
-    {
-      "id": "/events/233678",
-      "title": "Terry Fox Run",
-      "time": "1:00 PM · Ryall Park, 2 1st Avenue, Carman, Manitoba",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/233678",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us at the Ryall Park in Carman on September 20, 2026 at 1:00 to 3:00 for the Terry Fox run event. Walk/run/roll/wheel/paddle-participate your way! Registration and donation collection will be on site. Silver collection and raffle is available as another way to donate to theTerry Fox Foundation. Music entertainment will be performed by FlaTTop and Company on the Ryall Park stage. Bring a lawn chair and stay and enjoy! Tshirts are available at Toew’s Printing and Office Supplies and on site the day of the event."
-    },
-    {
-      "id": "/events/233078",
-      "title": "We Are All Treaty People",
-      "time": "1:00 PM · The Forks National Historic Site, 45 Forks Market Road, Winnipeg, MB",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/233078",
-      "source": "pembinavalleyonline.com",
-      "description": "September 20, 2026 The Forks National Historic Site"
-    },
-    {
-      "id": "/events/232805",
-      "title": "PVBC Pies and Fries",
-      "time": "2:00 PM · Pembina Valley Bible Camp, Darlingford, MB",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/232805",
-      "source": "pembinavalleyonline.com",
-      "description": "Pembina Valley Bible Camp September 20, 2026 September 27, 2026 October 4, 2026 2-6pm"
-    },
-    {
-      "id": "/events/232414",
-      "title": "Concert D'Friesens family presents Concer twith Eduard & Christine Klassen",
-      "time": "7:00 PM · Winkler Sommerfeld Mennonite Church, 189 2nd Streeet, Winkler, Manitoba",
-      "date": "2026-09-20",
-      "link": "https://www.pembinavalleyonline.com/events/232414",
-      "source": "pembinavalleyonline.com",
-      "description": "Come hear music and stories of Faith and ministry Music by the Friessen family and the Klassens admission by donation - Low German Ministry"
-    },
     {
       "id": "/events/233614",
       "title": "Ladies Bible Study",
