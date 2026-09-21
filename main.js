@@ -182,10 +182,13 @@ function buildDailyEvents() {
   const activeBtn = document.querySelector('.town-btn.active');
   const filter = activeBtn ? activeBtn.dataset.town : 'all';
   
-  // Apply town filter
+  // Apply town filter - location is in time field
   let filtered = [...APP_STATE.events];
   if (filter !== 'all') {
-    filtered = filtered.filter(e => (e.location || '').toLowerCase().includes(filter.toLowerCase()));
+    filtered = filtered.filter(e => 
+      (e.time || '').toLowerCase().includes(filter.toLowerCase()) ||
+      (e.location || '').toLowerCase().includes(filter.toLowerCase())
+    );
   }
   
   const upcoming = filtered.filter(ev => {
