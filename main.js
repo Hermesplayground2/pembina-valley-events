@@ -372,64 +372,146 @@ function weatherLabel(code) {
   return labels[code] || 'Weather';
 }
 
+// Weather video and weekly forecast
+const WEATHER_VIDEO_SRCS = {
+  day: 'weather-media/day.mp4?v=1788408739',
+  rain: 'weather-media/rain.mp4?v=1788408739',
+  night: 'weather-media/night.mp4?v=1788408739'
+};
+const WEATHER_FRAME_SRCS = {
+  day: 'weather-media/day_frame.jpg',
+  rain: 'weather-media/rain_frame.jpg',
+  night: 'weather-media/night_frame.jpg'
+};
+
+function pickWeatherSrc(code, temp) {
+  const hour = new Date().getHours();
+  const isNight = hour < 6 || hour >= 20;
+  const isPrecip = code !== undefined && code !== null && code >= 51 && code <= 99;
+  if (isPrecip) return { video: WEATHER_VIDEO_SRCS.rain, frame: WEATHER_FRAME_SRCS.rain };
+  if (isNight) return { video: WEATHER_VIDEO_SRCS.night, frame: WEATHER_FRAME_SRCS.night };
+  return { video: WEATHER_VIDEO_SRCS.day, frame: WEATHER_FRAME_SRCS.day };
+}
+
+function setWeatherVideo(code, temp) {
+  const video = document.getElementById('heroWeatherVideo');
+  if (!video) return;
+  const { video: src } = pickWeatherSrc(code, temp);
+  if (video.src && video.src.includes(src.split('/').pop())) return;
+  video.style.transition = 'opacity 0.6s ease';
+  video.style.opacity = '0';
+  setTimeout(() => {
+    video.src = src;
+    video.load();
+    video.play().then(() => { video.style.opacity = '1'; })
+      .catch(() => { video.style.opacity = '0'; });
+  }, 600);
+}
+
 async function loadWeather() {
   const heroCond = document.getElementById('heroCondition');
+  const heroTemp = document.getElementById('heroTemp');
   const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
   const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
   const updEls = () => document.querySelectorAll('#updated, #updated2');
-  
-  const apply = (temp, cond, loc, upd) => {
-    tempEls().forEach(el => el.textContent = temp);
-    condEls().forEach(el => el.textContent = cond);
-    updEls().forEach(el => el.textContent = loc);
-    if (upd) {
-      updEls().forEach(el => el.textContent = `Updated: ${upd}`);
-    }
+
+  const apply = (temp, cond, upd) => {
+    tempEls().forEach(el => { if (el) el.textContent = temp; });
+    condEls().forEach(el => { if (el) el.textContent = cond; });
+    updEls().forEach(el => { if (el) el.textContent = upd; });
   };
-  
-  // Check cache first
-  const cached = localStorage.getItem(CONFIG.localCacheKey + '_weather');
-  if (cached) {
-    try {
-      const cachedData = JSON.parse(cached);
-      if (Date.now() - cachedData.timestamp < CONFIG.weatherCacheTTL) {
-        const cw = cachedData.data.current_weather;
-        apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode), 'Pembina, MB', new Date(cachedData.timestamp).toLocaleTimeString());
-        return;
-      }
-    } catch (e) {}
-  }
-  
+
   const fallback = () => {
-    apply('--°', 'Weather unavailable', 'Pembina, MB', '');
+    apply('--°', 'Weather unavailable', 'Updated: --');
     if (heroCond) heroCond.textContent = 'Weather unavailable';
+    setWeatherVideo(3, 15);
   };
-  
+
   const fallbackTimer = setTimeout(fallback, 5000);
-  
+
   try {
+    const cached = localStorage.getItem(CONFIG.localCacheKey + '_weather');
+    if (cached) {
+      try {
+        const cachedData = JSON.parse(cached);
+        if (Date.now() - cachedData.timestamp < CONFIG.weatherCacheTTL) {
+          const cw = cachedData.data.current_weather;
+          const { video } = pickWeatherSrc(cw.weathercode, cw.temperature);
+          apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode), `Updated: ${new Date(cachedData.timestamp).toLocaleTimeString()}`);
+          if (heroCond) heroCond.textContent = weatherLabel(cw.weathercode);
+          setWeatherVideo(cw.weathercode, cw.temperature);
+          return;
+        }
+      } catch (e) {}
+    }
+
     const params = new URLSearchParams(CONFIG.weatherApiParams);
     const url = `${CONFIG.weatherApiUrl}?${params}`;
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 8000);
-    
+
     const res = await fetch(url, { signal: controller.signal });
     clearTimeout(timeoutId);
     clearTimeout(fallbackTimer);
-    
+
     const data = await res.json();
-    
-    // Cache successful response
+
     localStorage.setItem(CONFIG.localCacheKey + '_weather', JSON.stringify({
       timestamp: Date.now(),
       data: data
     }));
-    
+
     const cw = data.current_weather;
-    apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode), 'Pembina, MB', new Date().toLocaleTimeString());
+    const { video } = pickWeatherSrc(cw.weathercode, cw.temperature);
+    apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode), `Updated: ${new Date().toLocaleTimeString()}`);
+    if (heroCond) heroCond.textContent = weatherLabel(cw.weathercode);
+    setWeatherVideo(cw.weathercode, cw.temperature);
+
+    // Weekly forecast
+    if (data.daily) renderWeekly(data.daily);
   } catch (e) {
     clearTimeout(fallbackTimer);
     fallback();
+  }
+}
+
+function renderWeekly(daily) {
+  const container = document.getElementById('weather-forecast');
+  if (!container) return;
+  if (!daily || !daily.time || !daily.time.length) {
+    container.innerHTML = '<div class="muted">Weekly forecast unavailable</div>';
+    return;
+  }
+
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const count = Math.min(7, daily.time.length);
+
+  container.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.className = 'weekly-wrap';
+  container.appendChild(wrap);
+
+  for (let i = 0; i < count; i++) {
+    const date = new Date(daily.time[i] + 'T00:00:00');
+    const dayName = days[date.getDay()];
+    const monthName = months[date.getMonth()];
+    const dayNum = date.getDate();
+    const maxT = daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[i]) : '--';
+    const minT = daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[i]) : '--';
+    const condition = weatherLabel(daily.weathercode[i]);
+    const precip = daily.precipitation_sum ? daily.precipitation_sum[i].toFixed(1) : '0.0';
+
+    const card = document.createElement('div');
+    card.className = 'weekly-day';
+    card.innerHTML = `
+      <div class="dow">${dayName}</div>
+      <div class="date">${monthName} ${dayNum}</div>
+      <div class="cond">${condition}</div>
+      <div class="lo-hi">${maxT}° / ${minT}°</div>
+      <div style="font-size:0.7rem;color:#38bdf8;margin-top:2px;">Precip: ${precip}%</div>
+    `;
+    wrap.appendChild(card);
   }
 }
 
