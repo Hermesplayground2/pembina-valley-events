@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-22",
+  "last_updated": "2026-09-23",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,78 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/234642",
-      "title": "Floor Curling",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/234642",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/231326",
-      "title": "Line Dancing Lessons at Winkler Senior Centre",
-      "time": "1:00 PM · Winkler Senior Centre, 650 S Railway Ave, Winkler, MB",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/231326",
-      "source": "pembinavalleyonline.com",
-      "description": "Come out to the Winkler Senior Centre and give line dancing a try! Free lessons will be offered during Culture Days, with two chances to join in: September 22 at 1pm and September 24 at 7pm. No experience is needed. Come on your own or bring a friend and learn some steps together. This event is free and open to the community."
-    },
-    {
-      "id": "/events/231078",
-      "title": "Linedancing Classes at Winkler Senior Centre",
-      "time": "1:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/231078",
-      "source": "pembinavalleyonline.com",
-      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 22nd at 1:00pm &amp; Thursday Sept. 24th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
-    },
-    {
-      "id": "/events/231228",
-      "title": "After School Art Club | Ages 5-8",
-      "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/231228",
-      "source": "pembinavalleyonline.com",
-      "description": "Our new After School Art Club gives young artists the chance to explore, create, and build their art skills throughout the fall! Each Tuesday, running 4pm – 5:30pm, will feature different projects and materials, giving kids plenty of opportunities to explore their creativity and make something of their own. This fall, we’re offering two 6-week sessions, or you can register for both and join us for the full 12 weeks! Session 1 – Discover the Building Blocks of Art! September 15 – October 20 6 Weeks | $60 This session focuses on learning the basic elements of art through playful exploration. Session 2 – Artists, Imagination, and Big Ideas! October 27 – December 1 6 Weeks | $60 Session 2 builds on the fundamentals introduced in Session 1, giving kids the chance to apply what they’ve learned through new projects and ideas. New to the club? No problem! Each lesson will include a review of the elements being explored, so kids can jump in at any time. Both Sessions – 10% Off! September 15 – December 1 12 Weeks | $108 All supplies are included. Space is limited! Registration is now open! https://winklerarts.com/events/afterschoolartclub1/"
-    },
-    {
-      "id": "/events/232803",
-      "title": "Winkler Bible Camp Fall Supper",
-      "time": "4:30 PM · Winkler Bible Camp, 16037 Highway #3, Stanley, MB",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/232803",
-      "source": "pembinavalleyonline.com",
-      "description": "September 22, 2026 Winkler Bible Camp, 16037 Highway #3, Stanley, MB Winkler Bible Camp, 16037 Highway #3, Stanley, MB"
-    },
-    {
-      "id": "/events/232582",
-      "title": "Fall Supper | Winkler Bible Camp",
-      "time": "4:30 PM · Winkler Bible Camp, 16037 Pth 3, Stanley, Manitoba",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/232582",
-      "source": "pembinavalleyonline.com",
-      "description": "Winkler Bible Camp invites you to our Fall Fundraising Supper🍂 We have two days you can choose from this year. Join us either September 21 or 22 from 4:30 - 6pm. Pick up supper through our drive-thru or stay awhile and dine in our dining hall. On the menu is turkey, farmer sausage, stuffing, mashed potatoes, gravy, corn, a bun, coleslaw and tarts for dessert!⁠ NEW FOR THIS YEAR! Reserve your meals ahead of time through our website!"
-    },
-    {
-      "id": "/events/234669",
-      "title": "Pattern Dance",
-      "time": "5:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/234669",
-      "source": "pembinavalleyonline.com",
-      "description": "Pattern Dance is a combination of the Foxtrot, Polka and Waltz dances. Beginner Pattern Dance at 5:30pm Advanced Pattern Dance at 7:00pm Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/233050",
-      "title": "Books & Brew at the Winkler Library",
-      "time": "7:00 PM · Winkler Library, 160 Main St, Winkler, MB",
-      "date": "2026-09-22",
-      "link": "https://www.pembinavalleyonline.com/events/233050",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us on September 22nd for Books &amp; Brew Book Club. This month we’re reading &quot;Alone Against the North&quot; by Adam Shoalts. Going forward, Books &amp; Brew will meet monthly on the last Tuesday of the month at 7:00pm. Registration is required, feel free to visit us in person, call us at 204-325-7174 or email us at winklercirculation@gmail.com to sign up!"
-    },
     {
       "id": "/events/232343",
       "title": "Story Time at the Winkler Library",
