@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-23",
+  "last_updated": "2026-09-24",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,78 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/232343",
-      "title": "Story Time at the Winkler Library",
-      "time": "10:00 AM · Winkler Library, 160 Main St, Winkler, MB",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/232343",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us every Wednesday morning at 10:00 AM for Storytime! Each week, we will read new stories and have a fun craft/activity planned for after (3.5 - 5 years old level)!"
-    },
-    {
-      "id": "/events/233653",
-      "title": "Explore the Bible",
-      "time": "1:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/233653",
-      "source": "pembinavalleyonline.com",
-      "description": "Ladies, join us as well explore the Bible together and see how it relates to our lives. Drinks and snacks are free."
-    },
-    {
-      "id": "/events/233781",
-      "title": "Soup & Pie Supper",
-      "time": "5:30 PM · CENTRE ON MAIN, 265 Main Avenue, Plum Coulee, Manitoba",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/233781",
-      "source": "pembinavalleyonline.com",
-      "description": "Come join us at the Centre on Main on Wednesday September 23 at 5:30 pm for our fundraising Soup &amp; Pie supper. Hearty soups and delicious pies. By donation."
-    },
-    {
-      "id": "/events/234573",
-      "title": "Pembina Climate Action Network meeting",
-      "time": "7:00 PM · 500 Stephen Street, 500 Stephen St, Morden, MB",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/234573",
-      "source": "pembinavalleyonline.com",
-      "description": "Join the Pembina Climate Action Network (PCAN) for a virtual interview with Katharine Hayhoe PhD Where does Climate Action go from here? Sept 23 7pm at 500 Stephen Street Morden Everyone Welcome"
-    },
-    {
-      "id": "/events/233666",
-      "title": "Craft Cafe/Fellowship",
-      "time": "7:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/233666",
-      "source": "pembinavalleyonline.com",
-      "description": "Ladies, join us for a fun evening of making crafts and visiting around the table. Drinks and snacks are free. Bring a friend."
-    },
-    {
-      "id": "/events/233782",
-      "title": "Annual General Meeting",
-      "time": "7:00 PM · Centre on Main, 265 MAIN AVENUE, Plum Coulee, MB",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/233782",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for our Annual General Meeting for the Centre on Main at 7 p.m. following our fundraising Soup &amp; Pie supper."
-    },
-    {
-      "id": "/events/233640",
-      "title": "Morning Coffee Time",
-      "time": "9:00 AM · Altona Mall, Altona, MB",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/233640",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for free drinks and snacks. Bring a friend. Men and women are welcome at this time."
-    },
-    {
-      "id": "/events/232139",
-      "title": "Fitness",
-      "time": "9:00 AM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-23",
-      "link": "https://www.pembinavalleyonline.com/events/232139",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
     {
       "id": "/events/227243",
       "title": "Pickleball",
