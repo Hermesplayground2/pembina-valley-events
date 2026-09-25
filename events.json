@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-24",
+  "last_updated": "2026-09-25",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,96 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/227243",
-      "title": "Pickleball",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/227243",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/227259",
-      "title": "Duplicate Bridge",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/227259",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/232984",
-      "title": "ALTONA UNITED CHURCH BEEF STEW DRIVE THRU FUNDRAISER, 45 3rd Ave SE",
-      "time": "4:30 PM · Altona United Church, 45 3rd Ave SE, Altona, MB",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/232984",
-      "source": "pembinavalleyonline.com",
-      "description": "Beef Stew drive thru is back! Meal includes beef stew, bun and dessert, THURSDAY, SEPT. 24, 4:30 to 6:30 PM. Delivery is also an option by calling 204-324-8769 between 10 am and 6 pm. By donation."
-    },
-    {
-      "id": "/events/233087",
-      "title": "Junior Dungeons & Dragons at the Winkler Library",
-      "time": "6:30 PM · Winkler Library, 160 Main St, Winkler, MB",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/233087",
-      "source": "pembinavalleyonline.com",
-      "description": "Dive into a fantasy world and complete epic quests with this tabletop role-playing game! Join us on September 24 at 6:30 PM for one session of Dungeons and Dragons open for ages 10-14. You will play with pre-made characters but you can customize the race (Dwarf, Elf, Halfling or Human) and the class (Bard, Cleric, Fighter, Rogue, or Wizard), just let us know what you want when you register! Dice will be provided but feel free to bring yours. Beverages are provided, feel free to bring snacks! Registration is required, feel free to visit us in person, give us a call at 204-325-7174 or email us at winklercirculation@gmail.com."
-    },
-    {
-      "id": "/events/231127",
-      "title": "Pembina Valley Men's Prayer Breakfast",
-      "time": "7:00 AM · Triangle Oasis Restaurant (Back room), 880 Triple E Boulevard (PTH14 & 1st Street), Winkler, MB",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/231127",
-      "source": "pembinavalleyonline.com",
-      "description": "Since 2000, Christian men from around Pembina Valley MB and further have met each Thursday morning for Prayer, Bible Devotions, Missions reports and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. 7:00a Welcome &amp; Devotional 7:15a Missions reports or speaker 7:45a Prayer 8:00a Fellowship over breakfast If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Jake to confirm upcoming meetings."
-    },
-    {
-      "id": "/events/231327",
-      "title": "Line Dancing Lessons at Winkler Senior Centre",
-      "time": "7:00 PM · Winkler Senior Centre, 650 S Railway Ave, Winkler, MB",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/231327",
-      "source": "pembinavalleyonline.com",
-      "description": "Come out to the Winkler Senior Centre and give line dancing a try! Free lessons will be offered during Culture Days, with two chances to join in: September 22 at 1pm and September 24 at 7pm. No experience is needed. Come on your own or bring a friend and learn some steps together. This event is free and open to the community."
-    },
-    {
-      "id": "/events/231083",
-      "title": "Linedancing Classes at Winkler Senior Centre",
-      "time": "7:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/231083",
-      "source": "pembinavalleyonline.com",
-      "description": "Linedancing Seasons starts at Winkler Senior Centre with 2 Free Classes Tuesday, Sept. 22nd at 1:00pm &amp; Thursday Sept. 24th at 7:00pm Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
-    },
-    {
-      "id": "/events/229753",
-      "title": "Blanket Exercise - Truth and Reconciliation",
-      "time": "7:30 PM · Emmanuel Baptist Church, Morris, MB",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/229753",
-      "source": "pembinavalleyonline.com",
-      "description": "September 24, 2026"
-    },
-    {
-      "id": "/events/231328",
-      "title": "Lunar Viewing at Winkler Arts and Culture!",
-      "time": "8:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, Manitoba",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/231328",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us at Winkler Arts + Culture for an evening of lunar viewing with the Pembina Valley Astro Club! Starting at 8 PM, the Astro Club will have a telescope set up for a closer look at the Moon. Stop by, take a look through the telescope, and bring your space questions! Our guest Kenton from the Astro Club is incredibly knowledgeable and will be happy to chat about the Moon, astronomy, and all things space. This is a free, all-ages event and no registration is required. Drop in anytime after 8 PM. Please note: Lunar viewing is weather dependent. If cloudy or poor weather prevents the event from going ahead, we&#39;ll post an update through Winkler Arts + Culture."
-    },
-    {
-      "id": "/events/233449",
-      "title": "Astro Club at Dead Horse Cider Co.",
-      "time": "9:00 PM · Winkler Arts & Culture, 547 Park St, Winkler, Winkler, MB",
-      "date": "2026-09-24",
-      "link": "https://www.pembinavalleyonline.com/events/233449",
-      "source": "pembinavalleyonline.com",
-      "description": "Join Kenton Dyck for Astro Club on September 24th at Winkler Arts &amp; Culture. from 9:00 PM to 11:00 PM for a Moon Night! It will be a full moon night, and we will be viewing Saturn and the Pleiades star cluster! Make sure to follow @astroclubpv for weather and event updates!"
-    },
     {
       "id": "/events/233425",
       "title": "LITTLE RANCHERS HORSE CAMP",
