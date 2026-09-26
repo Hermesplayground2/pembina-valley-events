@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-25",
+  "last_updated": "2026-09-26",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,78 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/233425",
-      "title": "LITTLE RANCHERS HORSE CAMP",
-      "time": "10:10 AM · Fields Of Hope Equine Learning, Box 575, Winkler, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/233425",
-      "source": "pembinavalleyonline.com",
-      "description": "Little Ranchers Camp Introduce your child to horses. Help your child develop a love for horses with our mini, non-intimidating sized horses. Brushing, leading and horse activities :) Ages 5-7 $35/person Sept 25th, 2026 10-11:00am OR 1:30-2:30pm Register at FieldsOfHopeEquine.ca or email FieldsOfHopeEquine@outlook.com or call 204-362-8854 Location: Just outside of Winkler."
-    },
-    {
-      "id": "/events/233719",
-      "title": "Coffee Fellowship and Crafts",
-      "time": "1:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/233719",
-      "source": "pembinavalleyonline.com",
-      "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
-    },
-    {
-      "id": "/events/231385",
-      "title": "Pre, Peri & Post Menopause",
-      "time": "1:00 PM · Morden Activity Centre, 306 North Railway Street, Morden, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/231385",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us on at the Morden Activity Centre for a free education session all about menopause. Hosted by Halee Verzyl, registered dietitian with Southern Health - Sante Sud. Come learn and ask questions. You won&#39;t want to miss it."
-    },
-    {
-      "id": "/events/229770",
-      "title": "Art Hive at WAC",
-      "time": "1:00 PM · Winkler Arts and Culture Centre, 547 Park St., Winkler, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/229770",
-      "source": "pembinavalleyonline.com",
-      "description": "Art Hive is a welcoming, drop-in creative space where people of all backgrounds and abilities can come together to make art and connect. Led by Yael Fehr, each session offers a simple, guided activity - no experience needed. Every 2nd and 4th Fridays from 1pm - 2:30pm. This program is free - funding generously provided by Southern Health. Whether you come on your own or with a group, Art Hive is about building community, sharing space, and creating something side by side."
-    },
-    {
-      "id": "/events/232120",
-      "title": "Darp Days!",
-      "time": "5:00 PM · Neubergthal Commons, 5013 RD 1 W, Neubergthal, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/232120",
-      "source": "pembinavalleyonline.com",
-      "description": "Neubergthal Heritage Foundation Presents, Darp Days: Food! Music! History! Fun for everyone! Weekend begins with a Soup and Pie at 5p.m. on Friday Sept. 25, and continues the next day with morning coffee, Sandwich lunch, Tours and Presentations. For full schedule, see picture, or visit website. Hope to see you there!"
-    },
-    {
-      "id": "/events/233104",
-      "title": "King Korn Maze - Flashlight Friday",
-      "time": "6:30 PM · King Korn Maze, Notre Dame de Lourdes, MB",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/233104",
-      "source": "pembinavalleyonline.com",
-      "description": "🌽🔦 FLASHLIGHT FRIDAY AT KING KORN MAZE! 🔦🌽 Think you know the maze? Try finding your way through it after dark! Grab your crew, bring your flashlights, and take on the corn maze at night for a whole new King Korn experience. With nothing but your flashlight to guide the way, every twist and turn feels a little different once the sun goes down. 🌙 Perfect for families, friends, date nights, or anyone looking to add a little adventure to their Friday night! Open 6:00pm-11:30pm"
-    },
-    {
-      "id": "/events/231205",
-      "title": "Men's Prayer Breakfast (Morden)",
-      "time": "6:57 AM · Rock's Bar & Grill, 780 Thornhill Street, Morden, MB",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/231205",
-      "source": "pembinavalleyonline.com",
-      "description": "Christian men from around Morden meet each Friday morning for Prayer, Bible Devotions and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. This is a great way to meet and network with other Christian men. If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Dwight to confirm upcoming meetings."
-    },
-    {
-      "id": "/events/233776",
-      "title": "Friday Night Fever",
-      "time": "7:00 PM · P.W Enns Centennial Concert Hall, 783 Mountain Avenue, Winkler, Manitoba",
-      "date": "2026-09-25",
-      "link": "https://www.pembinavalleyonline.com/events/233776",
-      "source": "pembinavalleyonline.com",
-      "description": "The concert event of the Fall, featuring a stellar lineup of local musicians including B.K. and the Bad Habits, Linda Hiebert, Madel Morin, The Razberry Jam, Link and the Moustaches, Bill Dowling, Stueck Dueck and Jenessa Kehler and The M&#39;Ladies! This night of music is in support and appreciation of local musician James Johnston. Get your tickets at winklerconcerthall.ca!"
-    },
     {
       "id": "/events/231329",
       "title": "Free Introductory Beading Workshop",
