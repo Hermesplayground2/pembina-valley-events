@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-26",
+  "last_updated": "2026-09-27",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,51 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/231329",
-      "title": "Free Introductory Beading Workshop",
-      "time": "10:00 AM · Winkler Arts and Culture, 547 Park St., Winkler, Manitoba",
-      "date": "2026-09-26",
-      "link": "https://www.pembinavalleyonline.com/events/231329",
-      "source": "pembinavalleyonline.com",
-      "description": "Learn the basic skills needed to create your own one-of-a-kind pair of beaded earrings. Along the way, you’ll learn about the importance of beading within Indigenous culture and identity, as well as the basics of one-needle and two-needle beading, different types of beads, choosing patterns, and more. This free workshop will be hosted by MMF citizens Alesha Hildebrand and Taylor Hildebrand. Must be 14 years of age or older. Space is limited and registration is required. Refreshments will be provided at no cost. Register at www.winklerarts.com Thanks to funding from the Manitoba Arts Council’s Indigenous 360 program, there is no cost to participate. Thank you as well to Teri Beads for their support."
-    },
-    {
-      "id": "/events/233090",
-      "title": "King Korn Maze",
-      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
-      "date": "2026-09-26",
-      "link": "https://www.pembinavalleyonline.com/events/233090",
-      "source": "pembinavalleyonline.com",
-      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Come for the maze, stay for the memories. We can’t wait to see you this fall at King Korn Maze! Hours: Saturday 11am-8pm Sunday 11am-6pm Holiday Hours 12:00pm (noon) - 6:00pm"
-    },
-    {
-      "id": "/events/233383",
-      "title": "United Way BBQ Fundraiser Morden",
-      "time": "11:00 AM · Morden Gardenland COOP parking lot, 945 Thornhill Street, Morden, Manitoba",
-      "date": "2026-09-26",
-      "link": "https://www.pembinavalleyonline.com/events/233383",
-      "source": "pembinavalleyonline.com",
-      "description": "Fundraising BBQ to support United Way Pembina Valley. Morden Gardenland COOP parking lot, By donation, Bring a friend!"
-    },
-    {
-      "id": "/events/225158",
-      "title": "Katie Cares 13th Annual Celebration of Life Fashion Show",
-      "time": "12:30 PM · Morden Access Event Centre, 111 Gilmour St, Morden, MB",
-      "date": "2026-09-26",
-      "link": "https://www.pembinavalleyonline.com/events/225158",
-      "source": "pembinavalleyonline.com",
-      "description": "Katie Cares Fashion Show is a fun event for all ages, children, women, men! The event includes delicious food, live music, door prizes, raffle, inspiring stories. The event is held at the Morden Access Event Centre 111 Gilmour St. Morden MB. 2 shows $75.00 per ticket, $50.00 tax receipt. Matinee show 12:30 pm doors open at 11:30 am Evening show 7:00 pm doors open at 6:00 pm. All in support of Katie Cares"
-    },
-    {
-      "id": "/events/234775",
-      "title": "Reinland Community Centre Breakfast",
-      "time": "8:00 AM · Reinland Community Centre, 148 Reinland Ave, Reinland, Manitoba",
-      "date": "2026-09-26",
-      "link": "https://www.pembinavalleyonline.com/events/234775",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for a community breakfast on September 26th in the village of Reinland! Breakfast will be served by donation from 8am till 10am. All welcome!!"
-    },
     {
       "id": "/events/233097",
       "title": "King Korn Maze",
