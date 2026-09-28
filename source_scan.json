@@ -1,0 +1,62 @@
+[
+  {
+    "source": "https://morden.ca/events-festivals",
+    "dates": [],
+    "titles": [],
+    "status": "bot-protected (CAPTCHA) - works in browser, blocked by curl",
+    "replacement": "https://morden.ca/recreation-organizations"
+  },
+  {
+    "source": "https://cityofwinkler.ca/p/upcoming-events",
+    "dates": [],
+    "titles": [
+      "Skip To Content",
+      "Main Navigation",
+      "Navigate thru all the sub categories of the website",
+      "Main content of the website",
+      "Winkler Recreation",
+      "Office Hours",
+      "Get In Touch",
+      "Register For E-News",
+      "Tell Us What You Think",
+      "Current Fire Rating",
+      "Local Weather",
+      "Registration",
+      "Search and I Like To..."
+    ],
+    "status": "BROKEN - 500",
+    "replacement": "https://anc.ca.apm.activecommunities.com/cityofwinkler/calendars?onlineSiteId=0&defaultCalendarId=2"
+  },
+  {
+    "source": "https://altona.ca/upcoming-events",
+    "dates": [],
+    "titles": [
+      "Recreation & Parks"
+    ]
+  },
+  {
+    "source": "https://winkleremmc.com/events",
+    "dates": [
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03"
+    ],
+    "titles": [
+      "Views Navigation",
+      "Calendar of Events"
+    ]
+  },
+  {
+    "source": "https://pvhsociety.ca/events",
+    "dates": [],
+    "titles": []
+  },
+  {
+    "source": "https://threshermensmuseum.com/events-activities",
+    "dates": [],
+    "titles": []
+  }
+]
