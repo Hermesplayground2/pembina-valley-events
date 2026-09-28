@@ -39,6 +39,18 @@ function formatDate(dateStr) {
   };
 }
 
+function timeToSort(timeStr) {
+  const t = String(timeStr || '').trim();
+  const hourMatch = t.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+  if (!hourMatch) return 9999;
+  let hour = parseInt(hourMatch[1], 10);
+  const minute = hourMatch[2] ? parseInt(hourMatch[2], 10) : 0;
+  const meridiem = hourMatch[3] ? hourMatch[3].toUpperCase() : null;
+  if (meridiem === 'PM' && hour < 12) hour += 12;
+  if (meridiem === 'AM' && hour === 12) hour = 0;
+  return hour * 100 + minute;
+}
+
 function parseDateTime(dateStr, timeStr) {
   if (!dateStr) return new Date();
   const d = new Date(dateStr + 'T12:00:00');
@@ -125,7 +137,8 @@ function filterAndSortEvents(events, query, filter) {
   return filtered.sort((a, b) => {
     const dateA = new Date(a.date || '9999-99-99');
     const dateB = new Date(b.date || '9999-99-99');
-    return dateA - dateB;
+    if (dateA - dateB !== 0) return dateA - dateB;
+    return timeToSort(a.time) - timeToSort(b.time);
   });
 }
 
@@ -145,7 +158,7 @@ function buildToday() {
     label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
   }
   
-  const todays = APP_STATE.events.filter(ev => ev.date === todayStr);
+  const todays = APP_STATE.events.filter(ev => ev.date === todayStr).sort((a, b) => timeToSort(a.time) - timeToSort(b.time));
   
   if (!todays.length) {
     container.innerHTML = '<p class="muted">No events scheduled for today.</p><div class="spacer"></div>';
@@ -242,7 +255,7 @@ function buildActivityWeek() {
 
     const list = document.createElement('div');
     list.className = 'event-list';
-    eventsByDate[dateStr].forEach(ev => {
+    eventsByDate[dateStr].sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).forEach(ev => {
       const item = document.createElement('div');
       item.className = 'day-event bubble';
       item.dataset.category = ev.category || 'community';
@@ -317,7 +330,7 @@ function buildDailyEvents() {
     const list = document.createElement('div');
     list.className = 'event-list';
     
-    grouped[dateStr].forEach(ev => {
+    grouped[dateStr].sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).forEach(ev => {
       createEventCard(ev, list);
     });
     
@@ -688,7 +701,7 @@ function renderFamilyEvents() {
       return;
     }
     box.innerHTML = '';
-    events.slice(0, 6).forEach(ev => {
+    events.sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).slice(0, 6).forEach(ev => {
       createEventCard(ev, box);
     });
   };
