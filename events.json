@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-27",
+  "last_updated": "2026-09-28",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,51 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/233097",
-      "title": "King Korn Maze",
-      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
-      "date": "2026-09-27",
-      "link": "https://www.pembinavalleyonline.com/events/233097",
-      "source": "pembinavalleyonline.com",
-      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Hours: Saturday 11:00am-8:00pm Sunday: 11:00am-6:00pm Holiday Hours 12:00pm (noon) - 6:00pm"
-    },
-    {
-      "id": "/events/233584",
-      "title": "Old-time Country Dance",
-      "time": "1:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
-      "date": "2026-09-27",
-      "link": "https://www.pembinavalleyonline.com/events/233584",
-      "source": "pembinavalleyonline.com",
-      "description": "Dust off your boots and keep in time at our Old Time Country Dance! Join us at the Manitou Opera House for an afternoon of live music, lively dancing, and small-town charm. Whether you’re a seasoned two-stepper or have two left feet, our 1–2 PM dance lesson will get you feeling confident before the dance floor opens at 3 PM. Enjoy live music from The Fugitives! No partner? No problem. Just bring your energy and be ready to move. Admission is $20, and 17 &amp; under are FREE — making this a perfect night out for all ages. Your admission is paid at the door and includes a beverage and snack, and all proceeds support the continued function of the Manitou Opera House. Lace up your boots - we’ll see you on the dance floor."
-    },
-    {
-      "id": "/events/232806",
-      "title": "PVBC Pies and Fries",
-      "time": "2:00 PM · Pembina Valley Bible Camp, Darlingford, MB",
-      "date": "2026-09-27",
-      "link": "https://www.pembinavalleyonline.com/events/232806",
-      "source": "pembinavalleyonline.com",
-      "description": "Pembina Valley Bible Camp September 27, 2026 October 4, 2026 2-6pm"
-    },
-    {
-      "id": "/events/228348",
-      "title": "St Leon Fall Supper",
-      "time": "4:00 PM · St Léon Community Centre, Saint Leon, Manitoba",
-      "date": "2026-09-27",
-      "link": "https://www.pembinavalleyonline.com/events/228348",
-      "source": "pembinavalleyonline.com",
-      "description": "Annual fall supper St Leon community hall Sunday, September 27, 2026 4 to 7 pm Adults $25 5 to 10 yr old $10 Under 5 free Tickets at the door St Léon Community Centre, Saint Leon, Manitoba St Léon Community Centre, Saint Leon, Manitoba"
-    },
-    {
-      "id": "/events/231136",
-      "title": "Ridgeville Fall Supper",
-      "time": "4:30 PM · Ridgeville Centennial Hall, Main Street, Ridgeville, Mb",
-      "date": "2026-09-27",
-      "link": "https://www.pembinavalleyonline.com/events/231136",
-      "source": "pembinavalleyonline.com",
-      "description": "Annual Community Fall Supper Ridgeville Centennial Hall Tickets sold at the door - Cash Adults - $25 10 and under - $15 Preschool - Free Take out available 50/50 Food Donation Collection"
-    },
     {
       "id": "/events/231043",
       "title": "Care Partner Support Group - Alzheimer's Society",
