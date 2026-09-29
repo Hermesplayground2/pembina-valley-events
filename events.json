@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-28T21:24:04.812021+00:00",
+  "last_updated": "2026-09-29",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,69 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/231043",
-      "title": "Care Partner Support Group - Alzheimer's Society",
-      "time": "10:00 AM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/231043",
-      "source": "pembinavalleyonline.com",
-      "description": "Support groups offer the opportunity for care partners to meet and share information about their experiences of caring for a person living with dementia. Drop-In: 8:30 am - 10:00 am Support Group Meeting: 10:00 am - 11:45 AM For more information and to register, contact Rebecca Atkinson, South Central Regional Coordinator at ratkinson@alzheimer.mb.ca or call 204-325-5634."
-    },
-    {
-      "id": "/events/233615",
-      "title": "Ladies Bible Study",
-      "time": "1:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/233615",
-      "source": "pembinavalleyonline.com",
-      "description": "Come join us as we read through a book of the Bible and discuss it. Free coffee, tea and snacks."
-    },
-    {
-      "id": "/events/232162",
-      "title": "Cribbage Tournament",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/232162",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/233628",
-      "title": "Ladies Games Night",
-      "time": "7:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/233628",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for games night. There are a variety to choose from. Bring a friend. Drinks and snacks are free."
-    },
-    {
-      "id": "/events/233417",
-      "title": "Salsa + Latin Dance Classes with Pembina Valley Latin Dance",
-      "time": "7:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/233417",
-      "source": "pembinavalleyonline.com",
-      "description": "Latin dance is coming to WA+C! 💃 We’re partnering with Pembina Valley Latin Dance for a new series of Monday night dance classes, and you can try it out FREE on September 21! 6–7 PM | Salsa 7–8 PM | Latin Dance including Merengue, Cha-Cha and more Come for one class or stay for both. No experience needed! No registration needed! Like it? The following week we’ll start a 5-week series running September 28 to October 26. $50/person per 5-week class www.winklerarts.com/events/salsa-latin-dance-lessons/ 📍 Winkler Arts + Culture"
-    },
-    {
-      "id": "/events/233602",
-      "title": "Morning Coffee Time",
-      "time": "9:00 AM · Altona Mall, Altona, MB",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/233602",
-      "source": "pembinavalleyonline.com",
-      "description": "Drop in at Love Well Monday mornings for free coffee or tea. Bring a friend. Men and women are welcome to enjoy our space during this time."
-    },
-    {
-      "id": "/events/232125",
-      "title": "Fitness",
-      "time": "9:00 AM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-28",
-      "link": "https://www.pembinavalleyonline.com/events/232125",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
     {
       "id": "/events/235669",
       "title": "Homeschool Skate - Winkler",
