@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-29",
+  "last_updated": "2026-09-30",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,78 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/235669",
-      "title": "Homeschool Skate - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/235669",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/235662",
-      "title": "Homeschool Turf - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/235662",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
-    },
-    {
-      "id": "/events/234643",
-      "title": "Floor Curling",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/234643",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/231082",
-      "title": "Linedancing Classes at Winkler Senior Centre",
-      "time": "1:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/231082",
-      "source": "pembinavalleyonline.com",
-      "description": "Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
-    },
-    {
-      "id": "/events/231229",
-      "title": "After School Art Club | Ages 5-8",
-      "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/231229",
-      "source": "pembinavalleyonline.com",
-      "description": "Our new After School Art Club gives young artists the chance to explore, create, and build their art skills throughout the fall! Each Tuesday, running 4pm – 5:30pm, will feature different projects and materials, giving kids plenty of opportunities to explore their creativity and make something of their own. This fall, we’re offering two 6-week sessions, or you can register for both and join us for the full 12 weeks! Session 1 – Discover the Building Blocks of Art! September 15 – October 20 6 Weeks | $60 This session focuses on learning the basic elements of art through playful exploration. Session 2 – Artists, Imagination, and Big Ideas! October 27 – December 1 6 Weeks | $60 Session 2 builds on the fundamentals introduced in Session 1, giving kids the chance to apply what they’ve learned through new projects and ideas. New to the club? No problem! Each lesson will include a review of the elements being explored, so kids can jump in at any time. Both Sessions – 10% Off! September 15 – December 1 12 Weeks | $108 All supplies are included. Space is limited! Registration is now open! https://winklerarts.com/events/afterschoolartclub1/"
-    },
-    {
-      "id": "/events/234670",
-      "title": "Pattern Dance",
-      "time": "5:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/234670",
-      "source": "pembinavalleyonline.com",
-      "description": "Pattern Dance is a combination of the Foxtrot, Polka and Waltz dances. Beginner Pattern Dance at 5:30pm Advanced Pattern Dance at 7:00pm Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/235782",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/235782",
-      "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
-    },
-    {
-      "id": "/events/232028",
-      "title": "Active Approach to Osteoarthritis",
-      "time": "7:30 PM · RISE, 245 Kimberly Road, Winkler, MB",
-      "date": "2026-09-29",
-      "link": "https://www.pembinavalleyonline.com/events/232028",
-      "source": "pembinavalleyonline.com",
-      "description": "Learn how movement, strength, nutrition, and lifestyle can help you manage osteoarthritis, reduce symptoms, and stay active. Join us for a FREE practical workshop on managing osteoarthritis and staying active as you age, with a focus on knee and hip osteoarthritis. We’ll break down what osteoarthritis is, what it means for your joints, and how movement and strength can play an important role in managing symptoms and improving function. You’ll also learn how nutrition and everyday lifestyle habits can support joint health and help you continue doing the activities you enjoy. The workshop will combine education with practical strategies and exercises you can apply both inside and outside the gym. *MUST Pre-Register, use the link below."
-    },
     {
       "id": "/events/234193",
       "title": "Orange Shirt Day Walk",
