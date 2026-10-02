@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-01",
+  "last_updated": "2026-10-02",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,78 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/227260",
-      "title": "Duplicate Bridge",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/227260",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/227244",
-      "title": "Pickleball",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/227244",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/235358",
-      "title": "Community Roots Program Launch",
-      "time": "3:00 PM · Central Station Community Centre, 555 Main street, Winkler, MB",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/235358",
-      "source": "pembinavalleyonline.com",
-      "description": "We’re excited to introduce Community Roots, a new Central Station initiative created to strengthen connection, build community, and support seniors and others through meaningful opportunities to learn, participate, and get involved. Community Roots is built around a simple idea: seniors are not only participants, but also leaders, teachers, mentors, and volunteers. Through shared learning and practical activities, the program will create more opportunities for people of different ages, backgrounds, and abilities to connect and support one another. Community Roots will include: • Cooking Classes • Intergenerational Skill Building • Medical Advocacy • Men’s Shed • Storytelling • Technology Education • Transportation Support These programs are designed to build confidence, practical skills, friendships, independence, and a stronger sense of belonging in our community. Join us for the Community Roots Program Launch! 📅 October 1 ⏰ 3:00-5:00pm 📍 Central Station Community Centre Everyone is welcome to stop by, learn more about the different programs, ask questions, and see how you can get involved. We’d be happy to see you there!"
-    },
-    {
-      "id": "/events/231323",
-      "title": "Exhibit Reception: Edna Nabess &amp; Friends",
-      "time": "6:30 PM · Winkler Arts and Culture, 547 Park St., Winkler, Manitoba",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/231323",
-      "source": "pembinavalleyonline.com",
-      "description": "Featuring work by Cree artisan Edna Nabess and other Indigenous artists. The exhibit brings together a variety of work and gives visitors an opportunity to see the work of Indigenous creators here in our gallery."
-    },
-    {
-      "id": "/events/235790",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/235790",
-      "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
-    },
-    {
-      "id": "/events/231128",
-      "title": "Pembina Valley Men's Prayer Breakfast",
-      "time": "7:00 AM · Triangle Oasis Restaurant (Back room), 880 Triple E Boulevard (PTH14 & 1st Street), Winkler, MB",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/231128",
-      "source": "pembinavalleyonline.com",
-      "description": "Since 2000, Christian men from around Pembina Valley MB and further have met each Thursday morning for Prayer, Bible Devotions, Missions reports and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. 7:00a Welcome &amp; Devotional 7:15a Missions reports or speaker 7:45a Prayer 8:00a Fellowship over breakfast If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Jake to confirm upcoming meetings."
-    },
-    {
-      "id": "/events/231084",
-      "title": "Linedancing Classes at Winkler Senior Centre",
-      "time": "7:00 PM · Winkler Senior Centre, 650 South Railway Avenue, Winkler, Manitoba",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/231084",
-      "source": "pembinavalleyonline.com",
-      "description": "Regular classes - Drop In fee - $3.00 for WSC members, $4.00 for non-members start Tuesday, Sept. 29th at 1:00pm Thursday, Oct. 1st at 7:00pm Everyone welcome!"
-    },
-    {
-      "id": "/events/230891",
-      "title": "Confidence with Tech - Andrea Hiebert",
-      "time": "9:00 AM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-10-01",
-      "link": "https://www.pembinavalleyonline.com/events/230891",
-      "source": "pembinavalleyonline.com",
-      "description": "Do you find yourself wishing you could use your phones/iPads/tablets/computers more confidently? We are excited to offer you Confidence with Tech sessions with Andrea Hiebert at the Centre! These are informal sessions designed to increase your knowledge, ability, and confidence using your devices (such as smartphones, iPads/tablets, and personal computers/laptops)."
-    },
     {
       "id": "/events/233376",
       "title": "Pregnancy Care Centre Drive Thru Lunch!",
