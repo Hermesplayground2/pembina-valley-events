@@ -143,6 +143,16 @@ function filterAndSortEvents(events, query, filter) {
 }
 
 // Today's events builder
+function localDateStr(d) {
+  // Calendar date in the viewer's own timezone as YYYY-MM-DD.
+  // toISOString() returns UTC, which is the wrong day for anyone east of UTC
+  // during their evening — it silently hid a full day of events.
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
 function buildToday() {
   const container = document.getElementById('today-events');
   const label = document.getElementById('today-date-label');
@@ -151,7 +161,7 @@ function buildToday() {
   container.innerHTML = '';
   
   const now = new Date();
-  const todayStr = now.toISOString().split('T')[0];
+  const todayStr = localDateStr(now);
   const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   
   if (label) {
@@ -208,7 +218,7 @@ function buildActivityWeek() {
   // Load events from APP_STATE
   const allEvents = APP_STATE.events || [];
   allEvents.forEach(ev => {
-    if (ev.date >= today.toISOString().split('T')[0]) {
+    if (ev.date >= localDateStr(today)) {
       add(ev.date, ev);
     }
   });
@@ -345,7 +355,7 @@ function buildFeatured() {
   if (!container) return;
   
   const now = new Date();
-  const todayStr = now.toISOString().split('T')[0];
+  const todayStr = localDateStr(now);
   
   let featured = (APP_STATE.config && APP_STATE.config.featured) || [];
   
@@ -474,7 +484,7 @@ function generateFallbackDaily() {
   for (let i = 0; i < 7; i++) {
     const d = new Date(now);
     d.setDate(d.getDate() + i);
-    dates.push(d.toISOString().split('T')[0]);
+    dates.push(localDateStr(d));
   }
   return {
     time: dates,
@@ -671,7 +681,7 @@ function renderFamilyEvents() {
   if (!schoolBox && !churchBox && !garageBox) return;
 
   const now = new Date();
-  const todayStr = now.toISOString().split('T')[0];
+  const todayStr = localDateStr(now);
   const all = (APP_STATE.events || []).filter(ev => (ev.date || '') >= todayStr);
 
   const schoolEvents = all.filter(ev => {
