@@ -3,3 +3,4 @@ videos/
 video_frames/
 jarvis-ui/
 wilson-jarvis-api/
+__pycache__/
