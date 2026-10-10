@@ -1,4 +1,6 @@
 
+const CALENDAR_ENABLED = false;
+
 function addToCalendar(title, time, date) {
   let startDate = date ? new Date(date + 'T12:00:00') : new Date();
   let endDate = new Date(startDate);
