@@ -297,6 +297,57 @@
     cursor: pointer;
     user-select: none;
     transition: background 0.15s ease, border-color 0.15s ease;
+<<<<<<< HEAD
+=======
+  }
+  .day-header:hover { background: rgba(255,255,255,0.09); border-color: rgba(245,158,11,0.3); }
+  .day-header .day-toggle {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .day-header .day-toggle::before { content: '▶'; display: inline-block; width: 20px; text-align: center; }
+  .day-header.expanded .day-toggle::before { content: '▼'; }
+
+/* Town filter buttons */
+.town-btn { transition: all 0.2s ease; }
+.town-btn:hover { background: rgba(245, 158, 11, 0.15) !important; border-color: #f59e0b !important; color: #f59e0b !important; }
+.town-btn.active { background: #f59e0b !important; color: #0b1220 !important; border-color: #f59e0b !important; font-weight: 700; }
+/* Search input focus */
+#event-search:focus { border-color: #f59e0b !important; background: rgba(245, 158, 11, 0.1) !important; }
+/* Last updated styling */
+#last-updated { color: #64748b; }
+/* Empty state improvements */
+.no-events { color: var(--muted); font-size: 0.9rem; padding: 16px; text-align: center; }
+
+  .day-header .day-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    flex: 1;
+  }
+  .day-header .event-count {
+    background: var(--accent);
+    color: #0f172a;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  .day-section { margin-bottom: 14px; }
+  .event-list.hidden-events { display: none; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .calendar-day {
+    background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; min-height: 110px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+>>>>>>> origin/main
   }
   .day-header:hover { background: rgba(255,255,255,0.09); border-color: rgba(245,158,11,0.3); }
   .day-header .day-toggle {
@@ -780,7 +831,11 @@
         <div id="act-days"></div>
       </div>
       <div class="cta-row" style="margin-top:14px;">
+<<<<<<< HEAD
         <a class="cta-btn animated" href="/cdn-cgi/l/email-protection#6a08050507190f091f180f2a1a18051e0504070b03064409050755191f08000f091e572f1c0f041e4f585a391f08070319190305044c08050e13573a060f0b190f4f585a190f040e4f585a13051f184f585a0f1c0f041e4f585a0e0f1e0b0306194f585a421e031e060f4f58294f585a0e0b1e0f4f58294f585a1e03070f4f58294f585a0605090b1e0305044f58294f585a0603040143444f585a24051e0f4f592b4f585a3a0f070803040b3c0b06060f132f1c0f041e194f585a03194f585a0b4f585a0c0b07030613470c18030f040e06134f585a19031e0f4f585a0b040e4f585a050406134f585a1a180507051e0f194f585a0f1c0f041e191e020b1e4f585a0b180f4f585a191f031e0b08060f4f585a0c05184f585a0b06064f585a0b0d0f1944" target="_self">📝 Submit an Event</a>
+=======
+        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title%2C%20date%2C%20time%2C%20location%2C%20link).%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20eventsthat%20are%20suitable%20for%20all%20ages." target="_self">📝 Submit an Event</a>
+>>>>>>> origin/main
       </div>
     </section>
   </div>
@@ -853,7 +908,11 @@
 
         <div class="spacer"></div>
         <div class="cta-row">
+<<<<<<< HEAD
           <a class="cta-btn" href="/cdn-cgi/l/email-protection#02606d6d6f7167617770674272706d766d6c6f636b6e2c616d6f3d717760686761763f51726d70767127303252706d6570636f2730325177606f6b71716b6d6c24606d667b3f526e6763716727303271676c662730327b6d7770273032696b667127303527303271726d70767127303272706d6570636f273032666776636b6e712730322a71726d707627304127303263656727303265706d7772273041273032756a676c273041273032716763716d6c273041273032647067672730326d70273032616d71762730412730327067656b71767063766b6d6c2730326e6b6c69273041273032766d756c2b2c27303252676f606b6c6354636e6e677b4774676c76712730326b712730326327303264636f6b6e7b2f64706b676c666e7b273032716b7667273032646d70273032696b66712730352730326361766b746b766b67712c">📝 Submit a Kids Sports Program</a>
+=======
+          <a class="cta-btn" href="mailto:boomsecure@protonmail.com?subject=Sports%20Program%20Submission&body=Please%20send%20your%20kids%27%20sports%20program%20details%20(sport%2C%20age%20group%2C%20when%2C%20season%2C%20free%20or%20cost%2C%20registration%20link%2C%20town).%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20for%20kids%27%20activities.">📝 Submit a Kids Sports Program</a>
+>>>>>>> origin/main
         </div>
       </div>
     </section>
@@ -1146,11 +1205,19 @@
   <strong>Pembina Valley Events</strong> · Pembina, MB<br>
   Local events, activities, weather, and community connections.<br>
   <span id="last-updated" style="font-size:0.75rem;opacity:0.6;"></span><br>
+<<<<<<< HEAD
   <span style="font-size:0.75rem;opacity:0.6;">Sources: pembinavalleyonline.com, morden.ca, winkler.ca, altona.ca · <a href="/cdn-cgi/l/email-protection#55373a3a382630362027301525273a213a3b38343c397b363a386a2620373f303621681023303b21706765062037383c26263c3a3b73373a312c6805393034263070676526303b317067652c3a20277067653023303b21706765313021343c392670676570676d213c21393070671670676531342130706716706765213c3830706716706765393a3634213c3a3b706716706765393c3b3e70676c7b7067651b3a2130706614706765053038373c3b3403343939302c1023303b21267067653c26706765347067653334383c392c7833273c303b31392c706765263c2130706765343b317067653a3b392c70676525273a383a2130267067653023303b2126706765213d342170676534273070676526203c2134373930706765333a27706765343939706765343230267b706765013d343b3e7067652c3a2074" style="color:#3b82f6;">Submit an event</a> · <a href="/cdn-cgi/l/email-protection#f79598989a849294828592b78785988398999a969e9bd994989a" style="color:#f59e0b;">Questions</a></span>
 </footer>
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+=======
+  <span style="font-size:0.75rem;opacity:0.6;">Sources: pembinavalleyonline.com, morden.ca, winkler.ca, altona.ca · <a href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20%28title%2C%20date%2C%20time%2C%20location%2C%20link%29.%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20events%20that%20are%20suitable%20for%20all%20ages.%20Thank%20you!" style="color:#3b82f6;">Submit an event</a> · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Questions</a></span>
+</footer>
+
+
+<script>
+>>>>>>> origin/main
 // Event form submit with mailto and thank-you confirmation
 document.getElementById('event-form')?.addEventListener('submit', function(e) {
   e.preventDefault();

@@ -122,6 +122,7 @@ function filterAndSortEvents(events, query, filter) {
   if (filter && filter !== 'all') {
     filtered = filtered.filter(e => (e.categories || []).includes(filter) || e.category === filter || 
              (e.location || '').toLowerCase().includes(filter.toLowerCase()));
+<<<<<<< HEAD
   }
   
   // Apply search query
@@ -523,6 +524,164 @@ window.calendar = {
   setCurrentMonth: (m, y) => { CURRENT_MONTH = m; CURRENT_YEAR = y; }
 };
 
+=======
+  }
+  
+  // Apply search query
+  if (query) {
+    const q = query.toLowerCase();
+    filtered = filtered.filter(e => 
+      (e.title && e.title.toLowerCase().includes(q)) ||
+      (e.description && e.description.toLowerCase().includes(q)) ||
+      (e.time && e.time.toLowerCase().includes(q))
+    );
+  }
+  
+  return filtered.sort((a, b) => {
+    const dateA = new Date(a.date || '9999-99-99');
+    const dateB = new Date(b.date || '9999-99-99');
+    if (dateA - dateB !== 0) return dateA - dateB;
+    return timeToSort(a.time) - timeToSort(b.time);
+  });
+}
+
+// Today's events builder
+function localDateStr(d) {
+  // Calendar date in the viewer's own timezone as YYYY-MM-DD.
+  // toISOString() returns UTC, which is the wrong day for anyone east of UTC
+  // during their evening — it silently hid a full day of events.
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function buildToday() {
+  const container = document.getElementById('today-events');
+  const label = document.getElementById('today-date-label');
+  if (!container || !label) return;
+  
+  container.innerHTML = '';
+  
+  const now = new Date();
+  const todayStr = localDateStr(now);
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  
+  if (label) {
+    label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  }
+  
+  const todays = APP_STATE.events.filter(ev => ev.date === todayStr).sort((a, b) => timeToSort(a.time) - timeToSort(b.time));
+  
+  if (!todays.length) {
+    container.innerHTML = '<p class="muted">No events scheduled for today.</p><div class="spacer"></div>';
+    return;
+  }
+  
+  todays.forEach(ev => {
+    const el = document.createElement('div');
+    el.className = 'day-event bubble';
+    el.dataset.category = ev.category || 'community';
+    const copyText = `${ev.title}\n${ev.time}`;
+    el.innerHTML = `
+      <a class="event-link" href="${ev.link || '#'}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">
+        <span class="title" style="font-weight:600">${ev.title}</span>
+      </a>
+      <span class="time" style="color:#6b7280; font-size:0.85rem">· ${ev.time}</span>
+      <div class="export-row">
+        <button class="copy-btn" data-copy="${copyText.replace(/"/g, '&quot;')}">Copy</button>
+      </div>
+    `;
+    container.appendChild(el);
+  });
+}
+
+// Activity week builder (for Activities page - calendar-style with 2 months)
+function buildActivityWeek() {
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const now = new Date();
+  const year = now.getFullYear();
+  const startMonth = now.getMonth();
+  const today = new Date(year, startMonth, now.getDate());
+  const monthsToShow = 2;
+
+  const body = document.getElementById('act-days');
+  if (!body) return;
+  body.innerHTML = '';
+
+  const eventsByDate = {};
+  const add = (dateStr, ev) => {
+    const evDate = new Date(dateStr + 'T12:00:00');
+    if (evDate < today) return;
+    if (!eventsByDate[dateStr]) eventsByDate[dateStr] = [];
+    eventsByDate[dateStr].push(ev);
+  };
+
+  // Load events from APP_STATE
+  const allEvents = APP_STATE.events || [];
+  allEvents.forEach(ev => {
+    if (ev.date >= localDateStr(today)) {
+      add(ev.date, ev);
+    }
+  });
+
+  // Add recurring events for current and next month
+  const dow = (y, m, d) => new Date(y, m, d).getDay();
+  const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+  for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
+    const month = startMonth + monthOffset;
+    const yearForMonth = year + Math.floor(month / 12);
+    const actualMonth = month % 12;
+    const daysInMonth = new Date(yearForMonth, actualMonth + 1, 0).getDate();
+    for (let d = 1; d <= daysInMonth; d++) {
+      // Weekly writer's group (Tuesday evenings)
+      if (dow(yearForMonth, actualMonth, d) === 2) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: "Writer's Group Meetup", time: 'Tue 6:30 PM · Local Library', link: '#' });
+      // Monthly market (first Saturday)
+      if (d === 1 || d === 8 || d === 15 || d === 22 || d === 29) {
+        if (dow(yearForMonth, actualMonth, d) === 6) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Local Farmers Market', time: 'Sat 8 AM - 1 PM · Town Square', link: '#' });
+      }
+    }
+  }
+
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const sortedDates = Object.keys(eventsByDate).sort();
+  if (!sortedDates.length) {
+    body.innerHTML = '<div class=\"muted\" style=\"padding:16px;text-align:center;\">No upcoming events found.</div>';
+    return;
+  }
+
+  body.innerHTML = '';
+  sortedDates.forEach(dateStr => {
+    const evDate = new Date(dateStr + 'T12:00:00');
+    if (!eventsByDate[dateStr] || !eventsByDate[dateStr].length) return;
+
+    const section = document.createElement('div');
+    section.className = 'day-section';
+
+    const dateLabel = document.createElement('div');
+        dateLabel.className = 'date-header day-header expanded';
+        dateLabel.innerHTML = `<span>${days[evDate.getDay()]}, ${monthNames[evDate.getMonth()].slice(0,3)} ${evDate.getDate()}</span><span class="day-toggle"></span>`;
+    dateLabel.dataset.expanded = 'true';
+    section.appendChild(dateLabel);
+
+    const list = document.createElement('div');
+    list.className = 'event-list';
+    eventsByDate[dateStr].sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).forEach(ev => {
+      const item = document.createElement('div');
+      item.className = 'day-event bubble';
+      item.dataset.category = ev.category || 'community';
+      const copyText = `${ev.title}\n${ev.time}`;
+      item.innerHTML = `<a class=\"event-link\" href=\"${ev.link || '#'}\" target=\"_blank\" rel=\"noopener\" style=\"color:inherit;text-decoration:none;\"><span class=\"title\" style=\"font-weight:600\">${ev.title}</span></a><span class=\"time\" style=\"color:#6b7280; font-size:0.85rem\">${ev.time}</span><div class=\"export-row\"><button class=\"copy-btn\" data-copy=\"${copyText.replace(/\"/g, '&quot;')}\">Copy</button></div>`;
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    body.appendChild(section);
+  });
+}
+
+>>>>>>> origin/main
 // Daily events builder with town filter
 function buildDailyEvents() {
   const body = document.getElementById('daily-events');
@@ -1036,6 +1195,7 @@ function activatePage(page) {
     if (page === 'home') { 
       try { buildFeatured(); buildToday(); buildDailyEvents(); } catch (e) {} 
     }
+<<<<<<< HEAD
     if (page === 'home') {
       try { buildFeatured(); buildToday(); buildDailyEvents(); } catch (e) {}
     }
@@ -1045,6 +1205,9 @@ function activatePage(page) {
         loadCalendarEvents();
       } catch (e) {}
     }
+=======
+    if (page === 'activities' || page === 'calendar') { try { buildActivityWeek(); } catch (e) {} }
+>>>>>>> origin/main
     if (page === 'family') { try { renderFamilyEvents(); } catch (e) {} }
     if (page === 'weather') { loadWeather(); }
   } catch (e) {
