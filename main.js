@@ -1,4 +1,12 @@
 
+function localDateStr(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+const CALENDAR_ENABLED = false;
+
 function addToCalendar(title, time, date) {
   let startDate = date ? new Date(date + 'T12:00:00') : new Date();
   let endDate = new Date(startDate);
@@ -135,8 +143,9 @@ function combineDateTime(dateStr, timeStr) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate();
+      dateLabel.className = 'day-header expanded';
+      dateLabel.innerHTML = '<span class="day-name">' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + '</span><span class="day-toggle"></span>';
+      dateLabel.dataset.expanded = 'true';
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
@@ -160,6 +169,16 @@ function combineDateTime(dateStr, timeStr) {
   function buildActivityWeek() {
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    
+    // Calendar feature flag: build month grid when enabled
+    if (CALENDAR_ENABLED) {
+      const now = new Date();
+      CALENDAR_MONTH = now.getMonth();
+      CALENDAR_YEAR = now.getFullYear();
+      loadCalendarEvents();
+      buildCalendar();
+      return;
+    }
     const now = new Date();
     const year = now.getFullYear();
     const startMonth = now.getMonth();
@@ -245,8 +264,9 @@ function combineDateTime(dateStr, timeStr) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate();
+      dateLabel.className = 'day-header expanded';
+      dateLabel.innerHTML = '<span class="day-name">' + days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate() + '</span><span class="day-toggle"></span>';
+      dateLabel.dataset.expanded = 'true';
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
@@ -307,7 +327,7 @@ function combineDateTime(dateStr, timeStr) {
         if (l.dataset.page === page) l.classList.add('active');
       });
       if (page === 'home') { try { renderFeatured(); } catch (e) { console.error(e); } }
-      if (page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
+      if (page === 'home' || page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
@@ -865,3 +885,160 @@ ${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       window.location.href = 'mailto:boomsecure@protonmail.com?subject=' + subject + '&body=' + body;
     });
   }
+// Day toggle (minimize/expand) for day sections
+document.addEventListener('click', (ev) => {
+  const dayHeader = ev.target.closest('.day-header');
+  if (dayHeader && !ev.target.closest('.copy-btn') && !ev.target.closest('[data-export="ics"]')) {
+    ev.preventDefault();
+    const list = dayHeader.nextElementSibling;
+    if (list && list.classList.contains('event-list')) {
+      const expanded = dayHeader.classList.toggle('expanded');
+      list.classList.toggle('hidden-events', !expanded);
+    }
+    return;
+  }
+});
+
+// Calendar state
+let CALENDAR_MONTH = new Date().getMonth();
+let CALENDAR_YEAR = new Date().getFullYear();
+let CALENDAR_EVENTS = {};
+
+// Calendar functions
+function loadCalendarEvents() {
+  const allEvents = APP_STATE.events || [];
+  const eventsWithDate = {};
+  
+  allEvents.forEach(ev => {
+    if (ev.date) {
+      if (!eventsWithDate[ev.date]) eventsWithDate[ev.date] = [];
+      eventsWithDate[ev.date].push(ev);
+    }
+  });
+  
+  CALENDAR_EVENTS = eventsWithDate;
+}
+
+function buildCalendar() {
+  const container = document.getElementById('calendar-container');
+  if (!container) return;
+  
+  if (!CALENDAR_ENABLED) {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const year = CALENDAR_YEAR;
+  const month = CALENDAR_MONTH;
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const totalCells = 42;
+  
+  const cells = [];
+  for (let i = 0; i < firstDay; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+    const dayEvents = CALENDAR_EVENTS[dateStr] || [];
+    cells.push({
+      day: d,
+      dateStr: dateStr,
+      dayEvents: dayEvents,
+      isToday: dateStr === localDateStr(new Date())
+    });
+  }
+  while (cells.length < totalCells) cells.push(null);
+  
+  let html = '<div class="calendar-header">' +
+    '<button class="cal-nav-btn" id="cal-prev-month">&laquo; Prev</button>' +
+    '<div class="calendar-title">' + monthNames[month] + ' ' + year + '</div>' +
+    '<button class="cal-nav-btn" id="cal-next-month">Next &raquo;</button>' +
+  '</div>';
+  
+  html += '<div class="calendar-days-header">';
+  dayNames.forEach(d => { html += '<div class="cal-day-name">' + d + '</div>'; });
+  html += '</div>';
+  
+  html += '<div class="calendar-grid">';
+  cells.forEach(cell => {
+    if (cell === null) {
+      html += '<div class="calendar-day empty"></div>';
+    } else {
+      const todayClass = cell.isToday ? ' today' : '';
+      const hasEvents = cell.dayEvents.length > 0 ? ' has-events' : '';
+      html += '<div class="calendar-day' + todayClass + hasEvents + '" data-date="' + cell.dateStr + '">' +
+        '<div class="day-number">' + cell.day + '</div>' +
+        (cell.dayEvents.length > 0 ? '<div class="day-chip">' + cell.dayEvents.length + '</div>' : '') +
+      '</div>';
+    }
+  });
+  html += '</div>';
+  
+  container.innerHTML = html;
+  
+  // Day click handler
+  container.querySelectorAll('.calendar-day:not(.empty)').forEach(day => {
+    day.addEventListener('click', () => {
+      container.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+      day.classList.add('selected');
+      showDayActivities(day.dataset.date);
+    });
+  });
+  
+  // Navigation handlers
+  document.getElementById('cal-prev-month')?.addEventListener('click', showPrevMonth);
+  document.getElementById('cal-next-month')?.addEventListener('click', showNextMonth);
+}
+
+function showPrevMonth() {
+  CALENDAR_MONTH--;
+  if (CALENDAR_MONTH < 0) { CALENDAR_MONTH = 11; CALENDAR_YEAR--; }
+  buildCalendar();
+}
+
+function showNextMonth() {
+  CALENDAR_MONTH++;
+  if (CALENDAR_MONTH > 11) { CALENDAR_MONTH = 0; CALENDAR_YEAR++; }
+  buildCalendar();
+}
+
+function showToday() {
+  const now = new Date();
+  CALENDAR_MONTH = now.getMonth();
+  CALENDAR_YEAR = now.getFullYear();
+  buildCalendar();
+}
+
+function showDayActivities(dateStr) {
+  const body = document.getElementById('act-days');
+  const dayEvents = CALENDAR_EVENTS[dateStr] || [];
+  
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const d = new Date(dateStr + 'T12:00:00');
+  
+  let html = '<div class="day-section">' +
+    '<div class="date-header day-header expanded">' +
+      '<span class="day-name">' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + '</span>' +
+      '<span class="day-toggle"></span>' +
+    '</div>' +
+    '<div class="event-list">';
+  
+  if (!dayEvents.length) {
+    html += '<p class="muted" style="padding:16px;text-align:center;">No scheduled events for this day.</p>';
+  } else {
+    dayEvents.forEach(ev => {
+      html += '<div class="day-event bubble" data-category="' + (ev.category || 'community') + '">' +
+        '<a class="event-link" href="' + (ev.link || '#') + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">' +
+          '<span class="title" style="font-weight:600;">' + ev.title + '</span>' +
+        '</a>' +
+        '<span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>' +
+      '</div>';
+    });
+  }
+  
+  html += '</div></div>';
+  body.innerHTML = html;
+}
