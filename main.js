@@ -135,8 +135,9 @@ function combineDateTime(dateStr, timeStr) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate();
+      dateLabel.className = 'day-header expanded';
+      dateLabel.innerHTML = '<span class="day-name">' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + '</span><span class="day-toggle"></span>';
+      dateLabel.dataset.expanded = 'true';
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
@@ -245,8 +246,9 @@ function combineDateTime(dateStr, timeStr) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate();
+      dateLabel.className = 'day-header expanded';
+      dateLabel.innerHTML = '<span class="day-name">' + days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate() + '</span><span class="day-toggle"></span>';
+      dateLabel.dataset.expanded = 'true';
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
@@ -307,7 +309,7 @@ function combineDateTime(dateStr, timeStr) {
         if (l.dataset.page === page) l.classList.add('active');
       });
       if (page === 'home') { try { renderFeatured(); } catch (e) { console.error(e); } }
-      if (page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
+      if (page === 'home' || page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
@@ -865,3 +867,16 @@ ${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       window.location.href = 'mailto:boomsecure@protonmail.com?subject=' + subject + '&body=' + body;
     });
   }
+// Day toggle (minimize/expand) for day sections
+document.addEventListener('click', (ev) => {
+  const dayHeader = ev.target.closest('.day-header');
+  if (dayHeader && !ev.target.closest('.copy-btn') && !ev.target.closest('[data-export="ics"]')) {
+    ev.preventDefault();
+    const list = dayHeader.nextElementSibling;
+    if (list && list.classList.contains('event-list')) {
+      const expanded = dayHeader.classList.toggle('expanded');
+      list.classList.toggle('hidden-events', !expanded);
+    }
+    return;
+  }
+});
