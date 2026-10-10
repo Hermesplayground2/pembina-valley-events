@@ -315,6 +315,99 @@
   .day-section { margin-bottom: 14px; }
   .event-list.hidden-events { display: none; }
 
+  /* Calendar month grid */
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .calendar-title {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .cal-day-name {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .calendar-day {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 10px;
+    min-height: 80px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+  }
+  .calendar-day:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(15,23,42,0.45);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .calendar-day.today .day-number {
+    color: #fbbf24;
+  }
+  .calendar-day.empty {
+    background: transparent;
+    border-color: transparent;
+    cursor: default;
+  }
+  .calendar-day.empty:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+  .calendar-day .day-number {
+    font-weight: 800;
+    font-size: 1rem;
+    color: #f1f5f9;
+  }
+  .calendar-day .day-chip {
+    margin-top: 6px;
+    padding: 4px 6px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    background: #0f172a;
+    color: #f59e0b;
+  }
+  .calendar-nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: center;
+  }
+  .cal-nav-btn {
+    padding: 6px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+  .cal-nav-btn:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: #f59e0b;
+    color: #f59e0b;
+  }
+
   .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .calendar-day {
     background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; min-height: 110px;
