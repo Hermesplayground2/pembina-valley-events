@@ -122,8 +122,6 @@ function filterAndSortEvents(events, query, filter) {
   if (filter && filter !== 'all') {
     filtered = filtered.filter(e => (e.categories || []).includes(filter) || e.category === filter || 
              (e.location || '').toLowerCase().includes(filter.toLowerCase()));
-<<<<<<< HEAD
-  }
   
   // Apply search query
   if (query) {
@@ -524,26 +522,6 @@ window.calendar = {
   setCurrentMonth: (m, y) => { CURRENT_MONTH = m; CURRENT_YEAR = y; }
 };
 
-=======
-  }
-  
-  // Apply search query
-  if (query) {
-    const q = query.toLowerCase();
-    filtered = filtered.filter(e => 
-      (e.title && e.title.toLowerCase().includes(q)) ||
-      (e.description && e.description.toLowerCase().includes(q)) ||
-      (e.time && e.time.toLowerCase().includes(q))
-    );
-  }
-  
-  return filtered.sort((a, b) => {
-    const dateA = new Date(a.date || '9999-99-99');
-    const dateB = new Date(b.date || '9999-99-99');
-    if (dateA - dateB !== 0) return dateA - dateB;
-    return timeToSort(a.time) - timeToSort(b.time);
-  });
-}
 
 // Today's events builder
 function localDateStr(d) {
@@ -681,7 +659,6 @@ function buildActivityWeek() {
   });
 }
 
->>>>>>> origin/main
 // Daily events builder with town filter
 function buildDailyEvents() {
   const body = document.getElementById('daily-events');
@@ -1193,10 +1170,6 @@ function activatePage(page) {
       if (l.dataset.page === page) l.classList.add('active');
     });
     if (page === 'home') { 
-      try { buildFeatured(); buildToday(); buildDailyEvents(); } catch (e) {} 
-    }
-<<<<<<< HEAD
-    if (page === 'home') {
       try { buildFeatured(); buildToday(); buildDailyEvents(); } catch (e) {}
     }
     if (page === 'activities' || page === 'calendar') {
@@ -1205,9 +1178,6 @@ function activatePage(page) {
         loadCalendarEvents();
       } catch (e) {}
     }
-=======
-    if (page === 'activities' || page === 'calendar') { try { buildActivityWeek(); } catch (e) {} }
->>>>>>> origin/main
     if (page === 'family') { try { renderFamilyEvents(); } catch (e) {} }
     if (page === 'weather') { loadWeather(); }
   } catch (e) {
@@ -1215,6 +1185,7 @@ function activatePage(page) {
   }
 }
 
+}
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
