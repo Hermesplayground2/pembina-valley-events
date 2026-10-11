@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-10T11:01:13.610833+00:00",
+  "last_updated": "2026-10-11",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -11,15 +11,6 @@
     ]
   },
   "events": [
-    {
-      "id": "/events/233092",
-      "title": "King Korn Maze",
-      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
-      "date": "2026-10-10",
-      "link": "https://www.pembinavalleyonline.com/events/233092",
-      "source": "pembinavalleyonline.com",
-      "description": "Get lost in the fun at King Korn Maze! 🌽🍂 Join us for our 9th season of fall fun at King Korn Maze! Whether you’re tackling the corn maze, challenging your crew to a game, grabbing a treat from the Snack Shack, or simply enjoying a day outdoors, there’s something for everyone. Bring your family, round up your friends, and come make some fall memories with us! Come for the maze, stay for the memories. We can’t wait to see you this fall at King Korn Maze! Hours: Saturday 11am-8pm Sunday 11am-6pm Holiday Hours 12:00pm (noon) - 6:00pm"
-    },
     {
       "id": "/events/233099",
       "title": "King Korn Maze",
