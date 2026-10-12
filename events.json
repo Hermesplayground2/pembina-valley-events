@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-12T17:12:19.294300+00:00",
+  "last_updated": "2026-10-12T17:21:25.100464+00:00",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -84,15 +84,6 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
-      "id": "/events/235671",
-      "title": "Homeschool Skate - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235671",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
       "id": "/events/235664",
       "title": "Homeschool Turf - Winkler",
       "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -100,6 +91,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235664",
       "source": "pembinavalleyonline.com",
       "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
+    },
+    {
+      "id": "/events/235671",
+      "title": "Homeschool Skate - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-13",
+      "link": "https://www.pembinavalleyonline.com/events/235671",
+      "source": "pembinavalleyonline.com",
+      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
     },
     {
       "id": "/events/234645",
@@ -696,15 +696,6 @@
       "description": "LUNGtivity is returning Oct 19, 2026 (6 weeks) - Mondays at 1:30 - 3:00 PM LUNGtivity is a low-intensity community-based exercise program for people living with lung disease. To register, please contact: 204-822-4474 ext. 4410 kmcelroy@menziesmedical.ca"
     },
     {
-      "id": "/events/235805",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-19",
-      "link": "https://www.pembinavalleyonline.com/events/235805",
-      "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
-    },
-    {
       "id": "/events/235611",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -712,6 +703,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235611",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/235805",
+      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-19",
+      "link": "https://www.pembinavalleyonline.com/events/235805",
+      "source": "pembinavalleyonline.com",
+      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
     },
     {
       "id": "/events/233631",
@@ -1362,15 +1362,6 @@
       "description": "Comedian Leland Klassen will be performing in Morden on October 25, 2026 as part of his &quot;Pressin&#39; On Comedy Tour (Phil 3:14)&quot; This event is sponsored by the Morden Christian Programs Committee. Admission is free but there will be an opportunity to donate towards covering the cost of the event."
     },
     {
-      "id": "/events/235612",
-      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-26",
-      "link": "https://www.pembinavalleyonline.com/events/235612",
-      "source": "pembinavalleyonline.com",
-      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
-    },
-    {
       "id": "/events/235806",
       "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -1378,6 +1369,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235806",
       "source": "pembinavalleyonline.com",
       "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
+    },
+    {
+      "id": "/events/235612",
+      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-26",
+      "link": "https://www.pembinavalleyonline.com/events/235612",
+      "source": "pembinavalleyonline.com",
+      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
     },
     {
       "id": "/events/235685",
