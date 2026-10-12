@@ -299,7 +299,7 @@ function combineDateTime(dateStr, timeStr) {
         if (l.dataset.page === page) l.classList.add('active');
       });
       if (page === 'home') { try { renderFeatured(); buildUpcoming(); } catch (e) { console.error(e); } }
-      if (page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
+      if (page === 'calendar') { try { buildCalendar(); } catch (e) { console.error(e); } }
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
@@ -320,6 +320,123 @@ function combineDateTime(dateStr, timeStr) {
   });
 
   
+  // ── Calendar ──────────────────────────────────────────────────────────────
+  // Renders purely from EVENTS (loaded from events.json). No hardcoded data.
+  let CAL_YEAR = new Date().getFullYear();
+  let CAL_MONTH = new Date().getMonth();
+  let CAL_SELECTED = null;
+
+  function buildCalendar() {
+    const container = document.getElementById('calendar-container');
+    if (!container) return;
+
+    const now = new Date();
+    const monthNames = ['January','February','March','April','May','June','July',
+                        'August','September','October','November','December'];
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    const year = CAL_YEAR;
+    const month = CAL_MONTH;
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+
+    // Build a date->events map from EVENTS
+    const eventsByDate = {};
+    (Array.isArray(EVENTS) ? EVENTS : []).forEach(ev => {
+      if (!ev || !ev.date) return;
+      if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
+      eventsByDate[ev.date].push(ev);
+    });
+
+    let html = `<div class="calendar-header">
+      <div class="calendar-nav">
+        <button class="cal-nav-btn" id="cal-prev" title="Previous month">‹</button>
+      </div>
+      <div class="calendar-title">${monthNames[month]} ${year}</div>
+      <div class="calendar-nav">
+        <button class="cal-nav-btn" id="cal-next" title="Next month">›</button>
+      </div>
+    </div>`;
+
+    html += `<div class="calendar-days-header">`;
+    dayNames.forEach(d => { html += `<div class="cal-day-name">${d}</div>`; });
+    html += `</div><div class="calendar-grid">`;
+
+    for (let i = 0; i < firstDay; i++) html += `<div class="calendar-day empty"></div>`;
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const dayEvents = eventsByDate[dateStr] || [];
+      const isToday = dateStr === todayStr ? ' today' : '';
+      const hasEvents = dayEvents.length > 0 ? ' has-events' : '';
+      const isSelected = CAL_SELECTED === dateStr ? ' selected' : '';
+
+      html += `<div class="calendar-day${isToday}${hasEvents}${isSelected}" data-date="${dateStr}">
+        <div class="day-number">${d}</div>`;
+      dayEvents.slice(0, 3).forEach(ev => {
+        html += `<div class="day-chip" data-category="${ev.category || 'community'}">${(ev.title || '').replace(/</g,'&lt;').slice(0,22)}</div>`;
+      });
+      if (dayEvents.length > 3) {
+        html += `<div class="day-chip" data-category="more">+${dayEvents.length - 3} more</div>`;
+      }
+      html += `</div>`;
+    }
+    html += `</div>`;
+
+    container.innerHTML = html;
+
+    // Wire navigation
+    const prev = document.getElementById('cal-prev');
+    const next = document.getElementById('cal-next');
+    if (prev) prev.addEventListener('click', () => { CAL_MONTH--; if (CAL_MONTH < 0) { CAL_MONTH = 11; CAL_YEAR--; } buildCalendar(); });
+    if (next) next.addEventListener('click', () => { CAL_MONTH++; if (CAL_MONTH > 11) { CAL_MONTH = 0; CAL_YEAR++; } buildCalendar(); });
+
+    // Wire day clicks
+    container.querySelectorAll('.calendar-day:not(.empty)').forEach(cell => {
+      cell.addEventListener('click', () => {
+        const ds = cell.dataset.date;
+        CAL_SELECTED = (CAL_SELECTED === ds) ? null : ds;
+        buildCalendar();
+        renderCalendarDayDetail(ds);
+      });
+    });
+  }
+
+  function renderCalendarDayDetail(dateStr) {
+    const box = document.getElementById('calendar-day-detail');
+    if (!box) return;
+    if (!dateStr) { box.innerHTML = ''; return; }
+
+    const dayEvents = (Array.isArray(EVENTS) ? EVENTS : []).filter(ev => ev && ev.date === dateStr);
+    if (!dayEvents.length) {
+      box.innerHTML = `<div class="muted" style="padding:10px;">No events on this day.</div>`;
+      return;
+    }
+
+    const d = new Date(dateStr + 'T12:00:00');
+    const dateLabel = d.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    let html = `<div style="font-weight:800;margin-bottom:8px;color:#f59e0b;">${dateLabel}</div>`;
+    dayEvents.forEach(ev => {
+      html += `<div class="day-event" data-category="${ev.category || 'community'}" style="margin-bottom:8px;">
+        <div class="day-header">
+          <span class="title">${(ev.title || '').replace(/</g,'&lt;')}</span>
+          <span class="time">· ${ev.time || ''}</span>
+        </div>
+        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${(ev.title||'').replace(/"/g,'&quot;')}" data-time="${(ev.time||'').replace(/"/g,'&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
+      </div>`;
+    });
+    box.innerHTML = html;
+
+    // Wire ICS buttons
+    box.querySelectorAll('[data-export="ics"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        addToCalendar(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
+      });
+    });
+  }
+
   function renderSearchBar() {
     // Add search input if not already present
     const nav = document.querySelector('.nav-inner');

@@ -328,6 +328,25 @@
     justify-content: space-between;
     margin-bottom: 12px;
   }
+  .calendar-nav { display: flex; gap: 6px; }
+  .cal-nav-btn {
+    padding: 6px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 800;
+    background: #0f172a; color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer; transition: background 0.2s ease;
+  }
+  .cal-nav-btn:hover { background: #1e3a8a; border-color: #f59e0b; }
+  .calendar-day.has-events { border-color: rgba(245, 158, 11, 0.45); }
+  .calendar-day.selected { border-color: #fbbf24; box-shadow: 0 0 0 2px #fbbf24; }
+  .day-chip {
+    margin-top: 6px; padding: 4px 8px; border-radius: 8px; font-size: 0.68rem;
+    font-weight: 800; background: #0f172a; color: #f59e0b;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .day-chip[data-category="community"] { background: #f59e0b; color: #0f172a; }
+  .day-chip[data-category="family"]     { background: #3b82f6; color: #ffffff; }
+  .day-chip[data-category="sports"]     { background: #10b981; color: #0f172a; }
+  .day-chip[data-category="outdoors"]   { background: #14b8a6; color: #0f172a; }
+  .day-chip[data-category="more"]       { background: #475569; color: #e2e8f0; }
   .calendar-title {
     font-weight: 800;
     font-size: 0.95rem;
@@ -1080,6 +1099,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#page-home" class="nav-link active" data-page="home">Home</a>
+    <a href="#page-calendar" class="nav-link" data-page="calendar">Calendar</a>
     <a href="#page-activities" class="nav-link" data-page="activities">Activities</a>
     <a href="#page-sports" class="nav-link" data-page="sports">Sports</a>
     <a href="#page-family" class="nav-link" data-page="family">Family</a>
@@ -1169,6 +1189,14 @@
   </div>
 
   <div class="page" id="page-calendar">
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2 style="color:#f59e0b;">📅 Events Calendar</h2>
+        <div class="spacer"></div>
+        <div id="calendar-container"></div>
+        <div id="calendar-day-detail" style="margin-top:12px;"></div>
+      </div>
+    </section>
   </div>
 
   <div class="page" id="page-activities">
