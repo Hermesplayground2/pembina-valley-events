@@ -87,18 +87,16 @@ function combineDateTime(dateStr, timeStr) {
   return d;
 }
 
-
   function renderDashboard() {
     const box = document.getElementById('dashboard-live');
     if (!box) return;
     box.innerHTML = '<p class="muted">Real traffic data comes from your analytics provider.</p><p class="muted">Check your Cloudflare dashboard for live visitor counts, page views, and traffic sources. Numbers should start appearing within 24–48 hours.</p>';
   }
 
-  const EVENTS = [
+  let EVENTS = [
     { date: '2026-08-04', title: 'Catie St. Germain and Brothers Keep', time: '7:00 PM · Concert Hall', category: 'community', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-06', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-07', title: 'Municipal Forum', time: 'P.W. Enns Centennial Concert Hall', category: 'community', link: 'https://www.winkler.ca/events' },
-    { date: '2026-08-08', title: 'Prairie Dale No Classes Admin Day', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-08-10', title: 'Mosaic Tray Workshop', time: '7:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-10', title: 'Jr. Summer Art Camp (5-8)', time: '9:30 AM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
     { date: '2026-08-10', title: 'Summer Art Camp (9-12)', time: '1:00 PM · Winkler Arts & Culture', category: 'family', link: 'https://www.visitwinkler.ca' },
@@ -116,9 +114,6 @@ function combineDateTime(dateStr, timeStr) {
     { date: '2026-08-27', title: 'Pickleball', time: '1:00 PM · Morden Activity Centre, 306 N. Railway St.', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-27', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' },
     { date: '2026-08-27', title: 'Annual BBQ — Winkler Senior Centre', time: '5:00 PM · 650 Southview Drive', category: 'family', link: 'https://winklerchamber.com/events/' },
-    { date: '2026-08-29', title: 'Morden Back40 Music Festival', time: 'Morden, MB', category: 'community', link: 'https://www.backfortymusicfestival.com/' },
-    { date: '2026-08-30', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', category: 'community', link: 'https://cornandapple.com/' },
-    { date: '2026-09-05', title: 'Fun With Family Day 2026', time: 'Josh Wilson, Jason Gray, Danielle Savard · Portage la Prairie', category: 'family', link: 'https://www.concertsonrequest.ca/' },
     { date: '2026-09-07', title: 'Labour Day - No School', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-09', title: 'Prairie Dale First Day Grades K-9', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
     { date: '2026-09-10', title: 'Prairie Dale First Day Grades 10-12', time: 'Prairie Dale School', category: 'family', link: 'https://pds.gvsd.ca/' },
@@ -127,6 +122,18 @@ function combineDateTime(dateStr, timeStr) {
     { date: '2026-10-13', title: 'Morden Farmers Market', time: '4:00 PM · 8th Street', category: 'community', link: 'https://morden.ca/community-events' }
   ];
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
+
+  const timeToSort = (timeStr) => {
+    const t = String(timeStr).trim();
+    const hourMatch = t.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+    if (!hourMatch) return 9999;
+    let hour = parseInt(hourMatch[1], 10);
+    const minute = hourMatch[2] ? parseInt(hourMatch[2], 10) : 0;
+    const meridiem = hourMatch[3] ? hourMatch[3].toUpperCase() : null;
+    if (meridiem === 'PM' && hour < 12) hour += 12;
+    if (meridiem === 'AM' && hour === 12) hour = 0;
+    return hour * 100 + minute;
+  };
   function buildUpcoming() {
     const body = document.getElementById('daily-events');
     if (!body) return;
@@ -136,13 +143,30 @@ function combineDateTime(dateStr, timeStr) {
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const today = new Date();
     today.setHours(0,0,0,0);
+    const todayStr = today.getFullYear() + '-' +
+      String(today.getMonth() + 1).padStart(2, '0') + '-' +
+      String(today.getDate()).padStart(2, '0');
     const rangeEnd = new Date(today);
-    rangeEnd.setDate(rangeEnd.getDate() + 7);
+    rangeEnd.setDate(rangeEnd.getDate() + 6);
 
+    const selectedTown = window._selectedTown || 'all';
+    const searchQuery = window._searchQuery || '';
     const upcoming = EVENTS.filter(ev => {
       const d = new Date(ev.date + 'T12:00:00');
-      return d >= today && d <= rangeEnd;
-    }).sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+      if (d <= today || d > rangeEnd) return false;
+      // Town filter
+      if (selectedTown !== 'all') {
+        const loc = (ev.time || '').toLowerCase();
+        if (!loc.includes(selectedTown.toLowerCase())) return false;
+      }
+      // Search filter
+      if (searchQuery) {
+        const title = (ev.title || '').toLowerCase();
+        const loc = (ev.time || '').toLowerCase();
+        if (!title.includes(searchQuery) && !loc.includes(searchQuery)) return false;
+      }
+      return true;
+    }).sort((a, b) => a.date.localeCompare(b.date) || timeToSort(a.time) - timeToSort(b.time));
 
     const grouped = {};
     upcoming.forEach(ev => {
@@ -155,13 +179,20 @@ function combineDateTime(dateStr, timeStr) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate();
+      dateLabel.className = 'day-header';
+      dateLabel.dataset.expanded = 'false';
+      dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + ' <span class="event-count">' + grouped[dateStr].length + '</span>';
+      dateLabel.addEventListener('click', () => {
+        const expanded = dateLabel.dataset.expanded === 'true';
+        dateLabel.dataset.expanded = String(!expanded);
+        dateLabel.classList.toggle('expanded', !expanded);
+        list.classList.toggle('hidden-events', expanded);
+      });
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
-      list.className = 'event-list';
-      grouped[dateStr].forEach(ev => {
+      list.className = 'event-list hidden-events';
+      grouped[dateStr].sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).forEach(ev => {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
@@ -174,7 +205,7 @@ function combineDateTime(dateStr, timeStr) {
     });
 
     if (!upcoming.length) {
-      body.innerHTML = '<div class="muted" style="padding:10px;">No upcoming events in the next 7 days.</div>';
+      body.innerHTML = '<div class="muted" style="padding:10px;">No events in the next 6 days.</div>';
     }
   }
   function buildActivityWeek() {
@@ -202,6 +233,18 @@ function combineDateTime(dateStr, timeStr) {
     const dow = (y, m, d) => new Date(y, m, d).getDay();
     const fmt = (y, m, d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
+    // Merge events from EVENTS array so one-off events appear on Activities page
+    EVENTS.forEach(ev => {
+      if (ev.date >= fmt(year, startMonth, 1)) {
+        const parts = ev.date.split('-');
+        const evDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+        if (evDate >= today) {
+          if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
+          eventsByDate[ev.date].push(ev);
+        }
+      }
+    });
+
     for (let monthOffset = 0; monthOffset < monthsToShow; monthOffset++) {
       const month = startMonth + monthOffset;
       const yearForMonth = year + Math.floor(month / 12);
@@ -222,8 +265,6 @@ function combineDateTime(dateStr, timeStr) {
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Waffle Breakfast', time: 'Morning · Altona Senior Centre', link: 'https://pembinavalleyonline.com/events' });
         if (actualMonth === 7 && d === 13) add(fmt(yearForMonth, actualMonth, d), { category: 'family', title: 'Popsicle Stick Creations', time: '10:30 AM & 1:30 PM · Winkler Library', link: 'https://pembinavalleyonline.com/events/229004' });
         if (actualMonth === 7 && d >= 13 && d <= 17) add(fmt(yearForMonth, actualMonth, d), { category: 'sports', title: 'Western Canadian Softball Championships', time: 'Aug 13-17 · Winkler & Morden', link: 'https://pembinavalleyonline.com/articles/u15-central-energy-softball-team-ready-to-welcome-western-canada-to-winkler' });
-        if (actualMonth === 7 && d >= 28 && d <= 30) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Downtown Morden · Free', link: 'https://cornandapple.com/' });
-        if (actualMonth === 7 && d === 29) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Back40 Music Festival', time: 'Morden, MB', link: 'https://www.backfortymusicfestival.com/' });
         if (actualMonth === 7 && d === 24) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'Morden Council Meeting', time: '7:00 PM · 500 Stephen St', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 17) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'MCC Blanket Making', time: '9:30 AM · Morden Mennonite Church', link: 'https://morden.ca/community-events' });
         if (actualMonth === 7 && d === 19) add(fmt(yearForMonth, actualMonth, d), { category: 'community', title: 'The Big Canoe', time: '9:00 AM · Lake Minnewasta', link: 'https://morden.ca/access-event-centre' });
@@ -288,10 +329,12 @@ function combineDateTime(dateStr, timeStr) {
       label.textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
     }
 
-    const todays = EVENTS.filter(ev => ev.date === todayStr);
+    const searchQuery = window._searchQuery || '';
+    const todays = EVENTS.filter(ev => ev.date === todayStr && (!searchQuery || (ev.title || '').toLowerCase().includes(searchQuery) || (ev.time || '').toLowerCase().includes(searchQuery)));
 
     if (!todays.length) {
-      container.innerHTML = '<p class="muted">No events scheduled for today.</p>';
+      container.innerHTML = '<p class="muted">No events scheduled for today.</p>' +
+        '<div class="spacer"></div>';
       return;
     }
 
@@ -315,11 +358,12 @@ function combineDateTime(dateStr, timeStr) {
       document.querySelectorAll('.nav-link').forEach(l => {
         if (l.dataset.page === page) l.classList.add('active');
       });
-      if (page === 'home') { try { renderFeatured(); } catch (e) { console.error(e); } }
+      if (page === 'home') { try { renderFeatured(); buildUpcoming(); } catch (e) { console.error(e); } }
       if (page === 'calendar') { try { buildUpcoming(); } catch (e) { console.error(e); } }
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
+      if (page === 'weather') { try { loadWeather(); } catch (e) { console.error(e); } }
     } catch (e) {
       console.error('activatePage error', e);
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -328,8 +372,6 @@ function combineDateTime(dateStr, timeStr) {
     }
   }
 
-
-
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -337,50 +379,257 @@ function combineDateTime(dateStr, timeStr) {
     });
   });
 
-  const retryWeather = () => {
-    if (btn) btn.style.display = 'none';
-  };
+  
+  function renderSearchBar() {
+    // Add search input if not already present
+    const nav = document.querySelector('.nav-inner');
+    if (!nav || document.getElementById('event-search')) return;
+    const searchHtml = '<input type="text" id="event-search" placeholder="Search events..." autocomplete="off" style="padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.85rem;outline:none;max-width:220px;">';
+    nav.insertAdjacentHTML('beforeend', searchHtml);
+    const searchInput = document.getElementById('event-search');
+    searchInput.addEventListener('input', (e) => {
+      window._searchQuery = e.target.value.toLowerCase();
+      buildUpcoming();
+      buildToday();
+    });
+  }
 
-function diag(msg){const b=document.getElementById("diag-banner");if(b){b.style.display="block";b.textContent=msg;}}
-const initPage = () => { diag("initPage");
+  // Town filter button delegation
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('town-btn')) {
+      const town = e.target.dataset.town;
+      window._selectedTown = town;
+      // Update active state
+      document.querySelectorAll('.town-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.town === town);
+      });
+      buildUpcoming();
+    }
+  });
+
+  // Search bar wiring
+  function initSearch() {
+    const searchInput = document.getElementById('event-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        window._searchQuery = e.target.value.toLowerCase().trim();
+        buildUpcoming();
+        buildToday();
+      });
+    }
+  }
+const initPage = () => {
+    initSearch();
     try {
       const page = (location.hash || '#home').replace('#page-', '').replace('#', '') || 'home';
-      activatePage(page); diag("activated:"+page);
+      activatePage(page);
     } catch (e) {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
       if (el) el.classList.add('active');
-      if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
     }
   };
 
-  // Catch any uncaught errors
-  window.addEventListener('error', (e) => {
-    console.error('Uncaught error:', e.error);
-    if (heroCond && heroCond.textContent === 'Loading...') heroCond.textContent = 'Weather unavailable';
-  });
-  window.addEventListener('hashchange', initPage);
-  diag("DOM ready"); if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-    if (scene && video) {
-      const img = document.createElement('img');
-      img.id = 'heroWeatherImage';
-      img.alt = 'Weather';
-      img.src = 'weather-media/day_frame.jpg';
-      img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
-      scene.insertBefore(img, video);
+  async function loadEvents() {
+    try {
+      const res = await fetch('/events.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('events.json HTTP ' + res.status);
+      const data = await res.json();
+      const raw = data.events || data;
+      if (!Array.isArray(raw)) throw new Error('events.json not an array');
+      EVENTS = raw.map(e => ({
+        date: e.date,
+        title: e.title,
+        time: e.time || '',
+        category: e.category || 'community',
+        link: e.link || '#'
+      }));
+      console.log('Loaded ' + EVENTS.length + ' events from events.json');
+
+  function updateLastUpdated() {
+    const el = document.getElementById('last-updated');
+    if (!el) return;
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2,'0');
+    const mm = String(now.getMinutes()).padStart(2,'0');
+    el.textContent = 'Last updated ' + hh + ':' + mm;
+  }    } catch (err) {
+      console.warn('events.json load failed, using fallback:', err);
     }
-    initPage();
-  });
+  }
+  window.addEventListener('hashchange', initPage);
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      loadEvents().then(initPage).catch(err => { console.error('events load failed, using fallback', err); initPage(); });
+    });
   } else {
-    initPage();
+    loadEvents().then(initPage).catch(err => { console.error('events load failed, using fallback', err); initPage(); });
   }
 
+  const WEATHER_IMAGES = {
+    clear: 'weather-media/day_frame.jpg',
+    cloudy: 'weather-media/day_frame.jpg',
+    rain: 'weather-media/rain_frame.jpg',
+    night: 'weather-media/night_frame.jpg',
+    fallback: 'weather-media/day_frame.jpg'
+  };
 
+  function pickWeatherImage(code, temp) {
+    const hour = new Date().getHours();
+    const isNight = hour < 6 || hour >= 20;
+    const isPrecip = code >= 51 && code <= 99;
+    if (isPrecip) return WEATHER_IMAGES.rain;
+    if (isNight) return WEATHER_IMAGES.night;
+    if (code <= 3) return WEATHER_IMAGES.clear;
+    return WEATHER_IMAGES.cloudy;
   }
+
+  let weatherCache = null;
+  let weatherCacheTime = 0;
+  const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+  async function loadWeather() {
+    const heroCond = document.getElementById('heroCondition');
+    const tempEls = () => document.querySelectorAll('#temp, #temp2, #heroTemp');
+    const condEls = () => document.querySelectorAll('#condition, #condition2, #heroCondition');
+    const locEls = () => document.querySelectorAll('#location, #location2, #heroLocation');
+    const updEls = () => document.querySelectorAll('#updated, #updated2');
+
+    const apply = (temp, cond, loc, upd) => {
+      tempEls().forEach(el => el.textContent = temp);
+      condEls().forEach(el => el.textContent = cond);
+      locEls().forEach(el => el.textContent = loc);
+      updEls().forEach(el => el.textContent = upd);
+    };
+
+    const fallback = (code) => {
+      apply('--°', 'Weather unavailable', 'Pembina, MB', '');
+      updateActivities(15, 10, 3);
+      updateWeatherPlan(15, 3);
+      setWeatherVideo(3, 15);
+      if (heroCond) heroCond.textContent = 'Weather unavailable';
+      const imgSrc = pickWeatherImage(code || 3, 15);
+      const heroImg = document.getElementById('heroWeatherImage');
+      if (!heroImg) {
+        const img = document.createElement('img');
+        img.id = 'heroWeatherImage';
+        img.alt = 'Weather';
+        img.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+        const scene = document.getElementById('weatherScene');
+        const video = document.getElementById('heroWeatherVideo');
+        if (scene && video) scene.insertBefore(img, video);
+      }
+      const targetImg = document.getElementById('heroWeatherImage');
+      if (targetImg) {
+        targetImg.src = imgSrc;
+        targetImg.style.opacity = '1';
+      }
+    };
+
+    // Guaranteed fallback after 5 seconds regardless of network state
+    const fallbackTimer = setTimeout(() => fallback(3), 5000);
+
+    try {
+      // Use cached weather data if available and fresh
+      if (weatherCache && (Date.now() - weatherCacheTime) < WEATHER_CACHE_TTL) {
+        console.log('Using cached weather data');
+        const cw = weatherCache.current_weather;
+        apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date(weatherCacheTime).toLocaleTimeString());
+        updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+        updateWeatherPlan(cw.temperature, cw.weathercode);
+        if (weatherCache.daily) renderWeekly(weatherCache.daily);
+        setWeatherVideo(cw.weathercode, cw.temperature);
+        return;
+      }
+
+      const lat = 49.1833;
+      const lon = -97.9339;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      clearTimeout(fallbackTimer);
+      const data = await res.json();
+      
+      // Cache successful response
+      weatherCache = data;
+      weatherCacheTime = Date.now();
+      const cw = data.current_weather;
+      apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
+      updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+      updateWeatherPlan(cw.temperature, cw.weathercode);
+      if (data.daily) renderWeekly(data.daily);
+      setWeatherVideo(cw.weathercode, cw.temperature);
+    } catch (e) {
+      clearTimeout(fallbackTimer);
+      console.warn('Weather fallback triggered:', e);
+      fallback(3);
+    }
   }
 
+  function weatherLabel(code) {
+    if (code === 0) return 'Clear sky';
+    if (code <= 3) return 'Partly cloudy';
+    if (code <= 48) return 'Foggy';
+    if (code <= 67) return 'Rain';
+    if (code <= 77) return 'Snow';
+    if (code <= 82) return 'Rain showers';
+    if (code <= 86) return 'Snow showers';
+    if (code <= 99) return 'Thunderstorm';
+    return 'Weather';
+  }
 
+  function setWeatherVideo(code, temp) {
+    const video = document.getElementById('heroWeatherVideo');
+    if (!video) return;
+    const hour = new Date().getHours();
+    const isPrecip = code >= 51 && code <= 99;
+    const isClear = code <= 3;
+    let src = 'weather-media/day.mp4?v=1788408739';
+    if (isPrecip) {
+      src = 'weather-media/rain.mp4?v=1788408739';
+    } else if (isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4?v=1788408739';
+    } else if (!isClear && (hour < 6 || hour >= 20)) {
+      src = 'weather-media/night.mp4?v=1788408739';
+    }
+    const currentSrc = video.src ? video.src.split('/').pop() : '';
+    if (currentSrc && currentSrc.endsWith(src.split('/').pop())) return;
+    video.style.transition = 'opacity 0.6s ease';
+    video.style.opacity = '0';
+    setTimeout(() => {
+      video.src = src;
+      video.load();
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          video.style.opacity = '1';
+        }).catch(() => {
+          video.style.opacity = '0';
+          const overlay = document.getElementById('heroWeatherOverlay');
+          if (overlay) overlay.style.opacity = '1';
+        });
+      }
+      video.addEventListener('error', () => {
+        const img = document.getElementById('heroWeatherImage');
+        if (!img) {
+          const fallbackImg = document.createElement('img');
+          fallbackImg.id = 'heroWeatherImage';
+          fallbackImg.alt = 'Weather';
+          fallbackImg.src = 'weather-media/day_frame.jpg';
+          fallbackImg.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;transition:opacity 0.6s ease;');
+          const scene = document.getElementById('weatherScene');
+          if (scene) scene.insertBefore(fallbackImg, video);
+        } else {
+          img.style.opacity = '1';
+        }
+        video.style.opacity = '0';
+        const overlay = document.getElementById('heroWeatherOverlay');
+        if (overlay) overlay.style.opacity = '1';
+      }, { once: true });
+    }, 600);
   }
 
   function weatherIconHTML(code) {
@@ -398,7 +647,9 @@ const initPage = () => { diag("initPage");
   function drawWeatherIcon(wrapId, code) {
     const wrap = document.getElementById(wrapId);
     if (!wrap) return;
+    const scene = document.getElementById('weatherScene');
     if (!scene) return;
+    scene.setAttribute('style', 'position:relative;width:100%;height:100%;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%), radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%), linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);animation:weatherSceneShift 14s ease-in-out infinite;perspective:800px;');
     const icon = document.createElement('div');
     icon.setAttribute('style', 'position:relative;width:100%;height:100%;transform-style:preserve-3d;');
     if (code === 0) {
@@ -511,7 +762,7 @@ const initPage = () => { diag("initPage");
   function renderWeekly(daily) {
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const targets = [document.getElementById('weekly-home')].filter(Boolean);
+    const targets = [document.getElementById('weather-forecast')].filter(Boolean);
     if (!targets.length) return;
     if (!daily || !daily.time || !daily.time.length) {
       targets.forEach(el => el.innerHTML = '<div class="muted">Weekly forecast unavailable</div>');
@@ -587,28 +838,29 @@ const initPage = () => { diag("initPage");
     });
   }
 
-  renderDashboard();
-  buildUpcoming();
-  buildActivityWeek();
-  buildMonth();
-  renderFeatured();
-  renderFamilyEvents();
+  try {
+    const started = loadWeather();
+    if (started && typeof started.then === 'function') {
+    } else {
+    }
+  } catch (e) {
+  }
 
   function renderFeatured() {
     const container = document.getElementById('featured-events');
     if (!container) return;
-    const featured = [
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    // Only show upcoming events from events.json, not "TBD", "Spring", etc.
+    const featured = EVENTS.filter(ev => {
+      const d = new Date(ev.date + 'T12:00:00');
+      return d >= now && ev.date && ev.date.match(/^\d{4}-\d{2}-\d{2}$/);
+    }).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 6);
 
-      { category: 'family', title: 'Prairie Dale School Events', time: 'Aug-Sep · Pembina, MB', date: 'Aug', link: 'https://pds.gvsd.ca/' },
-      { category: 'community', title: 'Chamber Member Appreciation BBQ', time: 'Sep 18 · Winkler City Hall', date: 'Sep 18', link: 'https://winklerchamber.com/events/' },
-      { category: 'community', title: 'Morden Corn & Apple Festival', time: 'Aug 28-30 · Downtown Morden', date: 'Aug 28', link: 'https://cornandapple.com/', promoted: true },
-      { category: 'community', title: 'Honey Garlic & Maple Syrup Festival', time: 'Second weekend Sep · Manitou, MB', date: 'Sep', link: 'https://hgmsfestival.com/' },
-      { category: 'community', title: 'Manitou Ag Fair', time: 'Manitou, MB', date: 'TBD', link: 'https://www.pembina.ca/p/annual-events' },
-      { category: 'outdoors', title: 'Raptor Festival', time: 'Spring · La Riviere, MB', date: 'Spring', link: 'https://www.pembina.ca/p/annual-events' },
-      { category: 'outdoors', title: 'Outdoor Summer Adventure', time: 'Pembina, MB', date: 'Summer', link: 'https://www.pembina.ca/p/annual-events' },
-      { category: 'community', title: 'Morden Back40 Music Festival', time: 'Aug 29 · Morden, MB', date: 'Aug 29', link: 'https://www.backfortymusicfestival.com/' },
-      { category: 'community', title: 'The Big Canoe', time: 'Sep 19 · Lake Minnewasta', date: 'Sep 19', link: 'https://morden.ca/access-event-centre' },
-    ];
+    if (!featured.length) {
+      container.innerHTML = '<div class="muted" style="padding:14px;">No featured events coming up — check back soon!</div>';
+      return;
+    }
 
     container.innerHTML = featured.map(ev => `
       <a class="featured-card bubble" href="${ev.link || '#'}" target="_blank" rel="noopener" data-category="${ev.category}">
@@ -616,13 +868,11 @@ const initPage = () => { diag("initPage");
           <div class="badge-row">
             <span class="date-badge">${ev.date}</span>
             <span class="cat-badge">${ev.category}</span>
-            ${ev.promoted ? '<span class="cat-badge" style="background:#f59e0b;color:#fff">Promoted</span>' : ''}
           </div>
         </div>
         <div class="title">${ev.title}</div>
         <div class="meta">${ev.time}</div>
-        <button class="copy-btn" data-copy="${`${ev.title}
-${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
+        <button class="copy-btn" data-copy="${`${ev.title}\n${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
       </a>
     `).join('');
   }
@@ -633,18 +883,13 @@ ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     const garageBox = document.getElementById('family-garage-events');
 
     const schoolEvents = [
-      { title: 'First Day Grades K-9', date: 'Sep 9 (Wed)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
-      { title: 'First Day Grades 10-12', date: 'Sep 10 (Thu)', time: 'Prairie Dale School · Winkler', category: 'family', link: 'https://pds.gvsd.ca/' },
-      { title: 'Whimsical Wonders Art Camp', date: 'Aug 31-Sep 4', time: 'City of Morden · morden.ca', category: 'family', link: 'https://morden.ca/community-events' },
-      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · altona.ca', category: 'family', link: 'https://altona.ca/upcoming-events' }
     ];
 
     const churchEvents = [
     ];
 
     const garageEvents = [
-      { title: 'Morden Community BBQ Fundraiser', date: 'Aug 8', time: '11:30 AM · Faith Mission, Winkler', category: 'fundraiser', link: 'https://winklerchamber.com/events/' },
-      { title: 'Altona Aquatic Centre', date: 'Summer 2026', time: 'Altona, MB · Family fun', category: 'community', link: 'https://altona.ca/upcoming-events' }
+      { title: 'Garage Sale for Charity', date: 'Sept 19', time: '9:00 AM · Winkler', category: 'fundraiser', link: '#' }
     ];
 
     const renderCard = (ev) => {

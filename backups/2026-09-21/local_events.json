@@ -1,0 +1,72 @@
+{
+  "last_updated": "2026-09-20",
+  "source": "local_curation",
+  "events": [
+    {
+      "id": "school-grades-k9",
+      "title": "First Day Grades K-9",
+      "date": "2026-09-09",
+      "time": "Wed · Prairie Dale School · Winkler",
+      "categories": ["family", "education"],
+      "location": "Winkler",
+      "link": "https://pds.gvsd.ca/",
+      "description": "Start of school year for K-9 students"
+    },
+    {
+      "id": "school-grades-10-12",
+      "title": "First Day Grades 10-12",
+      "date": "2026-09-10",
+      "time": "Thu · Prairie Dale School · Winkler",
+      "categories": ["family", "education"],
+      "location": "Winkler",
+      "link": "https://pds.gvsd.ca/",
+      "description": "Start of school year for grades 10-12"
+    },
+    {
+      "id": "free-swim",
+      "title": "Free Public Swimming",
+      "date": "2026-09-20",
+      "time": "Sat 10:00 AM - 8:00 PM · Morden Aquatic Centre",
+      "categories": ["family", "sports"],
+      "location": "Morden",
+      "link": "https://morden.ca/recreation",
+      "description": "Free public swimming during school breaks"
+    },
+    {
+      "id": "free-skating",
+      "title": "Free Public Skating",
+      "date": "2026-09-20",
+      "time": "Sun 1:00 PM - 4:00 PM · Winkler Arena",
+      "categories": ["family", "sports"],
+      "location": "Winkler",
+      "link": "https://winkler.ca/recreation",
+      "description": "Drop-in ice time for kids"
+    }
+  ],
+  "featured": [
+    {
+      "title": "Pembina Valley Ribfest 2026",
+      "date": "Sep 11-13",
+      "time": "Saturday 11AM-9PM, Sunday 12PM-6PM · Winkler, MB",
+      "category": "community",
+      "link": "https://pembinavalleyonline.com/articles/winkler-ribfest-ready-to-smoke-your-tastebuds",
+      "promoted": true
+    },
+    {
+      "title": "Morden's POP CULTURE EXPO",
+      "date": "Sep 19-20",
+      "time": "Sat 10am-5pm, Sun 12pm-5pm · Access Event Centre, Morden",
+      "category": "community",
+      "link": "https://pembinavalleyonline.com/events/227194",
+      "promoted": true
+    },
+    {
+      "title": "King Korn Maze",
+      "date": "Sep 20",
+      "time": "11:00 AM · King Korn Maze, Notre Dame de Lourdes, MB",
+      "category": "community",
+      "link": "https://www.pembinavalleyonline.com/events/233096",
+      "promoted": true
+    }
+  ]
+}

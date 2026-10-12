@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Cloudflare Web Analytics -->
+  
+  <!-- End Cloudflare Web Analytics -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pembina Valley Events — local events, activities, and community happenings in Winkler, Morden, Altona, Plum Coulee, and surrounding Manitoba. Find things to do, local sports, family activities, community schedules, and hope.">
+<meta name="keywords" content="Pembina Valley events, Winkler events, Morden events, Altona events, Manitoba community events, local activities, Winkler weather, Pembina Valley calendar, things to do Manitoba">
+<link rel="canonical" href="https://pembinaevents.ca/">
+<title>Pembina Valley Events · Pembina, MB</title><!-- deploy:1789599600 -->
+
+
+<meta property="og:title" content="Pembina Valley Events">
+<meta property="og:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pembina Valley Events">
+<meta name="twitter:description" content="Local events, activities, and community happenings in the Pembina Valley region of Manitoba.">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+
+<style>
+  :root {
+    --bg: #0b1220;
+    --card: #111b2d;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #f59e0b;
+    --accent-2: #fbbf24;
+    --teal: #0d9488;
+    --gold: #b45309;
+    --wheat: #f59e0b;
+    --green: #15803d;
+    --border: rgba(255,255,255,0.1);
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #ef4444;
+    --radius: 20px;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+    --category-community: #2563eb;
+    --category-family: #059669;
+    --category-outdoors: #0891b2;
+    --category-faith: #7c3aed;
+    --category-promoted: #d97706;
+    --category-fundraiser: #dc2626;
+    --category-lake: #0d9488;
+    --category-wheat: #f59e0b;
+    --jarvis-accent: #06b6d4;
+    --jarvis-accent-2: #8b5cf6;
+    --jarvis-bg-core: #0891b2;
+    --jarvis-panel: #0f172a;
+    --jarvis-text-subtle: #94a3b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: #e2e8f0;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+  }
+  @keyframes jarvisPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; transform: scale(1.02); }
+  }
+  .jarvis-pulse { animation: jarvisPulse 3s ease-in-out infinite; }
+  .font-serif { font-family: "Georgia", "Times New Roman", Times, serif; }
+  .font-script { font-family: "Brush Script Std", "Script", cursive; }
+  header {
+    background: #0f172a;
+    color: #f59e0b;
+    padding: 36px 18px 24px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 8px;
+  }
+  .logo-header { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 1160px; margin: 0 auto; }
+  .logo-img { width: 100%; max-width: 100%; height: auto; display: block; }
+  nav {
+    background: #0f172a;
+    padding: 14px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .nav-link {
+    padding: 10px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: 700;
+    min-height: 44px;
+    line-height: 1.2;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    font-size: 0.92rem;
+    background: #f59e0b;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.15s ease, background 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-link:hover { transform: translateY(-1px); background: #fbbf24; border-color: rgba(0,0,0,0.1); }
+  .nav-link.active { background: #1e3a8a; color: #f59e0b; border-color: #1e3a8a; box-shadow: 0 2px 10px rgba(30,58,138,0.35); }
+  .container { max-width: 1160px; margin: 0 auto; padding: 28px 18px; }
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .locals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  .local-card { 
+    display: block; padding: 16px; border-radius: 14px; background: rgba(255,255,255,0.04); 
+    border: 1px solid rgba(255,255,255,0.08); color: inherit; text-decoration: none; 
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .local-card:hover { 
+    transform: translateY(-3px); 
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .local-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
+  .local-desc { font-size: 0.82rem; opacity: 0.85; }
+  .featured-card .cat-badge { background: rgba(255,255,255,0.12); padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 18px 40px rgba(15,23,42,0.35);
+    border-color: rgba(245,158,11,0.35);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .card > * { position: relative; }
+  .card h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; color: #fbbf24; }
+  .card .muted { color: #e2e8f0; font-size: 0.92rem; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; color: var(--text); }
+  .section-title::after { content: ""; display: block; width: 40px; height: 4px; border-radius: 999px; background: linear-gradient(90deg, #0f172a, #2563eb, #0d9488); margin-top: 10px; }
+  .section-subtitle { color: var(--muted); font-size: 0.95rem; margin-top: -10px; margin-bottom: 16px; }
+  .spacer { height: 18px; }
+  .page { display: none; animation: fadeIn 0.35s ease; }
+  .page.active { display: block; }
+  @keyframes forecastFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes ctaPulse { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 12px; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+    background: #1e293b; border: 1px solid rgba(255,255,255,0.08); color: #e2e8f0; cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .pill:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,23,42,0.35); background: #0f172a; }
+  .pill.active { background: #f59e0b; color: #0f172a; border-color: #f59e0b; }
+  .sports-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .sports-list .event-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 24px rgba(15,23,42,0.25);
+  }
+  .sports-list .event-row:hover {
+    background: rgba(15, 23, 42, 0.7);
+    padding-left: 18px;
+    transform: translateY(-2px);
+  }
+  .sports-list .event-date {
+    align-self: flex-start;
+  }
+  .sports-list .event-date.free-badge {
+    background: #1e293b;
+    border: 1px solid #f59e0b;
+    color: #fbbf24;
+  }
+  .sports-list .event-row .event-meta {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 2px;
+  }
+  .event-row:last-child { border-bottom: none; }
+  .event-row:hover { 
+    background: linear-gradient(90deg, rgba(37,99,235,0.05) 0%, rgba(13,148,136,0.04) 50%, rgba(180,83,9,0.03) 100%);
+    padding-left: 8px;
+    border-radius: 8px;
+  }
+  .day-event {
+    border-radius: 999px;
+    padding: 11px 18px 11px 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 23, 42, 0.85);
+    box-shadow: 0 2px 6px rgba(15,23,42,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+    display: block;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+  .day-event:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(15,23,42,0.1);
+    border-color: var(--accent);
+  }
+  .day-event[data-category="community"] { border-left: 4px solid #f59e0b; }
+  .day-event[data-category="family"] { border-left: 4px solid #3b82f6; }
+  .day-event[data-category="sports"] { border-left: 4px solid #10b981; }
+  .day-event[data-category="outdoors"] { border-left: 4px solid #14b8a6; }
+  .day-event .title { font-weight: 900; font-size: 1rem; display: block; margin: 0 auto 4px; text-align: center; color: inherit; max-width: 90%; }
+  .day-event .time { color: inherit; opacity: 0.85; font-size: 0.82rem; margin-top: 0; display: block; }
+  .activity {
+    border-radius: 999px;
+    padding: 11px 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 23, 42, 0.55);
+    color: #e2e8f0;
+    box-shadow: 0 2px 6px rgba(15,23,42,0.25);
+  }
+  .activity.highlighted {
+    border-color: rgba(245, 158, 11, 0.55);
+    background: rgba(245, 158, 11, 0.12);
+    color: #fef3c7;
+  }
+  .activity .name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin: 0 auto 4px;
+    color: inherit;
+    text-align: center;
+    display: block;
+    max-width: 90%;
+  }
+  .activity .desc {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.3;
+  }
+  .day-event .export-row { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .export-btn {
+    padding: 4px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700;
+    background: #0f172a; color: #e2e8f0; border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+  }
+  .export-btn:hover { background: #1e3a8a; }
+  .event-date {
+    min-width: 60px; text-align: center; padding: 12px 8px; border-radius: 16px; background: rgba(15, 23, 42, 0.65); color: #f59e0b; font-weight: 900;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+  }
+  .event-date .month { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .event-date .day { font-size: 1.25rem; line-height: 1; margin-top: 3px; }
+  .event-title { font-weight: 800; font-size: 1rem; text-align: center; color: #ffffff; margin: 0 auto; max-width: 90%; }
+  .event-title a { text-align: center; display: block; }
+  .event-meta { color: var(--muted); font-size: 0.88rem; margin-top: 5px; }
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    margin-bottom: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .day-header:hover { background: rgba(255,255,255,0.09); border-color: rgba(245,158,11,0.3); }
+  .day-header .day-toggle {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .day-header .day-toggle::before { content: '▶'; display: inline-block; width: 20px; text-align: center; }
+  .day-header.expanded .day-toggle::before { content: '▼'; }
+
+/* Town filter buttons */
+.town-btn { transition: all 0.2s ease; }
+.town-btn:hover { background: rgba(245, 158, 11, 0.15) !important; border-color: #f59e0b !important; color: #f59e0b !important; }
+.town-btn.active { background: #f59e0b !important; color: #0b1220 !important; border-color: #f59e0b !important; font-weight: 700; }
+/* Search input focus */
+#event-search:focus { border-color: #f59e0b !important; background: rgba(245, 158, 11, 0.1) !important; }
+/* Last updated styling */
+#last-updated { color: #64748b; }
+/* Empty state improvements */
+.no-events { color: var(--muted); font-size: 0.9rem; padding: 16px; text-align: center; }
+
+  .day-header .day-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    flex: 1;
+  }
+  .day-header .event-count {
+    background: var(--accent);
+    color: #0f172a;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  .day-section { margin-bottom: 14px; }
+  .event-list.hidden-events { display: none; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .calendar-day {
+    background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 14px; min-height: 110px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+  }
+  .calendar-day:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 16px 35px rgba(15,23,42,0.45);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .calendar-day .day-name { font-weight: 900; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; }
+  .calendar-day .day-number { font-weight: 900; font-size: 1.2rem; margin-top: 6px; color: #f1f5f9; }
+  .calendar-day.today .day-number { color: #fbbf24; }
+  .calendar-day .day-chip {
+    margin-top: 10px; padding: 7px 9px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;
+    background: #0f172a; color: #f59e0b;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.25);
+  }
+  .calendar-day .day-chip[data-category="community"] { background: #f59e0b; color: #0f172a; }
+  .calendar-day .day-chip[data-category="family"] { background: #3b82f6; color: #ffffff; }
+  .calendar-day .day-chip[data-category="sports"] { background: #10b981; color: #0f172a; }
+  .calendar-day .day-chip[data-category="outdoors"] { background: #14b8a6; color: #0f172a; }
+  .weather-card-ref-dark {
+    background: #0b1020;
+    border-radius: 28px;
+    padding: 22px;
+    box-shadow: 0 30px 80px rgba(15,23,42,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .weather-card-ref-dark .weather {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .weather-card-ref-dark .temp {
+    font-size: 4.2rem;
+    font-weight: 900;
+    color: #f59e0b;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .weather-card-ref-dark .meta {
+    color: #475569;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 6px;
+  }
+  .weather-card-ref-dark .muted {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    margin-top: 4px;
+  }
+  .weather-card-ref-dark h2 { color: #f1f5f9; font-weight: 900; margin: 0 0 14px; }
+  .weather-icon-wrap {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    position: relative;
+  }
+  .weather-scene {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(148,163,184,0.35) 0%, transparent 55%),
+      linear-gradient(160deg, #0b1020 0%, #0f172a 45%, #1e293b 100%);
+    animation: weatherSceneShift 14s ease-in-out infinite;
+  }
+  @keyframes weatherSceneShift { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-2%, 1%) scale(1.04); } 66% { transform: translate(2%, -1%) scale(1.02); } }
+  .weather-icon-wrap .animated-icon {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+  }
+  .animated-icon .sun {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff7d6, #f59e0b);
+    box-shadow: 0 0 28px rgba(245,158,11,0.55), 0 0 70px rgba(245,158,11,0.25);
+    animation: sunPulse 2.4s ease-in-out infinite;
+  }
+  .animated-icon .sun-ray {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 3px solid rgba(251,191,36,0.55);
+    animation: sunPulse 2.4s ease-in-out infinite;
+  }
+  .animated-icon .cloud {
+    position: absolute;
+    bottom: 26px;
+    right: 18px;
+    width: 78px;
+    height: 32px;
+    background: rgba(226,232,240,0.92);
+    border-radius: 999px;
+    box-shadow: 0 18px 30px rgba(15,23,42,0.45);
+    animation: cloudDrift 5.5s ease-in-out infinite;
+  }
+  .animated-icon .cloud::before, .animated-icon .cloud::after {
+    content: "";
+    position: absolute;
+    background: rgba(226,232,240,0.95);
+    border-radius: 50%;
+    top: -18px;
+  }
+  .animated-icon .cloud::before { width: 36px; height: 36px; left: 14px; }
+  .animated-icon .cloud::after { width: 26px; height: 26px; left: 38px; }
+  .animated-icon .rain-drop {
+    position: absolute;
+    width: 3px;
+    height: 10px;
+    background: linear-gradient(180deg, rgba(125,211,252,0.9), rgba(37,99,235,0.7));
+    border-radius: 999px;
+    animation: rainFall 1.2s linear infinite;
+  }
+  .animated-icon .snowflake {
+    position: absolute;
+    color: #e2e8f0;
+    font-size: 14px;
+    animation: snowFall 2.8s linear infinite;
+  }
+  @keyframes sunPulse { 0%, 100% { transform: scale(1); opacity: 0.95; } 50% { transform: scale(1.08); opacity: 1; } }
+  @keyframes cloudDrift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-12px); } }
+  @keyframes rainFall { 0% { transform: translateY(-20px) translateX(0) opacity: 0; } 30% { opacity: 0.9; } 100% { transform: translateY(44px) translateX(6px) opacity: 0; } }
+  @keyframes snowFall { 0% { transform: translateY(-18px) translateX(0) rotate(0deg) opacity: 0; } 30% { opacity: 0.9; } 100% { transform: translateY(40px) translateX(10px) rotate(180deg) opacity: 0; } }
+  @keyframes weatherSceneShift { 0%, 100% { filter: hue-rotate(0deg) brightness(1); } 50% { filter: hue-rotate(8deg) brightness(1.05); } }
+  .weather-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.15));
+    pointer-events: none;
+  }
+  .weather-card .temp { font-size: 4.8rem; font-weight: 900; letter-spacing: -0.06em; color: #f59e0b; }
+  .weather-card .meta { opacity: 1; margin-top: 12px; font-weight: 900; font-size: 1.4rem; color: #e2e8f0; }
+  .weather-card { color: #e2e8f0; background: #0b1220; border: 1px solid rgba(255,255,255,0.08); }
+  .weather-card h2 { color: #f1f5f9; }
+  .weather-card .muted { color: #94a3b8; }
+  .weekly-wrap { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 16px; }
+  .weekly-day {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    color: #e2e8f0;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.35);
+  }
+  .weekly-day .dow { font-size: 0.7rem; text-transform: uppercase; color: #94a3b8; font-weight: 800; letter-spacing: 0.08em; }
+  .weekly-day .date { font-weight: 900; margin-top: 4px; color: #f1f5f9; }
+  .weekly-day .cond { font-size: 0.8rem; margin-top: 5px; font-weight: 700; color: #fbbf24; }
+  .weekly-day .lo-hi { font-size: 0.75rem; margin-top: 4px; color: #cbd5e1; }
+  .weather-card-ref { background: #0f172a; color: #e2e8f0; border: 1px solid rgba(255,255,255,0.08); }
+  .weather-card-ref h2 { color: #f1f5f9; }
+  .weather-card-ref .temp { color: #f59e0b; text-shadow: none; }
+  .weather-card-ref .meta { color: #e2e8f0; text-shadow: none; }
+  .weather-card-ref .muted { color: #94a3b8; }
+  .weather-icon-wrap { color: #e2e8f0; }
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .featured-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 18px;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(6px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.25);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+  .featured-card:hover { text-decoration: none; color: inherit; }
+  .featured-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0f172a, #2563eb, #0d9488, #b45309);
+    background-size: 300% 100%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    animation: borderShift 8s linear infinite;
+  }
+  @keyframes borderShift { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+  .featured-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(15,23,42,0.15); border-color: rgba(13,148,136,0.35); }
+  .featured-card:hover::before { opacity: 1; }
+  .featured-card .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .featured-card .title { font-weight: 900; font-size: 1.05rem; margin: 0 auto 6px; letter-spacing: -0.01em; text-decoration: none; text-align: center; display: block; max-width: 90%; }
+  .featured-card .title a { text-decoration: none; color: inherit; }
+  .featured-card .title a:hover { text-decoration: underline; }
+  .featured-card .meta { color: var(--muted); font-size: 0.9rem; }
+  .featured-card .date-badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+  .featured-card .cat-badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+  .featured-card .row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .featured-card .trust { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .cta-btn { padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.9rem; background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255,255,255,0.12); color: #e2e8f0; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; }
+  .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,0.25); background: rgba(255,255,255,0.08); color: white; border-color: rgba(255,255,255,0.25); }
+  .cta-btn.animated { animation: ctaPulse 2.4s ease-in-out infinite; }
+  footer {
+    text-align: center; padding: 28px 18px; color: #ffffff; font-size: 0.92rem;
+    margin-top: 32px;
+    background: #0f172a;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; } nav { padding: 10px 12px; }
+    .nav-inner { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; justify-content: flex-start; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-link { white-space: nowrap; flex: 0 0 auto; padding: 10px 14px; font-size: 0.85rem; }
+    .page { padding-top: 12px; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .weekly-wrap { grid-template-columns: repeat(2, 1fr); }
+    .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured-grid { grid-template-columns: 1fr; }
+    .card { padding: 14px; }
+  }
+  .contact-form { display: grid; gap: 12px; }
+  .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%; padding: 10px 12px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: rgba(15, 23, 42, 0.7); font: inherit; color: #e2e8f0; outline: none; transition: border-color 0.2s ease;
+  }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: #2563eb; }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-submit { justify-self: start; padding: 10px 20px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: rgba(15, 23, 42, 0.7); color: #e2e8f0; font-weight: 600; cursor: pointer; transition: background 0.2s ease; }
+  .contact-submit:hover { background: rgba(30, 41, 59, 0.9); }
+  .contact-hint { margin-top: 8px; font-size: 0.9rem; color: #64748b; }
+  @media (max-width: 640px) { .contact-row { grid-template-columns: 1fr; } }
+  .contact-me { padding-top: 14px; border-top: 1px solid rgba(148,163,184,0.25); }
+  .contact-me h3 { font-size: 1rem; margin: 0 0 6px; color: #f1f5f9; }
+  .contact-me p { margin: 0 0 8px; color: #94a3b8; font-size: 0.95rem; }
+  .contact-me-btn { display: inline-block; padding: 10px 18px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.7); background: rgba(15, 23, 42, 0.7); color: #e2e8f0; font-weight: 600; text-decoration: none; transition: background 0.2s ease; }
+  .contact-me-btn:hover { background: rgba(30, 41, 59, 0.9); text-decoration: none; }
+  @media (max-width: 380px) { .calendar-grid { grid-template-columns: 1fr; } .weekly-wrap { grid-template-columns: 1fr; } }
+
+  .weekly-forecast-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 14px; }
+  .forecast-card {
+    background: #1e293b; border-radius: 24px; padding: 14px 14px 14px 18px; text-align: left; position: relative; overflow: hidden; color: #e2e8f0; box-shadow: 0 1px 0 rgba(255,255,255,0.06); opacity: 0; animation: forecastFadeIn 0.6s ease forwards; border: 1px solid rgba(255,255,255,0.08);
+  }
+  .forecast-card::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: #f59e0b; }
+  .forecast-card .forecast-dot { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; margin: 0 auto 10px; display: block; }
+  .forecast-card .forecast-day { font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; text-align: center; }
+  .forecast-card .forecast-date { font-weight: 900; font-size: 0.95rem; color: #f1f5f9; text-align: center; margin-top: 2px; }
+  .forecast-card .forecast-temp { font-weight: 900; font-size: 1.4rem; color: #f59e0b; text-align: center; margin-top: 8px; }
+  .forecast-card .forecast-condition { font-size: 0.82rem; font-weight: 800; text-align: center; margin-top: 6px; color: #f59e0b; }
+  .forecast-card .forecast-condition.rain { color: #dc2626; }
+  .forecast-card .forecast-precip { font-size: 0.82rem; font-weight: 700; text-align: center; margin-top: 4px; color: #cbd5e1; }
+  .forecast-card:nth-child(1) { animation-delay: 0.05s; }
+  .forecast-card:nth-child(2) { animation-delay: 0.1s; }
+  .forecast-card:nth-child(3) { animation-delay: 0.15s; }
+  .forecast-card:nth-child(4) { animation-delay: 0.2s; }
+  .forecast-card:nth-child(5) { animation-delay: 0.25s; }
+  .forecast-card:nth-child(6) { animation-delay: 0.3s; }
+  .forecast-card:nth-child(7) { animation-delay: 0.35s; }
+  @keyframes forecastFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .forecast-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15,23,42,0.12); border-color: rgba(13,148,136,0.35); }
+  .forecast-card .forecast-day { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800; color: #64748b; }
+  .forecast-card .forecast-date { font-weight: 900; font-size: 0.95rem; color: #f59e0b; margin-top: 2px; }
+  .forecast-card .forecast-condition { font-size: 0.82rem; font-weight: 700; color: #f59e0b; margin-top: 8px; }
+  .forecast-card .forecast-temp { font-weight: 900; font-size: 1.05rem; color: #f59e0b; margin-top: 6px; }
+  .forecast-card .forecast-precip { font-size: 0.78rem; color: #64748b; margin-top: 4px; }
+  @media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } .day-columns { grid-template-columns: 1fr; } .featured-grid { grid-template-columns: 1fr; } .section-title { font-size: 1.2rem; } .card h2 { font-size: 1.05rem; } .weather-card .temp { font-size: 3.6rem; } .weather-card .meta { font-size: 1.15rem; } .forecast-card-inline { min-width: 140px; } }
+  @media (max-width: 540px) { .weekly-forecast-row { grid-template-columns: repeat(3, 1fr); } }
+
+  .forecast-icon { display:flex; justify-content:center; margin-bottom:6px; }
+  .wi { width:38px; height:38px; position:relative; display:inline-block; }
+  .wi::before, .wi::after { content:""; position:absolute; border-radius:50%; }
+  .wi-clear { background:#f59e0b; border-radius:50%; box-shadow:0 0 12px rgba(245,158,11,0.5); animation:sunPulse 2s ease-in-out infinite; }
+  .wi-clear::before { width:8px; height:8px; background:#fbbf24; top:-6px; left:6px; box-shadow:0 0 6px rgba(251,191,36,0.7); }
+  .wi-partly-cloudy { background:linear-gradient(135deg,#f59e0b 40%,#e5e7eb 40%); border-radius:50%; animation:sunPulse 2.2s ease-in-out infinite; }
+  .wi-partly-cloudy::before { width:20px; height:10px; background:#e5e7eb; border-radius:10px; bottom:-2px; right:-4px; }
+  .wi-rain { background:#e5e7eb; border-radius:8px; width:34px; height:18px; }
+  .wi-rain::before { width:10px; height:10px; background:#e5e7eb; border-radius:50%; top:-7px; left:4px; }
+  .wi-rain::after { width:7px; height:7px; background:#e5e7eb; border-radius:50%; top:-5px; right:4px; }
+  .wi-snow { background:#e5e7eb; border-radius:8px; width:34px; height:18px; }
+  .wi-snow::before { width:10px; height:10px; background:#e5e7eb; border-radius:50%; top:-7px; left:4px; }
+  .wi-snow::after { width:7px; height:7px; background:#e5e7eb; border-radius:50%; top:-5px; right:4px; }
+
+  /* Weather dark card styles */
+  .weather-dark-card { background: #0f172a; border-radius: 28px; padding: 22px; color: #e2e8f0; box-shadow: 0 20px 50px rgba(15,23,42,0.35); border: 1px solid rgba(255,255,255,0.06); }
+  .weather-header { margin-bottom: 18px; }
+  .weather-location { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .pin-icon { width: 16px; height: 16px; flex-shrink: 0; }
+  .weather-location-text { font-size: 0.8rem; color: #94a3b8; letter-spacing: 0.02em; }
+  .weather-temp { font-size: 3.2rem; font-weight: 800; color: #f59e0b; background: rgba(255,255,255,0.06); display: inline-block; border-radius: 14px; padding: 4px 14px; margin: 4px 0 6px; line-height: 1.1; }
+  .weather-desc { font-size: 0.92rem; color: #cbd5e1; margin-bottom: 2px; }
+  .weather-meta { font-size: 0.82rem; color: #94a3b8; margin-top: 2px; }
+  .weather-updated { font-size: 0.72rem; color: #64748b; margin-top: 6px; }
+  .forecast-pills { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+  .forecast-pill { min-width: 96px; background: rgba(255,255,255,0.06); border-radius: 20px; padding: 14px 10px 12px; text-align: left; color: #e2e8f0; display: flex; flex-direction: column; gap: 6px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); transition: transform 0.2s ease; scroll-snap-align: start; }
+  .forecast-pill:hover { transform: translateY(-2px); }
+  .forecast-pill .day { font-size: 0.75rem; font-weight: 800; color: #cbd5e1; letter-spacing: 0.08em; text-transform: uppercase; }
+  .forecast-pill .hi-lo { font-size: 0.72rem; color: #94a3b8; }
+  .forecast-pill .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .forecast-pill .bar { height: 6px; border-radius: 999px; background: linear-gradient(90deg, #22d3ee, #f59e0b); opacity: 0.9; }
+  .forecast-pill .precip { font-size: 0.68rem; color: #7dd3fc; }
+
+  .copy-event-tooltip { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: rgba(15,23,42,0.9); color: #e2e8f0; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 5; }
+  .copy-event-tooltip.visible { opacity: 1; }
+
+/* JARVIS Mark 53 glow effect */
+.jarvis-glow { box-shadow: 0 0 20px rgba(6,182,212,0.4), 0 0 40px rgba(139,92,246,0.3); }
+
+
+.copy-event-btn { position: absolute; right: 10px; top: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 4px 8px; font-size: 0.7rem; font-weight: 600; color: #e5e7eb; cursor: pointer; z-index: 10; }
+.copy-event-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+
+/* Thank you message for event submission */
+#submit-thanks { display: none; }
+#submit-thanks.show { display: block; }
+</style>
+<link rel="icon" href="/logo.png" type="image/png">
+</head>
+<body><!-- cache-bust: 2026-09-20-01 -->
+
+<header class="logo-header header">
+  <img src="logo.png" alt="Pembina Valley Events" class="logo-img">
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#page-home" class="nav-link active" data-page="home">Home</a>
+    <a href="#page-activities" class="nav-link" data-page="activities">Activities</a>
+    <a href="#page-sports" class="nav-link" data-page="sports">Sports</a>
+    <a href="#page-family" class="nav-link" data-page="family">Family</a>
+    <a href="#page-fundraiser" class="nav-link" data-page="fundraiser">Fundraisers</a>
+    <a href="#page-sources" class="nav-link" data-page="sources">Sources</a>
+    <a href="#page-hope" class="nav-link" data-page="hope">Hope</a>
+    <a href="#page-contact" class="nav-link" data-page="contact">Contact</a>
+  </div>
+</nav>
+
+<div id="js-error-banner" style="display:none;position:fixed;top:0;left:0;right:0;background:#ef4444;color:#fff;padding:10px;z-index:9999;font-weight:700;">Site error — please refresh or open browser console for details.</div>
+
+<div class="container">
+
+  <div class="page active" id="page-home">
+    <section class="section">
+      <div id="hero3d" style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0f172a,#1e293b);min-height:320px;">
+        <video id="heroWeatherVideo" preload="auto" autoplay loop muted playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" poster="weather-media/day_frame.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;z-index:0;transition:opacity 0.6s ease;"></video>
+        <div id="heroWeatherOverlay" style="position:absolute;left:16px;bottom:16px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.6);pointer-events:none;z-index:2;">
+          <div id="heroTemp" style="font-size:3rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">--°</div>
+          <div id="heroCondition" style="font-size:1.05rem;font-weight:700;margin-top:6px;">Loading...</div>
+          <div id="heroLocation" style="font-size:0.85rem;opacity:0.9;margin-top:2px;">Pembina, MB</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2 style="color:#f59e0b;">🌤️ Weekly Weather Forecast</h2>
+        <div id="weather-forecast"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-activity">
+        <h2 style="color:#f59e0b;">🌱 Today's Suggested Activities</h2>
+        <div id="activities">
+          <div class="activity"><div class="name">Evening walk</div><div class="desc">Good for clearing your head after study or work.</div></div>
+          <div class="activity"><div class="name">Indoor reading</div><div class="desc">Bible study, notes, or planning.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2 style="color:#f59e0b;">📌 Today's Schedule</h2>
+        <p class="muted" id="today-date-label">Loading today's events...</p><p class="muted" id="last-updated" style="font-size:0.75rem;"></p>
+        <div class="spacer"></div>
+        <div id="today-events"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2 style="color:#f59e0b;">📅 This Week's Events</h2>
+        <div style="margin-bottom:8px;">
+          <button class="town-btn active" data-town="all" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">All</button>
+          <button class="town-btn" data-town="Winkler" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Winkler</button>
+          <button class="town-btn" data-town="Morden" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Morden</button>
+          <button class="town-btn" data-town="Altona" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;">Altona</button>
+        </div>
+        <div id="daily-events"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2 style="color:#f59e0b;">🕊️ If That Day Comes</h2>
+        <p class="muted">A message of truth, comfort, and direction for the world after the disappearance of millions.</p>
+        <div class="spacer"></div>
+        <a class="cta-btn animated" href="#page-hope">Read the Message</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2 style="color:#f59e0b;">⭐ Featured Events</h2>
+        <p class="muted">Top local happenings this week</p>
+        <div class="spacer"></div>
+        <div id="featured-events" class="featured-grid"></div>
+        <div class="cta-row">
+          <a class="cta-btn" href="#page-activities">📅 View Full Activities Calendar</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="page" id="page-calendar">
+  </div>
+
+  <div class="page" id="page-activities">
+    <section class="section">
+      <div class="card card-landscape-calendar">
+        <h2 style="color:#f59e0b;">📅 Activities</h2>
+        <div class="spacer"></div>
+        <div id="act-days"></div>
+      </div>
+      <div class="cta-row" style="margin-top:14px;">
+        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title%2C%20date%2C%20time%2C%20location%2C%20link).%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20eventsthat%20are%20suitable%20for%20all%20ages." target="_self">📝 Submit an Event</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-sports">
+    <section class="section">
+      <div class="card">
+        <h2 style="color:#f59e0b;">🏒 Pembina Valley Sports for Kids</h2>
+        <p class="muted">Seasonal sports programs, registration links, and free activity times for kids in Winkler, Morden, Altona, and surrounding areas.</p>
+        <div class="spacer"></div>
+
+        <div class="section-subtitle" style="margin-bottom:6px;">⚡ Free & Low-Cost — check back, these change often</div>
+        <div class="sports-list">
+          <div class="event-row">
+            <div class="event-date free-badge"><div class="month">FREE</div><div class="day">SWIM</div></div>
+            <div>
+              <div class="event-title"><a href="https://morden.ca/recreation" target="_blank">Free Public Swimming — Morden Aquatic Centre</a></div>
+              <div class="event-meta">Scheduled free swim times during school breaks · Morden, MB</div>
+            </div>
+          </div>
+          <div class="event-row">
+            <div class="event-date free-badge"><div class="month">FREE</div><div class="day">ICE</div></div>
+            <div>
+              <div class="event-title"><a href="https://winkler.ca/recreation" target="_blank">Free Public Skating — Winkler Arena</a></div>
+              <div class="event-meta">Drop-in ice time for kids · Winkler, MB · check arena schedule</div>
+            </div>
+          </div>
+        </div>
+        <p class="muted" style="font-size:0.8rem;margin-top:6px;">Don't see your town? Add your local arena or pool schedule and we'll list it.</p>
+
+        <div class="spacer"></div>
+        <p class="muted">Confirmed events & programs</p>
+        <div class="sports-list">
+          <div class="event-row">
+            <div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">ORI</div><div class="day">MBJBL</div></div>
+            <div>
+              <div class="event-title"><a href="https://www.manitobajrbaseball.ca/team/11987/0/33287/302564" target="_blank">Pembina Valley Orioles — Manitoba Junior Baseball League</a></div>
+              <div class="event-meta">Team registration · Spring/summer season · Winkler area</div></div>
+          </div>
+          <div class="event-row">
+            <div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">HAWK</div><div class="day">U15</div></div>
+            <div>
+              <div class="event-title"><a href="https://www.pvu15hawks.com/" target="_blank">Pembina Valley Hawks U15 — Fall tryouts/evaluations</a></div>
+              <div class="event-meta">Fall evaluations · Ages 13-15 · Pembina Valley</div></div>
+          </div>
+          <div class="event-row">
+            <div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">WMH</div><div class="day">26-27</div></div>
+            <div>
+              <div class="event-title"><a href="https://winklerminorhockey.ca/content/tournaments" target="_blank">Winkler Minor Hockey — 2026-2027 Season</a></div>
+              <div class="event-meta">Registration open · Ages 5+ · Coached leagues · Winkler, MB</div></div>
+          </div>
+          <div class="event-row">
+            <div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">ALT</div><div class="day">TBC</div></div>
+            <div>
+              <div class="event-title"><a href="https://altonabaseball.ca/content/2026-tournaments" target="_blank">Altona Minor Baseball & Minor Hockey — 2026 Tournaments</a></div>
+              <div class="event-meta">Tournament sign-ups · Altona, MB</div></div>
+          </div>
+          <div class="event-row">
+            <div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">REC</div><div class="day">YEAR</div></div>
+            <div>
+              <div class="event-meta">Basketball, soccer, gymnastics, swim lessons — seasonal registration · all three towns</div>
+            </div>
+          </div>
+          <div class="event-row">
+            <div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">PVO</div><div class="day">SCR</div></div>
+            <div>
+              <div class="event-title"><a href="https://www.pembinavalleyonline.com/articles/scoreboardline-up-" target="_blank">Local weekly sports results</a></div>
+              <div class="event-meta">Game scores, practise schedules, and upcoming match announcements · updated weekly</div>
+          </div>
+
+        <div class="spacer"></div>
+        <div class="cta-row">
+          <a class="cta-btn" href="mailto:boomsecure@protonmail.com?subject=Sports%20Program%20Submission&body=Please%20send%20your%20kids%27%20sports%20program%20details%20(sport%2C%20age%20group%2C%20when%2C%20season%2C%20free%20or%20cost%2C%20registration%20link%2C%20town).%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20for%20kids%27%20activities.">📝 Submit a Kids Sports Program</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-family">
+    <section class="section">
+      <div class="grid grid-3">
+        <div class="card">
+          <h2 style="color:#f59e0b;">👨‍👩‍👧‍👦 Family</h2>
+          <p class="muted">Home schedule, school, meals, and time together in Winkler.</p>
+          <div class="spacer"></div>
+          <div id="family-school-events" class="no-events">Loading school events...</div>
+        </div>
+        <div class="card">
+          <h2 style="color:#f59e0b;">⛪ Church & Ministry</h2>
+          <p class="muted">Local church events, services, and community gatherings.</p>
+          <div class="spacer"></div>
+          <div id="family-church-events" class="no-events">Loading church events...</div>
+        </div>
+        <div class="card">
+          <h2 style="color:#f59e0b;">🧰 Garage Sales & Community</h2>
+          <p class="muted">Local garage sales and family-friendly community events.</p>
+          <div class="spacer"></div>
+          <div id="family-garage-events" class="no-events">Loading community events...</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-fundraiser">
+    <style>
+      #page-fundraiser { position: relative; overflow: hidden; }
+      #page-fundraiser .float-bg { position: absolute; font-size: 3.5rem; opacity: 0; pointer-events: none; user-select: none; animation: floatUp 14s linear infinite; z-index: 0; }
+      #page-fundraiser .card { position: relative; z-index: 1; }
+      @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.18; } 90% { opacity: 0.18; } 100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; } }
+    </style>
+    <section class="section">
+      <div class="card">
+        <h2 style="color:#dc2626;">🎪 Fundraisers & Community Support</h2>
+        <p class="muted" style="margin-bottom:12px;">Local fundraisers and community-support events in the Pembina Valley. Every event here benefits a local cause, charity, or community group.</p>
+        <div class="spacer"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="page" id="page-sources">
+    <style>
+      #page-sources .event-title a {
+        text-decoration: none;
+        color: #f59e0b;
+        font-weight: 700;
+      }
+      #page-sources .event-title a:hover {
+        text-decoration: underline;
+      }
+      #page-sources .event-meta, #page-sources .event-muted {
+        color: #e2e8f0;
+      }
+      #page-sources .event-date {
+        background:#0f172a; color:#f59e0b; border:1px solid rgba(245,158,11,0.35); box-shadow:none;
+      }
+    
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(15, 23, 42, 0.7);
+    color: #e2e8f0;
+    font-weight: 700;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .copy-btn:hover {
+    background: rgba(30, 41, 59, 0.9);
+    transform: translateY(-1px);
+  }
+  .export-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+</style>
+    <section class="section">
+      <h2 class="section-title">📚 Local Event Sources</h2>
+      <p class="section-subtitle">Official calendars and event pages from local organizations. These are the sources we monitor for Pembina Valley Events.</p>
+      <div class="spacer"></div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h2 style="color:#f59e0b;">🏫 Schools & School Divisions</h2>
+          <div class="spacer"></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">GVSD</div><div class="day">Cal</div></div><div><div class="event-title"><a href="https://www.gvsd.ca/calendar" target="_blank">Garden Valley School Division</a></div><div class="event-meta">Division-wide calendar</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">PDS</div><div class="day">Cal</div></div><div><div class="event-title"><a href="https://pds.gvsd.ca/" target="_blank">Prairie Dale School</a></div><div class="event-meta">Winkler · K-8 school</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">GVC</div><div class="day">Cal</div></div><div><div class="event-title"><a href="https://gvc.gvsd.ca/calendar" target="_blank">Garden Valley Collegiate</a></div><div class="event-meta">Winkler · High school events</div></div></div>
+        </div>
+
+        <div class="card">
+          <h2 style="color:#f59e0b;">⛪ Churches & Ministries</h2>
+          <div class="spacer"></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">EMMC</div><div class="day">Ev</div></div><div><div class="event-title"><a href="http://www.winkleremmc.com/events/" target="_blank">Winkler EMMC</a></div><div class="event-meta">Sunday services, church events</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">CCM</div><div class="day">Ev</div></div><div><div class="event-title"><a href="https://cc-morden.com/calendar/" target="_blank">Christian Church of Morden</a></div><div class="event-muted">Subscribe to calendar</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">PVBC</div><div class="day">Ev</div></div><div><div class="event-title"><a href="https://pvbc.ca/" target="_blank">Pembina Valley Baptist Church</a></div><div class="event-muted">Winkler · VBS & events</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">EMM</div><div class="day">Ev</div></div><div><div class="event-title"><a href="https://altonaemmc.com/" target="_blank">Altona EMM Church</a></div><div class="event-muted">Altona · Kidventure & more</div></div></div>
+        </div>
+
+        <div class="card">
+          <h2 style="color:#f59e0b;">🏙 City & Municipal Events</h2>
+          <div class="spacer"></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">MORDEN</div><div class="day">City</div></div><div><div class="event-title"><a href="https://morden.ca/events-festivals" target="_blank">City of Morden Events & Festivals</a></div><div class="event-muted">Annual festivals & city events</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">MORDEN</div><div class="day">Comm</div></div><div><div class="event-title"><a href="https://morden.ca/community-events" target="_blank">Morden Community Events</a></div><div class="event-muted">Submit events · Council</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">ALTONA</div><div class="day">Cal</div></div><div><div class="event-title"><a href="https://altona.ca/upcoming-events" target="_blank">Town of Altona Events</a></div><div class="event-muted">Calendar · Recreation · Community</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">WINKLER</div><div class="day">City</div></div><div><div class="event-title"><a href="https://www.winkler.ca/events" target="_blank">City of Winkler Events</a></div><div class="event-muted">City-run events & announcements</div></div></div>
+        </div>
+
+        <div class="card">
+          <h2 style="color:#f59e0b;">🌐 Regional Community Calendars</h2>
+          <div class="spacer"></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">PVO</div><div class="day">Ev</div></div><div><div class="event-title"><a href="https://www.pembinavalleyonline.com/events" target="_blank">Pembina Valley Online Events</a></div><div class="event-muted">Regional community calendar</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">PVO</div><div class="day">GW</div></div><div><div class="event-title"><a href="https://pembinavalley.gwevents.ca/" target="_blank">Pembina Valley Events Guide</a></div><div class="event-muted">Submit events · Browse calendar</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">AEC</div><div class="day">Rec</div></div><div><div class="event-title"><a href="https://morden.ca/access-event-centre" target="_blank">Access Event Centre</a></div><div class="event-muted">Morden recreation & rentals</div></div></div>
+          <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">PVHS</div><div class="day">Ev</div></div><div><div class="event-title"><a href="https://pvhsociety.ca/events/" target="_blank">Pembina Valley Humane Society</a></div><div class="event-muted">Fundraisers & community events</div></div></div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="card">
+        <h2 style="color:#f59e0b;">🎪 Festivals & Annual Events</h2>
+        <div class="spacer"></div>
+
+        <div class="event-row"><div class="event-date" style="background:#0f172a;color:#f59e0b;border:1px solid rgba(245,158,11,0.35);box-shadow:none;"><div class="month">SEP</div><div class="day">Sep</div></div><div><div class="event-title"><a href="https://www.threshermensmuseum.com/special-events" target="_blank">Pembina Threshermen's Reunion</a></div><div class="event-muted">Morden/Winkler · Heritage & machinery</div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-dashboard">
+    <section class="section">
+      <div class="card">
+        <h2>📊 Live Visitor Stats</h2>
+        <p class="muted">Real traffic data comes from your analytics provider.</p>
+        <div class="spacer"></div>
+        <div id="dashboard-live">
+          <p class="muted">Current status: <strong>Cloudflare Web Analytics</strong> is installed.</p>
+          <p class="muted">Check your Cloudflare dashboard for live visitor counts, page views, and traffic sources. Numbers should start appearing within 24–48 hours.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-hope">
+    <section class="section">
+      <div class="card">
+        <h2 style="color:#f59e0b;">🕊️ If That Day Comes</h2>
+        <p class="muted" style="margin-bottom:12px;">A message of truth, comfort, and direction for the world after the disappearance of millions.</p>
+        <div class="spacer"></div>
+
+        <h3>In the Midst of Tragedy</h3>
+
+        <p>If your heart is heavy today, these words are for you. You do not have to carry this alone.</p>
+
+        <blockquote style="border-left:4px solid #22c55e; padding:0.75rem 1rem; background:rgba(34,197,94,0.08); font-style:italic; color:#4ade80;">
+          <p>"Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls." — Matthew 11:28-29</p>
+        </blockquote>
+
+        <blockquote style="border-left:4px solid #22c55e; padding:0.75rem 1rem; background:rgba(34,197,94,0.08); font-style:italic; color:#4ade80;">
+          <p>"For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life." — John 3:16</p>
+        </blockquote>
+
+        <blockquote style="border-left:4px solid #22c55e; padding:0.75rem 1rem; background:rgba(34,197,94,0.08); font-style:italic; color:#4ade80;">
+          <p>"Be strong, and let your heart take courage, all you who wait for the Lord." — Psalm 31:24</p>
+        </blockquote>
+
+        <blockquote style="border-left:4px solid #22c55e; padding:0.75rem 1rem; background:rgba(34,197,94,0.08); font-style:italic; color:#4ade80;">
+          <p>"The Lord is near to the brokenhearted and saves the crushed in spirit." — Psalm 34:18</p>
+        </blockquote>
+
+        <blockquote style="border-left:4px solid #22c55e; padding:0.75rem 1rem; background:rgba(34,197,94,0.08); font-style:italic; color:#4ade80;">
+          <p>"Peace I leave with you; my peace I give to you. Not as the world gives do I give you. Let not your hearts be troubled, neither let them be afraid." — John 14:27</p>
+        </blockquote>
+
+        <p>Christ is the hope of the world. And He can become <strong>your</strong> hope — right now, in this moment, no matter what you have lost or what you fear. He offers forgiveness, peace, and a love that nothing can break. He does not wait for the trumpet to offer peace. He stands at the door and knocks.</p>
+
+        <p>But there is also an event coming that will change everything for everyone at once. It will not matter who you are, where you live, or what you believe. The whole world will feel tragedy simultaneously. Families will be torn apart. Nations will be thrown into confusion. Economies will falter. The familiar order will collapse, and every heart will ask the same question: <strong>What is happening?</strong></p>
+
+        <p>From a biblical perspective, the world will have witnessed the fulfillment of ancient prophecy: <strong>the catching up of the church to meet the Lord Jesus Christ in the air.</strong></p>
+
+        <p>This event was spoken of by the apostle Paul in 1 Thessalonians 4:16-17:</p>
+
+        <blockquote style="border-left:4px solid #f59e0b; padding:0.75rem 1rem; background:rgba(245,158,11,0.08); font-style:italic; color:#fbbf24;">
+          <p>"The Lord himself will descend from heaven with a cry of command, with the voice of an archangel, and with the sound of the trumpet of God. And the dead in Christ will rise first. Then we who are alive, who are left, will be caught up together with them in the clouds to meet the Lord in the air, and so we will always be with the Lord."</p>
+        </blockquote>
+
+        <p>Jesus himself warned that this day would come unexpectedly:</p>
+
+        <blockquote style="border-left:4px solid #f59e0b; padding:0.75rem 1rem; background:rgba(245,158,11,0.08); font-style:italic; color:#fbbf24;">
+          <p>"Therefore you also must be ready, for the Son of Man is coming at an hour you do not expect." — Matthew 24:44</p>
+        </blockquote>
+
+        <p>The millions who will have disappeared are not lost. They will have been taken into the presence of God. Their absence from this world will be the beginning of their eternal life with Christ.</p>
+
+        <div style="background:rgba(245,158,11,0.1); border-left:4px solid #f59e0b; padding:1rem; border-radius:6px; margin:1rem 0;">
+          <p><strong>What will not have happened:</strong> The end of the world. The final judgment. The destruction of the earth.</p>
+          <p style="margin-top:0.5rem;"><strong>What will have happened:</strong> The removal of the church — those who trusted in Jesus Christ as Lord and Savior — to be with Him.</p>
+        </div>
+
+        <h3>What to Expect</h3>
+        <p><strong>1. Global Confusion and Grief</strong> — Families will mourn. Economies will destabilize. Questions without answers will dominate.</p>
+        <p><strong>2. Explanations Will Emerge</strong> — Some will say aliens, some will say government experiment, some will say nothing happened. <strong>The truth will be found in the Bible.</strong></p>
+        <p><strong>3. A New World Leader Will Rise</strong> — He will bring temporary peace, then demand worship and oppose God.</p>
+        <p><strong>4. Persecution of Believers</strong> — Those who come to faith will face severe opposition for a period of seven years.</p>
+        <p><strong>5. A System of Control Will Emerge</strong> — Economic systems will require allegiance. Technology will track and control.</p>
+        <p><strong>5a. The Mark</strong> — A physical mark will be required to buy or sell. <strong>Do not take this mark under any circumstances.</strong> Revelation warns that those who receive it cannot be saved.</p>
+        <p><strong>6. Christ Will Return</strong> — Jesus will come again, defeat evil, and establish His eternal kingdom.</p>
+
+        <h3>How to Prepare</h3>
+        <p><strong>1. Read the Bible</strong> — Start with John, then 1 Thessalonians, Matthew 24, Revelation.</p>
+        <p><strong>2. Turn to Jesus Christ</strong> — Admit your sin, believe in His death and resurrection, receive Him as Lord.</p>
+        <p><strong>3. Find Other Believers</strong> — Look for those reading the Bible, praying, trusting Christ. Form small groups. The church is people, not buildings.</p>
+        <p><strong>4. Basic Supplies</strong> — Water, food, medical supplies, cash, flashlight, radio, documents.</p>
+
+        <h3>Finding Peace</h3>
+        <p>Fear and grief will be natural. But the gospel will be this: <strong>God loves you, and He will have provided salvation through Jesus Christ.</strong></p>
+        <p>If you receive Christ, you will have peace that surpasses understanding, hope for the future, and the promise that He will never leave you.</p>
+
+        <div style="background:#0f172a; border-left:4px solid #22c55e; padding:1rem; border-radius:6px; margin:1rem 0; color:#e2e8f0;">
+          <p><strong>A Prayer:</strong> "Lord Jesus, I believe You are the Son of God. I confess that I have sinned and need Your forgiveness. I believe You died on the cross for my sins and rose again. I turn from my sin and receive You as my Lord and Savior. Save me, guide me, and give me peace in this hour of trouble. Amen."</p>
+        </div>
+
+        <p style="margin-top:1.5rem;"><strong>To those who will have lost loved ones:</strong> They will be with Christ. You will see them again if you believe.</p>
+        <p><strong>To those who are afraid:</strong> God will still be on His throne. He will never leave you.</p>
+        <p><strong>To everyone:</strong> Christ is coming again. That is a promise. <strong>Are you ready?</strong></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="page" id="page-contact">
+    <section class="section">
+      <div class="card">
+        <h2>📅 Submit an Event</h2>
+        <p class="muted" style="margin-bottom:12px;">PembinaValleyEvents is a family-friendly site. We will only promote events that are suitable for all ages. Thank you for choosing us to publicize your special activities.</p>
+        <form id="event-form" class="contact-form">
+          <div class="contact-row">
+            <input type="text" id="evt-title" placeholder="Event title" required>
+            <input type="date" id="evt-date" required>
+          </div>
+          <div class="contact-row">
+            <input type="text" id="evt-time" placeholder="Time, e.g. 7:00 PM · Bethel Heritage Park">
+            <select id="evt-category">
+              <option value="community">Community</option>
+              <option value="family">Family</option>
+              <option value="outdoors">Outdoors</option>
+              <option value="faith">Faith</option>
+              <option value="promoted">Promoted</option>
+              <option value="fundraiser">Fundraiser</option>
+              <option value="market">Market</option>
+              <option value="music">Music</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+          <input type="url" id="evt-link" placeholder="Event link or registration URL">
+          <textarea id="evt-desc" rows="3" placeholder="Short description, location, organizer, or notes"></textarea>
+          <button type="submit" class="contact-submit">Submit Event</button>
+        </form>
+        <div id="submit-thanks" style="display:none; padding:16px; margin-top:12px; background:rgba(16,23,42,0.3); border-radius:12px; border-left:4px solid #10b981;">
+          <strong style="color:#10b981;">✓ Event submitted!</strong><br>
+          Your event has been sent to the site owner. It will be reviewed and published if it meets the family-friendly criteria.<br>
+          Thank you for contributing to Pembina Valley Events!
+        </div>
+        <p class="muted contact-hint">Submitting opens your email app with a ready-to-post event message for the site owner.</p>
+        <div class="spacer"></div>
+        <div class="contact-me">
+          <h3>Contact Me</h3>
+          <p>Questions, ideas, or partnership inquiries?</p>
+          <a class="contact-me-btn" href="mailto:boomsecure@protonmail.com">boomsecure@protonmail.com</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Pembina Valley Events</strong> · Pembina, MB<br>
+  Local events, activities, weather, and community connections.<br>
+  <span id="last-updated" style="font-size:0.75rem;opacity:0.6;"></span><br>
+  <span style="font-size:0.75rem;opacity:0.6;">Sources: pembinavalleyonline.com, morden.ca, winkler.ca, altona.ca · <a href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20%28title%2C%20date%2C%20time%2C%20location%2C%20link%29.%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20events%20that%20are%20suitable%20for%20all%20ages.%20Thank%20you!" style="color:#3b82f6;">Submit an event</a> · <a href="mailto:boomsecure@protonmail.com" style="color:#f59e0b;">Questions</a></span>
+</footer>
+
+
+<script>
+// Event form submit with mailto and thank-you confirmation
+document.getElementById('event-form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const title = document.getElementById('evt-title')?.value.trim() || '';
+  const date = document.getElementById('evt-date')?.value || '';
+  const time = document.getElementById('evt-time')?.value.trim() || '';
+  const category = document.getElementById('evt-category')?.value || 'community';
+  const link = document.getElementById('evt-link')?.value.trim() || '';
+  const desc = document.getElementById('evt-desc')?.value.trim() || '';
+  
+  if (!title || !date) return;
+  
+  const subject = encodeURIComponent('Event Submission: ' + title);
+  const body = encodeURIComponent(
+    'Event Title: ' + title + '\n' +
+    'Date: ' + date + '\n' +
+    'Time / Location: ' + (time || 'TBD') + '\n' +
+    'Category: ' + category + '\n' +
+    'Link: ' + (link || 'N/A') + '\n' +
+    'Notes / Description: ' + (desc || 'None')
+  );
+  
+  window.location.href = 'mailto:boomsecure@protonmail.com?subject=' + subject + '&body=' + body;
+  
+  const thanks = document.getElementById('submit-thanks');
+  if (thanks) {
+    this.style.display = 'none';
+    thanks.style.display = 'block';
+  }
+});
+</script>
+
+<script src="/main.js?v=1790034535"></script>
+</body>
+</html>
