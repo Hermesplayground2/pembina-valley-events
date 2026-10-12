@@ -688,7 +688,7 @@ if (document.readyState === 'loading') {
         console.log('Using cached weather data');
         const cw = weatherCache.current_weather;
         apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date(weatherCacheTime).toLocaleTimeString());
-        updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+        updateActivities(cw.temperature, cw.windspeed, cw.weathercode, todaySummary(weatherCache.daily));
         updateWeatherPlan(cw.temperature, cw.weathercode);
         if (weatherCache.daily) renderWeekly(weatherCache.daily);
         setWeatherVideo(cw.weathercode, cw.temperature);
@@ -697,7 +697,7 @@ if (document.readyState === 'loading') {
 
       const lat = 49.1833;
       const lon = -97.9339;
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FWinnipeg`;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max&timezone=America%2FWinnipeg`;
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 8000);
       const res = await fetch(url, { signal: controller.signal });
@@ -710,7 +710,7 @@ if (document.readyState === 'loading') {
       weatherCacheTime = Date.now();
       const cw = data.current_weather;
       apply(Math.round(cw.temperature) + '°', weatherLabel(cw.weathercode) + ' · Wind: ' + cw.windspeed + ' km/h', 'Pembina, MB', 'Updated: ' + new Date().toLocaleTimeString());
-      updateActivities(cw.temperature, cw.windspeed, cw.weathercode);
+      updateActivities(cw.temperature, cw.windspeed, cw.weathercode, todaySummary(data.daily));
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
@@ -863,59 +863,96 @@ if (document.readyState === 'loading') {
     scene.appendChild(icon);
   }
 
-  function updateActivities(temp, wind, code) {
+  // Build today's day-level summary from Open-Meteo daily arrays (index 0 = today).
+  function todaySummary(daily) {
+    if (!daily || !daily.time || !daily.time.length) return null;
+    const num = (arr, i, dflt) => (Array.isArray(arr) && typeof arr[i] === 'number') ? arr[i] : dflt;
+    return {
+      tmax: num(daily.temperature_2m_max, 0, null),
+      tmin: num(daily.temperature_2m_min, 0, null),
+      precip: num(daily.precipitation_sum, 0, 0),
+      code: num(daily.weathercode, 0, 0),
+      windmax: num(daily.windspeed_10m_max, 0, null),
+    };
+  }
+
+  function updateActivities(temp, wind, code, today) {
     const box = document.getElementById('activities');
     if (!box) return;
 
-    const storm = code >= 51 && code <= 99;   // rain, snow, showers, thunder
-    const cold = temp < 10;
-    const windy = wind > 35;
+    // Prefer the day's forecast over the current instant, so an 8 AM reading
+    // does not hide a warm afternoon. Fall back to current conditions when
+    // daily data is unavailable.
+    const tmax = (today && today.tmax != null) ? today.tmax : temp;
+    const tmin = (today && today.tmin != null) ? today.tmin : temp;
+    const precip = (today && today.precip != null) ? today.precip : 0;
+    const dayCode = (today && today.code != null) ? today.code : code;
+    const windMax = (today && today.windmax != null) ? today.windmax : wind;
 
-    // --- Outdoor: a day-length option + a shorter fallback ---
+    // Day-level weather shape
+    const wetAllDay = precip >= 5;                                  // real accumulation
+    const stormCode = dayCode >= 51 && dayCode <= 99;               // rain/snow/showers/thunder
+    const anyWet = precip >= 1 || stormCode;
+    const warmDay = tmax >= 20;
+    const mildDay = tmax >= 12;
+    const coldDay = tmax < 8;
+    const windyDay = windMax > 35;
+
+    // --- Outdoor: matched to the day's own weather ---
     let outdoor;
-    if (storm) {
+    if (wetAllDay) {
       outdoor = {
         name: 'Outdoor — window watch',
-        desc: 'Wet out — keep outdoor plans short and take the first dry gap for a walk or errand run.'
+        desc: `Wet day (${precip.toFixed(0)} mm expected) — keep outdoor plans short and take the first dry gap for a walk or errands.`
       };
-    } else if (cold || windy) {
+    } else if (anyWet) {
+      outdoor = {
+        name: 'Outdoor — fit it around showers',
+        desc: `Showers around (${precip.toFixed(1)} mm) — go out in the dry stretch; a park loop or errand run still works today.`
+      };
+    } else if (coldDay || windyDay) {
       outdoor = {
         name: 'Outdoor — bundle-up loop',
-        desc: 'Cold or breezy — a brisk 30–60 min loop works if you layer up. Not a full-day option today.'
+        desc: `Cold or breezy (high ${Math.round(tmax)}°C${windyDay ? ', windy' : ''}) — a brisk 30–60 min loop works if you layer up. Not a full-day option today.`
       };
-    } else if (temp >= 22) {
+    } else if (warmDay) {
       outdoor = {
         name: 'Outdoor — full day out',
-        desc: 'Warm and calm — build the whole day around it: trail ride or hike, a lake or park stop, picnic lunch, then a golden-hour walk.'
+        desc: `Warm day ahead (high ${Math.round(tmax)}°C, low ${Math.round(tmin)}°C) — build the whole day around it: trail ride or hike, a lake or park stop, picnic lunch, then a golden-hour walk.`
+      };
+    } else if (mildDay) {
+      outdoor = {
+        name: 'Outdoor — day trip',
+        desc: `Mild day (high ${Math.round(tmax)}°C) — pick a nearby town or trail, walk the main street, eat lunch out, wander back the long way.`
       };
     } else {
       outdoor = {
-        name: 'Outdoor — day trip',
-        desc: 'Mild enough for a full day outside: pick a nearby town or trail, walk the main street, eat lunch out, wander back the long way.'
+        name: 'Outdoor — short outing',
+        desc: `Cool day (high ${Math.round(tmax)}°C) — a single well-timed outing, then back inside.`
       };
     }
 
-    // --- Indoor: a day-length option + a shorter fallback ---
+    // --- Indoor: matched to the day's own weather ---
     let indoor;
-    if (storm) {
+    if (wetAllDay || stormCode) {
       indoor = {
         name: 'Indoor — full project day',
-        desc: 'Perfect for a whole day inside: a workshop build, a bake-and-freeze session, or deep study with a proper break at midday.'
+        desc: 'A wet day outside is the best day inside: a workshop build, a bake-and-freeze session, or deep study with a proper midday break.'
       };
-    } else if (cold || windy) {
+    } else if (coldDay || windyDay) {
       indoor = {
         name: 'Indoor — full focus day',
-        desc: 'Cold or windy — commit the day indoors: library or museum morning, hobby project afternoon, meal prep in the evening.'
+        desc: `Cold or windy (high ${Math.round(tmax)}°C) — commit the day indoors: library or museum morning, hobby project afternoon, meal prep in the evening.`
       };
     } else {
       indoor = {
         name: 'Indoor — half-day backup',
-        desc: 'Weather is usable, so keep this short: an hour of study, filing, or a small repair if plans change.'
+        desc: 'The day is usable outside, so keep this short: an hour of study, filing, or a small repair if plans change.'
       };
     }
 
-    // Weather decides which one leads.
-    const outdoorLeads = !storm && !cold && !windy;
+    // The day's weather decides which one leads.
+    const outdoorLeads = !anyWet && !coldDay && !windyDay;
     const primary = outdoorLeads ? outdoor : indoor;
     const secondary = outdoorLeads ? indoor : outdoor;
 
