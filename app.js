@@ -867,35 +867,67 @@ if (document.readyState === 'loading') {
     const box = document.getElementById('activities');
     if (!box) return;
 
-    const outdoor = [];
-    const indoor = [];
+    const storm = code >= 51 && code <= 99;   // rain, snow, showers, thunder
+    const cold = temp < 10;
+    const windy = wind > 35;
 
-    if (temp >= 22 && wind < 25) outdoor.push({ name: 'Outdoor sports', desc: 'Warm and calm — good for a walk, run, or family outing.' });
-    else if (temp >= 10 && wind < 30) outdoor.push({ name: 'Park visit', desc: 'Mild weather — pack a light jacket and enjoy outside.' });
-    else outdoor.push({ name: 'Quick walk', desc: 'Cool or breezy — short outdoor movement still works.' });
+    // --- Outdoor: a day-length option + a shorter fallback ---
+    let outdoor;
+    if (storm) {
+      outdoor = {
+        name: 'Outdoor — window watch',
+        desc: 'Wet out — keep outdoor plans short and take the first dry gap for a walk or errand run.'
+      };
+    } else if (cold || windy) {
+      outdoor = {
+        name: 'Outdoor — bundle-up loop',
+        desc: 'Cold or breezy — a brisk 30–60 min loop works if you layer up. Not a full-day option today.'
+      };
+    } else if (temp >= 22) {
+      outdoor = {
+        name: 'Outdoor — full day out',
+        desc: 'Warm and calm — build the whole day around it: trail ride or hike, a lake or park stop, picnic lunch, then a golden-hour walk.'
+      };
+    } else {
+      outdoor = {
+        name: 'Outdoor — day trip',
+        desc: 'Mild enough for a full day outside: pick a nearby town or trail, walk the main street, eat lunch out, wander back the long way.'
+      };
+    }
 
-    if (code >= 51 && code <= 99) indoor.push({ name: 'Indoor focus', desc: 'Rain or storm likely — study, prep lessons, or organize files.' });
-    else if (temp < 10 || wind > 35) indoor.push({ name: 'Indoor focus', desc: 'Cold or windy — good for study, baking, or building.' });
-    else indoor.push({ name: 'Backup indoor plan', desc: 'Keep a cozy indoor option ready if weather changes.' });
+    // --- Indoor: a day-length option + a shorter fallback ---
+    let indoor;
+    if (storm) {
+      indoor = {
+        name: 'Indoor — full project day',
+        desc: 'Perfect for a whole day inside: a workshop build, a bake-and-freeze session, or deep study with a proper break at midday.'
+      };
+    } else if (cold || windy) {
+      indoor = {
+        name: 'Indoor — full focus day',
+        desc: 'Cold or windy — commit the day indoors: library or museum morning, hobby project afternoon, meal prep in the evening.'
+      };
+    } else {
+      indoor = {
+        name: 'Indoor — half-day backup',
+        desc: 'Weather is usable, so keep this short: an hour of study, filing, or a small repair if plans change.'
+      };
+    }
 
-    if (temp >= 18 && code < 50) outdoor.push({ name: 'Outdoor meal', desc: 'Temperature holds — eat outside if you can.' });
-    if (wind > 35) outdoor.push({ name: 'Secure outdoor items', desc: 'Strong winds expected — move or tie down loose objects.' });
-
-    const isGoodWeather = code < 51 && temp >= 10 && wind <= 35;
-    const primary = isGoodWeather ? outdoor[0] : indoor[0];
-    const secondary = isGoodWeather ? indoor[0] : outdoor[0];
+    // Weather decides which one leads.
+    const outdoorLeads = !storm && !cold && !windy;
+    const primary = outdoorLeads ? outdoor : indoor;
+    const secondary = outdoorLeads ? indoor : outdoor;
 
     box.innerHTML = `
       <div class="activity highlighted">
         <div class="name">${primary.name}</div>
         <div class="desc">${primary.desc}</div>
       </div>
-      ${secondary ? `
       <div class="activity">
         <div class="name">${secondary.name}</div>
         <div class="desc">${secondary.desc}</div>
       </div>
-      ` : ''}
     `;
   }
 
