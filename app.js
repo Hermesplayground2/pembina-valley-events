@@ -236,17 +236,25 @@ function combineDateTime(dateStr, timeStr) {
       const section = document.createElement('div');
       section.className = 'day-section';
       const dateLabel = document.createElement('div');
-      dateLabel.className = 'date-label';
-      dateLabel.textContent = days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate();
+      dateLabel.className = 'day-header';
+      dateLabel.dataset.expanded = 'false';
+      dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate() + ' <span class="event-count">' + eventsByDate[dateStr].length + '</span>';
+      dateLabel.addEventListener('click', () => {
+        const expanded = dateLabel.dataset.expanded === 'true';
+        dateLabel.dataset.expanded = String(!expanded);
+        dateLabel.classList.toggle('expanded', !expanded);
+        list.classList.toggle('hidden-events', expanded);
+      });
       section.appendChild(dateLabel);
 
       const list = document.createElement('div');
-      list.className = 'event-list';
-      eventsByDate[dateStr].forEach(ev => {
+      list.className = 'event-list hidden-events';
+      eventsByDate[dateStr].sort((a, b) => timeToSort(a.time) - timeToSort(b.time)).forEach(ev => {
         const item = document.createElement('div');
         item.className = 'day-event bubble';
         item.dataset.category = ev.category;
-        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title" style="font-weight:600">' + ev.title + '</span></a><span class="time" style="color:#6b7280; font-size:0.85rem">' + ev.time + '</span>';
+        const copyText = (ev.title + '\n' + ev.time).trim();
+        item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + ev.title + '</span></a><span class="time">' + ev.time + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
         list.appendChild(item);
       });
       section.appendChild(list);
