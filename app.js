@@ -312,6 +312,7 @@ function combineDateTime(dateStr, timeStr) {
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
+      if (page === 'fundraiser') { try { renderFundraisers(); } catch (e) { console.error(e); } }
       if (page === 'weather') { try { loadWeather(); } catch (e) { console.error(e); } }
     } catch (e) {
       console.error('activatePage error', e);
@@ -426,6 +427,98 @@ function combineDateTime(dateStr, timeStr) {
     }
     // Scroll to the section
     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── Fundraisers ─────────────────────────────────────────────────────────
+  const FUNDRAISERS = [
+    {
+      title: "Help Peter Wolfe get vision-saving eye surgery",
+      date: "Ongoing",
+      time: "Winkler, MB",
+      link: "https://www.gofundme.com/f/help-peter-wolfe-get-vision-saving-eye-surgery",
+      description: "Peter and Anna Wolfe from Winkler. Peter has lost 80% vision in one eye and needs surgery within two weeks to save his eyesight.",
+      source: "GoFundMe",
+      category: "medical"
+    },
+    {
+      title: "Tragic Car Accident Takes Father, Leaves Children in Winkler",
+      date: "Ongoing",
+      time: "Winkler, MB",
+      link: "https://www.gofundme.com/f/tragic-car-accident-takes-father-leaves-children-in-winkler",
+      description: "For Miriam & Samuel James-Decker family. Father Samuel died in a car accident March 7, 2026, leaving 5 children from teen to infant.",
+      source: "GoFundMe",
+      category: "emergency"
+    },
+    {
+      title: "Big Brothers Big Sisters of the Pembina Valley — Bike for Kids",
+      date: "Annual event",
+      time: "Altona to Gretna, MB",
+      link: "https://canadahelps.org/en/charities/big-brothersbig-sisters-of-mordenwinkler-and-district-inc/p2p/bike-for-kids",
+      description: "Annual trail ride along the Trans-Canada Trail from Altona to Gretna. Raises money for mentoring programs for kids.",
+      source: "CanadaHelps",
+      category: "charity"
+    },
+    {
+      title: "Pembina Valley Humane Society — Highway 3.14 BBQ Competition",
+      date: "September 6, 2026",
+      time: "Suncatch, Morden, MB",
+      link: "https://www.canadahelps.org/en/charities/pembina-valley-humane-society-inc/events/highway-314-bbq-competition",
+      description: "BBQ competition between Chef Ryan Wiebe (Winkler) and Chef Colin Fehr (Morden), plus live bands. Tickets $30.",
+      source: "CanadaHelps",
+      category: "charity"
+    },
+    {
+      title: "United Way Pembina Valley 2026 Campaign",
+      date: "September 2026",
+      time: "Winkler, Morden, Stanley",
+      link: "https://www.unitedwaypembinavalley.ca/",
+      description: "Raising $115,000 for 23 local non-profits. All funds stay in the region.",
+      source: "United Way",
+      category: "charity"
+    },
+    {
+      title: "Pembina Valley Pregnancy Care Centre — Fundraiser Meal",
+      date: "October 24, 2026",
+      time: "Pembina Threshermen's Museum, between Winkler and Morden",
+      link: "https://www.pembinavalleyonline.com/articles/meatballs-and-mashed-potatoes-helping-raise-funds-for-local-families",
+      description: "Drive-thru lunch and supper fundraiser. Supports free services in Winkler, Morden, and Altona.",
+      source: "Local",
+      category: "charity"
+    }
+  ];
+
+  function renderFundraisers() {
+    const box = document.getElementById('fundraiser-list');
+    if (!box) return;
+    box.innerHTML = '';
+
+    FUNDRAISERS.forEach(fr => {
+      const card = document.createElement('div');
+      card.className = 'day-event bubble';
+      card.style.marginBottom = '12px';
+      card.style.padding = '14px';
+
+      const badgeColor = fr.category === 'medical' ? '#dc2626' : fr.category === 'emergency' ? '#f59e0b' : '#10b981';
+      const badgeText = fr.category === 'medical' ? 'Medical' : fr.category === 'emergency' ? 'Emergency' : 'Charity';
+
+      card.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+          <div style="flex:1;">
+            <div style="font-weight:800;font-size:0.95rem;color:#f1f5f9;">${fr.title.replace(/</g,'&lt;')}</div>
+            <div style="color:#6b7280;font-size:0.82rem;margin-top:4px;">${fr.time} · ${fr.date}</div>
+            <div style="color:#94a3b8;font-size:0.82rem;margin-top:6px;line-height:1.5;">${fr.description.replace(/</g,'&lt;')}</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:800;background:${badgeColor};color:#0f172a;">${badgeText}</span>
+            <div style="margin-top:6px;font-size:0.68rem;color:#64748b;">${fr.source}</div>
+          </div>
+        </div>
+        <div class="export-row" style="margin-top:10px;">
+          <a class="export-btn" href="${fr.link}" target="_blank" rel="noopener" style="text-decoration:none;">Visit Fundraiser</a>
+        </div>
+      `;
+      box.appendChild(card);
+    });
   }
 
   function renderSearchBar() {
