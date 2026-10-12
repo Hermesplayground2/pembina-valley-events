@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-12T12:26:22.325483",
+  "last_updated": "2026-10-12T12:27:10.468549",
   "generated_by": "fetch_events_gw.py",
   "source": "pembinavalley.gwevents.ca",
   "filter": {
@@ -13,7 +13,7 @@
   "events": [
     {
       "id": "/events/235683",
-      "title": "18+ Hockey - Icon Arena - $5 drop in fee",
+      "title": "18+ Hockey - Icon Arena",
       "time": "8:30 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
       "date": "2026-10-12",
       "link": "https://pembinavalley.gwevents.ca/events/235683",
@@ -59,7 +59,7 @@
     {
       "id": "/events/233617",
       "title": "Ladies Bible Study",
-      "time": "13:00 PM · Altona Mall, Altona, MB",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
       "date": "2026-10-12",
       "link": "https://pembinavalley.gwevents.ca/events/233617",
       "source": "pembinavalley.gwevents.ca",
@@ -68,7 +68,7 @@
     {
       "id": "/events/233630",
       "title": "Ladies Games Night",
-      "time": "19:00 PM · Altona Mall, Altona, MB",
+      "time": "7:00 PM · Altona Mall, Altona, MB",
       "date": "2026-10-12",
       "link": "https://pembinavalley.gwevents.ca/events/233630",
       "source": "pembinavalley.gwevents.ca",
@@ -77,7 +77,7 @@
     {
       "id": "/events/233419",
       "title": "Salsa + Latin Dance Classes with Pembina Valley Latin Dance",
-      "time": "19:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
+      "time": "7:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
       "date": "2026-10-12",
       "link": "https://pembinavalley.gwevents.ca/events/233419",
       "source": "pembinavalley.gwevents.ca",
@@ -122,7 +122,7 @@
     {
       "id": "/events/235671",
       "title": "Homeschool Skate - Winkler",
-      "time": "13:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/235671",
       "source": "pembinavalley.gwevents.ca",
@@ -131,7 +131,7 @@
     {
       "id": "/events/235664",
       "title": "Homeschool Turf - Winkler",
-      "time": "13:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/235664",
       "source": "pembinavalley.gwevents.ca",
@@ -140,7 +140,7 @@
     {
       "id": "/events/234645",
       "title": "Floor Curling",
-      "time": "13:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/234645",
       "source": "pembinavalley.gwevents.ca",
@@ -149,7 +149,7 @@
     {
       "id": "/events/231231",
       "title": "After School Art Club | Ages 5-8",
-      "time": "16:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
+      "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/231231",
       "source": "pembinavalley.gwevents.ca",
@@ -158,7 +158,7 @@
     {
       "id": "/events/234672",
       "title": "Pattern Dance",
-      "time": "17:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "time": "5:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/234672",
       "source": "pembinavalley.gwevents.ca",
@@ -167,7 +167,7 @@
     {
       "id": "/events/235758",
       "title": "Gentle Flow Yoga with Ang Hildebrand - Registration required",
-      "time": "18:00 PM · Winkler Arts & Culture, 547 Park St, Winkler, MB",
+      "time": "6:00 PM · Winkler Arts & Culture, 547 Park St, Winkler, MB",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/235758",
       "source": "pembinavalley.gwevents.ca",
@@ -176,7 +176,7 @@
     {
       "id": "/events/234269",
       "title": "Remembrance Ceremony - for loss in pregnancy, infancy or childhood",
-      "time": "19:00 PM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
+      "time": "7:00 PM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/234269",
       "source": "pembinavalley.gwevents.ca",
@@ -185,7 +185,7 @@
     {
       "id": "/events/234860",
       "title": "Lino Night at the Miami Library",
-      "time": "19:00 PM · Miami Library, 530 Norton Ave, Miami, MB",
+      "time": "7:00 PM · Miami Library, 530 Norton Ave, Miami, MB",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/234860",
       "source": "pembinavalley.gwevents.ca",
@@ -194,7 +194,7 @@
     {
       "id": "/events/236883",
       "title": "Astro Night Altona",
-      "time": "20:00 PM · Access Field, 49 Millennium Drive, Altona, MB",
+      "time": "8:00 PM · Access Field, 49 Millennium Drive, Altona, MB",
       "date": "2026-10-13",
       "link": "https://pembinavalley.gwevents.ca/events/236883",
       "source": "pembinavalley.gwevents.ca",
@@ -211,7 +211,7 @@
     },
     {
       "id": "/events/235696",
-      "title": "18+ Hockey - Icon Arena - $5 drop in fee",
+      "title": "18+ Hockey - Icon Arena",
       "time": "8:30 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
       "date": "2026-10-14",
       "link": "https://pembinavalley.gwevents.ca/events/235696",
@@ -248,7 +248,7 @@
     {
       "id": "/events/236629",
       "title": "Taco Night - Altona Youth For Christ",
-      "time": "17:00 PM · Rhineland Pioneer Center, 227 10th Avenue NW, Altona, MB",
+      "time": "5:00 PM · Rhineland Pioneer Center, 227 10th Avenue NW, Altona, MB",
       "date": "2026-10-14",
       "link": "https://pembinavalley.gwevents.ca/events/236629",
       "source": "pembinavalley.gwevents.ca",
@@ -266,7 +266,7 @@
     {
       "id": "/events/202775",
       "title": "Unmasking Domestic Violence Masquerade Gala",
-      "time": "18:00 PM · Buttercup Celebration Hall, 21067 Rd 14N, Stanley, Manitoba",
+      "time": "6:00 PM · Buttercup Celebration Hall, 21067 Rd 14N, Stanley, Manitoba",
       "date": "2026-10-16",
       "link": "https://pembinavalley.gwevents.ca/events/202775",
       "source": "pembinavalley.gwevents.ca",
@@ -284,7 +284,7 @@
     {
       "id": "/events/230000",
       "title": "SaxAndViolin Concert",
-      "time": "19:00 PM · PW Enns Concert Hall, 783 Mountain Ave, Winkler, MB",
+      "time": "7:00 PM · PW Enns Concert Hall, 783 Mountain Ave, Winkler, MB",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/230000",
       "source": "pembinavalley.gwevents.ca",
@@ -293,7 +293,7 @@
     {
       "id": "/events/232281",
       "title": "Grounds for Giving Coffee House fundraiser",
-      "time": "19:00 PM · Grey Ridge Barn loft, Winkler Bible Camp, Winkler, Manitoba",
+      "time": "7:00 PM · Grey Ridge Barn loft, Winkler Bible Camp, Winkler, Manitoba",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/232281",
       "source": "pembinavalley.gwevents.ca",
@@ -302,7 +302,7 @@
     {
       "id": "/events/234626",
       "title": "Annule Fall Soup and Pie",
-      "time": "17:00 PM · The Gardens On Tenth, 140 Tenth Ave NE, Altona, Manitoba",
+      "time": "5:00 PM · The Gardens On Tenth, 140 Tenth Ave NE, Altona, Manitoba",
       "date": "2026-10-22",
       "link": "https://pembinavalley.gwevents.ca/events/234626",
       "source": "pembinavalley.gwevents.ca",
@@ -311,7 +311,7 @@
     {
       "id": "/events/236251",
       "title": "Trivia Nights at WAC!",
-      "time": "19:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
+      "time": "7:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
       "date": "2026-10-22",
       "link": "https://pembinavalley.gwevents.ca/events/236251",
       "source": "pembinavalley.gwevents.ca",
@@ -320,7 +320,7 @@
     {
       "id": "/events/236906",
       "title": "Ed Wayne Live Music Fundraising Concert",
-      "time": "19:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "time": "7:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
       "date": "2026-10-23",
       "link": "https://pembinavalley.gwevents.ca/events/236906",
       "source": "pembinavalley.gwevents.ca",
@@ -329,7 +329,7 @@
     {
       "id": "/events/231643",
       "title": "Raise the Woof Comedy Night",
-      "time": "19:00 PM · Morden Friendship Centre, Morden, Manitoba",
+      "time": "7:00 PM · Morden Friendship Centre, Morden, Manitoba",
       "date": "2026-10-24",
       "link": "https://pembinavalley.gwevents.ca/events/231643",
       "source": "pembinavalley.gwevents.ca",
@@ -338,7 +338,7 @@
     {
       "id": "/events/235065",
       "title": "A Square One World Media FUNDRAISER CONCERT",
-      "time": "18:00 PM · Fort Garry MB Church, 1771 Pembina Hwy, Winnipeg, Manitoba",
+      "time": "6:00 PM · Fort Garry MB Church, 1771 Pembina Hwy, Winnipeg, Manitoba",
       "date": "2026-10-28",
       "link": "https://pembinavalley.gwevents.ca/events/235065",
       "source": "pembinavalley.gwevents.ca",
@@ -347,7 +347,7 @@
     {
       "id": "/events/236941",
       "title": "Mission Supper Altona Sommerfeld Church",
-      "time": "17:00 PM · Altona Sommerfeld Mennonite Church, 62 10th Avenue NW, Altona, MB",
+      "time": "5:00 PM · Altona Sommerfeld Mennonite Church, 62 10th Avenue NW, Altona, MB",
       "date": "2026-10-30",
       "link": "https://pembinavalley.gwevents.ca/events/236941",
       "source": "pembinavalley.gwevents.ca",
@@ -356,7 +356,7 @@
     {
       "id": "/events/235066",
       "title": "A Square One World Media FUNDRAISER CONCERT",
-      "time": "18:00 PM · Fort Garry MB Church, 1771 Pembina Hwy, Winnipeg, Manitoba",
+      "time": "6:00 PM · Fort Garry MB Church, 1771 Pembina Hwy, Winnipeg, Manitoba",
       "date": "2026-11-04",
       "link": "https://pembinavalley.gwevents.ca/events/235066",
       "source": "pembinavalley.gwevents.ca",
@@ -365,7 +365,7 @@
     {
       "id": "/events/236600",
       "title": "Pembina Triangle Quackdown: Puzzle Challenge",
-      "time": "18:00 PM · Carman Golf & Curling Club, 225 4th Ave SW, Carman, Manitoba",
+      "time": "6:00 PM · Carman Golf & Curling Club, 225 4th Ave SW, Carman, Manitoba",
       "date": "2026-11-06",
       "link": "https://pembinavalley.gwevents.ca/events/236600",
       "source": "pembinavalley.gwevents.ca",
@@ -401,7 +401,7 @@
     {
       "id": "/events/236252",
       "title": "Trivia Nights at WAC!",
-      "time": "19:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
+      "time": "7:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
       "date": "2026-11-26",
       "link": "https://pembinavalley.gwevents.ca/events/236252",
       "source": "pembinavalley.gwevents.ca",
@@ -410,7 +410,7 @@
     {
       "id": "/events/233544",
       "title": "Morden Legion Branch #11 Centenary",
-      "time": "18:00 PM · Morden Legion, 285 North Railway St, Morden, Manitoba",
+      "time": "6:00 PM · Morden Legion, 285 North Railway St, Morden, Manitoba",
       "date": "2026-11-28",
       "link": "https://pembinavalley.gwevents.ca/events/233544",
       "source": "pembinavalley.gwevents.ca",
@@ -419,7 +419,7 @@
     {
       "id": "/events/236578",
       "title": "Christmas Concert and Carol Sing - In Support of One Hope Canada",
-      "time": "18:30 PM · Steinbach Christian Mennonite Church, 479 Hanover Street, Steinbach, Manitoba",
+      "time": "6:30 PM · Steinbach Christian Mennonite Church, 479 Hanover Street, Steinbach, Manitoba",
       "date": "2026-11-28",
       "link": "https://pembinavalley.gwevents.ca/events/236578",
       "source": "pembinavalley.gwevents.ca",
@@ -428,7 +428,7 @@
     {
       "id": "/events/236579",
       "title": "Christmas Concert and Carol Sing - In Support of One Hope Canada",
-      "time": "18:30 PM · Springfield Heights Mennonite Church, 570 Sharron Bay South, Winnipeg, Manitoba",
+      "time": "6:30 PM · Springfield Heights Mennonite Church, 570 Sharron Bay South, Winnipeg, Manitoba",
       "date": "2026-11-29",
       "link": "https://pembinavalley.gwevents.ca/events/236579",
       "source": "pembinavalley.gwevents.ca",
@@ -455,7 +455,7 @@
     {
       "id": "/events/235577",
       "title": "Agatha's Almanac - Movie Showing",
-      "time": "19:00 PM · Mennonite Heritage Village, 231 PTH 12N, Steinbach, MB",
+      "time": "7:00 PM · Mennonite Heritage Village, 231 PTH 12N, Steinbach, MB",
       "date": "2026-10-16",
       "link": "https://pembinavalley.gwevents.ca/events/235577",
       "source": "pembinavalley.gwevents.ca",
@@ -464,7 +464,7 @@
     {
       "id": "/events/234998",
       "title": "Cat on a Hot Tin Roof",
-      "time": "19:30 PM · Kenmor Theatre, 130 7TH STREET, Morden, MB",
+      "time": "7:30 PM · Kenmor Theatre, 130 7TH STREET, Morden, MB",
       "date": "2026-10-16",
       "link": "https://pembinavalley.gwevents.ca/events/234998",
       "source": "pembinavalley.gwevents.ca",
@@ -473,7 +473,7 @@
     {
       "id": "/events/236442",
       "title": "Concert: Joe Wilson & Richard Inman at WAC!",
-      "time": "19:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
+      "time": "7:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/236442",
       "source": "pembinavalley.gwevents.ca",
@@ -482,7 +482,7 @@
     {
       "id": "/events/236652",
       "title": "Low German Singing",
-      "time": "19:00 PM · Redekop Family Centre, Plum Coulee, MB",
+      "time": "7:00 PM · Redekop Family Centre, Plum Coulee, MB",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/236652",
       "source": "pembinavalley.gwevents.ca",
@@ -491,7 +491,7 @@
     {
       "id": "/events/233003",
       "title": "Rosemary Siemens - Bring Back the Hymns - Live In Concert!",
-      "time": "19:00 PM · PW Enns Concert Hall, 783 Mountain Ave, Winkler, Manitoba",
+      "time": "7:00 PM · PW Enns Concert Hall, 783 Mountain Ave, Winkler, Manitoba",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/233003",
       "source": "pembinavalley.gwevents.ca",
@@ -500,7 +500,7 @@
     {
       "id": "/events/235420",
       "title": "Jam Session",
-      "time": "19:00 PM · Winkler Senior Centre, 650 S. Railway Avenue, Winkler, MB",
+      "time": "7:00 PM · Winkler Senior Centre, 650 S. Railway Avenue, Winkler, MB",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/235420",
       "source": "pembinavalley.gwevents.ca",
@@ -509,7 +509,7 @@
     {
       "id": "/events/236657",
       "title": "Home Route Concert Series - Dan McKinnon",
-      "time": "19:00 PM · Pembina Hills Arts Council, 352 Stephen Street, Morden, MB",
+      "time": "7:00 PM · Pembina Hills Arts Council, 352 Stephen Street, Morden, MB",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/236657",
       "source": "pembinavalley.gwevents.ca",
@@ -518,7 +518,7 @@
     {
       "id": "/events/234999",
       "title": "Cat on a Hot Tin Roof",
-      "time": "19:30 PM · Kenmor Theatre, 130 7TH STREET, Morden, MB",
+      "time": "7:30 PM · Kenmor Theatre, 130 7TH STREET, Morden, MB",
       "date": "2026-10-17",
       "link": "https://pembinavalley.gwevents.ca/events/234999",
       "source": "pembinavalley.gwevents.ca",
@@ -527,7 +527,7 @@
     {
       "id": "/events/235000",
       "title": "Cat on a Hot Tin Roof",
-      "time": "14:30 PM · Kenmor Theatre, 130 7TH STREET, Morden, MB",
+      "time": "2:30 PM · Kenmor Theatre, 130 7TH STREET, Morden, MB",
       "date": "2026-10-18",
       "link": "https://pembinavalley.gwevents.ca/events/235000",
       "source": "pembinavalley.gwevents.ca",
@@ -536,7 +536,7 @@
     {
       "id": "/events/232864",
       "title": "Home Routes Concerts at WAC: Dan McKinnon",
-      "time": "19:00 PM · Winkler Arts and Culture, 547 Park St,, Winkler, Manitoba",
+      "time": "7:00 PM · Winkler Arts and Culture, 547 Park St,, Winkler, Manitoba",
       "date": "2026-10-18",
       "link": "https://pembinavalley.gwevents.ca/events/232864",
       "source": "pembinavalley.gwevents.ca",
@@ -545,7 +545,7 @@
     {
       "id": "/events/233420",
       "title": "Salsa + Latin Dance Classes with Pembina Valley Latin Dance",
-      "time": "19:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
+      "time": "7:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
       "date": "2026-10-19",
       "link": "https://pembinavalley.gwevents.ca/events/233420",
       "source": "pembinavalley.gwevents.ca",
@@ -554,7 +554,7 @@
     {
       "id": "/events/231232",
       "title": "After School Art Club | Ages 5-8",
-      "time": "16:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
+      "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
       "date": "2026-10-20",
       "link": "https://pembinavalley.gwevents.ca/events/231232",
       "source": "pembinavalley.gwevents.ca",
@@ -590,7 +590,7 @@
     {
       "id": "/events/229772",
       "title": "Art Hive at WAC",
-      "time": "13:00 PM · Winkler Arts and Culture Centre, 547 Park St., Winkler, Manitoba",
+      "time": "1:00 PM · Winkler Arts and Culture Centre, 547 Park St., Winkler, Manitoba",
       "date": "2026-10-23",
       "link": "https://pembinavalley.gwevents.ca/events/229772",
       "source": "pembinavalley.gwevents.ca",
@@ -599,7 +599,7 @@
     {
       "id": "/events/235139",
       "title": "If the Good Lord's Willing and the Creek Don't Rise",
-      "time": "19:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
+      "time": "7:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
       "date": "2026-10-23",
       "link": "https://pembinavalley.gwevents.ca/events/235139",
       "source": "pembinavalley.gwevents.ca",
@@ -608,7 +608,7 @@
     {
       "id": "/events/236899",
       "title": "PUB CHOIR",
-      "time": "19:30 PM · Winkler Arts and Culture Centre, 547 Park St, Winkler, MB",
+      "time": "7:30 PM · Winkler Arts and Culture Centre, 547 Park St, Winkler, MB",
       "date": "2026-10-23",
       "link": "https://pembinavalley.gwevents.ca/events/236899",
       "source": "pembinavalley.gwevents.ca",
@@ -617,7 +617,7 @@
     {
       "id": "/events/235140",
       "title": "If the Good Lord's Willing and the Creek Don't Rise",
-      "time": "15:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
+      "time": "3:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
       "date": "2026-10-24",
       "link": "https://pembinavalley.gwevents.ca/events/235140",
       "source": "pembinavalley.gwevents.ca",
@@ -626,7 +626,7 @@
     {
       "id": "/events/236467",
       "title": "Home School Jiu-Jitsu",
-      "time": "13:00 PM · RISE Athletics, 245 Kimberly Road, Winkler, MB",
+      "time": "1:00 PM · RISE Athletics, 245 Kimberly Road, Winkler, MB",
       "date": "2026-10-14",
       "link": "https://pembinavalley.gwevents.ca/events/236467",
       "source": "pembinavalley.gwevents.ca",
@@ -635,7 +635,7 @@
     {
       "id": "/events/234869",
       "title": "FREE Fitness Class",
-      "time": "19:00 PM · RISE Athletics, 245 Kimberly Road, Winkler, MB",
+      "time": "7:00 PM · RISE Athletics, 245 Kimberly Road, Winkler, MB",
       "date": "2026-10-14",
       "link": "https://pembinavalley.gwevents.ca/events/234869",
       "source": "pembinavalley.gwevents.ca",
