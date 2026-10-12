@@ -275,6 +275,12 @@
     text-decoration: none; display: inline-block;
   }
   .export-btn:hover { background: #1e3a8a; }
+  /* Town filter buttons */
+  .town-btn { transition: all 0.2s ease; }
+  .town-btn:hover { background: rgba(245, 158, 11, 0.15) !important; border-color: #f59e0b !important; color: #f59e0b !important; }
+  .town-btn.active { background: #f59e0b !important; color: #0b1220 !important; border-color: #f59e0b !important; font-weight: 700; }
+  /* Last updated styling */
+  #last-updated { color: #64748b; }
   .event-date {
     min-width: 60px; text-align: center; padding: 12px 8px; border-radius: 16px; background: rgba(15, 23, 42, 0.65); color: #f59e0b; font-weight: 900;
     border: 1px solid rgba(245, 158, 11, 0.35);
@@ -1120,7 +1126,7 @@
     <section class="section">
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📌 Today's Schedule</h2>
-        <p class="muted" id="today-date-label">Loading today's events...</p>
+        <p class="muted" id="today-date-label">Loading today's events...</p><p class="muted" id="last-updated" style="font-size:0.75rem;"></p>
         <div class="spacer"></div>
         <div id="today-events"></div>
       </div>
@@ -1129,6 +1135,12 @@
     <section class="section">
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📅 This Week's Events</h2>
+        <div style="margin-bottom:8px;">
+          <button class="town-btn active" data-town="all" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">All</button>
+          <button class="town-btn" data-town="Winkler" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Winkler</button>
+          <button class="town-btn" data-town="Morden" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;margin-right:4px;">Morden</button>
+          <button class="town-btn" data-town="Altona" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.75rem;cursor:pointer;">Altona</button>
+        </div>
         <div id="daily-events"></div>
       </div>
     </section>
@@ -1566,6 +1578,6 @@ function copyEventDetails(title, time, date, location) {
 </script>
 
 
-<script src="/app.js?v=16"></script>
+<script src="/app.js?v=1791775537"></script>
 </body>
 </html>

@@ -445,6 +445,12 @@ const initPage = () => {
         link: e.link || '#'
       }));
       console.log('Loaded ' + EVENTS.length + ' events from events.json');
+      updateLastUpdated();
+    } catch (err) {
+      console.warn('events.json load failed, using fallback:', err);
+    }
+  }
+  window.addEventListener('hashchange', initPage);
 
   function updateLastUpdated() {
     const el = document.getElementById('last-updated');
@@ -453,11 +459,7 @@ const initPage = () => {
     const hh = String(now.getHours()).padStart(2,'0');
     const mm = String(now.getMinutes()).padStart(2,'0');
     el.textContent = 'Last updated ' + hh + ':' + mm;
-  }    } catch (err) {
-      console.warn('events.json load failed, using fallback:', err);
-    }
   }
-  window.addEventListener('hashchange', initPage);
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
