@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-12",
+  "last_updated": "2026-10-12T16:46:58.518324+00:00",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -84,15 +84,6 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
-      "id": "/events/235664",
-      "title": "Homeschool Turf - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235664",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
-    },
-    {
       "id": "/events/235671",
       "title": "Homeschool Skate - Winkler",
       "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -100,6 +91,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235671",
       "source": "pembinavalleyonline.com",
       "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/235664",
+      "title": "Homeschool Turf - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-13",
+      "link": "https://www.pembinavalleyonline.com/events/235664",
+      "source": "pembinavalleyonline.com",
+      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
     },
     {
       "id": "/events/234645",
@@ -795,15 +795,6 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
-      "id": "/events/235665",
-      "title": "Homeschool Turf - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-20",
-      "link": "https://www.pembinavalleyonline.com/events/235665",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
-    },
-    {
       "id": "/events/235672",
       "title": "Homeschool Skate - Winkler",
       "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -811,6 +802,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235672",
       "source": "pembinavalleyonline.com",
       "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/235665",
+      "title": "Homeschool Turf - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-20",
+      "link": "https://www.pembinavalleyonline.com/events/235665",
+      "source": "pembinavalleyonline.com",
+      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
     },
     {
       "id": "/events/234646",
