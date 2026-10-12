@@ -235,6 +235,7 @@ function combineDateTime(dateStr, timeStr) {
 
       const section = document.createElement('div');
       section.className = 'day-section';
+      section.dataset.date = dateStr;
       const dateLabel = document.createElement('div');
       dateLabel.className = 'day-header';
       dateLabel.dataset.expanded = 'false';
@@ -400,90 +401,31 @@ function combineDateTime(dateStr, timeStr) {
     if (prev) prev.addEventListener('click', () => { CAL_MONTH--; if (CAL_MONTH < 0) { CAL_MONTH = 11; CAL_YEAR--; } buildCalendar(); });
     if (next) next.addEventListener('click', () => { CAL_MONTH++; if (CAL_MONTH > 11) { CAL_MONTH = 0; CAL_YEAR++; } buildCalendar(); });
 
-    // Wire day clicks
+    // Wire day clicks → jump to Activities page and expand that day
     container.querySelectorAll('.calendar-day:not(.empty)').forEach(cell => {
       cell.addEventListener('click', () => {
         const ds = cell.dataset.date;
-        CAL_SELECTED = (CAL_SELECTED === ds) ? null : ds;
-        buildCalendar();
-        renderCalendarDayDetail(ds);
+        CAL_SELECTED = ds;
+        // Switch to Activities page and expand the clicked day
+        activatePage('activities');
+        expandActivityDay(ds);
       });
     });
   }
 
-  function renderCalendarDayDetail(dateStr) {
-    const box = document.getElementById('calendar-day-detail');
-    if (!box) return;
-    if (!dateStr) { box.innerHTML = ''; return; }
-
-    const dayEvents = (Array.isArray(EVENTS) ? EVENTS : []).filter(ev => ev && ev.date === dateStr);
-    if (!dayEvents.length) {
-      box.innerHTML = `<div class="muted" style="padding:10px;">No events on this day.</div>`;
-      return;
+  // Expand a specific day's section on the Activities page (called from calendar day click)
+  function expandActivityDay(dateStr) {
+    const section = document.querySelector(`.day-section[data-date="${dateStr}"]`);
+    if (!section) return;
+    const header = section.querySelector('.day-header');
+    const list = section.querySelector('.event-list');
+    if (header && list) {
+      header.dataset.expanded = 'true';
+      header.classList.add('expanded');
+      list.classList.remove('hidden-events');
     }
-
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const d = new Date(dateStr + 'T12:00:00');
-    const sorted = dayEvents.slice().sort((a, b) => timeToSort(a.time) - timeToSort(b.time));
-
-    // Build a collapsible day-section matching the home page pattern
-    const section = document.createElement('div');
-    section.className = 'day-section';
-
-    const dateLabel = document.createElement('div');
-    dateLabel.className = 'day-header';
-    dateLabel.dataset.expanded = 'false';
-    dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + ' <span class="event-count">' + sorted.length + '</span>';
-
-    const list = document.createElement('div');
-    list.className = 'event-list hidden-events';
-
-    sorted.forEach(ev => {
-      const item = document.createElement('div');
-      item.className = 'day-event bubble';
-      item.dataset.category = ev.category;
-      const copyText = (ev.title + '\n' + ev.time).trim();
-      item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + (ev.title || '').replace(/</g,'&lt;') + '</span></a><span class="time">' + (ev.time || '') + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
-      list.appendChild(item);
-    });
-
-    // Wire collapse/expand toggle
-    dateLabel.addEventListener('click', () => {
-      const expanded = dateLabel.dataset.expanded === 'true';
-      dateLabel.dataset.expanded = String(!expanded);
-      dateLabel.classList.toggle('expanded', !expanded);
-      list.classList.toggle('hidden-events', expanded);
-    });
-
-    // Wire copy buttons
-    list.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const text = btn.dataset.copy || '';
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).catch(() => {
-            const ta = document.createElement('textarea');
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-          });
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-      });
-    });
-
-    section.appendChild(dateLabel);
-    section.appendChild(list);
-    box.innerHTML = '';
-    box.appendChild(section);
+    // Scroll to the section
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function renderSearchBar() {
@@ -533,6 +475,14 @@ const initPage = () => {
       console.error('initPage error', e);
       const el = document.getElementById('page-home');
       if (el) el.classList.add('active');
+    }
+
+    // Wire "Back to Calendar" button on Activities page
+    const backBtn = document.getElementById('back-to-calendar');
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        activatePage('calendar');
+      });
     }
   };
 

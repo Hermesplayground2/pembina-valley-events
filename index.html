@@ -1204,11 +1204,11 @@
       <div class="card card-landscape-calendar">
         <h2 style="color:#f59e0b;">📅 Activities</h2>
         <div class="spacer"></div>
-        <div id="calendar-container"></div>
         <div id="act-days"></div>
       </div>
-      <div class="cta-row" style="margin-top:14px;">
-        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title,%20date,%20time,%20location,%20link).%20Note:%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20all-ages%20events." target="_self">📝 Submit an Event</a>
+      <div class="cta-row" style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="cta-btn animated" id="back-to-calendar" style="cursor:pointer;">← Back to Calendar</button>
+        <a class="cta-btn animated" href="mailto:boomsecure@protonmail.com?subject=Event%20Submission&body=Please%20send%20your%20event%20details%20(title,%20date,%20time,%20location,%20link).%20Note%3A%20PembinaValleyEvents%20is%20a%20family-friendly%20site%20and%20only%20promotes%20all-ages%20events." target="_self">📝 Submit an Event</a>
       </div>
     </section>
   </div>
@@ -1606,6 +1606,6 @@ function copyEventDetails(title, time, date, location) {
 </script>
 
 
-<script src="/app.js?v=1791822522"></script>
+<script src="/app.js?v=1791823176"></script>
 </body>
 </html>
