@@ -307,8 +307,8 @@ function combineDateTime(dateStr, timeStr) {
       document.querySelectorAll('.nav-link').forEach(l => {
         if (l.dataset.page === page) l.classList.add('active');
       });
-      if (page === 'home') { try { renderFeatured(); buildUpcoming(); } catch (e) { console.error(e); } }
-      if (page === 'calendar') { try { buildCalendar(); } catch (e) { console.error(e); } }
+      if (page === 'home') { try { renderFeatured(); buildUpcoming(); buildCalendar('home-calendar-container'); } catch (e) { console.error(e); } }
+      if (page === 'calendar') { try { buildCalendar('calendar-container'); } catch (e) { console.error(e); } }
       try { buildToday(); } catch (e) { console.error(e); }
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
@@ -336,9 +336,10 @@ function combineDateTime(dateStr, timeStr) {
   let CAL_MONTH = new Date().getMonth();
   let CAL_SELECTED = null;
 
-  function buildCalendar() {
-    const container = document.getElementById('calendar-container');
+  function buildCalendar(targetId) {
+    const container = document.getElementById(targetId || 'calendar-container');
     if (!container) return;
+    const scope = targetId || 'calendar-container';
 
     const now = new Date();
     const monthNames = ['January','February','March','April','May','June','July',
@@ -361,11 +362,11 @@ function combineDateTime(dateStr, timeStr) {
 
     let html = `<div class="calendar-header">
       <div class="calendar-nav">
-        <button class="cal-nav-btn" id="cal-prev" title="Previous month">‹</button>
+        <button class="cal-nav-btn" data-cal-nav="prev" title="Previous month">‹</button>
       </div>
       <div class="calendar-title">${monthNames[month]} ${year}</div>
       <div class="calendar-nav">
-        <button class="cal-nav-btn" id="cal-next" title="Next month">›</button>
+        <button class="cal-nav-btn" data-cal-nav="next" title="Next month">›</button>
       </div>
     </div>`;
 
@@ -396,11 +397,11 @@ function combineDateTime(dateStr, timeStr) {
 
     container.innerHTML = html;
 
-    // Wire navigation
-    const prev = document.getElementById('cal-prev');
-    const next = document.getElementById('cal-next');
-    if (prev) prev.addEventListener('click', () => { CAL_MONTH--; if (CAL_MONTH < 0) { CAL_MONTH = 11; CAL_YEAR--; } buildCalendar(); });
-    if (next) next.addEventListener('click', () => { CAL_MONTH++; if (CAL_MONTH > 11) { CAL_MONTH = 0; CAL_YEAR++; } buildCalendar(); });
+    // Wire navigation (scoped to this container so multiple calendars coexist)
+    const prev = container.querySelector('[data-cal-nav="prev"]');
+    const next = container.querySelector('[data-cal-nav="next"]');
+    if (prev) prev.addEventListener('click', () => { CAL_MONTH--; if (CAL_MONTH < 0) { CAL_MONTH = 11; CAL_YEAR--; } buildCalendar(scope); });
+    if (next) next.addEventListener('click', () => { CAL_MONTH++; if (CAL_MONTH > 11) { CAL_MONTH = 0; CAL_YEAR++; } buildCalendar(scope); });
 
     // Wire day clicks → jump to Activities page and expand that day
     container.querySelectorAll('.calendar-day:not(.empty)').forEach(cell => {
