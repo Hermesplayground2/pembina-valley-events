@@ -422,27 +422,68 @@ function combineDateTime(dateStr, timeStr) {
       return;
     }
 
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const d = new Date(dateStr + 'T12:00:00');
-    const dateLabel = d.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    const sorted = dayEvents.slice().sort((a, b) => timeToSort(a.time) - timeToSort(b.time));
 
-    let html = `<div style="font-weight:800;margin-bottom:8px;color:#f59e0b;">${dateLabel}</div>`;
-    dayEvents.forEach(ev => {
-      html += `<div class="day-event" data-category="${ev.category || 'community'}" style="margin-bottom:8px;">
-        <div class="day-header">
-          <span class="title">${(ev.title || '').replace(/</g,'&lt;')}</span>
-          <span class="time">· ${ev.time || ''}</span>
-        </div>
-        <div class="export-row"><button class="export-btn" data-export="ics" data-title="${(ev.title||'').replace(/"/g,'&quot;')}" data-time="${(ev.time||'').replace(/"/g,'&quot;')}" data-date="${ev.date}">📅 Add to Calendar</button></div>
-      </div>`;
+    // Build a collapsible day-section matching the home page pattern
+    const section = document.createElement('div');
+    section.className = 'day-section';
+
+    const dateLabel = document.createElement('div');
+    dateLabel.className = 'day-header';
+    dateLabel.dataset.expanded = 'false';
+    dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[d.getDay()] + ', ' + monthNames[d.getMonth()].slice(0,3) + ' ' + d.getDate() + ' <span class="event-count">' + sorted.length + '</span>';
+
+    const list = document.createElement('div');
+    list.className = 'event-list hidden-events';
+
+    sorted.forEach(ev => {
+      const item = document.createElement('div');
+      item.className = 'day-event bubble';
+      item.dataset.category = ev.category;
+      const copyText = (ev.title + '\n' + ev.time).trim();
+      item.innerHTML = '<a class="event-link" href="' + ev.link + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="title">' + (ev.title || '').replace(/</g,'&lt;') + '</span></a><span class="time">' + (ev.time || '') + '</span><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button>';
+      list.appendChild(item);
     });
-    box.innerHTML = html;
 
-    // Wire ICS buttons
-    box.querySelectorAll('[data-export="ics"]').forEach(btn => {
+    // Wire collapse/expand toggle
+    dateLabel.addEventListener('click', () => {
+      const expanded = dateLabel.dataset.expanded === 'true';
+      dateLabel.dataset.expanded = String(!expanded);
+      dateLabel.classList.toggle('expanded', !expanded);
+      list.classList.toggle('hidden-events', expanded);
+    });
+
+    // Wire copy buttons
+    list.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        addToCalendar(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
+        const text = btn.dataset.copy || '';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+          });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
       });
     });
+
+    section.appendChild(dateLabel);
+    section.appendChild(list);
+    box.innerHTML = '';
+    box.appendChild(section);
   }
 
   function renderSearchBar() {
