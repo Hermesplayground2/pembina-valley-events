@@ -1,133 +1,8 @@
 {
-  "last_updated": "2026-10-14T01:58:02.333787+00:00",
-  "generated_by": "fetch_events.py",
-  "source": "pembinavalleyonline.com/events",
-  "filter": {
-    "drop_terms": [
-      "pride",
-      "bingo",
-      "farmers market",
-      "council meeting"
-    ]
-  },
+  "last_updated": "2026-10-14T01:58:05.174376+00:00",
+  "generated_by": "pembina_publish_guard.py",
+  "source": "pembina_publish_guard.py",
   "events": [
-    {
-      "id": "/events/235671",
-      "title": "Homeschool Skate - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235671",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/235664",
-      "title": "Homeschool Turf - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235664",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
-    },
-    {
-      "id": "/events/234645",
-      "title": "Floor Curling",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/234645",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/231231",
-      "title": "After School Art Club | Ages 5-8",
-      "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/231231",
-      "source": "pembinavalleyonline.com",
-      "description": "Our new After School Art Club gives young artists the chance to explore, create, and build their art skills throughout the fall! Each Tuesday, running 4pm – 5:30pm, will feature different projects and materials, giving kids plenty of opportunities to explore their creativity and make something of their own. This fall, we’re offering two 6-week sessions, or you can register for both and join us for the full 12 weeks! Session 1 – Discover the Building Blocks of Art! September 15 – October 20 6 Weeks | $60 This session focuses on learning the basic elements of art through playful exploration. Session 2 – Artists, Imagination, and Big Ideas! October 27 – December 1 6 Weeks | $60 Session 2 builds on the fundamentals introduced in Session 1, giving kids the chance to apply what they’ve learned through new projects and ideas. New to the club? No problem! Each lesson will include a review of the elements being explored, so kids can jump in at any time. Both Sessions – 10% Off! September 15 – December 1 12 Weeks | $108 All supplies are included. Space is limited! Registration is now open! https://winklerarts.com/events/afterschoolartclub1/"
-    },
-    {
-      "id": "/events/234672",
-      "title": "Pattern Dance",
-      "time": "5:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/234672",
-      "source": "pembinavalleyonline.com",
-      "description": "Pattern Dance is a combination of the Foxtrot, Polka and Waltz dances. Beginner Pattern Dance at 5:30pm Advanced Pattern Dance at 7:00pm Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/235758",
-      "title": "Gentle Flow Yoga with Ang Hildebrand - Registration required",
-      "time": "6:00 PM · Winkler Arts & Culture, 547 Park St, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235758",
-      "source": "pembinavalleyonline.com",
-      "description": "✨ Gentle Flow Yoga – A Weekly Reset ✨ Unwind, move mindfully, and build confidence in your practice with our Gentle Flow Yoga class. Designed for beginners and anyone looking for a slower, calming experience, this class blends light stretching, gentle flow sequences, and guided breathing to support mobility, balance, and stress relief. 🕒 Tuesdays, 6-7pm 📍 Winkler Arts &amp; Culture Centre, Winkler 💲 $80 for 8 sessions 🧘 Instructor: Ang Hildebrand 🧺 Mats &amp; equipment provided Whether you’re brand new to yoga or simply seeking a relaxed, welcoming space to move and reset each week, this class is for you. 💙 Take time for yourself—you deserve it. Register at www.playwinkler.ca"
-    },
-    {
-      "id": "/events/235591",
-      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235591",
-      "source": "pembinavalleyonline.com",
-      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
-    },
-    {
-      "id": "/events/235789",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235789",
-      "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
-    },
-    {
-      "id": "/events/234860",
-      "title": "Lino Night at the Miami Library",
-      "time": "7:00 PM · Miami Library, 530 Norton Ave, Miami, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/234860",
-      "source": "pembinavalleyonline.com",
-      "description": "Lino Night is back for the fall at the Miami Library! When: October 13th from 7-8:30pm Cost: $5.00 flat rate. Includes paper, inking, and rubber (Carving tools are provided) Bring your own materials- Free! Ages 13+ You do not need any experience to enjoy lino printing! We highly encourage anyone looking to try a new hobby or skill to join us. This is an unguided craft evening, but staff will be there to assist in the process if needed. To reserve your spot, contact us at miamistaff435@gmail.com or 204-435-2032."
-    },
-    {
-      "id": "/events/234269",
-      "title": "Remembrance Ceremony - for loss in pregnancy, infancy or childhood",
-      "time": "7:00 PM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/234269",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for a meaningful evening of remembering and honouring the little ones who are no longer with us Tuesday October 13, 7pm This is a free event Childcare is not provided"
-    },
-    {
-      "id": "/events/235741",
-      "title": "Senior Turf - FREE - ICON Arena",
-      "time": "8:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235741",
-      "source": "pembinavalleyonline.com",
-      "description": "Happening at the ICON Arena from 8:00am - 9:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/236883",
-      "title": "Astro Night Altona",
-      "time": "8:00 PM · Access Field, 49 Millennium Drive, Altona, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/236883",
-      "source": "pembinavalleyonline.com",
-      "description": "October 13, 2026"
-    },
-    {
-      "id": "/events/235723",
-      "title": "Senior Skate - FREE - ICON Arena",
-      "time": "8:15 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-13",
-      "link": "https://www.pembinavalleyonline.com/events/235723",
-      "source": "pembinavalleyonline.com",
-      "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
     {
       "id": "/events/235006",
       "title": "Story Time at the Winkler Library",
@@ -280,6 +155,15 @@
       "link": "https://www.pembinavalleyonline.com/events/227246",
       "source": "pembinavalleyonline.com",
       "description": "Members $4.00 Non-Members $7.00"
+    },
+    {
+      "id": "/events/235792",
+      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-15",
+      "link": "https://www.pembinavalleyonline.com/events/235792",
+      "source": "pembinavalleyonline.com",
+      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
     },
     {
       "id": "/events/235601",
@@ -498,6 +382,15 @@
       "description": "D&#39;Ffriesens &amp; Peaceful Harbour (Abe &amp; Anna Teichroeb Group) Come to sing along and fellowship with coffee and snack"
     },
     {
+      "id": "/events/236442",
+      "title": "Concert: Joe Wilson &amp; Richard Inman at WAC!",
+      "time": "7:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
+      "date": "2026-10-17",
+      "link": "https://www.pembinavalleyonline.com/events/236442",
+      "source": "pembinavalleyonline.com",
+      "description": "Joe Wilson and Richard Inman are coming to WAC on October 17! It’ll be a night of country and western music from two Prairie songwriters, with plenty of overlap in the stories they tell. October 17 | 7 PM Doors 6:30 PM Tickets $20 at the gallery or online at www.winklerarts.com/joewilson-richardinman"
+    },
+    {
       "id": "/events/235420",
       "title": "Jam Session",
       "time": "7:00 PM · Winkler Senior Centre, 650 S. Railway Avenue, Winkler, MB",
@@ -606,15 +499,6 @@
       "description": "LUNGtivity is returning Oct 19, 2026 (6 weeks) - Mondays at 1:30 - 3:00 PM LUNGtivity is a low-intensity community-based exercise program for people living with lung disease. To register, please contact: 204-822-4474 ext. 4410 kmcelroy@menziesmedical.ca"
     },
     {
-      "id": "/events/235805",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-19",
-      "link": "https://www.pembinavalleyonline.com/events/235805",
-      "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
-    },
-    {
       "id": "/events/235611",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -622,6 +506,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235611",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/235805",
+      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-19",
+      "link": "https://www.pembinavalleyonline.com/events/235805",
+      "source": "pembinavalleyonline.com",
+      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
     },
     {
       "id": "/events/233631",
@@ -813,15 +706,6 @@
       "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
     },
     {
-      "id": "/events/237116",
-      "title": "Story Time at the Winkler Library",
-      "time": "10:00 AM · Winkler Library, 160 Main St, Winkler, MB",
-      "date": "2026-10-21",
-      "link": "https://www.pembinavalleyonline.com/events/237116",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us every Wednesday morning at 10:00 AM for Storytime! Each week, we will read new stories and have a fun craft/activity planned for after (3.5 - 5 years old level)!"
-    },
-    {
       "id": "/events/235815",
       "title": "Senior Swim/Aquafit @ Days Inn Winkler",
       "time": "12:30 PM · Days Inn Winkler, 395 Boundary Trail, Winkler, MB",
@@ -948,15 +832,6 @@
       "description": "Members $4.00 Non-Members $7.00"
     },
     {
-      "id": "/events/237133",
-      "title": "Reinland Fall Supper",
-      "time": "5:00 PM · Reinland, Manitoba",
-      "date": "2026-10-22",
-      "link": "https://www.pembinavalleyonline.com/events/237133",
-      "source": "pembinavalleyonline.com",
-      "description": "Reinland Fall Community Supper October 22nd 5-7 pm"
-    },
-    {
       "id": "/events/234626",
       "title": "Annule Fall Soup and Pie",
       "time": "5:00 PM · The Gardens On Tenth, 140 Tenth Ave NE, Altona, Manitoba",
@@ -1009,6 +884,15 @@
       "link": "https://www.pembinavalleyonline.com/events/236348",
       "source": "pembinavalleyonline.com",
       "description": "Do you enjoy manga, anime, webtoons and graphic novels in general? Do you know nothing about it and would like to discover this wonderful world? Join our Manga Club! You will get to talk to other readers and anime watchers, share your likes and dislikes and who knows? Possibly discover a new favorite! Each month, we will gather to talk about books and anime fitting in the month&#39;s theme. You can read or watch as many stories as you want before coming to the meeting. If you find you don&#39;t have time, but still want to talk about the books fitting in with the theme, you are welcome to come! October&#39;s theme is &quot;A Glimpse in the manga world&quot;. A chance to (re)discover &quot;classics&quot; and &quot;famous&quot; manga, webtoons, anime. Not sure what to read? Try one of these titles: - One Piece by Eiichiro Oda (also exists as an anime) - Fairy Tail by Hiro Mashima (also exists as an anime) - Villains Are Destined to Die by Suol - Spy x Family by Tatsuya Endo (also exists as an anime) - My Little Monster by Robico (also exists as an anime) - Death Note by Tsugumi Ohba (also exists as an anime) - UnOrdinary by uru-chan - True Beauty by Yaongyi (also exists as a K-Drama) - Hooky by Míriam Bonastre Tur Our first meeting is happening on October 22nd, at 7 PM. Manga Club is open for ages 13 - 17. Want to join us? Register for Manga Club in person, give us a call at 204-325-7174 or email us at winklercirculation@gmail.com."
+    },
+    {
+      "id": "/events/235749",
+      "title": "Senior Walking Group - Meridian Exhibition Centre Walking Track - Everyone welcome",
+      "time": "9:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-22",
+      "link": "https://www.pembinavalleyonline.com/events/235749",
+      "source": "pembinavalleyonline.com",
+      "description": "Join our Walking Group at the Meridian Exhibition Centre, hosted in partnership with the Winkler Senior Centre. Enjoy a walk, great conversation, and complimentary coffee and snacks afterward. ✅ Get moving ✅ Meet new people ✅ Socialize and have fun Everyone is welcome!"
     },
     {
       "id": "/events/235423",
@@ -1227,15 +1111,6 @@
       "description": "October 24, 2026"
     },
     {
-      "id": "/events/237131",
-      "title": "Gospel Echoes Prison Ministry Fall Banquet",
-      "time": "5:30 PM · BETHEL BERGTHALER MENNONITE CHURCH, 4130 Hwy 32, Hochfeld, MB",
-      "date": "2026-10-24",
-      "link": "https://www.pembinavalleyonline.com/events/237131",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for a delicous meal of Baked potatoes, pulled pork, veggie, coleslaw, buns, dessert. Hear presentations and testimonies shared of God&#39;s work through the Gospel Echoes Canada West Prison Ministry. The Ministry Team Vintage Voices as well as the Elias Family (Kevin and Kim) from Carstairs, AB will also be presenting some music as time allows. TICKETS ARE COMPLIMETARY (FREE!!) Call or message Jake: 204-362-1799 or Martin 204-325-8523 For a full evening of music by Vintage Voices as well as the Elias Family (Kevin and Kim) from Carstairs, Alberta, see our listing for Sunday in these Coming Events BETHEL BERGTHALER MENNONITE CHURCH, 4130 Hwy 32, Hochfeld, MB BETHEL BERGTHALER MENNONITE CHURCH, 4130 Hwy 32, Hochfeld, MB"
-    },
-    {
       "id": "/events/231643",
       "title": "Raise the Woof Comedy Night",
       "time": "7:00 PM · Morden Friendship Centre, Morden, Manitoba",
@@ -1297,15 +1172,6 @@
       "link": "https://www.pembinavalleyonline.com/events/235465",
       "source": "pembinavalleyonline.com",
       "description": "Comedian Leland Klassen will be performing in Morden on October 25, 2026 as part of his &quot;Pressin&#39; On Comedy Tour (Phil 3:14)&quot; This event is sponsored by the Morden Christian Programs Committee. Admission is free but there will be an opportunity to donate towards covering the cost of the event."
-    },
-    {
-      "id": "/events/237130",
-      "title": "Gospel Echoes Prison Ministry Music Night",
-      "time": "7:00 PM · Bethel Bergthaler Mennonite Church, 4130 Hwy 32 Hochfeld, MB, Hochfeld, MB",
-      "date": "2026-10-25",
-      "link": "https://www.pembinavalleyonline.com/events/237130",
-      "source": "pembinavalleyonline.com",
-      "description": "Thousand Oaks Ministries is again hosting a Gospel Echoes Prison Ministry Music Night at the Bethel Bergthaler Mennonite Church on Highway 32 near Hochfeld on Sunday, October 25th, at 7:00 PM. Music and singing will be provided by the Gospel Echoes Canada West Ministry Team, Vintage Voices and the Kevin &amp; Kim Elias Family from Alberta. No tickets are needed for this concert. A freewill offering will be taken. Everyone welcome! Plan to spend the evening with us."
     },
     {
       "id": "/events/231044",
@@ -1443,15 +1309,6 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
-      "id": "/events/235666",
-      "title": "Homeschool Turf - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-10-27",
-      "link": "https://www.pembinavalleyonline.com/events/235666",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
-    },
-    {
       "id": "/events/235673",
       "title": "Homeschool Skate - Winkler",
       "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -1459,6 +1316,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235673",
       "source": "pembinavalleyonline.com",
       "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/235666",
+      "title": "Homeschool Turf - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-10-27",
+      "link": "https://www.pembinavalleyonline.com/events/235666",
+      "source": "pembinavalleyonline.com",
+      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
     },
     {
       "id": "/events/234647",
@@ -1531,15 +1397,6 @@
       "link": "https://www.pembinavalleyonline.com/events/235725",
       "source": "pembinavalleyonline.com",
       "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/237117",
-      "title": "Story Time at the Winkler Library",
-      "time": "10:00 AM · Winkler Library, 160 Main St, Winkler, MB",
-      "date": "2026-10-28",
-      "link": "https://www.pembinavalleyonline.com/events/237117",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us every Wednesday morning at 10:00 AM for Storytime! Each week, we will read new stories and have a fun craft/activity planned for after (3.5 - 5 years old level)!"
     },
     {
       "id": "/events/235816",
@@ -1884,15 +1741,6 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
-      "id": "/events/235667",
-      "title": "Homeschool Turf - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-03",
-      "link": "https://www.pembinavalleyonline.com/events/235667",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
-    },
-    {
       "id": "/events/235674",
       "title": "Homeschool Skate - Winkler",
       "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -1900,6 +1748,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235674",
       "source": "pembinavalleyonline.com",
       "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/235667",
+      "title": "Homeschool Turf - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-03",
+      "link": "https://www.pembinavalleyonline.com/events/235667",
+      "source": "pembinavalleyonline.com",
+      "description": "$3/person Happening at the Bernhard Thiessen Fieldhouse from 1pm - 3pm. Participants are expected to be respectful and share the turf fairly. Parent supervision is REQUIRED for children 12 years and under. Come out, have fun, and make the most of your time on the turf!"
     },
     {
       "id": "/events/234648",
@@ -2118,15 +1975,6 @@
       "description": "November 5, 2026 $25 per person Two-person registration: $45 Join us for a fun and relaxed acrylic painting evening with Susan Crawford-Young! This event is perfect for beginners and those with some painting experience. Come enjoy a creative night out and create your own piece of art. Snacks provided. Drinks available for sale."
     },
     {
-      "id": "/events/235604",
-      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-05",
-      "link": "https://www.pembinavalleyonline.com/events/235604",
-      "source": "pembinavalleyonline.com",
-      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
-    },
-    {
       "id": "/events/235795",
       "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -2134,6 +1982,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235795",
       "source": "pembinavalleyonline.com",
       "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
+    },
+    {
+      "id": "/events/235604",
+      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-05",
+      "link": "https://www.pembinavalleyonline.com/events/235604",
+      "source": "pembinavalleyonline.com",
+      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
     },
     {
       "id": "/events/231133",
@@ -2206,15 +2063,6 @@
       "link": "https://www.pembinavalleyonline.com/events/235802",
       "source": "pembinavalleyonline.com",
       "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
-    },
-    {
-      "id": "/events/236442",
-      "title": "Concert: Joe Wilson and Richard Inman at WAC!",
-      "time": "7:00 PM · Winkler Arts and Culture, 547 Park St., Winkler, MB",
-      "date": "2026-11-06",
-      "link": "https://www.pembinavalleyonline.com/events/236442",
-      "source": "pembinavalleyonline.com",
-      "description": "Joe Wilson and Richard Inman are coming to WAC on Nov. 6! It’ll be a night of country and western music from two Prairie songwriters, with plenty of overlap in the stories they tell. Nov. 6 | 7 PM Doors 6:30 PM Tickets $20 at the gallery or online at www.winklerarts.com/joewilson-richardinman"
     },
     {
       "id": "/events/234078",
@@ -2298,15 +2146,6 @@
       "description": "Members $4.00 Non-Members $7.00"
     },
     {
-      "id": "/events/236877",
-      "title": "BTHC Grief Session",
-      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-11-09",
-      "link": "https://www.pembinavalleyonline.com/events/236877",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
-    },
-    {
       "id": "/events/231056",
       "title": "LUNGtivity",
       "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
@@ -2316,13 +2155,13 @@
       "description": "LUNGtivity is returning Oct 19, 2026 (6 weeks) - Mondays at 1:30 - 3:00 PM LUNGtivity is a low-intensity community-based exercise program for people living with lung disease. To register, please contact: 204-822-4474 ext. 4410 kmcelroy@menziesmedical.ca"
     },
     {
-      "id": "/events/235808",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "id": "/events/236877",
+      "title": "BTHC Grief Session",
+      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
       "date": "2026-11-09",
-      "link": "https://www.pembinavalleyonline.com/events/235808",
+      "link": "https://www.pembinavalleyonline.com/events/236877",
       "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
+      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
     },
     {
       "id": "/events/235614",
@@ -2332,6 +2171,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235614",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/235808",
+      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-09",
+      "link": "https://www.pembinavalleyonline.com/events/235808",
+      "source": "pembinavalleyonline.com",
+      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
     },
     {
       "id": "/events/233634",
@@ -2439,16 +2287,7 @@
       "date": "2026-11-10",
       "link": "https://www.pembinavalleyonline.com/events/235762",
       "source": "pembinavalleyonline.com",
-      "description": ""
-    },
-    {
-      "id": "/events/235788",
-      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-10",
-      "link": "https://www.pembinavalleyonline.com/events/235788",
-      "source": "pembinavalleyonline.com",
-      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
+      "description": "✨ Gentle Flow Yoga – A Weekly Reset ✨ Unwind, move mindfully, and build confidence in your practice with our Gentle Flow Yoga class. Designed for beginners and anyone looking for a slower, calming experience, this class blends light stretching, gentle flow sequences, and guided breathing to support mobility, balance, and stress relief. 🕒 Tuesdays, 6-7pm 📍 Winkler Arts &amp; Culture Centre, Winkler 💲 $80 for 8 sessions 🧘 Instructor: Ang Hildebrand 🧺 Mats &amp; equipment provided Whether you’re brand new to yoga or simply seeking a relaxed, welcoming space to move and reset each week, this class is for you. 💙 Take time for yourself—you deserve it. Register at www.playwinkler.ca"
     },
     {
       "id": "/events/235595",
@@ -2458,6 +2297,15 @@
       "link": "https://www.pembinavalleyonline.com/events/235595",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/235788",
+      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-10",
+      "link": "https://www.pembinavalleyonline.com/events/235788",
+      "source": "pembinavalleyonline.com",
+      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
     },
     {
       "id": "/events/235745",
@@ -2478,13 +2326,193 @@
       "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
     },
     {
+      "id": "/events/236646",
+      "title": "Baby and Me Coffee and Chat",
+      "time": "10:00 AM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
+      "date": "2026-11-11",
+      "link": "https://www.pembinavalleyonline.com/events/236646",
+      "source": "pembinavalleyonline.com",
+      "description": "A drop-in program for parents with babies aged 0-2 (2-3 year old siblings are welcome) Morden Alliance Church in the upstairs nursery. Connect with other parents and bring your little one for a casual drop-in coffee and chat."
+    },
+    {
+      "id": "/events/233660",
+      "title": "Explore the Bible",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-11-11",
+      "link": "https://www.pembinavalleyonline.com/events/233660",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us as well explore the Bible together and see how it relates to our lives. Drinks and snacks are free."
+    },
+    {
+      "id": "/events/233673",
+      "title": "Craft Cafe/Fellowship",
+      "time": "7:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-11-11",
+      "link": "https://www.pembinavalleyonline.com/events/233673",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us for a fun evening of making crafts and visiting around the table. Drinks and snacks are free. Bring a friend."
+    },
+    {
       "id": "/events/233647",
       "title": "Morning Coffee Time",
       "time": "9:00 AM · Altona Mall, Altona, MB",
       "date": "2026-11-11",
       "link": "https://www.pembinavalleyonline.com/events/233647",
       "source": "pembinavalleyonline.com",
-      "description": ""
+      "description": "Join us for free drinks and snacks. Bring a friend. Men and women are welcome at this time."
+    },
+    {
+      "id": "/events/213809",
+      "title": "Genesis House Radiothon",
+      "time": "6:00 AM · Co-op @ Home, 555 South Railway, Winkler, Manitoba",
+      "date": "2026-11-12",
+      "link": "https://www.pembinavalleyonline.com/events/213809",
+      "source": "pembinavalleyonline.com",
+      "description": "More info to come"
+    },
+    {
+      "id": "/events/235796",
+      "title": "$2 turf - Bernhard Thiessen Fieldhouse - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-12",
+      "link": "https://www.pembinavalleyonline.com/events/235796",
+      "source": "pembinavalleyonline.com",
+      "description": "⚽🏃 Open Turf Time 7-8am Start your day with Open Turf Time! This unstructured drop-in opportunity provides space to get active, practice individual skills, or enjoy recreational play in a welcoming environment. Please note: Open Turf Time is intended for casual, self-directed use and is not to be used for coaching sessions, team practices, or formal training activities. ✅ Soccer nets are provided ✅ Individual and small-group recreational use welcomed ✅ Participants must bring any additional equipment they wish to use Let&#39;s work together to create a positive experience for everyone by sharing the space respectfully and following facility guidelines. Come move, play, and enjoy the turf! ⚽🌟"
+    },
+    {
+      "id": "/events/235605",
+      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-12",
+      "link": "https://www.pembinavalleyonline.com/events/235605",
+      "source": "pembinavalleyonline.com",
+      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/231134",
+      "title": "Pembina Valley Men's Prayer Breakfast",
+      "time": "7:00 AM · Triangle Oasis Restaurant (Back room), 880 Triple E Boulevard (PTH14 & 1st Street), Winkler, MB",
+      "date": "2026-11-12",
+      "link": "https://www.pembinavalleyonline.com/events/231134",
+      "source": "pembinavalleyonline.com",
+      "description": "Since 2000, Christian men from around Pembina Valley MB and further have met each Thursday morning for Prayer, Bible Devotions, Missions reports and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. 7:00a Welcome &amp; Devotional 7:15a Missions reports or speaker 7:45a Prayer 8:00a Fellowship over breakfast If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Jake to confirm upcoming meetings."
+    },
+    {
+      "id": "/events/235752",
+      "title": "Senior Walking Group - Meridian Exhibition Centre Walking Track - Everyone welcome",
+      "time": "9:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-11-12",
+      "link": "https://www.pembinavalleyonline.com/events/235752",
+      "source": "pembinavalleyonline.com",
+      "description": "Join our Walking Group at the Meridian Exhibition Centre, hosted in partnership with the Winkler Senior Centre. Enjoy a walk, great conversation, and complimentary coffee and snacks afterward. ✅ Get moving ✅ Meet new people ✅ Socialize and have fun Everyone is welcome!"
+    },
+    {
+      "id": "/events/235426",
+      "title": "Senior Walking Group at the Meridian Exhibition Centre",
+      "time": "9:00 AM · Meridian Exhibition Centre, 1045 Grandeur Avenue, Winkler, MB",
+      "date": "2026-11-12",
+      "link": "https://www.pembinavalleyonline.com/events/235426",
+      "source": "pembinavalleyonline.com",
+      "description": "Walking Group Thursdays 9am - 10:30am October 22- December 17 Weather Permitting Meet at Meridian Exhibition Centre All abilities welcome, bring your walkers, canes or walking poles or come without."
+    },
+    {
+      "id": "/events/233726",
+      "title": "Coffee Fellowship and Crafts",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-11-13",
+      "link": "https://www.pembinavalleyonline.com/events/233726",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
+    },
+    {
+      "id": "/events/232157",
+      "title": "Cribbage Tournament",
+      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "date": "2026-11-13",
+      "link": "https://www.pembinavalleyonline.com/events/232157",
+      "source": "pembinavalleyonline.com",
+      "description": "Members $4.00 Non-Members $7.00"
+    },
+    {
+      "id": "/events/229773",
+      "title": "Art Hive at WAC",
+      "time": "1:00 PM · Winkler Arts and Culture Centre, 547 Park St., Winkler, Manitoba",
+      "date": "2026-11-13",
+      "link": "https://www.pembinavalleyonline.com/events/229773",
+      "source": "pembinavalleyonline.com",
+      "description": "Art Hive is a welcoming, drop-in creative space where people of all backgrounds and abilities can come together to make art and connect. Led by Yael Fehr, each session offers a simple, guided activity - no experience needed. Every 2nd and 4th Fridays from 1pm - 2:30pm. This program is free - funding generously provided by Southern Health. Whether you come on your own or with a group, Art Hive is about building community, sharing space, and creating something side by side."
+    },
+    {
+      "id": "/events/213810",
+      "title": "Genesis House Radiothon",
+      "time": "6:00 AM · Co-op @ Home, 555 South Railway, Winkler, Manitoba",
+      "date": "2026-11-13",
+      "link": "https://www.pembinavalleyonline.com/events/213810",
+      "source": "pembinavalleyonline.com",
+      "description": "More info to come"
+    },
+    {
+      "id": "/events/231212",
+      "title": "Men's Prayer Breakfast (Morden)",
+      "time": "6:57 AM · Rock's Bar & Grill, 780 Thornhill Street, Morden, MB",
+      "date": "2026-11-13",
+      "link": "https://www.pembinavalleyonline.com/events/231212",
+      "source": "pembinavalleyonline.com",
+      "description": "Christian men from around Morden meet each Friday morning for Prayer, Bible Devotions and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. This is a great way to meet and network with other Christian men. If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Dwight to confirm upcoming meetings."
+    },
+    {
+      "id": "/events/234079",
+      "title": "Art Class - Acrylic &amp; Watercolor Painting",
+      "time": "9:30 AM · Morden Activity Centre, 306 North Railway Street, Morden, Manitoba",
+      "date": "2026-11-13",
+      "link": "https://www.pembinavalleyonline.com/events/234079",
+      "source": "pembinavalleyonline.com",
+      "description": "Ready to get creative? Join us at the Morden Activity Centre for Acrylic and Watercolor Painting classes. Friday mornings from 9:30am-11am, beginning October 2nd, 2026, with the last class for the season December 11th, 2026. Painting materials will be supplied by the Centre. Small fee of $4 per class to cover the cost of the Materials. Registration is Required To register: Call 204-822-5663, Ext. 3 or email mordensfs@gmail.com"
+    },
+    {
+      "id": "/events/236655",
+      "title": "Holiday Craft Market 2026",
+      "time": "10:00 AM · Access Event Centre, 111-D Gilmour Street, Morden, MB",
+      "date": "2026-11-14",
+      "link": "https://www.pembinavalleyonline.com/events/236655",
+      "source": "pembinavalleyonline.com",
+      "description": "🎄🕎🐐 Holiday Craft Market 2026 🐐🕎🎄 Hosted by Pembina Hills Arts Council 📍 Location: Access Event Centre, 111-D Gilmour St, Morden, MB R6M 1N9 This annual craft sale is organized by the Pembina Hills Arts Council(PHAC) and provides an opportunity for local vendors to exhibit and sell their work. All products featured at the market have to be handmade and/or homemade by local artisans, showcasing a wide variety of unique, high-quality creations. 📅 Date: Saturday, November 14th, 2026 🕙 Time: 10:00 AM – 4:00 PM"
+    },
+    {
+      "id": "/events/235197",
+      "title": "Morden’s Flea Market",
+      "time": "10:00 AM · Legion Hall, 285 N Railway St, Morden, Manitoba",
+      "date": "2026-11-14",
+      "link": "https://www.pembinavalleyonline.com/events/235197",
+      "source": "pembinavalleyonline.com",
+      "description": "Morden’s Flea Market is returning for the Holiday Season with our Christmas Edition! Multiple Vendors will be setting up once again to bring you our Vintage, Antique &amp; All Things Unique Sale! If you’re looking for something fun &amp; different for your loved ones this season, you’ll be in the right place! Friendly faces &amp; interesting items are back SATURDAY NOVEMBER 14th at the Morden Legion Hall (285 Railway St N) from 10am-5pm • AND ALWAYS FREE ENTRY"
+    },
+    {
+      "id": "/events/234871",
+      "title": "Another Night of Country Music",
+      "time": "7:30 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
+      "date": "2026-11-14",
+      "link": "https://www.pembinavalleyonline.com/events/234871",
+      "source": "pembinavalleyonline.com",
+      "description": "After packing the house with a sold-out performance in November 2025, The Sharpe Brothers Band is making a highly anticipated return to the Manitou Opera House this November - this time for two performances of Another Night of Country Music. And before anyone asks - no, they&#39;re not all brothers. The Sharpe Brothers Band features brothers Will Sharpe (vocals/guitar) and James Sharpe (vocals/bass), along with Charlie Howatt (steel guitar), Gil Dudgeon (drums), and Larry Martineau (fiddle/harmonica). A performance at the Manitou Opera House with The Sharpe Brothers Band offers a timeless country music experience reminiscent of the Grand Ole Opry, right here in southern Manitoba. Audiences can expect a show filled with traditional country music, honky-tonk favourites, outstanding musicianship, a few surprises, and the warm, intimate atmosphere that has made the historic Manitou Opera House one of southern Manitoba&#39;s premier live music venues. Their 2025 appearance at the Manitou Opera House sold out well in advance, leaving many hoping for another opportunity to experience the band live. In response to the demand, the Manitou Opera House Foundation is thrilled to welcome them back for not one, but two unforgettable showings of country music, offering audiences the opportunity to attend either - or both - shows. With last year&#39;s performance selling out, early ticket purchases are strongly encouraged. Thank you to our event sponsors: Manitou Thrift Store, Dead Horse Cider Co., and Blumstein Brewing Co. Cash bar selling beverages and snacks will be open at before the show and at intermission."
+    },
+    {
+      "id": "/events/235578",
+      "title": "MHV Christmas Market",
+      "time": "9:30 AM · Mennonite Heritage Village, 231 Provincial Trunk Hwy 12, Steinbach, MB",
+      "date": "2026-11-14",
+      "link": "https://www.pembinavalleyonline.com/events/235578",
+      "source": "pembinavalleyonline.com",
+      "description": "Bigger and better than ever! The MHV Christmas Market returns this November. Make your Christmas shopping an EXPERIENCE as you shop local vendors, walk through the museum, and take a horse-drawn wagon ride around the village. PLUS, you can enjoy our FAMOUS Heritage Waffles &amp; White Sauce! Village Books &amp; Gifts Sale – 25% off select souvenirs &amp; books Admission is by donation, OR bring a Tin for the Bin in support of Southeast Helping Hands."
+    },
+    {
+      "id": "/events/234872",
+      "title": "Another Night of Country Music",
+      "time": "2:00 PM · Manitou Opera House, 325 Main Street, Manitou, MB",
+      "date": "2026-11-15",
+      "link": "https://www.pembinavalleyonline.com/events/234872",
+      "source": "pembinavalleyonline.com",
+      "description": "After packing the house with a sold-out performance in November 2025, The Sharpe Brothers Band is making a highly anticipated return to the Manitou Opera House this November - this time for two performances of Another Night of Country Music. And before anyone asks - no, they&#39;re not all brothers. The Sharpe Brothers Band features brothers Will Sharpe (vocals/guitar) and James Sharpe (vocals/bass), along with Charlie Howatt (steel guitar), Gil Dudgeon (drums), and Larry Martineau (fiddle/harmonica). A performance at the Manitou Opera House with The Sharpe Brothers Band offers a timeless country music experience reminiscent of the Grand Ole Opry, right here in southern Manitoba. Audiences can expect a show filled with traditional country music, honky-tonk favourites, outstanding musicianship, a few surprises, and the warm, intimate atmosphere that has made the historic Manitou Opera House one of southern Manitoba&#39;s premier live music venues. Their 2025 appearance at the Manitou Opera House sold out well in advance, leaving many hoping for another opportunity to experience the band live. In response to the demand, the Manitou Opera House Foundation is thrilled to welcome them back for not one, but two unforgettable showings of country music, offering audiences the opportunity to attend either - or both - shows. With last year&#39;s performance selling out, early ticket purchases are strongly encouraged. Thank you to our event sponsors: Manitou Thrift Store, Dead Horse Cider Co., and Blumstein Brewing Co. Cash bar selling beverages and snacks will be open at before the show and at intermission."
     },
     {
       "id": "/events/235774",
@@ -2496,15 +2524,6 @@
       "description": "⛸️ Free Public Skating at the ICON Arena! Looking for a fun way to spend your Sunday evening? Join us for FREE public skating at the ICON Arena every Sunday from 6:15 PM to 7:45 PM. Bring your family and friends, enjoy some time on the ice, and stay active all winter long! For everyone&#39;s safety and enjoyment, please remember to: ✅ Skate responsibly and be aware of others on the ice ✅ Follow arena rules and staff directions ✅ Show respect and courtesy to fellow skaters Let&#39;s keep the rink safe, welcoming, and fun for everyone!"
     },
     {
-      "id": "/events/233622",
-      "title": "Ladies Bible Study",
-      "time": "1:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-11-16",
-      "link": "https://www.pembinavalleyonline.com/events/233622",
-      "source": "pembinavalleyonline.com",
-      "description": "Come join us as we read through a book of the Bible and discuss it. Free coffee, tea and snacks."
-    },
-    {
       "id": "/events/232169",
       "title": "Cribbage Tournament",
       "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
@@ -2514,24 +2533,6 @@
       "description": "Members $4.00 Non-Members $7.00"
     },
     {
-      "id": "/events/231057",
-      "title": "LUNGtivity",
-      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-11-16",
-      "link": "https://www.pembinavalleyonline.com/events/231057",
-      "source": "pembinavalleyonline.com",
-      "description": "LUNGtivity is returning Oct 19, 2026 (6 weeks) - Mondays at 1:30 - 3:00 PM LUNGtivity is a low-intensity community-based exercise program for people living with lung disease. To register, please contact: 204-822-4474 ext. 4410 kmcelroy@menziesmedical.ca"
-    },
-    {
-      "id": "/events/236878",
-      "title": "BTHC Grief Session",
-      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-11-16",
-      "link": "https://www.pembinavalleyonline.com/events/236878",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
-    },
-    {
       "id": "/events/235615",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -2539,15 +2540,6 @@
       "link": "https://www.pembinavalleyonline.com/events/235615",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
-    },
-    {
-      "id": "/events/233635",
-      "title": "Ladies Games Night",
-      "time": "7:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-11-16",
-      "link": "https://www.pembinavalleyonline.com/events/233635",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for games night. There are a variety to choose from. Bring a friend. Drinks and snacks are free."
     },
     {
       "id": "/events/235688",
@@ -2586,141 +2578,6 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
-      "id": "/events/235676",
-      "title": "Homeschool Skate - Winkler",
-      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/235676",
-      "source": "pembinavalleyonline.com",
-      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/234650",
-      "title": "Floor Curling",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/234650",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/231236",
-      "title": "After School Art Club | Ages 5-8",
-      "time": "4:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/231236",
-      "source": "pembinavalleyonline.com",
-      "description": "Our new After School Art Club gives young artists the chance to explore, create, and build their art skills throughout the fall! Each Tuesday, running 4pm – 5:30pm, will feature different projects and materials, giving kids plenty of opportunities to explore their creativity and make something of their own. This fall, we’re offering two 6-week sessions, or you can register for both and join us for the full 12 weeks! Session 1 – Discover the Building Blocks of Art! September 15 – October 20 6 Weeks | $60 This session focuses on learning the basic elements of art through playful exploration. Session 2 – Artists, Imagination, and Big Ideas! October 27 – December 1 6 Weeks | $60 Session 2 builds on the fundamentals introduced in Session 1, giving kids the chance to apply what they’ve learned through new projects and ideas. New to the club? No problem! Each lesson will include a review of the elements being explored, so kids can jump in at any time. Both Sessions – 10% Off! September 15 – December 1 12 Weeks | $108 All supplies are included. Space is limited! Registration is now open! https://winklerarts.com/events/afterschoolartclub1/"
-    },
-    {
-      "id": "/events/234677",
-      "title": "Pattern Dance",
-      "time": "5:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/234677",
-      "source": "pembinavalleyonline.com",
-      "description": "Pattern Dance is a combination of the Foxtrot, Polka and Waltz dances. Beginner Pattern Dance at 5:30pm Advanced Pattern Dance at 7:00pm Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/235763",
-      "title": "Gentle Flow Yoga with Ang Hildebrand - Registration required",
-      "time": "6:00 PM · Winkler Arts & Culture, 547 Park St, Winkler, MB",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/235763",
-      "source": "pembinavalleyonline.com",
-      "description": "✨ Gentle Flow Yoga – A Weekly Reset ✨ Unwind, move mindfully, and build confidence in your practice with our Gentle Flow Yoga class. Designed for beginners and anyone looking for a slower, calming experience, this class blends light stretching, gentle flow sequences, and guided breathing to support mobility, balance, and stress relief. 🕒 Tuesdays, 6-7pm 📍 Winkler Arts &amp; Culture Centre, Winkler 💲 $80 for 8 sessions 🧘 Instructor: Ang Hildebrand 🧺 Mats &amp; equipment provided Whether you’re brand new to yoga or simply seeking a relaxed, welcoming space to move and reset each week, this class is for you. 💙 Take time for yourself—you deserve it. Register at www.playwinkler.ca"
-    },
-    {
-      "id": "/events/235596",
-      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/235596",
-      "source": "pembinavalleyonline.com",
-      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
-    },
-    {
-      "id": "/events/235728",
-      "title": "Senior Skate - FREE - ICON Arena",
-      "time": "8:15 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-17",
-      "link": "https://www.pembinavalleyonline.com/events/235728",
-      "source": "pembinavalleyonline.com",
-      "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/236647",
-      "title": "Baby and Me Coffee and Chat",
-      "time": "10:00 AM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/236647",
-      "source": "pembinavalleyonline.com",
-      "description": "A drop-in program for parents with babies aged 0-2 (2-3 year old siblings are welcome) Morden Alliance Church in the upstairs nursery. Connect with other parents and bring your little one for a casual drop-in coffee and chat."
-    },
-    {
-      "id": "/events/233661",
-      "title": "Explore the Bible",
-      "time": "1:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/233661",
-      "source": "pembinavalleyonline.com",
-      "description": "Ladies, join us as well explore the Bible together and see how it relates to our lives. Drinks and snacks are free."
-    },
-    {
-      "id": "/events/233674",
-      "title": "Craft Cafe/Fellowship",
-      "time": "7:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/233674",
-      "source": "pembinavalleyonline.com",
-      "description": "Ladies, join us for a fun evening of making crafts and visiting around the table. Drinks and snacks are free. Bring a friend."
-    },
-    {
-      "id": "/events/229759",
-      "title": "Newcomer Welcome Evening",
-      "time": "7:00 PM · Winkler Arts and Culture Centre, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/229759",
-      "source": "pembinavalleyonline.com",
-      "description": "Newcomer Welcome Evenings are a chance for newcomers and community members to connect, meet new people, and learn more about the Winkler community and the resources available in our area. Each evening features opportunities for conversation and connection, along with information from local organizations and community partners. Everyone is welcome! Food and refreshments are provided."
-    },
-    {
-      "id": "/events/235701",
-      "title": "18+ Hockey - Icon Arena - $5 drop in fee",
-      "time": "8:30 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/235701",
-      "source": "pembinavalleyonline.com",
-      "description": "Happening at the ICON Arena from 8:30am - 9:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
-    },
-    {
-      "id": "/events/233648",
-      "title": "Morning Coffee Time",
-      "time": "9:00 AM · Altona Mall, Altona, MB",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/233648",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us for free drinks and snacks. Bring a friend. Men and women are welcome at this time."
-    },
-    {
-      "id": "/events/232147",
-      "title": "Fitness",
-      "time": "9:00 AM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/232147",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/235656",
-      "title": "Ice for Tots sponsored by Sawatzky&amp;amp;#39;s Furniture &amp;amp;amp; Appliances",
-      "time": "9:45 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-11-18",
-      "link": "https://www.pembinavalleyonline.com/events/235656",
-      "source": "pembinavalleyonline.com",
-      "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
-    },
-    {
       "id": "/events/235606",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -2728,15 +2585,6 @@
       "link": "https://www.pembinavalleyonline.com/events/235606",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
-    },
-    {
-      "id": "/events/231135",
-      "title": "Pembina Valley Men's Prayer Breakfast",
-      "time": "7:00 AM · Triangle Oasis Restaurant (Back room), 880 Triple E Boulevard (PTH14 & 1st Street), Winkler, MB",
-      "date": "2026-11-19",
-      "link": "https://www.pembinavalleyonline.com/events/231135",
-      "source": "pembinavalleyonline.com",
-      "description": "Since 2000, Christian men from around Pembina Valley MB and further have met each Thursday morning for Prayer, Bible Devotions, Missions reports and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. 7:00a Welcome &amp; Devotional 7:15a Missions reports or speaker 7:45a Prayer 8:00a Fellowship over breakfast If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Jake to confirm upcoming meetings."
     },
     {
       "id": "/events/235579",
@@ -2764,15 +2612,6 @@
       "link": "https://www.pembinavalleyonline.com/events/235427",
       "source": "pembinavalleyonline.com",
       "description": "Walking Group Thursdays 9am - 10:30am October 22- December 17 Weather Permitting Meet at Meridian Exhibition Centre All abilities welcome, bring your walkers, canes or walking poles or come without."
-    },
-    {
-      "id": "/events/237119",
-      "title": "Salem Home's Christmas Create and Connect Craft Market",
-      "time": "10:01 AM · Salem Home's Heritage Room, 165 15th Street, Winkler, Manitoba",
-      "date": "2026-11-20",
-      "link": "https://www.pembinavalleyonline.com/events/237119",
-      "source": "pembinavalleyonline.com",
-      "description": "Date: Friday, November 20, 2026 Time: 10:00 AM – 4:00 PM Location: Heritage Room, Salem Home, 165 15th Street, Winkler Join us at Salem Home for the Create and Connect Christmas Craft Market! This special intergenerational event brings together young creators and Salem Home residents for a day of creativity, connection, and community giving. Children aged 16 and under are invited to showcase and sell their handmade crafts, artwork, baked goods, and other unique creations. It’s a wonderful opportunity for young entrepreneurs to share their talents, connect with seniors, and make a difference in their community. Proceeds from the market will support the Winkler Christmas Cheerboard, helping provide Christmas hampers for local families in need. Come out, support our young creators, find some unique Christmas gifts, and be part of a community tradition that celebrates kindness and connection!"
     },
     {
       "id": "/events/235716",
@@ -2854,15 +2693,6 @@
       "link": "https://www.pembinavalleyonline.com/events/234080",
       "source": "pembinavalleyonline.com",
       "description": "Ready to get creative? Join us at the Morden Activity Centre for Acrylic and Watercolor Painting classes. Friday mornings from 9:30am-11am, beginning October 2nd, 2026, with the last class for the season December 11th, 2026. Painting materials will be supplied by the Centre. Small fee of $4 per class to cover the cost of the Materials. Registration is Required To register: Call 204-822-5663, Ext. 3 or email mordensfs@gmail.com"
-    },
-    {
-      "id": "/events/237092",
-      "title": "One-stop Shop in the Hall",
-      "time": "10:00 AM · Carman Community Hall, 60 - 1st Avenue NW, Carman, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/237092",
-      "source": "pembinavalleyonline.com",
-      "description": "Carman Family Resource Centre &amp; Carman Kinettes One-stop Shop in the Hall Vendor and Craft Sale Saturday, November 21, 2026 10:00 am – 3:00 pm Carman Community Hall: 60 – 1st Ave NW Carman, MB Come to the Hall for this annual shopping event, just in time for the holidays! There will be many different crafters and vendors with a great variety of items for sale. The Kinettes will have their raffle tables, and will offer a home-style lunch for purchase. Do all your holiday shopping right here in town! Silver collection at the door. Thank you for your support! For more information, please call 204-745-5571"
     },
     {
       "id": "/events/232382",
@@ -3648,6 +3478,42 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
+      "id": "/events/235679",
+      "title": "Homeschool Skate - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-12-08",
+      "link": "https://www.pembinavalleyonline.com/events/235679",
+      "source": "pembinavalleyonline.com",
+      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/234653",
+      "title": "Floor Curling",
+      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "date": "2026-12-08",
+      "link": "https://www.pembinavalleyonline.com/events/234653",
+      "source": "pembinavalleyonline.com",
+      "description": "Members $4.00 Non-Members $7.00"
+    },
+    {
+      "id": "/events/234680",
+      "title": "Pattern Dance",
+      "time": "5:30 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "date": "2026-12-08",
+      "link": "https://www.pembinavalleyonline.com/events/234680",
+      "source": "pembinavalleyonline.com",
+      "description": "Pattern Dance is a combination of the Foxtrot, Polka and Waltz dances. Beginner Pattern Dance at 5:30pm Advanced Pattern Dance at 7:00pm Members $4.00 Non-Members $7.00"
+    },
+    {
+      "id": "/events/235766",
+      "title": "Gentle Flow Yoga with Ang Hildebrand - Registration required",
+      "time": "6:00 PM · Winkler Arts & Culture, 547 Park St, Winkler, MB",
+      "date": "2026-12-08",
+      "link": "https://www.pembinavalleyonline.com/events/235766",
+      "source": "pembinavalleyonline.com",
+      "description": "✨ Gentle Flow Yoga – A Weekly Reset ✨ Unwind, move mindfully, and build confidence in your practice with our Gentle Flow Yoga class. Designed for beginners and anyone looking for a slower, calming experience, this class blends light stretching, gentle flow sequences, and guided breathing to support mobility, balance, and stress relief. 🕒 Tuesdays, 6-7pm 📍 Winkler Arts &amp; Culture Centre, Winkler 💲 $80 for 8 sessions 🧘 Instructor: Ang Hildebrand 🧺 Mats &amp; equipment provided Whether you’re brand new to yoga or simply seeking a relaxed, welcoming space to move and reset each week, this class is for you. 💙 Take time for yourself—you deserve it. Register at www.playwinkler.ca"
+    },
+    {
       "id": "/events/235599",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -3655,6 +3521,159 @@
       "link": "https://www.pembinavalleyonline.com/events/235599",
       "source": "pembinavalleyonline.com",
       "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/235731",
+      "title": "Senior Skate - FREE - ICON Arena",
+      "time": "8:15 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-12-08",
+      "link": "https://www.pembinavalleyonline.com/events/235731",
+      "source": "pembinavalleyonline.com",
+      "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/236650",
+      "title": "Baby and Me Coffee and Chat",
+      "time": "10:00 AM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
+      "date": "2026-12-09",
+      "link": "https://www.pembinavalleyonline.com/events/236650",
+      "source": "pembinavalleyonline.com",
+      "description": "A drop-in program for parents with babies aged 0-2 (2-3 year old siblings are welcome) Morden Alliance Church in the upstairs nursery. Connect with other parents and bring your little one for a casual drop-in coffee and chat."
+    },
+    {
+      "id": "/events/233664",
+      "title": "Explore the Bible",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-12-09",
+      "link": "https://www.pembinavalleyonline.com/events/233664",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us as well explore the Bible together and see how it relates to our lives. Drinks and snacks are free."
+    },
+    {
+      "id": "/events/233677",
+      "title": "Craft Cafe/Fellowship",
+      "time": "7:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-12-09",
+      "link": "https://www.pembinavalleyonline.com/events/233677",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us for a fun evening of making crafts and visiting around the table. Drinks and snacks are free. Bring a friend."
+    },
+    {
+      "id": "/events/235704",
+      "title": "18+ Hockey - Icon Arena - $5 drop in fee",
+      "time": "8:30 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-12-09",
+      "link": "https://www.pembinavalleyonline.com/events/235704",
+      "source": "pembinavalleyonline.com",
+      "description": "Happening at the ICON Arena from 8:30am - 9:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "/events/233651",
+      "title": "Morning Coffee Time",
+      "time": "9:00 AM · Altona Mall, Altona, MB",
+      "date": "2026-12-09",
+      "link": "https://www.pembinavalleyonline.com/events/233651",
+      "source": "pembinavalleyonline.com",
+      "description": "Join us for free drinks and snacks. Bring a friend. Men and women are welcome at this time."
+    },
+    {
+      "id": "/events/235659",
+      "title": "Ice for Tots sponsored by Sawatzky&amp;amp;#39;s Furniture &amp;amp;amp; Appliances",
+      "time": "9:45 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-12-09",
+      "link": "https://www.pembinavalleyonline.com/events/235659",
+      "source": "pembinavalleyonline.com",
+      "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
+    },
+    {
+      "id": "/events/235609",
+      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
+      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-12-10",
+      "link": "https://www.pembinavalleyonline.com/events/235609",
+      "source": "pembinavalleyonline.com",
+      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
+    },
+    {
+      "id": "/events/235756",
+      "title": "Senior Walking Group - Meridian Exhibition Centre Walking Track - Everyone welcome",
+      "time": "9:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
+      "date": "2026-12-10",
+      "link": "https://www.pembinavalleyonline.com/events/235756",
+      "source": "pembinavalleyonline.com",
+      "description": "Join our Walking Group at the Meridian Exhibition Centre, hosted in partnership with the Winkler Senior Centre. Enjoy a walk, great conversation, and complimentary coffee and snacks afterward. ✅ Get moving ✅ Meet new people ✅ Socialize and have fun Everyone is welcome!"
+    },
+    {
+      "id": "/events/235430",
+      "title": "Senior Walking Group at the Meridian Exhibition Centre",
+      "time": "9:00 AM · Meridian Exhibition Centre, 1045 Grandeur Avenue, Winkler, MB",
+      "date": "2026-12-10",
+      "link": "https://www.pembinavalleyonline.com/events/235430",
+      "source": "pembinavalleyonline.com",
+      "description": "Walking Group Thursdays 9am - 10:30am October 22- December 17 Weather Permitting Meet at Meridian Exhibition Centre All abilities welcome, bring your walkers, canes or walking poles or come without."
+    },
+    {
+      "id": "/events/230893",
+      "title": "Confidence with Tech - Andrea Hiebert",
+      "time": "9:00 AM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
+      "date": "2026-12-10",
+      "link": "https://www.pembinavalleyonline.com/events/230893",
+      "source": "pembinavalleyonline.com",
+      "description": "Do you find yourself wishing you could use your phones/iPads/tablets/computers more confidently? We are excited to offer you Confidence with Tech sessions with Andrea Hiebert at the Centre! These are informal sessions designed to increase your knowledge, ability, and confidence using your devices (such as smartphones, iPads/tablets, and personal computers/laptops)."
+    },
+    {
+      "id": "/events/236423",
+      "title": "WINKLER CHRISTMAS MARKET",
+      "time": "12:00 PM · New Leaf Garden Centre, 875 Boundary Trail, Winkler, Manitoba",
+      "date": "2026-12-11",
+      "link": "https://www.pembinavalleyonline.com/events/236423",
+      "source": "pembinavalleyonline.com",
+      "description": "Join us once again for a magical holiday experience over three weekends leading up to Christmas. The moment you walk into our stunning venue, you will be immersed in the sights, sounds and smells of the holiday season. Nearly 100 market vendors over the three weekends. Santa for the kids and busker performances throughout the day. And for those who have never experienced &quot;Faspa,&quot; here&#39;s your chance! We look forward to sharing the joys of the Christmas season with you all!"
+    },
+    {
+      "id": "/events/233730",
+      "title": "Coffee Fellowship and Crafts",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-12-11",
+      "link": "https://www.pembinavalleyonline.com/events/233730",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
+    },
+    {
+      "id": "/events/232161",
+      "title": "Cribbage Tournament",
+      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "date": "2026-12-11",
+      "link": "https://www.pembinavalleyonline.com/events/232161",
+      "source": "pembinavalleyonline.com",
+      "description": "Members $4.00 Non-Members $7.00"
+    },
+    {
+      "id": "/events/229775",
+      "title": "Art Hive at WAC",
+      "time": "1:00 PM · Winkler Arts and Culture Centre, 547 Park St., Winkler, Manitoba",
+      "date": "2026-12-11",
+      "link": "https://www.pembinavalleyonline.com/events/229775",
+      "source": "pembinavalleyonline.com",
+      "description": "Art Hive is a welcoming, drop-in creative space where people of all backgrounds and abilities can come together to make art and connect. Led by Yael Fehr, each session offers a simple, guided activity - no experience needed. Every 2nd and 4th Fridays from 1pm - 2:30pm. This program is free - funding generously provided by Southern Health. Whether you come on your own or with a group, Art Hive is about building community, sharing space, and creating something side by side."
+    },
+    {
+      "id": "/events/234083",
+      "title": "Art Class - Acrylic &amp; Watercolor Painting",
+      "time": "9:30 AM · Morden Activity Centre, 306 North Railway Street, Morden, Manitoba",
+      "date": "2026-12-11",
+      "link": "https://www.pembinavalleyonline.com/events/234083",
+      "source": "pembinavalleyonline.com",
+      "description": "Ready to get creative? Join us at the Morden Activity Centre for Acrylic and Watercolor Painting classes. Friday mornings from 9:30am-11am, beginning October 2nd, 2026, with the last class for the season December 11th, 2026. Painting materials will be supplied by the Centre. Small fee of $4 per class to cover the cost of the Materials. Registration is Required To register: Call 204-822-5663, Ext. 3 or email mordensfs@gmail.com"
+    },
+    {
+      "id": "/events/236547",
+      "title": "Comfort & Joy Christmas Market",
+      "time": "11:00 AM · Buttercup Cafe & Celebration Hall, 21067 Rd 14 N, Stanley, Manitoba",
+      "date": "2026-12-12",
+      "link": "https://www.pembinavalleyonline.com/events/236547",
+      "source": "pembinavalleyonline.com",
+      "description": "Celebrate the warmth and magic of the season at Buttercup Celebration Hall! Join us accross three weekends of holiday cheer, local shopping and festive community connection: November 21 &amp; 22 | November 28 &amp; 29 | December 5 &amp; 6 What to expect: Free admission: Explore a beautifully decorated Holiday market showcasing talented local makers and unique gifts. - Cafe &amp; Bar: Enjoy delicious bites and festive drinks from our open Cafe and Hall Bar while you stroll. - A cozy atmosphere: The perfect place for meaningful visits with family and friends. Vendor Opportunities: We offer hospitality focused vendor care. Including free coffee, water snacks and relief breaks. Apply now at Buttercupcafe.ca"
     }
   ]
 }
