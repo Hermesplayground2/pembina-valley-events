@@ -316,6 +316,12 @@ def fetch_events(max_days: int = 14, max_pages: int = 30) -> list[dict[str, Any]
     seen_ids: set[str] = set()
     seen_title_date: set[tuple[str, str]] = set()
     pages_fetched = 0
+    # The source re-serves overlapping slices of the calendar, so a page can
+    # come back entirely duplicate without meaning the calendar is exhausted.
+    # Stopping on the FIRST such page truncated the crawl by 4-5 pages run to
+    # run (374-425 events from an identical source). Tolerate a short streak,
+    # and treat a genuinely empty page as the real end.
+    empty_streak = 0
 
     for page in range(1, max_pages + 1):
         url = f"https://www.pembinavalleyonline.com/events?page={page}"
@@ -359,9 +365,18 @@ def fetch_events(max_days: int = 14, max_pages: int = 30) -> list[dict[str, Any]
             all_events.append(e)
             new_count += 1
 
-        if new_count == 0:
-            log(f"page {page}: no new events — stopping")
+        if not page_events:
+            log(f"page {page}: empty page — end of pagination")
             break
+
+        if new_count == 0:
+            empty_streak += 1
+            log(f"page {page}: no new events (streak {empty_streak}/3)")
+            if empty_streak >= 3:
+                log("3 consecutive pages with no new events — stopping")
+                break
+            continue
+        empty_streak = 0
 
         if page_events:
             latest = max(
