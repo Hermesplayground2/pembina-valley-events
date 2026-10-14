@@ -25,6 +25,29 @@ REPO = Path(__file__).resolve().parent
 LOG = REPO / "logs"
 LOG.mkdir(parents=True, exist_ok=True)
 
+
+def site_today() -> datetime.date:
+    """Today's date in the EVENT SITE's local timezone (Manitoba).
+
+    The cloud VM runs on UTC, which is 5-6 hours AHEAD of the Pembina Valley.
+    Anchoring the window to the host date there makes the current day's events
+    look like they are in the past every evening, so events get dropped and the
+    site appears to lose a day of listings. Use the events' own timezone.
+    """
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.datetime.now(ZoneInfo("America/Winnipeg")).date()
+    except Exception:
+        # No tzdata available: Manitoba is UTC-6 (CST) / UTC-5 (CDT).
+        utc = datetime.datetime.now(datetime.timezone.utc)
+        y = utc.year
+        mar = datetime.datetime(y, 3, 8, tzinfo=datetime.timezone.utc)
+        mar += datetime.timedelta(days=(6 - mar.weekday()) % 7)   # 2nd Sunday
+        nov = datetime.datetime(y, 11, 1, tzinfo=datetime.timezone.utc)
+        nov += datetime.timedelta(days=(6 - nov.weekday()) % 7)   # 1st Sunday
+        offset = -5 if mar <= utc < nov else -6
+        return (utc + datetime.timedelta(hours=offset)).date()
+
 def fetch_page(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as resp:
@@ -259,7 +282,7 @@ def main():
             })
     
     # 4. Filter: only events with dates, drop past events, drop gambling/pride
-    today = datetime.date.today()
+    today = site_today()
     window_end = today + datetime.timedelta(days=60)
     filtered = []
     dropped = []
@@ -329,7 +352,7 @@ def main():
                        capture_output=True, text=True)
         subprocess.run(
             ["git", "commit", "-m",
-             f"auto: update events.json ({len(unique)} events, {datetime.date.today()})"],
+             f"auto: update events.json ({len(unique)} events, {site_today()})"],
             cwd=str(REPO), check=True, capture_output=True, text=True)
         subprocess.run(["git", "push", "origin", "main"], cwd=str(REPO), check=True,
                        capture_output=True, text=True)

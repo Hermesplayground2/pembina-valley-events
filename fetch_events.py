@@ -42,6 +42,30 @@ REPO_DIR = Path(__file__).resolve().parent
 EVENTS_JSON = REPO_DIR / "events.json"
 LOG_PREFIX = "[fetch_events]"
 
+
+def site_today() -> datetime.date:
+    """Today's date in the EVENT SITE's local timezone (Manitoba).
+
+    The cloud VM runs on UTC, which is 5-6 hours AHEAD of the Pembina Valley.
+    Anchoring the window to the host date there makes the current day's events
+    look like they are in the past every evening, so the fetcher reports 0
+    events and the daily crawl stops on page 1. Use the events' own timezone.
+    """
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.datetime.now(ZoneInfo("America/Winnipeg")).date()
+    except Exception:
+        # No tzdata available: Manitoba is UTC-6 (CST) / UTC-5 (CDT).
+        # Approximate DST with the US rule so the date is still right.
+        utc = datetime.datetime.now(datetime.timezone.utc)
+        y = utc.year
+        mar = datetime.datetime(y, 3, 8, tzinfo=datetime.timezone.utc)
+        mar += datetime.timedelta(days=(6 - mar.weekday()) % 7)   # 2nd Sunday
+        nov = datetime.datetime(y, 11, 1, tzinfo=datetime.timezone.utc)
+        nov += datetime.timedelta(days=(6 - nov.weekday()) % 7)   # 1st Sunday
+        offset = -5 if mar <= utc < nov else -6
+        return (utc + datetime.timedelta(hours=offset)).date()
+
 # ---------------------------------------------------------------------------
 # Filtering
 # ---------------------------------------------------------------------------
@@ -224,7 +248,7 @@ def parse_single_page(html: str, max_age_days: int = 14) -> list[dict[str, Any]]
     of today.
     """
     events: list[dict[str, Any]] = []
-    today = datetime.date.today()
+    today = site_today()
     window_end = today + datetime.timedelta(days=max_age_days)
     seen_ids: set[str] = set()
 
@@ -287,7 +311,7 @@ def fetch_events(max_days: int = 14, max_pages: int = 30) -> list[dict[str, Any]
     next `max_days`.
     """
     all_events: list[dict[str, Any]] = []
-    today = datetime.date.today()
+    today = site_today()
     window_end = today + datetime.timedelta(days=max_days)
     seen_ids: set[str] = set()
     seen_title_date: set[tuple[str, str]] = set()
@@ -482,7 +506,7 @@ def run() -> int:
 
     msg = (
         f"auto: update events.json ({len(kept)} events, "
-        f"{datetime.date.today().isoformat()})"
+        f"{site_today().isoformat()})"
     )
     log("committing and pushing")
     if not git_commit_push(EVENTS_JSON, msg):
