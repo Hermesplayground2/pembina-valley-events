@@ -17,7 +17,12 @@ from pathlib import Path
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 BASE = "https://pembinavalley.gwevents.ca"
-LOG = Path("C:/tmp/pembina_src/logs")
+# Portable: resolve relative to this file so the same script runs on the Windows
+# host AND the Linux cloud VM. A hardcoded "C:/..." path is an ABSOLUTE path on
+# Windows but a RELATIVE one on Linux, where it recreates the whole tree as junk
+# directories inside the repo and commits a bogus "C:/..." path into git.
+REPO = Path(__file__).resolve().parent
+LOG = REPO / "logs"
 LOG.mkdir(parents=True, exist_ok=True)
 
 def fetch_page(url: str) -> str:
@@ -301,7 +306,7 @@ def main():
         "events": unique,
     }
     
-    out_path = Path("C:/tmp/pembina_src/events.json")
+    out_path = REPO / "events.json"
     # Windows-safe atomic write (can't rename over existing file)
     tmp_path = out_path.with_suffix(".tmp")
     with open(tmp_path, "w", encoding="utf-8") as f:
@@ -313,12 +318,25 @@ def main():
     
     print(f"  wrote {out_path} ({out_path.stat().st_size} bytes, {len(unique)} events)")
     
-    # 7. Commit and push
+    # 7. Commit and push.
+    # Deliberately NON-FATAL: the publish guard owns publication and re-publishes
+    # the better of (new, last-good). A rejected push here (remote moved ahead,
+    # e.g. the cloud VM already published) must not abort the fetch and throw
+    # away a valid payload.
     import subprocess
-    subprocess.run(["git", "add", "events.json"], cwd="C:/tmp/pembina_src", check=True)
-    subprocess.run(["git", "commit", "-m", f"auto: update events.json ({len(unique)} events, {datetime.date.today()})"], cwd="C:/tmp/pembina_src", check=True)
-    subprocess.run(["git", "push", "origin", "main"], cwd="C:/tmp/pembina_src", check=True)
-    print("  committed and pushed")
+    try:
+        subprocess.run(["git", "add", "events.json"], cwd=str(REPO), check=True,
+                       capture_output=True, text=True)
+        subprocess.run(
+            ["git", "commit", "-m",
+             f"auto: update events.json ({len(unique)} events, {datetime.date.today()})"],
+            cwd=str(REPO), check=True, capture_output=True, text=True)
+        subprocess.run(["git", "push", "origin", "main"], cwd=str(REPO), check=True,
+                       capture_output=True, text=True)
+        print("  committed and pushed")
+    except subprocess.CalledProcessError as exc:
+        detail = (exc.stderr or exc.stdout or "").strip().splitlines()
+        print(f"  git step skipped ({detail[-1] if detail else exc}) — guard will publish")
     
     print(f"[{timestamp}] done")
 
