@@ -523,6 +523,19 @@ function combineDateTime(dateStr, timeStr) {
     });
   }
 
+  function formatDealDates(d) {
+    const today = new Date().toISOString().slice(0, 10);
+    const from = d.valid_from || '–';
+    const until = d.valid_until;
+    const expired = until && until < today;
+    const startsFuture = from && from > today;
+    let label = from === '–' ? 'Anfrage erforderlich' : `Start: ${from}`;
+    label += until ? ` · Ende: ${until}` : ' · Fortlaufend';
+    if (expired) label += ' ❌ ABGELAUFEN';
+    if (startsFuture) label += ' (Start ' + from + ')';
+    return label;
+  }
+
   function renderBargains() {
     const box = document.getElementById('bargain-list');
     if (!box) return;
@@ -543,11 +556,14 @@ function combineDateTime(dateStr, timeStr) {
         const tagLabel = d.category === 'Pizza' ? 'Pizza' : d.category === 'Event' ? 'Event' : 'Restaurant';
         const card = document.createElement('div');
         card.className = 'deal-card';
+        const isExpired = d.valid_until && d.valid_until < new Date().toISOString().slice(0, 10);
+        if (isExpired) card.style.opacity = '0.45';
+        if (isExpired) card.style.borderColor = 'rgba(239,68,68,0.3)';
         card.innerHTML = `
-          <div class="deal-name">${d.name.replace(/</g,'&lt;')}<span class="deal-tag ${tagClass}">${tagLabel}</span></div>
+          <div class="deal-name">${d.name.replace(/</g,'&lt;')}<span class="deal-tag ${tagClass}">${tagLabel}</span>${isExpired ? '<span class="deal-tag" style="background:rgba(239,68,68,0.25);color:#fca5a5;border:1px solid rgba(239,68,68,0.35);">Ended</span>' : ''}</div>
           <div class="deal-loc">📍 ${d.location} · ${d.address || ''}</div>
           <div class="deal-text">${d.deal.replace(/</g,'&lt;')}</div>
-          <div class="deal-meta">${d.validity || ''}${d.phone ? ' · 📞 ' + d.phone : ''}${d.delivery ? ' · 🚚 ' + d.delivery : ''}</div>
+          <div class="deal-meta">📅 ${formatDealDates(d)}${d.phone ? ' · 📞 ' + d.phone : ''}${d.delivery ? ' · 🚚 ' + d.delivery : ''}</div>
           ${d.notes ? '<div class="deal-meta" style="font-style:italic;">' + d.notes.replace(/</g,'&lt;') + '</div>' : ''}
           <div style="margin-top:10px;">
             <a class="deal-link" href="${d.url}" target="_blank" rel="noopener">Visit / Order →</a>

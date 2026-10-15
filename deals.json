@@ -10,7 +10,8 @@
       "url": "https://pizzapizza.ca/restaurant-locator/manitoba/winkler/955-main-st",
       "deal": "50% off up to 3 eligible pizzas all weekend (code 50OFF)",
       "deal_type": "weekend",
-      "validity": "Ongoing — check site for current promo",
+      "valid_from": "2026-09-04",
+      "valid_until": "2026-10-31",
       "delivery": "Yes (DoorDash)",
       "notes": "By-the-slice available; gluten-free & dairy-free options"
     },
@@ -22,7 +23,8 @@
       "url": "https://pizza.dominos.ca/Winkler-Manitoba-10217/coupons",
       "deal": "Coupons & deals — check coupon page for current offers",
       "deal_type": "coupon",
-      "validity": "Rotating",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "5 crust types incl. gluten-free; wings, pasta bowls, lava cake"
     },
@@ -34,7 +36,8 @@
       "url": "https://doordash.com/store/pizza-by-chat-masala-%E2%80%93-indian-fusion-pizzas-winkler-40013166/",
       "deal": "DoorDash deals — 20%+ off select orders",
       "deal_type": "delivery",
-      "validity": "Check DoorDash",
+      "valid_from": "2026-10-01",
+      "valid_until": "2026-12-31",
       "delivery": "Yes (DoorDash)",
       "notes": "Indian fusion pizzas — Butter Chicken, Paneer Tikka, Peri-Peri Chicken. Halal."
     },
@@ -46,7 +49,8 @@
       "url": "https://bostonpizza.com/",
       "deal": "20% off CA$50+ orders (DoorDash)",
       "deal_type": "delivery",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "Wings, burgers, wraps, salads; dine-in & takeout"
     },
@@ -58,7 +62,8 @@
       "url": "https://doordash.com/store/santa-lucia-pizza-morden",
       "deal": "20% off CA$40+ (DoorDash)",
       "deal_type": "delivery",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "Gyro pizza, Greek pizza, mozzarella bread sticks, wings"
     },
@@ -71,7 +76,8 @@
       "url": "https://littlecaesars.com/",
       "deal": "Hot-N-Ready $5 large pizza — no waiting",
       "deal_type": "everyday",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "Crazy Bread, Crazy Puffs bundles"
     },
@@ -83,7 +89,8 @@
       "url": "https://www.doordash.com/store/leparq-pizzeria-morden-24923687/",
       "deal": "Top-rated artisan pizza — sourdough crust, local ingredients",
       "deal_type": "premium",
-      "validity": "Menu pricing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "4.8★ — Fennel Sausage & Red Onion, Meatball Margherita, Bacon & Ricotta"
     },
@@ -95,7 +102,8 @@
       "url": "https://www.tripadvisor.ca/Restaurant_Review-g316025-d3437813-Reviews-Rocks_Bar_Grill-Morden_Manitoba.html",
       "deal": "Wing Night Tue & Thu — 20+ flavours, $10.99+tax. Daily drink specials. Live entertainment Fri & Sat.",
       "deal_type": "weekly",
-      "validity": "Weekly recurring",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "No",
       "notes": "300-seat venue, dance floor, VLTs, pool tables; fundraisers for local charities"
     },
@@ -107,7 +115,8 @@
       "url": "https://doordash.com/store/chicken-chef-morden/",
       "deal": "Chicken Finger Platter with Poutine — combo deals",
       "deal_type": "combo",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "Chicken, pizza, Beyond Burger, garden salad"
     },
@@ -119,7 +128,8 @@
       "url": "https://www.dairyqueen.com/",
       "deal": "Blizzard of the Month — monthly special",
       "deal_type": "monthly",
-      "validity": "Monthly rotating",
+      "valid_from": "2026-10-01",
+      "valid_until": "2026-10-31",
       "delivery": "Yes (DoorDash)",
       "notes": "Burgers, sundaes, Dilly Bars"
     },
@@ -132,7 +142,8 @@
       "url": "https://doordash.com/",
       "deal": "Smash Burger, Philly Cheesesteak Poutine Basket, Quesabirria Tacos",
       "deal_type": "menu",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (DoorDash)",
       "notes": "4.5★ — burgers, poutine, wings, onion rings"
     },
@@ -145,7 +156,8 @@
       "url": "https://pizzahaven.ca/",
       "deal": "Soccer Strike — $6.25 large pizza (Chipper Sauce, Chicken, Green Pepper, Purple Onion, Black Olives). Bacon Poutine $9.82. Cheese Sticks $11.82.",
       "deal_type": "menu",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes — $6 within Altona; delivery to Morden/Winkler area",
       "notes": "Dine-in, takeout, online ordering. Breakfast & dinner."
     },
@@ -158,7 +170,8 @@
       "url": "https://www.clover.com/online-ordering/angs-pizza--bakery-altona",
       "deal": "Online ordering via Clover — daily specials",
       "deal_type": "menu",
-      "validity": "Ongoing",
+      "valid_from": "2026-01-01",
+      "valid_until": null,
       "delivery": "Yes (Clover)",
       "notes": "Pizza, bakery items, sandwiches"
     },
@@ -170,7 +183,8 @@
       "url": "https://www.altonachamber.com/burgerweekburgers",
       "deal": "Burger Week — special burgers at participating Altona restaurants",
       "deal_type": "event",
-      "validity": "Annual event — check chamber site",
+      "valid_from": "2026-09-15",
+      "valid_until": "2026-09-28",
       "delivery": "No",
       "notes": "Altona & Area Chamber of Commerce event"
     }
