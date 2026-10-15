@@ -313,6 +313,7 @@ function combineDateTime(dateStr, timeStr) {
       if (page === 'activities') { try { buildActivityWeek(); } catch (e) { console.error(e); } }
       if (page === 'family') { try { renderFamilyEvents(); } catch (e) { console.error(e); } }
       if (page === 'fundraiser') { try { renderFundraisers(); } catch (e) { console.error(e); } }
+      if (page === 'bargains') { try { renderBargains(); } catch (e) { console.error(e); } }
       if (page === 'weather') { try { loadWeather(); } catch (e) { console.error(e); } }
     } catch (e) {
       console.error('activatePage error', e);
@@ -519,6 +520,61 @@ function combineDateTime(dateStr, timeStr) {
         </div>
       `;
       box.appendChild(card);
+    });
+  }
+
+  function renderBargains() {
+    const box = document.getElementById('bargain-list');
+    if (!box) return;
+    box.innerHTML = '';
+
+    let deals = [];
+    fetch('deals.json', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => { deals = data.deal_sources || []; renderDealCards(deals); })
+      .catch(() => {
+        box.innerHTML = '<p class="muted" style="padding:12px;">Deals loading failed — please refresh.</p>';
+      });
+
+    function renderDealCards(list) {
+      box.innerHTML = '';
+      list.forEach(d => {
+        const tagClass = d.category === 'Pizza' ? 'tag-pizza' : d.category === 'Event' ? 'tag-event' : 'tag-rest';
+        const tagLabel = d.category === 'Pizza' ? 'Pizza' : d.category === 'Event' ? 'Event' : 'Restaurant';
+        const card = document.createElement('div');
+        card.className = 'deal-card';
+        card.innerHTML = `
+          <div class="deal-name">${d.name.replace(/</g,'&lt;')}<span class="deal-tag ${tagClass}">${tagLabel}</span></div>
+          <div class="deal-loc">📍 ${d.location} · ${d.address || ''}</div>
+          <div class="deal-text">${d.deal.replace(/</g,'&lt;')}</div>
+          <div class="deal-meta">${d.validity || ''}${d.phone ? ' · 📞 ' + d.phone : ''}${d.delivery ? ' · 🚚 ' + d.delivery : ''}</div>
+          ${d.notes ? '<div class="deal-meta" style="font-style:italic;">' + d.notes.replace(/</g,'&lt;') + '</div>' : ''}
+          <div style="margin-top:10px;">
+            <a class="deal-link" href="${d.url}" target="_blank" rel="noopener">Visit / Order →</a>
+          </div>
+        `;
+        box.appendChild(card);
+      });
+      const note = document.createElement('p');
+      note.className = 'notes-text';
+      note.textContent = '💡 Deals change often — always confirm current offers with the restaurant. Last updated: ' + (deals.length > 0 ? '' : 'loading...');
+      box.appendChild(note);
+    }
+
+    // Filter buttons
+    const filterBtns = document.querySelectorAll('#page-bargains .filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        const filtered = f === 'all' ? deals : deals.filter(d =>
+          f === 'pizza' ? d.category === 'Pizza' :
+          f === 'rest' ? (d.category !== 'Pizza' && d.category !== 'Event') :
+          d.category === 'Event'
+        );
+        renderDealCards(filtered);
+      });
     });
   }
 
