@@ -287,6 +287,7 @@ function combineDateTime(dateStr, timeStr) {
       return;
     }
 
+    todays.sort((a, b) => timeToSort(a.time) - timeToSort(b.time));
     todays.forEach(ev => {
       const el = document.createElement('a');
       el.className = 'day-event bubble';
