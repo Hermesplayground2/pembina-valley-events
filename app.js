@@ -435,6 +435,15 @@ function combineDateTime(dateStr, timeStr) {
   // ── Fundraisers ─────────────────────────────────────────────────────────
   const FUNDRAISERS = [
     {
+      title: "Support Pembina Valley Events",
+      date: "Ongoing",
+      time: "Pembina, MB",
+      link: "https://www.buymeacoffee.com/ViktordeBoom",
+      description: "If you like this website and want to support me for future endeavors, please support me by buying me a coffee.",
+      source: "BuyMeACoffee",
+      category: "support"
+    },
+    {
       title: "Help Peter Wolfe get vision-saving eye surgery",
       date: "Ongoing",
       time: "Winkler, MB",
@@ -501,8 +510,8 @@ function combineDateTime(dateStr, timeStr) {
       card.style.marginBottom = '12px';
       card.style.padding = '14px';
 
-      const badgeColor = fr.category === 'medical' ? '#dc2626' : fr.category === 'emergency' ? '#f59e0b' : '#10b981';
-      const badgeText = fr.category === 'medical' ? 'Medical' : fr.category === 'emergency' ? 'Emergency' : 'Charity';
+      const badgeColor = fr.category === 'medical' ? '#dc2626' : fr.category === 'emergency' ? '#f59e0b' : fr.category === 'support' ? '#0d9488' : '#10b981';
+      const badgeText = fr.category === 'medical' ? 'Medical' : fr.category === 'emergency' ? 'Emergency' : fr.category === 'support' ? 'Support Site' : 'Charity';
 
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
