@@ -639,20 +639,20 @@
   /* --- Hero weather effects layer (storm / snow / rain) --- */
   #weatherFx { position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; border-radius:16px; }
   #weatherFx .fx-cloud {
-    position:absolute; width:210px; height:80px; border-radius:999px;
+    position:absolute; width:220px; height:84px; border-radius:999px;
     background:
-      radial-gradient(ellipse at 28% 72%, rgba(15,23,42,0.9), transparent 68%),
-      radial-gradient(ellipse at 58% 58%, rgba(30,41,59,0.85), transparent 70%),
-      radial-gradient(ellipse at 84% 76%, rgba(15,23,42,0.8), transparent 70%);
-    filter: blur(3px); opacity:0.92;
+      radial-gradient(ellipse at 28% 74%, rgba(15,23,42,0.72), transparent 66%),
+      radial-gradient(ellipse at 58% 56%, rgba(30,41,59,0.68), transparent 68%),
+      radial-gradient(ellipse at 84% 78%, rgba(15,23,42,0.62), transparent 68%);
+    filter: blur(5px); opacity:0.9;
     animation: fxCloudDrift 9s ease-in-out infinite;
   }
   #weatherFx .fx-cloud-snow {
     background:
-      radial-gradient(ellipse at 30% 70%, rgba(203,213,225,0.8), transparent 70%),
-      radial-gradient(ellipse at 65% 60%, rgba(226,232,240,0.7), transparent 70%);
-    filter: blur(4px);
-    opacity:0.85;
+      radial-gradient(ellipse at 30% 72%, rgba(203,213,225,0.62), transparent 68%),
+      radial-gradient(ellipse at 65% 58%, rgba(226,232,240,0.52), transparent 68%);
+    filter: blur(6px);
+    opacity:0.8;
   }
   @keyframes fxCloudDrift {
     0%, 100% { transform: translateX(-14%); }
@@ -694,9 +694,9 @@
     63% { opacity:0; }
   }
   #weatherFx .fx-rain-drop {
-    position:absolute; top:-28px; width:3px; height:32px; border-radius:999px;
-    background: linear-gradient(180deg, rgba(224,242,254,0.98), rgba(96,165,250,0.75));
-    box-shadow: 0 0 6px rgba(147,197,253,0.5);
+    position:absolute; top:-30px; width:2px; height:30px; border-radius:999px;
+    background: linear-gradient(180deg, rgba(224,242,254,0.9), rgba(96,165,250,0.4));
+    filter: blur(0.4px);
     animation: fxStormRain 0.8s linear infinite;
   }
   #weatherFx .fx-rain-soft { height:20px; animation: fxRainFall 1s linear infinite; }
@@ -711,8 +711,9 @@
     100% { transform: translate3d(-24px,470px,0) rotate(8deg); opacity:0; }
   }
   #weatherFx .fx-flake {
-    position:absolute; top:-26px; color:#f8fafc;
-    text-shadow: 0 0 6px rgba(226,232,240,0.85);
+    position:absolute; top:-26px; border-radius:50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(226,232,240,0.5) 45%, transparent 72%);
+    filter: blur(0.5px);
     animation: fxSnowFall linear infinite;
     will-change: transform;
   }
@@ -722,8 +723,8 @@
     100% { transform: translate3d(var(--sway,50px),480px,0) rotate(320deg); opacity:0.1; }
   }
   #weatherFx .fx-snowground {
-    position:absolute; left:0; right:0; bottom:0; height:46px;
-    background: linear-gradient(180deg, rgba(241,245,249,0), rgba(241,245,249,0.75));
+    position:absolute; left:0; right:0; bottom:0; height:38px;
+    background: linear-gradient(180deg, rgba(241,245,249,0), rgba(241,245,249,0.5));
     border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     animation: fxSnowGround 7s ease-in-out infinite;
   }
@@ -1829,6 +1830,6 @@ function copyEventDetails(title, time, date, location) {
 </script>
 
 
-<script src="/app.js?v=1793986761"></script>
+<script src="/app.js?v=1793987248"></script>
 </body>
 </html>
