@@ -742,6 +742,7 @@ if (document.readyState === 'loading') {
       updateActivities(15, 10, 3);
       updateWeatherPlan(15, 3);
       setWeatherVideo(3, 15);
+      setWeatherFx(3);
       if (heroCond) heroCond.textContent = 'Weather unavailable';
       const imgSrc = pickWeatherImage(code || 3, 15);
       const heroImg = document.getElementById('heroWeatherImage');
@@ -774,6 +775,7 @@ if (document.readyState === 'loading') {
         updateWeatherPlan(cw.temperature, cw.weathercode);
         if (weatherCache.daily) renderWeekly(weatherCache.daily);
         setWeatherVideo(cw.weathercode, cw.temperature);
+        setWeatherFx(cw.weathercode);
         return;
       }
 
@@ -796,6 +798,7 @@ if (document.readyState === 'loading') {
       updateWeatherPlan(cw.temperature, cw.weathercode);
       if (data.daily) renderWeekly(data.daily);
       setWeatherVideo(cw.weathercode, cw.temperature);
+      setWeatherFx(cw.weathercode);
     } catch (e) {
       clearTimeout(fallbackTimer);
       console.warn('Weather fallback triggered:', e);
@@ -819,14 +822,15 @@ if (document.readyState === 'loading') {
     const video = document.getElementById('heroWeatherVideo');
     if (!video) return;
     const hour = new Date().getHours();
-    const isPrecip = code >= 51 && code <= 99;
-    const isClear = code <= 3;
+    const isStorm = code >= 95 && code <= 99;
+    const isSnow = (code >= 68 && code <= 77) || code === 85 || code === 86;
+    const isRain = (code >= 51 && code <= 67) || (code >= 80 && code <= 82);
+    const isNight = hour < 6 || hour >= 20;
     let src = 'weather-media/day.mp4?v=1788408739';
-    if (isPrecip) {
+    if (isRain || isStorm) {
       src = 'weather-media/rain.mp4?v=1788408739';
-    } else if (isClear && (hour < 6 || hour >= 20)) {
-      src = 'weather-media/night.mp4?v=1788408739';
-    } else if (!isClear && (hour < 6 || hour >= 20)) {
+    }
+    if (isNight) {
       src = 'weather-media/night.mp4?v=1788408739';
     }
     const currentSrc = video.src ? video.src.split('/').pop() : '';
@@ -864,6 +868,69 @@ if (document.readyState === 'loading') {
         if (overlay) overlay.style.opacity = '1';
       }, { once: true });
     }, 600);
+  }
+
+  // Build the animated weather-effects layer for the hero (storm / snow / rain).
+  function setWeatherFx(code) {
+    const fx = document.getElementById('weatherFx');
+    if (!fx) return;
+    fx.innerHTML = '';
+    const isStorm = code >= 95 && code <= 99;
+    const isSnow = (code >= 68 && code <= 77) || code === 85 || code === 86;
+    const isRain = (code >= 51 && code <= 67) || (code >= 80 && code <= 82);
+    if (isStorm) {
+      for (let i = 0; i < 3; i++) {
+        const c = document.createElement('div');
+        c.className = 'fx-cloud';
+        c.setAttribute('style', 'left:' + (-12 + i * 32) + '%;top:' + (-18 + i * 7) + 'px;width:' + (160 + i * 34) + 'px;height:' + (58 + i * 10) + 'px;animation-delay:' + (i * 1.4) + 's;');
+        fx.appendChild(c);
+      }
+      const flash = document.createElement('div');
+      flash.className = 'fx-flash';
+      fx.appendChild(flash);
+      const bolt = document.createElement('div');
+      bolt.className = 'fx-lightning';
+      fx.appendChild(bolt);
+      const bolt2 = document.createElement('div');
+      bolt2.className = 'fx-lightning';
+      bolt2.setAttribute('style', 'left:32%;top:24%;transform:scale(0.72) scaleX(-1);animation-delay:2.7s;');
+      fx.appendChild(bolt2);
+      for (let i = 0; i < 46; i++) {
+        const d = document.createElement('div');
+        d.className = 'fx-rain-drop';
+        d.setAttribute('style', 'left:' + (Math.random() * 104) + '%;animation-duration:' + (0.55 + Math.random() * 0.5) + 's;animation-delay:' + (Math.random() * 1.4) + 's;');
+        fx.appendChild(d);
+      }
+      const gust = document.createElement('div');
+      gust.className = 'fx-gust';
+      fx.appendChild(gust);
+    } else if (isSnow) {
+      for (let i = 0; i < 2; i++) {
+        const c = document.createElement('div');
+        c.className = 'fx-cloud fx-cloud-snow';
+        c.setAttribute('style', 'left:' + (6 + i * 40) + '%;top:' + (-12 + i * 9) + 'px;width:' + (150 + i * 34) + 'px;height:' + (48 + i * 9) + 'px;animation-delay:' + (i * 1.9) + 's;');
+        fx.appendChild(c);
+      }
+      const glyphs = ['❄', '❅', '❆', '•'];
+      for (let i = 0; i < 34; i++) {
+        const f = document.createElement('div');
+        f.className = 'fx-flake';
+        f.textContent = glyphs[i % glyphs.length];
+        const size = 8 + Math.random() * 15;
+        f.setAttribute('style', 'left:' + (Math.random() * 100) + '%;font-size:' + size.toFixed(0) + 'px;animation-duration:' + (4.5 + Math.random() * 5.5) + 's;animation-delay:' + (Math.random() * 6) + 's;--sway:' + (Math.random() * 130 - 65).toFixed(0) + 'px;');
+        fx.appendChild(f);
+      }
+      const ground = document.createElement('div');
+      ground.className = 'fx-snowground';
+      fx.appendChild(ground);
+    } else if (isRain) {
+      for (let i = 0; i < 26; i++) {
+        const d = document.createElement('div');
+        d.className = 'fx-rain-drop fx-rain-soft';
+        d.setAttribute('style', 'left:' + (Math.random() * 104) + '%;animation-duration:' + (0.85 + Math.random() * 0.6) + 's;animation-delay:' + (Math.random() * 1.4) + 's;');
+        fx.appendChild(d);
+      }
+    }
   }
 
   function weatherIconHTML(code) {

@@ -636,6 +636,90 @@
     0%, 100% { filter: hue-rotate(0deg) brightness(1); }
     50% { filter: hue-rotate(8deg) brightness(1.05); }
   }
+  /* --- Hero weather effects layer (storm / snow / rain) --- */
+  #weatherFx { position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; border-radius:16px; }
+  #weatherFx .fx-cloud {
+    position:absolute; width:170px; height:60px; border-radius:999px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(15,23,42,0.92), rgba(51,65,85,0.55));
+    filter: blur(1px); opacity:0.85;
+    animation: fxCloudDrift 9s ease-in-out infinite;
+  }
+  #weatherFx .fx-cloud-snow {
+    background: radial-gradient(ellipse at 50% 100%, rgba(148,163,184,0.78), rgba(203,213,225,0.35));
+    opacity:0.7;
+  }
+  @keyframes fxCloudDrift {
+    0%, 100% { transform: translateX(-14%); }
+    50% { transform: translateX(14%); }
+  }
+  #weatherFx .fx-flash {
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 55% 12%, rgba(191,219,254,0.55), transparent 62%);
+    opacity:0; animation: fxLightning 5.4s linear infinite;
+  }
+  #weatherFx .fx-lightning {
+    position:absolute; top:30%; left:54%; width:46px; height:120px;
+    background: linear-gradient(180deg, #fefce8, #fde047 45%, #f59e0b);
+    clip-path: polygon(60% 0, 20% 52%, 46% 52%, 34% 100%, 88% 44%, 58% 44%, 82% 0);
+    filter: drop-shadow(0 0 16px rgba(253,224,71,0.95));
+    opacity:0; animation: fxLightning 5.4s linear infinite;
+  }
+  @keyframes fxLightning {
+    0%, 100% { opacity:0; }
+    4% { opacity:1; }
+    7% { opacity:0.12; }
+    10% { opacity:0.85; }
+    15% { opacity:0; }
+    63% { opacity:0; }
+    66% { opacity:0.7; }
+    70% { opacity:0; }
+  }
+  #weatherFx .fx-rain-drop {
+    position:absolute; top:-24px; width:2px; height:26px; border-radius:999px;
+    background: linear-gradient(180deg, rgba(186,230,253,0.95), rgba(59,130,246,0.5));
+    animation: fxStormRain 0.8s linear infinite;
+  }
+  #weatherFx .fx-rain-soft { height:20px; animation: fxRainFall 1s linear infinite; }
+  @keyframes fxStormRain {
+    0% { transform: translate3d(0,-24px,0) rotate(14deg); opacity:0; }
+    18% { opacity:0.95; }
+    100% { transform: translate3d(-70px,470px,0) rotate(14deg); opacity:0; }
+  }
+  @keyframes fxRainFall {
+    0% { transform: translate3d(0,-24px,0) rotate(8deg); opacity:0; }
+    18% { opacity:0.7; }
+    100% { transform: translate3d(-24px,470px,0) rotate(8deg); opacity:0; }
+  }
+  #weatherFx .fx-flake {
+    position:absolute; top:-26px; color:#f8fafc;
+    text-shadow: 0 0 6px rgba(226,232,240,0.85);
+    animation: fxSnowFall linear infinite;
+    will-change: transform;
+  }
+  @keyframes fxSnowFall {
+    0% { transform: translate3d(0,-26px,0) rotate(0deg); opacity:0; }
+    12% { opacity:1; }
+    100% { transform: translate3d(var(--sway,50px),480px,0) rotate(320deg); opacity:0.1; }
+  }
+  #weatherFx .fx-snowground {
+    position:absolute; left:0; right:0; bottom:0; height:30px;
+    background: linear-gradient(180deg, rgba(241,245,249,0), rgba(241,245,249,0.6));
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    animation: fxSnowGround 7s ease-in-out infinite;
+  }
+  @keyframes fxSnowGround {
+    0%, 100% { transform: scaleX(0.85); opacity:0.5; }
+    50% { transform: scaleX(1.06); opacity:0.9; }
+  }
+  #weatherFx .fx-gust {
+    position:absolute; inset:0;
+    background: linear-gradient(100deg, transparent 32%, rgba(226,232,240,0.14) 50%, transparent 68%);
+    opacity:0; animation: fxGust 6.5s ease-in-out infinite;
+  }
+  @keyframes fxGust {
+    0%, 100% { transform: translateX(-35%); opacity:0; }
+    50% { transform: translateX(35%); opacity:1; }
+  }
   .weather-card::after {
     content: "";
     position: absolute;
@@ -1115,7 +1199,7 @@
 </style>
 <link rel="icon" href="/logo.png" type="image/png">
 </head>
-<body><!-- cache-bust: 2026-10-12-10 -->
+<body><!-- cache-bust: 2026-11-06 -->
 
 <header class="logo-header header">
   <img src="logo.png" alt="Pembina Valley Events" class="logo-img">
@@ -1144,6 +1228,7 @@
     <section class="section">
       <div id="hero3d" class="hero-animated" style="position:relative;border-radius:16px;overflow:hidden;min-height:320px;">
         <video id="heroWeatherVideo" preload="auto" autoplay loop muted playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" poster="weather-media/day_frame.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;z-index:0;transition:opacity 0.6s ease;"></video>
+        <div id="weatherFx"></div>
         <div id="heroWeatherOverlay" style="position:absolute;left:16px;bottom:16px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.6);pointer-events:none;z-index:2;">
           <div id="heroTemp" style="font-size:3rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">--°</div>
           <div id="heroCondition" style="font-size:1.05rem;font-weight:700;margin-top:6px;">Loading...</div>
@@ -1724,6 +1809,6 @@ function copyEventDetails(title, time, date, location) {
 </script>
 
 
-<script src="/app.js?v=1793318472"></script>
+<script src="/app.js?v=1793985446"></script>
 </body>
 </html>
