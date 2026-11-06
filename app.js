@@ -888,6 +888,9 @@ if (document.readyState === 'loading') {
       const flash = document.createElement('div');
       flash.className = 'fx-flash';
       fx.appendChild(flash);
+      const glow = document.createElement('div');
+      glow.className = 'fx-bolt-glow';
+      fx.appendChild(glow);
       const bolt = document.createElement('div');
       bolt.className = 'fx-lightning';
       fx.appendChild(bolt);
@@ -895,7 +898,7 @@ if (document.readyState === 'loading') {
       bolt2.className = 'fx-lightning';
       bolt2.setAttribute('style', 'left:32%;top:24%;transform:scale(0.72) scaleX(-1);animation-delay:2.7s;');
       fx.appendChild(bolt2);
-      for (let i = 0; i < 46; i++) {
+      for (let i = 0; i < 64; i++) {
         const d = document.createElement('div');
         d.className = 'fx-rain-drop';
         d.setAttribute('style', 'left:' + (Math.random() * 104) + '%;animation-duration:' + (0.55 + Math.random() * 0.5) + 's;animation-delay:' + (Math.random() * 1.4) + 's;');
@@ -912,11 +915,11 @@ if (document.readyState === 'loading') {
         fx.appendChild(c);
       }
       const glyphs = ['❄', '❅', '❆', '•'];
-      for (let i = 0; i < 34; i++) {
+      for (let i = 0; i < 46; i++) {
         const f = document.createElement('div');
         f.className = 'fx-flake';
         f.textContent = glyphs[i % glyphs.length];
-        const size = 8 + Math.random() * 15;
+        const size = 10 + Math.random() * 16;
         f.setAttribute('style', 'left:' + (Math.random() * 100) + '%;font-size:' + size.toFixed(0) + 'px;animation-duration:' + (4.5 + Math.random() * 5.5) + 's;animation-delay:' + (Math.random() * 6) + 's;--sway:' + (Math.random() * 130 - 65).toFixed(0) + 'px;');
         fx.appendChild(f);
       }
