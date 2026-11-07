@@ -469,33 +469,6 @@ function combineDateTime(dateStr, timeStr) {
       description: "Annual trail ride along the Trans-Canada Trail from Altona to Gretna. Raises money for mentoring programs for kids.",
       source: "CanadaHelps",
       category: "charity"
-    },
-    {
-      title: "Pembina Valley Humane Society — Highway 3.14 BBQ Competition",
-      date: "September 6, 2026",
-      time: "Suncatch, Morden, MB",
-      link: "https://www.canadahelps.org/en/charities/pembina-valley-humane-society-inc/events/highway-314-bbq-competition",
-      description: "BBQ competition between Chef Ryan Wiebe (Winkler) and Chef Colin Fehr (Morden), plus live bands. Tickets $30.",
-      source: "CanadaHelps",
-      category: "charity"
-    },
-    {
-      title: "United Way Pembina Valley 2026 Campaign",
-      date: "September 2026",
-      time: "Winkler, Morden, Stanley",
-      link: "https://www.unitedwaypembinavalley.ca/",
-      description: "Raising $115,000 for 23 local non-profits. All funds stay in the region.",
-      source: "United Way",
-      category: "charity"
-    },
-    {
-      title: "Pembina Valley Pregnancy Care Centre — Fundraiser Meal",
-      date: "October 24, 2026",
-      time: "Pembina Threshermen's Museum, between Winkler and Morden",
-      link: "https://www.pembinavalleyonline.com/articles/meatballs-and-mashed-potatoes-helping-raise-funds-for-local-families",
-      description: "Drive-thru lunch and supper fundraiser. Supports free services in Winkler, Morden, and Altona.",
-      source: "Local",
-      category: "charity"
     }
   ];
 
