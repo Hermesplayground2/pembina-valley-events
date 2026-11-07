@@ -319,7 +319,12 @@ def main():
             unique.append(ev)
     
     print(f"  unique events: {len(unique)}")
-    
+
+    # Curated local events the primary source does not carry either.
+    from manual_events import merge as merge_manual
+    unique = merge_manual(unique)
+    print(f"  after curated merge: {len(unique)} events")
+
     # 6. Write events.json
     output = {
         "last_updated": datetime.datetime.now().isoformat(),

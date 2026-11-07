@@ -488,6 +488,14 @@ def run() -> int:
         if not should_keep(e):
             log(f"  dropped: {e['title']!r} ({e['date']})")
 
+    # Curated local events the crawlers do not carry (City of Morden rec
+    # programs). Merged last so they survive every crawl.
+    from manual_events import merge as merge_manual
+    _before = len(kept)
+    kept = merge_manual(kept)
+    if len(kept) != _before:
+        log(f"merged {len(kept) - _before} curated event(s)")
+
     now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
     output: dict[str, Any] = {
         "last_updated": now_iso,

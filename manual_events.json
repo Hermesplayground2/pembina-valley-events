@@ -1,0 +1,117 @@
+{
+  "last_updated": "2026-11-06",
+  "source": "local_curation",
+  "note": "City of Morden recreation programs, which the pembinavalleyonline/gwevents crawlers do not carry. Fixed-date entries use 'date'; recurring programs use 'weekdays' (Mon=0 .. Sun=6) and get the next occurrence computed at merge time, so an ongoing weekly program never drops off the site once its representative date passes.",
+  "events": [
+    {
+      "id": "morden-grows-pd-day-camp",
+      "title": "GROW PD Day Camp",
+      "date": "2026-11-13",
+      "time": "9:00 AM–4:00 PM · Access Event Centre, Morden",
+      "category": "family",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "City of Morden and Big Brothers Big Sisters — a fun, interactive day for girls in Grades 5 & 6. Confidence, leadership, healthy living. FREE."
+    },
+    {
+      "id": "morden-wreath-making",
+      "title": "Wreath Making Workshop",
+      "date": "2026-11-24",
+      "time": "6:30–8:00 PM · Access Event Centre – MCC Room, Morden",
+      "category": "community",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Get into the holiday spirit with Earth Buds Florist and create your own holiday wreath to take home. $77.50 per participant, all supplies and instruction included."
+    },
+    {
+      "id": "morden-intro-freestyle-wrestling",
+      "title": "Intro to Freestyle Wrestling",
+      "date": "2026-12-02",
+      "time": "7:00–8:00 PM · Maple Leaf School, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Boys and girls ages 9–12, all experience levels welcome. Runs Dec 2, 9 & 16 and Jan 6 & 13. $25 for 5 sessions. Coach David Langill."
+    },
+    {
+      "id": "morden-red-cross-babysitting",
+      "title": "Red Cross Babysitting Course",
+      "date": "2027-01-29",
+      "time": "Fri Jan 29 6–9 PM & Sat Jan 30 5–9 PM · Morden",
+      "category": "family",
+      "location": "Morden",
+      "link": "https://morden.ca/rec-programs",
+      "description": "Canadian Red Cross Babysitting Course for youth ages 11–15. First aid, safety and caregiving essentials. $65."
+    },
+    {
+      "id": "morden-table-tennis",
+      "title": "Table Tennis",
+      "weekdays": [2],
+      "time": "Wednesdays 7–9 PM · Access Event Centre, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Casual recreational table tennis, all ages and skill levels. Season runs October 2026 – April 2027. No instruction. Reduced season rate or $3 drop-in."
+    },
+    {
+      "id": "morden-12plus-basketball",
+      "title": "12+ Basketball",
+      "weekdays": [2],
+      "time": "Wednesdays 9–10 PM (Oct–Nov), 8–10 PM (Dec–June) · École Morden Middle School",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Drop-in basketball for ages 12+. Reduced season rate or $3 drop-in."
+    },
+    {
+      "id": "morden-16plus-volleyball",
+      "title": "16+ Co-ed Volleyball",
+      "weekdays": [1],
+      "time": "Tuesdays 8:00–10:00 PM · École Morden Middle School",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Co-ed volleyball, all skill levels welcome. Season runs October 2026 – May 2027. Reduced season rate or $3 drop-in."
+    },
+    {
+      "id": "morden-youth-pickleball",
+      "title": "Youth Pickleball",
+      "weekdays": [1],
+      "time": "Tuesdays 5:30–7:00 PM · Access Event Centre Community Hall, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Teens in Grades 7–12. Runs Oct 6 – Apr 13. All skill levels welcome, no experience necessary. Reduced season rate or $5 drop-in."
+    },
+    {
+      "id": "morden-open-pickleball",
+      "title": "Pickleball",
+      "weekdays": [0, 1, 2],
+      "time": "Sun 6:00–9:00 PM, Mon 8:30–11:30 AM, Tue 8:30–11:30 AM & 7:00–10:00 PM · Access Event Centre Community Hall, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Weekly drop-in pickleball, beginner to experienced. $3 per player per session or a reduced seasonal rate. Check the schedule — some sessions are cancelled for special events and facility bookings."
+    },
+    {
+      "id": "morden-free-public-skating",
+      "title": "Free Public Skating",
+      "weekdays": [6],
+      "time": "Sundays 12:15–1:45 PM · Access Event Centre, Morden",
+      "category": "family",
+      "location": "Morden",
+      "link": "https://morden.ca/public-skating",
+      "description": "Free public skating — bring the family. Skate lending available in a limited range of sizes. Full schedule at morden.ca/public-skating."
+    },
+    {
+      "id": "morden-ice-programs",
+      "title": "Ice Programs",
+      "weekdays": [6],
+      "time": "Access Event Centre, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec-programs",
+      "description": "55+ Skate & Stick & Puck (FREE), Parent & Tot (FREE), Morning Skate ($5), Stick & Puck ($5), Homeschool Skate & Stick & Puck ($2.50), Public Skating (FREE). See morden.ca/rec-programs for days and times."
+    }
+  ]
+}

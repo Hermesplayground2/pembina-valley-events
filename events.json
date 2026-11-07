@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06T12:05:50.640568+00:00",
+  "last_updated": "2026-11-07T04:27:41.298363+00:00",
   "generated_by": "fetch_events.py",
   "source": "pembinavalleyonline.com/events",
   "filter": {
@@ -210,6 +210,28 @@
       "description": "⛸️ Free Public Skating at the ICON Arena! Looking for a fun way to spend your Sunday evening? Join us for FREE public skating at the ICON Arena every Sunday from 6:15 PM to 7:45 PM. Bring your family and friends, enjoy some time on the ice, and stay active all winter long! For everyone&#39;s safety and enjoyment, please remember to: ✅ Skate responsibly and be aware of others on the ice ✅ Follow arena rules and staff directions ✅ Show respect and courtesy to fellow skaters Let&#39;s keep the rink safe, welcoming, and fun for everyone!"
     },
     {
+      "id": "morden-ice-programs",
+      "title": "Ice Programs",
+      "time": "Access Event Centre, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec-programs",
+      "description": "55+ Skate & Stick & Puck (FREE), Parent & Tot (FREE), Morning Skate ($5), Stick & Puck ($5), Homeschool Skate & Stick & Puck ($2.50), Public Skating (FREE). See morden.ca/rec-programs for days and times.",
+      "date": "2026-11-08",
+      "source": "local_curation"
+    },
+    {
+      "id": "morden-free-public-skating",
+      "title": "Free Public Skating",
+      "time": "Sundays 12:15–1:45 PM · Access Event Centre, Morden",
+      "category": "family",
+      "location": "Morden",
+      "link": "https://morden.ca/public-skating",
+      "description": "Free public skating — bring the family. Skate lending available in a limited range of sizes. Full schedule at morden.ca/public-skating.",
+      "date": "2026-11-08",
+      "source": "local_curation"
+    },
+    {
       "id": "/events/239266",
       "title": "PC COMMUNITY FOUNDATION GIVING CHALLENGE",
       "time": "12:01 AM · CENTRE ON MAIN, 265 MAIN AVENUE, PLUM COULEE, MANITOBA",
@@ -354,6 +376,17 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
+      "id": "morden-open-pickleball",
+      "title": "Pickleball",
+      "time": "Sun 6:00–9:00 PM, Mon 8:30–11:30 AM, Tue 8:30–11:30 AM & 7:00–10:00 PM · Access Event Centre Community Hall, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Weekly drop-in pickleball, beginner to experienced. $3 per player per session or a reduced seasonal rate. Check the schedule — some sessions are cancelled for special events and facility bookings.",
+      "date": "2026-11-09",
+      "source": "local_curation"
+    },
+    {
       "id": "/events/239267",
       "title": "PLUM COULEE COMMUNITY FOUNDATION GIVING CHALLENGE",
       "time": "12:01 AM · THE CENTRE ON MAIN, 265 MAIN AVENUE, PLUM COULEE, MANITOBA",
@@ -471,6 +504,28 @@
       "description": "Happening at the ICON Arena from 8:15am - 10:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
     },
     {
+      "id": "morden-youth-pickleball",
+      "title": "Youth Pickleball",
+      "time": "Tuesdays 5:30–7:00 PM · Access Event Centre Community Hall, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Teens in Grades 7–12. Runs Oct 6 – Apr 13. All skill levels welcome, no experience necessary. Reduced season rate or $5 drop-in.",
+      "date": "2026-11-10",
+      "source": "local_curation"
+    },
+    {
+      "id": "morden-16plus-volleyball",
+      "title": "16+ Co-ed Volleyball",
+      "time": "Tuesdays 8:00–10:00 PM · École Morden Middle School",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Co-ed volleyball, all skill levels welcome. Season runs October 2026 – May 2027. Reduced season rate or $3 drop-in.",
+      "date": "2026-11-10",
+      "source": "local_curation"
+    },
+    {
       "id": "/events/236646",
       "title": "Baby and Me Coffee and Chat",
       "time": "10:00 AM · Morden Alliance Church, 181 15th Street, Morden, Manitoba",
@@ -550,6 +605,28 @@
       "link": "https://www.pembinavalleyonline.com/events/233647",
       "source": "pembinavalleyonline.com",
       "description": "Join us for free drinks and snacks. Bring a friend. Men and women are welcome at this time."
+    },
+    {
+      "id": "morden-table-tennis",
+      "title": "Table Tennis",
+      "time": "Wednesdays 7–9 PM · Access Event Centre, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Casual recreational table tennis, all ages and skill levels. Season runs October 2026 – April 2027. No instruction. Reduced season rate or $3 drop-in.",
+      "date": "2026-11-11",
+      "source": "local_curation"
+    },
+    {
+      "id": "morden-12plus-basketball",
+      "title": "12+ Basketball",
+      "time": "Wednesdays 9–10 PM (Oct–Nov), 8–10 PM (Dec–June) · École Morden Middle School",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Drop-in basketball for ages 12+. Reduced season rate or $3 drop-in.",
+      "date": "2026-11-11",
+      "source": "local_curation"
     },
     {
       "id": "/events/239270",
@@ -748,6 +825,17 @@
       "link": "https://www.pembinavalleyonline.com/events/239015",
       "source": "pembinavalleyonline.com",
       "description": "November 13, 2026 Gallery in the Park, Altona"
+    },
+    {
+      "id": "morden-grows-pd-day-camp",
+      "title": "GROW PD Day Camp",
+      "date": "2026-11-13",
+      "time": "9:00 AM–4:00 PM · Access Event Centre, Morden",
+      "category": "family",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "City of Morden and Big Brothers Big Sisters — a fun, interactive day for girls in Grades 5 & 6. Confidence, leadership, healthy living. FREE.",
+      "source": "local_curation"
     },
     {
       "id": "/events/234079",
@@ -1668,6 +1756,17 @@
       "description": "✨ Gentle Flow Yoga – A Weekly Reset ✨ Unwind, move mindfully, and build confidence in your practice with our Gentle Flow Yoga class. Designed for beginners and anyone looking for a slower, calming experience, this class blends light stretching, gentle flow sequences, and guided breathing to support mobility, balance, and stress relief. 🕒 Tuesdays, 6-7pm 📍 Winkler Arts &amp; Culture Centre, Winkler 💲 $80 for 8 sessions 🧘 Instructor: Ang Hildebrand 🧺 Mats &amp; equipment provided Whether you’re brand new to yoga or simply seeking a relaxed, welcoming space to move and reset each week, this class is for you. 💙 Take time for yourself—you deserve it. Register at www.playwinkler.ca"
     },
     {
+      "id": "morden-wreath-making",
+      "title": "Wreath Making Workshop",
+      "date": "2026-11-24",
+      "time": "6:30–8:00 PM · Access Event Centre – MCC Room, Morden",
+      "category": "community",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Get into the holiday spirit with Earth Buds Florist and create your own holiday wreath to take home. $77.50 per participant, all supplies and instruction included.",
+      "source": "local_curation"
+    },
+    {
       "id": "/events/235597",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -2188,6 +2287,17 @@
       "link": "https://www.pembinavalleyonline.com/events/233676",
       "source": "pembinavalleyonline.com",
       "description": "Ladies, join us for a fun evening of making crafts and visiting around the table. Drinks and snacks are free. Bring a friend."
+    },
+    {
+      "id": "morden-intro-freestyle-wrestling",
+      "title": "Intro to Freestyle Wrestling",
+      "date": "2026-12-02",
+      "time": "7:00–8:00 PM · Maple Leaf School, Morden",
+      "category": "sports",
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Boys and girls ages 9–12, all experience levels welcome. Runs Dec 2, 9 & 16 and Jan 6 & 13. $25 for 5 sessions. Coach David Langill.",
+      "source": "local_curation"
     },
     {
       "id": "/events/233650",
@@ -2764,6 +2874,17 @@
       "link": "https://www.pembinavalleyonline.com/events/235707",
       "source": "pembinavalleyonline.com",
       "description": "Happening at the ICON Arena from 8:30am - 9:30am. No instruction, coaching, or organized training sessions are allowed. Helmets are recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
+    },
+    {
+      "id": "morden-red-cross-babysitting",
+      "title": "Red Cross Babysitting Course",
+      "date": "2027-01-29",
+      "time": "Fri Jan 29 6–9 PM & Sat Jan 30 5–9 PM · Morden",
+      "category": "family",
+      "location": "Morden",
+      "link": "https://morden.ca/rec-programs",
+      "description": "Canadian Red Cross Babysitting Course for youth ages 11–15. First aid, safety and caregiving essentials. $65.",
+      "source": "local_curation"
     }
   ]
 }
