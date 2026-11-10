@@ -1,26 +1,8 @@
 {
-  "last_updated": "2026-11-10T11:06:08.073284+00:00",
-  "generated_by": "fetch_events.py",
-  "source": "pembinavalleyonline.com/events",
-  "filter": {
-    "drop_terms": [
-      "pride",
-      "bingo",
-      "farmers market",
-      "council meeting"
-    ]
-  },
+  "last_updated": "2026-11-10T11:06:13.825540+00:00",
+  "generated_by": "pembina_publish_guard.py",
+  "source": "pembina_publish_guard.py",
   "events": [
-    {
-      "id": "winkler-arts-salsa-and-bachata-classes",
-      "title": "Salsa and Bachata Classes",
-      "time": "6:00 pm - 9:00 pm",
-      "date": "2026-11-09",
-      "link": "https://winklerarts.com/events/salsa-and-bachata-classes/",
-      "source": "Winkler Arts + Culture",
-      "category": "community",
-      "description": ""
-    },
     {
       "id": "/events/239574",
       "title": "Morden Area Foundation Giving Challenge",
