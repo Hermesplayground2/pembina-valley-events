@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import html as _html
+import json
 import re
 import ssl
 import urllib.request
@@ -34,8 +35,20 @@ _CTX.verify_mode = ssl.CERT_NONE
 
 SCRL_ICAL = "https://scrl.mb.libraries.coop/?post_type=tribe_events&ical=1&eventDisplay=list"
 WINKLER_ARTS_EVENTS = "https://winklerarts.com/events/"
+FLYERS_FEED = (
+    "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed"
+    "&season=latest&key=f894c324fe5fd8f0&client_code=mjhl&site_id=4"
+    "&lang=en&view=schedule&pageName=schedule"
+)
+FLYERS_SOURCE = "Winkler Flyers"
+FLYERS_LINK = "https://www.winklerflyers.com/game-center/?game_id="
 SCRL_SOURCE = "South Central Regional Library"
 SCRL_CATEGORY = "community"
+
+_MONTH_NUM = {
+    "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+    "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+}
 
 
 def fetch(url: str, timeout: int = 45) -> str:
@@ -163,6 +176,56 @@ def winkler_arts_events() -> list[dict[str, Any]]:
     return out
 
 
+def flyers_events() -> list[dict[str, Any]]:
+    """Winkler Flyers games from the MJHL/HockeyTech schedule feed.
+
+    The feed carries no year (dates are "Nov. 13") and hides the faceoff time
+    inside `game_status` -- played games read "Final"/"Final OT", upcoming ones
+    read "7:30 pm CDT".  The MJHL season runs Sep-Mar, so Sep-Dec is the
+    starting year and Jan onwards is the next one.
+    """
+    raw = fetch(FLYERS_FEED).strip()
+    if raw.startswith("(") and raw.endswith(")"):
+        raw = raw[1:-1]
+    rows = json.loads(raw)[0]["sections"][0]["data"]
+    out: list[dict[str, Any]] = []
+    for entry in rows:
+        row = entry.get("row") or {}
+        status = (row.get("game_status") or "").strip()
+        if not status or status.startswith("Final"):
+            continue
+        home = row.get("home_team_city") or ""
+        away = row.get("visiting_team_city") or ""
+        if "Winkler" not in (home, away):
+            continue
+        match = re.match(r"([A-Za-z]{3})\.?\s+(\d{1,2})", row.get("date") or "")
+        if not match:
+            continue
+        month = _MONTH_NUM.get(match.group(1).title())
+        if not month:
+            continue
+        year = 2026 if month >= 9 else 2027
+        try:
+            day = _dt.date(year, month, int(match.group(2)))
+        except ValueError:
+            continue
+        at_home = home == "Winkler"
+        opponent = away if at_home else home
+        venue = row.get("venue_name") or ""
+        out.append({
+            "id": f"flyers-{row.get('game_id')}",
+            "title": f"Winkler Flyers vs {opponent}" if at_home else f"Winkler Flyers @ {opponent}",
+            "time": " · ".join(b for b in (status, venue) if b),
+            "date": day.isoformat(),
+            "link": f"{FLYERS_LINK}{row.get('game_id')}",
+            "source": FLYERS_SOURCE,
+            "category": SCRL_CATEGORY,
+            "description": venue,
+        })
+    out.sort(key=lambda e: (e["date"], e["time"]))
+    return out
+
+
 def extra_events() -> list[dict[str, Any]]:
     """Every event from the extra sources, best-effort."""
     events: list[dict[str, Any]] = []
@@ -174,6 +237,10 @@ def extra_events() -> list[dict[str, Any]]:
         events.extend(winkler_arts_events())
     except Exception as exc:  # noqa: BLE001
         print(f"[fetch_extra_sources] Winkler Arts scrape failed: {exc!r}", flush=True)
+    try:
+        events.extend(flyers_events())
+    except Exception as exc:  # noqa: BLE001
+        print(f"[fetch_extra_sources] Flyers feed failed: {exc!r}", flush=True)
     return events
 
 
