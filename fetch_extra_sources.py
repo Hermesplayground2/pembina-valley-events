@@ -33,6 +33,7 @@ _CTX.check_hostname = False
 _CTX.verify_mode = ssl.CERT_NONE
 
 SCRL_ICAL = "https://scrl.mb.libraries.coop/?post_type=tribe_events&ical=1&eventDisplay=list"
+WINKLER_ARTS_EVENTS = "https://winklerarts.com/events/"
 SCRL_SOURCE = "South Central Regional Library"
 SCRL_CATEGORY = "community"
 
@@ -108,6 +109,60 @@ def scrl_events() -> list[dict[str, Any]]:
     return out
 
 
+def winkler_arts_events() -> list[dict[str, Any]]:
+    """Scrape the Winkler Arts + Culture list page (Modern Events Calendar skin).
+
+    MEC emits a month divider (<h5>November 2026</h5>) before each group of
+    events, which is the only place the year appears -- the per-event date
+    label is just "09 Nov".  Splitting on the divider keeps the year honest.
+    """
+    page = fetch(WINKLER_ARTS_EVENTS)
+    parts = re.split(
+        r'<div class="mec-month-divider"[^>]*>\s*<h5[^>]*>([^<]+)</h5>', page
+    )
+    out: list[dict[str, Any]] = []
+    for i in range(1, len(parts) - 1, 2):
+        label = _clean(parts[i])
+        try:
+            month = _dt.datetime.strptime(label, "%B %Y")
+        except ValueError:
+            continue
+        section = parts[i + 1]
+        for block in re.split(r'<article class="mec-event-article', section)[1:]:
+            head = re.search(
+                r'<h3 class="mec-event-title">\s*<a[^>]*href="([^"]+)"[^>]*>([^<]+)</a>',
+                block,
+            )
+            day = re.search(r'<span class="mec-start-date-label">([^<]+)</span>', block)
+            start = re.search(r'<span class="mec-start-time">([^<]+)</span>', block)
+            end = re.search(r'<span class="mec-end-time">([^<]+)</span>', block)
+            if not (head and day):
+                continue
+            try:
+                when = _dt.datetime.strptime(
+                    f"{_clean(day.group(1))} {month.year}", "%d %b %Y"
+                ).date()
+            except ValueError:
+                continue
+            clock = ""
+            if start and end:
+                clock = f"{_clean(start.group(1))} - {_clean(end.group(1))}"
+            elif start:
+                clock = _clean(start.group(1))
+            out.append({
+                "id": f"winkler-arts-{head.group(1).rstrip('/').split('/')[-1]}",
+                "title": _clean(head.group(2)),
+                "time": clock,
+                "date": when.isoformat(),
+                "link": head.group(1),
+                "source": "Winkler Arts + Culture",
+                "category": SCRL_CATEGORY,
+                "description": "",
+            })
+    out.sort(key=lambda e: (e["date"], e["time"]))
+    return out
+
+
 def extra_events() -> list[dict[str, Any]]:
     """Every event from the extra sources, best-effort."""
     events: list[dict[str, Any]] = []
@@ -115,6 +170,10 @@ def extra_events() -> list[dict[str, Any]]:
         events.extend(scrl_events())
     except Exception as exc:  # noqa: BLE001 - upstream feeds come and go
         print(f"[fetch_extra_sources] SCRL feed failed: {exc!r}", flush=True)
+    try:
+        events.extend(winkler_arts_events())
+    except Exception as exc:  # noqa: BLE001
+        print(f"[fetch_extra_sources] Winkler Arts scrape failed: {exc!r}", flush=True)
     return events
 
 
