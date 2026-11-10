@@ -496,6 +496,12 @@ def run() -> int:
     if len(kept) != _before:
         log(f"merged {len(kept) - _before} curated event(s)")
 
+    from fetch_extra_sources import merge as merge_extra
+    _before = len(kept)
+    kept = merge_extra(kept)
+    if len(kept) != _before:
+        log(f"merged {len(kept) - _before} extra-source event(s)")
+
     now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
     output: dict[str, Any] = {
         "last_updated": now_iso,
