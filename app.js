@@ -199,6 +199,8 @@ function combineDateTime(dateStr, timeStr) {
 
   // Events are loaded from events.json by loadEvents(). No hardcoded list here.
   let EVENTS = [];
+  // Local businesses/shops are loaded from businesses.json by loadBusinesses().
+  let BUSINESSES = [];
   const isToday = (d) => new Date(d + 'T12:00:00').toDateString() === new Date().toDateString();
 
   const timeToSort = (timeStr) => {
@@ -739,12 +741,7 @@ function combineDateTime(dateStr, timeStr) {
   function buildSearchIndex() {
     SEARCH_INDEX = [];
     const vocab = new Set();
-    EVENTS.forEach(ev => {
-      const title = String(ev.title || '');
-      const loc = String(ev.time || '') + ' ' + String(ev.location || '');
-      const desc = String(ev.description || '');
-      const cat = String(ev.category || '');
-      const src = String(ev.source || '');
+    const indexDoc = (doc) => {
       const weights = new Map();
       const add = (text, weight) => {
         searchTokens(text).forEach(tok => {
@@ -752,24 +749,53 @@ function combineDateTime(dateStr, timeStr) {
           weights.set(tok, Math.max(weights.get(tok) || 0, weight));
         });
       };
-      add(title, 10);
-      add(loc, 6);
-      add(cat, 4);
-      add(src, 3);
-      add(desc, 2);
-      SEARCH_INDEX.push({
+      add(doc.title, 10);
+      add(doc.loc, 6);
+      add(doc.cat, 4);
+      add(doc.src, 3);
+      add(doc.desc, 2);
+      doc.weights = weights;
+      doc.titleLower = String(doc.title || '').toLowerCase();
+      doc.haystack = (doc.title + ' ' + doc.loc + ' ' + doc.desc + ' ' + doc.cat + ' ' + doc.src).toLowerCase();
+      SEARCH_INDEX.push(doc);
+    };
+
+    EVENTS.forEach(ev => {
+      const title = String(ev.title || '');
+      const loc = String(ev.time || '') + ' ' + String(ev.location || '');
+      const desc = String(ev.description || '');
+      const cat = String(ev.category || '');
+      const src = String(ev.source || '');
+      indexDoc({
+        kind: 'event',
         ev: ev,
         title: title,
         loc: loc,
         desc: desc,
         cat: cat,
         src: src,
-        date: String(ev.date || ''),
-        weights: weights,
-        titleLower: title.toLowerCase(),
-        haystack: (title + ' ' + loc + ' ' + desc + ' ' + cat + ' ' + src).toLowerCase()
+        date: String(ev.date || '')
       });
     });
+
+    BUSINESSES.forEach(biz => {
+      const title = String(biz.name || '');
+      const loc = String(biz.town || '') + ' ' + String(biz.address || '');
+      const desc = String(biz.description || '');
+      const cat = String(biz.category || '');
+      const src = String(biz.source || '');
+      indexDoc({
+        kind: 'business',
+        biz: biz,
+        title: title,
+        loc: loc,
+        desc: desc,
+        cat: cat,
+        src: src,
+        date: ''
+      });
+    });
+
     SEARCH_BY_LEN = new Map();
     vocab.forEach(t => {
       if (!SEARCH_BY_LEN.has(t.length)) SEARCH_BY_LEN.set(t.length, []);
@@ -816,12 +842,14 @@ function combineDateTime(dateStr, timeStr) {
     if (phrase && doc.titleLower.indexOf(phrase) !== -1) score += 12;
     else if (phrase && doc.haystack.indexOf(phrase) !== -1) score += 5;
     if (matched === terms.length && terms.length > 1) score += 6;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const d = new Date(doc.date + 'T12:00:00');
-    const days = Math.round((d - today) / 86400000);
-    if (days >= 0 && days <= 14) score += 3;
-    else if (days > 14 && days <= 60) score += 1;
+    if (doc.kind === 'event') {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const d = new Date(doc.date + 'T12:00:00');
+      const days = Math.round((d - today) / 86400000);
+      if (days >= 0 && days <= 14) score += 3;
+      else if (days > 14 && days <= 60) score += 1;
+    }
     return score;
   }
 
@@ -830,19 +858,33 @@ function combineDateTime(dateStr, timeStr) {
     if (!SEARCH_INDEX) buildSearchIndex();
     const phrase = String(query == null ? '' : query).toLowerCase().trim();
     const terms = searchTokens(phrase);
+    const wantKind = options.kind || '';
     if (!terms.length) {
-      return { results: [], terms: [], phrase: phrase, total: 0, truncated: false };
+      if (!wantKind) {
+        return { results: [], terms: [], phrase: phrase, total: 0, truncated: false, kind: '' };
+      }
+      // Browse mode: list everything of one kind (no query needed).
+      const all = [];
+      for (let i = 0; i < SEARCH_INDEX.length; i++) {
+        const doc = SEARCH_INDEX[i];
+        if (doc.kind === wantKind) all.push({ kind: doc.kind, ev: doc.ev, biz: doc.biz, score: 1 });
+      }
+      all.sort((a, b) => String(a.biz ? a.biz.name : a.ev.title).localeCompare(String(b.biz ? b.biz.name : b.ev.title)));
+      const limited = options.limit ? all.slice(0, options.limit) : all;
+      return { results: limited, terms: [], phrase: phrase, total: all.length, truncated: limited.length < all.length, kind: wantKind };
     }
     let results = [];
     for (let i = 0; i < SEARCH_INDEX.length; i++) {
       const doc = SEARCH_INDEX[i];
+      if (wantKind && doc.kind !== wantKind) continue;
       const score = scoreSearchDoc(doc, terms, phrase);
-      if (score) results.push({ ev: doc.ev, score: score });
+      if (score) results.push({ kind: doc.kind, ev: doc.ev, biz: doc.biz, score: score });
     }
-    results.sort((a, b) => b.score - a.score || String(a.ev.date).localeCompare(String(b.ev.date)));
+    results.sort((a, b) => b.score - a.score ||
+      (a.kind === 'event' && b.kind === 'event' ? String(a.ev.date).localeCompare(String(b.ev.date)) : 0));
     const total = results.length;
     const limited = options.limit ? results.slice(0, options.limit) : results;
-    return { results: limited, terms: terms, phrase: phrase, total: total, truncated: limited.length < total };
+    return { results: limited, terms: terms, phrase: phrase, total: total, truncated: limited.length < total, kind: wantKind };
   }
 
   function suggestCorrection(query) {
@@ -900,13 +942,14 @@ function combineDateTime(dateStr, timeStr) {
     const now = () => (window.performance && performance.now) ? performance.now() : Date.now();
     const started = now();
     const phrase = String(query == null ? '' : query).trim();
-    const { results, terms, total, truncated } = runSearch(phrase, { limit: 40 });
+    const { results, terms, total, truncated } = runSearch(phrase, { limit: 40, kind: SEARCH_KIND });
     const elapsed = ((now() - started) / 1000).toFixed(2);
+    const browsing = !phrase && !!SEARCH_KIND;
 
-    if (!phrase) {
+    if (!phrase && !SEARCH_KIND) {
       if (meta) meta.textContent = '';
-      box.innerHTML = '<div class="search-empty"><div class="big">Search the Pembina Valley events calendar</div>' +
-        'Try a place (Winkler, Morden, Altona), a category (hockey, market, music) or any keyword.</div>';
+      box.innerHTML = '<div class="search-empty"><div class="big">Search Pembina Valley events, businesses and places</div>' +
+        'Try a place (Winkler, Morden, Altona), a business (plumbing, auto repair, bakery), a category (hockey, market, music) or any keyword.</div>';
       return;
     }
 
@@ -923,11 +966,14 @@ function combineDateTime(dateStr, timeStr) {
     }
 
     if (meta) {
-      meta.textContent = 'About ' + total + ' result' + (total === 1 ? '' : 's') +
+      const noun = browsing ? (SEARCH_KIND === 'business' ? 'businesses' : 'events')
+        : 'result' + (total === 1 ? '' : 's');
+      meta.textContent = 'About ' + total + ' ' + noun +
         ' (' + elapsed + ' seconds)' + (truncated ? ' \u00b7 showing top ' + results.length : '');
     }
 
     box.innerHTML = results.map(r => {
+      if (r.kind === 'business') return renderBusinessResult(r.biz, terms);
       const ev = r.ev;
       const title = highlightTerms(ev.title, terms);
       const metaLine = escapeHtml(formatSearchDate(ev.date)) +
@@ -942,6 +988,53 @@ function combineDateTime(dateStr, timeStr) {
         '<div class="result-actions"><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button></div>' +
         '</div>';
     }).join('');
+  }
+
+  function formatPhone(p) {
+    const d = String(p || '').replace(/\D/g, '');
+    if (d.length === 10) return d.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    if (d.length === 11 && d.charAt(0) === '1') return d.slice(1).replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    return String(p || '');
+  }
+
+  function streetAddress(biz) {
+    let a = String(biz.address || '').trim();
+    if (biz.town) {
+      a = a.replace(new RegExp('\\b' + biz.town.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b,?\\s*', 'i'), '');
+    }
+    a = a.replace(/,?\s*MB\s*R\d[A-Z]\s*\d[A-Z]\d\s*$/i, '');
+    a = a.replace(/,?\s*Manitoba\s*$/i, '');
+    return a.replace(/,?\s*$/, '').trim();
+  }
+
+  function renderBusinessResult(biz, terms) {
+    const title = highlightTerms(biz.name, terms);
+    const metaBits = [];
+    if (biz.category) metaBits.push(escapeHtml(biz.category));
+    if (biz.town) metaBits.push(escapeHtml(biz.town));
+    const street = streetAddress(biz);
+    if (street) metaBits.push(escapeHtml(street));
+    const snippet = biz.description ? highlightTerms(biz.description, terms) : '';
+    const contact = [];
+    if (biz.phone) {
+      contact.push('<a href="tel:' + escapeHtml(biz.phone) + '">' + escapeHtml(formatPhone(biz.phone)) + '</a>');
+    }
+    if (biz.email) {
+      contact.push('<a href="mailto:' + escapeHtml(biz.email) + '">' + escapeHtml(biz.email) + '</a>');
+    }
+    if (biz.lat && biz.lng) {
+      contact.push('<a href="https://www.google.com/maps/search/?api=1&query=' +
+        encodeURIComponent(String(biz.lat) + ',' + String(biz.lng)) + '" target="_blank" rel="noopener">Directions</a>');
+    }
+    const copyText = (biz.name + '\n' + (biz.address || '') + (biz.phone ? '\n' + formatPhone(biz.phone) : '')).trim();
+    return '<div class="result-item result-business" data-category="business">' +
+      '<div class="result-kind">Business</div>' +
+      '<div class="result-title">' + title + '</div>' +
+      '<div class="result-meta">' + metaBits.join(' &middot; ') + '</div>' +
+      (snippet ? '<div class="result-snippet">' + snippet + '</div>' : '') +
+      (contact.length ? '<div class="result-contact">' + contact.join(' &middot; ') + '</div>' : '') +
+      '<div class="result-actions"><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button></div>' +
+      '</div>';
   }
 
   function renderSuggestions(query) {
@@ -960,7 +1053,7 @@ function combineDateTime(dateStr, timeStr) {
     for (let i = 0; i < SEARCH_INDEX.length && picks.length < 40; i++) {
       const doc = SEARCH_INDEX[i];
       const candidates = [
-        { text: doc.title, type: 'Event' },
+        { text: doc.title, type: doc.kind === 'business' ? 'Business' : 'Event' },
         { text: doc.loc, type: 'Place' },
         { text: doc.cat, type: 'Category' }
       ];
@@ -1002,6 +1095,7 @@ function combineDateTime(dateStr, timeStr) {
   }
 
   let SEARCH_PAGE_READY = false;
+  let SEARCH_KIND = '';
 
   function initSearchPage() {
     const input = document.getElementById('search-input');
@@ -1016,6 +1110,7 @@ function combineDateTime(dateStr, timeStr) {
         clearTimeout(debounce);
         debounce = setTimeout(() => {
           const q = input.value;
+          SEARCH_KIND = '';
           renderSuggestions(q);
           renderSearchResults(q);
           syncSearchUrl(q);
@@ -1089,6 +1184,9 @@ function combineDateTime(dateStr, timeStr) {
       document.querySelectorAll('#page-search .search-chip').forEach(chip => {
         chip.addEventListener('click', () => {
           input.value = chip.dataset.q;
+          SEARCH_KIND = chip.dataset.kind || '';
+          document.querySelectorAll('#page-search .search-chip').forEach(c => c.classList.remove('active'));
+          if (SEARCH_KIND) chip.classList.add('active');
           activeSuggest = -1;
           renderSuggestions('');
           renderSearchResults(chip.dataset.q);
@@ -1223,6 +1321,31 @@ const initPage = () => {
       console.warn('events.json load failed, using fallback:', err);
     }
   }
+
+  async function loadBusinesses() {
+    try {
+      const res = await fetch('/businesses.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('businesses.json HTTP ' + res.status);
+      const raw = await res.json();
+      if (!Array.isArray(raw)) throw new Error('businesses.json not an array');
+      BUSINESSES = raw.map(b => ({
+        name: b.name || '',
+        category: b.category || '',
+        town: b.town || '',
+        address: b.address || '',
+        phone: b.phone || '',
+        email: b.email || '',
+        description: b.description || '',
+        lat: b.lat || '',
+        lng: b.lng || '',
+        source: b.source || ''
+      }));
+      console.log('Loaded ' + BUSINESSES.length + ' businesses from businesses.json');
+      if (SEARCH_INDEX) buildSearchIndex();
+    } catch (err) {
+      console.warn('businesses.json load failed:', err);
+    }
+  }
   window.addEventListener('hashchange', initPage);
 
   function updateLastUpdated() {
@@ -1236,10 +1359,10 @@ const initPage = () => {
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      loadEvents().then(initPage).catch(err => { console.error('events load failed, using fallback', err); initPage(); });
+      loadEvents().then(loadBusinesses).then(initPage).catch(err => { console.error('data load failed, using fallback', err); initPage(); });
     });
   } else {
-    loadEvents().then(initPage).catch(err => { console.error('events load failed, using fallback', err); initPage(); });
+    loadEvents().then(loadBusinesses).then(initPage).catch(err => { console.error('data load failed, using fallback', err); initPage(); });
   }
 
   const WEATHER_IMAGES = {

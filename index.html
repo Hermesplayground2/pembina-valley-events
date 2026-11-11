@@ -1375,6 +1375,18 @@
       }
       #page-search .result-item mark { background: rgba(245,158,11,0.35); color: inherit; border-radius: 3px; padding: 0 1px; }
       #page-search .result-actions { margin-top: 9px; }
+      #page-search .result-item[data-category="business"] { border-left-color: #a78bfa; }
+      #page-search .result-kind {
+        display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em;
+        text-transform: uppercase; color: #c4b5fd; background: rgba(167,139,250,0.14);
+        border: 1px solid rgba(167,139,250,0.35); border-radius: 999px; padding: 2px 8px; margin-bottom: 5px;
+      }
+      #page-search .result-contact { font-size: 0.85rem; margin-top: 6px; color: #cbd5e1; }
+      #page-search .result-contact a { color: var(--accent-2); text-decoration: none; }
+      #page-search .result-contact a:hover { text-decoration: underline; }
+      #page-search .search-chip.active {
+        background: rgba(255,255,255,0.16); border-color: var(--accent-2); color: #fff;
+      }
       #page-search .search-empty { padding: 26px 6px; text-align: center; color: var(--muted); }
       #page-search .search-empty .big { font-size: 1.05rem; font-weight: 800; color: #e2e8f0; margin-bottom: 6px; }
       @media (max-width: 640px) {
@@ -1390,7 +1402,7 @@
         <div class="search-box-wrap">
           <div class="search-box">
             <span class="search-icon" aria-hidden="true"></span>
-            <input type="text" id="search-input" placeholder="Search events, places, categories..." autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-suggestions" aria-autocomplete="list">
+            <input type="text" id="search-input" placeholder="Search events, businesses, places..." autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="search-suggestions" aria-autocomplete="list">
             <button id="search-clear" type="button" aria-label="Clear search">&times;</button>
           </div>
           <div id="search-suggestions" class="search-suggestions" hidden></div>
@@ -1404,6 +1416,15 @@
           <button class="search-chip" type="button" data-q="market">Markets</button>
           <button class="search-chip" type="button" data-q="music">Music</button>
           <button class="search-chip" type="button" data-q="Christmas">Christmas</button>
+        </div>
+        <div class="search-chips">
+          <button class="search-chip" type="button" data-q="" data-kind="business">All businesses</button>
+          <button class="search-chip" type="button" data-q="plumbing" data-kind="business">Plumbing</button>
+          <button class="search-chip" type="button" data-q="auto" data-kind="business">Auto repair</button>
+          <button class="search-chip" type="button" data-q="restaurant" data-kind="business">Restaurants</button>
+          <button class="search-chip" type="button" data-q="bakery" data-kind="business">Bakery</button>
+          <button class="search-chip" type="button" data-q="grocery" data-kind="business">Grocery</button>
+          <button class="search-chip" type="button" data-q="contractor" data-kind="business">Contractors</button>
         </div>
         <div class="search-lucky"><button id="search-lucky" type="button">I'm Feeling Lucky</button></div>
       </div>
@@ -2064,6 +2085,6 @@ function copyEventDetails(title, time, date, location) {
 </script>
 
 
-<script src="/app.js?v=1794426662"></script>
+<script src="/app.js?v=1794432009"></script>
 </body>
 </html>
