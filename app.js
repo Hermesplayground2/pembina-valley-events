@@ -1,78 +1,182 @@
 
-function addToCalendar(title, time, date) {
-  let startDate = date ? new Date(date + 'T12:00:00') : new Date();
-  let endDate = new Date(startDate);
-  let location = '';
-  let description = (time || '').trim();
+  // Parse a free-text event time into real start/end dates.
+  // Returns null (nothing found), 'allday', or {start, end}.
+  // Event times on this site are free text ("7-9 PM", "10:30 AM", "All day"),
+  // so this has to cope with ranges, missing minutes and bare hours.
+  function parseTimeRange(text, dateStr) {
+    const t = String(text || '').trim();
+    if (!t) return null;
+    if (/^\s*all\s*day/i.test(t)) return 'allday';
 
-  if (description) {
-    const rangeMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
-    if (rangeMatch) {
-      startDate = combineDateTime(date, rangeMatch[1]);
-      endDate = combineDateTime(date, rangeMatch[2]);
-    } else {
-      const singleMatch = description.match(/(\d{1,2}:\d{2}\s*(?:AM|PM)?)/i);
-      if (singleMatch) {
-        startDate = combineDateTime(date, singleMatch[1]);
-        endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
+    const base = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
+    const at = (h, m) => { const d = new Date(base); d.setHours(h, m, 0, 0); return d; };
+
+    const range = t.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?\s*(?:-|–|—|to)\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+    if (range) {
+      let h1 = parseInt(range[1], 10), m1 = range[2] ? parseInt(range[2], 10) : 0;
+      let h2 = parseInt(range[4], 10), m2 = range[5] ? parseInt(range[5], 10) : 0;
+      const mer = (range[6] || range[3] || '').toUpperCase();
+      // Guard against things that look like a range but are not: street
+      // numbers ("13-379 Stephen St") and other non-times.
+      if (h1 <= 23 && h2 <= 23) {
+        if (mer === 'PM') { if (h1 < 12) h1 += 12; if (h2 < 12) h2 += 12; }
+        else if (mer === 'AM') { if (h1 === 12) h1 = 0; if (h2 === 12) h2 = 0; }
+        else if (h2 <= h1 && h2 < 12) { h2 += 12; }   // "9-5" means 09:00-17:00
+        return { start: at(h1, m1), end: at(h2, m2) };
       }
     }
 
-    const locMatch = description.match(/·\s*([^·]+?)\s*(?:·|$)/);
-    if (locMatch) {
-      location = locMatch[1].trim();
+    // Single time: anchored at the start so an address number is not mistaken for a time.
+    const single = t.match(/^\s*(?:(?:mon|tues?|wed(?:nes)?|thurs?|fri|sat|sun)[a-z]*\.?\s*,?\s*)?(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+    if (single) {
+      let h = parseInt(single[1], 10), m = single[2] ? parseInt(single[2], 10) : 0;
+      const mer = (single[3] || '').toUpperCase();
+      if (mer === 'PM' && h < 12) h += 12;
+      if (mer === 'AM' && h === 12) h = 0;
+      return { start: at(h, m), end: at(h, m + 60) };
     }
+    return null;
   }
 
-  const pad = (n) => String(n).padStart(2, '0');
-  const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
-  const stamp = fmt(new Date());
+  function addToCalendar(title, time, date) {
+    const description = (time || '').trim();
+    const locMatch = description.match(/·\s*([^·]+?)\s*(?:·|$)/);
+    const location = locMatch ? locMatch[1].trim() : '';
+    const parsed = parseTimeRange(description, date);
+    const allDay = parsed === 'allday';
+    const startDate = parsed && !allDay ? parsed.start
+                                        : (date ? new Date(date + 'T12:00:00') : new Date());
+    const endDate = parsed && !allDay ? parsed.end
+                                      : new Date(startDate.getTime() + 60 * 60 * 1000);
 
-  const escape = (val) => (val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+    const pad = (n) => String(n).padStart(2, '0');
+    const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+    const fmtDay = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate());
+    const stamp = fmt(new Date());
 
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Pembina Valley Events//EN',
-    'METHOD:REQUEST',
-    'BEGIN:VEVENT',
-    'UID:pembina-' + Date.now() + '@pembinaevents.ca',
-    'DTSTAMP:' + stamp,
-    'DTSTART:' + fmt(startDate),
-    'DTEND:' + fmt(endDate),
-    'SUMMARY:' + escape(title || 'Event'),
-    'DESCRIPTION:' + escape(description || ''),
-    location ? 'LOCATION:' + escape(location) : '',
-    'STATUS:CONFIRMED',
-    'TRANSP:OPAQUE',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].filter(Boolean).join('\n');
+    const escape = (val) => (val || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 
-  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    const newWin = window.open(url, '_blank');
-    if (!newWin) {
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Pembina Valley Events//EN',
+      'METHOD:REQUEST',
+      'BEGIN:VEVENT',
+      'UID:pembina-' + Date.now() + '@pembinaevents.ca',
+      'DTSTAMP:' + stamp,
+      ...(allDay
+        ? ['DTSTART;VALUE=DATE:' + fmtDay(startDate),
+           'DTEND;VALUE=DATE:' + fmtDay(new Date(startDate.getTime() + 86400000))]
+        : ['DTSTART:' + fmt(startDate), 'DTEND:' + fmt(endDate)]),
+      'SUMMARY:' + escape(title || 'Event'),
+      'DESCRIPTION:' + escape(description || ''),
+      location ? 'LOCATION:' + escape(location) : '',
+      'STATUS:CONFIRMED',
+      'TRANSP:OPAQUE',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].filter(Boolean).join('\n');
+
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      const newWin = window.open(url, '_blank');
+      if (!newWin) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } else {
       const a = document.createElement('a');
       a.href = url;
       a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
       document.body.appendChild(a);
       a.click();
       a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  } else {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = (title || 'event').replace(/[^a-z0-9]+/gi, '_') + '.ics';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-}
+
+  // Add every event on one day to the visitor's personal calendar as a single
+  // .ics file (imports cleanly into Google / Apple / Outlook).
+  function addDayToCalendar(dateStr) {
+    const dayEvents = (Array.isArray(EVENTS) ? EVENTS : [])
+      .filter(ev => ev && ev.date === dateStr)
+      .sort((a, b) => timeToSort(a.time) - timeToSort(b.time));
+    if (!dayEvents.length) return;
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const fmt = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) +
+                      'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+    const fmtDay = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate());
+    const stamp = fmt(new Date());
+    const escape = (v) => (v || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+                               .replace(/,/g, '\\,').replace(/\n/g, '\\n');
+
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Pembina Valley Events//EN',
+      'METHOD:REQUEST',
+    ];
+
+    dayEvents.forEach((ev, i) => {
+      const desc = (ev.time || '').trim();
+      const parsed = parseTimeRange(desc, ev.date);
+      const allDay = parsed === 'allday';
+      const start = parsed && !allDay ? parsed.start : new Date((ev.date || dateStr) + 'T12:00:00');
+      const end = parsed && !allDay ? parsed.end : new Date(start.getTime() + 60 * 60 * 1000);
+
+      lines.push('BEGIN:VEVENT');
+      lines.push('UID:pembina-day-' + (ev.id || dateStr) + '-' + i + '@pembinaevents.ca');
+      lines.push('DTSTAMP:' + stamp);
+      if (allDay) {
+        lines.push('DTSTART;VALUE=DATE:' + fmtDay(start));
+        lines.push('DTEND;VALUE=DATE:' + fmtDay(new Date(start.getTime() + 86400000)));
+      } else {
+        lines.push('DTSTART:' + fmt(start));
+        lines.push('DTEND:' + fmt(end));
+      }
+      lines.push('SUMMARY:' + escape(ev.title || 'Event'));
+      lines.push('DESCRIPTION:' + escape(desc));
+      if (ev.location) lines.push('LOCATION:' + escape(ev.location));
+      lines.push('STATUS:CONFIRMED');
+      lines.push('TRANSP:OPAQUE');
+      lines.push('END:VEVENT');
+    });
+
+    lines.push('END:VCALENDAR');
+    const ics = lines.join('\r\n');
+
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const name = 'pembina-events-' + dateStr + '.ics';
+
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      const newWin = window.open(url, '_blank');
+      if (!newWin) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+    } else {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
 
 function combineDateTime(dateStr, timeStr) {
   const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
@@ -239,7 +343,7 @@ function combineDateTime(dateStr, timeStr) {
       const dateLabel = document.createElement('div');
       dateLabel.className = 'day-header';
       dateLabel.dataset.expanded = 'false';
-      dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate() + ' <span class="event-count">' + eventsByDate[dateStr].length + '</span>';
+      dateLabel.innerHTML = '<span class="day-toggle"></span>' + days[evDate.getDay()] + ', ' + monthNames[evDate.getMonth()].slice(0,3) + ' ' + evDate.getDate() + ' <span class="event-count">' + eventsByDate[dateStr].length + '</span><button class="day-cal-btn" data-add-day="' + dateStr + '" title="Add all ' + eventsByDate[dateStr].length + ' events to your calendar">📅 Add all</button>';
       dateLabel.addEventListener('click', () => {
         const expanded = dateLabel.dataset.expanded === 'true';
         dateLabel.dataset.expanded = String(!expanded);
@@ -316,6 +420,7 @@ function combineDateTime(dateStr, timeStr) {
       if (page === 'fundraiser') { try { renderFundraisers(); } catch (e) { console.error(e); } }
       if (page === 'bargains') { try { renderBargains(); } catch (e) { console.error(e); } }
       if (page === 'weather') { try { loadWeather(); } catch (e) { console.error(e); } }
+      if (page === 'search') { try { initSearchPage(); } catch (e) { console.error(e); } }
     } catch (e) {
       console.error('activatePage error', e);
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -324,7 +429,7 @@ function combineDateTime(dateStr, timeStr) {
     }
   }
 
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('[data-page]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       activatePage(link.dataset.page);
@@ -392,6 +497,9 @@ function combineDateTime(dateStr, timeStr) {
       });
       if (dayEvents.length > 3) {
         html += `<div class="day-chip" data-category="more">+${dayEvents.length - 3} more</div>`;
+      }
+      if (dayEvents.length) {
+        html += `<button class="cal-add-btn" data-add-day="${dateStr}" title="Add all ${dayEvents.length} events to your calendar">📅</button>`;
       }
       html += `</div>`;
     }
@@ -577,6 +685,454 @@ function combineDateTime(dateStr, timeStr) {
     });
   }
 
+  // ===================== SEARCH ENGINE =====================
+  // Google-style search over the events index: weighted fields, typo
+  // tolerance, phrase boost, instant results and suggestions. Client-side
+  // only — no backend, works on the static Pages host.
+
+  const SEARCH_STOPWORDS = new Set([
+    'a','an','the','and','or','of','in','on','at','to','for','with','by','is','are',
+    'was','were','be','been','near','my','me','i','what','when','where','show','find',
+    'list','all','upcoming','event','events','this','that','it','its','from','as',
+    'into','about','there','here','any','do','does','can','could','you','your'
+  ]);
+
+  function stemSearchToken(t) {
+    if (t.length > 4 && t.endsWith('ies')) return t.slice(0, -3) + 'y';
+    if (t.length > 5 && t.endsWith('ing')) return t.slice(0, -3);
+    if (t.length > 4 && t.endsWith('ed')) return t.slice(0, -2);
+    if (t.length > 4 && t.endsWith('es')) return t.slice(0, -2);
+    if (t.length > 3 && t.endsWith('s') && !t.endsWith('ss')) return t.slice(0, -1);
+    return t;
+  }
+
+  function searchTokens(text) {
+    return String(text == null ? '' : text)
+      .toLowerCase()
+      .replace(/['’]/g, '')
+      .split(/[^a-z0-9]+/)
+      .filter(Boolean)
+      .map(stemSearchToken)
+      .filter(t => t.length > 1 && !SEARCH_STOPWORDS.has(t));
+  }
+
+  function searchEditDistance(a, b) {
+    if (a === b) return 0;
+    const m = a.length, n = b.length;
+    if (!m) return n;
+    if (!n) return m;
+    let prev = new Array(n + 1);
+    for (let j = 0; j <= n; j++) prev[j] = j;
+    for (let i = 1; i <= m; i++) {
+      const cur = [i];
+      for (let j = 1; j <= n; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      prev = cur;
+    }
+    return prev[n];
+  }
+
+  let SEARCH_INDEX = null;
+  let SEARCH_BY_LEN = null;
+
+  function buildSearchIndex() {
+    SEARCH_INDEX = [];
+    const vocab = new Set();
+    EVENTS.forEach(ev => {
+      const title = String(ev.title || '');
+      const loc = String(ev.time || '') + ' ' + String(ev.location || '');
+      const desc = String(ev.description || '');
+      const cat = String(ev.category || '');
+      const src = String(ev.source || '');
+      const weights = new Map();
+      const add = (text, weight) => {
+        searchTokens(text).forEach(tok => {
+          vocab.add(tok);
+          weights.set(tok, Math.max(weights.get(tok) || 0, weight));
+        });
+      };
+      add(title, 10);
+      add(loc, 6);
+      add(cat, 4);
+      add(src, 3);
+      add(desc, 2);
+      SEARCH_INDEX.push({
+        ev: ev,
+        title: title,
+        loc: loc,
+        desc: desc,
+        cat: cat,
+        src: src,
+        date: String(ev.date || ''),
+        weights: weights,
+        titleLower: title.toLowerCase(),
+        haystack: (title + ' ' + loc + ' ' + desc + ' ' + cat + ' ' + src).toLowerCase()
+      });
+    });
+    SEARCH_BY_LEN = new Map();
+    vocab.forEach(t => {
+      if (!SEARCH_BY_LEN.has(t.length)) SEARCH_BY_LEN.set(t.length, []);
+      SEARCH_BY_LEN.get(t.length).push(t);
+    });
+    return SEARCH_INDEX;
+  }
+
+  function typoCandidates(term) {
+    const out = [];
+    [term.length - 1, term.length, term.length + 1].forEach(len => {
+      const bucket = SEARCH_BY_LEN.get(len);
+      if (bucket) out.push.apply(out, bucket);
+    });
+    return out;
+  }
+
+  function scoreSearchDoc(doc, terms, phrase) {
+    let score = 0;
+    let matched = 0;
+    for (let i = 0; i < terms.length; i++) {
+      const term = terms[i];
+      let best = doc.weights.get(term) || 0;
+      if (!best && term.length >= 3) {
+        doc.weights.forEach((w, tok) => {
+          if (tok.charAt(0) === term.charAt(0) && tok.startsWith(term)) {
+            best = Math.max(best, w * 0.7);
+          }
+        });
+      }
+      if (!best && term.length >= 4) {
+        const cands = typoCandidates(term);
+        for (let c = 0; c < cands.length; c++) {
+          const tok = cands[c];
+          if (searchEditDistance(term, tok) === 1) {
+            const w = doc.weights.get(tok) || 0;
+            if (w) { best = Math.max(best, w * 0.5); break; }
+          }
+        }
+      }
+      if (best) { score += best; matched++; }
+    }
+    if (!score) return 0;
+    if (phrase && doc.titleLower.indexOf(phrase) !== -1) score += 12;
+    else if (phrase && doc.haystack.indexOf(phrase) !== -1) score += 5;
+    if (matched === terms.length && terms.length > 1) score += 6;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const d = new Date(doc.date + 'T12:00:00');
+    const days = Math.round((d - today) / 86400000);
+    if (days >= 0 && days <= 14) score += 3;
+    else if (days > 14 && days <= 60) score += 1;
+    return score;
+  }
+
+  function runSearch(query, options) {
+    options = options || {};
+    if (!SEARCH_INDEX) buildSearchIndex();
+    const phrase = String(query == null ? '' : query).toLowerCase().trim();
+    const terms = searchTokens(phrase);
+    if (!terms.length) {
+      return { results: [], terms: [], phrase: phrase, total: 0, truncated: false };
+    }
+    let results = [];
+    for (let i = 0; i < SEARCH_INDEX.length; i++) {
+      const doc = SEARCH_INDEX[i];
+      const score = scoreSearchDoc(doc, terms, phrase);
+      if (score) results.push({ ev: doc.ev, score: score });
+    }
+    results.sort((a, b) => b.score - a.score || String(a.ev.date).localeCompare(String(b.ev.date)));
+    const total = results.length;
+    const limited = options.limit ? results.slice(0, options.limit) : results;
+    return { results: limited, terms: terms, phrase: phrase, total: total, truncated: limited.length < total };
+  }
+
+  function suggestCorrection(query) {
+    if (!SEARCH_BY_LEN) buildSearchIndex();
+    const terms = searchTokens(query);
+    if (!terms.length) return '';
+    let changed = false;
+    const corrected = terms.map(t => {
+      if (t.length < 5) return t;
+      let best = null;
+      let bestD = 3;
+      const cands = typoCandidates(t);
+      for (let c = 0; c < cands.length; c++) {
+        const d = searchEditDistance(t, cands[c]);
+        if (d < bestD) { bestD = d; best = cands[c]; }
+      }
+      if (best && bestD <= 2) { changed = true; return best; }
+      return t;
+    });
+    return changed ? corrected.join(' ') : '';
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function highlightTerms(text, terms) {
+    let html = escapeHtml(text);
+    if (!terms || !terms.length) return html;
+    const safe = terms.filter(t => t.length > 1).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (!safe.length) return html;
+    try {
+      html = html.replace(new RegExp('(' + safe.join('|') + ')', 'gi'), '<mark>$1</mark>');
+    } catch (e) { /* malformed pattern — return unhighlighted */ }
+    return html;
+  }
+
+  function formatSearchDate(dateStr) {
+    const d = new Date(String(dateStr) + 'T12:00:00');
+    if (isNaN(d.getTime())) return String(dateStr || '');
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function renderSearchResults(query) {
+    const box = document.getElementById('search-results');
+    const meta = document.getElementById('search-meta');
+    if (!box) return;
+    const now = () => (window.performance && performance.now) ? performance.now() : Date.now();
+    const started = now();
+    const phrase = String(query == null ? '' : query).trim();
+    const { results, terms, total, truncated } = runSearch(phrase, { limit: 40 });
+    const elapsed = ((now() - started) / 1000).toFixed(2);
+
+    if (!phrase) {
+      if (meta) meta.textContent = '';
+      box.innerHTML = '<div class="search-empty"><div class="big">Search the Pembina Valley events calendar</div>' +
+        'Try a place (Winkler, Morden, Altona), a category (hockey, market, music) or any keyword.</div>';
+      return;
+    }
+
+    if (!total) {
+      const fix = suggestCorrection(phrase);
+      if (meta) meta.textContent = 'No results for \u201C' + phrase + '\u201D';
+      let html = '<div class="search-empty"><div class="big">No results for \u201C' + escapeHtml(phrase) + '\u201D</div>';
+      if (fix) {
+        html += '<div>Did you mean <a href="#page-search" data-didyoumean="' + escapeHtml(fix).replace(/"/g, '&quot;') + '">' + escapeHtml(fix) + '</a>?</div>';
+      }
+      html += '<div style="margin-top:8px;">Check the spelling, or try a shorter word or a town name.</div></div>';
+      box.innerHTML = html;
+      return;
+    }
+
+    if (meta) {
+      meta.textContent = 'About ' + total + ' result' + (total === 1 ? '' : 's') +
+        ' (' + elapsed + ' seconds)' + (truncated ? ' \u00b7 showing top ' + results.length : '');
+    }
+
+    box.innerHTML = results.map(r => {
+      const ev = r.ev;
+      const title = highlightTerms(ev.title, terms);
+      const metaLine = escapeHtml(formatSearchDate(ev.date)) +
+        (ev.time ? ' \u00b7 ' + escapeHtml(ev.time) : '') +
+        (ev.source ? ' \u00b7 ' + escapeHtml(ev.source) : '');
+      const snippet = ev.description ? highlightTerms(ev.description, terms) : highlightTerms(ev.time, terms);
+      const copyText = (ev.title + '\n' + (ev.time || '')).trim();
+      return '<div class="result-item" data-category="' + escapeHtml(ev.category || 'community') + '">' +
+        '<a class="result-title" href="' + escapeHtml(ev.link || '#') + '" target="_blank" rel="noopener">' + title + '</a>' +
+        '<div class="result-meta">' + metaLine + '</div>' +
+        (snippet ? '<div class="result-snippet">' + snippet + '</div>' : '') +
+        '<div class="result-actions"><button class="copy-btn" data-copy="' + copyText.replace(/"/g, '&quot;') + '">Copy</button></div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function renderSuggestions(query) {
+    const box = document.getElementById('search-suggestions');
+    const input = document.getElementById('search-input');
+    if (!box || !input) return;
+    const q = String(query == null ? '' : query).trim().toLowerCase();
+    if (q.length < 2) {
+      box.hidden = true;
+      box.innerHTML = '';
+      input.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    const seen = new Set();
+    const picks = [];
+    for (let i = 0; i < SEARCH_INDEX.length && picks.length < 40; i++) {
+      const doc = SEARCH_INDEX[i];
+      const candidates = [
+        { text: doc.title, type: 'Event' },
+        { text: doc.loc, type: 'Place' },
+        { text: doc.cat, type: 'Category' }
+      ];
+      for (let c = 0; c < candidates.length; c++) {
+        const s = String(candidates[c].text || '').trim();
+        if (!s) continue;
+        const key = s.toLowerCase();
+        if (seen.has(key)) continue;
+        if (key.indexOf(q) !== -1) {
+          seen.add(key);
+          picks.push({ text: s, type: candidates[c].type, at: key.indexOf(q) });
+        }
+      }
+    }
+    picks.sort((a, b) => a.at - b.at || a.text.length - b.text.length);
+    const top = picks.slice(0, 8);
+    if (!top.length) {
+      box.hidden = true;
+      box.innerHTML = '';
+      input.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    box.innerHTML = top.map(p =>
+      '<div class="suggest-item" role="option" data-suggest="' + escapeHtml(p.text).replace(/"/g, '&quot;') + '">' +
+      '<span class="s-text">' + highlightTerms(p.text, [q]) + '</span>' +
+      '<span class="s-type">' + escapeHtml(p.type) + '</span></div>'
+    ).join('');
+    box.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  function syncSearchUrl(query) {
+    try {
+      const url = new URL(window.location.href);
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      window.history.replaceState({}, '', url.toString());
+    } catch (e) { /* ignore */ }
+  }
+
+  let SEARCH_PAGE_READY = false;
+
+  function initSearchPage() {
+    const input = document.getElementById('search-input');
+    if (!input) return;
+    if (!SEARCH_PAGE_READY) {
+      SEARCH_PAGE_READY = true;
+      let debounce = null;
+      let activeSuggest = -1;
+
+      input.addEventListener('input', () => {
+        activeSuggest = -1;
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+          const q = input.value;
+          renderSuggestions(q);
+          renderSearchResults(q);
+          syncSearchUrl(q);
+        }, 120);
+      });
+
+      input.addEventListener('keydown', (e) => {
+        const sug = document.getElementById('search-suggestions');
+        const items = (sug && !sug.hidden) ? sug.querySelectorAll('.suggest-item') : [];
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          if (!items.length) return;
+          e.preventDefault();
+          activeSuggest += (e.key === 'ArrowDown' ? 1 : -1);
+          if (activeSuggest < 0) activeSuggest = items.length - 1;
+          if (activeSuggest >= items.length) activeSuggest = 0;
+          items.forEach((el, i) => el.classList.toggle('active', i === activeSuggest));
+          return;
+        }
+        if (e.key === 'Enter') {
+          clearTimeout(debounce);
+          if (activeSuggest >= 0 && items.length) {
+            e.preventDefault();
+            const el = items[activeSuggest];
+            if (el) {
+              input.value = el.dataset.suggest;
+              activeSuggest = -1;
+              renderSuggestions('');
+              renderSearchResults(input.value);
+              syncSearchUrl(input.value);
+            }
+            return;
+          }
+          const q = input.value.trim();
+          renderSuggestions('');
+          renderSearchResults(q);
+          syncSearchUrl(q);
+          input.blur();
+          return;
+        }
+        if (e.key === 'Escape') {
+          input.value = '';
+          activeSuggest = -1;
+          renderSuggestions('');
+          renderSearchResults('');
+          syncSearchUrl('');
+        }
+      });
+
+      const clearBtn = document.getElementById('search-clear');
+      if (clearBtn) clearBtn.addEventListener('click', () => {
+        input.value = '';
+        activeSuggest = -1;
+        renderSuggestions('');
+        renderSearchResults('');
+        syncSearchUrl('');
+        input.focus();
+      });
+
+      const sug = document.getElementById('search-suggestions');
+      if (sug) sug.addEventListener('mousedown', (e) => {
+        const item = e.target.closest('[data-suggest]');
+        if (!item) return;
+        e.preventDefault();
+        input.value = item.dataset.suggest;
+        activeSuggest = -1;
+        renderSuggestions('');
+        renderSearchResults(input.value);
+        syncSearchUrl(input.value);
+      });
+
+      document.querySelectorAll('#page-search .search-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          input.value = chip.dataset.q;
+          activeSuggest = -1;
+          renderSuggestions('');
+          renderSearchResults(chip.dataset.q);
+          syncSearchUrl(chip.dataset.q);
+          input.focus();
+        });
+      });
+
+      const lucky = document.getElementById('search-lucky');
+      if (lucky) lucky.addEventListener('click', () => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const upcoming = EVENTS.filter(ev => new Date(String(ev.date) + 'T12:00:00') >= today);
+        if (!upcoming.length) return;
+        const pick = upcoming[Math.floor(Math.random() * upcoming.length)];
+        input.value = pick.title;
+        activeSuggest = -1;
+        renderSuggestions('');
+        renderSearchResults(pick.title);
+        syncSearchUrl(pick.title);
+        const first = document.querySelector('#search-results .result-title');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      document.addEventListener('click', (e) => {
+        const fix = e.target.closest('[data-didyoumean]');
+        if (!fix) return;
+        e.preventDefault();
+        input.value = fix.dataset.didyoumean;
+        renderSuggestions('');
+        renderSearchResults(input.value);
+        syncSearchUrl(input.value);
+      });
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q') || window._pendingSearchQuery || '';
+    window._pendingSearchQuery = '';
+    input.value = q;
+    renderSuggestions('');
+    renderSearchResults(q);
+    try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
+  }
+
   function renderSearchBar() {
     // Add search input if not already present
     const nav = document.querySelector('.nav-inner');
@@ -613,6 +1169,15 @@ function combineDateTime(dateStr, timeStr) {
         buildUpcoming();
         buildToday();
       });
+      // Google-style: Enter opens the full search page carrying the query.
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter') return;
+        const q = searchInput.value.trim();
+        if (q) window._pendingSearchQuery = q;
+        try { searchInput.blur(); } catch (err) { /* ignore */ }
+        if (location.hash !== '#page-search') location.hash = '#page-search';
+        try { activatePage('search'); } catch (err) { console.error(err); }
+      });
     }
   }
 const initPage = () => {
@@ -647,7 +1212,10 @@ const initPage = () => {
         title: e.title,
         time: e.time || '',
         category: e.category || 'community',
-        link: e.link || '#'
+        link: e.link || '#',
+        description: e.description || '',
+        location: e.location || '',
+        source: e.source || ''
       }));
       console.log('Loaded ' + EVENTS.length + ' events from events.json');
       updateLastUpdated();
@@ -1253,6 +1821,15 @@ ${ev.date} · ${ev.time}`.replace(/"/g, '&quot;')}">Copy</button>
     if (!btn) return;
     ev.preventDefault();
     addToCalendar(btn.dataset.title || '', btn.dataset.time || '', btn.dataset.date || '');
+  });
+
+  // "Add all events for this day" — calendar grid cell and day header.
+  document.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-add-day]');
+    if (!btn) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    addDayToCalendar(btn.dataset.addDay);
   });
 
   document.addEventListener('click', (ev) => {
