@@ -5014,5 +5014,77 @@
   "lat": "49.1774961",
   "lng": "-98.2145396",
   "source": "google-maps"
+ },
+ {
+  "name": "Dr Beetroot Canada Inc",
+  "category": "Food manufacturer",
+  "town": "St. Leon",
+  "address": "16 Main St",
+  "phone": "(204) 997-4379",
+  "email": "",
+  "description": "Google Maps: Food manufacturer",
+  "lat": "49.3596626",
+  "lng": "-98.5845805",
+  "source": "google-maps"
+ },
+ {
+  "name": "Pembina Co-op Home & Building Centre - RTM Homes St. Leon",
+  "category": "Home builder",
+  "town": "St. Leon",
+  "address": "60 Main St",
+  "phone": "(204) 744-2421",
+  "email": "",
+  "description": "Google Maps: Home builder",
+  "lat": "49.3596626",
+  "lng": "-98.5845805",
+  "source": "google-maps"
+ },
+ {
+  "name": "Pembina Co-op Agro Centre - St-Léon",
+  "category": "Farm equipment supplier",
+  "town": "St. Leon",
+  "address": "49079 Labossiere Road",
+  "phone": "(204) 744-2850",
+  "email": "",
+  "description": "Google Maps: Farm equipment supplier",
+  "lat": "49.3596626",
+  "lng": "-98.5845805",
+  "source": "google-maps"
+ },
+ {
+  "name": "Green Leaf Farms",
+  "category": "Hay supplier",
+  "town": "St. Leon",
+  "address": "Main St",
+  "phone": "(204) 801-9993",
+  "email": "",
+  "description": "Google Maps: Hay supplier",
+  "lat": "49.3596626",
+  "lng": "-98.5845805",
+  "source": "google-maps"
+ },
+ {
+  "name": "Block One Technology",
+  "category": "Technology park",
+  "town": "St. Leon",
+  "address": "SW 18-5-8 W",
+  "phone": "(514) 458-3688",
+  "email": "",
+  "description": "Google Maps: Technology park",
+  "lat": "49.3596626",
+  "lng": "-98.5845805",
+  "source": "google-maps"
+ },
+ {
+  "name": "Rondeau Enterprises Ltd",
+  "category": "General contractor",
+  "town": "St. Leon",
+  "address": "6 Baie du Lac",
+  "phone": "(204) 744-2795",
+  "email": "",
+  "description": "Google Maps: General contractor",
+  "lat": "49.3596626",
+  "lng": "-98.5845805",
+  "source": "google-maps"
  }
 ]
