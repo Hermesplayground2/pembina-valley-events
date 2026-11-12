@@ -5086,5 +5086,17 @@
   "lat": "49.3596626",
   "lng": "-98.5845805",
   "source": "google-maps"
+ },
+ {
+  "name": "Pinnaco Inc.",
+  "category": "General contractor",
+  "town": "Winkler (Google Maps)",
+  "address": "720 Norquay Dr #1",
+  "phone": "(204) 325-3909",
+  "email": "",
+  "description": "Google Maps: General contractor",
+  "lat": "49.1824985",
+  "lng": "-97.9452339",
+  "source": "google-maps"
  }
 ]
