@@ -1,26 +1,8 @@
 {
-  "last_updated": "2026-11-13T11:06:33.623188+00:00",
-  "generated_by": "fetch_events.py",
-  "source": "pembinavalleyonline.com/events",
-  "filter": {
-    "drop_terms": [
-      "pride",
-      "bingo",
-      "farmers market",
-      "council meeting"
-    ]
-  },
+  "last_updated": "2026-11-13T11:06:39.314520+00:00",
+  "generated_by": "pembina_publish_guard.py",
+  "source": "pembina_publish_guard.py",
   "events": [
-    {
-      "id": "scrl-10004900-1794477600-1795541400@scrl.mb.libraries.coop",
-      "title": "MANITOU - FINES FOR FOOD Nov 12-24, 2026",
-      "time": "10:00 AM · Manitou Branch",
-      "date": "2026-11-12",
-      "link": "https://scrl.mb.libraries.coop/event/manitou-fines-for-food-nov-12-24-2026/",
-      "source": "South Central Regional Library",
-      "category": "community",
-      "description": "Any fines that are paid at the Manitou Branch between November 12 and 24 will be donated to our local Christmas Cheer."
-    },
     {
       "id": "scrl-10004776-1794564000-1794567600@scrl.mb.libraries.coop",
       "title": "Altona Story Time",
