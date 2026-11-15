@@ -4,16 +4,6 @@
   "note": "City of Morden recreation programs, which the pembinavalleyonline/gwevents crawlers do not carry. Fixed-date entries use 'date'; recurring programs use 'weekdays' (Mon=0 .. Sun=6) and get the next occurrence computed at merge time, so an ongoing weekly program never drops off the site once its representative date passes.",
   "events": [
     {
-      "id": "morden-grows-pd-day-camp",
-      "title": "GROW PD Day Camp",
-      "date": "2026-11-13",
-      "time": "9:00 AM–4:00 PM · Access Event Centre, Morden",
-      "category": "family",
-      "location": "Morden",
-      "link": "https://morden.ca/rec",
-      "description": "City of Morden and Big Brothers Big Sisters — a fun, interactive day for girls in Grades 5 & 6. Confidence, leadership, healthy living. FREE."
-    },
-    {
       "id": "morden-wreath-making",
       "title": "Wreath Making Workshop",
       "date": "2026-11-24",
@@ -112,6 +102,16 @@
       "location": "Morden",
       "link": "https://morden.ca/rec-programs",
       "description": "55+ Skate & Stick & Puck (FREE), Parent & Tot (FREE), Morning Skate ($5), Stick & Puck ($5), Homeschool Skate & Stick & Puck ($2.50), Public Skating (FREE). See morden.ca/rec-programs for days and times."
+    },
+    {
+      "id": "winkler-tree-lighting-2026",
+      "title": "City of Winkler Tree Lighting Ceremony",
+      "date": "2026-11-20",
+      "time": "6:00 PM · Bethel Heritage Park, Winkler",
+      "category": "family",
+      "location": "Winkler",
+      "link": "https://www.visitwinkler.ca/tree-lighting-ceremony",
+      "description": "Light Up the Season at the annual City of Winkler Tree Lighting Ceremony. Gathering from 6:00 p.m., ceremony begins at 6:30 p.m. when Mayor Henry Siemens flips the switch to illuminate Bethel Heritage Park. Santa photos, petting zoo, snacks and festive music. Free, family-friendly event."
     }
   ]
 }
