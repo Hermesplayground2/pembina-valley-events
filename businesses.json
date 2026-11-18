@@ -5098,5 +5098,17 @@
   "lat": "49.1824985",
   "lng": "-97.9452339",
   "source": "google-maps"
+ },
+ {
+  "name": "Wilson AI Assistant & Automation",
+  "category": "Media, Tech & Marketing",
+  "town": "Winkler",
+  "address": "Winkler MB",
+  "phone": "",
+  "email": "Wilson.the.aiagent@gmail.com",
+  "description": "AI assistant and automation for local businesses. A 24/7 assistant on Telegram & Signal that remembers your customers, answers questions, sends reminders and follow-ups. Also automation sprints (intake, quoting, booking), monthly retainers, and document/data work. Built and run locally by Wilson - the same agent that runs this events calendar. Telegram: @Wilson_hermesvision_bot",
+  "lat": "",
+  "lng": "",
+  "source": "wilson"
  }
 ]
