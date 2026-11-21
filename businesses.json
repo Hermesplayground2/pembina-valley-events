@@ -1135,9 +1135,9 @@
   "phone": "(204) 312-0327",
   "email": "",
   "description": "Google Maps: Construction company",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "google-maps"
+  "lat": "49.1940678",
+  "lng": "-98.0846481",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Cross Country Manufacturing",
@@ -1351,9 +1351,9 @@
   "phone": "(204) 822-1771",
   "email": "",
   "description": "Morden Chamber of Commerce: Telecommunications",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1898955",
+  "lng": "-98.1003379",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Blumstein Brewing Company",
@@ -1435,9 +1435,9 @@
   "phone": "(204) 325-4342",
   "email": "",
   "description": "Morden Chamber of Commerce: Florists, Gifts & Specialty Items, Weddings & Events",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1940678",
+  "lng": "-98.0846481",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Backwoods Ten One Seven Inc.",
@@ -1567,9 +1567,9 @@
   "phone": "(204) 619-4644",
   "email": "",
   "description": "Morden Chamber of Commerce: Massage Therapy & Reflexology, Beauty Salons/Spas",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1892198",
+  "lng": "-98.1093546",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Boundary Plumbing & Heating",
@@ -1711,9 +1711,9 @@
   "phone": "(204) 822-1777",
   "email": "",
   "description": "Morden Chamber of Commerce: Telecommunications",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1898955",
+  "lng": "-98.1003379",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "ConstaClean Pros Ltd.",
@@ -2359,9 +2359,9 @@
   "phone": "204-822-4993",
   "email": "",
   "description": "Morden Chamber of Commerce: Legal Services",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1898955",
+  "lng": "-98.1003379",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Gardenland Co-op",
@@ -2479,9 +2479,9 @@
   "phone": "(204) 822-5996",
   "email": "",
   "description": "Morden Chamber of Commerce: Advertising/Promotions, Graphic Design",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1901075",
+  "lng": "-98.0996685",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Keystone Insurance Brokers",
@@ -2959,9 +2959,9 @@
   "phone": "(204) 822-0327",
   "email": "",
   "description": "Morden Chamber of Commerce: Government",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1870435",
+  "lng": "-98.1113480",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Morden Realty Inc.",
@@ -3007,9 +3007,9 @@
   "phone": "(204) 822-6824",
   "email": "",
   "description": "Morden Chamber of Commerce: Chiropractors & Physiotherapists",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1898955",
+  "lng": "-98.1003379",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "My AutoGlass Inc.",
@@ -3187,9 +3187,9 @@
   "phone": "(204) 822-8106",
   "email": "",
   "description": "Morden Chamber of Commerce: Manufacturing & Production",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1870435",
+  "lng": "-98.1113480",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Onpoint Property Management Ltd",
@@ -3391,9 +3391,9 @@
   "phone": "(204) 312-1750",
   "email": "",
   "description": "Morden Chamber of Commerce: Agriculture, Florists, Landscaping",
-  "lat": "49.187089",
-  "lng": "-97.937622",
-  "source": "morden-chamber"
+  "lat": "49.1755192",
+  "lng": "-97.9361284",
+  "source": "nominatim-address-norm-2026-11-21"
  },
  {
   "name": "Pembina Valley Humane Society",
