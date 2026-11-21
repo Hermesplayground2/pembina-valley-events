@@ -103,9 +103,9 @@
   "phone": "2042422659",
   "email": "",
   "description": "",
-  "lat": "49.2406285",
-  "lng": "-98.53219660000002",
-  "source": "municipality-of-pembina"
+  "lat": "49.1847740",
+  "lng": "-98.4744130",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Pembina Hills Collision Ltd",
@@ -115,9 +115,9 @@
   "phone": "2042462608",
   "email": "pembinahillscollision@hotmail.com",
   "description": "",
-  "lat": "49.24043710000001",
-  "lng": "-98.53849860000001",
-  "source": "municipality-of-pembina"
+  "lat": "49.2052100",
+  "lng": "-98.3771450",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Phil's Garage",
@@ -307,9 +307,9 @@
   "phone": "2048362147",
   "email": "",
   "description": "",
-  "lat": "49.4110076",
-  "lng": "-98.7911143",
-  "source": "municipality-of-pembina"
+  "lat": "49.1847740",
+  "lng": "-98.4744130",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Dave’s Locksmith & Electric",
@@ -343,9 +343,9 @@
   "phone": "2042080265",
   "email": "heather@crocusrealty.com",
   "description": "",
-  "lat": "49.2393662",
-  "lng": "49.2393662",
-  "source": "municipality-of-pembina"
+  "lat": "49.2398981",
+  "lng": "-98.5388162",
+  "source": "nominatim-repair-2026-11-21"
  },
  {
   "name": "IG Wealth Management",
@@ -415,9 +415,9 @@
   "phone": "",
   "email": "",
   "description": "Specialty coffee shop in the heart of downtown Manitou, Manitoba.",
-  "lat": "46.136040",
-  "lng": "-80.428253",
-  "source": "municipality-of-pembina"
+  "lat": "49.2398980",
+  "lng": "-98.5388160",
+  "source": "town-centroid-2026-11-21"
  },
  {
   "name": "Manitou Bakery & Coffee Shop",
@@ -583,9 +583,9 @@
   "phone": "2043318800",
   "email": "",
   "description": "",
-  "lat": "49.1906463972812",
-  "lng": "-98.00323759810789",
-  "source": "municipality-of-pembina"
+  "lat": "49.1870890",
+  "lng": "-97.9376220",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Ellis Pharmacy",
@@ -603,13 +603,13 @@
   "name": "GouldWood Meadows - Equine Assisted Support",
   "category": "Health & Medical",
   "town": "Manitou",
-  "address": "49.175712,-98.442487, 43072 Mile 12N Manitou MB R0G1G0",
+  "address": "43072 Mile 12N Manitou MB R0G1G0",
   "phone": "4317334856",
   "email": "gouldwoodmeadows@gmail.com",
   "description": "GouldWood Meadows is a tranquil sanctuary dedicated to holistic healing through the powerful connection between nature and horses. Offering a range of wellness retreats, Equinergy sessions, and personalized self-care programs, we provide a safe space for emotional healing, personal growth, and transformation. At GouldWood Meadows, we blend hands-on experiences with nature, meditation, art therapy, and more to support your journey towards balance and peace.",
-  "lat": "46.136040",
-  "lng": "46.136040",
-  "source": "municipality-of-pembina"
+  "lat": "49.2398980",
+  "lng": "-98.5388160",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Manitou Chiropractic Clinic – Dr. Michelle Sanders",
@@ -631,9 +631,9 @@
   "phone": "2042422774",
   "email": "",
   "description": "",
-  "lat": "49.2417255",
-  "lng": "-98.5440987",
-  "source": "municipality-of-pembina"
+  "lat": "49.2427438",
+  "lng": "-98.5418987",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Massage Therapy - Heather Hamilton",
@@ -655,9 +655,9 @@
   "phone": "2042422678",
   "email": "",
   "description": "",
-  "lat": "49.2417255",
-  "lng": "-98.5440987",
-  "source": "municipality-of-pembina"
+  "lat": "49.2427438",
+  "lng": "-98.5418987",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pembina Manitou Health Centre",
@@ -667,9 +667,9 @@
   "phone": "2042422744",
   "email": "",
   "description": "",
-  "lat": "49.2417255",
-  "lng": "-98.5440987",
-  "source": "municipality-of-pembina"
+  "lat": "49.2427438",
+  "lng": "-98.5418987",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Manitou Park Campground",
@@ -835,9 +835,9 @@
   "phone": "2043121894",
   "email": "david@laserpro3d.net",
   "description": "Laser Engraving",
-  "lat": "46.136040",
-  "lng": "46.136040",
-  "source": "municipality-of-pembina"
+  "lat": "49.2061339",
+  "lng": "-98.3776703",
+  "source": "nominatim-repair-2026-11-21"
  },
  {
   "name": "Oak Valley Productions Inc.",
@@ -859,9 +859,9 @@
   "phone": "2048230598",
   "email": "",
   "description": "",
-  "lat": "53.7608608",
-  "lng": "-98.81387619999998",
-  "source": "municipality-of-pembina"
+  "lat": "49.1847740",
+  "lng": "-98.4744130",
+  "source": "town-centroid-2026-11-21"
  },
  {
   "name": "PJD Mechanical",
@@ -895,9 +895,9 @@
   "phone": "2042462033",
   "email": "",
   "description": "",
-  "lat": "49.24043710000001",
-  "lng": "-98.53849869999999",
-  "source": "municipality-of-pembina"
+  "lat": "49.2052100",
+  "lng": "-98.3771450",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Manitou Flowers & Gifts",
@@ -931,21 +931,21 @@
   "phone": "1204242207",
   "email": "hnpauls@goinet.ca",
   "description": "Having been a sewer and quilter for many years, I purchased my first computer assisted quilting machine in 2013 and added a second machine in 2017. I have a wide variety of designs to suit a quilt whether it be traditional or modern.",
-  "lat": "49.24043710000001",
-  "lng": "-98.53849860000002",
-  "source": "municipality-of-pembina"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Taylor Gould Photography",
   "category": "Retail, Gifts & Crafts",
   "town": "Manitou",
-  "address": "49.175712,-98.442487, 43072 Mile 12N Manitou MB R0G1G0 Manitou MB R0G1G0",
+  "address": "43072 Mile 12N Manitou MB R0G1G0 Manitou MB R0G1G0",
   "phone": "4317334856",
   "email": "taylorgouldphotography1@gmail.com",
   "description": "Taylor Gould is a lifestyle, natural light photographer. It is my job to make sure I capture life's most meaningful moments. Whether you're looking to celebrate a special milestone with your family or simply cherish your bond with a beloved pet, let’s create something beautiful and personal together. Book your session today and turn your memories into art!",
-  "lat": "46.136040",
-  "lng": "46.136040",
-  "source": "municipality-of-pembina"
+  "lat": "49.2398980",
+  "lng": "-98.5388160",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Wee Wolle Shoppe",
@@ -967,9 +967,9 @@
   "phone": "2048254292",
   "email": "woodenarrowdesigns@outlook.com",
   "description": "Rustic inspired, painted wooden signs.",
-  "lat": "49.239222",
-  "lng": "-98.67920600000002",
-  "source": "municipality-of-pembina"
+  "lat": "49.1847740",
+  "lng": "-98.4744130",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Manitou Town & Country Golf Club",
@@ -979,9 +979,9 @@
   "phone": "2042422287",
   "email": "",
   "description": "",
-  "lat": "49.2394563",
-  "lng": "-98.67831669999998",
-  "source": "municipality-of-pembina"
+  "lat": "49.2398980",
+  "lng": "-98.5388160",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Mueller's Gym",
@@ -1137,7 +1137,7 @@
   "description": "Google Maps: Construction company",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Cross Country Manufacturing",
@@ -1195,9 +1195,9 @@
   "phone": "(204) 324-5477",
   "email": "",
   "description": "Google Maps: Excavating contractor",
-  "lat": "51.9452012",
-  "lng": "0.7886786",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1031110",
+  "lng": "-97.5583610",
+  "source": "town-centroid-guard-2026-11-21"
  },
  {
   "name": "Elmer's Manufacturing Ltd.",
@@ -1207,9 +1207,9 @@
   "phone": "(204) 324-6263",
   "email": "",
   "description": "Google Maps: Manufacturer",
-  "lat": "51.9452012",
-  "lng": "0.7886786",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1031110",
+  "lng": "-97.5583610",
+  "source": "town-centroid-guard-2026-11-21"
  },
  {
   "name": "Buffalo Creek Mills",
@@ -1243,9 +1243,9 @@
   "phone": "(204) 324-5556",
   "email": "",
   "description": "Google Maps: Farm",
-  "lat": "41.2353182",
-  "lng": "-76.9950682",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1031110",
+  "lng": "-97.5583610",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "2 Bro'zz Ltd.",
@@ -1257,7 +1257,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1859609",
   "lng": "-98.1042332",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "500 Stephen Community Centre",
@@ -1269,7 +1269,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Alayna Cole Events",
@@ -1353,7 +1353,7 @@
   "description": "Morden Chamber of Commerce: Telecommunications",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Blumstein Brewing Company",
@@ -1377,7 +1377,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1870435",
   "lng": "-98.1113480",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Best Western Plus Morden",
@@ -1387,9 +1387,9 @@
   "phone": "(204) 822-6116",
   "email": "",
   "description": "Morden Chamber of Commerce: Travel Services, Accommodations/Hotels/Motels/Camping, Hotels / Motels",
-  "lat": "49.1931815",
-  "lng": "-98.0733636",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1940678",
+  "lng": "-98.0846481",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "BDO Canada LLP",
@@ -1423,9 +1423,9 @@
   "phone": "",
   "email": "",
   "description": "Morden Chamber of Commerce member",
-  "lat": "49.5321047",
-  "lng": "-98.0723074",
-  "source": "morden-chamber"
+  "lat": "49.9174460",
+  "lng": "-97.1561740",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Bloom Floral Creative",
@@ -1437,7 +1437,7 @@
   "description": "Morden Chamber of Commerce: Florists, Gifts & Specialty Items, Weddings & Events",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Backwoods Ten One Seven Inc.",
@@ -1507,9 +1507,9 @@
   "phone": "(204) 325-7533",
   "email": "",
   "description": "Morden Chamber of Commerce member",
-  "lat": "49.1931815",
-  "lng": "-98.0733636",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1940678",
+  "lng": "-98.0846481",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Buttercup Greenhouse & Cafe Ltd",
@@ -1533,7 +1533,7 @@
   "description": "Morden Chamber of Commerce: Accountants/Consulting, Tax Preperation",
   "lat": "49.1979385",
   "lng": "-98.0978778",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Business Development Bank of Canada",
@@ -1581,7 +1581,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Brunn's Carpet & Upholstery Cleaners",
@@ -1617,7 +1617,7 @@
   "description": "Morden Chamber of Commerce: Insurance",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Care Dental Corporation",
@@ -1629,7 +1629,7 @@
   "description": "Morden Chamber of Commerce: Dental",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Crystal Spar",
@@ -1641,7 +1641,7 @@
   "description": "Morden Chamber of Commerce: Gifts & Specialty Items, Holistic Health",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Country Cycle & Ski",
@@ -1677,7 +1677,7 @@
   "description": "Morden Chamber of Commerce: Food & Beverage/Catering, Restaurants",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Cannatoba Ltd",
@@ -1701,7 +1701,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Cell Mechanics",
@@ -1713,7 +1713,7 @@
   "description": "Morden Chamber of Commerce: Telecommunications",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "ConstaClean Pros Ltd.",
@@ -1761,7 +1761,7 @@
   "description": "Morden Chamber of Commerce: Restaurants, Food & Beverage/Catering",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "City of Morden",
@@ -1797,7 +1797,7 @@
   "description": "Morden Chamber of Commerce: Manufacturing & Production, Medical Supply",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Checker Signs",
@@ -1857,7 +1857,7 @@
   "description": "Morden Chamber of Commerce: Holistic Health, Medical Supply",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Doell Law Office",
@@ -1975,9 +1975,9 @@
   "phone": "(204) 325-4766",
   "email": "",
   "description": "Morden Chamber of Commerce member",
-  "lat": "49.1922762",
-  "lng": "-98.1388160",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Elite Crushing Ltd",
@@ -2011,9 +2011,9 @@
   "phone": "204 822 1214",
   "email": "",
   "description": "Morden Chamber of Commerce: Beauty Salons/Spas",
-  "lat": "49.1898955",
-  "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1899486",
+  "lng": "-98.0940080",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Ed's Tire Ltd",
@@ -2061,7 +2061,7 @@
   "description": "Morden Chamber of Commerce: Florists, Gifts & Specialty Items, Interior Design, Weddings & Events",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Friesen Sales & Rentals",
@@ -2071,9 +2071,9 @@
   "phone": "(204) 331-6014",
   "email": "",
   "description": "Morden Chamber of Commerce: Agriculture, Construction Custom Drilling / Digging, Landscaping",
-  "lat": "49.1922762",
-  "lng": "-98.1388160",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Fentro Technologies Inc.",
@@ -2097,7 +2097,7 @@
   "description": "Morden Chamber of Commerce: Fitness",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Fairway Electric",
@@ -2169,7 +2169,7 @@
   "description": "Morden Chamber of Commerce: Graphic Design, Advertising/Promotions, Photographers/Photo Finishing/Framing",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Focal Point Comprehensive Vision Care",
@@ -2181,7 +2181,7 @@
   "description": "Morden Chamber of Commerce: Optical Services",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Freund's Auto Parts",
@@ -2205,7 +2205,7 @@
   "description": "Morden Chamber of Commerce: Beauty Salons/Spas",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Gallery Wealth Management",
@@ -2301,7 +2301,7 @@
   "description": "Morden Chamber of Commerce: Real Estate Services",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Greenvalley Equipment Inc.",
@@ -2311,9 +2311,9 @@
   "phone": "(204) 325-7742",
   "email": "",
   "description": "Morden Chamber of Commerce: Agriculture, Automotive, Sales, Repair, Rental, Hardware",
-  "lat": "49.1922762",
-  "lng": "-98.1388160",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Giant Tiger",
@@ -2337,7 +2337,7 @@
   "description": "Morden Chamber of Commerce: Chiropractors & Physiotherapists",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Golden West Broadcasting",
@@ -2361,7 +2361,7 @@
   "description": "Morden Chamber of Commerce: Legal Services",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Gardenland Co-op",
@@ -2421,7 +2421,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Homecare Evernest Ltd.",
@@ -2433,7 +2433,7 @@
   "description": "Morden Chamber of Commerce: Holistic Health, Assisted Living, Home Care, Personal Care Home",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Homestead South",
@@ -2445,7 +2445,7 @@
   "description": "Morden Chamber of Commerce: Assisted Living, Home Care, Personal Care Home",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Huron Window Corporation",
@@ -2505,7 +2505,7 @@
   "description": "Morden Chamber of Commerce: Accountants/Consulting, Tax Preperation",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "KB Events & Sponsorships",
@@ -2529,7 +2529,7 @@
   "description": "Morden Chamber of Commerce: Restaurants",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Krahn Friesen Neufeld Chartered Professional Accoountants Inc.",
@@ -2541,7 +2541,7 @@
   "description": "Morden Chamber of Commerce: Accountants/Consulting, Tax Preperation",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Kim Mintenko Coaching",
@@ -2625,7 +2625,7 @@
   "description": "Morden Chamber of Commerce: Automotive, Sales, Repair, Rental",
   "lat": "49.1859609",
   "lng": "-98.1042332",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Menzies Medical Centre",
@@ -2637,7 +2637,7 @@
   "description": "Morden Chamber of Commerce: Hospitals & Clinics, Medical Supply",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Moonlight Construction",
@@ -2685,7 +2685,7 @@
   "description": "Morden Chamber of Commerce: Legal Services",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Nurseries Ltd.",
@@ -2709,7 +2709,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1851840",
   "lng": "-97.9178899",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Massage Therapy Centre",
@@ -2721,7 +2721,7 @@
   "description": "Morden Chamber of Commerce: Massage Therapy & Reflexology, Medical Supply",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Agencies",
@@ -2745,7 +2745,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Medical Supply, Taxi/Airport",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Discount Centre",
@@ -2769,7 +2769,7 @@
   "description": "Morden Chamber of Commerce: Audio Visual Suppliers, Business Equipment Supplies & Services, Computer Service/Sales, Office Furniture & Supplies",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "McMunn & Yates",
@@ -2781,7 +2781,7 @@
   "description": "Morden Chamber of Commerce: Hardware, Construction Management (Contractor)",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden GR8Wash Corp",
@@ -2791,9 +2791,9 @@
   "phone": "204 822 2022",
   "email": "",
   "description": "Morden Chamber of Commerce: Automotive, Sales, Repair, Rental",
-  "lat": "49.1931815",
-  "lng": "-98.0733636",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.1940678",
+  "lng": "-98.0846481",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Drugstore",
@@ -2839,9 +2839,9 @@
   "phone": "(204) 822-4333",
   "email": "",
   "description": "Morden Chamber of Commerce: Veterinarians & Pet Services",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1782002",
+  "lng": "-98.1141014",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Mountain Automotive Service Centre",
@@ -2865,7 +2865,7 @@
   "description": "Morden Chamber of Commerce: Holistic Health, Chiropractors & Physiotherapists, Massage Therapy & Reflexology, Restaurants",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Murray Dodge Ram",
@@ -2877,7 +2877,7 @@
   "description": "Morden Chamber of Commerce: Automotive, Sales, Repair, Rental",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "MSTW Planning District",
@@ -2889,7 +2889,7 @@
   "description": "Morden Chamber of Commerce: Construction Management (Contractor), Government",
   "lat": "49.1979385",
   "lng": "-98.0978778",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Many Hands Resource Centre",
@@ -2901,7 +2901,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Menzies Medical Centre Board",
@@ -2913,7 +2913,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Corn & Apple Festival",
@@ -2961,7 +2961,7 @@
   "description": "Morden Chamber of Commerce: Government",
   "lat": "49.1870435",
   "lng": "-98.1113480",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Realty Inc.",
@@ -2985,7 +2985,7 @@
   "description": "Morden Chamber of Commerce: Computer Service/Sales, Hardware, Photographers/Photo Finishing/Framing, Security Services, Telecommunications",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Minnewasta Motors Ltd.",
@@ -3009,7 +3009,7 @@
   "description": "Morden Chamber of Commerce: Chiropractors & Physiotherapists",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "My AutoGlass Inc.",
@@ -3081,7 +3081,7 @@
   "description": "Morden Chamber of Commerce: Dental, Denturist",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Minnewasta Golf",
@@ -3091,9 +3091,9 @@
   "phone": "(204) 822-4992 (Pro Shop)",
   "email": "",
   "description": "Morden Chamber of Commerce: Museums & Attractions, Golf Course & Country Club, Retail; Sports / Leisure / Outdoors",
-  "lat": "49.1927055",
-  "lng": "-98.1014567",
-  "source": "morden-chamber"
+  "lat": "49.1882207",
+  "lng": "-98.1312969",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden's Dollar Store Plus More",
@@ -3105,7 +3105,7 @@
   "description": "Morden Chamber of Commerce: Dry Cleaners, Gifts & Specialty Items, Office Furniture & Supplies",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Area Foundation",
@@ -3117,7 +3117,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Morden Gas Bar & Grocery",
@@ -3177,7 +3177,7 @@
   "description": "Morden Chamber of Commerce: Retail; Sports / Leisure / Outdoors, Fitness",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "ON2 Solutions",
@@ -3189,7 +3189,7 @@
   "description": "Morden Chamber of Commerce: Manufacturing & Production",
   "lat": "49.1870435",
   "lng": "-98.1113480",
-  "source": "nominatim-address-norm-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Onpoint Property Management Ltd",
@@ -3225,7 +3225,7 @@
   "description": "Morden Chamber of Commerce: Advertising/Promotions",
   "lat": "49.1851840",
   "lng": "-97.9178899",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pembina Parish Pastoral Charge",
@@ -3249,7 +3249,7 @@
   "description": "Morden Chamber of Commerce: Trucking/Equipment/Repair",
   "lat": "49.1859609",
   "lng": "-98.1042332",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Party On Rentals",
@@ -3273,7 +3273,7 @@
   "description": "Morden Chamber of Commerce: Drug & Variety Stores, Gifts & Specialty Items, Interior Design, Medical Supply",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pembina Valley Lifestyles",
@@ -3285,7 +3285,7 @@
   "description": "Morden Chamber of Commerce: Advertising/Promotions, Press/Publications/Radio",
   "lat": "49.1851840",
   "lng": "-97.9178899",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pembina Counselling Centre",
@@ -3297,7 +3297,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit, Counseling",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pure Anada Natural Cosmetics",
@@ -3309,7 +3309,7 @@
   "description": "Morden Chamber of Commerce: Beauty Salons/Spas, Gifts & Specialty Items, Manufacturing & Production",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Proliferate Inc.",
@@ -3321,7 +3321,7 @@
   "description": "Morden Chamber of Commerce: Manufacturing & Production",
   "lat": "49.1870435",
   "lng": "-98.1113480",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pure Joy Naturals",
@@ -3345,7 +3345,7 @@
   "description": "Morden Chamber of Commerce: Legal Services",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Polar Plumbing & Heating Ltd.",
@@ -3357,7 +3357,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1851840",
   "lng": "-97.9178899",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Parkland Place",
@@ -3417,7 +3417,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit, Counseling",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pembina Threshermen's Museum",
@@ -3453,7 +3453,7 @@
   "description": "Morden Chamber of Commerce: Arts & Crafts, Associations - Not-for-Profit, Community Organizations, Entertainment, Photographers/Photo Finishing/Framing",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pembina Valley Child Care Centres Inc.",
@@ -3489,7 +3489,7 @@
   "description": "Morden Chamber of Commerce: Chiropractors & Physiotherapists",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Royal Canadian Legion Branch #11",
@@ -3561,7 +3561,7 @@
   "description": "Morden Chamber of Commerce: Antiques/Estate Sales/Consignments, Gifts & Specialty Items",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "SideAid",
@@ -3573,7 +3573,7 @@
   "description": "Morden Chamber of Commerce: Employment Centre, Recruitment Services",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Sterling Wealth Management Inc.",
@@ -3597,7 +3597,7 @@
   "description": "Morden Chamber of Commerce: Dental, Medical Supply",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Steeltree Sign & Design",
@@ -3609,7 +3609,7 @@
   "description": "Morden Chamber of Commerce: Graphic Design",
   "lat": "49.1851840",
   "lng": "-97.9178899",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Scott Howard Contracting Ltd.",
@@ -3681,7 +3681,7 @@
   "description": "Morden Chamber of Commerce: Advertising/Promotions, Press/Publications/Radio",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Small Wonders Community Nursery School",
@@ -3703,9 +3703,9 @@
   "phone": "(204) 325-7999",
   "email": "",
   "description": "Morden Chamber of Commerce: Automotive, Sales, Repair, Rental",
-  "lat": "49.1922762",
-  "lng": "-98.1388160",
-  "source": "nominatim-address-2026-11-21"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Shear Bliss Ltd.",
@@ -3717,7 +3717,7 @@
   "description": "Morden Chamber of Commerce: Beauty Salons/Spas",
   "lat": "49.1979385",
   "lng": "-98.0978778",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "South Central Cancer Resource",
@@ -3729,7 +3729,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit, Medical Supply",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Solventum",
@@ -3753,7 +3753,7 @@
   "description": "Morden Chamber of Commerce: Dental",
   "lat": "49.1899486",
   "lng": "-98.0940080",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "South Central Regional Library - Morden Branch",
@@ -3765,7 +3765,7 @@
   "description": "Morden Chamber of Commerce: Associations - Not-for-Profit",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Southland Honda",
@@ -3789,7 +3789,7 @@
   "description": "Morden Chamber of Commerce: Education, Construction Management (Contractor)",
   "lat": "49.1859609",
   "lng": "-98.1042332",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Sawatzky's Furniture & Appliance",
@@ -3873,7 +3873,7 @@
   "description": "Morden Chamber of Commerce: Assisted Living, Home Care, Personal Care Home, Associations - Not-for-Profit",
   "lat": "49.1940678",
   "lng": "-98.0846481",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "TruPath Financial Solutions Ltd",
@@ -3897,7 +3897,7 @@
   "description": "Morden Chamber of Commerce: Home Furnishings, Interior Design, Office Furniture & Supplies",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Trade Walks Immigration Services",
@@ -3921,7 +3921,7 @@
   "description": "Morden Chamber of Commerce: Education, Government",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "The Prairie Dragonfly",
@@ -3933,7 +3933,7 @@
   "description": "Morden Chamber of Commerce: Massage Therapy & Reflexology",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "The Loft @ Terrapoint",
@@ -3969,7 +3969,7 @@
   "description": "Morden Chamber of Commerce: Computer Service/Sales, Telecommunications",
   "lat": "49.1979385",
   "lng": "-98.0978778",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "The Everyday Method Health Collective",
@@ -3993,7 +3993,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Thompson Dorfman Sweatman LLP",
@@ -4017,7 +4017,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Triple E Canada Ltd./Lode King Industries",
@@ -4089,7 +4089,7 @@
   "description": "Morden Chamber of Commerce: Carpets & Interiors",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Venture Parts & Supply",
@@ -4101,7 +4101,7 @@
   "description": "Morden Chamber of Commerce member",
   "lat": "49.1859609",
   "lng": "-98.1042332",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Wilder Sport Management Inc.",
@@ -4173,7 +4173,7 @@
   "description": "Morden Chamber of Commerce: Education",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Wiebe's Steel Structures",
@@ -4233,7 +4233,7 @@
   "description": "Morden Chamber of Commerce: Community Organizations, Associations - Not-for-Profit",
   "lat": "49.1898955",
   "lng": "-98.1003379",
-  "source": "nominatim-address-2026-11-21"
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "South Central Building Systems - An AEP Company",
@@ -4243,9 +4243,9 @@
   "phone": "(204) 745-6677",
   "email": "",
   "description": "Google Maps: Truss/truss manufacturer manufacturer",
-  "lat": "49.5184626",
-  "lng": "-97.9979403",
-  "source": "google-maps"
+  "lat": "49.5130937",
+  "lng": "-97.9984610",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Vanderveen's Greenhouses Ltd",
@@ -4267,9 +4267,9 @@
   "phone": "(204) 745-2431",
   "email": "",
   "description": "Google Maps: Commercial printer",
-  "lat": "49.5184626",
-  "lng": "-97.9979403",
-  "source": "google-maps"
+  "lat": "49.5048201",
+  "lng": "-98.0043773",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Aubin Nurseries Ltd",
@@ -4303,9 +4303,9 @@
   "phone": "(204) 745-2951",
   "email": "",
   "description": "Google Maps: Manufacturer",
-  "lat": "49.5184626",
-  "lng": "-97.9979403",
-  "source": "google-maps"
+  "lat": "49.5118534",
+  "lng": "-97.9983597",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Greenvalley Equipment Inc",
@@ -4327,9 +4327,9 @@
   "phone": "(204) 324-5386",
   "email": "",
   "description": "Google Maps: Insurance agency",
-  "lat": "49.6537531",
-  "lng": "-98.6636357",
-  "source": "google-maps"
+  "lat": "49.6274509",
+  "lng": "-98.6976195",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Treherne Concrete & Supplies",
@@ -4339,9 +4339,9 @@
   "phone": "(204) 324-5105",
   "email": "",
   "description": "Google Maps: Ready mix concrete supplier",
-  "lat": "49.6537531",
-  "lng": "-98.6636357",
-  "source": "google-maps"
+  "lat": "49.6297411",
+  "lng": "-98.7030027",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Earle's Transfer Inc.",
@@ -4351,9 +4351,9 @@
   "phone": "(204) 324-5240",
   "email": "",
   "description": "Google Maps: Trucking company",
-  "lat": "49.6537531",
-  "lng": "-98.6636357",
-  "source": "google-maps"
+  "lat": "49.6273041",
+  "lng": "-98.6990674",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Jackson Growers LTD",
@@ -4375,9 +4375,9 @@
   "phone": "(204) 829-2334",
   "email": "",
   "description": "Google Maps: Manufacturer",
-  "lat": "49.1740975",
-  "lng": "-97.8240368",
-  "source": "google-maps"
+  "lat": "49.1879880",
+  "lng": "-97.7670500",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "ETG Commodities Inc. Plum Coulee",
@@ -4387,9 +4387,9 @@
   "phone": "+1 833-384-7275",
   "email": "",
   "description": "Google Maps: Food processing",
-  "lat": "49.1740975",
-  "lng": "-97.8240368",
-  "source": "google-maps"
+  "lat": "49.1879880",
+  "lng": "-97.7670500",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Mandako Agri Marketing (2010) Ltd",
@@ -4399,9 +4399,9 @@
   "phone": "(204) 829-3092",
   "email": "",
   "description": "Google Maps: Agricultural machinery manufacturer",
-  "lat": "49.1740975",
-  "lng": "-97.8240368",
-  "source": "google-maps"
+  "lat": "49.1879880",
+  "lng": "-97.7670500",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Prairie Foods Plum Coulee",
@@ -4411,9 +4411,9 @@
   "phone": "(204) 829-2311",
   "email": "",
   "description": "Google Maps: Supermarket",
-  "lat": "49.1740975",
-  "lng": "-97.8240368",
-  "source": "google-maps"
+  "lat": "49.1903627",
+  "lng": "-97.7616369",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Etg Commodities, Plant B",
@@ -4423,9 +4423,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Manufacturer",
-  "lat": "49.1740975",
-  "lng": "-97.8240368",
-  "source": "google-maps"
+  "lat": "49.1895334",
+  "lng": "-97.7584874",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Flatland Express Ltd",
@@ -4435,9 +4435,9 @@
   "phone": "(204) 650-0019",
   "email": "",
   "description": "Google Maps: Transportation service",
-  "lat": "49.1740975",
-  "lng": "-97.8240368",
-  "source": "google-maps"
+  "lat": "49.1879880",
+  "lng": "-97.7670500",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Morrison Agencies Ltd",
@@ -4447,9 +4447,9 @@
   "phone": "(204) 858-2521",
   "email": "",
   "description": "Google Maps: Insurance agency",
-  "lat": "49.642951",
-  "lng": "-99.4099701",
-  "source": "google-maps"
+  "lat": "49.4817901",
+  "lng": "-100.5214760",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Mazergroup",
@@ -4459,9 +4459,9 @@
   "phone": "(204) 858-2000",
   "email": "",
   "description": "Google Maps: Farm equipment supplier",
-  "lat": "49.642951",
-  "lng": "-99.4099701",
-  "source": "google-maps"
+  "lat": "49.4815990",
+  "lng": "-100.5231200",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Redfern Farm Svc",
@@ -4471,9 +4471,9 @@
   "phone": "(204) 858-2038",
   "email": "",
   "description": "Google Maps: Farm",
-  "lat": "49.642951",
-  "lng": "-99.4099701",
-  "source": "google-maps"
+  "lat": "49.4774869",
+  "lng": "-100.5280115",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Hartney Town Shop",
@@ -4483,9 +4483,9 @@
   "phone": "(204) 858-2076",
   "email": "",
   "description": "Google Maps: Machine shop",
-  "lat": "49.642951",
-  "lng": "-99.4099701",
-  "source": "google-maps"
+  "lat": "49.4774869",
+  "lng": "-100.5280115",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Co-op Food Store",
@@ -4495,9 +4495,9 @@
   "phone": "(204) 858-2276",
   "email": "",
   "description": "Google Maps: Wholesale food store",
-  "lat": "49.642951",
-  "lng": "-99.4099701",
-  "source": "google-maps"
+  "lat": "49.4817901",
+  "lng": "-100.5214760",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "JSJ Livestock",
@@ -4507,9 +4507,9 @@
   "phone": "(204) 741-0763",
   "email": "",
   "description": "Google Maps: Farm",
-  "lat": "49.642951",
-  "lng": "-99.4099701",
-  "source": "google-maps"
+  "lat": "49.4815990",
+  "lng": "-100.5231200",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Tufts Machining",
@@ -4519,9 +4519,9 @@
   "phone": "(204) 483-2274",
   "email": "",
   "description": "Google Maps: Machine shop",
-  "lat": "49.6141659",
-  "lng": "-100.3925565",
-  "source": "google-maps"
+  "lat": "49.6210090",
+  "lng": "-100.2582480",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Falcon Enterprises Ltd",
@@ -4531,9 +4531,9 @@
   "phone": "(204) 483-2675",
   "email": "",
   "description": "Google Maps: Mining company",
-  "lat": "49.6141659",
-  "lng": "-100.3925565",
-  "source": "google-maps"
+  "lat": "49.6228042",
+  "lng": "-100.2648028",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Chudley Construction",
@@ -4543,9 +4543,9 @@
   "phone": "(204) 573-8122",
   "email": "",
   "description": "Google Maps: Construction company",
-  "lat": "49.6141659",
-  "lng": "-100.3925565",
-  "source": "google-maps"
+  "lat": "49.6210090",
+  "lng": "-100.2582480",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Souris Swinging Bridge",
@@ -4555,9 +4555,9 @@
   "phone": "(204) 483-5200",
   "email": "",
   "description": "Google Maps: Bridge",
-  "lat": "49.6141659",
-  "lng": "-100.3925565",
-  "source": "google-maps"
+  "lat": "49.6210090",
+  "lng": "-100.2582480",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Souris Sales & Service",
@@ -4567,9 +4567,9 @@
   "phone": "(204) 483-2289",
   "email": "",
   "description": "Google Maps: Small engine repair service",
-  "lat": "49.6141659",
-  "lng": "-100.3925565",
-  "source": "google-maps"
+  "lat": "49.6219873",
+  "lng": "-100.2676650",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "The Haze Company - Cannabis and Vape Shop",
@@ -4579,9 +4579,9 @@
   "phone": "(204) 709-4293",
   "email": "",
   "description": "Google Maps: Cannabis store",
-  "lat": "49.6141659",
-  "lng": "-100.3925565",
-  "source": "google-maps"
+  "lat": "49.6210090",
+  "lng": "-100.2582480",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "ADM Agri-Industries Co Carberry",
@@ -4591,9 +4591,9 @@
   "phone": "(204) 834-2980",
   "email": "",
   "description": "Google Maps: Grain elevator",
-  "lat": "49.8631553",
-  "lng": "-99.5443755",
-  "source": "google-maps"
+  "lat": "49.8693270",
+  "lng": "-99.3615820",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "McCain Foods (Canada) - Office",
@@ -4603,9 +4603,9 @@
   "phone": "(204) 285-3600",
   "email": "",
   "description": "Google Maps: Food products supplier",
-  "lat": "49.8631553",
-  "lng": "-99.5443755",
-  "source": "google-maps"
+  "lat": "49.8693270",
+  "lng": "-99.3615820",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Elevate Print House - Carberry Division",
@@ -4615,9 +4615,9 @@
   "phone": "(204) 834-2700",
   "email": "",
   "description": "Google Maps: Sign shop",
-  "lat": "49.8631553",
-  "lng": "-99.5443755",
-  "source": "google-maps"
+  "lat": "49.8780931",
+  "lng": "-99.3587211",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Manitoba Starch Products",
@@ -4627,9 +4627,9 @@
   "phone": "(204) 834-2702",
   "email": "",
   "description": "Google Maps: Manufacturer",
-  "lat": "49.8631553",
-  "lng": "-99.5443755",
-  "source": "google-maps"
+  "lat": "49.8693270",
+  "lng": "-99.3615820",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Acadia Community Truss",
@@ -4639,9 +4639,9 @@
   "phone": "+1 866-834-3208",
   "email": "",
   "description": "Google Maps: Truss manufacturer",
-  "lat": "49.8631553",
-  "lng": "-99.5443755",
-  "source": "google-maps"
+  "lat": "49.8693270",
+  "lng": "-99.3615820",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Congebec, Carberry",
@@ -4651,9 +4651,9 @@
   "phone": "(204) 285-3664",
   "email": "",
   "description": "Google Maps: Cold storage facility",
-  "lat": "49.8631553",
-  "lng": "-99.5443755",
-  "source": "google-maps"
+  "lat": "49.8693270",
+  "lng": "-99.3615820",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Grand Colony",
@@ -4699,9 +4699,9 @@
   "phone": "(306) 500-5522",
   "email": "",
   "description": "Google Maps: Agricultural product wholesaler",
-  "lat": "49.922289",
-  "lng": "-98.0379558",
-  "source": "google-maps"
+  "lat": "49.9328770",
+  "lng": "-97.9990647",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Intel Seed Ltd.",
@@ -4711,9 +4711,9 @@
   "phone": "(204) 267-7389",
   "email": "",
   "description": "Google Maps: Seed supplier",
-  "lat": "49.922289",
-  "lng": "-98.0379558",
-  "source": "google-maps"
+  "lat": "49.9289653",
+  "lng": "-98.0031811",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Oakville Service On Second",
@@ -4723,9 +4723,9 @@
   "phone": "(204) 267-2611",
   "email": "",
   "description": "Google Maps: Shipping and mailing service",
-  "lat": "49.922289",
-  "lng": "-98.0379558",
-  "source": "google-maps"
+  "lat": "49.9289653",
+  "lng": "-98.0031811",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Hidden Valley Manufacturing Ltd",
@@ -4735,9 +4735,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Manufacturer",
-  "lat": "49.88959",
-  "lng": "-98.948379",
-  "source": "google-maps"
+  "lat": "49.9487120",
+  "lng": "-98.9365050",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "T&B Adventures Ltd.",
@@ -4747,9 +4747,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Trucking company",
-  "lat": "49.88959",
-  "lng": "-98.948379",
-  "source": "google-maps"
+  "lat": "49.9487120",
+  "lng": "-98.9365050",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Light Way Transport Inc",
@@ -4759,9 +4759,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Trucking company",
-  "lat": "49.88959",
-  "lng": "-98.948379",
-  "source": "google-maps"
+  "lat": "49.9487120",
+  "lng": "-98.9365050",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Keystone Concrete Ltd",
@@ -4771,9 +4771,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Ready mix concrete supplier",
-  "lat": "49.88959",
-  "lng": "-98.948379",
-  "source": "google-maps"
+  "lat": "49.9487120",
+  "lng": "-98.9365050",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Sprucedale Industries Inc",
@@ -4783,9 +4783,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Non-profit organization",
-  "lat": "49.88959",
-  "lng": "-98.948379",
-  "source": "google-maps"
+  "lat": "49.9479018",
+  "lng": "-98.9365690",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Hillside Farm Supply",
@@ -4795,9 +4795,9 @@
   "phone": "(204) 312-7833",
   "email": "",
   "description": "Google Maps: Agricultural product wholesaler",
-  "lat": "49.1424143",
-  "lng": "-97.9811579",
-  "source": "google-maps"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Rural Municipality of Stanley",
@@ -4807,9 +4807,9 @@
   "phone": "(204) 325-4101",
   "email": "",
   "description": "Google Maps: Government office",
-  "lat": "49.1424143",
-  "lng": "-97.9811579",
-  "source": "google-maps"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Northern Steel Buildings",
@@ -4819,9 +4819,9 @@
   "phone": "+1 877-751-3486",
   "email": "",
   "description": "Google Maps: Building consultant",
-  "lat": "49.1424143",
-  "lng": "-97.9811579",
-  "source": "google-maps"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Precision Land Solutions",
@@ -4831,9 +4831,9 @@
   "phone": "(204) 331-3003",
   "email": "",
   "description": "Google Maps: Agricultural service",
-  "lat": "49.1424143",
-  "lng": "-97.9811579",
-  "source": "google-maps"
+  "lat": "49.0925950",
+  "lng": "-98.0657620",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Borderland Manufacturing",
@@ -4843,9 +4843,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Laser cutting service",
-  "lat": "49.1968609",
-  "lng": "-98.2267736",
-  "source": "google-maps"
+  "lat": "49.2052100",
+  "lng": "-98.3771450",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Stratacore Ltd",
@@ -4855,9 +4855,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Construction company",
-  "lat": "49.1968609",
-  "lng": "-98.2267736",
-  "source": "google-maps"
+  "lat": "49.2051847",
+  "lng": "-98.3769610",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Boundary Loading Group",
@@ -4867,9 +4867,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Grain elevator",
-  "lat": "49.1968609",
-  "lng": "-98.2267736",
-  "source": "google-maps"
+  "lat": "49.2052100",
+  "lng": "-98.3771450",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Pembina Hutterite Community",
@@ -4879,9 +4879,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Farm",
-  "lat": "49.1968609",
-  "lng": "-98.2267736",
-  "source": "google-maps"
+  "lat": "49.2052100",
+  "lng": "-98.3771450",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Mound Farm Supply (Auto Value)",
@@ -4891,9 +4891,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Auto parts store",
-  "lat": "49.2369806",
-  "lng": "-98.8416596",
-  "source": "google-maps"
+  "lat": "49.2000000",
+  "lng": "-98.9000000",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Wooden Gate Cider",
@@ -4903,9 +4903,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Winery",
-  "lat": "49.2369806",
-  "lng": "-98.8416596",
-  "source": "google-maps"
+  "lat": "49.2000000",
+  "lng": "-98.9000000",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Mound Services Inc.",
@@ -4915,9 +4915,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Truck repair shop",
-  "lat": "49.2369806",
-  "lng": "-98.8416596",
-  "source": "google-maps"
+  "lat": "49.2051020",
+  "lng": "-98.8921223",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Farmer's Edge Precision Consulting Inc",
@@ -4927,9 +4927,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Construction company",
-  "lat": "49.2369806",
-  "lng": "-98.8416596",
-  "source": "google-maps"
+  "lat": "49.2036251",
+  "lng": "-98.8963455",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Pilot Mound Home Hardware",
@@ -4939,9 +4939,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Home improvement store",
-  "lat": "49.2369806",
-  "lng": "-98.8416596",
-  "source": "google-maps"
+  "lat": "49.2036251",
+  "lng": "-98.8963455",
+  "source": "nominatim-cluster-guarded-2026-11-21"
  },
  {
   "name": "Clint's Trading Post - Home of the Walleye Wallet",
@@ -4951,9 +4951,9 @@
   "phone": "(204) 242-3228",
   "email": "",
   "description": "Google Maps: Tannery",
-  "lat": "49.1774961",
-  "lng": "-98.2145396",
-  "source": "google-maps"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Siggi's",
@@ -4963,9 +4963,9 @@
   "phone": "(204) 242-3472",
   "email": "",
   "description": "Google Maps: Pizza restaurant",
-  "lat": "49.1774961",
-  "lng": "-98.2145396",
-  "source": "google-maps"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Westoba Market",
@@ -4975,9 +4975,9 @@
   "phone": "(431) 486-0116",
   "email": "",
   "description": "Google Maps: Market",
-  "lat": "49.1774961",
-  "lng": "-98.2145396",
-  "source": "google-maps"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Weebeez Honey Farm",
@@ -4987,9 +4987,9 @@
   "phone": "(431) 775-1406",
   "email": "",
   "description": "Google Maps: Honey farm",
-  "lat": "49.1774961",
-  "lng": "-98.2145396",
-  "source": "google-maps"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "A.R.K. New-Tech Ltd.",
@@ -4999,9 +4999,9 @@
   "phone": "(204) 242-2424",
   "email": "",
   "description": "Google Maps: Industrial equipment supplier",
-  "lat": "49.1774961",
-  "lng": "-98.2145396",
-  "source": "google-maps"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Byway Farms Ltd. Elevator",
@@ -5011,9 +5011,9 @@
   "phone": "",
   "email": "",
   "description": "Google Maps: Warehouse",
-  "lat": "49.1774961",
-  "lng": "-98.2145396",
-  "source": "google-maps"
+  "lat": "49.2391040",
+  "lng": "-98.6798920",
+  "source": "town-centroid-snap-2026-11-21"
  },
  {
   "name": "Dr Beetroot Canada Inc",
@@ -5107,8 +5107,8 @@
   "phone": "",
   "email": "Wilson.the.aiagent@gmail.com",
   "description": "AI assistant & automation for Pembina Valley businesses - built and run locally by Wilson. Contact: Wilson.the.aiagent@gmail.com - Telegram @Wilson_hermesvision_bot - Winkler, MB. SERVICES: 24/7 assistant on Telegram/Signal that remembers your customers, answers questions, sends reminders and follow-ups; automation sprints (intake, quoting, booking) with staff training, a written runbook and 30 days of support; monthly retainers with priority support; document and data work (PDF to Excel, cleanup, mail merge, OCR). The same agent also runs this events calendar and the local news digests.",
-  "lat": "",
-  "lng": "",
-  "source": "wilson"
+  "lat": "49.1735912",
+  "lng": "-97.9305378",
+  "source": "nominatim-repair-2026-11-21"
  }
 ]
