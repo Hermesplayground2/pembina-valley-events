@@ -1,128 +1,36 @@
 {
-  "last_updated": "2026-11-21T11:02:46.014935+00:00",
-  "generated_by": "pembina_publish_guard.py",
-  "source": "pembina_publish_guard.py",
+  "last_updated": "2026-11-22T11:02:25.493718+00:00",
+  "generated_by": "fetch_events.py",
+  "source": "pembinavalleyonline.com/events",
+  "filter": {
+    "drop_terms": [
+      "pride",
+      "bingo",
+      "farmers market",
+      "council meeting"
+    ]
+  },
   "events": [
     {
-      "id": "/events/237092",
-      "title": "One-stop Shop in the Hall",
-      "time": "10:00 AM · Carman Community Hall, 60 - 1st Avenue NW, Carman, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/237092",
-      "source": "pembinavalleyonline.com",
-      "description": "Carman Family Resource Centre &amp; Carman Kinettes One-stop Shop in the Hall Vendor and Craft Sale Saturday, November 21, 2026 10:00 am – 3:00 pm Carman Community Hall: 60 – 1st Ave NW Carman, MB Come to the Hall for this annual shopping event, just in time for the holidays! There will be many different crafters and vendors with a great variety of items for sale. The Kinettes will have their raffle tables, and will offer a home-style lunch for purchase. Do all your holiday shopping right here in town! Silver collection at the door. Thank you for your support! For more information, please call 204-745-5571"
-    },
-    {
-      "id": "scrl-10004884-1795255200-1795275000@scrl.mb.libraries.coop",
-      "title": "MORDEN - Book Sale",
-      "time": "10:00 AM · Morden Branch",
-      "date": "2026-11-21",
-      "link": "https://scrl.mb.libraries.coop/event/morden-book-sale/2026-11-21/",
+      "id": "scrl-10004900-1794477600-1795541400@scrl.mb.libraries.coop",
+      "title": "MANITOU - FINES FOR FOOD Nov 12-24, 2026",
+      "time": "10:00 AM · Manitou Branch",
+      "date": "2026-11-12",
+      "link": "https://scrl.mb.libraries.coop/event/manitou-fines-for-food-nov-12-24-2026/",
       "source": "South Central Regional Library",
       "category": "community",
-      "description": "Find your next cozy read or the perfect holiday gift at the Morden Branch Book Sale, November 17–28, during regular operating hours! Tuesday & Thursday 10-8 Wednesday & Friday 10-5 Saturday 10-3:30"
+      "description": "Any fines that are paid at the Manitou Branch between November 12 and 24 will be donated to our local Christmas Cheer."
     },
     {
-      "id": "/events/232382",
-      "title": "Sneak Peek Into Christmas",
-      "time": "10:00 AM · Winkler",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/232382",
-      "source": "pembinavalleyonline.com",
-      "description": "Save the Date to the Biggest Christmas Shopping Event in Winkler 🛍️"
-    },
-    {
-      "id": "winkler-arts-holiday-gift-market",
-      "title": "Holiday Gift Market",
-      "time": "10:00 am - 4:00 pm",
-      "date": "2026-11-21",
-      "link": "https://winklerarts.com/events/holiday-gift-market/",
-      "source": "Winkler Arts + Culture",
-      "category": "community",
-      "description": ""
-    },
-    {
-      "id": "/events/236544",
-      "title": "Comfort and Joy Christmas Market",
-      "time": "11:00 AM · Buttercup Cafe & Celebration Hall, 21067 Rd 14 N, Stanley, Manitoba",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/236544",
-      "source": "pembinavalleyonline.com",
-      "description": "Celebrate the warmth and magic of the season at Buttercup Celebration Hall! Join us accross three weekends of holiday cheer, local shopping and festive community connection: November 21 &amp; 22 | November 28 &amp; 29 | December 5 &amp; 6 What to expect: Free admission: Explore a beautifully decorated Holiday market showcasing talented local makers and unique gifts. - Cafe &amp; Bar: Enjoy delicious bites and festive drinks from our open Cafe and Hall Bar while you stroll. - A cozy atmosphere: The perfect place for meaningful visits with family and friends. Vendor Opportunities: We offer hospitality focused vendor care. Including free coffee, water snacks and relief breaks. Apply now at Buttercupcafe.ca"
-    },
-    {
-      "id": "scrl-10004871-1795266000-1795276800@scrl.mb.libraries.coop",
-      "title": "Winkler - Teen Dungeons & Dragons",
-      "time": "1:00 PM · Winkler Branch",
-      "date": "2026-11-21",
-      "link": "https://scrl.mb.libraries.coop/event/winkler-teen-dungeons-dragons/",
-      "source": "South Central Regional Library",
-      "category": "community",
-      "description": "Get ready to unleash your inner hero on November 21st with a Dungeons & Dragons extravaganza! What’s D&D, you ask? It’s a whimsical wonderland where you craft epic characters, team up for legendary quests under the guidance of a Dungeon Master, and roll those magical dice to see what fate has in store! It’s all about storytelling, teamwork, and letting your imagination run wild! We’ve got a session for ages 15-18 from 1:00pm to 4:00 pm. If you’ve got your own dice, bring them along, but don’t worry; we’ll have some to share too! Beverages are provided, feel free to bring snacks. Registration is required, feel free to visit us in person, give us a call at 204-325-7174 or email us at winklercirculation@gmail.com."
-    },
-    {
-      "id": "/events/238344",
-      "title": "Teen Dungeons and Dragons at the Winkler Library",
-      "time": "1:00 PM · Winkler Library, 160 Main St., Winkler, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/238344",
-      "source": "pembinavalleyonline.com",
-      "description": "Sharpen your swords and polish your wands! On November 21st at 1:00 PM, prepare to embark on a 3-hour whirlwind adventure in the world of Dungeons and Dragons (ages 15-18) To secure your place in this epic quest, you must register by visiting us in person, calling 204-325-7174, or sending an email to winklercirculation@gmail.com. Magic and mayhem await! Beverages are provided, feel free to bring snacks!"
-    },
-    {
-      "id": "/events/239200",
-      "title": "From Everywhere to Bethlehem",
-      "time": "5:00 PM · Winkler Park, 1045 Grandeur Avenue, Winkler, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/239200",
-      "source": "pembinavalleyonline.com",
-      "description": "Friday, November 20, 6:00 - 9:00 PM Saturday, November 21, 5:00 - 9:00 PM Sunday, November 22, 5:00 - 9:00 PM A live, outdoor interactive Nativity in the Winkler Park presented by Winkler EMMC and local community churches. Warm up with hot chocolate and cookies after the tour. Bake and Craft Sale in the tent to support local charities. Feel a part of the drama by bringing your “taxes” (which is a non-perishable food item) for the local food cupboard. Dress Warm!!"
-    },
-    {
-      "id": "/events/238595",
-      "title": "Robin Mark Inspired Worship Night - Oak Bluff (Near Winnipeg)",
-      "time": "7:00 PM · Oak Bluff Bible Church, 53A MB-3, Oak Bluff, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/238595",
-      "source": "pembinavalleyonline.com",
-      "description": "A Night of Worship: The Songs of Robin Mark Join us for a special evening of worship as we celebrate the powerful music and ministry of Robin Mark, one of the most influential worship songwriters of our time. Best known for writing worship anthems such as &quot;Days of Elijah,&quot; &quot;Jesus, All for Jesus,&quot; &quot;Revival,&quot; &quot;The Wonder of the Cross,&quot; &quot;When It&#39;s All Been Said and Done&quot; and &quot;Not by Might,&quot; Robin Mark&#39;s songs have inspired believers around the world to draw closer to God through heartfelt praise and worship. This uplifting night will feature many of Robin Mark&#39;s most loved songs, giving us the opportunity to sing together, reflect on God&#39;s faithfulness, and celebrate the hope we have in Christ. Whether these songs have been part of your worship journey for years or you are hearing them for the first time, this evening promises to be a meaningful time of praise, encouragement, and community. Come ready to lift your voice, worship with friends and family, and experience the joy of gathering around songs that have impacted churches across the globe. Together we&#39;ll revisit timeless favorites, share in God&#39;s presence, and proclaim His goodness through song. &quot;These are the days of Elijah, declaring the Word of the Lord.&quot; All are welcome. Bring a friend and join us for an unforgettable evening of worship through the songs of Robin Mark. This special worship night is also a fundraiser in support of the 2027 Fun With Family Day Festival, whose theme is&quot;Victory Over Darkness.&quot; Through worship, community, and outreach, the festival seeks to share the hope, light, and transforming love of Jesus Christ with individuals and families throughout our region. As we sing these powerful songs of faith, revival, and God&#39;s faithfulness, we are reminded that Christ has overcome the darkness of sin, fear, and despair. Every donation and act of support helps create opportunities to proclaim that message of hope beyond the walls of the church and into our community. Together, we can help create an event where families encounter encouragement, connection, and the life-changing truth that&quot;the light shines in the darkness, and the darkness has not overcome it.&quot; By supporting this fundraiser, you are investing in a ministry that seeks to point people to the ultimate victory found in Jesus Christ."
-    },
-    {
-      "id": "/events/238960",
-      "title": "A Christmas Carol - Charles Dickens",
-      "time": "7:00 PM · Pembina Hills Arts Council, 352 Stephen Street, Morden, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/238960",
-      "source": "pembinavalleyonline.com",
-      "description": "Live Performance by John D. Huston 📅 Saturday, November 21, 2026 | 7:00 PM 📍 Pembina Hills Arts Council, 352 Stephen Street, Morden, MB 🎟️ $25/person Snacks provided! Enjoy a free cider generously sponsored by Dead Horse Cider. For the past thirty-five Decembers, veteran solo performer, John D. Huston has packed his trunk, grown his beard &amp; trundled off to towns &amp; cities recreating the tours &amp; performances of Victorian author, Charles Dickens to full houses &amp; standing ovations. “powerful one-man theatre…in the hands of a master storyteller.” The National Post Now in its 35th season Huston performs A Christmas Carol narrating &amp; playing all the characters from Scrooge to Tiny Tim using a remarkable range of accents, &amp; body language. His astonishing tour de force presentation has been acclaimed as “mesmerizing,” “powerful”, &amp; “Christmas magic” by reviewers across the country. “A Christmas Carol a la Dickens” The Globe and Mail In this unique performance, the beloved story grows from the interplay of Dickens&#39;s richly-crafted text &amp; Huston&#39;s bravura performance. &quot;The audience &amp; I share the story,&quot; Huston says, &quot;they bring their memories of it, from movies, theatre, reading the book, even from seeing me in previous years. Together we create a memory, a new layer of the story as we revisit it together. Dickens asked his audiences to imagine they were assembled in a friend&#39;s house hearing the story told: I ask mine to do the same.&quot; “Vivid and lively...a consummate storyteller...mesmerising.” Winnipeg Free Press With over 800 performances behind him Huston has no plans to retire. &quot;I&#39;m still in love with this wonderful story &amp; magnificent characters. Doing the show is like visiting old friends.” &quot;I loved this production and urge all to see it.&quot; Ottawa Sun “Remarkable... Huston easily becomes the range of Dickens’ incredible characters.” The Hamilton Spectator John D. Huston presents Charles Dickens’ A Christmas Carol"
-    },
-    {
-      "id": "/events/239654",
-      "title": "Low German Music Night",
-      "time": "7:00 PM · Redekop Family Centre, Plum Coulee, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/239654",
-      "source": "pembinavalleyonline.com",
-      "description": "November 21, 2026"
-    },
-    {
-      "id": "flyers-7435",
-      "title": "Winkler Flyers vs Northern Manitoba",
-      "time": "7:00 pm CDT · Winkler Centennial Arena",
-      "date": "2026-11-21",
-      "link": "https://www.winklerflyers.com/game-center/?game_id=7435",
-      "source": "Winkler Flyers",
-      "category": "community",
-      "description": "Winkler Centennial Arena"
-    },
-    {
-      "id": "/events/240971",
-      "title": "Chortitz Waffle Breakfast",
-      "time": "8:00 AM · Valley Mennonite Academy, 82 Chortitz Street South, Chortitz, MB",
-      "date": "2026-11-21",
-      "link": "https://www.pembinavalleyonline.com/events/240971",
-      "source": "pembinavalleyonline.com",
-      "description": "Come help support the Village of Chortitz in maintaining the outdoor hockey rink by participating in our Waffle Breakfast fundraiser. All are Welcome! Open from 8am - 11pm Dine in or Take out Menu: Old Fashioned Waffles Classic Waffle (white) Sauce and Strawberries Grilled Ham Come enjoy food and fellowship with the Village of Chortitz! Donations over $20 are eligible for a tax receipt."
+      "id": "winkler-tree-lighting-2026",
+      "title": "City of Winkler Tree Lighting Ceremony",
+      "date": "2026-11-20",
+      "time": "6:00 PM · Bethel Heritage Park, Winkler",
+      "category": "family",
+      "location": "Winkler",
+      "link": "https://www.visitwinkler.ca/tree-lighting-ceremony",
+      "description": "Light Up the Season at the annual City of Winkler Tree Lighting Ceremony. Gathering from 6:00 p.m., ceremony begins at 6:30 p.m. when Mayor Henry Siemens flips the switch to illuminate Bethel Heritage Park. Santa photos, petting zoo, snacks and festive music. Free, family-friendly event.",
+      "source": "local_curation"
     },
     {
       "id": "/events/239636",
@@ -228,15 +136,6 @@
       "description": "Members $4.00 Non-Members $7.00"
     },
     {
-      "id": "/events/236879",
-      "title": "BTHC Grief Session",
-      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-11-23",
-      "link": "https://www.pembinavalleyonline.com/events/236879",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
-    },
-    {
       "id": "/events/231058",
       "title": "LUNGtivity",
       "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
@@ -244,6 +143,15 @@
       "link": "https://www.pembinavalleyonline.com/events/231058",
       "source": "pembinavalleyonline.com",
       "description": "LUNGtivity is returning Oct 19, 2026 (6 weeks) - Mondays at 1:30 - 3:00 PM LUNGtivity is a low-intensity community-based exercise program for people living with lung disease. To register, please contact: 204-822-4474 ext. 4410 kmcelroy@menziesmedical.ca"
+    },
+    {
+      "id": "/events/236879",
+      "title": "BTHC Grief Session",
+      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
+      "date": "2026-11-23",
+      "link": "https://www.pembinavalleyonline.com/events/236879",
+      "source": "pembinavalleyonline.com",
+      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
     },
     {
       "id": "/events/239916",
@@ -1518,6 +1426,15 @@
       "description": "Join us once again for a magical holiday experience over three weekends leading up to Christmas. The moment you walk into our stunning venue, you will be immersed in the sights, sounds and smells of the holiday season. Nearly 100 market vendors over the three weekends. Santa for the kids and busker performances throughout the day. And for those who have never experienced &quot;Faspa,&quot; here&#39;s your chance! We look forward to sharing the joys of the Christmas season with you all!"
     },
     {
+      "id": "/events/233729",
+      "title": "Coffee Fellowship and Crafts",
+      "time": "1:00 PM · Altona Mall, Altona, MB",
+      "date": "2026-12-04",
+      "link": "https://www.pembinavalleyonline.com/events/233729",
+      "source": "pembinavalleyonline.com",
+      "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
+    },
+    {
       "id": "/events/232160",
       "title": "Cribbage Tournament",
       "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
@@ -2090,6 +2007,15 @@
       "description": "Christmas Glow in the Country is a great way to spend quality time with your family and friends to celebrate the season! Take a leisurely drive through the 2-kilometre route in the comfort of your vehicle, tune your radio to our Christmas Glow station and enjoy the festive displays and goodies. Have you attended Christmas Glow before? We work hard to create new displays, ensuring a fresh experience each year! Purchase your tickets online today!"
     },
     {
+      "id": "/events/241090",
+      "title": "Sing We Now of Christmas",
+      "time": "7:00 PM · St Pauls United Church, 353 thornhill St., Morden, Manitoba",
+      "date": "2026-12-11",
+      "link": "https://www.pembinavalleyonline.com/events/241090",
+      "source": "pembinavalleyonline.com",
+      "description": "An evening of festive music AT St.Pauls United Church Morden Mb. Doors open at 6:30pm Admission by goodwill donation in support of Pembina Parish"
+    },
+    {
       "id": "flyers-7477",
       "title": "Winkler Flyers vs Swan Valley",
       "time": "7:00 pm CDT · Winkler Centennial Arena",
@@ -2338,6 +2264,16 @@
       "description": "Stay active, connect with others, and enjoy a comfortable, low-impact swim in a warm indoor pool! 📍 Days Inn Pool 📅Wednesdays| 12:30-2:00pm 💲 $3 per person (payable at the session) 👥 Ages 50+ 🛟 Lifeguard/aquafit instructor on duty 💧 Aqua-fit weights and swim aids provided This relaxed swim time is perfect for gentle exercise, mobility, and socializing. No pre-registration required — just drop in and enjoy!"
     },
     {
+      "id": "scrl-10004912-1797431400-1797435000@scrl.mb.libraries.coop",
+      "title": "WINKLER - Lego Club",
+      "time": "2:30 PM · Winkler Branch",
+      "date": "2026-12-16",
+      "link": "https://scrl.mb.libraries.coop/event/winkler-lego-club-4/",
+      "source": "South Central Regional Library",
+      "category": "community",
+      "description": "Join us for FREE Lego Club. Every GVSD Early Dismissal from 2:30PM – 3:30PM Lego is provided, and no registration required."
+    },
+    {
       "id": "/events/241005",
       "title": "Lego Club at the Winkler Library",
       "time": "2:30 PM · Winkler Library, 160 Main St, Winkler, MB",
@@ -2399,6 +2335,16 @@
       "link": "https://www.pembinavalleyonline.com/events/235431",
       "source": "pembinavalleyonline.com",
       "description": "Walking Group Thursdays 9am - 10:30am October 22- December 17 Weather Permitting Meet at Meridian Exhibition Centre All abilities welcome, bring your walkers, canes or walking poles or come without."
+    },
+    {
+      "id": "scrl-10004781-1797588000-1797591600@scrl.mb.libraries.coop",
+      "title": "Altona Story Time",
+      "time": "10:00 AM · Altona Branch",
+      "date": "2026-12-18",
+      "link": "https://scrl.mb.libraries.coop/event/altona-story-time-4/2026-12-18/",
+      "source": "South Central Regional Library",
+      "category": "community",
+      "description": "Come for stories in the Altona branch on Friday’s @ 10am!"
     },
     {
       "id": "/events/236424",
