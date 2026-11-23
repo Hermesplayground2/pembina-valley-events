@@ -1,37 +1,8 @@
 {
-  "last_updated": "2026-11-23T11:18:36.803371+00:00",
-  "generated_by": "fetch_events.py",
-  "source": "pembinavalleyonline.com/events",
-  "filter": {
-    "drop_terms": [
-      "pride",
-      "bingo",
-      "farmers market",
-      "council meeting"
-    ]
-  },
+  "last_updated": "2026-11-23T11:18:42.260555+00:00",
+  "generated_by": "pembina_publish_guard.py",
+  "source": "pembina_publish_guard.py",
   "events": [
-    {
-      "id": "scrl-10004900-1794477600-1795541400@scrl.mb.libraries.coop",
-      "title": "MANITOU - FINES FOR FOOD Nov 12-24, 2026",
-      "time": "10:00 AM · Manitou Branch",
-      "date": "2026-11-12",
-      "link": "https://scrl.mb.libraries.coop/event/manitou-fines-for-food-nov-12-24-2026/",
-      "source": "South Central Regional Library",
-      "category": "community",
-      "description": "Any fines that are paid at the Manitou Branch between November 12 and 24 will be donated to our local Christmas Cheer."
-    },
-    {
-      "id": "winkler-tree-lighting-2026",
-      "title": "City of Winkler Tree Lighting Ceremony",
-      "date": "2026-11-20",
-      "time": "6:00 PM · Bethel Heritage Park, Winkler",
-      "category": "family",
-      "location": "Winkler",
-      "link": "https://www.visitwinkler.ca/tree-lighting-ceremony",
-      "description": "Light Up the Season at the annual City of Winkler Tree Lighting Ceremony. Gathering from 6:00 p.m., ceremony begins at 6:30 p.m. when Mayor Henry Siemens flips the switch to illuminate Bethel Heritage Park. Santa photos, petting zoo, snacks and festive music. Free, family-friendly event.",
-      "source": "local_curation"
-    },
     {
       "id": "/events/239228",
       "title": "BTHC Foundation 50/50 $750 Early Bird Draw",
