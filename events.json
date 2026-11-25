@@ -1,38 +1,8 @@
 {
-  "last_updated": "2026-11-25T11:07:35.592130+00:00",
-  "generated_by": "fetch_events.py",
-  "source": "pembinavalleyonline.com/events",
-  "filter": {
-    "drop_terms": [
-      "pride",
-      "bingo",
-      "farmers market",
-      "council meeting"
-    ]
-  },
+  "last_updated": "2026-11-25T11:07:41.773731+00:00",
+  "generated_by": "pembina_publish_guard.py",
+  "source": "pembina_publish_guard.py",
   "events": [
-    {
-      "id": "winkler-tree-lighting-2026",
-      "title": "City of Winkler Tree Lighting Ceremony",
-      "date": "2026-11-20",
-      "time": "6:00 PM · Bethel Heritage Park, Winkler",
-      "category": "family",
-      "location": "Winkler",
-      "link": "https://www.visitwinkler.ca/tree-lighting-ceremony",
-      "description": "Light Up the Season at the annual City of Winkler Tree Lighting Ceremony. Gathering from 6:00 p.m., ceremony begins at 6:30 p.m. when Mayor Henry Siemens flips the switch to illuminate Bethel Heritage Park. Santa photos, petting zoo, snacks and festive music. Free, family-friendly event.",
-      "source": "local_curation"
-    },
-    {
-      "id": "morden-wreath-making",
-      "title": "Wreath Making Workshop",
-      "date": "2026-11-24",
-      "time": "6:30–8:00 PM · Access Event Centre – MCC Room, Morden",
-      "category": "community",
-      "location": "Morden",
-      "link": "https://morden.ca/rec",
-      "description": "Get into the holiday spirit with Earth Buds Florist and create your own holiday wreath to take home. $77.50 per participant, all supplies and instruction included.",
-      "source": "local_curation"
-    },
     {
       "id": "/events/236648",
       "title": "Baby and Me Coffee and Chat",
