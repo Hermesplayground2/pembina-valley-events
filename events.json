@@ -1,146 +1,37 @@
 {
-  "last_updated": "2026-11-27T11:02:07.644362+00:00",
-  "generated_by": "pembina_publish_guard.py",
-  "source": "pembina_publish_guard.py",
+  "last_updated": "2026-11-28T14:11:48.323818+00:00",
+  "generated_by": "fetch_events.py",
+  "source": "pembinavalleyonline.com/events",
+  "filter": {
+    "drop_terms": [
+      "pride",
+      "bingo",
+      "farmers market",
+      "council meeting"
+    ]
+  },
   "events": [
     {
-      "id": "scrl-10004778-1795773600-1795777200@scrl.mb.libraries.coop",
-      "title": "Altona Story Time",
-      "time": "10:00 AM · Altona Branch",
-      "date": "2026-11-27",
-      "link": "https://scrl.mb.libraries.coop/event/altona-story-time-4/2026-11-27/",
-      "source": "South Central Regional Library",
+      "id": "winkler-tree-lighting-2026",
+      "title": "City of Winkler Tree Lighting Ceremony",
+      "date": "2026-11-20",
+      "time": "6:00 PM · Bethel Heritage Park, Winkler",
+      "category": "family",
+      "location": "Winkler",
+      "link": "https://www.visitwinkler.ca/tree-lighting-ceremony",
+      "description": "Light Up the Season at the annual City of Winkler Tree Lighting Ceremony. Gathering from 6:00 p.m., ceremony begins at 6:30 p.m. when Mayor Henry Siemens flips the switch to illuminate Bethel Heritage Park. Santa photos, petting zoo, snacks and festive music. Free, family-friendly event.",
+      "source": "local_curation"
+    },
+    {
+      "id": "morden-wreath-making",
+      "title": "Wreath Making Workshop",
+      "date": "2026-11-24",
+      "time": "6:30–8:00 PM · Access Event Centre – MCC Room, Morden",
       "category": "community",
-      "description": "Come for stories in the Altona branch on Friday’s @ 10am!"
-    },
-    {
-      "id": "scrl-10004888-1795773600-1795798800@scrl.mb.libraries.coop",
-      "title": "MORDEN - Book Sale",
-      "time": "10:00 AM · Morden Branch",
-      "date": "2026-11-27",
-      "link": "https://scrl.mb.libraries.coop/event/morden-book-sale/2026-11-27/",
-      "source": "South Central Regional Library",
-      "category": "community",
-      "description": "Find your next cozy read or the perfect holiday gift at the Morden Branch Book Sale, November 17–28, during regular operating hours! Tuesday & Thursday 10-8 Wednesday & Friday 10-5 Saturday 10-3:30"
-    },
-    {
-      "id": "scrl-10004764-1795775400-1795779000@scrl.mb.libraries.coop",
-      "title": "MORDEN – Lego/Hot Wheels Club",
-      "time": "10:30 AM · Morden Branch",
-      "date": "2026-11-27",
-      "link": "https://scrl.mb.libraries.coop/event/morden-lego-hot-wheels-club-7/",
-      "source": "South Central Regional Library",
-      "category": "community",
-      "description": "Two fun drop in programs are happening at the same time at SCRL Morden Branch on Friday, November 27 from 10:30 to 11:30 am. Join us for Lego Club and Hot Wheels Club. Build, race, create, and let your imagination lead the way. Registration is not required. We kindly ask that an adult stay with preschoolers. We hope to see you there!"
-    },
-    {
-      "id": "/events/236421",
-      "title": "WINKLER CHRISTMAS MARKET",
-      "time": "12:00 PM · New Leaf Garden Centre, 875 Boundary Trail, Winkler, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/236421",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us once again for a magical holiday experience over three weekends leading up to Christmas. The moment you walk into our stunning venue, you will be immersed in the sights, sounds and smells of the holiday season. Nearly 100 market vendors over the three weekends. Santa for the kids and busker performances throughout the day. And for those who have never experienced &quot;Faspa,&quot; here&#39;s your chance! We look forward to sharing the joys of the Christmas season with you all!"
-    },
-    {
-      "id": "/events/233728",
-      "title": "Coffee Fellowship and Crafts",
-      "time": "1:00 PM · Altona Mall, Altona, MB",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/233728",
-      "source": "pembinavalleyonline.com",
-      "description": "Ladies, join us for a time of fellowship and crafts (if you want to). Drinks and snacks are free. Bring a friend."
-    },
-    {
-      "id": "/events/232159",
-      "title": "Cribbage Tournament",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/232159",
-      "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
-    },
-    {
-      "id": "/events/229774",
-      "title": "Art Hive at WAC",
-      "time": "1:00 PM · Winkler Arts and Culture Centre, 547 Park St., Winkler, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/229774",
-      "source": "pembinavalleyonline.com",
-      "description": "Art Hive is a welcoming, drop-in creative space where people of all backgrounds and abilities can come together to make art and connect. Led by Yael Fehr, each session offers a simple, guided activity - no experience needed. Every 2nd and 4th Fridays from 1pm - 2:30pm. This program is free - funding generously provided by Southern Health. Whether you come on your own or with a group, Art Hive is about building community, sharing space, and creating something side by side."
-    },
-    {
-      "id": "/events/237346",
-      "title": "Fund Raiser Supper and Movie Night",
-      "time": "5:00 PM · Rosenfeld Good Neighbour Centre, 262 Main Street, Rosenfeld, Manitoba , Canada, Rosenfeld, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/237346",
-      "source": "pembinavalleyonline.com",
-      "description": "EVENT: Spread the WORD! Share-SHARE-share! Great opportunity to support a local cause! Join our Rosenfeld and area community in helping support John &amp; Helena Friesen as their 6 year old son Maverick battles cancer. Your donation is your support for this needy cause. LOCATION: Rosenfeld Good Neighbour Centre (262 Main Street, Rosenfeld, Manitoba) DATE; Friday, November 27, 2026 TIME: 5 to 6:30pm MEAL: Sloppy Joe Supper OPTIONS: GLUTEN FREE, and TAKEOUT AVAILABLE: If you bring their own containers. DONATION VIA: Cash, Cheque, or e-transfer to 1-431-775-6871 QUESTIONS: contact Andrea at 1-204-324-4123"
-    },
-    {
-      "id": "/events/241065",
-      "title": "Beginner Kung Fu Classes in Winkler",
-      "time": "6:00 PM · Winkler Arts + Culture, 547 Park St., Winkler, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/241065",
-      "source": "pembinavalleyonline.com",
-      "description": "Try Wing Chun Kung Fu with Sifu Neil at Winkler Arts + Culture. No experience needed. Over four Friday evenings, you’ll begin learning the first Wing Chun form, practice basic stances and footwork, and put those basics to use in simple partner drills. Classes run November 27 and December 4, 11, and 18 from 6 to 7 p.m. The fee is $50 for all four classes. Space is limited. Register through Winkler Arts + Culture Find Sifu Neil Wing Chun on Facebook"
-    },
-    {
-      "id": "/events/240880",
-      "title": "Beginner Kung Fu Classes at WAC!",
-      "time": "6:00 PM · Winkler Arts and Culture Centre Inc, 547 Park St,, Winkler, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/240880",
-      "source": "pembinavalleyonline.com",
-      "description": "Something new is starting at WA+C later this month. Sifu Neil Froese is leading a four-week introduction to Wing Chun, a southern Chinese style of kung fu focused on direct movement and close-range self defense. These classes are designed for beginners, with time to begin learning the first Wing Chun form, basic stances and footwork, and practice what you’re learning through partner drills. Fridays, Nov. 27–Dec. 18 6 -7 p.m. $50 for all four classes No experience needed, and space is limited for this first group."
-    },
-    {
-      "id": "/events/231214",
-      "title": "Men's Prayer Breakfast (Morden)",
-      "time": "6:57 AM · Rock's Bar & Grill, 780 Thornhill Street, Morden, MB",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/231214",
-      "source": "pembinavalleyonline.com",
-      "description": "Christian men from around Morden meet each Friday morning for Prayer, Bible Devotions and Fellowship over breakfast! All are welcome to join. No reservation needed. FREE Admission plus purchase your own breakfast from the menu. This is a great way to meet and network with other Christian men. If needed, feel free to depart early from the meeting. This is a year round weekly event with some weeks around holidays and other times cancelled. Contact Dwight to confirm upcoming meetings."
-    },
-    {
-      "id": "/events/240797",
-      "title": "Trivia Night Fundraiser",
-      "time": "7:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/240797",
-      "source": "pembinavalleyonline.com",
-      "description": "Mark your calendar! The next Trivia Night Fundraiser at Morden Activity Centre is scheduled for Friday, November 27, 2026 at 7:00 p.m. Fun Games, Drinks, Prizes. $10.00 per person Teams of 4 - 6 Call (204) 822-3555 to register your team!"
-    },
-    {
-      "id": "flyers-7446",
-      "title": "Winkler Flyers @ Niverville",
-      "time": "7:30 pm CDT · Niverville CRRC",
-      "date": "2026-11-27",
-      "link": "https://www.winklerflyers.com/game-center/?game_id=7446",
-      "source": "Winkler Flyers",
-      "category": "community",
-      "description": "Niverville CRRC"
-    },
-    {
-      "id": "/events/239508",
-      "title": "Teddy Bear Toss - Rhineland Empty Stocking Fund",
-      "time": "8:00 PM · Millennium Exhibition Centre, Altona, MB",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/239508",
-      "source": "pembinavalleyonline.com",
-      "description": "November 27, 2026"
-    },
-    {
-      "id": "/events/234081",
-      "title": "Art Class - Acrylic & Watercolor Painting",
-      "time": "9:30 AM · Morden Activity Centre, 306 North Railway Street, Morden, Manitoba",
-      "date": "2026-11-27",
-      "link": "https://www.pembinavalleyonline.com/events/234081",
-      "source": "pembinavalleyonline.com",
-      "description": "Ready to get creative? Join us at the Morden Activity Centre for Acrylic and Watercolor Painting classes. Friday mornings from 9:30am-11am, beginning October 2nd, 2026, with the last class for the season December 11th, 2026. Painting materials will be supplied by the Centre. Small fee of $4 per class to cover the cost of the Materials. Registration is Required To register: Call 204-822-5663, Ext. 3 or email mordensfs@gmail.com"
+      "location": "Morden",
+      "link": "https://morden.ca/rec",
+      "description": "Get into the holiday spirit with Earth Buds Florist and create your own holiday wreath to take home. $77.50 per participant, all supplies and instruction included.",
+      "source": "local_curation"
     },
     {
       "id": "scrl-10004899-1795860000-1795867200@scrl.mb.libraries.coop",
@@ -272,6 +163,15 @@
       "description": "Celebrate the season with One Hope Canada&#39;s fourth annual Christmas Concert &amp; Carol Sing! This special event features the One Hope Canada Christmas Choir (director Howard Bredin) and The Chapel Brass &amp; Male Chorus (director Ralph Wegner). The evening also includes stories of God&#39;s work through One Hope Canada&#39;s Bible camps and community ministries in Manitoba and across the country. Join us Sunday, November 29 at Springfield Heights Mennonite Church (570 Sharron Bay S, Winnipeg). Doors open at 5:30 pm, concert begins at 6:30 pm. Admission is free; a free-will offering will be collected in support of the ministry of One Hope Canada. Come early; seats fill up fast!"
     },
     {
+      "id": "/events/241403",
+      "title": "D'Friesens Christmas Sing-Along Concert",
+      "time": "7:00 PM · Winkler EMMC, Winkler, MB",
+      "date": "2026-11-29",
+      "link": "https://www.pembinavalleyonline.com/events/241403",
+      "source": "pembinavalleyonline.com",
+      "description": "November 29, 2026"
+    },
+    {
       "id": "morden-ice-programs",
       "title": "Ice Programs",
       "time": "Access Event Centre, Morden",
@@ -312,15 +212,6 @@
       "description": "Members $4.00 Non-Members $7.00"
     },
     {
-      "id": "/events/236880",
-      "title": "BTHC Grief Session",
-      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
-      "date": "2026-11-30",
-      "link": "https://www.pembinavalleyonline.com/events/236880",
-      "source": "pembinavalleyonline.com",
-      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
-    },
-    {
       "id": "/events/231059",
       "title": "LUNGtivity",
       "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
@@ -328,6 +219,15 @@
       "link": "https://www.pembinavalleyonline.com/events/231059",
       "source": "pembinavalleyonline.com",
       "description": "LUNGtivity is returning Oct 19, 2026 (6 weeks) - Mondays at 1:30 - 3:00 PM LUNGtivity is a low-intensity community-based exercise program for people living with lung disease. To register, please contact: 204-822-4474 ext. 4410 kmcelroy@menziesmedical.ca"
+    },
+    {
+      "id": "/events/236880",
+      "title": "BTHC Grief Session",
+      "time": "1:30 PM · Morden Activity Centre, 306 North Railway Street, Morden, MB",
+      "date": "2026-11-30",
+      "link": "https://www.pembinavalleyonline.com/events/236880",
+      "source": "pembinavalleyonline.com",
+      "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
     },
     {
       "id": "/events/237192",
@@ -450,13 +350,13 @@
       "description": "⭐ CHRISTMAS PALOOZA CONTINUES! We&#39;re into Week Three, and there&#39;s still plenty of Christmas fun happening at Love Is In The Details! New things have arrived in both the Store and Gift Shop, there&#39;s another SALE of the Week, and a FREE Christmas Make &amp; Take waiting for you in our Creative Studio. It&#39;s a great time to pop in, find something special, enjoy a treat and take a little break from the Christmas hustle! STORE HOURS Tuesday: 10:00 a.m. – 5:00 p.m. Wednesday: 10:00 a.m. – 5:00 p.m. Thursday: 10:00 a.m. – 7:30 p.m. Friday: 10:00 a.m. – 5:00 p.m. Saturday: 10:00 a.m. – 2:00 p.m. *Closed Sunday and Monday. 📅 Check out the event image for the complete four-week Christmas Palooza schedule and all the details! ❤️ Love Is In The Details"
     },
     {
-      "id": "/events/234652",
-      "title": "Floor Curling",
-      "time": "1:00 PM · Morden Activity Centre, 306 N. Railway St., Morden, Manitoba",
+      "id": "/events/235678",
+      "title": "Homeschool Skate - Winkler",
+      "time": "1:00 PM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
       "date": "2026-12-01",
-      "link": "https://www.pembinavalleyonline.com/events/234652",
+      "link": "https://www.pembinavalleyonline.com/events/235678",
       "source": "pembinavalleyonline.com",
-      "description": "Members $4.00 Non-Members $7.00"
+      "description": "$3/person Happening at the ICON Arena from 1pm - 3pm (skate only for the first hour, sticks and pucks for the second hour). No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended. Participants are expected to be respectful and share the ice fairly. Come out, have fun, and make the most of your time on the ice!"
     },
     {
       "id": "/events/231238",
@@ -731,13 +631,13 @@
       "description": "Join us for Why Not Try Kinusaiga on December 3rd at 7:00 PM at the Winkler Library. We will work on an ornament project, and you will get a take home kit to continue the practice at home. The cost is $5.00 and registration is required, so visit us in person, call us at 204-325-7174 or email us at winklercirculation@gmail.com to sign up! Why Not Try workshops are for ages 13+"
     },
     {
-      "id": "/events/241133",
-      "title": "Morris International SuperSpiel - Welcoming the World",
+      "id": "/events/241135",
+      "title": "Morris International SuperSpiel - Welcoming the World!",
       "time": "8:30 AM · Morris Curling Club, 380 Stampede Grounds, Morris, MB",
       "date": "2026-12-03",
-      "link": "https://www.pembinavalleyonline.com/events/241133",
+      "link": "https://www.pembinavalleyonline.com/events/241135",
       "source": "pembinavalleyonline.com",
-      "description": "Exciting International World Class Curling Teams converge in Morris from November 26 to 29, 2026. The 19th Annual International SuperSpiel (formerly the DEKALB SuperSpiel) features 40 Women and Men&#39;s teams competing for a $60,000 prize purse! Many teams featured on the televised Grand Slams of Curling such as Teams Epping, McEwen, Calvert, Yamaguchi, Tuma, McDonald, Green Machines, Jeong, Zang, Yue Ma, Kapp, Lott Teams Kim, Gim, Gray-Withers, Njegovan, Cameron, MacMillan, Cakvert, O&#39;Hara, Sturmay, Ueno, Wang and more."
+      "description": "Exciting International World Class Curling Teams converge in Morris from November 26 to 29, 2026. The 19th Annual International SuperSpiel (formerly the DEKALB SuperSpiel) features 40 Women and Men&#39;s teams competing for a $60,000 prize purse! Many teams featured on the televised Grand Slams of Curling such as Teams Epping, McEwen, Calvert, Yamaguchi, Tuma, McDonald, Green Machines, Jeong, Zang, Yue Ma, Kapp, Lott Teams Kim, Gim, Gray-Withers, Njegovan, Cameron, MacMillan, Cakvert, O&#39;Hara, Sturmay, Ueno, Wang and more. ADMISSION: $15/day; $40/wknd pass"
     },
     {
       "id": "/events/235755",
@@ -1029,15 +929,6 @@
       "link": "https://www.pembinavalleyonline.com/events/236904",
       "source": "pembinavalleyonline.com",
       "description": "Join us at 1:30 PM for a FREE grief and bereavement session presented by Boundary Trails Health Centre Palliative Care Program. For anyone experiencing a loss. Registration is not required. Refreshments will be provided. For more information call Jerri-Anne Froese at 204-331-8815."
-    },
-    {
-      "id": "/events/235618",
-      "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
-      "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
-      "date": "2026-12-07",
-      "link": "https://www.pembinavalleyonline.com/events/235618",
-      "source": "pembinavalleyonline.com",
-      "description": "$2 Sticks and Pucks at the Icon Arena - 7am - 8am. Open to all ages. No instruction, coaching, or organized training sessions are allowed. Helmets are strongly recommended."
     },
     {
       "id": "/events/239197",
@@ -1734,6 +1625,15 @@
       "description": "FREE drop in skating time for tots 5 &amp; under from 9:45-10:45am. Participants are expected to be respectful and share the ice fairly."
     },
     {
+      "id": "/events/241404",
+      "title": "Elm Creek Santa Claus Parade",
+      "time": "6:30 PM · 194 Gordon ave, Elm Creek, Manitoba",
+      "date": "2026-12-17",
+      "link": "https://www.pembinavalleyonline.com/events/241404",
+      "source": "pembinavalleyonline.com",
+      "description": "Join us for our annual Santa Claus Parade in Elm Creek on Dec 17th at 6:30pm! Stay for a bonfire at the curling rink where hot dogs and marshmallows will be provided with a steaming cup of hot chocolate. More parade entries are needed, contact Jacki at 204-750-2164 to register. Parade participants please meet at the school at 6pm. Parade route and bonfire location can be seen on the map attached. Ho-ho-hope to see you there!"
+    },
+    {
       "id": "/events/235610",
       "title": "$2 Sticks and Pucks - Icon Arena - Winkler",
       "time": "7:00 AM · Meridian Exhibition Centre, 1045 Grandeur Ave, Winkler, MB",
@@ -2301,6 +2201,16 @@
       "description": "Come for stories in the Altona branch on Friday’s @ 10am!"
     },
     {
+      "id": "winkler-arts-home-routes-nicolas-pellerin",
+      "title": "Home Routes: Nicolas Pellerin",
+      "time": "7:00 pm - 9:00 pm",
+      "date": "2027-02-05",
+      "link": "https://winklerarts.com/events/home-routes-nicolas-pellerin/",
+      "source": "Winkler Arts + Culture",
+      "category": "community",
+      "description": ""
+    },
+    {
       "id": "flyers-7577",
       "title": "Winkler Flyers @ Swan Valley",
       "time": "7:00 pm CDT · Swan River Centennial Arena",
@@ -2371,6 +2281,16 @@
       "description": "Winkler Centennial Arena"
     },
     {
+      "id": "scrl-10004790-1803031200-1803034800@scrl.mb.libraries.coop",
+      "title": "Altona Story Time",
+      "time": "10:00 AM · Altona Branch",
+      "date": "2027-02-19",
+      "link": "https://scrl.mb.libraries.coop/event/altona-story-time-4/2027-02-19/",
+      "source": "South Central Regional Library",
+      "category": "community",
+      "description": "Come for stories in the Altona branch on Friday’s @ 10am!"
+    },
+    {
       "id": "flyers-7614",
       "title": "Winkler Flyers @ Neepawa",
       "time": "7:30 pm CDT · Yellowhead Centre",
@@ -2401,6 +2321,16 @@
       "description": "Winkler Centennial Arena"
     },
     {
+      "id": "scrl-10004791-1803636000-1803639600@scrl.mb.libraries.coop",
+      "title": "Altona Story Time",
+      "time": "10:00 AM · Altona Branch",
+      "date": "2027-02-26",
+      "link": "https://scrl.mb.libraries.coop/event/altona-story-time-4/2027-02-26/",
+      "source": "South Central Regional Library",
+      "category": "community",
+      "description": "Come for stories in the Altona branch on Friday’s @ 10am!"
+    },
+    {
       "id": "flyers-7628",
       "title": "Winkler Flyers vs Waywayseecappo",
       "time": "7:00 pm CDT · Winkler Centennial Arena",
@@ -2419,6 +2349,16 @@
       "source": "Winkler Flyers",
       "category": "community",
       "description": "RINK Training Centre"
+    },
+    {
+      "id": "scrl-10004792-1804240800-1804244400@scrl.mb.libraries.coop",
+      "title": "Altona Story Time",
+      "time": "10:00 AM · Altona Branch",
+      "date": "2027-03-05",
+      "link": "https://scrl.mb.libraries.coop/event/altona-story-time-4/2027-03-05/",
+      "source": "South Central Regional Library",
+      "category": "community",
+      "description": "Come for stories in the Altona branch on Friday’s @ 10am!"
     },
     {
       "id": "flyers-7643",
